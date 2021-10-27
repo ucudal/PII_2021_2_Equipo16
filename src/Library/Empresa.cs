@@ -14,7 +14,7 @@ namespace ClassLibrary
             this.Nombre = nombre;
             this.Rubro = rubro;
         }
-        List<Producto> productosAceptados = new List<Producto>();
+        List<Oferta> ofertasAceptados = new List<Oferta>();
 
         public void AceptarInvitacion()
         {
@@ -23,7 +23,7 @@ namespace ClassLibrary
 
         public void CrearProducto()
         {
-            Producto productoCreado = new Producto();
+            Oferta productoCreado = new Oferta();
         }
 
         public void EliminarProducto()
