@@ -7,32 +7,32 @@ namespace ClassLibrary
     public static class Publicaciones 
     {
         
-        public static List<Producto> ProductosPublicados = new List<Producto>();
+        public static List<Oferta> OfertasPublicados = new List<Oferta>();
         // Por Creator 
-        public static void AddProducto(string nombre, string material, int precio, string unidad, int cantidad, string tags, string ubicacion)
+        public static void AddOferta(string nombre, string material, int precio, string unidad, int cantidad, string tags, string ubicacion)
         {
-            Producto producto = new Producto(nombre, material, precio, unidad, cantidad, tags, ubicacion);
-            ProductosPublicados.Add(producto);
+            Oferta oferta = new Oferta(nombre, material, precio, unidad, cantidad, tags, ubicacion);
+            OfertasPublicados.Add(Oferta);
         }
         // Por Creator
-        public static void RemoveProducto(string nombre, string material, int precio, string unidad, int cantidad, string tags, string ubicacion)
+        public static void RemoveOferta(string nombre, string material, int precio, string unidad, int cantidad, string tags, string ubicacion)
         {
-            Producto producto = new Producto(nombre, material, precio, unidad, cantidad, tags, ubicacion);
-            ProductosPublicados.Remove(producto);
+            Oferta oferta = new Oferta(nombre, material, precio, unidad, cantidad, tags, ubicacion);
+            OfertasPublicados.Remove(oferta);
         }
-        public static void GetProductosPublicados()
+        public static void GetOfertasPublicados()
         {
-            StringBuilder getProductosPublicados = new StringBuilder("Productos: \n");
-            foreach (Producto producto in ProductosPublicados)
+            StringBuilder getOfertasPublicados = new StringBuilder("Ofertas: \n");
+            foreach (Oferta oferta in OfertasPublicados)
             {
-                getProductosPublicados.Append($"- {producto.Nombre}.");   
+                getOfertasPublicados.Append($"- {oferta.Nombre}.");   
             }
-            Console.WriteLine(getProductosPublicados.ToString());
+            Console.WriteLine(getOfertasPublicados.ToString());
         }
-        public static Producto GetProducto(Producto producto)
+        public static Oferta GetOferta(Oferta oferta)
         {
-            ProductosPublicados.Remove(producto);
-            return producto;
+            OfertasPublicados.Remove(oferta);
+            return oferta;
         }
 
 
