@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ClassLibrary
 {
-    public class Empresa
+    public class Empresa: Usuario, IHabilitaciones
     {
 
 
