@@ -17,7 +17,7 @@ namespace ClassLibrary
         }
         
         public string Especializaciones {get; set;}
-        private List<Producto> ofertasAceptadas = new List<Producto>();
+        private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator
         public void AddHabilitacion(string nombre, string certificador)
         {
@@ -41,17 +41,17 @@ namespace ClassLibrary
             }
             Console.WriteLine(getHabilitaciones.ToString());
         }
-        public Producto BuscarOfertaPorTag()
+        public Oferta BuscarOfertaPorTag()
         {
             return modificar; 
         }
 
-        public Producto BuscarOfertaPorZona()
+        public Oferta BuscarOfertaPorZona()
         {
              return modificar;
         }
 
-        public Producto BuscarOfertaPorCategorias()
+        public Oferta BuscarOfertaPorCategorias()
         {
              return modificar;
         }

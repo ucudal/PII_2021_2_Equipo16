@@ -7,10 +7,11 @@ using System.Text;
 namespace ClassLibrary
 {
     
-    public class Producto : IHabilitaciones
+    
+    public class Oferta : IHabilitaciones
     {
         private List<Habilitaciones> habilitaciones = new List<Habilitaciones>();
-        public Producto(string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
             this.Nombre = nombre;
             this.Material = material;
@@ -54,7 +55,7 @@ namespace ClassLibrary
             get
             {
                 return DateTime.Now;
-            } 
+            }
         }
         public string Ubicacion {get; set;}
 
