@@ -6,7 +6,10 @@ using System.Text;
 
 namespace ClassLibrary
 {
+<<<<<<< HEAD
     
+=======
+>>>>>>> e5367041b9af057b58a96f78f08306ba5a69edf8
     public class Oferta : IHabilitaciones
     {
         private List<Habilitaciones> habilitaciones = new List<Habilitaciones>();
