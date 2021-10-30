@@ -5,8 +5,8 @@ namespace ClassLibrary
 {
     public interface IHabilitaciones 
     {
-        void AddHabilitacion(string nombre, string certificador);
-        void RemoveHabilitacion(string nombre, string certificador);
+        void AddHabilitacion(string nombre);
+        void RemoveHabilitacion(string nombre);
         void GetHabilitacionList();
     }
 }
