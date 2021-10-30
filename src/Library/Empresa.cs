@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ClassLibrary
 {
@@ -8,20 +10,27 @@ namespace ClassLibrary
 
 
 
-        public Empresa(String nombre, String ubicacion, Rubro rubro):base(nombre, ubicacion, rubro)
-        {
 
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion):base(nombre, ubicacion, rubro)
+        {
+            this.habilitacion = habilitacion;
         }
+        List<string> habilitacionesEmpresa = new List<string>();
         List<Oferta> ofertasAceptados = new List<Oferta>();
+        List<Oferta> interesadosEnOfertas = new List<Oferta>();
+
+        private Habilitaciones habilitacion{get;set;}
+
+    
 
 
         public void AceptarInvitacion()
         {
-
+            // Cuando tengamos conocimiento de telegram se implementa
         }
 
         
-
+        //Creator
         public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
 
@@ -31,10 +40,14 @@ namespace ClassLibrary
           
             while (habilitacionesAgregadas)
             {
+                // Todo lo que es console.writeline y ReadLine, es para tenerlo claro en consola, 
+                // Cuando conozcamos sobre Telegram se debería modificar.
                 Console.WriteLine("Desea agregar mas habilitaciones");
                 if (Console.ReadLine() == "Si")
                 {
-                    productoCreado.AddHabilitacion();
+                    Console.WriteLine("Escriba cual quiere agregar");
+                    string habilitacionParaAgregar = Console.ReadLine();
+                    productoCreado.AddHabilitacion(habilitacionParaAgregar);
                 }
                 else
                 {
@@ -51,19 +64,22 @@ namespace ClassLibrary
 
         //Habilitaciones que tengo yo a nivel de empresa
 
-        public void AddHabilitacion()
+        public void AddHabilitacion(string habilitacionBuscada)
         {
-
+            if (habilitacion.listaHabilitaciones.Contains(habilitacionBuscada))
+            {
+                habilitacionesEmpresa.Add(habilitacionBuscada);
+            }
         }
 
-        public void EliminarHabilitacion()
+        public void RemoveHabilitacion(string habilitacion)
         {
-
+            habilitacionesEmpresa.Remove(habilitacion);
         }
 
-        public void VerHabilitaciones()
+        public void GetHabilitacionList()
         {
-
+            habilitacion.HabilitacionesDisponibles();
         }
 
     }
