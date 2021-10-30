@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ClassLibrary
 {
-   public abstract class Buscador
+   public interface IBuscador
     {
-        public abstract Oferta Buscar(Publicaciones publicaciones);
+         Oferta Buscar(Publicaciones publicaciones, string busqueda);
        
         
     }

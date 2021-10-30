@@ -1,7 +1,7 @@
 Responsabilidades creación de clases:
 
 Juan Perez: ITelegram, Administrador, IHabilitaciones, Habilitaciones
-Tomás Rama: Empresa, IAlmacenamiento
+Tomás Rama: Empresa, IAlmacenamiento , BuscadorUbicacion
 Piero Saucedo: Publicaciones, LogicaDelPrograma
-Agustín Lorenzo: Producto, Emprendedor
-Joaquín Perez: Usuario, Program
+Agustín Lorenzo: Producto, Emprendedor , BuscadorMaterial
+Joaquín Perez: Usuario, Program , Rubro , BuscadorTags
