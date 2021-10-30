@@ -35,11 +35,6 @@ namespace ClassLibrary
                 Console.WriteLine("Desea agregar mas habilitaciones");
                 if (Console.ReadLine() == "Si")
                 {
-                    // Lo ideal podria ser agregarlo sinque tengaese metodo el producto
-                    // Por ejemplo pasarle como parametro en constructor una lista de habilitaciones a la oferta, y de aca accedera eso
-                    // if esa habilitacion esta en las habilitaciones totales
-                    // productoCreado.habilitaciones.add()
-                    // Haciendo eso podemos sacar responsabilidades de producto y hacer que no implemente IHabilitaciones
                     productoCreado.AddHabilitacion();
                 }
                 else
@@ -56,7 +51,7 @@ namespace ClassLibrary
 
         //Habilitaciones que tengo yo a nivel de empresa
 
-        public void AgregarHabilitacion()
+        public void AddHabilitacion()
         {
 
         }
