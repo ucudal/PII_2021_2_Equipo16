@@ -7,9 +7,7 @@ namespace ClassLibrary
 {
    public interface IBuscador
     {
-         Oferta Buscar(Publicaciones publicaciones, string busqueda);
-       
-        
+        List<Oferta> Buscar(Publicaciones publicaciones, string busqueda);     
     }
 
 }
