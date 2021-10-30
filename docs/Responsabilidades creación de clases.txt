@@ -1,6 +1,6 @@
 Responsabilidades creación de clases:
 
-Juan Perez: ITelegram, Administrador, IHabilitaciones, Habilitaciones
+Juan Perez: ITelegram, Administrador, IHabilitaciones, Habilitaciones, limpiador
 Tomás Rama: Empresa, IAlmacenamiento
 Piero Saucedo: Publicaciones, LogicaDelPrograma
 Agustín Lorenzo: Producto, Emprendedor
