@@ -9,7 +9,9 @@ namespace ClassLibrary
     public class Habilitaciones : IHabilitaciones
     {
 
+
         public ArrayList ListaHabilitaciones = new ArrayList()
+
                     {
                     "iso 9009", "apa", "soa", "unit", "ieee"
                     };
