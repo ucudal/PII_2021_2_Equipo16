@@ -27,15 +27,15 @@ namespace ClassLibrary
         
         public string Tags {get; set;}
 
-        public void AddHabilitacion(string nombre, string certificador)
+        public void AddHabilitacion(string nombre)
         {
-            Habilitaciones habilitacion = new Habilitaciones(nombre, certificador);
+            Habilitaciones habilitacion = new Habilitaciones(nombre);
             this.habilitaciones.Add(habilitacion);
             Console.WriteLine($"Habilitación '{habilitacion.Nombre}' agregada exitosamente.");
         }
-        public void RemoveHabilitacion(string nombre, string certificador)
+        public void RemoveHabilitacion(string nombre)
         {
-            Habilitaciones habilitacion = new Habilitaciones(nombre, certificador);
+            Habilitaciones habilitacion = new Habilitaciones(nombre);
             this.habilitaciones.Remove(habilitacion);
             Console.WriteLine( $"Habilitación '{habilitacion.Nombre}' eliminada exitosamente.");
         }
@@ -45,7 +45,7 @@ namespace ClassLibrary
             StringBuilder getHabilitaciones = new StringBuilder("Habilitaciones: \n");
             foreach (Habilitaciones habilitacion in habilitaciones)
             {
-                getHabilitaciones.Append($"- {habilitacion.Nombre} fue habilitado por {habilitacion.Certificador}.");   
+                getHabilitaciones.Append($"- {habilitacion.Nombre}.");   
             }
             Console.WriteLine(getHabilitaciones.ToString());
         }
