@@ -9,9 +9,11 @@ namespace ClassLibrary
     public class Habilitaciones : IHabilitaciones
     {
 
-        public ArrayList listaHabilitaciones = new ArrayList()
+
+        public ArrayList ListaHabilitaciones = new ArrayList()
+
                     {
-                    "ISO 9009", "APA", "SOA", "UNIT", "IEEE"
+                    "iso 9009", "apa", "soa", "unit", "ieee"
                     };
 
         public Habilitaciones(string nombre)
@@ -23,7 +25,7 @@ namespace ClassLibrary
         public void HabilitacionesDisponibles()
         {
             StringBuilder habDisponibles = new StringBuilder();
-            foreach (string habilitacion in this.listaHabilitaciones)
+            foreach (string habilitacion in this.ListaHabilitaciones)
             {
                 habDisponibles.Append($"- {habilitacion}.");
             }
@@ -32,7 +34,7 @@ namespace ClassLibrary
 
         void IHabilitaciones.AddHabilitacion(string nombre)
         {
-            this.listaHabilitaciones.Add(nombre);
+            this.ListaHabilitaciones.Add(nombre);
         }
 
         void IHabilitaciones.GetHabilitacionList()
