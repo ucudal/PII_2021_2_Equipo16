@@ -3,39 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace ClassLibrary
-{
-    public static class Publicaciones 
+{ 
+    public class Publicaciones 
     {
-        
-        public static List<Producto> ProductosPublicados = new List<Producto>();
+        public List<Oferta> OfertasPublicados = new List<Oferta>();
         // Por Creator 
-        public static void AddProducto(string nombre, string material, int precio, string unidad, int cantidad, string tags, string ubicacion)
+        public void GetOfertasPublicados()
         {
-            Producto producto = new Producto(nombre, material, precio, unidad, cantidad, tags, ubicacion);
-            ProductosPublicados.Add(producto);
-        }
-        // Por Creator
-        public static void RemoveProducto(string nombre, string material, int precio, string unidad, int cantidad, string tags, string ubicacion)
-        {
-            Producto producto = new Producto(nombre, material, precio, unidad, cantidad, tags, ubicacion);
-            ProductosPublicados.Remove(producto);
-        }
-        public static void GetProductosPublicados()
-        {
-            StringBuilder getProductosPublicados = new StringBuilder("Productos: \n");
-            foreach (Producto producto in ProductosPublicados)
+            StringBuilder getOfertasPublicados = new StringBuilder("Ofertas: \n");
+            foreach (Oferta oferta in OfertasPublicados)
             {
-                getProductosPublicados.Append($"- {producto.Nombre}.");   
+                getOfertasPublicados.Append($"- {oferta.Nombre}.");   
             }
-            Console.WriteLine(getProductosPublicados.ToString());
-        }
-        public static Producto GetProducto(Producto producto)
-        {
-            ProductosPublicados.Remove(producto);
-            return producto;
-        }
-
-
-        
+            Console.WriteLine(getOfertasPublicados.ToString());
+        }        
     }
 }

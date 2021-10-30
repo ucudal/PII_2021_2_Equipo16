@@ -5,6 +5,12 @@ using System.Text;
 
 namespace ClassLibrary
 {
+    //Crear lista de ofertas por fuera de metodos
+    //Crear metodo impresion de lista
+    //a los metodos de busqueda, clean al principio de lista
+    //llamar a metodo impresion dentro de buscadores para verlas graficamente
+    //en interesadoenoferta, chequear si la lista de ofertas tiene la oferta que busco
+    //concatenar con nombre de emprendedor(temporal)
     public class Emprendedor : Usuario, IHabilitaciones
     {
         public List<Habilitaciones> Habilitaciones = new List<Habilitaciones>();
@@ -19,49 +25,71 @@ namespace ClassLibrary
         public string Especializaciones {get; set;}
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator
-        public void AddHabilitacion(string nombre, string certificador)
+            public void AddHabilitacion(string nombre)
         {
-            Habilitaciones habilitacion = new Habilitaciones(nombre, certificador);
+            Habilitaciones habilitacion = new Habilitaciones(nombre);
             this.Habilitaciones.Add(habilitacion);
             Console.WriteLine($"Habilitación '{habilitacion.Nombre}' agregada exitosamente.");
         }
-        // Por Creator
-        public void RemoveHabilitacion(string nombre, string certificador)
+        public void RemoveHabilitacion(string nombre)
         {
-            Habilitaciones habilitacion = new Habilitaciones(nombre, certificador);
+            Habilitaciones habilitacion = new Habilitaciones(nombre);
             this.Habilitaciones.Remove(habilitacion);
             Console.WriteLine( $"Habilitación '{habilitacion.Nombre}' eliminada exitosamente.");
         }
+        
         public void GetHabilitacionList()
         {
             StringBuilder getHabilitaciones = new StringBuilder("Habilitaciones: \n");
             foreach (Habilitaciones habilitacion in Habilitaciones)
             {
-                getHabilitaciones.Append($"- {habilitacion.Nombre} fue habilitado por {habilitacion.Certificador}.");   
+                getHabilitaciones.Append($"- {habilitacion.Nombre}.");   
             }
             Console.WriteLine(getHabilitaciones.ToString());
         }
-        public Oferta BuscarOfertaPorTag()
+        public List <Oferta> BuscarOfertasPorTag(Publicaciones publicaciones, string tag)
         {
-            return modificar; 
+            List<Oferta> resultado = new List<Oferta>();
+            BuscadorTags buscador = new BuscadorTags();
+            foreach(Oferta oferta in buscador.Buscar(publicaciones, tag))
+            {
+                resultado.Add(oferta);
+            }
+            return resultado;
         }
 
-        public Oferta BuscarOfertaPorZona()
+        public List<Oferta> BuscarOfertasPorUbicacion(Publicaciones publicaciones, string ubicacion)
         {
-             return modificar;
+            List<Oferta> resultado = new List<Oferta>();
+            BuscadorUbicacion buscador = new BuscadorUbicacion();
+            foreach(Oferta oferta in buscador.Buscar(publicaciones, ubicacion))
+            {
+                resultado.Add(oferta);
+            }
+            return resultado;
         }
 
-        public Oferta BuscarOfertaPorCategorias()
+        //buscar justificar (patron)
+        public List<Oferta> BuscarOfertasPorMaterial(Publicaciones publicaciones, string material)
         {
-             return modificar;
+            List<Oferta> resultado = new List<Oferta>();
+            BuscadorMaterial buscador = new BuscadorMaterial();
+            foreach(Oferta oferta in buscador.Buscar(publicaciones, material))
+            {
+                resultado.Add(oferta);
+            }
+            return resultado;
         }
         
-        public int CalcularMaterialesConsumidosSegunTiempo()
+        public void InteresadoEnOferta(Oferta oferta) //
+        {
+            
+        }
+        public int CalcularMaterialesConsumidosSegunTiempo() //lista ofertas compradas cada vez que compro se agrega una, me fijo por fecha
         {
             return 0; //modificar
         }
 
-        
 
     }
 }
