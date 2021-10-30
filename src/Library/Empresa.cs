@@ -9,12 +9,11 @@ namespace ClassLibrary
 
         public string Nombre{get;set;}
         public Rubro Rubro{get;set;}
-        public Empresa(String nombre, Rubro rubro)
+        public Empresa(string nombre,string ubicacion, Rubro rubro)
+            : base(nombre, ubicacion, rubro)
         {
-            this.Nombre = nombre;
-            this.Rubro = rubro;
         }
-        List<Producto> productosAceptados = new List<Producto>();
+        List<Oferta> productosAceptados = new List<Oferta>();
 
         public void AceptarInvitacion()
         {
@@ -23,7 +22,7 @@ namespace ClassLibrary
 
         public void CrearProducto()
         {
-            Producto productoCreado = new Producto();
+            Oferta productoCreado = new Oferta();
         }
 
         public void EliminarProducto()
