@@ -18,7 +18,17 @@ namespace ClassLibrary
                     ofertasEncontradas.Add(oferta);
                 }
             }
+            this.RecorreLista();
             return ofertasEncontradas;
+        }
+        public void RecorreLista()
+        {
+            StringBuilder texto = new StringBuilder("Ofertas por materiales: \n");
+            foreach (Oferta oferta in ofertasEncontradas)
+            {
+                texto.Append($"{oferta.Nombre}");
+            }
+            Console.WriteLine(texto.ToString());
         }
     }
 }

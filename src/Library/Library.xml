@@ -4,32 +4,130 @@
         <name>Library</name>
     </assembly>
     <members>
-        <member name="T:ClassLibrary.Train">
+        <member name="T:ClassLibrary.Administrador">
             <summary>
-            Esta clase representa un tren muy básico.
+            Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación
             </summary>
         </member>
-        <member name="P:ClassLibrary.Train.IsEngineStarted">
+        <member name="M:ClassLibrary.Administrador.#ctor(System.String)">
             <summary>
-            Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
+            Inicializa una instancia de Administrador
             </summary>
-            <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
+            <param name="nombre">Recibe por parametro un string de nombre</param>
         </member>
-        <member name="M:ClassLibrary.Train.StartEngines">
+        <member name="P:ClassLibrary.Administrador.Nombre">
             <summary>
-            Enciende las máquinas del tren.
+            Obtiene un valor que le da el nombre al administrador
             </summary>
-            <returns>
-            <c>true</c> si las máquinas pueden ser encendidas, <c>false</c> en caso contrario.
-            </returns>
+            <value>El valor del nombre es de tipo string</value>
         </member>
-        <member name="M:ClassLibrary.Train.StopEngines">
+        <member name="F:ClassLibrary.Administrador.Empresas">
             <summary>
-            Detiene las máquinas del tren.
+            Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación
             </summary>
-            <returns>
-            <c>true</c> si las máquinas pueden ser detenidas, <c>false</c> en caso contrario.
-            </returns>
+            <returns>Retorna la lista de empresas que contiene</returns>
+        </member>
+        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(ClassLibrary.Empresa)">
+            <summary>
+            Este método permite invitar una empresa a unirse a la aplicación
+            </summary>
+            <param name="empresa">Recibe un objeto de tipo empresa como parametro</param>
+        </member>
+        <member name="T:ClassLibrary.Habilitaciones">
+            <summary>
+            Esta clase representa las habilitaciones existentes
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Habilitaciones.ListaHabilitaciones">
+            <summary>
+            Esta lista contiene un conjunto de habilitaciones predeterminadas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
+            <summary>
+            Inicializa una instancia de habilitaciones
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Habilitaciones.Nombre">
+            <summary>
+            Este valor indica el nombre de la habilitación
+            </summary>
+            <value>Valor es un string del nombre</value>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.HabilitacionesDisponibles">
+            <summary>
+            Este método permite ver graficamente cuales son las habilitaciones disponibles
+            Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.AddHabilitacion(System.String)">
+            <summary>
+            Este método permite agregar habilitaciones a la lista de habilitaciones
+            </summary>
+            <param name="nombre"> Recibe un parametro de tipo string del nombre de la habilitación deseada</param>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.GetHabilitacionList">
+            <summary>
+            Este método imprime en consola la lista de habilitaciones
+            para realizar esto utiliza un StringBuilder y recorre la lista de Hablilitaciones
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.RemoveHabilitacion(System.String)">
+            <summary>
+            Este método sirve para eliminar habilitaciones que estan en la lista de Habilitaciones
+            </summary>
+            <param name="nombre">Recibe por parametro un string del nombre de la habilitación deseada</param>
+        </member>
+        <member name="T:ClassLibrary.IHabilitaciones">
+            <summary>
+            Esta interface contiene los métodos para agregar, quitar o consultar habilitaciones
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.IHabilitaciones.AddHabilitacion(System.String)">
+            <summary>
+            Este método se implementará para agregar habilitaciones a las diferentes clases que lo requieran
+            </summary>
+            <param name="nombre">Recibe un string del nombre de la habilitación que se desea agregar</param>
+        </member>
+        <member name="M:ClassLibrary.IHabilitaciones.RemoveHabilitacion(System.String)">
+            <summary>
+            Este método se implementará para eliminar habilitaciones de las diferentes clases
+            </summary>
+            <param name="nombre">Recibe un string con el nombre de la habilitacion que se quiere eliminar</param>
+        </member>
+        <member name="M:ClassLibrary.IHabilitaciones.GetHabilitacionList">
+            <summary>
+            Este método se implementará para obtener la en texto la lista de habilitaciones de las clases
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.ITelegram">
+            <summary>
+            Esta interface sirve para interactuar con la Aplicación de Telegram
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.ITelegram.SendMessage">
+            <summary>
+            Este método permite enviar mensajes
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.ITelegram.RecibeMessage">
+            <summary>
+            Este método permite recibir mensajes
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.LimpiadorCadena">
+            <summary>
+            Esta clase representa un limpiador de cadenas para permitir leer las cadenas correctamente
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LimpiadorCadena.LimpiaCadena(System.String)">
+            <summary>
+            Este método sirve para limpiar las cadenas y permitir que no hayan errores de tipeo, 
+            y se pueda leer el texto que sea ingresado por un usuario de la aplicación
+            </summary>
+            <param name="cadena">Recibe por parametro un cadena de tipo String</param>
+            <returns>Retorna la cadena una vez que se le aplicaron todos los limpiadores de cadena</returns>
         </member>
     </members>
 </doc>

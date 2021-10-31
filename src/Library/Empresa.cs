@@ -7,17 +7,13 @@ namespace ClassLibrary
 {
     public class Empresa: Usuario, IHabilitaciones
     {
-
-
-
-
         public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion):base(nombre, ubicacion, rubro)
         {
             this.habilitacion = habilitacion;
         }
-        List<string> habilitacionesEmpresa = new List<string>();
-        List<Oferta> ofertasAceptados = new List<Oferta>();
-        List<Oferta> interesadosEnOfertas = new List<Oferta>();
+        public List<string> habilitacionesEmpresa = new List<string>();
+        public List<Oferta> ofertasAceptados = new List<Oferta>();
+        public List<Oferta> interesadosEnOfertas = new List<Oferta>();
 
         private Habilitaciones habilitacion{get;set;}
 
@@ -31,11 +27,11 @@ namespace ClassLibrary
 
         
         //Creator
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, Guid id)
         {
 
             bool habilitacionesAgregadas = false;
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion);
+            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, id);
             publicaciones.OfertasPublicados.Add(productoCreado);
           
             while (habilitacionesAgregadas)
@@ -66,7 +62,7 @@ namespace ClassLibrary
 
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.listaHabilitaciones.Contains(habilitacionBuscada))
+            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
                 habilitacionesEmpresa.Add(habilitacionBuscada);
             }

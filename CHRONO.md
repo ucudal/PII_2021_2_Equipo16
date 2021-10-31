@@ -3,6 +3,15 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+31/10/21 Juan Pérez
+Modifique Administrador para darle un nombre al administrador. Y le puse los xml.
+modifique BuscadorMaterial, le agregue un metodo para recorrer la lista.
+modifique Empresa, para solucionar errores que me aparecian.
+modifique habilitaciones, para que tuviera una lista de tipo string en lugar de un arraylist y modifique el constructor habilitaciones y arregle los metodos que implementaban. Agregue las xml.
+Agregue xml de IHabilitaciones, ITelegram, limpiador de cadena.
+Agregue el constructor de Rubro.
+
+
 
 30/10/21 - Ramón Lorenzo
 Modificadas las clases Oferta: - se añadió un parámetro ID, que es única para cada una de ellas, se utilizó la libreía Guid, para más         facilidad.
@@ -17,7 +26,7 @@ Modificadas las clases Oferta: - se añadió un parámetro ID, que es única par
 Modifiqué la clase Empresa, para que cumpla con lo que se tenía esperado.
 Cuando se crea el producto, se puede poner la cantidad de habilitaciones que quieras, hasta que el usuario no quiera agregar.
 Se pueden agregar habilitaciones a nivel de empresa.
-Corregido error deque empresa no Implementaba IHabilitaciones bien.
+Corregido error de que empresa no Implementaba IHabilitaciones bien.
 Creadas listas para almacenar cuales ofertas se compraron por un emprendedor(Esto lo acepta la empresa), otra lista para cuales ofertas se interesaron 
 los Emprendedores.
 Modificado Clase buscador por interfaz.

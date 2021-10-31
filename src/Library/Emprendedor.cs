@@ -25,7 +25,7 @@ namespace ClassLibrary
         public string Especializaciones {get; set;}
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator
-            public void AddHabilitacion(string nombre)
+        public void AddHabilitacion(string nombre)
         {
             Habilitaciones habilitacion = new Habilitaciones(nombre);
             this.Habilitaciones.Add(habilitacion);
