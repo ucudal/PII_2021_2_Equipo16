@@ -6,7 +6,7 @@ namespace ClassLibrary
     public interface IPrinter
     {
         /// <summary>
-        /// 
+        /// Este método hace un print de la oferta.
         /// </summary>
         void ofertaPrinter (Oferta oferta);
     }
