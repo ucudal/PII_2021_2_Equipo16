@@ -9,7 +9,9 @@ using ClassLibrary;
 
 namespace ConsoleApplication
 {
-    
+    /// <summary>
+    /// 
+    /// </summary>
     public static class Program
     {
         /// <summary>
@@ -18,6 +20,6 @@ namespace ConsoleApplication
         public static void Main()
         {
             
-    }
-}
+        }
+    }   
 }

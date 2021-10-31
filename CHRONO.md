@@ -2,7 +2,9 @@
 
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
-
+31/10/21 - Joaquín Pérez
+Modificación en BuscadorTags
+Comentarios xml en mis clases.
 30/10/21 - Joaquín Pérez
 Clases Rubro y User ya terminadas.
 Conflictos resueltos con Empresa y Master.
