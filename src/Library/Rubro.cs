@@ -5,6 +5,9 @@ using System.Text;
 
 namespace ClassLibrary
 {
+    /// <summary>
+    /// Clase publica Rubro, para que puedan acceder a sus atributos y metodos
+    /// </summary>
     public class Rubro 
     {
         public Rubro(string nombre)
@@ -26,18 +29,37 @@ namespace ClassLibrary
             }
         }
         public string Nombre{get; set;}
+        
+        /// <summary>
+        /// Lista publica para que puedan acceder las demas clases, la lista contiene los objetos rubros creados
+        /// </summary>
+        /// <returns>Retorna una nueva lista llamada RubrosList de tipo string</returns>
         public List<string> RubrosList = new List<string>()
-                {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
+                    {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
+
+        /// <summary>
+        /// Añade un rubro a la lista, devuelve un string confirmando la accion
+        /// </summary>
+        /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro"</param>
         public void AddRubro(string rubro)
         {
             RubrosList.Add(rubro);
             Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
         }
+
+        /// <summary>
+        /// Elimina un rubro de la lista, devuelve un string confirmando la accion
+        /// </summary>
+        /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro"</param>
         public void RemoveRubro(string rubro)
         {
             RubrosList.Remove(rubro);
             Console.WriteLine( $"Rubro '{rubro}' eliminado exitosamente.");
         }
+
+        /// <summary>
+        /// Obtiene lista de rubros.
+        /// </summary>
         public void GetRubrosList()
         {
             StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
@@ -49,4 +71,4 @@ namespace ClassLibrary
         }
 
     }
-}
+} 
