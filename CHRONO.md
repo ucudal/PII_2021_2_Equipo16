@@ -2,6 +2,9 @@
 
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
+31/10/21 - Joaquín Pérez
+Modificación en BuscadorTags
+Comentarios xml en mis clases.
 
 31/10/21 - Tomás Rama
 Agregué el método para calcular las ofertas entregadas segun x tiempo en la clase empresa, también se agregó el método AceptarOferta 
@@ -34,8 +37,6 @@ Clases Rubro y User ya terminadas.
 Conflictos resueltos con Empresa y Master.
 Vimos de implementar un buscador por interfaz y no como herencia de la forma vista anteriormente.
 Cambiada buscador a IBuscador. Creada clase BuscadorTags
-
-
 30/10/21 - Juan Pérez
 Modifique algunas de las cosas que hablamos de la clase Habilitaciones y corregí algunos errores que estaban en el programa.
 Dentro de las modificaciones que hice en Habilitaciones, cree la lista y el metodo para poder ver la lista de todas las habilitaciones que hay disponibles.
