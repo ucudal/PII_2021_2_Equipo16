@@ -3,6 +3,12 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+31/10/21 - Tomás Rama
+Agregué el método para calcular las ofertas entregadas segun x tiempo en la clase empresa, también se agregó el método AceptarOferta 
+la función de ese método es quitar de la lista de Publicaciones, la oferta aceptada, y colocar esa oferta en la lista ofertasAceptadas
+de la clase empresa.
+Agregué los comentarios XML correspondientes en las clases Empresa y BuscadorUbicación.
+
 
 30/10/21 - Ramón Lorenzo
 Modificadas las clases Oferta: - se añadió un parámetro ID, que es única para cada una de ellas, se utilizó la libreía Guid, para más         facilidad.

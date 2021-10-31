@@ -59,11 +59,12 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad de la oferta</param>
         /// <param name="tags">Tags de la oferta (palabras claves)</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece</param>
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        /// <param name="id">Id de la oferta</param>
+        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, Guid id)
         {
 
             bool habilitacionesAgregadas = false;
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion);
+            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, id);
             publicaciones.OfertasPublicados.Add(productoCreado);
           
             while (habilitacionesAgregadas)
@@ -129,7 +130,7 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.listaHabilitaciones.Contains(habilitacionBuscada))
+            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
                 habilitacionesEmpresa.Add(habilitacionBuscada);
             }
