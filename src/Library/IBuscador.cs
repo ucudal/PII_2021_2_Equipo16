@@ -10,6 +10,7 @@ namespace ClassLibrary
      /// </summary>
    public interface IBuscador
     {
+
          /// <summary>
          /// Interfaz IBuscador
          /// </summary>
@@ -19,6 +20,7 @@ namespace ClassLibrary
          List<Oferta> Buscar(Publicaciones publicaciones, string busqueda);
        
         
+
     }
 
 }
