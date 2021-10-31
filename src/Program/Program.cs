@@ -9,7 +9,9 @@ using ClassLibrary;
 
 namespace ConsoleApplication
 {
-    
+    /// <summary>
+    /// 
+    /// </summary>
     public static class Program
     {
         /// <summary>
@@ -17,6 +19,7 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+
         
             Console.WriteLine("Hello World!");
         }
