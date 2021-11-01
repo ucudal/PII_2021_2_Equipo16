@@ -4,6 +4,9 @@ using System.Text;
 
 namespace ClassLibrary
 { 
+    /// <summary>
+    /// Esta clase se encarga de las Publicaciones.
+    /// </summary>
     public class Publicaciones 
     {
         private Publicaciones()
@@ -11,6 +14,10 @@ namespace ClassLibrary
 
         }
         private static Publicaciones instance;
+        
+        /// <summary>
+        /// Crea una instancia de Publicaciones.
+        /// </summary>
         public static Publicaciones Instance
         {
             get
@@ -22,8 +29,15 @@ namespace ClassLibrary
                 return instance;
             }
         }
+        
+        /// <summary>
+        /// Una lista que contiene las ofertas.
+        /// </summary>
         public List<Oferta> OfertasPublicados = new List<Oferta>();
-        // Por Creator 
+        
+        /// <summary>
+        /// Este método imprime las ofertas contenidas en OfertasPublicados.
+        /// </summary>
         public void GetOfertasPublicados()
         {
             StringBuilder getOfertasPublicados = new StringBuilder("Ofertas: \n");
