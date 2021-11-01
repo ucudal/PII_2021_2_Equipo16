@@ -11,7 +11,7 @@ namespace ClassLibrary
         /// Este método imprime por consola los atributos de oferta.
         /// </summary>
         /// <param name="oferta"></param>
-        public void ofertaPrinter(Oferta oferta)
+        public static void ofertaPrinter(Oferta oferta)
         {
             Console.WriteLine($"Material: {oferta.Material}, Precio {oferta.Precio}, Unidad: {oferta.Unidad}, Ubicación {oferta.Ubicacion}, Fecha de Publicación {oferta.FechaDePublicacion}");
         }
