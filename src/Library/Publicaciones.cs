@@ -6,6 +6,22 @@ namespace ClassLibrary
 { 
     public class Publicaciones 
     {
+        private Publicaciones()
+        {
+
+        }
+        private static Publicaciones instance;
+        public static Publicaciones Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Publicaciones();
+                }
+                return instance;
+            }
+        }
         public List<Oferta> OfertasPublicados = new List<Oferta>();
         // Por Creator 
         public void GetOfertasPublicados()
