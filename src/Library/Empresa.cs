@@ -47,6 +47,11 @@ namespace ClassLibrary
         public void AceptarInvitacion()
         {
             // Cuando tengamos conocimiento de telegram se implementa
+            // Hacer este método estático, para estar sin necesidad de tener una instancia objeto
+            // y asi poder crear una empresa a través de este metodo
+            // Este método crearía una instancia de Empresa, yo lo que hago es que un interprete llame
+            // a la lógica y la lógica llame a este metodo cuando el usuario me mande el msg de que quiera
+            // registrarse.
         }
 
         
