@@ -12,6 +12,9 @@ namespace ClassLibrary
     {
         private List<Oferta> OfertasCompradas = new List<Oferta>();
         private List<Oferta> OfertasABuscar = new List<Oferta>();
+        /// <summary>
+        /// Lista de habilitaciones del emprendedor
+        /// </summary>
         public List<string> habilitacionesEmprendedor = new List<string>();
         private string especializaciones;
 
@@ -65,7 +68,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesEmprendedor.Remove(habilitacion)
+            habilitacionesEmprendedor.Remove(habilitacion);
         }
         
         /// <summary>
@@ -90,7 +93,11 @@ namespace ClassLibrary
                 OfertasABuscar.Add(oferta);
             }
             Console.WriteLine("Se han encontrado las siguientes ofertas con el tag " + tag + ":" );
-            ConsolePrinter.OfertaPrinter(OfertasABuscar);
+            foreach(Oferta oferta in OfertasABuscar)
+            {
+               ConsolePrinter.ofertaPrinter(oferta);
+            } 
+            
             return OfertasABuscar;
         }
         /// <summary>
@@ -108,11 +115,14 @@ namespace ClassLibrary
                 OfertasABuscar.Add(oferta);
             }
             Console.WriteLine("Se han encontrado las siguientes ofertas en la ubicación  " + ubicacion + ":" );
-            ConsolePrinter.OfertaPrinter(OfertasABuscar);
+            foreach(Oferta oferta in OfertasABuscar)
+            {
+                ConsolePrinter.ofertaPrinter(oferta);
+            }
+            
             return OfertasABuscar;
         }
 
-        //buscar justificar (patron)
         /// <summary>
         /// Busca ofertas dentro de las publicaciones por Materiales y las imprime en pantalla
         /// </summary>
@@ -128,7 +138,10 @@ namespace ClassLibrary
                 OfertasABuscar.Add(oferta);
             }
             Console.WriteLine("Se han encontrado las siguientes ofertas con el material  " + material + ":" );
-            ConsolePrinter.OfertaPrinter(OfertasABuscar);
+            foreach(Oferta oferta in OfertasABuscar)
+            {
+                ConsolePrinter.ofertaPrinter(oferta);
+            }
             return OfertasABuscar;
         }
         
