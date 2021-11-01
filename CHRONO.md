@@ -2,15 +2,21 @@
 
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
+
 31/10/21 - Joaquín Pérez
 Modificación en BuscadorTags
 Comentarios xml en mis clases.
+
+31/10/21 - Piero Saucedo
+Comentarios XML añadidos a la clase Publicaciones.
+Interfaz IPrinter creada y añadida con comentarios XML, clase ConsolePrinter creada y añadida con comentarios XML.
 
 31/10/21 - Tomás Rama
 Agregué el método para calcular las ofertas entregadas segun x tiempo en la clase empresa, también se agregó el método AceptarOferta 
 la función de ese método es quitar de la lista de Publicaciones, la oferta aceptada, y colocar esa oferta en la lista ofertasAceptadas
 de la clase empresa.
 Agregué los comentarios XML correspondientes en las clases Empresa y BuscadorUbicación.
+
 
 31/10/21 Juan Pérez
 Modifique Administrador para darle un nombre al administrador. Y le puse los xml.
@@ -19,7 +25,6 @@ modifique Empresa, para solucionar errores que me aparecian.
 modifique habilitaciones, para que tuviera una lista de tipo string en lugar de un arraylist y modifique el constructor habilitaciones y arregle los metodos que implementaban. Agregue las xml.
 Agregue xml de IHabilitaciones, ITelegram, limpiador de cadena.
 Agregue el constructor de Rubro.
-
 
 
 30/10/21 - Ramón Lorenzo
