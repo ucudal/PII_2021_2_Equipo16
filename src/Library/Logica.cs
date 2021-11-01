@@ -49,7 +49,7 @@ namespace ClassLibrary
                 string nombre = Console.ReadLine();
                 Console.WriteLine("Indique material: ");
                 string material = Console.ReadLine();
-                Console.WriteLine("Indique material: ");
+                Console.WriteLine("Indique precio: ");
                 int precio = Int32.Parse(Console.ReadLine());
                 Console.WriteLine("Indique unidad: ");
                 string unidad = Console.ReadLine();
@@ -92,7 +92,7 @@ namespace ClassLibrary
                 goto EntradaEmp;
             } else if (accionesEmp == 6)
             {
-                goto terminar;
+                goto aca;
             }
             else
             {
@@ -101,7 +101,7 @@ namespace ClassLibrary
             }
 
             
-
+            aca:
 
             // Rol emprendedor
             Console.WriteLine($"Bienvenido emprendedor {emprendedor1.Nombre}: ");;
