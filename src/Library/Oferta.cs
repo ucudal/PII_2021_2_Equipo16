@@ -10,7 +10,7 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
-        private List<Habilitaciones> habilitaciones = new List<Habilitaciones>();
+        private List<string> habilitacionesOferta = new List<string>();
 
         /// <summary>
         /// Inicializa una instancia de Oferta
@@ -18,21 +18,21 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la oferta</param>
         /// <param name="material">Material del producto que se oferta</param>
         /// <param name="precio">Precio de la oferta</param>
-        /// <param name="unidad">Cuantas unidades se ofertan</param>
+        /// <param name="unidad">Unidad ed la oferta</param>
         /// <param name="tags">Tags de la oferta</param>
         /// <param name="ubicacion">Ubicacion de la oferta</param>
         public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
-            
             this.Nombre = nombre;
             this.Material = material;
-            this.PrecioUnitario = precio;
+            this.Precio = precio;
             this.Unidad = unidad;
             this.Tags = tags;
             this.Ubicacion = ubicacion;
             this.Id = Guid.NewGuid();
-
         }
+
+        private Habilitaciones habilitacion{get;set;}
         /// <summary>
         /// Nombre de la oferta
         /// </summary>
@@ -44,19 +44,15 @@ namespace ClassLibrary
         /// <value></value>
         public string Material {get; set;}
         /// <summary>
-        /// Precio de cada unidad de la oferta
+        /// Precio de la oferta
         /// </summary>
         /// <value></value>
-        public int PrecioUnitario {get; set;}
-        /// <summary>
-        /// Precio total de la oferta
-        /// </summary>
-        public int PrecioTotal;
+        public int Precio {get; set;}
         /// <summary>
         /// Cantidad de unidades a ofertar
         /// </summary>
         /// <value></value>
-        public int Unidad {get; set;}
+        public string Unidad {get; set;}
         /// <summary>
         /// Tags de la oferta
         /// </summary>
@@ -70,36 +66,35 @@ namespace ClassLibrary
         public Guid Id {get; private set;}
 
         /// <summary>
+        /// Obtiene una lista de las habilitaciones que requiere el producto
+        /// </summary>
+        /// <value></value>
+        public List<string> HabilitacionesOferta {get => habilitacionesOferta;}
+        /// <summary>
         /// Añade una habilitación a la oferta
         /// </summary>
-        /// <param name="nombre">Nombre de la habilitación a agregar</param>
-        public void AddHabilitacion(string nombre)
+        /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar</param>
+        public void AddHabilitacion(string habilitacionBuscada)
         {
-            Habilitaciones habilitacion = new Habilitaciones(nombre);
-            this.habilitaciones.Add(habilitacion);
-            Console.WriteLine($"Habilitación '{habilitacion.Nombre}' agregada exitosamente.");
+            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            {
+                habilitacionesOferta.Add(habilitacionBuscada);
+            }
         }
         /// <summary>
         /// Quita una habilitación a la oferta
         /// </summary>
-        /// <param name="nombre">Habilitacion a quitar</param>
-        public void RemoveHabilitacion(string nombre)
+        /// <param name="habilitacion">Habilitacion a quitar</param>
+        public void RemoveHabilitacion(string habilitacion)
         {
-            Habilitaciones habilitacion = new Habilitaciones(nombre);
-            this.habilitaciones.Remove(habilitacion);
-            Console.WriteLine( $"Habilitación '{habilitacion.Nombre}' eliminada exitosamente.");
+            habilitacionesOferta.Remove(habilitacion);
         }
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar
         /// </summary>
         public void GetHabilitacionList()
         {
-            StringBuilder getHabilitaciones = new StringBuilder("Habilitaciones: \n");
-            foreach (Habilitaciones habilitacion in habilitaciones)
-            {
-                getHabilitaciones.Append($"- {habilitacion.Nombre}.");   
-            }
-            Console.WriteLine(getHabilitaciones.ToString());
+            habilitacion.HabilitacionesDisponibles();
         }
         /// <summary>
         /// Fecha en la que se publicó la oferta
@@ -109,7 +104,7 @@ namespace ClassLibrary
         {
             get
             {
-                return DateTime.Now;
+                return DateTime.Now; 
             }
         }
         /// <summary>
