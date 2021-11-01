@@ -26,15 +26,10 @@ namespace ClassLibrary
             this.habilitacion = habilitacion;
         }
 
-        public List<string> habilitacionesEmpresa = new List<string>();
-        public List<Oferta> ofertasAceptadas = new List<Oferta>();
-        public List<Oferta> interesadosEnOfertas = new List<Oferta>();
-/*
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
 
-*/
         private Habilitaciones habilitacion{get;set;}
 
         /// <summary>
@@ -71,13 +66,13 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad de la oferta</param>
         /// <param name="tags">Tags de la oferta (palabras claves)</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece</param>
-        /// <param name="id">Id de la oferta</param>
+        
 
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, Guid id)
+        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
 
             bool habilitacionesAgregadas = false;
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, id);
+            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion);
             publicaciones.OfertasPublicados.Add(productoCreado);
           
             while (habilitacionesAgregadas)
