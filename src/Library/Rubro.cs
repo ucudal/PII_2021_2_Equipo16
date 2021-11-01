@@ -10,11 +10,32 @@ namespace ClassLibrary
     /// </summary>
     public class Rubro 
     {
+        public Rubro(string nombre)
+        {
+            if (RubrosList.Contains(nombre))
+            {
+                this.Nombre = nombre;
+            }
+            else 
+            {
+                Console.WriteLine("El nombre del Rubro no existe, ¿desea agregarlo?");
+                string respuesta = Console.ReadLine().ToString();
+                respuesta = LimpiadorCadena.LimpiaCadena(respuesta);
+                if (respuesta == "si")
+                {
+                    RubrosList.Add(nombre);
+                    this.Nombre = nombre;
+                }
+            }
+        }
+        public string Nombre{get; set;}
+        
         /// <summary>
         /// Lista publica para que puedan acceder las demas clases, la lista contiene los objetos rubros creados
         /// </summary>
         /// <returns>Retorna una nueva lista llamada RubrosList de tipo string</returns>
-        public List<string> RubrosList = new List<string>();
+        public List<string> RubrosList = new List<string>()
+                    {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
 
         /// <summary>
         /// Añade un rubro a la lista, devuelve un string confirmando la accion

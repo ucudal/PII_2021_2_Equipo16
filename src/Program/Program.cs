@@ -19,9 +19,8 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            Logica.logica();
 
-        
-            Console.WriteLine("Hello World!");
         }
 
     }

@@ -11,8 +11,6 @@ namespace ClassLibrary
     public class Empresa: Usuario, IHabilitaciones
     {
 
-
-
         /// <summary>
         /// Inicializa una instancia de Empresa
         /// </summary>
@@ -21,14 +19,21 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro de la empresa</param>
         /// <param name="habilitacion">Habilitaciones de la empresa</param>
         /// <returns></returns>
+
         public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion):base(nombre, ubicacion, rubro)
         {
             this.habilitacion = habilitacion;
         }
+
+        public List<string> habilitacionesEmpresa = new List<string>();
+        public List<Oferta> ofertasAceptadas = new List<Oferta>();
+        public List<Oferta> interesadosEnOfertas = new List<Oferta>();
+/*
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
 
+*/
         private Habilitaciones habilitacion{get;set;}
 
         /// <summary>
@@ -49,6 +54,7 @@ namespace ClassLibrary
         }
 
         
+
         /// <summary>
         /// Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
@@ -60,6 +66,7 @@ namespace ClassLibrary
         /// <param name="tags">Tags de la oferta (palabras claves)</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece</param>
         /// <param name="id">Id de la oferta</param>
+
         public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, Guid id)
         {
 
