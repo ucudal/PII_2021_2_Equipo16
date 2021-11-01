@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Globalization;
 
 namespace ClassLibrary
 {
@@ -51,6 +52,11 @@ namespace ClassLibrary
         public void AceptarInvitacion()
         {
             // Cuando tengamos conocimiento de telegram se implementa
+            // Hacer este método estático, para estar sin necesidad de tener una instancia objeto
+            // y asi poder crear una empresa a través de este metodo
+            // Este método crearía una instancia de Empresa, yo lo que hago es que un interprete llame
+            // a la lógica y la lógica llame a este metodo cuando el usuario me mande el msg de que quiera
+            // registrarse.
         }
 
         
@@ -122,10 +128,24 @@ namespace ClassLibrary
         /// <summary>
         /// Calcula cuantas ofertas se entregaron entre diferentes fechas
         /// </summary>
-        /// <param name="fechaInicio">Fecha inicio</param>
-        /// <param name="fechaFinal">Fecha final</param>
-        public void calcularOfertasVendidasSegunTiempo(DateTime fechaInicio, DateTime fechaFinal)
+        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD</param>
+        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD</param>
+        public void calcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
         {
+            int cantidadVendida = 0;
+            DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
+            DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
+    
+            foreach (Oferta oferta in ofertasAceptadas)
+            {
+                if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
+                {
+                   cantidadVendida += 1; 
+                }
+
+            }
+            Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
+            
 
         }
 
