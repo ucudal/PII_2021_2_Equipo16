@@ -47,11 +47,13 @@ namespace ClassLibrary
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator
 
+
         /// <summary>
         /// Agrega habilitaciones
         /// </summary>
         /// <param name="habilitacionBuscada">Nombre de la habilitacion a agregar</param>
         public void AddHabilitacion(string habilitacionBuscada)
+        public void AddHabilitacion(string nombre)
         {
             if (Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
