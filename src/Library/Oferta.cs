@@ -10,11 +10,15 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
-        private List<string> habilitacionesOferta = new List<string>();
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public List<string> habilitacionesOferta = new List<string>();
 
         /// <summary>
         /// Inicializa una instancia de Oferta
-        /// </summary>
+        /// /// </summary>
         /// <param name="nombre">Nombre de la oferta</param>
         /// <param name="material">Material del producto que se oferta</param>
         /// <param name="precio">Precio de la oferta</param>
