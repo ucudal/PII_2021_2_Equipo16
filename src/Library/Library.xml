@@ -33,6 +33,208 @@
             </summary>
             <param name="empresa">Recibe un objeto de tipo empresa como parametro</param>
         </member>
+        <member name="T:ClassLibrary.BuscadorMaterial">
+             <summary>
+            Esta clase representa un buscador por Material, que implementa la infertaz IBuscador.
+             </summary>
+             <remarks>
+             En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda
+             y dependiendo lo que quieras buscar se comporte de diferente forma.
+             Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar
+             y que las clases que implementen la interfaz, implemente ese método pero a nivel interno 
+             funcionando de forma diferente a las otras clases que lo implementan.
+             Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna 
+             la oferta que contenga lo buscado.
+             </remarks>
+        </member>
+        <member name="M:ClassLibrary.BuscadorMaterial.Buscar(ClassLibrary.Publicaciones,System.String)">
+            <summary>
+            Busca ofertas en Publicaciones, según el material de la oferta
+            </summary>
+            <param name="publicaciones">Publicaciones</param>
+            <param name="busqueda">Material a buscar</param>
+            <returns>Retorna las ofertas encontradas por material, mediante una lista de tipo Oferta </returns>
+        </member>
+        <member name="T:ClassLibrary.BuscadorTags">
+            <summary>
+            Clase buscador por tag, que implementa la interfaz IBuscador.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BuscadorTags.Buscar(ClassLibrary.Publicaciones,System.String)">
+            <summary>
+            Busca ofertas en Publicaciones, según los tags de la oferta.
+            </summary>
+            <param name="publicaciones"> Recibe un parametro de tipo Publicaciones con el nombre de "publicaciones".</param>
+            <param name="busqueda"> Recibe un parametro de tipo string con el nombre de "busqueda".</param>
+            <returns> Retorna las ofertas encontradas por tag, mediante una lista de tipo Oferta.</returns>
+        </member>
+        <member name="T:ClassLibrary.BuscadorUbicacion">
+            <summary>
+            Se encarga de buscar ofertas segun la ubicación de la misma, implementa IBuscador.
+            En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda
+            y dependiendo lo que quieras buscar se comporte de diferente forma.
+            Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar
+            y que las clases que implementen la interfaz, implemente ese método pero a nivel interno 
+            funcionando de forma diferente a las otras clases que lo implementan.
+            Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna 
+            la oferta que contenga lo buscado.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BuscadorUbicacion.Buscar(ClassLibrary.Publicaciones,System.String)">
+            <summary>
+            Busca ofertas en las publicaciones, según la ubicación de la oferta.
+            </summary>
+            <param name="publicaciones">Publicaciones</param>
+            <param name="busqueda">Lo que se va a buscar</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.ConsolePrinter">
+            <summary>
+            Esta clase se encarga de imprimir por consola los atributos de oferta.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.ConsolePrinter.ofertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método imprime por consola los atributos de oferta.
+            </summary>
+            <param name="oferta">Una oferta.</param>
+        </member>
+        <member name="T:ClassLibrary.Emprendedor">
+            <summary>
+            Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manisfestar su interés en las que sean de su agrado
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Emprendedor.habilitacionesEmprendedor">
+            <summary>
+            Lista de habilitaciones del emprendedor
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,ClassLibrary.Rubro,ClassLibrary.Habilitaciones,System.String)">
+            <summary>
+            Inicializa una instancia de Emprendedor
+            </summary>
+            <param name="nombre">Nombre del emprededor</param>
+            <param name="ubicacion">Ubicación del emprendedor</param>
+            <param name="rubro">Rubro del emprendedor</param>
+            <param name="habilitacion">Habilitaciones del emprendedor</param>
+            <param name="especializaciones">Especializaciones del emprendedor</param>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
+            <summary>
+            Obtiene una lista de las habilitaciones del emprendedor
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Emprendedor.Especializaciones">
+            <summary>
+            Especializaciones del emprendedor
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.AddHabilitacion(System.String)">
+            <summary>
+            Agrega habilitaciones
+            </summary>
+            <param name="habilitacionBuscada">Nombre de la habilitacion a agregar</param>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.RemoveHabilitacion(System.String)">
+            <summary>
+            Quita habilitaciones
+            </summary>
+            <param name="habilitacion">Nombre de la habilitaciones a remover</param>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.GetHabilitacionList">
+            <summary>
+            Muestra todas las habilitaciones posibles para agregar
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasCompradas(System.String,System.String)">
+            <summary>
+            Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas
+            </summary>
+            <param name="fechaInicio"></param>
+            <param name="fechaFinal"></param>
+        </member>
+        <member name="T:ClassLibrary.Empresa">
+            <summary>
+            Esta clase representa una Empresa, que se encarga de crear Ofertas, eliminarlas, aceptarlas y calcular el consumo de ofertas.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,ClassLibrary.Rubro,ClassLibrary.Habilitaciones)">
+            <summary>
+            Inicializa una instancia de Empresa
+            </summary>
+            <param name="nombre">Nombre de la empresa</param>
+            <param name="ubicacion">Ubicación de la empresa</param>
+            <param name="rubro">Rubro de la empresa</param>
+            <param name="habilitacion">Habilitaciones de la empresa</param>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
+            <summary>
+            Obtine una lista que indica las habiltiaciones que tiene la Empresa
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Empresa.InteresadosEnOfertas">
+            <summary>
+            Obtine una lista que indica los interesados en oferas que tiene la Empresa
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Empresa.CrearProducto(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+            </summary>
+            <param name="publicaciones">Publicaciones</param>
+            <param name="nombre">Nombre de la oferta</param>
+            <param name="material">Material de la oferta</param>
+            <param name="precio">Precio de la oferta</param>
+            <param name="unidad">Unidad de la oferta</param>
+            <param name="tags">Tags de la oferta (palabras claves)</param>
+            <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece</param>
+        </member>
+        <member name="M:ClassLibrary.Empresa.EliminarProducto(ClassLibrary.Oferta,ClassLibrary.Publicaciones)">
+            <summary>
+            Elimina una oferta creada de las publicaciones
+            </summary>
+            <param name="oferta">Oferta a eliminar</param>
+            <param name="publicaciones">Publicaciones</param>
+        </member>
+        <member name="M:ClassLibrary.Empresa.AceptarOferta(ClassLibrary.Oferta,ClassLibrary.Publicaciones)">
+            <summary>
+            Quita de las publicaciones, la oferta que fue aceptada, ser aceptada implica que se llegó a un acuerdo
+            con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista
+            de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
+            </summary>
+            <param name="oferta">Oferta que se quiere aceptar</param>
+            <param name="publicaciones">Publicaciones</param>
+        </member>
+        <member name="M:ClassLibrary.Empresa.CalcularOfertasVendidasSegunTiempo(System.String,System.String)">
+            <summary>
+            Calcula cuantas ofertas se entregaron entre diferentes fechas
+            </summary>
+            <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD</param>
+            <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD</param>
+        </member>
+        <member name="M:ClassLibrary.Empresa.AddHabilitacion(System.String)">
+            <summary>
+            Agerga habilitaciones que pueda tener la empresa
+            </summary>
+            <param name="habilitacionBuscada">Habilitación a buscar</param>
+        </member>
+        <member name="M:ClassLibrary.Empresa.RemoveHabilitacion(System.String)">
+            <summary>
+            Quita habilitaciones que tenga la Empresa
+            </summary>
+            <param name="habilitacion">Habilitacion a eliminar</param>
+        </member>
+        <member name="M:ClassLibrary.Empresa.GetHabilitacionList">
+            <summary>
+            Muestra todas las habilitaicones posibles para agregar
+            </summary>
+        </member>
         <member name="T:ClassLibrary.Habilitaciones">
             <summary>
             Esta clase representa las habilitaciones existentes
@@ -57,7 +259,7 @@
         </member>
         <member name="M:ClassLibrary.Habilitaciones.HabilitacionesDisponibles">
             <summary>
-            Este método permite ver graficamente cuales son las habilitaciones disponibles
+            Este método retorna un string con las habilitaciones de la lista
             Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final
             </summary>
         </member>
@@ -79,6 +281,19 @@
             </summary>
             <param name="nombre">Recibe por parametro un string del nombre de la habilitación deseada</param>
         </member>
+        <member name="T:ClassLibrary.IBuscador">
+            <summary>
+            Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.IBuscador.Buscar(ClassLibrary.Publicaciones,System.String)">
+            <summary>
+            Interfaz IBuscador.
+            </summary>
+            <param name="publicaciones">Recibe parametro del tipo Publicaciones. </param>
+            <param name="busqueda"> Recibe parametro del tipo string. </param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.IHabilitaciones">
             <summary>
             Esta interface contiene los métodos para agregar, quitar o consultar habilitaciones
@@ -99,6 +314,16 @@
         <member name="M:ClassLibrary.IHabilitaciones.GetHabilitacionList">
             <summary>
             Este método se implementará para obtener la en texto la lista de habilitaciones de las clases
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.IPrinter">
+            <summary>
+            Esta interfaz contiene un método para imprimir.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.IPrinter.ofertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método hace un print de la oferta.
             </summary>
         </member>
         <member name="T:ClassLibrary.ITelegram">
@@ -128,6 +353,373 @@
             </summary>
             <param name="cadena">Recibe por parametro un cadena de tipo String</param>
             <returns>Retorna la cadena una vez que se le aplicaron todos los limpiadores de cadena</returns>
+        </member>
+        <member name="M:ClassLibrary.LimpiadorCadena.LimpiaCadenaRespuesta(System.String)">
+            <summary>
+            Este método sirve para limpiar las cadenas de respuestas que el usuario ingresará.
+            Creemos necesario tener un limpiador de cadenas así, ya que el usuario podria
+            digitar el texto de cualquier forma, con mayusculas, minusculas o combinaciones de ambas.
+            
+            </summary>
+            <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String</param>
+            <returns>Devuelve la cadena pero con las modificaciones realizadas</returns>
+        </member>
+        <member name="T:ClassLibrary.Logica">
+            <summary>
+            Esta clase se encarga de crear y guardar instancias de Publicaciones, BuscadorUbicacion, BuscadorTags, BuscadorMaterial y ConsolePrinter.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Logica.PublicacionesA">
+            <summary>
+            Guarda una instancia de Publicaciones.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Logica.buscadorUbicacion">
+            <summary>
+            Guarda una instancia de BuscadorUbicacion.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.Logica.buscadorTags">
+            <summary>
+            Guarda una instancia de BuscadorTags.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.Logica.buscadorMaterial">
+            <summary>
+            Guarda una instancia de BuscadorMat.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.Logica.printerConsola">
+            <summary>
+            Guarda una instancia de ConsolePrinter.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.LogicaBuscadores">
+            <summary>
+            Esta clase contiene a los buscadores.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LogicaBuscadores.BuscarPorMaterial(System.String)">
+            <summary>
+            Llama al método Buscar para realizar una búsqueda por Material.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LogicaBuscadores.BuscarPorTags(System.String)">
+            <summary>
+            Llama al método Buscar para realizar una búsqueda por Tags.
+            </summary>
+            <param name="busqueda"></param>
+        </member>
+        <member name="M:ClassLibrary.LogicaBuscadores.BuscarPorUbicacion(System.String)">
+            <summary>
+            Llama al método Buscar para realizar una búsqueda por Ubicación.
+            </summary>
+            <param name="busqueda"></param>
+        </member>
+        <member name="T:ClassLibrary.LogicaEmprendedor">
+            <summary>
+            Esta clase contiene la lógica del emprendedor.
+            </summary>
+            <remarks>
+            Contiene un método para llamar a cada método de la clase Emprendedor.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.AddHabilitacion(ClassLibrary.Emprendedor,System.String)">
+            <summary>
+            Este método se encarga de llamar a AddHabilitación de Emprendedor.
+            </summary>
+            <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
+            <param name="emprendedor">Un emprendedor.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.RemoveHabilitacion(ClassLibrary.Emprendedor,System.String)">
+            <summary>
+            Este método se encarga de llamar a RemoveHabilitación de Emprendedor.
+            </summary>
+            <param name="habilitacion">Nombre de la habilitación a remover.</param>
+            <param name="emprendedor">Un emprendedor.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.GetHabilitacionList(ClassLibrary.Emprendedor)">
+            <summary>
+            Este método llama a GetHabilitacionList de Emprendedor.
+            </summary>
+            <param name="emprendedor">Un emprendedor.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,ClassLibrary.Oferta)">
+            <summary>
+            Este método llama a InteresadoEnOferta de Emprendedor.
+            </summary>
+            <param name="emprendedor">Un emprendedor.</param>
+            <param name="oferta">Una oferta.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.CalcularOfertasCompradas(ClassLibrary.Emprendedor,System.String,System.String)">
+            <summary>
+            Este método llama a CalcularOfertasCompradas de Emprendedor.
+            </summary>
+            <param name="emprendedor">Un emprendedor.</param>
+            <param name="fechaInicio"></param>
+            <param name="fechaFinal"></param>
+        </member>
+        <member name="T:ClassLibrary.LogicaEmpresa">
+            <summary>
+            Esta clase se encarga de la lógica relacioanda a Empresa.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.AceptarInvitacion">
+            <summary>
+            Acepta la invitación del administrador.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.CrearProducto(ClassLibrary.Empresa,System.String,System.String,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Llama al método CrearProducto en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa que creará la oferta.</param>
+            <param name="nombre">Nombre de la oferta.</param>
+            <param name="material">Material de lo que se oferece.</param>
+            <param name="precio">Precio de la oferta.</param>
+            <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
+            <param name="tags">Palabra clave.</param>
+            <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.EliminarProducto(ClassLibrary.Empresa,ClassLibrary.Oferta)">
+            <summary>
+            Llama al método EliminarProducto en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa que eliminará la oferta.</param>
+            <param name="oferta">Oferta que se desea elimianr.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.AceptarOferta(ClassLibrary.Empresa,ClassLibrary.Oferta)">
+            <summary>
+            Llama al método AceptarOferta en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa que aceptará la oferta.</param>
+            <param name="oferta">Oferta que se desea Aceptar.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.CalcularOfertasVendidasSegunTiempo(ClassLibrary.Empresa,System.String,System.String)">
+            <summary>
+            Llama al método CalcularOfertasVendidasSegunTiempo en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
+            <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
+            <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.AddHabilitacion(ClassLibrary.Empresa,System.String)">
+            <summary>
+            Llama al método AddHabilitacion en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa a la que se desea agregar una habilitacion.</param>
+            <param name="habilitacionBuscada">Habilitacion para ser agregada.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.RemoveHabilitacion(ClassLibrary.Empresa,System.String)">
+            <summary>
+            Llama al método RemoveHabilitacion en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa a la que se desea remover una habilitacion.</param>
+            <param name="habilitacion">Habilitacion para ser removida.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.GetHabilitacionList(ClassLibrary.Empresa)">
+            <summary>
+            Llama al método GetHabilitacion en empresa con los parametros pasados.
+            </summary>
+            <param name="empresa">Empresa.</param>
+        </member>
+        <member name="T:ClassLibrary.Oferta">
+            <summary>
+            Esta clase representa una oferta
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
+            <summary>
+            Inicializa una instancia de Oferta
+            </summary>
+            <param name="nombre">Nombre de la oferta</param>
+            <param name="material">Material del producto que se oferta</param>
+            <param name="precio">Precio de la oferta</param>
+            <param name="unidad">Unidad ed la oferta</param>
+            <param name="tags">Tags de la oferta</param>
+            <param name="ubicacion">Ubicacion de la oferta</param>
+            <param name="empresa">Empresa que publica la oferta</param>
+        </member>
+        <member name="P:ClassLibrary.Oferta.HayInteresado">
+            <summary>
+            Booleano, false si no hay interesado en la oferta, true si lo hay
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Oferta.interesado">
+            <summary>
+            Nombre del interesado en la oferta
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Nombre">
+            <summary>
+            Nombre de la oferta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Material">
+            <summary>
+            Material del producto a ofertar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Precio">
+            <summary>
+            Precio de la oferta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Unidad">
+            <summary>
+            Cantidad de unidades a ofertar
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Tags">
+            <summary>
+            Tags de la oferta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Id">
+             <summary>
+            ID única para cada oferta
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
+            <summary>
+            Empresa que publica la oferta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
+            <summary>
+            Obtiene una lista de las habilitaciones que requiere el producto
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.Oferta.AddHabilitacion(System.String)">
+            <summary>
+            Añade una habilitación a la oferta
+            </summary>
+            <param name="habilitacionBuscada">Nombre de la habilitación a agregar</param>
+        </member>
+        <member name="M:ClassLibrary.Oferta.RemoveHabilitacion(System.String)">
+            <summary>
+            Quita una habilitación a la oferta
+            </summary>
+            <param name="habilitacion">Habilitacion a quitar</param>
+        </member>
+        <member name="M:ClassLibrary.Oferta.GetHabilitacionList">
+            <summary>
+            Muestra todas las habilitaciones posibles para agregar
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Oferta.FechaDePublicacion">
+            <summary>
+            Fecha en la que se publicó la oferta
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.Ubicacion">
+            <summary>
+            Ubicación de la oferta
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClassLibrary.Publicaciones">
+            <summary>
+            Esta clase se encarga de las Publicaciones.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Publicaciones.Instance">
+            <summary>
+            Crea una instancia de Publicaciones.
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.Publicaciones.OfertasPublicados">
+            <summary>
+            Una lista que contiene las ofertas.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Publicaciones.GetOfertasPublicados">
+            <summary>
+            Este método imprime las ofertas contenidas en OfertasPublicados.
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.Rubro">
+            <summary>
+            Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
+            <summary>
+            Recorre la lista de rubros y ve si contiene el nombre para agregarlo o no.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Rubro.Nombre">
+            <summary>
+            Obtiene un valor con el nombre del rubro.
+            </summary>
+            <value> Retorna tipo string. </value>
+        </member>
+        <member name="F:ClassLibrary.Rubro.RubrosList">
+            <summary>
+            Lista publica para que puedan acceder las demas clases, la lista contiene los objetos rubros creados.
+            </summary>
+            <returns> Retorna una nueva lista llamada RubrosList de tipo string</returns>
+        </member>
+        <member name="M:ClassLibrary.Rubro.AddRubro(System.String)">
+            <summary>
+            Añade un rubro a la lista, devuelve un string confirmando la acción.
+            </summary>
+            <param name="rubro"> Recibe un parametro de tipo string con el nombre de "rubro".</param>
+        </member>
+        <member name="M:ClassLibrary.Rubro.RemoveRubro(System.String)">
+            <summary>
+            Elimina un rubro de la lista, devuelve un string confirmando la acción.	
+            </summary>
+            <param name="rubro"> Recibe un parametro de tipo string con el nombre de "rubro".</param>
+        </member>
+        <member name="M:ClassLibrary.Rubro.GetRubrosList">
+            <summary>
+            Obtiene lista de rubros.
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.Usuario">
+            <summary>
+            Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,ClassLibrary.Rubro)">
+            <summary>
+            Se inicializa una instancia de la clase Usuario.
+            </summary>
+            <param name="nombre"> Recibe un parametro de tipo string con el valor de "nombre".</param>
+            <param name="ubicacion"> Recibe un parametro de tipo string con el valor de "ubicacion".</param>
+            <param name="rubro"> Recibe un parametro de tipo Rubro con el valor de "rubro".</param>
+        </member>
+        <member name="P:ClassLibrary.Usuario.Nombre">
+            <summary>
+             Obtiene un valor que indica el nombre del usuario.
+            </summary>
+            <value> Tipo string.</value>
+        </member>
+        <member name="P:ClassLibrary.Usuario.Ubicacion">
+            <summary>
+             Obtiene un valor que indica la ubicacion del usuario.
+            </summary>
+            <value> Tipo string.</value>
+        </member>
+        <member name="P:ClassLibrary.Usuario.Rubro">
+            <summary>
+            Obtiene un valor con el rubro del usuario.
+            </summary>
+            <value> Tipo Rubro. </value>
         </member>
     </members>
 </doc>

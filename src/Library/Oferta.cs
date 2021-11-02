@@ -39,6 +39,27 @@ namespace ClassLibrary
         }
 
         /// <summary>
+        /// Booleano, false si no hay interesado en la oferta, true si lo hay
+        /// </summary>
+        // Se hizo en equipo.
+        public bool HayInteresado
+        {
+            get
+            {
+                if (true)
+                {
+                    EmpresaCreadora.InteresadosEnOfertas.Add(this);
+                    return true;
+                }
+            }
+            set
+            {
+
+            }
+            
+        }
+        
+        /// <summary>
         /// Nombre del interesado en la oferta
         /// </summary>
         public string interesado;

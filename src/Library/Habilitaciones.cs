@@ -32,11 +32,12 @@ namespace ClassLibrary
             else 
             {
                 Console.WriteLine("El nombre de la habilitación no existe, ¿desea agregarlo?");
-                string respuesta = Console.ReadKey().ToString();
+                string respuesta = Console.ReadLine().ToString();
                 respuesta = LimpiadorCadena.LimpiaCadena(respuesta);
                 if (respuesta == "si")
                 {
                     ListaHabilitaciones.Add(nombre);
+                    Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
                     this.Nombre = nombre;
                 }
             }
@@ -49,10 +50,10 @@ namespace ClassLibrary
         public string Nombre {get; set;}
 
         /// <summary>
-        /// Este método permite ver graficamente cuales son las habilitaciones disponibles
+        /// Este método retorna un string con las habilitaciones de la lista
         /// Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final
         /// </summary>
-        public void HabilitacionesDisponibles()
+        public string HabilitacionesDisponibles()
         {
             StringBuilder habDisponibles = new StringBuilder();
             int contador = 1;
@@ -61,7 +62,8 @@ namespace ClassLibrary
                 habDisponibles.Append($"{contador}- {habilitacion}.\n");
                 contador ++;
             }
-            Console.WriteLine(habDisponibles.ToString());
+            string habDis = habDisponibles.ToString();
+            return (habDisponibles.ToString());
         }
 
         /// <summary>
@@ -71,6 +73,7 @@ namespace ClassLibrary
         public void AddHabilitacion(string nombre)
         {
             this.ListaHabilitaciones.Add(nombre);
+           Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
         }
 
         /// <summary>
@@ -93,7 +96,8 @@ namespace ClassLibrary
         /// <param name="nombre">Recibe por parametro un string del nombre de la habilitación deseada</param>
         public void RemoveHabilitacion(string nombre)
         {
-            this.ListaHabilitaciones.Remove(nombre);
+            this.ListaHabilitaciones.Remove(nombre); 
+            Console.WriteLine($"Fue removida la habilitación '{nombre}' de la lista.");
         }
     }
 }
