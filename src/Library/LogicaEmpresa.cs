@@ -19,38 +19,35 @@ namespace ClassLibrary
         /// Llama al método CrearProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que creará la oferta</param>
-        /// <param name="publicaciones">La publicación donde se encuentran las ofertas</param>
         /// <param name="nombre">Nombre de la oferta</param>
         /// <param name="material">Material de lo que se oferece</param>
         /// <param name="precio">Precio de la oferta</param>
         /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal)</param>
         /// <param name="tags">Palabra clave</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta</param>
-        public void CrearProducto(Empresa empresa, Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        public void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
-            empresa.CrearProducto(publicaciones, nombre, material, precio, unidad, tags, ubicacion);
+            empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion);
         }
 
         /// <summary>
         /// Llama al método EliminarProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que eliminará la oferta</param>
-        /// <param name="publicaciones">La publicación donde se encuentran las ofertas</param>
         /// <param name="oferta">Oferta que se desea elimianr</param>
-        public void EliminarProducto(Empresa empresa, Publicaciones publicaciones, Oferta oferta)
+        public void EliminarProducto(Empresa empresa, Oferta oferta)
         {
-            empresa.EliminarProducto(oferta, publicaciones);
+            empresa.EliminarProducto(oferta, Logica.PublicacionesA);
         }
 
         /// <summary>
         /// Llama al método AceptarOferta en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que aceptará la oferta</param>
-        /// <param name="publicaciones">La publicación donde se encuentran las ofertas</param>
         /// <param name="oferta">Oferta que se desea Aceptar</param>
-        public void AceptarOferta(Empresa empresa, Publicaciones publicaciones, Oferta oferta)
+        public void AceptarOferta(Empresa empresa, Oferta oferta)
         {
-            empresa.AceptarOferta(oferta, publicaciones);
+            empresa.AceptarOferta(oferta, Logica.PublicacionesA);
         }
 
         /// <summary>
