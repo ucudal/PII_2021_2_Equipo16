@@ -19,7 +19,6 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            Logica.logica();
 
         }
 
