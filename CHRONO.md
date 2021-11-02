@@ -3,9 +3,6 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
-1/11/21 - Piero Saucedo
-Modificada la clase Logica, comentarios añadidos en la clase Publicaciones (se habían borrado), modificada la clase
-Publicaciones
 
 31/10/21 - Joaquín Pérez
 Modificación en BuscadorTags
