@@ -40,19 +40,7 @@ namespace ClassLibrary
         
 
 
-
-        /// <summary>
-        /// Acepta la invitación del Administrador
-        /// </summary>
-        public void AceptarInvitacion()
-        {
-            // Cuando tengamos conocimiento de telegram se implementa
-            // Hacer este método estático, para estar sin necesidad de tener una instancia objeto
-            // y asi poder crear una empresa a través de este metodo
-            // Este método crearía una instancia de Empresa, yo lo que hago es que un interprete llame
-            // a la lógica y la lógica llame a este metodo cuando el usuario me mande el msg de que quiera
-            // registrarse.
-        }
+        
 
         
 
@@ -125,7 +113,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD</param>
-        public void calcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
+        public void CalcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
         {
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
