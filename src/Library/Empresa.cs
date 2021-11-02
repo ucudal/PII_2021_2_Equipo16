@@ -37,12 +37,18 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public List<string> HabilitacionesEmpresa { get => habilitacionesEmpresa;}
-        
+
+        /// <summary>
+        /// Obtine una lista que indica los interesados en oferas que tiene la Empresa
+        /// </summary>
+        /// <value></value>
+        public List<Oferta> InteresadosEnOfertas { get => interesadosEnOfertas; set => interesadosEnOfertas = value; }
 
 
-        
 
-        
+
+
+
 
         /// <summary>
         /// Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -54,13 +60,13 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad de la oferta</param>
         /// <param name="tags">Tags de la oferta (palabras claves)</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece</param>
-        
+
 
         public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
 
             bool habilitacionesAgregadas = false;
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion);
+            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
           
             while (habilitacionesAgregadas)

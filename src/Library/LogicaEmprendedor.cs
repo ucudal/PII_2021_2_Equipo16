@@ -42,9 +42,13 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
         /// <param name="oferta">Una oferta.</param>
+        
+        // Se hizo en equipo.
         public void InteresadoEnOferta(Emprendedor emprendedor, Oferta oferta)
         {
-            emprendedor.InteresadoEnOferta(oferta);
+            oferta.interesado = emprendedor.Nombre;
+            oferta.HayInteresado = true;
+            
         }
 
         /// <summary>
@@ -57,6 +61,8 @@ namespace ClassLibrary
         {
             emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
         }
+
+
     }
 
 }
