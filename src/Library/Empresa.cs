@@ -26,15 +26,10 @@ namespace ClassLibrary
             this.habilitacion = habilitacion;
         }
 
-        public List<string> habilitacionesEmpresa = new List<string>();
-        public List<Oferta> ofertasAceptadas = new List<Oferta>();
-        public List<Oferta> interesadosEnOfertas = new List<Oferta>();
-/*
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
 
-*/
         private Habilitaciones habilitacion{get;set;}
 
         /// <summary>
@@ -45,19 +40,7 @@ namespace ClassLibrary
         
 
 
-
-        /// <summary>
-        /// Acepta la invitación del Administrador
-        /// </summary>
-        public void AceptarInvitacion()
-        {
-            // Cuando tengamos conocimiento de telegram se implementa
-            // Hacer este método estático, para estar sin necesidad de tener una instancia objeto
-            // y asi poder crear una empresa a través de este metodo
-            // Este método crearía una instancia de Empresa, yo lo que hago es que un interprete llame
-            // a la lógica y la lógica llame a este metodo cuando el usuario me mande el msg de que quiera
-            // registrarse.
-        }
+        
 
         
 
@@ -71,13 +54,13 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad de la oferta</param>
         /// <param name="tags">Tags de la oferta (palabras claves)</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece</param>
-        /// <param name="id">Id de la oferta</param>
+        
 
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, Guid id)
+        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
 
             bool habilitacionesAgregadas = false;
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, id);
+            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion);
             publicaciones.OfertasPublicados.Add(productoCreado);
           
             while (habilitacionesAgregadas)
@@ -130,7 +113,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD</param>
-        public void calcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
+        public void CalcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
         {
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);

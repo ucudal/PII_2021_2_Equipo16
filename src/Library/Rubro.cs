@@ -9,7 +9,9 @@ namespace ClassLibrary
     /// Clase publica Rubro, para que puedan acceder a sus atributos y metodos
     /// </summary>
     public class Rubro 
-    {
+    {    /// <summary>
+         /// Recorre la lista de rubros y ve si contiene el nombre para agregarlo o no 
+         /// </summary>
         public Rubro(string nombre)
         {
             if (RubrosList.Contains(nombre))
@@ -28,6 +30,10 @@ namespace ClassLibrary
                 }
             }
         }
+        /// <summary>
+        /// Obtiene un valor con el nombre del rubro
+        /// </summary>
+        /// <value>retorna tipo string </value>
         public string Nombre{get; set;}
         
         /// <summary>
