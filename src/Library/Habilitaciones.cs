@@ -1,13 +1,11 @@
-
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa las habilitaciones existentes
+    /// Esta clase representa las habilitaciones existentes.
     /// </summary>
     public class Habilitaciones : IHabilitaciones
     {

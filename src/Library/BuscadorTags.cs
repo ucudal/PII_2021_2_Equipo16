@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
-
 
 namespace ClassLibrary
 {
@@ -25,14 +22,8 @@ namespace ClassLibrary
                     ofertasEncontradas.Add(oferta);
                     Logica.printerConsola.ofertaPrinter(oferta);
                 }
-
             }
-            
-            
             return ofertasEncontradas;
-
         }
-    }   // Fin de la clase BuscadorTags.
-    
-    
+    }  
 }
