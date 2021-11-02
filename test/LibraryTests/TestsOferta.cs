@@ -35,6 +35,7 @@ namespace Test.Library
             Assert.AreEqual(expected5, oferta.Tags);
             Assert.AreEqual(expected6, oferta.Ubicacion);
             Assert.AreEqual(expected7, oferta.EmpresaCreadora.Nombre);
+
         }
 
         /// <summary>
