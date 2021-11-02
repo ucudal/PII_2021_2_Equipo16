@@ -36,22 +36,13 @@ namespace ClassLibrary
                 if (busqueda == oferta.Material)
                 {
                     ofertasEncontradas.Add(oferta);
+                    Logica.printerConsola.ofertaPrinter(oferta);
                 }
             }
-            this.RecorreLista();
+
             return ofertasEncontradas;
         }
-        /// <summary>
-        /// Metodo que recorre la lista y la imprime
-        /// </summary>
-        public void RecorreLista()
-        {
-            StringBuilder texto = new StringBuilder("Ofertas por materiales: \n");
-            foreach (Oferta oferta in ofertasEncontradas)
-            {
-                texto.Append($"{oferta.Nombre}");
-            }
-            Console.WriteLine(texto.ToString());
-        }
+
+        
     }
 }
