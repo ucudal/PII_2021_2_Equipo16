@@ -532,10 +532,15 @@
             Esta clase representa una oferta
             </summary>
         </member>
+        <member name="F:ClassLibrary.Oferta.habilitacionesOferta">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una instancia de Oferta
-            </summary>
+            /// </summary>
             <param name="nombre">Nombre de la oferta</param>
             <param name="material">Material del producto que se oferta</param>
             <param name="precio">Precio de la oferta</param>

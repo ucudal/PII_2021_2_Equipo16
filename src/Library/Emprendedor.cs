@@ -34,7 +34,11 @@ namespace ClassLibrary
             this.Habilitacion = habilitacion;
         }
         
-        private Habilitaciones Habilitacion{get; set;}
+        /// <summary>
+        /// Habilitaciones del emprendedor
+        /// </summary>
+        /// <value></value>
+        public Habilitaciones Habilitacion{get; set;}
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor
         /// </summary>
