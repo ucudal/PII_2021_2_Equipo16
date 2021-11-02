@@ -5,6 +5,12 @@
     <Rule Id="SA1121" Action="None" />
     <Rule Id="SA1200" Action="None" />
     <Rule Id="SA1636" Action="None" />
+    <Rule Id="SA1012" Action="None" />
+    <Rule Id="SA1629" Action="None" />
+    <Rule Id="SA1008" Action="None" />
+    <Rule Id="SA1518" Action="None" />
+    <Rule Id="SA1507" Action="None" />
+
   </Rules>
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="CA1014" Action="None" />

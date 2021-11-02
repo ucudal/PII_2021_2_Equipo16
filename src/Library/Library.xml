@@ -518,14 +518,14 @@
             <summary>
             Llama al método RemoveHabilitacion en empresa con los parametros pasados.
             </summary>
-            <param name="empresa">Empresa a la que se desea remover una habilitacion</param>
-            <param name="habilitacion">Habilitacion para ser removida</param>
+            <param name="empresa">Empresa a la que se desea remover una habilitacion.</param>
+            <param name="habilitacion">Habilitacion para ser removida.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.GetHabilitacionList(ClassLibrary.Empresa)">
             <summary>
             Llama al método GetHabilitacion en empresa con los parametros pasados.
             </summary>
-            <param name="empresa">Empresa</param>
+            <param name="empresa">Empresa.</param>
         </member>
         <member name="T:ClassLibrary.Oferta">
             <summary>
