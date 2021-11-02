@@ -48,7 +48,6 @@ namespace ClassLibrary
         {
             oferta.interesado = emprendedor.Nombre;
             oferta.HayInteresado = true;
-            
         }
 
         /// <summary>
@@ -61,8 +60,5 @@ namespace ClassLibrary
         {
             emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
         }
-
-
     }
-
 }

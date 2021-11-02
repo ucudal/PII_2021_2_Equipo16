@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Text;
-
 
 namespace ClassLibrary
 {
@@ -15,18 +12,17 @@ namespace ClassLibrary
     /// Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna 
     /// la oferta que contenga lo buscado.
     /// </summary>
-   public class BuscadorUbicacion: IBuscador
+    public class BuscadorUbicacion: IBuscador
     {
         /// <summary>
         /// Busca ofertas en las publicaciones, según la ubicación de la oferta.
         /// </summary>
-        /// <param name="publicaciones">Publicaciones</param>
-        /// <param name="busqueda">Lo que se va a buscar</param>
+        /// <param name="publicaciones">Publicaciones.</param>
+        /// <param name="busqueda">Lo que se va a buscar.</param>
         /// <returns></returns>
         public List<Oferta> Buscar(Publicaciones publicaciones, string busqueda)
         {
             List<Oferta> ofertasEncontradas = new List<Oferta>();
-            
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
                 if (busqueda == oferta.Ubicacion)
@@ -35,12 +31,7 @@ namespace ClassLibrary
                     Logica.printerConsola.ofertaPrinter(oferta);
                 }
             }
-            return ofertasEncontradas;
-           
+            return ofertasEncontradas;      
         }
-        
-       
-        
     }
-
 }
