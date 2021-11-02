@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Collections;
 
 
 namespace ClassLibrary
@@ -27,5 +28,33 @@ namespace ClassLibrary
             cadena = cadena.Replace("ú", "u");
             return cadena;
         }
+
+        /// <summary>
+        /// Este método sirve para limpiar las cadenas de respuestas que el usuario ingresará.
+        /// Creemos necesario tener un limpiador de cadenas así, ya que el usuario podria
+        /// digitar el texto de cualquier forma, con mayusculas, minusculas o combinaciones de ambas.
+        /// 
+        /// </summary>
+        /// <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String</param>
+        /// <returns>Devuelve la cadena pero con las modificaciones realizadas</returns>
+        public static string LimpiaCadenaRespuesta(string respuesta)
+        {
+            ArrayList subRespuesta = new ArrayList();
+            subRespuesta.Add(respuesta.Split(" "));
+            ArrayList subRespuesta1 = new ArrayList();
+            string varCadena;
+            foreach (string cadena in subRespuesta)
+            {
+                varCadena = cadena.Replace("á", "a");
+                varCadena = cadena.Replace("é", "e");
+                varCadena = cadena.Replace("í", "i");
+                varCadena = cadena.Replace("ó", "o");
+                varCadena = cadena.Replace("ú", "u");
+                subRespuesta1.Add(varCadena.ToLower());
+            }
+            respuesta = String.Join(" ",subRespuesta1);
+            return respuesta;
+        }
+
     }
 }
