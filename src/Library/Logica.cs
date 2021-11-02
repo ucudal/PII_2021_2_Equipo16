@@ -48,7 +48,6 @@ namespace ClassLibrary
             {
                 ConsolePrinter.ofertaPrinter(oferta);
             }
-            
             return OfertasABuscar;
         }
 
