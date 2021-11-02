@@ -35,6 +35,11 @@ namespace ClassLibrary
         }
 
         /// <summary>
+        /// Booleano, false si no hay interesado en la oferta, true si lo hay
+        /// </summary>
+        public bool HayInteresado;
+        
+        /// <summary>
         /// Nombre del interesado en la oferta
         /// </summary>
         public string interesado;
