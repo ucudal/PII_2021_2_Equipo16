@@ -21,7 +21,8 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad ed la oferta</param>
         /// <param name="tags">Tags de la oferta</param>
         /// <param name="ubicacion">Ubicacion de la oferta</param>
-        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        /// <param name="empresa">Empresa que publica la oferta</param>
+        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, Empresa empresa)
         {
             this.Nombre = nombre;
             this.Material = material;
@@ -30,8 +31,13 @@ namespace ClassLibrary
             this.Tags = tags;
             this.Ubicacion = ubicacion;
             this.Id = Guid.NewGuid();
+            this.EmpresaCreadora = empresa;
         }
 
+        /// <summary>
+        /// Nombre del interesado en la oferta
+        /// </summary>
+        public string interesado;
         private Habilitaciones habilitacion{get;set;}
         /// <summary>
         /// Nombre de la oferta
@@ -65,6 +71,12 @@ namespace ClassLibrary
         /// <returns></returns>
         public Guid Id {get; private set;}
 
+        /// <summary>
+        /// Empresa que publica la oferta
+        /// </summary>
+        /// <value></value>
+        public Empresa EmpresaCreadora {get; set;}
+        
         /// <summary>
         /// Obtiene una lista de las habilitaciones que requiere el producto
         /// </summary>
