@@ -3,6 +3,14 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+1/11/21 - Piero Saucedo
+Modificada la clase Logica, comentarios añadidos en la clase Publicaciones (se habían borrado), modificada la clase
+Publicaciones
+
+1/11/21 - Ramón Lorenzo
+-Fixes en clase oferta: problemas con la id (ya no está en el constructor), métodos de habilitaciones.
+-Fixes en clase emprendedor: métodos de buscar, habilitaciones y sus métodos.
+-Añadidos todos los comentarios XML en clases Emprendedor, Oferta y BuscadorMaterial.
 
 31/10/21 - Joaquín Pérez
 Modificación en BuscadorTags
