@@ -10,8 +10,9 @@ Modifique la clase de LimpiadorCadenas, le agregue un nuevo metodo para limpiar 
 A los metodos de la clase Habilitaciones le agregue que impriman en consola la operacion que realizaron, para saber que realmente esten realizando la operacion correspondiente.
 
 2/11/21 - Piero Saucedo
-Creada una nueva clase LogicaEmprendedor, comentarios XML incluídos.
-
+Creada una nueva clase LogicaEmprendedor y otra nueva clase LogicaBuscadores, comentarios XML incluídos. Modificaciones de comentarios XML en todas las clases (para evitar Warnings).
+Resueltos una gran cantidad de Warnings. 
+Añadidos exclusiones en el archivo Analyzers.ruleset para ocultar temporalmente algunos Warnings.
 
 1/11/21 - Piero Saucedo
 Modificada la clase Logica, comentarios añadidos en la clase Publicaciones (se habían borrado), modificada la clase Publicaciones
@@ -32,7 +33,6 @@ Interfaz IPrinter creada y añadida con comentarios XML, clase ConsolePrinter cr
 31/10/21 - Tomás Rama
 Agregué el método para calcular las ofertas entregadas segun x tiempo en la clase empresa, también agregué el método AceptarOferta. La función de ese método es quitar de la lista de Publicaciones, la oferta aceptada, y colocar esa oferta en la lista ofertasAceptadas de la clase empresa.
 Agregué los comentarios XML correspondientes en las clases Empresa y BuscadorUbicación.
-
 
 31/10/21 Juan Pérez
 Modifiqué Administrador para darle un nombre al administrador y le puse los comentarios XML.
