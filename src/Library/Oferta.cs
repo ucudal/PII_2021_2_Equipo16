@@ -8,7 +8,11 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
-        private List<string> habilitacionesOferta = new List<string>();
+        /// <summary>
+        /// 
+        /// </summary>
+
+        public List<string> habilitacionesOferta = new List<string>();
 
         /// <summary>
         /// Inicializa una instancia de Oferta.
@@ -20,6 +24,7 @@ namespace ClassLibrary
         /// <param name="tags">Tags de la oferta.</param>
         /// <param name="ubicacion">Ubicacion de la oferta.</param>
         /// <param name="empresa">Empresa que publica la oferta.</param>
+
         public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, Empresa empresa)
         {
             this.Nombre = nombre;
