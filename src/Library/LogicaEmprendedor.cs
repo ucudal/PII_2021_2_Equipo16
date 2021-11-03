@@ -9,6 +9,19 @@ namespace ClassLibrary
     public class LogicaEmprendedor
     {
         /// <summary>
+        /// Registro de usuario para ser emprendedor
+        /// </summary>
+        /// <param name="nombre">Nombre del emprendedor</param>
+        /// <param name="ubicacion">Ubicacion del emprendedor</param>
+        /// <param name="rubro">Rubro del emprendedor</param>
+        /// <param name="habilitacion">Habilitacion</param>
+        /// <param name="especializaciones">Especializaciones del emprendedor</param>
+        public static void RegistroEmprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
+        {
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, habilitacion, especializaciones);
+        }
+
+        /// <summary>
         /// Este método se encarga de llamar a AddHabilitación de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
@@ -50,7 +63,8 @@ namespace ClassLibrary
             {
                if (item.Nombre == nombreOferta)
                {
-                    item.interesado = emprendedor.Nombre;
+                    emprendedor.OfertasInteresado.Add(item);
+                    item.interesado.Add(emprendedor.Nombre);
                     item.EmpresaCreadora.InteresadosEnOfertas.Add(item); //agregado para solucionar test
                } 
             }
@@ -62,9 +76,9 @@ namespace ClassLibrary
         /// <param name="emprendedor">Un emprendedor.</param>
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
-        public static void CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
+        public static int CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
-            emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+            return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
         }
     }
 }

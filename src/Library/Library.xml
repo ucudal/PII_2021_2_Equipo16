@@ -104,6 +104,12 @@
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manisfestar su interés en las que sean de su agrado.
             </summary>
         </member>
+        <member name="F:ClassLibrary.Emprendedor.OfertasInteresado">
+            <summary>
+            Ofertas en las que se interesa el emprendedor
+            </summary>
+            <returns></returns>
+        </member>
         <member name="F:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
             <summary>
             Lista de habilitaciones del emprendedor.
@@ -181,15 +187,21 @@
             <summary>
             Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
             </summary>
-            <value></value>
+            <value>string</value>
         </member>
         <member name="P:ClassLibrary.Empresa.InteresadosEnOfertas">
             <summary>
             Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
             </summary>
-            <value></value>
+            <value>Oferta</value>
         </member>
-        <member name="M:ClassLibrary.Empresa.CrearProducto(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String)">
+        <member name="P:ClassLibrary.Empresa.OfertasAceptadas">
+            <summary>
+            Lista de ofertasque la empresa Acepta(Cuando llega acuerdo a un emprendedor).
+            </summary>
+            <value>Oferta</value>
+        </member>
+        <member name="M:ClassLibrary.Empresa.CrearProducto(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
             <summary>
             Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
             </summary>
@@ -200,6 +212,7 @@
             <param name="unidad">Unidad de la oferta.</param>
             <param name="tags">Tags de la oferta (palabras claves).</param>
             <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
+            <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
         </member>
         <member name="M:ClassLibrary.Empresa.EliminarProducto(ClassLibrary.Oferta,ClassLibrary.Publicaciones)">
             <summary>
@@ -433,6 +446,16 @@
             Contiene un método para llamar a cada método de la clase Emprendedor.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,ClassLibrary.Rubro,ClassLibrary.Habilitaciones,System.String)">
+            <summary>
+            Registro de usuario para ser emprendedor
+            </summary>
+            <param name="nombre">Nombre del emprendedor</param>
+            <param name="ubicacion">Ubicacion del emprendedor</param>
+            <param name="rubro">Rubro del emprendedor</param>
+            <param name="habilitacion">Habilitacion</param>
+            <param name="especializaciones">Especializaciones del emprendedor</param>
+        </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.AddHabilitacion(ClassLibrary.Emprendedor,System.String)">
             <summary>
             Este método se encarga de llamar a AddHabilitación de Emprendedor.
@@ -478,7 +501,7 @@
             Acepta la invitación del administrador.
             </summary>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.CrearProducto(ClassLibrary.Empresa,System.String,System.String,System.Int32,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmpresa.CrearProducto(ClassLibrary.Empresa,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
             <summary>
             Llama al método CrearProducto en empresa con los parametros pasados.
             </summary>
@@ -489,6 +512,7 @@
             <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
             <param name="tags">Palabra clave.</param>
             <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
+            <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.EliminarProducto(ClassLibrary.Empresa,ClassLibrary.Oferta)">
             <summary>
@@ -542,7 +566,7 @@
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una instancia de Oferta.
             </summary>
@@ -553,8 +577,9 @@
             <param name="tags">Tags de la oferta.</param>
             <param name="ubicacion">Ubicacion de la oferta.</param>
             <param name="empresa">Empresa que publica la oferta.</param>
+            <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         </member>
-        <member name="P:ClassLibrary.Oferta.interesado">
+        <member name="F:ClassLibrary.Oferta.interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>
@@ -601,9 +626,19 @@
             </summary>
             <value></value>
         </member>
-        <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
+        <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">
             <summary>
             Obtiene una lista de las habilitaciones que requiere el producto.
+            </summary>
+            <value></value>
+            <summary>
+            Si la oferta es constante o puntual
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
+            <summary>
+            Lista de habilitaciones de la oferta.
             </summary>
             <value></value>
         </member>

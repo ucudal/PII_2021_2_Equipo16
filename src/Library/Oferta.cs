@@ -23,7 +23,8 @@ namespace ClassLibrary
         /// <param name="tags">Tags de la oferta.</param>
         /// <param name="ubicacion">Ubicacion de la oferta.</param>
         /// <param name="empresa">Empresa que publica la oferta.</param>
-        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, Empresa empresa)
+        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
             this.Material = material;
@@ -33,6 +34,7 @@ namespace ClassLibrary
             this.Ubicacion = ubicacion;
             this.Id = Guid.NewGuid();
             this.EmpresaCreadora = empresa;
+            this.ConstantesPuntuales = constantesPuntuales;
         }
 
         
@@ -41,7 +43,7 @@ namespace ClassLibrary
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public string interesado{ get; set; }
+        public List<string> interesado = new List<string>();
         
         private Habilitaciones habilitacion = new Habilitaciones();
         
@@ -89,6 +91,17 @@ namespace ClassLibrary
         
         /// <summary>
         /// Obtiene una lista de las habilitaciones que requiere el producto.
+        /// </summary>
+        /// <value></value>
+        
+        /// <summary>
+        /// Si la oferta es constante o puntual
+        /// </summary>
+        /// <value></value>
+        public string ConstantesPuntuales {get; set;}
+
+        /// <summary>
+        /// Lista de habilitaciones de la oferta.
         /// </summary>
         /// <value></value>
         public List<string> HabilitacionesOferta {get => habilitacionesOferta;}

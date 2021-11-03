@@ -34,6 +34,28 @@
             el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
             </summary>
         </member>
+        <member name="T:Test.Library.GeneralTests2">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests2.TestGeneral2">
+            <summary>
+            Test historia de usuario2
+            Tenemos una empresa y un emprendedor, la empresa crea productos, y se quiere comprobar
+            si el método para calcular ofertas entregadas/consumidas segun tiempo funcionan acorde a lo estipulado.
+            </summary>
+        </member>
+        <member name="T:Test.Library.GeneralTests3">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests3.TestGeneral3">
+            <summary>
+            Tenemos una empresa que crea sus ofertas para poder despues realizar una busqueda por ubicación, tag, material.
+            </summary>
+        </member>
         <member name="T:Test.Library.HabilitacionesTests">
             <summary>
             Esta clase permite realizar los test de la clase Habilitaciones.
@@ -100,16 +122,6 @@
             En los ejemplos anteriores teniamos pruebas para cuando se ingresaba solo una palabra como Nombre, rubro, etc.
             Ahora con este método se permite evaluar acciones o respuestas del usuario. 
             para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
-            </summary>
-        </member>
-        <member name="T:Test.Library.PublicacionesTest">
-            <summary>
-            Esta clase contiene un Test para verificar que Publicaciones funcione correctamente.
-            </summary>
-        </member>
-        <member name="M:Test.Library.PublicacionesTest.TestPublicaciones">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:Test.Library.RubroTest">

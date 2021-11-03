@@ -31,14 +31,19 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
         /// </summary>
-        /// <value></value>
+        /// <value>string</value>
         public List<string> HabilitacionesEmpresa { get => habilitacionesEmpresa;}
 
         /// <summary>
         /// Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
         /// </summary>
-        /// <value></value>
+        /// <value>Oferta</value>
         public List<Oferta> InteresadosEnOfertas { get => interesadosEnOfertas; set => interesadosEnOfertas = value; }
+
+        /// <summary>
+        /// Lista de ofertasque la empresa Acepta(Cuando llega acuerdo a un emprendedor).
+        /// </summary>
+        /// <value>Oferta</value>
         public List<Oferta> OfertasAceptadas { get => ofertasAceptadas; set => ofertasAceptadas = value; }
 
         /// <summary>
@@ -51,10 +56,11 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad de la oferta.</param>
         /// <param name="tags">Tags de la oferta (palabras claves).</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        /// <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
+        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {
             bool habilitacionesAgregadas = false;
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, this);
+            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
             while (habilitacionesAgregadas)
             {
@@ -111,7 +117,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        public void CalcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
+        public int CalcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
         {
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
@@ -124,6 +130,7 @@ namespace ClassLibrary
                 }
             }
             Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
+            return cantidadVendida;
         }
 
         //Habilitaciones que tengo yo a nivel de empresa

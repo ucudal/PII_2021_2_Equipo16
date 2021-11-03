@@ -16,7 +16,6 @@ namespace ClassLibrary
     /// </remarks>
     public class BuscadorMaterial : IBuscador
     {     
-        List<Oferta> ofertasEncontradas = new List<Oferta>();
         /// <summary>
         /// Busca ofertas en Publicaciones, según el material de la oferta.
         /// </summary>
@@ -25,6 +24,7 @@ namespace ClassLibrary
         /// <returns>Retorna las ofertas encontradas por material, mediante una lista de tipo Oferta.</returns>
         public List<Oferta> Buscar(Publicaciones publicaciones, string busqueda)
         {
+            List<Oferta> ofertasEncontradas = new List<Oferta>();
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
                 if (busqueda == oferta.Material)

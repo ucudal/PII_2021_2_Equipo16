@@ -9,7 +9,11 @@ namespace ClassLibrary
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
-        private List<Oferta> ofertasCompradas = new List<Oferta>();
+        /// <summary>
+        /// Ofertas en las que se interesa el emprendedor
+        /// </summary>
+        /// <returns></returns>
+        public List<Oferta> OfertasInteresado = new List<Oferta>();
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
@@ -48,8 +52,6 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Especializaciones { get; set; }
-        private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        // Por Creator.
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -85,21 +87,22 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
-        public void CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
+        public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
         {
             int dineroGastado = 0;
             int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in ofertasCompradas)
+            foreach (Oferta oferta in OfertasInteresado)
             {
                 if(oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
                 ofertasCompradas1++;
                 dineroGastado = dineroGastado + (oferta.Precio);
                 }
-            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
             }
+            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
+            return ofertasCompradas1;
         }   
     }
 }
