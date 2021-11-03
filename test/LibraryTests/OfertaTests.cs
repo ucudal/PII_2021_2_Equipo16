@@ -68,5 +68,38 @@ namespace Test.Library
             
             Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
         }
+        /// <summary>
+        /// Test que sirve para ver el comportamiento del código al añadirle a una oferta una habilitación que no existe.
+        /// </summary>
+        [Test]
+        public void TestAgregarHabilitacionesMal()
+        {
+            Habilitaciones habilitacion = new Habilitaciones();
+            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil", habilitacion);
+            Oferta oferta = new Oferta("Guantes de nylon", "nylon", 20, "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
+
+            int expected = 1;
+            oferta.AddHabilitacion("soa");
+            oferta.AddHabilitacion("deuna");
+            Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
+        }
+        /// <summary>
+        /// Test que sirve para ver el comportamiento del código al intentar eliminar una habilitación
+        /// que no existe a una oferta.
+        /// </summary>
+        [Test]
+        public void TestRemoverHabilitacionesMal()
+        {
+            Habilitaciones habilitacion = new Habilitaciones();
+            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil", habilitacion);
+            Oferta oferta = new Oferta("Guantes de nylon", "nylon", 20, "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
+
+            oferta.AddHabilitacion("soa");
+            oferta.AddHabilitacion("apa");
+            oferta.RemoveHabilitacion("deuna");
+            int expected = 2;
+            
+            Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
+        }
     }
 }
