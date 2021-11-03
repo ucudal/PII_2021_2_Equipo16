@@ -71,6 +71,17 @@
             Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
+        <member name="M:Test.Library.EmpresaTests.TestAddHabilitacionesMal">
+            <summary>
+            Test que chequea que sucede si se agrega una habilitación que no existe a una empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestQuitarHabilitacionesMal">
+            <summary>
+            Test que chequea que sucede si se intenta remover una habilitación que no está en la lista
+            a una empresa.
+            </summary>
+        </member>
         <member name="T:Test.Library.GeneralTests">
             <summary>
             Clase de pruebas de TestGeneral.
