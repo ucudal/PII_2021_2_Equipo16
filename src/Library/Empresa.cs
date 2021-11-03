@@ -38,6 +38,7 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public List<Oferta> InteresadosEnOfertas { get => interesadosEnOfertas; set => interesadosEnOfertas = value; }
+        public List<Oferta> OfertasAceptadas { get => ofertasAceptadas; set => ofertasAceptadas = value; }
 
         /// <summary>
         /// Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -87,12 +88,21 @@ namespace ClassLibrary
         /// con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista
         /// de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
         /// </summary>
-        /// <param name="oferta">Oferta que se quiere aceptar.</param>
+        /// <param name="nombreOfertaParaAceptar">Oferta que se quiere aceptar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
-        public void AceptarOferta(Oferta oferta, Publicaciones publicaciones)
+        public void AceptarOferta(string nombreOfertaParaAceptar, Publicaciones publicaciones)
         {
-            publicaciones.OfertasPublicados.Remove(oferta);
-            ofertasAceptadas.Add(oferta);
+            Oferta ofertaEncontrada = null;
+            foreach (Oferta ofertaEnLista in publicaciones.OfertasPublicados)
+            {
+                if (ofertaEnLista.Nombre == nombreOfertaParaAceptar)
+                {
+                    ofertaEncontrada = ofertaEnLista;
+                    //publicaciones.OfertasPublicados.Remove(ofertaEnLista);
+                    ofertasAceptadas.Add(ofertaEnLista);
+                }
+            }
+            publicaciones.OfertasPublicados.Remove(ofertaEncontrada);
         }
 
         /// <summary>
