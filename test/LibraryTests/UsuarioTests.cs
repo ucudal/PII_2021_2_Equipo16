@@ -37,6 +37,7 @@ namespace Test.Library
         {
             Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("textil"));
             Assert.AreEqual("textil", usuario.Rubro.Nombre);
+
         }
     }       
 } 
