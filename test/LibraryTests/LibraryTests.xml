@@ -42,8 +42,8 @@
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion">
             <summary>
-            Este método permite evaluar lo que sucede cuando se ingresa un nombre de habilitacion que esta en la lista de habilitaciones.
-
+            Este método permite evaluar lo que sucede cuando se ingresa
+            un nombre de habilitacion que esta en la lista de habilitaciones.
             </summary>
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion2">
@@ -66,7 +66,9 @@
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestEliminarHabilitaciones">
             <summary>
-            Este test permite comprobar si se pueden eliminar habilitaciones de la lista para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
+            Este test permite comprobar si se pueden eliminar habilitaciones de la lista
+            para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
+            y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
@@ -80,8 +82,10 @@
         </member>
         <member name="M:Test.Library.LimpiadorCadenasTests.TestLimpiaCadena">
             <summary>
-            Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc. 
-            Necesitamos alguna forma de poder trabajar con esa cadena, por lo cual utilizamos el método LimpiaCadena de la Clase LimpiadorCadenas.
+            Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario
+            como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc. 
+            Necesitamos alguna forma de poder trabajar con esa cadena, por lo cual utilizamos
+            el método LimpiaCadena de la Clase LimpiadorCadenas.
             </summary>
         </member>
         <member name="M:Test.Library.LimpiadorCadenasTests.TestLimpiaCadena2">
@@ -93,17 +97,8 @@
             <summary>
             Este test permite validar el método LimpiaCadenaRespuesta de la clase LimpiadorCadenas.
             En los ejemplos anteriores teniamos pruebas para cuando se ingresaba solo una palabra como Nombre, rubro, etc.
-            Ahora con este método se permite evaluar acciones o respuestas del usuario para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
-            </summary>
-        </member>
-        <member name="T:Test.Library.PublicacionesTest">
-            <summary>
-            Esta clase contiene un Test para verificar que Publicaciones funcione correctamente.
-            </summary>
-        </member>
-        <member name="M:Test.Library.PublicacionesTest.TestPublicaciones">
-            <summary>
-            
+            Ahora con este método se permite evaluar acciones o respuestas del usuario. 
+            para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
             </summary>
         </member>
         <member name="T:Test.Library.RubroTest">

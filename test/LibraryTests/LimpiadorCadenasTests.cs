@@ -28,8 +28,7 @@ namespace Test.Library
         }
 
         /// <summary>
-        /// Este método de prueba permite comprobar que lo unico que se modifica aplicando el metodo LimpiaCadena
-        /// son los caracteres alfabeticos, que en el caso de contener numeros, los mismos continuan estando tal como se ingresaron.
+        /// Este método de prueba permite comprobar que lo unico que se modifica aplicando el metodo LimpiaCadena son los caracteres alfabeticos, que en el caso de contener numeros, los mismos continuan estando tal como se ingresaron.
         /// </summary>
         [Test]
         public void TestLimpiaCadena2()

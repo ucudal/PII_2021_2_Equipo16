@@ -36,7 +36,8 @@ namespace Test.Library
         public void TestearUsuarioRubro()
         {
             Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
-            Assert.AreEqual("Textil", usuario.Rubro.Nombre);
+            string expected = "Textil";
+            Assert.AreEqual(expected, usuario.Rubro.Nombre);
         }
     }       
 } 
