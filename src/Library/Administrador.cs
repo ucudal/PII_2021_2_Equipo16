@@ -13,7 +13,14 @@ namespace ClassLibrary
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         public Administrador(string nombre)
         {
-            this.Nombre = nombre;
+            if ( string.IsNullOrEmpty(nombre))
+            {
+                this.Nombre = "Jhon";
+            }
+            else 
+            {
+                this.Nombre = nombre;
+            }
         }
 
         /// <summary>

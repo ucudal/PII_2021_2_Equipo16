@@ -21,6 +21,11 @@
             Inicialmente la lista de empresas que tiene el administrador esta vacia, pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
             </summary>
         </member>
+        <member name="M:Test.Library.AdministradorTests.TestAdministradorFalso">
+            <summary>
+            Este test está diseñado para que de error, ya que se espera un nombre y no un string vacio.
+            </summary>
+        </member>
         <member name="T:Test.Library.EmprendedorTests">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -135,6 +140,11 @@
             <summary>
             Este test permite comprobar si se pueden eliminar habilitaciones de la lista para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
             Y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
+            </summary>
+        </member>
+        <member name="M:Test.Library.HabilitacionesTests.TestEliminarHabilitaciones1">
+            <summary>
+            Este test está diseñado para que de error, ya que rock no pertenece a la lista de habilitaciones. 
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
