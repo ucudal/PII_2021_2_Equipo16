@@ -1,3 +1,5 @@
+using System;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -25,7 +27,17 @@ namespace ClassLibrary
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
-            empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+            if (Logica.ListaNombreOfertas.Contains(nombre))
+            {
+                Console.WriteLine("Nombre usado, por favor cambielo para poder crear el producto");
+            }
+            else
+            {
+                empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+                Logica.ListaNombreOfertas.Add(nombre);
+                Console.WriteLine("Producto creado exitosamente");
+            }
+            
         }
 
         /// <summary>
@@ -36,6 +48,7 @@ namespace ClassLibrary
         public static void EliminarProducto(Empresa empresa, Oferta oferta)
         {
             Empresa.EliminarProducto(oferta, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+            Console.WriteLine("Producto eliminado exitosamente");
         }
 
         /// <summary>
