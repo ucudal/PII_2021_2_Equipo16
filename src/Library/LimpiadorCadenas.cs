@@ -6,7 +6,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase representa un limpiador de cadenas para permitir leer las cadenas correctamente.
     /// </summary>
-    public class LimpiadorCadena
+    public class LimpiadorCadenas
     {
         /// <summary>
         /// Este método sirve para limpiar las cadenas y permitir que no hayan errores de tipeo, 
@@ -48,7 +48,7 @@ namespace ClassLibrary
                 varCadena = cadena.Replace("ú", "u");
                 subRespuesta1.Add(varCadena.ToLower());
             }
-            respuesta = String.Join(" ",subRespuesta1);
+            respuesta = String.Join(" ", subRespuesta1);
             return respuesta;
         }
     }

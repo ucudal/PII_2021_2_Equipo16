@@ -3,7 +3,6 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-
 using System;
 using ClassLibrary;
 
@@ -19,8 +18,6 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-
         }
-
     }
 }

@@ -9,7 +9,7 @@ namespace ClassLibrary
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
-        private List<Oferta> OfertasCompradas = new List<Oferta>();
+        private List<Oferta> ofertasCompradas = new List<Oferta>();
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
@@ -33,10 +33,10 @@ namespace ClassLibrary
         }
         
         /// <summary>
-        /// Habilitaciones del emprendedor
+        /// Habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public Habilitaciones Habilitacion{get; set;}
+        public Habilitaciones Habilitacion{ get; set; }
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
@@ -88,17 +88,17 @@ namespace ClassLibrary
         public void CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
         {
             int dineroGastado = 0;
-            int ofertasCompradas = 0;
+            int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in OfertasCompradas)
+            foreach (Oferta oferta in ofertasCompradas)
             {
                 if(oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
-                ofertasCompradas++;
+                ofertasCompradas1++;
                 dineroGastado = dineroGastado + (oferta.Precio);
                 }
-            Console.WriteLine("Se han comprado " + ofertasCompradas + " ofertas, gastando un total de " + dineroGastado + "$");
+            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
             }
         }   
     }
