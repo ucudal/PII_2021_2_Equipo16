@@ -510,7 +510,7 @@
             Esta clase se encarga de la lógica relacionada a Empresa.
             </summary>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.AceptarInvitacion">
+        <member name="M:ClassLibrary.LogicaEmpresa.AceptarInvitacion(ClassLibrary.Empresa,System.String)">
             <summary>
             Acepta la invitación del administrador.
             </summary>
