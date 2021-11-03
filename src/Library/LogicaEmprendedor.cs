@@ -6,7 +6,7 @@ namespace ClassLibrary
     /// <remarks>
     /// Contiene un método para llamar a cada método de la clase Emprendedor.
     /// </remarks>
-    public class LogicaEmprendedor
+    public static class LogicaEmprendedor
     {
         /// <summary>
         /// Registro de usuario para ser emprendedor
@@ -55,7 +55,6 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
         /// <param name="nombreOferta">Una oferta.</param>
-        
         // Se hizo en equipo.
         public static void InteresadoEnOferta(Emprendedor emprendedor, string nombreOferta)
         {
@@ -74,8 +73,8 @@ namespace ClassLibrary
         /// Este método llama a CalcularOfertasCompradas de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        /// <param name="fechaInicio"></param>
-        /// <param name="fechaFinal"></param>
+        /// <param name="fechaInicio">Fecha inicio</param>
+        /// <param name="fechaFinal">Fecha final</param>
         public static int CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
             return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);

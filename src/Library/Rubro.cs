@@ -12,9 +12,10 @@ namespace ClassLibrary
         /// <summary>
         /// Recorre la lista de rubros y ve si contiene el nombre para agregarlo o no.
         /// </summary>
+        /// <param name="nombre">Nombre.</param>
         public Rubro(string nombre)
         {
-            if (RubrosList.Contains(nombre))
+            if (this.RubrosList.Contains(nombre))
             {
                 this.Nombre = nombre;
             }
@@ -25,7 +26,7 @@ namespace ClassLibrary
                 respuesta = LimpiadorCadenas.LimpiaCadena(respuesta);
                 if (respuesta == "si")
                 {
-                    RubrosList.Add(nombre);
+                    this.RubrosList.Add(nombre);
                     this.Nombre = nombre;
                 }
             }
@@ -42,7 +43,9 @@ namespace ClassLibrary
         /// </summary>
         /// <returns>Retorna una nueva lista llamada RubrosList de tipo string.</returns>
         public List<string> RubrosList = new List<string>()
-            {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
+            {
+                "textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"
+            };
         
         /// <summary>
         /// Añade un rubro a la lista, devuelve un string confirmando la acción.
@@ -50,17 +53,24 @@ namespace ClassLibrary
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void AddRubro(string rubro)
         {
-            RubrosList.Add(rubro);
-            Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
+            if (!this.RubrosList.Contains(rubro))
+            {
+                this.RubrosList.Add(rubro);
+                Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
+            }
+            else
+            {
+                Console.WriteLine($"El rubro '{rubro}' ya existe.");
+            }    
         }
-
+        
         /// <summary>
         /// Elimina un rubro de la lista, devuelve un string confirmando la acción.
         /// </summary>
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void RemoveRubro(string rubro)
         {
-            RubrosList.Remove(rubro);
+            this.RubrosList.Remove(rubro);
             Console.WriteLine($"Rubro '{rubro}' eliminado exitosamente.");
         }
 
@@ -70,10 +80,11 @@ namespace ClassLibrary
         public void GetRubrosList()
         {
             StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
-            foreach (string rubro in RubrosList)
+            foreach (string rubro in this.RubrosList)
             {
                 getRubrosList.Append($"- {rubro}.");   
             }
+            
             Console.WriteLine(getRubrosList.ToString());
         }
     }

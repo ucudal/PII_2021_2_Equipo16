@@ -12,10 +12,11 @@ namespace ClassLibrary
         private Publicaciones()
         {
         }
+
         private static Publicaciones instance;
         
         /// <summary>
-        /// Crea una instancia de Publicaciones.
+        /// Establece una instancia de Publicaciones.
         /// </summary>
         public static Publicaciones Instance
         {
@@ -25,6 +26,7 @@ namespace ClassLibrary
                 {
                     instance = new Publicaciones();
                 }
+                
                 return instance;
             }
         }
@@ -44,6 +46,7 @@ namespace ClassLibrary
             {
                 getOfertasPublicados.Append($"- {oferta.Nombre}.");   
             }
+            
             Console.WriteLine(getOfertasPublicados.ToString());
         }        
     }

@@ -34,18 +34,18 @@
             <param name="empresa">Recibe un objeto de tipo empresa como parametro.</param>
         </member>
         <member name="T:ClassLibrary.BuscadorMaterial">
-             <summary>
+            <summary>
             Esta clase representa un buscador por Material, que implementa la infertaz IBuscador.
-             </summary>
-             <remarks>
-             En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda
-             y dependiendo lo que quieras buscar se comporte de diferente forma.
-             Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar
-             y que las clases que implementen la interfaz, implemente ese método pero a nivel interno 
-             funcionando de forma diferente a las otras clases que lo implementan.
-             Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna 
-             la oferta que contenga lo buscado.
-             </remarks>
+            </summary>
+            <remarks>
+            En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda
+            y dependiendo lo que quieras buscar se comporte de diferente forma.
+            Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar
+            y que las clases que implementen la interfaz, implemente ese método pero a nivel interno 
+            funcionando de forma diferente a las otras clases que lo implementan.
+            Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna 
+            la oferta que contenga lo buscado.
+            </remarks>
         </member>
         <member name="M:ClassLibrary.BuscadorMaterial.Buscar(ClassLibrary.Publicaciones,System.String)">
             <summary>
@@ -140,7 +140,7 @@
         </member>
         <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
-            Especializaciones del emprendedor.
+            Obtiene o establece las Especializaciones del emprendedor.
             </summary>
             <value></value>
         </member>
@@ -165,8 +165,8 @@
             <summary>
             Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
             </summary>
-            <param name="fechaInicio"></param>
-            <param name="fechaFinal"></param>
+            <param name="fechaInicio">Fecha de inicio.</param>
+            <param name="fechaFinal">Fecha de final.</param>
         </member>
         <member name="T:ClassLibrary.Empresa">
             <summary>
@@ -183,6 +183,11 @@
             <param name="habilitacion">Habilitaciones de la empresa.</param>
             <returns></returns>
         </member>
+        <member name="F:ClassLibrary.Empresa.Habilitacion">
+            <summary>
+            Habilitaciones de la empresa.
+            </summary>
+        </member>
         <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
             Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
@@ -197,11 +202,10 @@
         </member>
         <member name="P:ClassLibrary.Empresa.OfertasAceptadas">
             <summary>
-            Lista de ofertasque la empresa Acepta(Cuando llega acuerdo a un emprendedor).
+            Obtiene o establece Ofertas de la lista de OfertasAceptadas.
             </summary>
-            <value>Oferta</value>
         </member>
-        <member name="M:ClassLibrary.Empresa.CrearProducto(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Empresa.CrearProducto(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String)">
             <summary>
             Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
             </summary>
@@ -261,13 +265,13 @@
         </member>
         <member name="F:ClassLibrary.Habilitaciones.ListaHabilitaciones">
             <summary>
-            Esta lista contiene un conjunto de habilitaciones predeterminadas
+            Esta lista contiene un conjunto de habilitaciones predeterminadas.
             </summary>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.#ctor">
             <summary>
-            Inicializa una instancia de habilitaciones
+            Inicializa una instancia de habilitaciones.
             </summary>
         </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
@@ -344,6 +348,7 @@
             <summary>
             Este método hace un print de la oferta.
             </summary>
+            <param name="oferta">Oferta.</param>
         </member>
         <member name="T:ClassLibrary.ITelegram">
             <summary>
@@ -396,25 +401,21 @@
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
-            <returns></returns>
         </member>
         <member name="F:ClassLibrary.Logica.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
-            <returns></returns>
         </member>
         <member name="F:ClassLibrary.Logica.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
-            <returns></returns>
         </member>
         <member name="F:ClassLibrary.Logica.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
-            <returns></returns>
         </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>
@@ -488,8 +489,8 @@
             Este método llama a CalcularOfertasCompradas de Emprendedor.
             </summary>
             <param name="emprendedor">Un emprendedor.</param>
-            <param name="fechaInicio"></param>
-            <param name="fechaFinal"></param>
+            <param name="fechaInicio">Fecha de inicio.</param>
+            <param name="fechaFinal">Fecha de final.</param>
         </member>
         <member name="T:ClassLibrary.LogicaEmpresa">
             <summary>
@@ -586,45 +587,38 @@
         </member>
         <member name="P:ClassLibrary.Oferta.Nombre">
             <summary>
-            Nombre de la oferta.
+            Obtiene o establece el nombre de la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.Material">
             <summary>
-            Material del producto a ofertar.
+            Obtiene o establece el Material del producto a ofertar.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.Precio">
             <summary>
-            Precio de la oferta.
+            Obtiene o establece el Precio de la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.Unidad">
             <summary>
-            Cantidad de unidades a ofertar.
+            Obtiene o establece la Cantidad de unidades a ofertar.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.Tags">
             <summary>
-            Tags de la oferta.
+            Obtiene o establece los Tags de la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.Id">
-             <summary>
-            ID única para cada oferta.
-             </summary>
-             <returns></returns>
+            <summary>
+            Obtiene o establece la ID única para cada oferta.
+            </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
             <summary>
-            Empresa que publica la oferta.
+            Obtiene o establece la Empresa que publica la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">
             <summary>
@@ -663,13 +657,11 @@
             <summary>
             Fecha en la que se publicó la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.Ubicacion">
             <summary>
-            Ubicación de la oferta.
+            Obtiene o establece la Ubicación de la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="T:ClassLibrary.Publicaciones">
             <summary>
@@ -678,7 +670,7 @@
         </member>
         <member name="P:ClassLibrary.Publicaciones.Instance">
             <summary>
-            Crea una instancia de Publicaciones.
+            Establece una instancia de Publicaciones.
             </summary>
         </member>
         <member name="F:ClassLibrary.Publicaciones.OfertasPublicados">
@@ -700,6 +692,7 @@
             <summary>
             Recorre la lista de rubros y ve si contiene el nombre para agregarlo o no.
             </summary>
+            <param name="nombre">Nombre.</param>
         </member>
         <member name="P:ClassLibrary.Rubro.Nombre">
             <summary>
@@ -745,19 +738,19 @@
         </member>
         <member name="P:ClassLibrary.Usuario.Nombre">
             <summary>
-            Obtiene un valor que indica el nombre del usuario.
+            Obtiene o establece un valor que indica el nombre del usuario.
             </summary>
             <value>Tipo string.</value>
         </member>
         <member name="P:ClassLibrary.Usuario.Ubicacion">
             <summary>
-            Obtiene un valor que indica la ubicacion del usuario.
+            Obtiene o establece el valor que indica la ubicación del usuario.
             </summary>
             <value>Tipo string.</value>
         </member>
         <member name="P:ClassLibrary.Usuario.Rubro">
             <summary>
-            Obtiene un valor con el rubro del usuario.
+            Obtiene o establece el valor con el rubro del usuario.
             </summary>
             <value>Tipo Rubro.</value>
         </member>

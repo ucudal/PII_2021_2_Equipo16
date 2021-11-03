@@ -7,15 +7,15 @@ namespace Test.Library
     /// Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
     /// </summary>
     [TestFixture]
-    public class UsuarioTest
+    public class UsuarioTests
     {       
         /// <summary>
         /// Testea el Nombre del Usuario para corroborar que la instancia fue creada correctamente.
         /// </summary>
         [Test]
-        public void TestearUsuarioNombre()
+          public void TestearUsuarioNombre()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
+            Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("textil"));
             Assert.AreEqual("Joaquin", usuario.Nombre);
         }
          
@@ -25,7 +25,7 @@ namespace Test.Library
         [Test]
         public void TestearUsuarioUbicacion()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
+            Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("textil"));
             Assert.AreEqual("Montevideo", usuario.Ubicacion);
         }
         
@@ -35,8 +35,9 @@ namespace Test.Library
         [Test]
         public void TestearUsuarioRubro()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
-            Assert.AreEqual("Textil", usuario.Rubro.Nombre);
+            Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("textil"));
+            Assert.AreEqual("textil", usuario.Rubro.Nombre);
+
         }
     }       
 } 

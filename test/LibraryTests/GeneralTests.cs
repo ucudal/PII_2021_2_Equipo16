@@ -34,21 +34,16 @@ namespace Test.Library
 
             // Quiero como emprendedor buscar bebidas.
             // Al buscar por tags, deberian aparecer 2 opciones.
-
             LogicaBuscadores.BuscarPorTags("bebidas");
 
             // Se espera que se impriman las 2 ofertas.
-
             // Quiero adquirir la oferta con nombre Coca-Cola ZERO.
-           
             LogicaEmprendedor.InteresadoEnOferta(emprendedor1, "Coca-cola ZERO");
 
             // Quiero como empresa saber si se interesaron en alguna de mis ofertas.
-
             int expectedInteresados = 1;
 
             // Quiero como empresa aceptar una oferta(Lo que se hace cuando se llega a un acuerdo con algun comprador).
-
             LogicaEmpresa.AceptarOferta(empresaConaprole, "Fiat 1");
 
             int expectedPublicaciones1 = 2;

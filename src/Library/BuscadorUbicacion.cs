@@ -31,6 +31,7 @@ namespace ClassLibrary
                     Logica.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
+            
             return ofertasEncontradas;      
         }
     }

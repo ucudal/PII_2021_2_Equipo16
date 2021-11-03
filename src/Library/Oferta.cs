@@ -37,9 +37,6 @@ namespace ClassLibrary
             this.ConstantesPuntuales = constantesPuntuales;
         }
 
-        
-        
-        
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
@@ -48,45 +45,38 @@ namespace ClassLibrary
         private Habilitaciones habilitacion = new Habilitaciones();
         
         /// <summary>
-        /// Nombre de la oferta.
+        /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        /// <value></value>
         public string Nombre { get; set; }
         
         /// <summary>
-        /// Material del producto a ofertar.
+        /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        /// <value></value>
         public string Material { get; set; }
         
         /// <summary>
-        /// Precio de la oferta.
+        /// Obtiene o establece el Precio de la oferta.
         /// </summary>
-        /// <value></value>
         public int Precio { get; set; }
         
         /// <summary>
-        /// Cantidad de unidades a ofertar.
+        /// Obtiene o establece la Cantidad de unidades a ofertar.
         /// </summary>
-        /// <value></value>
         public string Unidad { get; set; }
         
         /// <summary>
-        /// Tags de la oferta.
+        /// Obtiene o establece los Tags de la oferta.
         /// </summary>
-        /// <value></value>
-        public string Tags { get; set;}
+        public string Tags { get; set; }
         
         /// <summary>
-        ///ID única para cada oferta.
+        /// Obtiene o establece la ID única para cada oferta.
         /// </summary>
-        /// <returns></returns>
         public Guid Id { get; private set; }
 
         /// <summary>
-        /// Empresa que publica la oferta.
+        /// Obtiene o establece la Empresa que publica la oferta.
         /// </summary>
-        /// <value></value>
         public Empresa EmpresaCreadora { get; set; }
         
         /// <summary>
@@ -104,7 +94,10 @@ namespace ClassLibrary
         /// Lista de habilitaciones de la oferta.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesOferta {get => habilitacionesOferta;}
+        
+        public List<string> HabilitacionesOferta { get => this.habilitacionesOferta; }
+
+        
         
         /// <summary>
         /// Añade una habilitación a la oferta.
@@ -112,9 +105,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                habilitacionesOferta.Add(habilitacionBuscada);
+                this.habilitacionesOferta.Add(habilitacionBuscada);
             }
         }
         
@@ -124,7 +117,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a quitar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesOferta.Remove(habilitacion);
+            this.habilitacionesOferta.Remove(habilitacion);
         }
         
         /// <summary>
@@ -132,13 +125,12 @@ namespace ClassLibrary
         /// </summary>
         public void GetHabilitacionList()
         {
-            habilitacion.HabilitacionesDisponibles();
+            this.habilitacion.HabilitacionesDisponibles();
         }
         
         /// <summary>
         /// Fecha en la que se publicó la oferta.
         /// </summary>
-        /// <value></value>
         public DateTime FechaDePublicacion 
         {
             get
@@ -148,9 +140,8 @@ namespace ClassLibrary
         }
         
         /// <summary>
-        /// Ubicación de la oferta.
+        /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        /// <value></value>
         public string Ubicacion { get; set; }
     }
 }

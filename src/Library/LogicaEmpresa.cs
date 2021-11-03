@@ -3,7 +3,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de la lógica relacioanda a Empresa.
     /// </summary>
-    public class LogicaEmpresa
+    public static class LogicaEmpresa
     {
         /// <summary>
         /// Acepta la invitación del administrador.

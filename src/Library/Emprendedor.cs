@@ -18,6 +18,9 @@ namespace ClassLibrary
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         public List<string> HabilitacionesEmprendedor = new List<string>();
+        
+        private List<Oferta> ofertasCompradas = new List<Oferta>();
+        
         private string especializaciones;
 
         /// <summary>
@@ -41,14 +44,15 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public Habilitaciones Habilitacion = new Habilitaciones();
+        
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesDeEmprendedor { get => HabilitacionesEmprendedor;}
+        public List<string> HabilitacionesDeEmprendedor { get => this.HabilitacionesEmprendedor; }
         
         /// <summary>
-        /// Especializaciones del emprendedor.
+        /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
         /// <value></value>
         public string Especializaciones { get; set; }
@@ -59,9 +63,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitacion a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                HabilitacionesEmprendedor.Add(habilitacionBuscada);
+                this.HabilitacionesEmprendedor.Add(habilitacionBuscada);
             }
         }
 
@@ -71,7 +75,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            HabilitacionesEmprendedor.Remove(habilitacion);
+            this.HabilitacionesEmprendedor.Remove(habilitacion);
         }
         
         /// <summary>
@@ -79,7 +83,7 @@ namespace ClassLibrary
         /// </summary>
         public void GetHabilitacionList()
         {
-           Habilitacion.HabilitacionesDisponibles();
+           this.Habilitacion.HabilitacionesDisponibles();
         }
 
         /// <summary>
@@ -95,10 +99,10 @@ namespace ClassLibrary
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
             foreach (Oferta oferta in OfertasInteresado)
             {
-                if(oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
+                if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
                 ofertasCompradas1++;
-                dineroGastado = dineroGastado + (oferta.Precio);
+                dineroGastado = dineroGastado + oferta.Precio;
                 }
             }
             Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");

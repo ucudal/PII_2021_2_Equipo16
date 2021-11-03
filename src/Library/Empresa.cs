@@ -17,34 +17,37 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
         /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) 
+        : base(nombre, ubicacion, rubro)
         {
-            this.habilitacion = habilitacion;
+            this.Habilitacion = habilitacion;
         }
 
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-
-        private Habilitaciones habilitacion = new Habilitaciones();
+        
+        /// <summary>
+        /// Habilitaciones de la empresa.
+        /// </summary>
+        public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
         /// </summary>
-        /// <value>string</value>
-        public List<string> HabilitacionesEmpresa { get => habilitacionesEmpresa;}
+        /// <value></value>
+        public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
 
         /// <summary>
         /// Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
         /// </summary>
-        /// <value>Oferta</value>
-        public List<Oferta> InteresadosEnOfertas { get => interesadosEnOfertas; set => interesadosEnOfertas = value; }
-
+        /// <value></value>
+        public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
+        
         /// <summary>
-        /// Lista de ofertasque la empresa Acepta(Cuando llega acuerdo a un emprendedor).
+        /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
-        /// <value>Oferta</value>
-        public List<Oferta> OfertasAceptadas { get => ofertasAceptadas; set => ofertasAceptadas = value; }
+        public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
 
         /// <summary>
         /// Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -105,8 +108,7 @@ namespace ClassLibrary
                 if (ofertaEnLista.Nombre == nombreOfertaParaAceptar)
                 {
                     ofertaEncontrada = ofertaEnLista;
-                    //publicaciones.OfertasPublicados.Remove(ofertaEnLista);
-                    ofertasAceptadas.Add(ofertaEnLista);
+                    this.ofertasAceptadas.Add(ofertaEnLista);
                 }
             }
             publicaciones.OfertasPublicados.Remove(ofertaEncontrada);
@@ -122,7 +124,7 @@ namespace ClassLibrary
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in ofertasAceptadas)
+            foreach (Oferta oferta in this.ofertasAceptadas)
             {
                 if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
@@ -132,7 +134,6 @@ namespace ClassLibrary
             Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
             return cantidadVendida;
         }
-
         //Habilitaciones que tengo yo a nivel de empresa
 
         /// <summary>
@@ -141,9 +142,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                habilitacionesEmpresa.Add(habilitacionBuscada);
+                this.habilitacionesEmpresa.Add(habilitacionBuscada);
             }
         }
         
@@ -153,7 +154,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a eliminar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesEmpresa.Remove(habilitacion);
+            this.habilitacionesEmpresa.Remove(habilitacion);
         }
 
         /// <summary>
@@ -161,7 +162,7 @@ namespace ClassLibrary
         /// </summary>
         public void GetHabilitacionList()
         {
-            habilitacion.HabilitacionesDisponibles();
+            this.Habilitacion.HabilitacionesDisponibles();
         }
     }
 }

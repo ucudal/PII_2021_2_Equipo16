@@ -16,4 +16,3 @@ namespace ClassLibrary
         List<Oferta> Buscar(Publicaciones publicaciones, string busqueda);
     }
 }
-

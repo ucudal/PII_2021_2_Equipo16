@@ -5,7 +5,7 @@ namespace ClassLibrary
     /// <summary>
     /// Clase buscador por tag, que implementa la interfaz IBuscador.
     /// </summary>
-    public class BuscadorTags  : IBuscador
+    public class BuscadorTags : IBuscador
     {
         /// <summary>
         /// Busca ofertas en Publicaciones según los tags de la oferta.
@@ -14,7 +14,8 @@ namespace ClassLibrary
         /// <param name="busqueda">Recibe un parametro de tipo string con el nombre de "busqueda".</param>
         /// <returns>Retorna las ofertas encontradas por tag, mediante una lista de tipo Oferta.</returns>
         public List<Oferta> Buscar(Publicaciones publicaciones, string busqueda)
-        {   List<Oferta> ofertasEncontradas = new List<Oferta>();
+        {   
+            List<Oferta> ofertasEncontradas = new List<Oferta>();
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
                 if (busqueda.Equals(oferta.Tags))
@@ -23,6 +24,7 @@ namespace ClassLibrary
                     Logica.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
+            
             return ofertasEncontradas;
         }
     }  
