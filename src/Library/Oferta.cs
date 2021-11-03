@@ -78,7 +78,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene una lista de las habilitaciones que requiere el producto.
         /// </summary>
-        public List<string> HabilitacionesOferta { get => habilitacionesOferta;}
+        public List<string> HabilitacionesOferta { get => this.habilitacionesOferta; }
 
         private Habilitaciones habilitacion = new Habilitaciones();
         
@@ -88,9 +88,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                habilitacionesOferta.Add(habilitacionBuscada);
+                this.habilitacionesOferta.Add(habilitacionBuscada);
             }
         }
         
@@ -100,7 +100,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a quitar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesOferta.Remove(habilitacion);
+            this.habilitacionesOferta.Remove(habilitacion);
         }
         
         /// <summary>
@@ -108,7 +108,7 @@ namespace ClassLibrary
         /// </summary>
         public void GetHabilitacionList()
         {
-            habilitacion.HabilitacionesDisponibles();
+            this.habilitacion.HabilitacionesDisponibles();
         }
         
         /// <summary>

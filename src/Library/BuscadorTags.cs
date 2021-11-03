@@ -5,7 +5,7 @@ namespace ClassLibrary
     /// <summary>
     /// Clase buscador por tag, que implementa la interfaz IBuscador.
     /// </summary>
-    public class BuscadorTags  : IBuscador
+    public class BuscadorTags : IBuscador
     {
         /// <summary>
         /// Busca ofertas en Publicaciones según los tags de la oferta.
