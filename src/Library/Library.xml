@@ -685,7 +685,7 @@
         </member>
         <member name="M:ClassLibrary.Rubro.RemoveRubro(System.String)">
             <summary>
-            Elimina un rubro de la lista, devuelve un string confirmando la acción.	
+            Elimina un rubro de la lista, devuelve un string confirmando la acción.
             </summary>
             <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         </member>
