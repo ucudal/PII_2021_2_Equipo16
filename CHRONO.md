@@ -3,6 +3,12 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+3/11/21 - Joaquín Pérez
+Correción de los errores en Test de diversas clases.
+Optimización del código Rubro, para pasar un rubro como string.
+Optimización del código de la clase Habilitaciones.cs.
+Creación de nuevos métodos para Rubro.cs , Oferta.cs entre otras clases.
+
 3/11/21 - Juan Pérez    
 Modificación de los comentarios xml.
 Agregue las UML para esta entrega.
