@@ -119,8 +119,6 @@
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
         </member>
-<<<<<<< HEAD
-=======
         <member name="T:Test.Library.TestsEmprendedor">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -131,7 +129,6 @@
             Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
             </summary>
         </member>
->>>>>>> master
         <member name="T:Test.Library.TestsOferta">
             <summary>
             Esta clase permite realizar los tests de la clase Oferta.
