@@ -17,7 +17,7 @@ namespace Test.Library
         [Test]
         public void TestHabilitacion()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
             
             string expected = "Apa";
             
@@ -31,7 +31,7 @@ namespace Test.Library
         [Test]
         public void TestHabilitacion2()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apar");
+            Habilitaciones habilitacion = new Habilitaciones();
             
             string expected = "Apar";
             
@@ -44,7 +44,7 @@ namespace Test.Library
         [Test]
         public void TestHabilitacionDisponible()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
             
             string expected = "1- iso 9009.\n2- apa.\n3- soa.\n4- unit.\n5- ieee.";
             
@@ -60,7 +60,7 @@ namespace Test.Library
         [Test]
         public void TestAgregarHabilitaciones()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
             
             int expected = 6;
             habilitacion.AddHabilitacion("brutal");
@@ -75,7 +75,7 @@ namespace Test.Library
         [Test]
         public void TestEliminarHabilitaciones()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
             
             int expected = 4;
             habilitacion.RemoveHabilitacion("apa");

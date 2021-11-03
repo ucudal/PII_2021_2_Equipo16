@@ -27,7 +27,7 @@ namespace ClassLibrary
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
 
-        private Habilitaciones habilitacion{get;set;}
+        private Habilitaciones habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtine una lista que indica las habiltiaciones que tiene la Empresa.

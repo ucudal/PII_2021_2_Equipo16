@@ -21,9 +21,9 @@ namespace ClassLibrary
         /// <summary>
         /// Inicializa una instancia de habilitaciones
         /// </summary>
-        public Habilitaciones(string nombre)
+        public Habilitaciones()
         {
-            if (ListaHabilitaciones.Contains(nombre))
+           /* if (ListaHabilitaciones.Contains(nombre))
             {
                 this.Nombre = nombre;
             }
@@ -38,7 +38,7 @@ namespace ClassLibrary
                     Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
                     this.Nombre = nombre;
                 }
-            }
+            }*/
         }
 
         /// <summary>

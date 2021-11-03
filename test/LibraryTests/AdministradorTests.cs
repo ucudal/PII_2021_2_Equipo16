@@ -35,7 +35,7 @@ namespace Test.Library
         public void TestInvitar()
         {
             Administrador admin = new Administrador("Admin");
-            Empresa empresa = new Empresa("royal", "calle 1", new Rubro("textil"), new Habilitaciones("apa"));
+            Empresa empresa = new Empresa("royal", "calle 1", new Rubro("textil"), new Habilitaciones());
             admin.InvitarEmpresa(empresa);
             int expected = 1;
             Assert.AreEqual(expected, admin.Empresas.Count);

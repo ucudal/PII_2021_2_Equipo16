@@ -61,7 +61,7 @@ namespace ClassLibrary
         /// </summary>
         public string interesado;
         
-        private Habilitaciones habilitacion{get;set;}
+        private Habilitaciones habilitacion = new Habilitaciones();
         
         /// <summary>
         /// Nombre de la oferta.

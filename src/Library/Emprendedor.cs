@@ -36,7 +36,7 @@ namespace ClassLibrary
         /// Habilitaciones del emprendedor
         /// </summary>
         /// <value></value>
-        public Habilitaciones Habilitacion{get; set;}
+        public Habilitaciones Habilitacion = new Habilitaciones();
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
