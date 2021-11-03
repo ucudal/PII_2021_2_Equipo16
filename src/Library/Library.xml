@@ -447,7 +447,7 @@
             </summary>
             <param name="emprendedor">Un emprendedor.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,System.String)">
             <summary>
             Este método llama a InteresadoEnOferta de Emprendedor.
             </summary>
@@ -531,6 +531,11 @@
             Esta clase representa una oferta.
             </summary>
         </member>
+        <member name="F:ClassLibrary.Oferta.habilitacionesOferta">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una instancia de Oferta.
@@ -548,7 +553,7 @@
             Booleano, false si no hay interesado en la oferta, true si lo hay.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Oferta.interesado">
+        <member name="P:ClassLibrary.Oferta.interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>

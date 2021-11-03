@@ -47,9 +47,17 @@ namespace ClassLibrary
             {
                 if (true)
                 {
-                    EmpresaCreadora.InteresadosEnOfertas.Add(this);
-                    return true;
+                    if (EmpresaCreadora.InteresadosEnOfertas.Contains(this))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        EmpresaCreadora.InteresadosEnOfertas.Add(this);
+                        return true;
+                    }
                 }
+                
             }
             set
             {
@@ -59,7 +67,7 @@ namespace ClassLibrary
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public string interesado;
+        public string interesado{ get; set; }
         
         private Habilitaciones habilitacion{get;set;}
         

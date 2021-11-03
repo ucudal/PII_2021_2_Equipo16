@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         /// <param name="emprendedor">Un emprendedor.</param>
-        public void AddHabilitacion(Emprendedor emprendedor, string habilitacionBuscada)
+        public static void AddHabilitacion(Emprendedor emprendedor, string habilitacionBuscada)
         {
             emprendedor.AddHabilitacion(habilitacionBuscada);
         }
@@ -23,7 +23,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="habilitacion">Nombre de la habilitación a remover.</param>
         /// <param name="emprendedor">Un emprendedor.</param>
-        public void RemoveHabilitacion(Emprendedor emprendedor, string habilitacion)
+        public static void RemoveHabilitacion(Emprendedor emprendedor, string habilitacion)
         {
             emprendedor.RemoveHabilitacion(habilitacion);
         }
@@ -32,7 +32,7 @@ namespace ClassLibrary
         /// Este método llama a GetHabilitacionList de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        public void GetHabilitacionList(Emprendedor emprendedor)
+        public static void GetHabilitacionList(Emprendedor emprendedor)
         {
             emprendedor.GetHabilitacionList();
         }
@@ -44,10 +44,16 @@ namespace ClassLibrary
         /// <param name="oferta">Una oferta.</param>
         
         // Se hizo en equipo.
-        public void InteresadoEnOferta(Emprendedor emprendedor, Oferta oferta)
+        public static void InteresadoEnOferta(Emprendedor emprendedor, string nombreOferta)
         {
-            oferta.interesado = emprendedor.Nombre;
-            oferta.HayInteresado = true;
+            foreach (Oferta item in Logica.PublicacionesA.OfertasPublicados)
+            {
+               if (item.Nombre == nombreOferta)
+               {
+                    item.interesado = emprendedor.Nombre;
+                    item.HayInteresado = true;
+               } 
+            }
         }
 
         /// <summary>
@@ -56,7 +62,7 @@ namespace ClassLibrary
         /// <param name="emprendedor">Un emprendedor.</param>
         /// <param name="fechaInicio"></param>
         /// <param name="fechaFinal"></param>
-        public void CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
+        public static void CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
             emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
         }
