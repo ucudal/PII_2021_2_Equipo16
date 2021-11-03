@@ -34,5 +34,17 @@ namespace Test.Library
             int expected = 1;
             Assert.AreEqual(expected, admin.Empresas.Count);
         }
+
+        /// <summary>
+        /// Este test está diseñado para que de error, ya que se espera un nombre y no un string vacio.
+        /// Esto da por defecto el nombre Jhon.
+        /// </summary>
+        [Test]
+        public void TestAdministradorFalso()
+        {
+            Administrador admin = new Administrador("");
+            string expected = "Jhon";
+            Assert.AreEqual(expected, admin.Nombre);
+        }
     }
 }
