@@ -10,6 +10,8 @@ namespace ClassLibrary
         /// <summary>
         /// Acepta la invitación del administrador.
         /// </summary>
+        /// <param name="empresa">Empresa.</param>
+        /// <param name="nombreEmpresa">Nombre de la Empresa.</param>
         public static void AceptarInvitacion(Empresa empresa, string nombreEmpresa)
         {
             empresa.AceptarInvitacion(nombreEmpresa);
