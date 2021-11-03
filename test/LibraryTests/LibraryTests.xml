@@ -22,6 +22,26 @@
             pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
             </summary>
         </member>
+        <member name="T:Test.Library.EmpresaTests">
+            <summary>
+            Esta clase permite realizar los tests de la clase Empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.EmpresaTest">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestAddHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestQuitarHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
         <member name="T:Test.Library.GeneralTests">
             <summary>
             Clase de pruebas de TestGeneral.
@@ -109,27 +129,27 @@
         </member>
         <member name="M:Test.Library.PublicacionesTest.TestPublicaciones">
             <summary>
-
+            
             </summary>
         </member>
-        <member name="T:Test.Library.RubroTest">
+        <member name="T:Test.Library.RubroTests">
             <summary>
             Clase de pruebas de RubroTest.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTest.TestAgregarRubro">
+        <member name="M:Test.Library.RubroTests.TestAgregarRubro">
             <summary>
             En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
             Para esto vamos a  crear un rubro nuevo  y verificar mediante el largo de la lista si se agrego correctamente.
             Al ser nuevo se agregara a la lista , si ya está en la misma el mismo no se agregará.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTest.TestAgregarRubroRepetido">
+        <member name="M:Test.Library.RubroTests.TestAgregarRubroRepetido">
             <summary>
             Test para comprobar que no se agregue a la lista un  rubro repetido.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTest.TestEliminarRubro">
+        <member name="M:Test.Library.RubroTests.TestEliminarRubro">
             <summary>
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
@@ -174,22 +194,22 @@
             Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
-        <member name="T:Test.Library.UsuarioTest">
+        <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
             </summary>
         </member>
-        <member name="M:Test.Library.UsuarioTest.TestearUsuarioNombre">
+        <member name="M:Test.Library.UsuarioTests.TestearUsuarioNombre">
             <summary>
             Testea el Nombre del Usuario para corroborar que la instancia fue creada correctamente.
             </summary>
         </member>
-        <member name="M:Test.Library.UsuarioTest.TestearUsuarioUbicacion">
+        <member name="M:Test.Library.UsuarioTests.TestearUsuarioUbicacion">
             <summary>
             Test para verificar que el usuario se haya creado de la forma correcta.
             </summary>
         </member>
-        <member name="M:Test.Library.UsuarioTest.TestearUsuarioRubro">
+        <member name="M:Test.Library.UsuarioTests.TestearUsuarioRubro">
             <summary>
              Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
             </summary>

@@ -19,14 +19,17 @@ namespace ClassLibrary
         /// <returns></returns>
         public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
         {
-            this.habilitacion = habilitacion;
+            this.Habilitacion = habilitacion;
         }
 
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-
-        private Habilitaciones habilitacion = new Habilitaciones();
+        
+        /// <summary>
+        /// Habilitaciones de la empresa.
+        /// </summary>
+        public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
@@ -134,7 +137,7 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
                 habilitacionesEmpresa.Add(habilitacionBuscada);
             }
@@ -154,7 +157,7 @@ namespace ClassLibrary
         /// </summary>
         public void GetHabilitacionList()
         {
-            habilitacion.HabilitacionesDisponibles();
+            Habilitacion.HabilitacionesDisponibles();
         }
     }
 }
