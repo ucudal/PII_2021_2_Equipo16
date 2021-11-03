@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre.</param>
         public Rubro(string nombre)
         {
-            if (RubrosList.Contains(nombre))
+            if (this.RubrosList.Contains(nombre))
             {
                 this.Nombre = nombre;
             }
@@ -26,7 +26,7 @@ namespace ClassLibrary
                 respuesta = LimpiadorCadenas.LimpiaCadena(respuesta);
                 if (respuesta == "si")
                 {
-                    RubrosList.Add(nombre);
+                    this.RubrosList.Add(nombre);
                     this.Nombre = nombre;
                 }
             }
@@ -53,9 +53,9 @@ namespace ClassLibrary
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void AddRubro(string rubro)
         {
-            if (!(RubrosList.Contains(rubro)))
+            if (!this.RubrosList.Contains(rubro))
             {
-                RubrosList.Add(rubro);
+                this.RubrosList.Add(rubro);
                 Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
             }
             else
@@ -63,13 +63,14 @@ namespace ClassLibrary
                 Console.WriteLine($"El rubro '{rubro}' ya existe.");
             }    
         }
+        
         /// <summary>
         /// Elimina un rubro de la lista, devuelve un string confirmando la acción.
         /// </summary>
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void RemoveRubro(string rubro)
         {
-            RubrosList.Remove(rubro);
+            this.RubrosList.Remove(rubro);
             Console.WriteLine($"Rubro '{rubro}' eliminado exitosamente.");
         }
 
@@ -79,7 +80,7 @@ namespace ClassLibrary
         public void GetRubrosList()
         {
             StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
-            foreach (string rubro in RubrosList)
+            foreach (string rubro in this.RubrosList)
             {
                 getRubrosList.Append($"- {rubro}.");   
             }

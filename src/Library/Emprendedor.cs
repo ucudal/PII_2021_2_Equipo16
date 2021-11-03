@@ -9,12 +9,12 @@ namespace ClassLibrary
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
-        private List<Oferta> ofertasCompradas = new List<Oferta>();
-        
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         public List<string> HabilitacionesEmprendedor = new List<string>();
+        
+        private List<Oferta> ofertasCompradas = new List<Oferta>();
         
         private string especializaciones;
 
@@ -44,7 +44,7 @@ namespace ClassLibrary
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesDeEmprendedor { get => HabilitacionesEmprendedor; }
+        public List<string> HabilitacionesDeEmprendedor { get => this.HabilitacionesEmprendedor; }
         
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
@@ -61,9 +61,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitacion a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                HabilitacionesEmprendedor.Add(habilitacionBuscada);
+                this.HabilitacionesEmprendedor.Add(habilitacionBuscada);
             }
         }
 
@@ -73,7 +73,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            HabilitacionesEmprendedor.Remove(habilitacion);
+            this.HabilitacionesEmprendedor.Remove(habilitacion);
         }
         
         /// <summary>
@@ -81,7 +81,7 @@ namespace ClassLibrary
         /// </summary>
         public void GetHabilitacionList()
         {
-           Habilitacion.HabilitacionesDisponibles();
+           this.Habilitacion.HabilitacionesDisponibles();
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace ClassLibrary
             int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in ofertasCompradas)
+            foreach (Oferta oferta in this.ofertasCompradas)
             {
                 if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {

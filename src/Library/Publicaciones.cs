@@ -12,6 +12,7 @@ namespace ClassLibrary
         private Publicaciones()
         {
         }
+
         private static Publicaciones instance;
         
         /// <summary>
@@ -25,6 +26,7 @@ namespace ClassLibrary
                 {
                     instance = new Publicaciones();
                 }
+                
                 return instance;
             }
         }
@@ -44,6 +46,7 @@ namespace ClassLibrary
             {
                 getOfertasPublicados.Append($"- {oferta.Nombre}.");   
             }
+            
             Console.WriteLine(getOfertasPublicados.ToString());
         }        
     }

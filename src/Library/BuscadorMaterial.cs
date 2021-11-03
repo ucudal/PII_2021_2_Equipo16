@@ -35,7 +35,7 @@ namespace ClassLibrary
                 }
             }
             
-            return ofertasEncontradas;
+            return this.ofertasEncontradas;
         } 
     }
 }
