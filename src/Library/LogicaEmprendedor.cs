@@ -9,6 +9,19 @@ namespace ClassLibrary
     public static class LogicaEmprendedor
     {
         /// <summary>
+        /// Registro de usuario para ser emprendedor
+        /// </summary>
+        /// <param name="nombre">Nombre del emprendedor</param>
+        /// <param name="ubicacion">Ubicacion del emprendedor</param>
+        /// <param name="rubro">Rubro del emprendedor</param>
+        /// <param name="habilitacion">Habilitacion</param>
+        /// <param name="especializaciones">Especializaciones del emprendedor</param>
+        public static void RegistroEmprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
+        {
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, habilitacion, especializaciones);
+        }
+
+        /// <summary>
         /// Este método se encarga de llamar a AddHabilitación de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
@@ -49,7 +62,8 @@ namespace ClassLibrary
             {
                if (item.Nombre == nombreOferta)
                {
-                    item.Interesado = emprendedor.Nombre;
+                    emprendedor.OfertasInteresado.Add(item);
+                    item.interesado.Add(emprendedor.Nombre);
                     item.EmpresaCreadora.InteresadosEnOfertas.Add(item); //agregado para solucionar test
                } 
             }
@@ -59,11 +73,11 @@ namespace ClassLibrary
         /// Este método llama a CalcularOfertasCompradas de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        /// <param name="fechaInicio">Fecha de inicio.</param>
-        /// <param name="fechaFinal">Fecha de final.</param>
-        public static void CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
+        /// <param name="fechaInicio">Fecha inicio</param>
+        /// <param name="fechaFinal">Fecha final</param>
+        public static int CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
-            emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+            return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
         }
     }
 }

@@ -10,6 +10,11 @@ namespace ClassLibrary
     public class Emprendedor : Usuario, IHabilitaciones
     {
         /// <summary>
+        /// Ofertas en las que se interesa el emprendedor
+        /// </summary>
+        /// <returns></returns>
+        public List<Oferta> OfertasInteresado = new List<Oferta>();
+        /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         public List<string> HabilitacionesEmprendedor = new List<string>();
@@ -51,9 +56,6 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Especializaciones { get; set; }
-        
-        private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        // Por Creator.
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -87,24 +89,24 @@ namespace ClassLibrary
         /// <summary>
         /// Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
         /// </summary>
-        /// <param name="fechaInicio">Fecha de inicio.</param>
-        /// <param name="fechaFinal">Fecha de final.</param>
-        public void CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaFinal"></param>
+        public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
         {
             int dineroGastado = 0;
             int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in this.ofertasCompradas)
+            foreach (Oferta oferta in OfertasInteresado)
             {
                 if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
                 ofertasCompradas1++;
                 dineroGastado = dineroGastado + oferta.Precio;
                 }
-                
-                Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
             }
+            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
+            return ofertasCompradas1;
         }   
     }
 }
