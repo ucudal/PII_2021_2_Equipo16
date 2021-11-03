@@ -9,7 +9,6 @@ namespace ClassLibrary
     /// </summary>
     public class Empresa: Usuario, IHabilitaciones
     {
-        
         /// <summary>
         /// Inicializa una instancia de Empresa.
         /// </summary>
@@ -18,7 +17,7 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
         /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion):base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
         {
             this.habilitacion = habilitacion;
         }
@@ -30,22 +29,16 @@ namespace ClassLibrary
         private Habilitaciones habilitacion = new Habilitaciones();
 
         /// <summary>
-        /// Obtine una lista que indica las habiltiaciones que tiene la Empresa.
+        /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
         /// </summary>
         /// <value></value>
         public List<string> HabilitacionesEmpresa { get => habilitacionesEmpresa;}
 
         /// <summary>
-        /// Obtine una lista que indica los interesados en oferas que tiene la Empresa.
+        /// Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
         /// </summary>
         /// <value></value>
         public List<Oferta> InteresadosEnOfertas { get => interesadosEnOfertas; set => interesadosEnOfertas = value; }
-
-
-
-
-
-
 
         /// <summary>
         /// Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -57,8 +50,6 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad de la oferta.</param>
         /// <param name="tags">Tags de la oferta (palabras claves).</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
-
-
         public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
             bool habilitacionesAgregadas = false;
@@ -103,7 +94,6 @@ namespace ClassLibrary
         {
             publicaciones.OfertasPublicados.Remove(oferta);
             ofertasAceptadas.Add(oferta);
-        
         }
 
         /// <summary>

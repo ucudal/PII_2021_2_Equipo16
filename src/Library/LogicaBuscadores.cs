@@ -8,27 +8,27 @@ namespace ClassLibrary
         /// <summary>
         /// Llama al método Buscar para realizar una búsqueda por Material.
         /// </summary>
-        public void BuscarPorMaterial(string busqueda)
+        public static void BuscarPorMaterial(string busqueda)
         {
-            Logica.buscadorMaterial.Buscar(Logica.PublicacionesA, busqueda);
+            Logica.BuscadorMaterial.Buscar(Logica.PublicacionesA, busqueda);
         }
         
         /// <summary>
         /// Llama al método Buscar para realizar una búsqueda por Tags.
         /// </summary>
         /// <param name="busqueda"></param>
-        public void BuscarPorTags(string busqueda)
+        public static void BuscarPorTags(string busqueda)
         {
-            Logica.buscadorTags.Buscar(Logica.PublicacionesA, busqueda);
+            Logica.BuscadorTags.Buscar(Logica.PublicacionesA, busqueda);
         }
 
         /// <summary>
         /// Llama al método Buscar para realizar una búsqueda por Ubicación.
         /// </summary>
         /// <param name="busqueda"></param>
-        public void BuscarPorUbicacion(string busqueda)
+        public static void BuscarPorUbicacion(string busqueda)
         {
-            Logica.buscadorUbicacion.Buscar(Logica.PublicacionesA, busqueda);
+            Logica.BuscadorUbicacion.Buscar(Logica.PublicacionesA, busqueda);
         }
     }
 }

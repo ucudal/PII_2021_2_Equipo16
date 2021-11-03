@@ -1,18 +1,18 @@
-using NUnit.Framework;
 using ClassLibrary;
+using NUnit.Framework;
 
 namespace Test.Library
 {
     /// <summary>
-    /// Esta clase permite realizar los test de la clase Habilitaciones
+    /// Esta clase permite realizar los test de la clase Habilitaciones.
     /// Los métodos de la clase Habilitaciones son testeados uno por uno.
     /// </summary>
-     [TestFixture]
+    [TestFixture]
     public class HabilitacionesTests
     {
         /// <summary>
         /// Este método permite evaluar lo que sucede cuando se ingresa
-        /// un nombre de habilitacion que esta en la lista de habilitaciones
+        /// un nombre de habilitacion que esta en la lista de habilitaciones.
         /// </summary>
         [Test]
         public void TestHabilitacion()
@@ -20,13 +20,11 @@ namespace Test.Library
             Habilitaciones habilitacion = new Habilitaciones();
             
             string expected = "Apa";
-            
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
 
         /// <summary>
-        /// Este metodo permite evaluar lo que sucede cuando el nombre 
-        /// de la habilitacion no esta en la lista de habilitaciones.
+        /// Este metodo permite evaluar lo que sucede cuando el nombre de la habilitacion no esta en la lista de habilitaciones.
         /// </summary>
         [Test]
         public void TestHabilitacion2()
@@ -34,12 +32,11 @@ namespace Test.Library
             Habilitaciones habilitacion = new Habilitaciones();
             
             string expected = "Apar";
-            
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
 
         /// <summary>
-        /// Este método de prueba nos permite ver la lista de habilitaciones que existen
+        /// Este método de prueba nos permite ver la lista de habilitaciones que existen.
         /// </summary>
         [Test]
         public void TestHabilitacionDisponible()
@@ -47,7 +44,6 @@ namespace Test.Library
             Habilitaciones habilitacion = new Habilitaciones();
             
             string expected = "1- iso 9009.\n2- apa.\n3- soa.\n4- unit.\n5- ieee.";
-            
             Assert.AreEqual(expected, habilitacion.HabilitacionesDisponibles());
         }
 
@@ -69,8 +65,8 @@ namespace Test.Library
 
         /// <summary>
         /// Este test permite comprobar si se pueden eliminar habilitaciones de la lista
-        /// para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista
-        /// y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos
+        /// para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
+        /// y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
         /// </summary>
         [Test]
         public void TestEliminarHabilitaciones()

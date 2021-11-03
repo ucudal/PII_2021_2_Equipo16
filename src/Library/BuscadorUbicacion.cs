@@ -28,7 +28,7 @@ namespace ClassLibrary
                 if (busqueda == oferta.Ubicacion)
                 {
                     ofertasEncontradas.Add(oferta);
-                    Logica.printerConsola.ofertaPrinter(oferta);
+                    Logica.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
             return ofertasEncontradas;      

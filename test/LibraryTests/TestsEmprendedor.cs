@@ -46,7 +46,7 @@ namespace Test.Library
             int expected = 1;
             
             Juancho.AddHabilitacion("soa");
-            Assert.AreEqual(expected, Juancho.habilitacionesEmprendedor.Count);
+            Assert.AreEqual(expected, Juancho.HabilitacionesEmprendedor.Count);
 
         }
         /// <summary>
@@ -64,7 +64,7 @@ namespace Test.Library
             Juancho.AddHabilitacion("soa");
             Juancho.AddHabilitacion("soa");
             Juancho.RemoveHabilitacion("soa");
-            Assert.AreEqual(expected, Juancho.habilitacionesEmprendedor.Count);
+            Assert.AreEqual(expected, Juancho.HabilitacionesEmprendedor.Count);
         }
     }
 }

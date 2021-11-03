@@ -1,5 +1,5 @@
-using NUnit.Framework;
 using ClassLibrary;
+using NUnit.Framework;
 
 namespace Test.Library
 {
@@ -35,7 +35,6 @@ namespace Test.Library
             Assert.AreEqual(expected5, oferta.Tags);
             Assert.AreEqual(expected6, oferta.Ubicacion);
             Assert.AreEqual(expected7, oferta.EmpresaCreadora.Nombre);
-
         }
 
         /// <summary>
@@ -71,7 +70,6 @@ namespace Test.Library
             int expected = 1;
             
             Assert.AreEqual(expected, oferta.habilitacionesOferta.Count);
-
         }
     }
 }

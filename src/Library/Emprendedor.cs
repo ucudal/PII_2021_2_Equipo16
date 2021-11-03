@@ -9,11 +9,11 @@ namespace ClassLibrary
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
-        private List<Oferta> OfertasCompradas = new List<Oferta>();
+        private List<Oferta> ofertasCompradas = new List<Oferta>();
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<string> habilitacionesEmprendedor = new List<string>();
+        public List<string> HabilitacionesEmprendedor = new List<string>();
         private string especializaciones;
 
         /// <summary>
@@ -26,14 +26,14 @@ namespace ClassLibrary
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         /// <returns></returns>
         public Emprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
-            :base(nombre, ubicacion, rubro)
+            : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
             this.Habilitacion = habilitacion;
         }
         
         /// <summary>
-        /// Habilitaciones del emprendedor
+        /// Habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
         public Habilitaciones Habilitacion = new Habilitaciones();
@@ -41,13 +41,13 @@ namespace ClassLibrary
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesEmprendedor { get => habilitacionesEmprendedor;}
+        public List<string> HabilitacionesDeEmprendedor { get => HabilitacionesEmprendedor;}
         
         /// <summary>
         /// Especializaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public string Especializaciones {get; set;}
+        public string Especializaciones { get; set; }
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator.
 
@@ -59,7 +59,7 @@ namespace ClassLibrary
         {
             if (Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                habilitacionesEmprendedor.Add(habilitacionBuscada);
+                HabilitacionesEmprendedor.Add(habilitacionBuscada);
             }
         }
 
@@ -69,7 +69,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesEmprendedor.Remove(habilitacion);
+            HabilitacionesEmprendedor.Remove(habilitacion);
         }
         
         /// <summary>
@@ -88,17 +88,17 @@ namespace ClassLibrary
         public void CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
         {
             int dineroGastado = 0;
-            int ofertasCompradas = 0;
+            int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in OfertasCompradas)
+            foreach (Oferta oferta in ofertasCompradas)
             {
                 if(oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
-                ofertasCompradas++;
+                ofertasCompradas1++;
                 dineroGastado = dineroGastado + (oferta.Precio);
                 }
-            Console.WriteLine("Se han comprado " + ofertasCompradas + " ofertas, gastando un total de " + dineroGastado + "$");
+            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
             }
         }   
     }
