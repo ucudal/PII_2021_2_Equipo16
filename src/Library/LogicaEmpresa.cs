@@ -10,7 +10,6 @@ namespace ClassLibrary
         /// </summary>
         public static void AceptarInvitacion()
         {
-
         }
 
         /// <summary>

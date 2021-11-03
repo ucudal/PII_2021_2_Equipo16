@@ -17,7 +17,7 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
         /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion): base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
         {
             this.habilitacion = habilitacion;
         }
@@ -25,7 +25,8 @@ namespace ClassLibrary
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        private Habilitaciones habilitacion{ get; set; }
+
+        private Habilitaciones habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.

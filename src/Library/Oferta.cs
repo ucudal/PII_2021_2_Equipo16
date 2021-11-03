@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class Oferta : IHabilitaciones
     {
         /// <summary>
-        /// 
+        /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
         public List<string> habilitacionesOferta = new List<string>();
 
@@ -43,7 +43,7 @@ namespace ClassLibrary
         /// </summary>
         public string interesado{ get; set; }
         
-        private Habilitaciones habilitacion{ get; set; }
+        private Habilitaciones habilitacion = new Habilitaciones();
         
         /// <summary>
         /// Nombre de la oferta.
@@ -138,7 +138,6 @@ namespace ClassLibrary
         /// Ubicación de la oferta.
         /// </summary>
         /// <value></value>
-        
         public string Ubicacion { get; set; }
     }
 }
