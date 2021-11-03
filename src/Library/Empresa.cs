@@ -43,6 +43,7 @@ namespace ClassLibrary
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
+        private List<Oferta> misOfertas = new List<Oferta>();
 
         /// <summary>
         /// Habilitaciones de la empresa.
@@ -65,6 +66,10 @@ namespace ClassLibrary
         public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
+        /// <summary>
         /// Crea un producto, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
@@ -79,26 +84,10 @@ namespace ClassLibrary
         /// Se usa Creator.
         /// </remarks>
         public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
-        {
-            bool habilitacionesAgregadas = false;
+        {   
             Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
-            while (habilitacionesAgregadas)
-            {
-                // Todo lo que es console.writeline y ReadLine, es para tenerlo claro en consola,
-                // Cuando conozcamos sobre Telegram se debería modificar.
-                Console.WriteLine("Desea agregar mas habilitaciones");
-                if (Console.ReadLine() == "Si")
-                {
-                    Console.WriteLine("Escriba cual quiere agregar");
-                    string habilitacionParaAgregar = Console.ReadLine();
-                    productoCreado.AddHabilitacion(habilitacionParaAgregar);
-                }
-                else
-                {
-                    habilitacionesAgregadas = true;
-                }
-            }
+            this.MisOfertas.Add(productoCreado);
         }
 
         /// <summary>
