@@ -24,6 +24,7 @@
         <member name="M:Test.Library.AdministradorTests.TestAdministradorFalso">
             <summary>
             Este test está diseñado para que de error, ya que se espera un nombre y no un string vacio.
+            Esto da por defecto el nombre Jhon.
             </summary>
         </member>
         <member name="T:Test.Library.EmprendedorTests">
