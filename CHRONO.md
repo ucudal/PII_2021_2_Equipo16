@@ -15,7 +15,7 @@ A los metodos de la clase Habilitaciones le agregue que impriman en consola la o
 
 2/11/21 - Piero Saucedo
 Creada una nueva clase LogicaEmprendedor y otra nueva clase LogicaBuscadores, comentarios XML incluídos. Modificaciones de comentarios XML en todas las clases (para evitar Warnings).
-Resueltos una gran cantidad de Warnings. 
+Resueltos una gran cantidad de Warnings en todas las clases (+400). 
 Añadidos exclusiones en el archivo Analyzers.ruleset para ocultar temporalmente algunos Warnings.
 
 1/11/21 - Piero Saucedo

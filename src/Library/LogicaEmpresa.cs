@@ -10,7 +10,6 @@ namespace ClassLibrary
         /// </summary>
         public static void AceptarInvitacion()
         {
-
         }
 
         /// <summary>
@@ -42,10 +41,10 @@ namespace ClassLibrary
         /// Llama al método AceptarOferta en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que aceptará la oferta.</param>
-        /// <param name="oferta">Oferta que se desea Aceptar.</param>
-        public static void AceptarOferta(Empresa empresa, Oferta oferta)
+        /// <param name="ofertaQueSeAcepta">Nombre de oferta que se desea Aceptar.</param>
+        public static void AceptarOferta(Empresa empresa, string ofertaQueSeAcepta)
         {
-            empresa.AceptarOferta(oferta, Logica.PublicacionesA);
+            empresa.AceptarOferta(ofertaQueSeAcepta, Logica.PublicacionesA);
         }
 
         /// <summary>

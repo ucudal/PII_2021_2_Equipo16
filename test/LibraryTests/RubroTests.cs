@@ -1,11 +1,10 @@
 using ClassLibrary;
 using NUnit.Framework;
 
-
 namespace Test.Library
 { 
     /// <summary>
-    /// Clase de pruebas de RubroTest
+    /// Clase de pruebas de RubroTest.
     /// </summary>
     [TestFixture]
     public class RubroTests
@@ -14,7 +13,6 @@ namespace Test.Library
         /// En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
         /// Para esto vamos a  crear un rubro nuevo  y verificar mediante el largo de la lista si se agrego correctamente.
         /// Al ser nuevo se agregara a la lista , si ya está en la misma el mismo no se agregará.
-        /// 
         /// </summary>
         [Test]
         public void TestAgregarRubro()
@@ -24,10 +22,11 @@ namespace Test.Library
             rubro.AddRubro("Cocina");
             Assert.AreEqual(expected, rubro.RubrosList.Count);
         }
+        
         /// <summary>
         /// Test para comprobar que no se agregue a la lista un  rubro repetido.
         /// </summary>
-         [Test]
+        [Test]
         public void TestAgregarRubroRepetido()
         {
             Rubro rubro = new Rubro("Deportes");
@@ -35,10 +34,11 @@ namespace Test.Library
             rubro.AddRubro("Deportes");
             Assert.AreEqual(expected, rubro.RubrosList.Count);
         }
+        
         /// <summary>
         /// Test para comprobar si efectivamente el metodo elimina un Rubro.
         /// </summary>
-         [Test]
+        [Test]
         public void TestEliminarRubro()
         {
             Rubro rubro = new Rubro("Deportes");
@@ -46,6 +46,5 @@ namespace Test.Library
             rubro.RemoveRubro("Deportes");
             Assert.AreEqual(expected, rubro.RubrosList.Count);
         }
-
     }
 }

@@ -36,7 +36,6 @@ namespace ClassLibrary
         {
             this.Empresas.Add(empresa);
         }
-
     }
 }
 
