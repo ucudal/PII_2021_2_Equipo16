@@ -122,7 +122,11 @@
         </member>
         <member name="P:ClassLibrary.Emprendedor.Habilitacion">
             <summary>
+<<<<<<< HEAD
             Habilitaciones del emprendedor.
+=======
+            Habilitaciones del emprendedor
+>>>>>>> master
             </summary>
             <value></value>
         </member>
@@ -453,7 +457,7 @@
             </summary>
             <param name="emprendedor">Un emprendedor.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,System.String)">
             <summary>
             Este método llama a InteresadoEnOferta de Emprendedor.
             </summary>
@@ -554,12 +558,7 @@
             <param name="ubicacion">Ubicacion de la oferta.</param>
             <param name="empresa">Empresa que publica la oferta.</param>
         </member>
-        <member name="P:ClassLibrary.Oferta.HayInteresado">
-            <summary>
-            Booleano, false si no hay interesado en la oferta, true si lo hay.
-            </summary>
-        </member>
-        <member name="F:ClassLibrary.Oferta.interesado">
+        <member name="P:ClassLibrary.Oferta.interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>

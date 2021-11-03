@@ -44,10 +44,16 @@ namespace ClassLibrary
         /// <param name="oferta">Una oferta.</param>
         
         // Se hizo en equipo.
-        public static void InteresadoEnOferta(Emprendedor emprendedor, Oferta oferta)
+        public static void InteresadoEnOferta(Emprendedor emprendedor, string nombreOferta)
         {
-            oferta.interesado = emprendedor.Nombre;
-            oferta.HayInteresado = true;
+            foreach (Oferta item in Logica.PublicacionesA.OfertasPublicados)
+            {
+               if (item.Nombre == nombreOferta)
+               {
+                    item.interesado = emprendedor.Nombre;
+                    item.EmpresaCreadora.InteresadosEnOfertas.Add(item); //agregado para solucionar test
+               } 
+            }
         }
 
         /// <summary>
