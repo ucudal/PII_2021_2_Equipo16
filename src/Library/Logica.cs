@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -29,5 +31,11 @@ namespace ClassLibrary
         /// Guarda una instancia de ConsolePrinter.
         /// </summary>
         public static ConsolePrinter PrinterConsola = new ConsolePrinter();
+
+        /// <summary>
+        /// Guarda strings con los nombres de oferta para que no se repitan.
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> ListaNombreOfertas = new List<string>();
     }
 }

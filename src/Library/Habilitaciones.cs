@@ -20,22 +20,6 @@ namespace ClassLibrary
         /// </summary>
         public Habilitaciones()
         {
-           /* if (ListaHabilitaciones.Contains(nombre))
-            {
-                this.Nombre = nombre;
-            }
-            else
-            {
-                Console.WriteLine("El nombre de la habilitación no existe, ¿desea agregarlo?");
-                string respuesta = Console.ReadLine().ToString();
-                respuesta = LimpiadorCadenas.LimpiaCadena(respuesta);
-                if (respuesta == "si")
-                {
-                    ListaHabilitaciones.Add(nombre);
-                    Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
-                    this.Nombre = nombre;
-                }
-            }*/
         }
 
         /// <summary>

@@ -22,6 +22,22 @@ namespace ClassLibrary
             this.Habilitacion = habilitacion;
         }
 
+        /// <summary>
+        /// Acepta una invitación.
+        /// </summary>
+        /// <param name="nombreEmpresa">Nombre de la empresa</param>
+        public void AceptarInvitacion(string nombreEmpresa)
+        {
+            if (nombreEmpresa == this.Nombre)
+            {
+                Console.WriteLine("Invitación aceptada");
+                // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
+            }
+            else
+            {
+                Console.WriteLine("Invitación inválida, intente otra vez");
+            }
+        }
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
