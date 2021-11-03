@@ -17,7 +17,8 @@ namespace Test.Library
         [Test]
         public void TestHabilitacion()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
+            
             string expected = "Apa";
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
@@ -28,7 +29,8 @@ namespace Test.Library
         [Test]
         public void TestHabilitacion2()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apar");
+            Habilitaciones habilitacion = new Habilitaciones();
+            
             string expected = "Apar";
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
@@ -39,7 +41,8 @@ namespace Test.Library
         [Test]
         public void TestHabilitacionDisponible()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
+            
             string expected = "1- iso 9009.\n2- apa.\n3- soa.\n4- unit.\n5- ieee.";
             Assert.AreEqual(expected, habilitacion.HabilitacionesDisponibles());
         }
@@ -53,7 +56,8 @@ namespace Test.Library
         [Test]
         public void TestAgregarHabilitaciones()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
+            
             int expected = 6;
             habilitacion.AddHabilitacion("brutal");
             Assert.AreEqual(expected, habilitacion.ListaHabilitaciones.Count);
@@ -67,7 +71,8 @@ namespace Test.Library
         [Test]
         public void TestEliminarHabilitaciones()
         {
-            Habilitaciones habilitacion = new Habilitaciones("Apa");
+            Habilitaciones habilitacion = new Habilitaciones();
+            
             int expected = 4;
             habilitacion.RemoveHabilitacion("apa");
             Assert.AreEqual(expected, habilitacion.ListaHabilitaciones.Count);

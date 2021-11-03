@@ -17,8 +17,8 @@ namespace Test.Library
         {
             Logica logi1 = new Logica();
             
-            Empresa  empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones("apa"));
-            Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", new Rubro("textil"), new Habilitaciones("apa"), "Decorado de interiores");
+            Empresa  empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
+            Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", new Rubro("textil"), new Habilitaciones(), "Decorado de interiores");
 
             Oferta ofertaDebug = new Oferta("Coca-Cola1", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", empresaConaprole);
             Logica.PublicacionesA.OfertasPublicados.Add(ofertaDebug);

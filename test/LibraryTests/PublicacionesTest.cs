@@ -15,7 +15,7 @@ namespace Test.Library
         [Test]
         public void TestPublicaciones()
         {
-            Empresa empresaTest = new Empresa("empresaTest", "x", new Rubro("Textil"), new Habilitaciones("apa"));
+            Empresa empresaTest = new Empresa("empresaTest", "x", new Rubro("Textil"), new Habilitaciones());
             Oferta oferta = new Oferta("Queso", "colonia", 100, "gr", "queso, colonia", "Colonia", empresaTest);
         }
     }

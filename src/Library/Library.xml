@@ -120,6 +120,15 @@
             <param name="especializaciones">Especializaciones del emprendedor.</param>
             <returns></returns>
         </member>
+<<<<<<< HEAD
+        <member name="F:ClassLibrary.Emprendedor.Habilitacion">
+            <summary>
+            Habilitaciones del emprendedor
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
+=======
         <member name="P:ClassLibrary.Emprendedor.Habilitacion">
             <summary>
 <<<<<<< HEAD
@@ -131,6 +140,7 @@
             <value></value>
         </member>
         <member name="P:ClassLibrary.Emprendedor.HabilitacionesDeEmprendedor">
+>>>>>>> master
             <summary>
             Obtiene una lista de las habilitaciones del emprendedor.
             </summary>
@@ -256,7 +266,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
+        <member name="M:ClassLibrary.Habilitaciones.#ctor">
             <summary>
             Inicializa una instancia de habilitaciones
             </summary>
@@ -557,6 +567,14 @@
             <param name="tags">Tags de la oferta.</param>
             <param name="ubicacion">Ubicacion de la oferta.</param>
             <param name="empresa">Empresa que publica la oferta.</param>
+<<<<<<< HEAD
+        </member>
+        <member name="P:ClassLibrary.Oferta.HayInteresado">
+            <summary>
+            Booleano, false si no hay interesado en la oferta, true si lo hay.
+            </summary>
+=======
+>>>>>>> master
         </member>
         <member name="P:ClassLibrary.Oferta.interesado">
             <summary>

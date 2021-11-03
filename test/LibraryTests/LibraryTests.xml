@@ -127,6 +127,16 @@
             Clase de pruebas de TestGeneral
             </summary>
         </member>
+        <member name="M:Test.Library.TestsEmprendedor.TestAddHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsEmprendedor.TestQuitarHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
         <member name="T:Test.Library.TestsOferta">
             <summary>
             Esta clase permite realizar los tests de la clase Oferta.

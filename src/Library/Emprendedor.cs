@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        private List<string> HabilitacionesEmprendedor = new List<string>();
+        public List<string> HabilitacionesEmprendedor = new List<string>();
         private string especializaciones;
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace ClassLibrary
         /// Habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public Habilitaciones Habilitacion{ get; set; }
+        public Habilitaciones Habilitacion = new Habilitaciones();
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>

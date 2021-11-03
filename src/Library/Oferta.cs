@@ -43,7 +43,7 @@ namespace ClassLibrary
         /// </summary>
         public string interesado{ get; set; }
         
-        private Habilitaciones habilitacion{ get; set; }
+        private Habilitaciones habilitacion = new Habilitaciones();
         
         /// <summary>
         /// Nombre de la oferta.
