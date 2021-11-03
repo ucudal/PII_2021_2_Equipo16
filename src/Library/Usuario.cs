@@ -20,25 +20,24 @@ namespace ClassLibrary
             this.Nombre = nombre;
             this.Ubicacion = ubicacion;
             this.Rubro = rubro;
-
         }
         
         /// <summary>
         /// Obtiene un valor que indica el nombre del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Nombre {get; set;}
+        public string Nombre { get; set; }
         
         /// <summary>
         /// Obtiene un valor que indica la ubicacion del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Ubicacion {get; set;}
+        public string Ubicacion { get; set; }
         
         /// <summary>
         /// Obtiene un valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public Rubro Rubro {get; set;}
+        public Rubro Rubro { get; set; }
     }
 }

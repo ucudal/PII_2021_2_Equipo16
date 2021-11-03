@@ -7,7 +7,7 @@ namespace Test.Library
     /// Esta clase permite generar los test necesarios para poder comprobar 
     /// la que la clase Administrador funcione correctamente.
     /// </summary>
-     [TestFixture]
+    [TestFixture]
     public class AdministradorTests
     {
         /// <summary>

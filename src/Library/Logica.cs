@@ -14,24 +14,24 @@ namespace ClassLibrary
         /// Guarda una instancia de BuscadorUbicacion.
         /// </summary>
         /// <returns></returns>
-        public static BuscadorUbicacion buscadorUbicacion = new BuscadorUbicacion();
+        public static BuscadorUbicacion BuscadorUbicacion = new BuscadorUbicacion();
 
         /// <summary>
         /// Guarda una instancia de BuscadorTags.
         /// </summary>
         /// <returns></returns>
-        public static BuscadorTags buscadorTags = new BuscadorTags();
+        public static BuscadorTags BuscadorTags = new BuscadorTags();
 
         /// <summary>
         /// Guarda una instancia de BuscadorMat.
         /// </summary>
         /// <returns></returns>
-        public static BuscadorMaterial buscadorMaterial = new BuscadorMaterial();
+        public static BuscadorMaterial BuscadorMaterial = new BuscadorMaterial();
 
         /// <summary>
         /// Guarda una instancia de ConsolePrinter.
         /// </summary>
         /// <returns></returns>
-        public static ConsolePrinter printerConsola = new ConsolePrinter();
+        public static ConsolePrinter PrinterConsola = new ConsolePrinter();
     } 
 }

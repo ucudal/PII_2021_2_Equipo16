@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<string> habilitacionesEmprendedor = new List<string>();
+        private List<string> HabilitacionesEmprendedor = new List<string>();
         private string especializaciones;
 
         /// <summary>
@@ -26,24 +26,24 @@ namespace ClassLibrary
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         /// <returns></returns>
         public Emprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
-            :base(nombre, ubicacion, rubro)
+            : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
             this.Habilitacion = habilitacion;
         }
         
-        private Habilitaciones Habilitacion{get; set;}
+        private Habilitaciones Habilitacion{ get; set; }
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesEmprendedor { get => habilitacionesEmprendedor;}
+        public List<string> HabilitacionesDeEmprendedor { get => HabilitacionesEmprendedor;}
         
         /// <summary>
         /// Especializaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public string Especializaciones {get; set;}
+        public string Especializaciones { get; set; }
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator.
 
@@ -55,7 +55,7 @@ namespace ClassLibrary
         {
             if (Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                habilitacionesEmprendedor.Add(habilitacionBuscada);
+                HabilitacionesEmprendedor.Add(habilitacionBuscada);
             }
         }
 
@@ -65,7 +65,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesEmprendedor.Remove(habilitacion);
+            HabilitacionesEmprendedor.Remove(habilitacion);
         }
         
         /// <summary>
