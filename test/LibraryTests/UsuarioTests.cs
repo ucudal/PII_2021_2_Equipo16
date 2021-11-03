@@ -7,7 +7,7 @@ namespace Test.Library
     /// Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
     /// </summary>
     [TestFixture]
-    public class UsuarioTest
+    public class UsuarioTests
     {       
         /// <summary>
         /// Testea el Nombre del Usuario para corroborar que la instancia fue creada correctamente.
