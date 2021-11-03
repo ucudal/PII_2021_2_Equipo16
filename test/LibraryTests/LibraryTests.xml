@@ -123,15 +123,6 @@
             <summary>
             Clase de pruebas de TestGeneral
             </summary>
-        <member name="T:Test.Library.TestsEmprendedor">
-            <summary>
-            Esta clase permite realizar los tests de la clase Emprendedor.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsEmprendedor.TestRegistroEmprendedor">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
-            </summary>
         </member>
         <member name="T:Test.Library.TestsOferta">
             <summary>

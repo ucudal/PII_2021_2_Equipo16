@@ -35,32 +35,8 @@ namespace ClassLibrary
             this.EmpresaCreadora = empresa;
         }
 
-        /// <summary>
-        /// Booleano, false si no hay interesado en la oferta, true si lo hay.
-        /// </summary>
-        // Se hizo en equipo.
-        public bool HayInteresado
-        {
-            get
-            {
-                if (true)
-                {
-                    if (EmpresaCreadora.InteresadosEnOfertas.Contains(this))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        EmpresaCreadora.InteresadosEnOfertas.Add(this);
-                        return true;
-                    }
-                }
-                
-            }
-            set
-            {
-            }    
-        }
+        
+        
         
         /// <summary>
         /// Nombre del interesado en la oferta.
