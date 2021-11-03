@@ -188,8 +188,6 @@
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
         </member>
-<<<<<<< HEAD
-=======
         <member name="T:Test.Library.TestsEmprendedor">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -230,7 +228,6 @@
             Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
->>>>>>> master
         <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
