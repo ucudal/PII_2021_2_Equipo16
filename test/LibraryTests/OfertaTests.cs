@@ -7,7 +7,7 @@ namespace Test.Library
     /// Esta clase permite realizar los tests de la clase Oferta.
     /// </summary>
     [TestFixture]
-    public class TestsOferta
+    public class OfertaTests
     {
         /// <summary>
         /// Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
