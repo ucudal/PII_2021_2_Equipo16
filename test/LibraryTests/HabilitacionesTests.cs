@@ -19,7 +19,7 @@ namespace Test.Library
         {
             Habilitaciones habilitacion = new Habilitaciones();
             
-            string expected = "Apa";
+            string expected = null;
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
 
@@ -31,7 +31,7 @@ namespace Test.Library
         {
             Habilitaciones habilitacion = new Habilitaciones();
             
-            string expected = "Apar";
+            string expected = null;
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
 
@@ -43,7 +43,7 @@ namespace Test.Library
         {
             Habilitaciones habilitacion = new Habilitaciones();
             
-            string expected = "1- iso 9009.\n2- apa.\n3- soa.\n4- unit.\n5- ieee.";
+            string expected = "1- iso 9009.\n2- apa.\n3- soa.\n4- unit.\n5- ieee.\n";
             Assert.AreEqual(expected, habilitacion.HabilitacionesDisponibles());
         }
 

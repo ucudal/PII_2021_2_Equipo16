@@ -22,6 +22,19 @@
             pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
             </summary>
         </member>
+
+        <member name="T:Test.Library.EmpresaTests">
+            <summary>
+            Esta clase permite realizar los tests de la clase Empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.EmpresaTest">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestAddHabilitaciones">
+
         <member name="T:Test.Library.EmprendedorTests">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -33,6 +46,7 @@
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorTests.TestAddHabilitaciones">
+
             <summary>
             Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
             </summary>
@@ -174,6 +188,49 @@
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
         </member>
+<<<<<<< HEAD
+=======
+        <member name="T:Test.Library.TestsEmprendedor">
+            <summary>
+            Esta clase permite realizar los tests de la clase Emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsEmprendedor.TestRegistroEmprendedor">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsEmprendedor.TestAddHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsEmprendedor.TestQuitarHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
+        <member name="T:Test.Library.TestsOferta">
+            <summary>
+            Esta clase permite realizar los tests de la clase Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsOferta.TestCreacionOferta">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsOferta.TestAgregarHabilitaciones">
+            <summary>
+            Test que sirve para chequear que el método AddHabilitación funciona correctamente.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsOferta.TestRemoverHabilitaciones">
+            <summary>
+            Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
+>>>>>>> master
         <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.

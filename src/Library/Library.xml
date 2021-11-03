@@ -177,6 +177,11 @@
             <param name="habilitacion">Habilitaciones de la empresa.</param>
             <returns></returns>
         </member>
+        <member name="F:ClassLibrary.Empresa.Habilitacion">
+            <summary>
+            Habilitaciones de la empresa.
+            </summary>
+        </member>
         <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
             Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
