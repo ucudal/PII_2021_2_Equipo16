@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <param name="oferta">Una oferta.</param>
         public void OfertaPrinter(Oferta oferta)
         {
-            Console.WriteLine($"Nombre: {oferta.Nombre}, ID: {oferta.Id}, Material: {oferta.Material}, Precio {oferta.Precio}, Unidad: {oferta.Unidad}, Ubicación {oferta.Ubicacion}, Fecha de Publicación {oferta.FechaDePublicacion}");
+            Console.WriteLine($"Nombre: {oferta.Nombre}, ID: {oferta.Id}, Material: {oferta.Material}, Precio {oferta.Precio}, Unidad: {oferta.Unidad}, Ubicación {oferta.Ubicacion}, Fecha de Publicación {Oferta.FechaDePublicacion}");
         }
     }
 }

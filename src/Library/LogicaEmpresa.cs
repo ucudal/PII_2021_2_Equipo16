@@ -3,7 +3,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
-    public class LogicaEmpresa
+    public static class LogicaEmpresa
     {
         /// <summary>
         /// Acepta la invitación del administrador.
@@ -22,9 +22,10 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
         /// <param name="tags">Palabra clave.</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
-            empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion);
+            empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace ClassLibrary
         /// <param name="oferta">Oferta que se desea eliminar.</param>
         public static void EliminarProducto(Empresa empresa, Oferta oferta)
         {
-            empresa.EliminarProducto(oferta, Logica.PublicacionesA);
+            Empresa.EliminarProducto(oferta, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
         }
 
         /// <summary>
@@ -53,9 +54,10 @@ namespace ClassLibrary
         /// <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        public static void CalcularOfertasVendidasSegunTiempo(Empresa empresa, string fechaInicio, string fechaFinal)
+        /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
+        public static int CalcularOfertasVendidas(Empresa empresa, string fechaInicio, string fechaFinal)
         {
-            empresa.CalcularOfertasVendidasSegunTiempo(fechaInicio, fechaFinal);
+            return empresa.CalcularOfertasVendidas(fechaInicio, fechaFinal);
         }
 
         /// <summary>

@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 { 
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Clase de pruebas de RubroTest.
     /// </summary>

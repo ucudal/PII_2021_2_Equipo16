@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -39,7 +36,7 @@ namespace ClassLibrary
             cadena = cadena.Replace("í", "i");
             cadena = cadena.Replace("ó", "o");
             cadena = cadena.Replace("ú", "u");
-            
+
             return cadena;
         }
     }

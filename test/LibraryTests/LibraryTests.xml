@@ -72,6 +72,28 @@
             Se crean 1 empresa y 1 emprendedor, la empresa publica 3 ofertas, se hace una busqueda por tags en esas publicaciones el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
             </summary>
         </member>
+        <member name="T:Test.Library.GeneralTests2">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests2.TestGeneral2">
+            <summary>
+            Test historia de usuario2
+            Tenemos una empresa y un emprendedor, la empresa crea productos, y se quiere comprobar
+            si el método para calcular ofertas entregadas/consumidas segun tiempo funcionan acorde a lo estipulado.
+            </summary>
+        </member>
+        <member name="T:Test.Library.GeneralTests3">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests3.TestGeneral3">
+            <summary>
+            Tenemos una empresa que crea sus ofertas para poder despues realizar una busqueda por ubicación, tag, material.
+            </summary>
+        </member>
         <member name="T:Test.Library.HabilitacionesTests">
             <summary>
             Esta clase permite realizar los test de la clase Habilitaciones.

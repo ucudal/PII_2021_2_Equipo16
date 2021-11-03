@@ -7,66 +7,70 @@ namespace ClassLibrary
     /// <summary>
     /// Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
     /// </summary>
-    public class Rubro 
-    {    
+    public class Rubro
+    {
         /// <summary>
-        /// Recorre la lista de rubros y ve si contiene el nombre para agregarlo o no.
+        /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
+        /// <param name="nombre">Nombre.</param>
         public Rubro(string nombre)
         {
-            if (RubrosList.Contains(nombre))
+            if (this.RubrosList.Contains(nombre))
             {
                 this.Nombre = nombre;
             }
-            else 
+            else
             {
                 Console.WriteLine("El nombre del Rubro no existe, ¿desea agregarlo?");
                 string respuesta = Console.ReadLine().ToString();
                 respuesta = LimpiadorCadenas.LimpiaCadena(respuesta);
                 if (respuesta == "si")
                 {
-                    RubrosList.Add(nombre);
+                    this.RubrosList.Add(nombre);
                     this.Nombre = nombre;
                 }
             }
         }
-        
+
         /// <summary>
-        /// Obtiene un valor con el nombre del rubro.
+        /// Obtiene o establece un valor con el nombre del Rubro.
         /// </summary>
         /// <value>Retorna tipo string.</value>
-        public string Nombre{ get; set; }
-        
+        public string Nombre { get; set; }
+
         /// <summary>
         /// Lista publica para que puedan acceder las demas clases, la lista contiene los objetos rubros creados.
         /// </summary>
         /// <returns>Retorna una nueva lista llamada RubrosList de tipo string.</returns>
         public List<string> RubrosList = new List<string>()
-            {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
-        
+            {
+                "textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria",
+            };
+
         /// <summary>
         /// Añade un rubro a la lista, devuelve un string confirmando la acción.
         /// </summary>
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void AddRubro(string rubro)
         {
-            if (!(RubrosList.Contains(rubro)))
+            if (!this.RubrosList.Contains(rubro))
             {
-                RubrosList.Add(rubro);
+                this.RubrosList.Add(rubro);
                 Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
             }
             else
             {
                 Console.WriteLine($"El rubro '{rubro}' ya existe.");
-            }    
+            }
         }
+
         /// <summary>
         /// Elimina un rubro de la lista, devuelve un string confirmando la acción.
         /// </summary>
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void RemoveRubro(string rubro)
         {
-            RubrosList.Remove(rubro);
+            this.RubrosList.Remove(rubro);
             Console.WriteLine($"Rubro '{rubro}' eliminado exitosamente.");
         }
 
@@ -76,11 +80,12 @@ namespace ClassLibrary
         public void GetRubrosList()
         {
             StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
-            foreach (string rubro in RubrosList)
+            foreach (string rubro in this.RubrosList)
             {
-                getRubrosList.Append($"- {rubro}.");   
+                getRubrosList.Append($"- {rubro}.");
             }
+
             Console.WriteLine(getRubrosList.ToString());
         }
     }
-} 
+}
