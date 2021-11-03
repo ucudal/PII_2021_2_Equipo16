@@ -1,8 +1,14 @@
 Responsabilidades creación de clases:
 
 
-Juan Perez: ITelegram, Administrador, IHabilitaciones, Habilitaciones, LimpiadorCadenas
-Tomás Rama: Empresa, IAlmacenamiento , BuscadorUbicacion
-Piero Saucedo: Publicaciones, LogicaDelPrograma, IPrinter, ConsolePrinter
-Agustín Lorenzo: Producto, Emprendedor , BuscadorMaterial
-Joaquín Perez: Usuario, Program , Rubro , IBuscador ,  BuscadorTags
+Juan Perez: ITelegram, Administrador, IHabilitaciones, Habilitaciones, LimpiadorCadenas.
+Tomás Rama: Empresa, IAlmacenamiento , BuscadorUbicacion , LogicaEmpresa , Logica.
+Piero Saucedo: Publicaciones, LogicaEmprendedor , IPrinter, ConsolePrinter, LogicaBuscadores.
+Agustín Lorenzo: Oferta, Emprendedor , BuscadorMaterial.
+Joaquín Perez: Usuario, Program , Rubro , IBuscador ,  BuscadorTags.
+
+Nota: Al momento de realizar los casos de testeo, cuando surgían errores
+debido a algo erroneo de la clase a testear, el encargado de hacer el test
+modificaba las clases con las cuales tenía conflictos, por ende en algunos casos nos 
+vimos en la obligación de modificar clases externas a laws nuestras con consentimiento previo
+con el fin de obtener un mejor código.
