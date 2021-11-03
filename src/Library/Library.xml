@@ -180,6 +180,12 @@
             <param name="rubro">Rubro de la empresa.</param>
             <param name="habilitacion">Habilitaciones de la empresa.</param>
         </member>
+        <member name="M:ClassLibrary.Empresa.AceptarInvitacion(System.String)">
+            <summary>
+            Acepta una invitación.
+            </summary>
+            <param name="nombreEmpresa">Nombre de la empresa</param>
+        </member>
         <member name="F:ClassLibrary.Empresa.Habilitacion">
             <summary>
             Habilitaciones de la empresa.
@@ -410,6 +416,12 @@
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
+        </member>
+        <member name="F:ClassLibrary.Logica.ListaNombreOfertas">
+            <summary>
+            Guarda strings con los nombres de oferta para que no se repitan.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>

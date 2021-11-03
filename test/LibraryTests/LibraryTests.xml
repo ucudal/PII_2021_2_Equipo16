@@ -172,28 +172,6 @@
             Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
-        <member name="T:Test.Library.RubroTests">
-            <summary>
-            Clase de pruebas de RubroTest.
-            </summary>
-        </member>
-        <member name="M:Test.Library.RubroTests.TestAgregarRubro">
-            <summary>
-            En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
-            Para esto vamos a  crear un rubro nuevo  y verificar mediante el largo de la lista si se agrego correctamente.
-            Al ser nuevo se agregara a la lista , si ya está en la misma el mismo no se agregará.
-            </summary>
-        </member>
-        <member name="M:Test.Library.RubroTests.TestAgregarRubroRepetido">
-            <summary>
-            Test para comprobar que no se agregue a la lista un  rubro repetido.
-            </summary>
-        </member>
-        <member name="M:Test.Library.RubroTests.TestEliminarRubro">
-            <summary>
-            Test para comprobar si efectivamente el metodo elimina un Rubro.
-            </summary>
-        </member>
         <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
