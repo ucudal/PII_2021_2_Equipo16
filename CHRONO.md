@@ -3,6 +3,13 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+2/11/21 - Ramón Lorenzo
+-Fixes en clase Oferta: Clase terminada con sus tests funcionando y comentarios XML realizados.
+-Fixes en clase Emprendedor: Clase terminada con sus tests funcionando y comentarios XML realizados.
+-Fixes en clase Habilitaciones: Arreglado el constructor, pedía una string cuando no era necesaria. 
+-Fixes en clase HabilitacionesTests: A raíz del problema anterior, todos los tests pasaban a dar error. Solucionado.
+
+
 3/11/21 - Juan Pérez    
 Modificación de los comentarios xml.
 Agregue las UML para esta entrega.
