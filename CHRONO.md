@@ -3,6 +3,10 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+1-2/10/21 - Joaquín Pérez
+Correción de xml en diversas clases.
+Creación de dos clases de testo TestsOferta y RubroTest, ambas terminadas.
+Arrancamos en grupo la clase TestGeneral.
 
 1y2/11/21 - Juan Pérez
 Realice los test de las clases Administrador, Habilitaciones, LimpiadorCadenas.
