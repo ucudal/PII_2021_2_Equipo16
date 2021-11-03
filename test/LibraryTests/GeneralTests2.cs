@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 { 
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -17,7 +17,7 @@ namespace Test.Library
         [Test]
         public void TestGeneral2()
         {
-            Empresa  empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
+            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
             Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", new Rubro("textil"), new Habilitaciones(), "Decorado de interiores");
 
             LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-colaA", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
@@ -28,16 +28,14 @@ namespace Test.Library
             LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 12A", "El mejor de todos", 5500, "Cantidad", "auto", "Aguas verdes", "Constante");
 
             // Quiero como empresa calcular las ofertas entregadas segun x tiempo.
-            
             LogicaEmpresa.AceptarOferta(empresaConaprole, "Fiat 1A");
             LogicaEmpresa.AceptarOferta(empresaConaprole, "Coca-colaA");
 
             int expectedCantidadVendidasSegunTiempo = 2;
 
-            Assert.AreEqual(expectedCantidadVendidasSegunTiempo, LogicaEmpresa.CalcularOfertasVendidasSegunTiempo(empresaConaprole, "2020-10-15", "2028-10-15"));
+            Assert.AreEqual(expectedCantidadVendidasSegunTiempo, LogicaEmpresa.CalcularOfertasVendidas(empresaConaprole, "2020-10-15", "2028-10-15"));
 
-            //Quiero como emprendedor calcular las ofertas que consumí segun x tiempo.
-
+            // Quiero como emprendedor calcular las ofertas que consumí segun x tiempo.
             LogicaEmprendedor.InteresadoEnOferta(emprendedor1, "Fiat 12A");
             LogicaEmprendedor.InteresadoEnOferta(emprendedor1, "Coca-cola2A");
             LogicaEmprendedor.InteresadoEnOferta(emprendedor1, "Coca-cola ZERO2A");

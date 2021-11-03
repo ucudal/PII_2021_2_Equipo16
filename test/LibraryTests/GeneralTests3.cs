@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 { 
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -15,8 +15,7 @@ namespace Test.Library
         [Test]
         public void TestGeneral3()
         {
-            Empresa  empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
-
+            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
             LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
             LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
             LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 1", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
@@ -25,12 +24,14 @@ namespace Test.Library
             LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 12", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
 
             // Quiero buscar por ubicacion, tag, material
-
-            //LogicaBuscadores.BuscarPorUbicacion("Carrasco");
+            
+            // LogicaBuscadores.BuscarPorUbicacion("Carrasco");
             int expectedUbi = 2;
-            //LogicaBuscadores.BuscarPorTags("auto");
+            
+            // LogicaBuscadores.BuscarPorTags("auto");
             int expectedTag = 2;
-            //LogicaBuscadores.BuscarPorMaterial("Nix");
+            
+            // LogicaBuscadores.BuscarPorMaterial("Nix");
             int expectedMat = 4;
 
             Assert.AreEqual(expectedUbi, LogicaBuscadores.BuscarPorUbicacion("Nigeria").Count);

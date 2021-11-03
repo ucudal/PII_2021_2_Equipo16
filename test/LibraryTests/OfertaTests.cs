@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 {
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Esta clase permite realizar los tests de la clase Oferta.
     /// </summary>
@@ -50,7 +50,7 @@ namespace Test.Library
 
             int expected = 1;
             oferta.AddHabilitacion("soa");
-            Assert.AreEqual(expected, oferta.habilitacionesOferta.Count);
+            Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Test.Library
             oferta.RemoveHabilitacion("apa");
             int expected = 1;
             
-            Assert.AreEqual(expected, oferta.habilitacionesOferta.Count);
+            Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
         }
     }
 }

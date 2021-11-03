@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -9,7 +6,7 @@ namespace ClassLibrary
     public static class LimpiadorCadenas
     {
         /// <summary>
-        /// Este método sirve para limpiar las cadenas y permitir que no hayan errores de tipeo, 
+        /// Este método sirve para limpiar las cadenas y permitir que no hayan errores de tipeo,
         /// y se pueda leer el texto que sea ingresado por un usuario de la aplicación.
         /// </summary>
         /// <param name="cadena">Recibe por parametro un cadena de tipo String.</param>
@@ -41,7 +38,7 @@ namespace ClassLibrary
             cadena = cadena.Replace("í", "i");
             cadena = cadena.Replace("ó", "o");
             cadena = cadena.Replace("ú", "u");
-            
+
             return cadena;
         }
     }

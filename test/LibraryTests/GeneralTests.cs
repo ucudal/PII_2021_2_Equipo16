@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 { 
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -17,14 +17,13 @@ namespace Test.Library
         [Test]
         public void TestGeneral1()
         {
-            Empresa  empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
+            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
             Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", new Rubro("textil"), new Habilitaciones(), "Decorado de interiores");
 
             string expectedEmpresa = "Conaprole";
             string expectedEmprendedor = "Lebron James";
 
             // Quiero como empresa publicar varias oferta.
-
             LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
             LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
             LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 1", "El mejor de todos", 5500, "Cantidad", "auto", "Aguas verdes", "Constante");

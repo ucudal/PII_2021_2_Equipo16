@@ -10,51 +10,48 @@ namespace ClassLibrary
     public class Emprendedor : Usuario, IHabilitaciones
     {
         /// <summary>
-        /// Ofertas en las que se interesa el emprendedor
+        /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
-        /// <returns></returns>
         public List<Oferta> OfertasInteresado = new List<Oferta>();
+
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         public List<string> HabilitacionesEmprendedor = new List<string>();
-        
+
         private List<Oferta> ofertasCompradas = new List<Oferta>();
-        
+
         private string especializaciones;
 
         /// <summary>
-        /// Inicializa una instancia de Emprendedor.
+        /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
         /// </summary>
         /// <param name="nombre">Nombre del emprededor.</param>
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="habilitacion">Habilitaciones del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        /// <returns></returns>
         public Emprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
             : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
             this.Habilitacion = habilitacion;
         }
-        
+
         /// <summary>
         /// Habilitaciones del emprendedor.
         /// </summary>
-        /// <value></value>
         public Habilitaciones Habilitacion = new Habilitaciones();
-        
+
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
-        /// <value></value>
+        /// <value>HabilitacionesEmprendedor.</value>
         public List<string> HabilitacionesDeEmprendedor { get => this.HabilitacionesEmprendedor; }
-        
+
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        /// <value></value>
         public string Especializaciones { get; set; }
 
         /// <summary>
@@ -77,7 +74,7 @@ namespace ClassLibrary
         {
             this.HabilitacionesEmprendedor.Remove(habilitacion);
         }
-        
+
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
@@ -89,24 +86,26 @@ namespace ClassLibrary
         /// <summary>
         /// Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
         /// </summary>
-        /// <param name="fechaInicio"></param>
-        /// <param name="fechaFinal"></param>
-        public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
+        /// <param name="fechaInicio">Fecha de inicio.</param>
+        /// <param name="fechaFinal">Fecha de final.</param>
+        /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
+        public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
         {
             int dineroGastado = 0;
             int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in OfertasInteresado)
+            foreach (Oferta oferta in this.OfertasInteresado)
             {
-                if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
+                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
                 {
                 ofertasCompradas1++;
                 dineroGastado = dineroGastado + oferta.Precio;
                 }
             }
+
             Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
             return ofertasCompradas1;
-        }   
+        }
     }
 }

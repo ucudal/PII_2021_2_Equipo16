@@ -35,7 +35,7 @@ namespace ClassLibrary
         /// <param name="oferta">Oferta que se desea elimianr.</param>
         public static void EliminarProducto(Empresa empresa, Oferta oferta)
         {
-            empresa.EliminarProducto(oferta, Logica.PublicacionesA);
+            Empresa.EliminarProducto(oferta, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
         }
 
         /// <summary>
@@ -54,9 +54,10 @@ namespace ClassLibrary
         /// <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        public static int CalcularOfertasVendidasSegunTiempo(Empresa empresa, string fechaInicio, string fechaFinal)
+        /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
+        public static int CalcularOfertasVendidas(Empresa empresa, string fechaInicio, string fechaFinal)
         {
-            return empresa.CalcularOfertasVendidasSegunTiempo(fechaInicio, fechaFinal);
+            return empresa.CalcularOfertasVendidas(fechaInicio, fechaFinal);
         }
 
         /// <summary>

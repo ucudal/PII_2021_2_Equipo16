@@ -11,10 +11,10 @@ namespace ClassLibrary
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
-        public List<string> habilitacionesOferta = new List<string>();
+        public List<string> HabilitacionesOferta = new List<string>();
 
         /// <summary>
-        /// Inicializa una instancia de Oferta.
+        /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
         /// </summary>
         /// <param name="nombre">Nombre de la oferta.</param>
         /// <param name="material">Material del producto que se oferta.</param>
@@ -40,65 +40,56 @@ namespace ClassLibrary
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public List<string> interesado = new List<string>();
-        
+        public List<string> Interesado = new List<string>();
+
         private Habilitaciones habilitacion = new Habilitaciones();
-        
+
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
         /// </summary>
         public string Nombre { get; set; }
-        
+
         /// <summary>
         /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
         public string Material { get; set; }
-        
+
         /// <summary>
-        /// Obtiene o establece el Precio de la oferta.
+        /// Obtiene o establece el Precio de la Oferta.
         /// </summary>
         public int Precio { get; set; }
-        
+
         /// <summary>
         /// Obtiene o establece la Cantidad de unidades a ofertar.
         /// </summary>
         public string Unidad { get; set; }
-        
+
         /// <summary>
-        /// Obtiene o establece los Tags de la oferta.
+        /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
         public string Tags { get; set; }
-        
+
         /// <summary>
-        /// Obtiene o establece la ID única para cada oferta.
+        /// Obtiene la ID única para cada Oferta.
         /// </summary>
         public Guid Id { get; private set; }
 
         /// <summary>
-        /// Obtiene o establece la Empresa que publica la oferta.
+        /// Obtiene o establece la Empresa que publica la Oferta.
         /// </summary>
         public Empresa EmpresaCreadora { get; set; }
-        
-        /// <summary>
-        /// Obtiene una lista de las habilitaciones que requiere el producto.
-        /// </summary>
-        /// <value></value>
-        
-        /// <summary>
-        /// Si la oferta es constante o puntual
-        /// </summary>
-        /// <value></value>
-        public string ConstantesPuntuales {get; set;}
 
         /// <summary>
-        /// Lista de habilitaciones de la oferta.
+        /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        /// <value></value>
-        
-        public List<string> HabilitacionesOferta { get => this.habilitacionesOferta; }
+        public string ConstantesPuntuales { get; set; }
 
-        
-        
+        /// <summary>
+        /// Obtiene una lista de Habilitaciones de la Oferta.
+        /// </summary>
+        /// <value>habilitacionesOferta.</value>
+        public List<string> HabilitacionesDeOferta { get => this.HabilitacionesOferta; }
+
         /// <summary>
         /// Añade una habilitación a la oferta.
         /// </summary>
@@ -107,19 +98,19 @@ namespace ClassLibrary
         {
             if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                this.habilitacionesOferta.Add(habilitacionBuscada);
+                this.HabilitacionesOferta.Add(habilitacionBuscada);
             }
         }
-        
+
         /// <summary>
         /// Quita una habilitación a la oferta.
         /// </summary>
         /// <param name="habilitacion">Habilitacion a quitar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.habilitacionesOferta.Remove(habilitacion);
+            this.HabilitacionesOferta.Remove(habilitacion);
         }
-        
+
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
@@ -127,18 +118,18 @@ namespace ClassLibrary
         {
             this.habilitacion.HabilitacionesDisponibles();
         }
-        
+
         /// <summary>
-        /// Fecha en la que se publicó la oferta.
+        /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
-        public DateTime FechaDePublicacion 
+        public static DateTime FechaDePublicacion
         {
             get
             {
-                return DateTime.Now; 
+                return DateTime.Now;
             }
         }
-        
+
         /// <summary>
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
