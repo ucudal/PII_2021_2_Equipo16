@@ -20,7 +20,7 @@ namespace ClassLibrary
         /// Obtiene un valor que le da el nombre al administrador.
         /// </summary>
         /// <value>El valor del nombre es de tipo string.</value>
-        public string Nombre {get;set;}
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
@@ -38,4 +38,3 @@ namespace ClassLibrary
         }
     }
 }
-

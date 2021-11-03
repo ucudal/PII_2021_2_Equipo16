@@ -10,10 +10,12 @@ namespace ClassLibrary
     public class Emprendedor : Usuario, IHabilitaciones
     {
         private List<Oferta> ofertasCompradas = new List<Oferta>();
+        
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         public List<string> HabilitacionesEmprendedor = new List<string>();
+        
         private string especializaciones;
 
         /// <summary>
@@ -37,17 +39,19 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public Habilitaciones Habilitacion = new Habilitaciones();
+        
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesDeEmprendedor { get => HabilitacionesEmprendedor;}
+        public List<string> HabilitacionesDeEmprendedor { get => HabilitacionesEmprendedor; }
         
         /// <summary>
-        /// Especializaciones del emprendedor.
+        /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
         /// <value></value>
         public string Especializaciones { get; set; }
+        
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         // Por Creator.
 
@@ -83,8 +87,8 @@ namespace ClassLibrary
         /// <summary>
         /// Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
         /// </summary>
-        /// <param name="fechaInicio"></param>
-        /// <param name="fechaFinal"></param>
+        /// <param name="fechaInicio">Fecha de inicio.</param>
+        /// <param name="fechaFinal">Fecha de final.</param>
         public void CalcularOfertasCompradas(string fechaInicio, string fechaFinal) 
         {
             int dineroGastado = 0;
@@ -93,12 +97,13 @@ namespace ClassLibrary
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
             foreach (Oferta oferta in ofertasCompradas)
             {
-                if(oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
+                if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
                 {
                 ofertasCompradas1++;
-                dineroGastado = dineroGastado + (oferta.Precio);
+                dineroGastado = dineroGastado + oferta.Precio;
                 }
-            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
+                
+                Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
             }
         }   
     }

@@ -54,6 +54,8 @@
         <member name="M:Test.Library.EmprendedorTests.TestQuitarHabilitaciones">
             <summary>
             Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
         <member name="T:Test.Library.GeneralTests">
             <summary>
             Clase de pruebas de TestGeneral.

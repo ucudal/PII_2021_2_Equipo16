@@ -35,63 +35,52 @@ namespace ClassLibrary
             this.EmpresaCreadora = empresa;
         }
 
-        
-        
-        
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public string interesado{ get; set; }
-        
-        private Habilitaciones habilitacion = new Habilitaciones();
+        public string Interesado { get; set; }
         
         /// <summary>
-        /// Nombre de la oferta.
+        /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        /// <value></value>
         public string Nombre { get; set; }
         
         /// <summary>
-        /// Material del producto a ofertar.
+        /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        /// <value></value>
         public string Material { get; set; }
         
         /// <summary>
-        /// Precio de la oferta.
+        /// Obtiene o establece el Precio de la oferta.
         /// </summary>
-        /// <value></value>
         public int Precio { get; set; }
         
         /// <summary>
-        /// Cantidad de unidades a ofertar.
+        /// Obtiene o establece la Cantidad de unidades a ofertar.
         /// </summary>
-        /// <value></value>
         public string Unidad { get; set; }
         
         /// <summary>
-        /// Tags de la oferta.
+        /// Obtiene o establece los Tags de la oferta.
         /// </summary>
-        /// <value></value>
-        public string Tags { get; set;}
+        public string Tags { get; set; }
         
         /// <summary>
-        ///ID única para cada oferta.
+        /// Obtiene o establece la ID única para cada oferta.
         /// </summary>
-        /// <returns></returns>
         public Guid Id { get; private set; }
 
         /// <summary>
-        /// Empresa que publica la oferta.
+        /// Obtiene o establece la Empresa que publica la oferta.
         /// </summary>
-        /// <value></value>
         public Empresa EmpresaCreadora { get; set; }
         
         /// <summary>
         /// Obtiene una lista de las habilitaciones que requiere el producto.
         /// </summary>
-        /// <value></value>
-        public List<string> HabilitacionesOferta {get => habilitacionesOferta;}
+        public List<string> HabilitacionesOferta { get => habilitacionesOferta;}
+
+        private Habilitaciones habilitacion = new Habilitaciones();
         
         /// <summary>
         /// Añade una habilitación a la oferta.
@@ -125,7 +114,6 @@ namespace ClassLibrary
         /// <summary>
         /// Fecha en la que se publicó la oferta.
         /// </summary>
-        /// <value></value>
         public DateTime FechaDePublicacion 
         {
             get
@@ -135,9 +123,8 @@ namespace ClassLibrary
         }
         
         /// <summary>
-        /// Ubicación de la oferta.
+        /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        /// <value></value>
         public string Ubicacion { get; set; }
     }
 }

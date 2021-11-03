@@ -15,7 +15,7 @@ namespace ClassLibrary
         private static Publicaciones instance;
         
         /// <summary>
-        /// Crea una instancia de Publicaciones.
+        /// Establece una instancia de Publicaciones.
         /// </summary>
         public static Publicaciones Instance
         {

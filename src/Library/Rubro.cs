@@ -12,6 +12,7 @@ namespace ClassLibrary
         /// <summary>
         /// Recorre la lista de rubros y ve si contiene el nombre para agregarlo o no.
         /// </summary>
+        /// <param name="nombre">Nombre.</param>
         public Rubro(string nombre)
         {
             if (RubrosList.Contains(nombre))
@@ -42,7 +43,9 @@ namespace ClassLibrary
         /// </summary>
         /// <returns>Retorna una nueva lista llamada RubrosList de tipo string.</returns>
         public List<string> RubrosList = new List<string>()
-            {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
+            {
+                "textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"
+            };
         
         /// <summary>
         /// Añade un rubro a la lista, devuelve un string confirmando la acción.
@@ -80,6 +83,7 @@ namespace ClassLibrary
             {
                 getRubrosList.Append($"- {rubro}.");   
             }
+            
             Console.WriteLine(getRubrosList.ToString());
         }
     }

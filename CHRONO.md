@@ -3,12 +3,15 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+3/10/21 - Piero Saucedo
+Corregidos +100 errores de convención.
+
 1-2/10/21 - Joaquín Pérez
 Correción de xml en diversas clases.
 Creación de dos clases de testo TestsOferta y RubroTest, ambas terminadas.
 Arrancamos en grupo la clase TestGeneral.
 
-1y2/11/21 - Juan Pérez
+1-2/11/21 - Juan Pérez
 Realice los test de las clases Administrador, Habilitaciones, LimpiadorCadenas.
 Modifique la clase de LimpiadorCadenas, le agregue un nuevo metodo para limpiar cadenas, para cuando no solo se ingresa una palabra. Por ejemplo cuando el usuario indica que quiere "Buscar por materiales" entonces era necesario crear un nuevo metodo que permita hacer esto.
 A los metodos de la clase Habilitaciones le agregue que impriman en consola la operacion que realizaron, para saber que realmente esten realizando la operacion correspondiente.

@@ -9,6 +9,7 @@ namespace ClassLibrary
         /// Este método permite enviar mensajes.
         /// </summary>
         void SendMessage();
+        
         /// <summary>
         /// Este método permite recibir mensajes.
         /// </summary>

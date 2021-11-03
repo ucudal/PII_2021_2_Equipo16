@@ -17,18 +17,18 @@ namespace Test.Library
         {
             Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor Juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
             string expected = "Juan Pérez";
             string expected2 = "Barrio Sur";
             string expected3 = "entretenimiento";
             Habilitaciones expected4 = habilitacion;
             string expected5 = "Lavado de Autos Express";
 
-            Assert.AreEqual(expected, Juancho.Nombre);
-            Assert.AreEqual(expected2, Juancho.Ubicacion );
-            Assert.AreEqual(expected3, Juancho.Rubro.Nombre);
-            Assert.AreEqual(expected4, Juancho.Habilitacion);
-            Assert.AreEqual(expected5, Juancho.Especializaciones);
+            Assert.AreEqual(expected, juancho.Nombre);
+            Assert.AreEqual(expected2, juancho.Ubicacion);
+            Assert.AreEqual(expected3, juancho.Rubro.Nombre);
+            Assert.AreEqual(expected4, juancho.Habilitacion);
+            Assert.AreEqual(expected5, juancho.Especializaciones);
         }
 
         /// <summary>
@@ -39,12 +39,12 @@ namespace Test.Library
         {
             Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor Juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
 
             int expected = 1;
             
-            Juancho.AddHabilitacion("soa");
-            Assert.AreEqual(expected, Juancho.HabilitacionesEmprendedor.Count);
+            juancho.AddHabilitacion("soa");
+            Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
         }
         
         /// <summary>
@@ -55,14 +55,14 @@ namespace Test.Library
         {
             Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor Juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
 
             int expected = 1;
             
-            Juancho.AddHabilitacion("soa");
-            Juancho.AddHabilitacion("soa");
-            Juancho.RemoveHabilitacion("soa");
-            Assert.AreEqual(expected, Juancho.HabilitacionesEmprendedor.Count);
+            juancho.AddHabilitacion("soa");
+            juancho.AddHabilitacion("soa");
+            juancho.RemoveHabilitacion("soa");
+            Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
         }
     }
 }
