@@ -10,25 +10,15 @@ namespace ClassLibrary
     public class Empresa : Usuario, IHabilitaciones
     {
         /// <summary>
-<<<<<<< HEAD
-        /// Inicializa una instancia de Empresa.
-        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
-=======
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
->>>>>>> master
+        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
-<<<<<<< HEAD
-        /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) 
-                : base(nombre, ubicacion, rubro)
-=======
         public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion)
         : base(nombre, ubicacion, rubro)
->>>>>>> master
         {
             this.Habilitacion = habilitacion;
         }
