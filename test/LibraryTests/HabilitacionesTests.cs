@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 {
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Esta clase permite realizar los test de la clase Habilitaciones.
     /// Los métodos de la clase Habilitaciones son testeados uno por uno.

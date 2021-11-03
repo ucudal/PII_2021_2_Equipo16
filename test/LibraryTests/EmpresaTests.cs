@@ -1,9 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
-
 namespace Test.Library
 {
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Esta clase permite realizar los tests de la clase Empresa.
     /// </summary>
@@ -26,7 +25,7 @@ namespace Test.Library
             Habilitaciones expected4 = habilitacion;
  
             Assert.AreEqual(expected, empresaTest.Nombre);
-            Assert.AreEqual(expected2, empresaTest.Ubicacion );
+            Assert.AreEqual(expected2, empresaTest.Ubicacion);
             Assert.AreEqual(expected3, empresaTest.Rubro.Nombre);
             Assert.AreEqual(expected4, empresaTest.Habilitacion);
         }
@@ -46,6 +45,7 @@ namespace Test.Library
             empresaTest.AddHabilitacion("apa");
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
         }
+        
         /// <summary>
         /// Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
         /// </summary>

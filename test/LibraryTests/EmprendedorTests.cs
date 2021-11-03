@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 {
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Esta clase permite realizar los tests de la clase Emprendedor.
     /// </summary>

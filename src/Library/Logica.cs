@@ -29,5 +29,5 @@ namespace ClassLibrary
         /// Guarda una instancia de ConsolePrinter.
         /// </summary>
         public static ConsolePrinter PrinterConsola = new ConsolePrinter();
-    } 
+    }
 }

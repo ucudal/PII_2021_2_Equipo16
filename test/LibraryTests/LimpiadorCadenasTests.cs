@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 {
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Esta clase permite testear todas los comportamientos que va a tener la clase LimpiadorCadenas
     /// Dicha clase lo que hace es tomar las cadenas de caracteres que el usuario

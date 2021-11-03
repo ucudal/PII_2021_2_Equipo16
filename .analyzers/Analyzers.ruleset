@@ -2,11 +2,9 @@
 <RuleSet Name="AnalyzersRules" Description="Analyzers custom ruleset" ToolsVersion="15.0">
   <IncludeAll Action="Warning" />
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers">
-    <Rule Id="SA1121" Action="None" />
-    <Rule Id="SA1012" Action="None" />
-    <Rule Id="SA1200" Action="None" />    
-    <Rule Id="SA1028" Action="None" />
+    <Rule Id="SA1121" Action="None" /> 
     <Rule Id="SA1633" Action="None" />
+    <Rule Id="SA1401" Action="None" />
 
   </Rules>
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
@@ -14,7 +12,8 @@
     <Rule Id="CA1303" Action="None" />
     <Rule Id="CA1304" Action="None" />
     <Rule Id="CA1307" Action="None" />
-    <Rule Id="CA1823" Action="None" />
+    <Rule Id="CA2211" Action="None" />
+    <Rule Id="CA1002" Action="None" />
   </Rules>
 </RuleSet>
 

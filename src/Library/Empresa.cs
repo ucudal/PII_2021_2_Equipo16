@@ -7,17 +7,16 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase representa una Empresa, que se encarga de crear Ofertas, eliminarlas, aceptarlas y calcular el consumo de ofertas.
     /// </summary>
-    public class Empresa: Usuario, IHabilitaciones
+    public class Empresa : Usuario, IHabilitaciones
     {
         /// <summary>
-        /// Inicializa una instancia de Empresa.
+        /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
-        /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) 
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion)
         : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = habilitacion;
@@ -26,31 +25,29 @@ namespace ClassLibrary
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        
+
         /// <summary>
         /// Habilitaciones de la empresa.
         /// </summary>
         public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
-        /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
+        /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
-        /// <value></value>
         public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
 
         /// <summary>
-        /// Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
+        /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
-        /// <value></value>
         public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
-        
+
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
         public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
 
         /// <summary>
-        /// Crea un producto, se usa Creator, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// Crea un producto, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
@@ -60,6 +57,9 @@ namespace ClassLibrary
         /// <param name="tags">Tags de la oferta (palabras claves).</param>
         /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
         /// <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
+        /// <remarks>
+        /// Se usa Creator.
+        /// </remarks>
         public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {
             bool habilitacionesAgregadas = false;
@@ -67,7 +67,7 @@ namespace ClassLibrary
             publicaciones.OfertasPublicados.Add(productoCreado);
             while (habilitacionesAgregadas)
             {
-                // Todo lo que es console.writeline y ReadLine, es para tenerlo claro en consola, 
+                // Todo lo que es console.writeline y ReadLine, es para tenerlo claro en consola,
                 // Cuando conozcamos sobre Telegram se debería modificar.
                 Console.WriteLine("Desea agregar mas habilitaciones");
                 if (Console.ReadLine() == "Si")
@@ -88,7 +88,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="oferta">Oferta a eliminar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
-        public void EliminarProducto(Oferta oferta, Publicaciones publicaciones)
+        public static void EliminarProducto(Oferta oferta, Publicaciones publicaciones)
         {
             publicaciones.OfertasPublicados.Remove(oferta);
         }
@@ -111,6 +111,7 @@ namespace ClassLibrary
                     this.ofertasAceptadas.Add(ofertaEnLista);
                 }
             }
+
             publicaciones.OfertasPublicados.Remove(ofertaEncontrada);
         }
 
@@ -119,25 +120,28 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        public int CalcularOfertasVendidasSegunTiempo(string fechaInicio, string fechaFinal)
+        /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
+        public int CalcularOfertasVendidas(string fechaInicio, string fechaFinal)
         {
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
             foreach (Oferta oferta in this.ofertasAceptadas)
             {
-                if (oferta.FechaDePublicacion >= fInicio && oferta.FechaDePublicacion <= fFinal)
+                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
                 {
-                   cantidadVendida += 1; 
+                   cantidadVendida += 1;
                 }
             }
+
             Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
             return cantidadVendida;
         }
-        //Habilitaciones que tengo yo a nivel de empresa
+
+        // Habilitaciones que tengo yo a nivel de empresa
 
         /// <summary>
-        /// Agerga habilitaciones que pueda tener la empresa.
+        /// Agrega habilitaciones que pueda tener la empresa.
         /// </summary>
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
@@ -147,7 +151,7 @@ namespace ClassLibrary
                 this.habilitacionesEmpresa.Add(habilitacionBuscada);
             }
         }
-        
+
         /// <summary>
         /// Quita habilitaciones que tenga la Empresa.
         /// </summary>
