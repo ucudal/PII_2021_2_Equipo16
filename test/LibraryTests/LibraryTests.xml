@@ -22,6 +22,24 @@
             pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
             </summary>
         </member>
+        <member name="T:Test.Library.EmprendedorTests">
+            <summary>
+            Esta clase permite realizar los tests de la clase Emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorTests.TestRegistroEmprendedor">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorTests.TestAddHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorTests.TestQuitarHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
         <member name="T:Test.Library.GeneralTests">
             <summary>
             Clase de pruebas de TestGeneral.
@@ -102,6 +120,26 @@
             para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
             </summary>
         </member>
+        <member name="T:Test.Library.OfertaTests">
+            <summary>
+            Esta clase permite realizar los tests de la clase Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.OfertaTests.TestCreacionOferta">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.OfertaTests.TestAgregarHabilitaciones">
+            <summary>
+            Test que sirve para chequear que el método AddHabilitación funciona correctamente.
+            </summary>
+        </member>
+        <member name="M:Test.Library.OfertaTests.TestRemoverHabilitaciones">
+            <summary>
+            Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
         <member name="T:Test.Library.PublicacionesTest">
             <summary>
             Esta clase contiene un Test para verificar que Publicaciones funcione correctamente.
@@ -142,36 +180,6 @@
         <member name="M:Test.Library.TestsEmprendedor.TestRegistroEmprendedor">
             <summary>
             Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsEmprendedor.TestAddHabilitaciones">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsEmprendedor.TestQuitarHabilitaciones">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
-            </summary>
-        </member>
-        <member name="T:Test.Library.TestsOferta">
-            <summary>
-            Esta clase permite realizar los tests de la clase Oferta.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsOferta.TestCreacionOferta">
-            <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsOferta.TestAgregarHabilitaciones">
-            <summary>
-            Test que sirve para chequear que el método AddHabilitación funciona correctamente.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsOferta.TestRemoverHabilitaciones">
-            <summary>
-            Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
         <member name="T:Test.Library.UsuarioTest">
