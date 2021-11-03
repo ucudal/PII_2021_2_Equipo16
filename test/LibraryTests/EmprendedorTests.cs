@@ -15,7 +15,7 @@ namespace Test.Library
         [Test]
         public void TestRegistroEmprendedor()
         {
-            Rubro rubro = new Rubro("entretenimiento");
+            Rubro rubro = new Rubro();
             Habilitaciones habilitacion = new Habilitaciones();
             Emprendedor Juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
             string expected = "Juan Pérez";
@@ -37,7 +37,7 @@ namespace Test.Library
         [Test]
         public void TestAddHabilitaciones()
         {
-            Rubro rubro = new Rubro("entretenimiento");
+            Rubro rubro = new Rubro();
             Habilitaciones habilitacion = new Habilitaciones();
             Emprendedor Juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
 
