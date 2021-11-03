@@ -60,5 +60,37 @@ namespace Test.Library
             empresaTest.RemoveHabilitacion("apa");
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
         }
+        /// <summary>
+        /// Test que chequea que sucede si se agrega una habilitación que no existe a una empresa.
+        /// </summary>
+        [Test]
+        public void TestAddHabilitacionesMal()
+        {
+            Habilitaciones habilitacion = new Habilitaciones();
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+
+            int expected = 1;
+            
+            empresaTest.AddHabilitacion("apa");
+            empresaTest.AddHabilitacion("ALOJA");
+            Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
+        }
+        /// <summary>
+        /// Test que chequea que sucede si se intenta remover una habilitación que no está en la lista
+        /// a una empresa.
+        /// </summary>
+        [Test]
+        public void TestQuitarHabilitacionesMal()
+        {   
+            Habilitaciones habilitacion = new Habilitaciones();
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+    
+            int expected = 2;
+            
+            empresaTest.AddHabilitacion("apa");
+            empresaTest.AddHabilitacion("soa");
+            empresaTest.RemoveHabilitacion("DEUNA");
+            Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
+        }
     }
 }

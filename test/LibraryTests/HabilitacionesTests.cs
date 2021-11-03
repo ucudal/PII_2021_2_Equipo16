@@ -73,5 +73,18 @@ namespace Test.Library
             habilitacion.RemoveHabilitacion("apa");
             Assert.AreEqual(expected, habilitacion.ListaHabilitaciones.Count);
         }
+
+        /// <summary>
+        /// Este test está diseñado para que de error, ya que rock no pertenece a la lista de habilitaciones. 
+        /// </summary>
+        [Test]
+        public void TestEliminarHabilitaciones1()
+        {
+            Habilitaciones habilitacion = new Habilitaciones();
+            
+            int expected = 4;
+            habilitacion.RemoveHabilitacion("ROCK");
+            Assert.AreEqual(expected, habilitacion.ListaHabilitaciones.Count);
+        }
     }
 }

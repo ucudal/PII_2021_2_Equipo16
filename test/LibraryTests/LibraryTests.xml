@@ -21,6 +21,11 @@
             Inicialmente la lista de empresas que tiene el administrador esta vacia, pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
             </summary>
         </member>
+        <member name="M:Test.Library.AdministradorTests.TestAdministradorFalso">
+            <summary>
+            Este test está diseñado para que de error, ya que se espera un nombre y no un string vacio.
+            </summary>
+        </member>
         <member name="T:Test.Library.EmprendedorTests">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -41,6 +46,16 @@
             Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
+        <member name="M:Test.Library.EmprendedorTests.TestQuitarHabilitacionesMal">
+            <summary>
+            Test que sirve para ver que sucede al intentar eliminar una habilitación que no existe.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorTests.TestAddHabilitacionesMal">
+            <summary>
+            Test que sirve para ver el comportamiento del código al añadirle al emprendedor una habilitacion que no existe.
+            </summary>
+        </member>
         <member name="T:Test.Library.EmpresaTests">
             <summary>
             Esta clase permite realizar los tests de la clase Empresa.
@@ -59,6 +74,17 @@
         <member name="M:Test.Library.EmpresaTests.TestQuitarHabilitaciones">
             <summary>
             Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestAddHabilitacionesMal">
+            <summary>
+            Test que chequea que sucede si se agrega una habilitación que no existe a una empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestQuitarHabilitacionesMal">
+            <summary>
+            Test que chequea que sucede si se intenta remover una habilitación que no está en la lista
+            a una empresa.
             </summary>
         </member>
         <member name="T:Test.Library.GeneralTests">
@@ -127,6 +153,11 @@
             Y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
             </summary>
         </member>
+        <member name="M:Test.Library.HabilitacionesTests.TestEliminarHabilitaciones1">
+            <summary>
+            Este test está diseñado para que de error, ya que rock no pertenece a la lista de habilitaciones. 
+            </summary>
+        </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
             <summary>
             Esta clase permite testear todas los comportamientos que va a tener la clase LimpiadorCadenas.
@@ -170,6 +201,17 @@
         <member name="M:Test.Library.OfertaTests.TestRemoverHabilitaciones">
             <summary>
             Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.OfertaTests.TestAgregarHabilitacionesMal">
+            <summary>
+            Test que sirve para ver el comportamiento del código al añadirle a una oferta una habilitación que no existe.
+            </summary>
+        </member>
+        <member name="M:Test.Library.OfertaTests.TestRemoverHabilitacionesMal">
+            <summary>
+            Test que sirve para ver el comportamiento del código al intentar eliminar una habilitación
+            que no existe a una oferta.
             </summary>
         </member>
         <member name="T:Test.Library.RubroTests">

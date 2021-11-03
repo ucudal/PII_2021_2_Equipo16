@@ -10,6 +10,12 @@ Proxima entrega miércoles 3 de Noviembre, creación del Core del Bot, actualiza
 -Fixes en clase HabilitacionesTests: A raíz del problema anterior, todos los tests pasaban a dar error. Solucionado.
 
 
+3/11/21 - Joaquín Pérez
+Correción de los errores en Test de diversas clases.
+Optimización del código Rubro, para pasar un rubro como string.
+Optimización del código de la clase Habilitaciones.cs.
+Creación de nuevos métodos para Rubro.cs , Oferta.cs entre otras clases.
+
 3/11/21 - Juan Pérez    
 Modificación de los comentarios xml.
 Agregue las UML para esta entrega.
