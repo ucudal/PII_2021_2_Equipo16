@@ -40,6 +40,16 @@
         <member name="M:Test.Library.EmprendedorTests.TestQuitarHabilitaciones">
             <summary>
             Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+        <member name="T:Test.Library.GeneralTests">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests.TestGeneral1">
+            <summary>
+            Test de historia de usuario
+            Se crean 1 empresa y 1 emprendedor, la empresa publica 3 ofertas, se hace una busqueda por tags en esas publicaciones
+            el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
             </summary>
         </member>
         <member name="T:Test.Library.HabilitacionesTests">
@@ -137,7 +147,7 @@
         </member>
         <member name="M:Test.Library.PublicacionesTest.TestPublicaciones">
             <summary>
-            
+
             </summary>
         </member>
         <member name="T:Test.Library.RubroTest">
@@ -162,9 +172,14 @@
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
         </member>
-        <member name="T:Test.Library.TestGeneral">
+        <member name="T:Test.Library.TestsEmprendedor">
             <summary>
-            Clase de pruebas de TestGeneral
+            Esta clase permite realizar los tests de la clase Emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.TestsEmprendedor.TestRegistroEmprendedor">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
             </summary>
         </member>
         <member name="T:Test.Library.UsuarioTest">

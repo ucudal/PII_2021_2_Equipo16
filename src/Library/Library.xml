@@ -208,13 +208,13 @@
             <param name="oferta">Oferta a eliminar.</param>
             <param name="publicaciones">Publicaciones.</param>
         </member>
-        <member name="M:ClassLibrary.Empresa.AceptarOferta(ClassLibrary.Oferta,ClassLibrary.Publicaciones)">
+        <member name="M:ClassLibrary.Empresa.AceptarOferta(System.String,ClassLibrary.Publicaciones)">
             <summary>
             Quita de las publicaciones, la oferta que fue aceptada, ser aceptada implica que se llegó a un acuerdo
             con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista
             de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
             </summary>
-            <param name="oferta">Oferta que se quiere aceptar.</param>
+            <param name="nombreOfertaParaAceptar">Oferta que se quiere aceptar.</param>
             <param name="publicaciones">Publicaciones.</param>
         </member>
         <member name="M:ClassLibrary.Empresa.CalcularOfertasVendidasSegunTiempo(System.String,System.String)">
@@ -497,12 +497,12 @@
             <param name="empresa">Empresa que eliminará la oferta.</param>
             <param name="oferta">Oferta que se desea elimianr.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.AceptarOferta(ClassLibrary.Empresa,ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.LogicaEmpresa.AceptarOferta(ClassLibrary.Empresa,System.String)">
             <summary>
             Llama al método AceptarOferta en empresa con los parametros pasados.
             </summary>
             <param name="empresa">Empresa que aceptará la oferta.</param>
-            <param name="oferta">Oferta que se desea Aceptar.</param>
+            <param name="ofertaQueSeAcepta">Nombre de oferta que se desea Aceptar.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.CalcularOfertasVendidasSegunTiempo(ClassLibrary.Empresa,System.String,System.String)">
             <summary>
