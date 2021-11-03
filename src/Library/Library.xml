@@ -51,8 +51,8 @@
             <summary>
             Busca ofertas en Publicaciones, según el material de la oferta.
             </summary>
-            <param name="publicaciones">Publicaciones</param>
-            <param name="busqueda">Material a buscar</param>
+            <param name="publicaciones">Publicaciones.</param>
+            <param name="busqueda">Material a buscar.</param>
             <returns>Retorna las ofertas encontradas por material, mediante una lista de tipo Oferta.</returns>
         </member>
         <member name="T:ClassLibrary.BuscadorTags">
@@ -119,6 +119,12 @@
             <param name="habilitacion">Habilitaciones del emprendedor.</param>
             <param name="especializaciones">Especializaciones del emprendedor.</param>
             <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.Emprendedor.Habilitacion">
+            <summary>
+            Habilitaciones del emprendedor.
+            </summary>
+            <value></value>
         </member>
         <member name="P:ClassLibrary.Emprendedor.HabilitacionesDeEmprendedor">
             <summary>
@@ -253,33 +259,33 @@
         </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
             <summary>
-            Este valor indica el nombre de la habilitación
+            Este valor indica el nombre de la habilitación.
             </summary>
-            <value>Valor es un string del nombre</value>
+            <value>Valor es un string del nombre.</value>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.HabilitacionesDisponibles">
             <summary>
             Este método retorna un string con las habilitaciones de la lista
-            Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final
+            Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final.
             </summary>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.AddHabilitacion(System.String)">
             <summary>
-            Este método permite agregar habilitaciones a la lista de habilitaciones
+            Este método permite agregar habilitaciones a la lista de habilitaciones.
             </summary>
-            <param name="nombre"> Recibe un parametro de tipo string del nombre de la habilitación deseada</param>
+            <param name="nombre"> Recibe un parametro de tipo string del nombre de la habilitación deseada.</param>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.GetHabilitacionList">
             <summary>
             Este método imprime en consola la lista de habilitaciones
-            para realizar esto utiliza un StringBuilder y recorre la lista de Hablilitaciones
+            para realizar esto utiliza un StringBuilder y recorre la lista de Hablilitaciones.
             </summary>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.RemoveHabilitacion(System.String)">
             <summary>
-            Este método sirve para eliminar habilitaciones que estan en la lista de Habilitaciones
+            Este método sirve para eliminar habilitaciones que estan en la lista de Habilitaciones.
             </summary>
-            <param name="nombre">Recibe por parametro un string del nombre de la habilitación deseada</param>
+            <param name="nombre">Recibe por parametro un string del nombre de la habilitación deseada.</param>
         </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
@@ -341,12 +347,12 @@
             Este método permite recibir mensajes.
             </summary>
         </member>
-        <member name="T:ClassLibrary.LimpiadorCadena">
+        <member name="T:ClassLibrary.LimpiadorCadenas">
             <summary>
             Esta clase representa un limpiador de cadenas para permitir leer las cadenas correctamente.
             </summary>
         </member>
-        <member name="M:ClassLibrary.LimpiadorCadena.LimpiaCadena(System.String)">
+        <member name="M:ClassLibrary.LimpiadorCadenas.LimpiaCadena(System.String)">
             <summary>
             Este método sirve para limpiar las cadenas y permitir que no hayan errores de tipeo, 
             y se pueda leer el texto que sea ingresado por un usuario de la aplicación.
@@ -354,7 +360,7 @@
             <param name="cadena">Recibe por parametro un cadena de tipo String.</param>
             <returns>Retorna la cadena una vez que se le aplicaron todos los limpiadores de cadena.</returns>
         </member>
-        <member name="M:ClassLibrary.LimpiadorCadena.LimpiaCadenaRespuesta(System.String)">
+        <member name="M:ClassLibrary.LimpiadorCadenas.LimpiaCadenaRespuesta(System.String)">
             <summary>
             Este método sirve para limpiar las cadenas de respuestas que el usuario ingresará.
             Creemos necesario tener un limpiador de cadenas así, ya que el usuario podria
@@ -431,15 +437,15 @@
             <summary>
             Este método se encarga de llamar a AddHabilitación de Emprendedor.
             </summary>
-            <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
             <param name="emprendedor">Un emprendedor.</param>
+            <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.RemoveHabilitacion(ClassLibrary.Emprendedor,System.String)">
             <summary>
             Este método se encarga de llamar a RemoveHabilitación de Emprendedor.
             </summary>
-            <param name="habilitacion">Nombre de la habilitación a remover.</param>
             <param name="emprendedor">Un emprendedor.</param>
+            <param name="habilitacion">Nombre de la habilitación a remover.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.GetHabilitacionList(ClassLibrary.Emprendedor)">
             <summary>
@@ -533,12 +539,11 @@
         </member>
         <member name="F:ClassLibrary.Oferta.habilitacionesOferta">
             <summary>
-            
+            Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
-
             Inicializa una instancia de Oferta.
             </summary>
             <param name="nombre">Nombre de la oferta.</param>
@@ -548,7 +553,6 @@
             <param name="tags">Tags de la oferta.</param>
             <param name="ubicacion">Ubicacion de la oferta.</param>
             <param name="empresa">Empresa que publica la oferta.</param>
-
         </member>
         <member name="P:ClassLibrary.Oferta.HayInteresado">
             <summary>

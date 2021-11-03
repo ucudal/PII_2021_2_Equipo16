@@ -10,7 +10,6 @@ namespace ClassLibrary
         /// </summary>
         public static void AceptarInvitacion()
         {
-
         }
 
         /// <summary>
@@ -33,7 +32,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa">Empresa que eliminará la oferta.</param>
         /// <param name="oferta">Oferta que se desea elimianr.</param>
-        public void EliminarProducto(Empresa empresa, Oferta oferta)
+        public static void EliminarProducto(Empresa empresa, Oferta oferta)
         {
             empresa.EliminarProducto(oferta, Logica.PublicacionesA);
         }

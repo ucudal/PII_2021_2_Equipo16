@@ -22,7 +22,7 @@ namespace ClassLibrary
             {
                 Console.WriteLine("El nombre del Rubro no existe, ¿desea agregarlo?");
                 string respuesta = Console.ReadLine().ToString();
-                respuesta = LimpiadorCadena.LimpiaCadena(respuesta);
+                respuesta = LimpiadorCadenas.LimpiaCadena(respuesta);
                 if (respuesta == "si")
                 {
                     RubrosList.Add(nombre);
@@ -61,7 +61,7 @@ namespace ClassLibrary
         public void RemoveRubro(string rubro)
         {
             RubrosList.Remove(rubro);
-            Console.WriteLine( $"Rubro '{rubro}' eliminado exitosamente.");
+            Console.WriteLine($"Rubro '{rubro}' eliminado exitosamente.");
         }
 
         /// <summary>

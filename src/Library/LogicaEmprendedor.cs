@@ -11,8 +11,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este método se encarga de llamar a AddHabilitación de Emprendedor.
         /// </summary>
-        /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         /// <param name="emprendedor">Un emprendedor.</param>
+        /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public static void AddHabilitacion(Emprendedor emprendedor, string habilitacionBuscada)
         {
             emprendedor.AddHabilitacion(habilitacionBuscada);
@@ -21,8 +21,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este método se encarga de llamar a RemoveHabilitación de Emprendedor.
         /// </summary>
-        /// <param name="habilitacion">Nombre de la habilitación a remover.</param>
         /// <param name="emprendedor">Un emprendedor.</param>
+        /// <param name="habilitacion">Nombre de la habilitación a remover.</param>
         public static void RemoveHabilitacion(Emprendedor emprendedor, string habilitacion)
         {
             emprendedor.RemoveHabilitacion(habilitacion);
