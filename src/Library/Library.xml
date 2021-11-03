@@ -538,6 +538,7 @@
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
+
             Inicializa una instancia de Oferta.
             </summary>
             <param name="nombre">Nombre de la oferta.</param>
@@ -547,6 +548,7 @@
             <param name="tags">Tags de la oferta.</param>
             <param name="ubicacion">Ubicacion de la oferta.</param>
             <param name="empresa">Empresa que publica la oferta.</param>
+
         </member>
         <member name="P:ClassLibrary.Oferta.HayInteresado">
             <summary>

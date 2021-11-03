@@ -26,7 +26,7 @@ namespace Test.Library
             string expected4 = "kg";
             string expected5 = "acero, sillas, tres cruces";
             string expected6 = "Tres Cruces";
-            Empresa expected7 = aleatoria;
+            string expected7 = "Madafakin Coke";
 
             Assert.AreEqual(expected, oferta.Nombre);
             Assert.AreEqual(expected2, oferta.Material);
@@ -34,7 +34,8 @@ namespace Test.Library
             Assert.AreEqual(expected4, oferta.Unidad);
             Assert.AreEqual(expected5, oferta.Tags);
             Assert.AreEqual(expected6, oferta.Ubicacion);
-            Assert.AreEqual(expected7, oferta.EmpresaCreadora);
+            Assert.AreEqual(expected7, oferta.EmpresaCreadora.Nombre);
+
         }
 
         /// <summary>
