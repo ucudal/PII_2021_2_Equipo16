@@ -1,8 +1,8 @@
-using ClassLibrary;
-using NUnit.Framework;
-
 namespace Test.Library
 {
+    using ClassLibrary;
+    using NUnit.Framework;
+    
     /// <summary>
     /// Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
     /// </summary>
@@ -13,7 +13,7 @@ namespace Test.Library
         /// Testea el Nombre del Usuario para corroborar que la instancia fue creada correctamente.
         /// </summary>
         [Test]
-          public void TestearUsuarioNombre()
+        public void TestearUsuarioNombre()
         {
             Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("textil"));
             Assert.AreEqual("Joaquin", usuario.Nombre);

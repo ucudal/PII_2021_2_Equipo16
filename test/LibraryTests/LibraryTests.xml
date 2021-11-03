@@ -18,23 +18,9 @@
             <summary>
             Este test lo que permite es ver si el metodo InvitarEmpresa de la Clase Administrador funciona.
             Para poder realizar esto se instancia un administrador y una empresa luego el administrador invita a la empresa a unirse.
-            Inicialmente la lista de empresas que tiene el administrador esta vacia,
-            pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
+            Inicialmente la lista de empresas que tiene el administrador esta vacia, pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
             </summary>
         </member>
-
-        <member name="T:Test.Library.EmpresaTests">
-            <summary>
-            Esta clase permite realizar los tests de la clase Empresa.
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaTests.EmpresaTest">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Empresa.
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaTests.TestAddHabilitaciones">
-
         <member name="T:Test.Library.EmprendedorTests">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -46,7 +32,6 @@
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorTests.TestAddHabilitaciones">
-
             <summary>
             Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
             </summary>
@@ -54,6 +39,28 @@
         <member name="M:Test.Library.EmprendedorTests.TestQuitarHabilitaciones">
             <summary>
             Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
+        <member name="T:Test.Library.EmpresaTests">
+            <summary>
+            Esta clase permite realizar los tests de la clase Empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.EmpresaTest">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestAddHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaTests.TestQuitarHabilitaciones">
+            <summary>
+            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
+            </summary>
+        </member>
         <member name="T:Test.Library.GeneralTests">
             <summary>
             Clase de pruebas de TestGeneral.
@@ -61,9 +68,30 @@
         </member>
         <member name="M:Test.Library.GeneralTests.TestGeneral1">
             <summary>
-            Test de historia de usuario
-            Se crean 1 empresa y 1 emprendedor, la empresa publica 3 ofertas, se hace una busqueda por tags en esas publicaciones
-            el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
+            Test de historia de usuario.
+            Se crean 1 empresa y 1 emprendedor, la empresa publica 3 ofertas, se hace una busqueda por tags en esas publicaciones el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
+            </summary>
+        </member>
+        <member name="T:Test.Library.GeneralTests2">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests2.TestGeneral2">
+            <summary>
+            Test historia de usuario2
+            Tenemos una empresa y un emprendedor, la empresa crea productos, y se quiere comprobar
+            si el método para calcular ofertas entregadas/consumidas segun tiempo funcionan acorde a lo estipulado.
+            </summary>
+        </member>
+        <member name="T:Test.Library.GeneralTests3">
+            <summary>
+            Clase de pruebas de TestGeneral.
+            </summary>
+        </member>
+        <member name="M:Test.Library.GeneralTests3.TestGeneral3">
+            <summary>
+            Tenemos una empresa que crea sus ofertas para poder despues realizar una busqueda por ubicación, tag, material.
             </summary>
         </member>
         <member name="T:Test.Library.HabilitacionesTests">
@@ -74,8 +102,7 @@
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion">
             <summary>
-            Este método permite evaluar lo que sucede cuando se ingresa
-            un nombre de habilitacion que esta en la lista de habilitaciones.
+            Este método permite evaluar lo que sucede cuando se ingresa un nombre de habilitacion que esta en la lista de habilitaciones.
             </summary>
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion2">
@@ -91,47 +118,38 @@
         <member name="M:Test.Library.HabilitacionesTests.TestAgregarHabilitaciones">
             <summary>
             Este test permite comprobar que se pueden agregar habilitaciones a la lista de habilitaciones.
-            Inicialmente la lista contiene 5 elementos y "brutal" que es la habilitacion que se quiere agregar
-            no está dentro de la lista. Por lo cual al agregarla la lista pasara a contar con 6 elementos que es 
-            lo que se espera que devuelva la cuenta de ListaHabilitaciones.
+            Inicialmente la lista contiene 5 elementos y "brutal" que es la habilitacion que se quiere agregar no está dentro de la lista. Por lo cual al agregarla la lista pasara a contar con 6 elementos que es lo que se espera que devuelva la cuenta de ListaHabilitaciones.
             </summary>
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestEliminarHabilitaciones">
             <summary>
-            Este test permite comprobar si se pueden eliminar habilitaciones de la lista
-            para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
-            y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
+            Este test permite comprobar si se pueden eliminar habilitaciones de la lista para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
+            Y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
             <summary>
-            Esta clase permite testear todas los comportamientos que va a tener la clase LimpiadorCadenas
-            Dicha clase lo que hace es tomar las cadenas de caracteres que el usuario
-            de la aplicacion ingreso y las pasa a un tipo de cadena, que son las que se espera recibir,
-            en minusculas, sin tildes y sin espacios accidentales.
+            Esta clase permite testear todas los comportamientos que va a tener la clase LimpiadorCadenas.
+            Dicha clase lo que hace es tomar las cadenas de caracteres que el usuario de la aplicacion ingreso y las pasa a un tipo de cadena, que son las que se espera recibir, en minusculas, sin tildes y sin espacios accidentales.
             En el este caso trabaja tambien con numeros, los cuales no modifica.
             </summary>
         </member>
         <member name="M:Test.Library.LimpiadorCadenasTests.TestLimpiaCadena">
             <summary>
-            Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario
-            como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc. 
-            Necesitamos alguna forma de poder trabajar con esa cadena, por lo cual utilizamos
-            el método LimpiaCadena de la Clase LimpiadorCadenas.
+            Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc. 
+            Necesitamos alguna forma de poder trabajar con esa cadena, por lo cual utilizamos el método LimpiaCadena de la Clase LimpiadorCadenas.
             </summary>
         </member>
         <member name="M:Test.Library.LimpiadorCadenasTests.TestLimpiaCadena2">
             <summary>
-            Este método de prueba permite comprobar que lo unico que se modifica aplicando el metodo LimpiaCadena
-            son los caracteres alfabeticos, que en el caso de contener numeros, los mismos continuan estando tal como se ingresaron.
+            Este método de prueba permite comprobar que lo unico que se modifica aplicando el metodo LimpiaCadena son los caracteres alfabeticos, que en el caso de contener numeros, los mismos continuan estando tal como se ingresaron.
             </summary>
         </member>
         <member name="M:Test.Library.LimpiadorCadenasTests.TestLimpiaCadenaRespuesta">
             <summary>
             Este test permite validar el método LimpiaCadenaRespuesta de la clase LimpiadorCadenas.
             En los ejemplos anteriores teniamos pruebas para cuando se ingresaba solo una palabra como Nombre, rubro, etc.
-            Ahora con este método se permite evaluar acciones o respuestas del usuario. 
-            para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
+            Ahora con este método se permite evaluar acciones o respuestas del usuario para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
             </summary>
         </member>
         <member name="T:Test.Library.OfertaTests">
@@ -154,16 +172,6 @@
             Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
-        <member name="T:Test.Library.PublicacionesTest">
-            <summary>
-            Esta clase contiene un Test para verificar que Publicaciones funcione correctamente.
-            </summary>
-        </member>
-        <member name="M:Test.Library.PublicacionesTest.TestPublicaciones">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:Test.Library.RubroTests">
             <summary>
             Clase de pruebas de RubroTest.
@@ -184,46 +192,6 @@
         <member name="M:Test.Library.RubroTests.TestEliminarRubro">
             <summary>
             Test para comprobar si efectivamente el metodo elimina un Rubro.
-            </summary>
-        </member>
-        <member name="T:Test.Library.TestsEmprendedor">
-            <summary>
-            Esta clase permite realizar los tests de la clase Emprendedor.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsEmprendedor.TestRegistroEmprendedor">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento de una creación de una instancia de Emprendedor.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsEmprendedor.TestAddHabilitaciones">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsEmprendedor.TestQuitarHabilitaciones">
-            <summary>
-            Test que sirve para chequear el correcto funcionamiento del método RemoveHabilitacion.
-            </summary>
-        </member>
-        <member name="T:Test.Library.TestsOferta">
-            <summary>
-            Esta clase permite realizar los tests de la clase Oferta.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsOferta.TestCreacionOferta">
-            <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsOferta.TestAgregarHabilitaciones">
-            <summary>
-            Test que sirve para chequear que el método AddHabilitación funciona correctamente.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestsOferta.TestRemoverHabilitaciones">
-            <summary>
-            Test que chequea el correcto funcionamiento del método RemoveHabilitacion.
             </summary>
         </member>
         <member name="T:Test.Library.UsuarioTests">

@@ -1,9 +1,11 @@
+using System;
+
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase se encarga de la lógica relacioanda a Empresa.
+    /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
-    public class LogicaEmpresa
+    public static class LogicaEmpresa
     {
         /// <summary>
         /// Acepta la invitación del administrador.
@@ -17,24 +19,36 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa">Empresa que creará la oferta.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de lo que se oferece.</param>
+        /// <param name="material">Material de lo que se ofrece.</param>
         /// <param name="precio">Precio de la oferta.</param>
         /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
         /// <param name="tags">Palabra clave.</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
-            empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion);
+            if (Logica.ListaNombreOfertas.Contains(nombre))
+            {
+                Console.WriteLine("Nombre usado, por favor cambielo para poder crear el producto");
+            }
+            else
+            {
+                empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+                Logica.ListaNombreOfertas.Add(nombre);
+                Console.WriteLine("Producto creado exitosamente");
+            }
+            
         }
 
         /// <summary>
         /// Llama al método EliminarProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que eliminará la oferta.</param>
-        /// <param name="oferta">Oferta que se desea elimianr.</param>
+        /// <param name="oferta">Oferta que se desea eliminar.</param>
         public static void EliminarProducto(Empresa empresa, Oferta oferta)
         {
-            empresa.EliminarProducto(oferta, Logica.PublicacionesA);
+            Empresa.EliminarProducto(oferta, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+            Console.WriteLine("Producto eliminado exitosamente");
         }
 
         /// <summary>
@@ -53,15 +67,16 @@ namespace ClassLibrary
         /// <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        public static void CalcularOfertasVendidasSegunTiempo(Empresa empresa, string fechaInicio, string fechaFinal)
+        /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
+        public static int CalcularOfertasVendidas(Empresa empresa, string fechaInicio, string fechaFinal)
         {
-            empresa.CalcularOfertasVendidasSegunTiempo(fechaInicio, fechaFinal);
+            return empresa.CalcularOfertasVendidas(fechaInicio, fechaFinal);
         }
 
         /// <summary>
         /// Llama al método AddHabilitacion en empresa con los parametros pasados.
         /// </summary>
-        /// <param name="empresa">Empresa a la que se desea agregar una habilitacion.</param>
+        /// <param name="empresa">Empresa a la que se desea agregar una habilitación.</param>
         /// <param name="habilitacionBuscada">Habilitacion para ser agregada.</param>
         public static void AddHabilitacion(Empresa empresa, string habilitacionBuscada)
         {
@@ -71,7 +86,7 @@ namespace ClassLibrary
         /// <summary>
         /// Llama al método RemoveHabilitacion en empresa con los parametros pasados.
         /// </summary>
-        /// <param name="empresa">Empresa a la que se desea remover una habilitacion.</param>
+        /// <param name="empresa">Empresa a la que se desea remover una habilitación.</param>
         /// <param name="habilitacion">Habilitacion para ser removida.</param>
         public static void RemoveHabilitacion(Empresa empresa, string habilitacion)
         {

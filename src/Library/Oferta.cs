@@ -11,10 +11,10 @@ namespace ClassLibrary
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
-        public List<string> habilitacionesOferta = new List<string>();
+        public List<string> HabilitacionesOferta = new List<string>();
 
         /// <summary>
-        /// Inicializa una instancia de Oferta.
+        /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
         /// </summary>
         /// <param name="nombre">Nombre de la oferta.</param>
         /// <param name="material">Material del producto que se oferta.</param>
@@ -23,7 +23,8 @@ namespace ClassLibrary
         /// <param name="tags">Tags de la oferta.</param>
         /// <param name="ubicacion">Ubicacion de la oferta.</param>
         /// <param name="empresa">Empresa que publica la oferta.</param>
-        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, Empresa empresa)
+        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
             this.Material = material;
@@ -33,111 +34,105 @@ namespace ClassLibrary
             this.Ubicacion = ubicacion;
             this.Id = Guid.NewGuid();
             this.EmpresaCreadora = empresa;
+            this.ConstantesPuntuales = constantesPuntuales;
         }
 
-        
-        
-        
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public string interesado{ get; set; }
-        
+        public List<string> Interesado = new List<string>();
+
         private Habilitaciones habilitacion = new Habilitaciones();
-        
+
         /// <summary>
-        /// Nombre de la oferta.
+        /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        /// <value></value>
         public string Nombre { get; set; }
-        
+
         /// <summary>
-        /// Material del producto a ofertar.
+        /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        /// <value></value>
         public string Material { get; set; }
-        
+
         /// <summary>
-        /// Precio de la oferta.
+        /// Obtiene o establece el Precio de la Oferta.
         /// </summary>
-        /// <value></value>
         public int Precio { get; set; }
-        
+
         /// <summary>
-        /// Cantidad de unidades a ofertar.
+        /// Obtiene o establece la Cantidad de unidades a ofertar.
         /// </summary>
-        /// <value></value>
         public string Unidad { get; set; }
-        
+
         /// <summary>
-        /// Tags de la oferta.
+        /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
-        /// <value></value>
-        public string Tags { get; set;}
-        
+        public string Tags { get; set; }
+
         /// <summary>
-        ///ID única para cada oferta.
+        /// Obtiene la ID única para cada Oferta.
         /// </summary>
-        /// <returns></returns>
         public Guid Id { get; private set; }
 
         /// <summary>
-        /// Empresa que publica la oferta.
+        /// Obtiene o establece la Empresa que publica la Oferta.
         /// </summary>
-        /// <value></value>
         public Empresa EmpresaCreadora { get; set; }
-        
+
         /// <summary>
-        /// Obtiene una lista de las habilitaciones que requiere el producto.
+        /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        /// <value></value>
-        public List<string> HabilitacionesOferta {get => habilitacionesOferta;}
-        
+        public string ConstantesPuntuales { get; set; }
+
+        /// <summary>
+        /// Obtiene una lista de Habilitaciones de la Oferta.
+        /// </summary>
+        /// <value>habilitacionesOferta.</value>
+        public List<string> HabilitacionesDeOferta { get => this.HabilitacionesOferta; }
+
         /// <summary>
         /// Añade una habilitación a la oferta.
         /// </summary>
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                habilitacionesOferta.Add(habilitacionBuscada);
+                this.HabilitacionesOferta.Add(habilitacionBuscada);
             }
         }
-        
+
         /// <summary>
         /// Quita una habilitación a la oferta.
         /// </summary>
         /// <param name="habilitacion">Habilitacion a quitar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            habilitacionesOferta.Remove(habilitacion);
+            this.HabilitacionesOferta.Remove(habilitacion);
         }
-        
+
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
         public void GetHabilitacionList()
         {
-            habilitacion.HabilitacionesDisponibles();
+            this.habilitacion.HabilitacionesDisponibles();
         }
-        
+
         /// <summary>
-        /// Fecha en la que se publicó la oferta.
+        /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
-        /// <value></value>
-        public DateTime FechaDePublicacion 
+        public static DateTime FechaDePublicacion
         {
             get
             {
-                return DateTime.Now; 
+                return DateTime.Now;
             }
         }
-        
+
         /// <summary>
-        /// Ubicación de la oferta.
+        /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        /// <value></value>
         public string Ubicacion { get; set; }
     }
 }
