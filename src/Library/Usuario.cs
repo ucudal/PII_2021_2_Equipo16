@@ -23,19 +23,19 @@ namespace ClassLibrary
         }
         
         /// <summary>
-        /// Obtiene un valor que indica el nombre del usuario.
+        /// Obtiene o establece un valor que indica el nombre del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
         public string Nombre { get; set; }
         
         /// <summary>
-        /// Obtiene un valor que indica la ubicacion del usuario.
+        /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
         public string Ubicacion { get; set; }
         
         /// <summary>
-        /// Obtiene un valor con el rubro del usuario.
+        /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
         public Rubro Rubro { get; set; }

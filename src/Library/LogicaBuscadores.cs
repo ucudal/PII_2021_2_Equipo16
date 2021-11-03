@@ -3,7 +3,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase contiene a los buscadores.
     /// </summary>
-    public class LogicaBuscadores
+    public static class LogicaBuscadores
     {
         /// <summary>
         /// Llama al método Buscar para realizar una búsqueda por Material.

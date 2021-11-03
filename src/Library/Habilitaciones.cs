@@ -10,14 +10,14 @@ namespace ClassLibrary
     public class Habilitaciones : IHabilitaciones
     {
         /// <summary>
-        /// Esta lista contiene un conjunto de habilitaciones predeterminadas
+        /// Esta lista contiene un conjunto de habilitaciones predeterminadas.
         /// </summary>
         /// <returns></returns>
         public List<string> ListaHabilitaciones = new List<string>
             { "iso 9009", "apa", "soa", "unit", "ieee" };
 
         /// <summary>
-        /// Inicializa una instancia de habilitaciones
+        /// Inicializa una instancia de habilitaciones.
         /// </summary>
         public Habilitaciones()
         {
@@ -58,8 +58,9 @@ namespace ClassLibrary
                 habDisponibles.Append($"{contador}- {habilitacion}.\n");
                 contador++;
             }
+            
             string habDis = habDisponibles.ToString();
-            return (habDisponibles.ToString());
+            return habDisponibles.ToString();
         }
 
         /// <summary>
@@ -83,6 +84,7 @@ namespace ClassLibrary
             {
                 texto.Append($"- {nombreHabilitacion}");
             }
+            
             Console.WriteLine(texto.ToString());
         }
 

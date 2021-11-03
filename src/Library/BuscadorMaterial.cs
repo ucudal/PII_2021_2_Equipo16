@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    ///Esta clase representa un buscador por Material, que implementa la infertaz IBuscador.
+    /// Esta clase representa un buscador por Material, que implementa la infertaz IBuscador.
     /// </summary>
     /// <remarks>
     /// En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda
@@ -17,6 +17,7 @@ namespace ClassLibrary
     public class BuscadorMaterial : IBuscador
     {     
         List<Oferta> ofertasEncontradas = new List<Oferta>();
+        
         /// <summary>
         /// Busca ofertas en Publicaciones, según el material de la oferta.
         /// </summary>
@@ -33,6 +34,7 @@ namespace ClassLibrary
                     Logica.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
+            
             return ofertasEncontradas;
         } 
     }

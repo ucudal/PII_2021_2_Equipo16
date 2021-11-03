@@ -17,7 +17,8 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
         /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) 
+        : base(nombre, ubicacion, rubro)
         {
             this.habilitacion = habilitacion;
         }
@@ -32,13 +33,17 @@ namespace ClassLibrary
         /// Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
         /// </summary>
         /// <value></value>
-        public List<string> HabilitacionesEmpresa { get => habilitacionesEmpresa;}
+        public List<string> HabilitacionesEmpresa { get => habilitacionesEmpresa; }
 
         /// <summary>
         /// Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
         /// </summary>
         /// <value></value>
         public List<Oferta> InteresadosEnOfertas { get => interesadosEnOfertas; set => interesadosEnOfertas = value; }
+        
+        /// <summary>
+        /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
+        /// </summary>
         public List<Oferta> OfertasAceptadas { get => ofertasAceptadas; set => ofertasAceptadas = value; }
 
         /// <summary>
@@ -99,7 +104,6 @@ namespace ClassLibrary
                 if (ofertaEnLista.Nombre == nombreOfertaParaAceptar)
                 {
                     ofertaEncontrada = ofertaEnLista;
-                    //publicaciones.OfertasPublicados.Remove(ofertaEnLista);
                     ofertasAceptadas.Add(ofertaEnLista);
                 }
             }
@@ -125,7 +129,6 @@ namespace ClassLibrary
             }
             Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
         }
-
         //Habilitaciones que tengo yo a nivel de empresa
 
         /// <summary>
