@@ -10,7 +10,7 @@ namespace ClassLibrary
         /// </summary>
         public static void BuscarPorMaterial(string busqueda)
         {
-            Logica.buscadorMaterial.Buscar(Logica.PublicacionesA, busqueda);
+            Logica.BuscadorMaterial.Buscar(Logica.PublicacionesA, busqueda);
         }
         
         /// <summary>
@@ -19,7 +19,7 @@ namespace ClassLibrary
         /// <param name="busqueda"></param>
         public static void BuscarPorTags(string busqueda)
         {
-            Logica.buscadorTags.Buscar(Logica.PublicacionesA, busqueda);
+            Logica.BuscadorTags.Buscar(Logica.PublicacionesA, busqueda);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace ClassLibrary
         /// <param name="busqueda"></param>
         public static void BuscarPorUbicacion(string busqueda)
         {
-            Logica.buscadorUbicacion.Buscar(Logica.PublicacionesA, busqueda);
+            Logica.BuscadorUbicacion.Buscar(Logica.PublicacionesA, busqueda);
         }
     }
 }

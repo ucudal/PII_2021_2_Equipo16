@@ -58,7 +58,7 @@ namespace ClassLibrary
             foreach (string habilitacion in this.ListaHabilitaciones)
             {
                 habDisponibles.Append($"{contador}- {habilitacion}.\n");
-                contador ++;
+                contador++;
             }
             string habDis = habDisponibles.ToString();
             return (habDisponibles.ToString());
@@ -71,7 +71,7 @@ namespace ClassLibrary
         public void AddHabilitacion(string nombre)
         {
             this.ListaHabilitaciones.Add(nombre);
-           Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
+            Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
         }
 
         /// <summary>

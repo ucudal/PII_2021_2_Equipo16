@@ -11,7 +11,6 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-
         public List<string> habilitacionesOferta = new List<string>();
 
         /// <summary>
@@ -24,7 +23,6 @@ namespace ClassLibrary
         /// <param name="tags">Tags de la oferta.</param>
         /// <param name="ubicacion">Ubicacion de la oferta.</param>
         /// <param name="empresa">Empresa que publica la oferta.</param>
-
         public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, Empresa empresa)
         {
             this.Nombre = nombre;
@@ -69,50 +67,49 @@ namespace ClassLibrary
         /// </summary>
         public string interesado{ get; set; }
         
-        private Habilitaciones habilitacion{get;set;}
+        private Habilitaciones habilitacion{ get; set; }
         
         /// <summary>
         /// Nombre de la oferta.
         /// </summary>
         /// <value></value>
-        public string Nombre {get; set;}
+        public string Nombre { get; set; }
         
         /// <summary>
         /// Material del producto a ofertar.
         /// </summary>
         /// <value></value>
-        public string Material {get; set;}
+        public string Material { get; set; }
         
         /// <summary>
         /// Precio de la oferta.
         /// </summary>
         /// <value></value>
-        public int Precio {get; set;}
+        public int Precio { get; set; }
         
         /// <summary>
         /// Cantidad de unidades a ofertar.
         /// </summary>
         /// <value></value>
-        public string Unidad {get; set;}
+        public string Unidad { get; set; }
         
         /// <summary>
         /// Tags de la oferta.
         /// </summary>
         /// <value></value>
-        public string Tags {get; set;}
+        public string Tags { get; set;}
         
         /// <summary>
         ///ID única para cada oferta.
         /// </summary>
         /// <returns></returns>
-        public Guid Id {get; private set;}
+        public Guid Id { get; private set; }
 
         /// <summary>
         /// Empresa que publica la oferta.
         /// </summary>
         /// <value></value>
-        
-        public Empresa EmpresaCreadora {get; set;}
+        public Empresa EmpresaCreadora { get; set; }
         
         /// <summary>
         /// Obtiene una lista de las habilitaciones que requiere el producto.
@@ -124,7 +121,6 @@ namespace ClassLibrary
         /// Añade una habilitación a la oferta.
         /// </summary>
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
-        
         public void AddHabilitacion(string habilitacionBuscada)
         {
             if (habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
@@ -137,7 +133,6 @@ namespace ClassLibrary
         /// Quita una habilitación a la oferta.
         /// </summary>
         /// <param name="habilitacion">Habilitacion a quitar.</param>
-        
         public void RemoveHabilitacion(string habilitacion)
         {
             habilitacionesOferta.Remove(habilitacion);
@@ -146,7 +141,6 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        
         public void GetHabilitacionList()
         {
             habilitacion.HabilitacionesDisponibles();
@@ -169,6 +163,6 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         
-        public string Ubicacion {get; set;}
+        public string Ubicacion { get; set; }
     }
 }

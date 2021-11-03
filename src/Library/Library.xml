@@ -62,11 +62,11 @@
         </member>
         <member name="M:ClassLibrary.BuscadorTags.Buscar(ClassLibrary.Publicaciones,System.String)">
             <summary>
-            Busca ofertas en Publicaciones, según los tags de la oferta.
+            Busca ofertas en Publicaciones según los tags de la oferta.
             </summary>
-            <param name="publicaciones"> Recibe un parametro de tipo Publicaciones con el nombre de "publicaciones".</param>
-            <param name="busqueda"> Recibe un parametro de tipo string con el nombre de "busqueda".</param>
-            <returns> Retorna las ofertas encontradas por tag, mediante una lista de tipo Oferta.</returns>
+            <param name="publicaciones">Recibe un parametro de tipo Publicaciones con el nombre de "publicaciones".</param>
+            <param name="busqueda">Recibe un parametro de tipo string con el nombre de "busqueda".</param>
+            <returns>Retorna las ofertas encontradas por tag, mediante una lista de tipo Oferta.</returns>
         </member>
         <member name="T:ClassLibrary.BuscadorUbicacion">
             <summary>
@@ -93,7 +93,7 @@
             Esta clase se encarga de imprimir por consola los atributos de oferta.
             </summary>
         </member>
-        <member name="M:ClassLibrary.ConsolePrinter.ofertaPrinter(ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.ConsolePrinter.OfertaPrinter(ClassLibrary.Oferta)">
             <summary>
             Este método imprime por consola los atributos de oferta.
             </summary>
@@ -104,7 +104,7 @@
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manisfestar su interés en las que sean de su agrado.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.habilitacionesEmprendedor">
+        <member name="F:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
             <summary>
             Lista de habilitaciones del emprendedor.
             </summary>
@@ -120,7 +120,7 @@
             <param name="especializaciones">Especializaciones del emprendedor.</param>
             <returns></returns>
         </member>
-        <member name="P:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
+        <member name="P:ClassLibrary.Emprendedor.HabilitacionesDeEmprendedor">
             <summary>
             Obtiene una lista de las habilitaciones del emprendedor.
             </summary>
@@ -173,13 +173,13 @@
         </member>
         <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
-            Obtine una lista que indica las habiltiaciones que tiene la Empresa.
+            Obtiene una lista que indica las habiltiaciones que tiene la Empresa.
             </summary>
             <value></value>
         </member>
         <member name="P:ClassLibrary.Empresa.InteresadosEnOfertas">
             <summary>
-            Obtine una lista que indica los interesados en oferas que tiene la Empresa.
+            Obtiene una lista que indica los interesados en oferas que tiene la Empresa.
             </summary>
             <value></value>
         </member>
@@ -321,7 +321,7 @@
             Esta interfaz contiene un método para imprimir.
             </summary>
         </member>
-        <member name="M:ClassLibrary.IPrinter.ofertaPrinter(ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.IPrinter.OfertaPrinter(ClassLibrary.Oferta)">
             <summary>
             Este método hace un print de la oferta.
             </summary>
@@ -373,25 +373,25 @@
             Guarda una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.buscadorUbicacion">
+        <member name="F:ClassLibrary.Logica.BuscadorUbicacion">
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.buscadorTags">
+        <member name="F:ClassLibrary.Logica.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.buscadorMaterial">
+        <member name="F:ClassLibrary.Logica.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.printerConsola">
+        <member name="F:ClassLibrary.Logica.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
@@ -538,6 +538,7 @@
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
+
             Inicializa una instancia de Oferta.
             </summary>
             <param name="nombre">Nombre de la oferta.</param>
@@ -547,6 +548,7 @@
             <param name="tags">Tags de la oferta.</param>
             <param name="ubicacion">Ubicacion de la oferta.</param>
             <param name="empresa">Empresa que publica la oferta.</param>
+
         </member>
         <member name="P:ClassLibrary.Oferta.HayInteresado">
             <summary>
@@ -685,7 +687,7 @@
         </member>
         <member name="M:ClassLibrary.Rubro.RemoveRubro(System.String)">
             <summary>
-            Elimina un rubro de la lista, devuelve un string confirmando la acción.	
+            Elimina un rubro de la lista, devuelve un string confirmando la acción.
             </summary>
             <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         </member>
