@@ -82,7 +82,7 @@ namespace Test.Library
         {
             Habilitaciones habilitacion = new Habilitaciones();
             
-            int expected = 4;
+            int expected = 5;
             habilitacion.RemoveHabilitacion("ROCK");
             Assert.AreEqual(expected, habilitacion.ListaHabilitaciones.Count);
         }
