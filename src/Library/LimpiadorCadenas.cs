@@ -9,8 +9,7 @@ namespace ClassLibrary
     public static class LimpiadorCadenas
     {
         /// <summary>
-        /// Este método sirve para limpiar las cadenas y permitir que no hayan errores de tipeo, 
-        /// y se pueda leer el texto que sea ingresado por un usuario de la aplicación.
+        /// Este método sirve para limpiar las cadenas y permitir que no hayan errores de escritura, y se pueda leer el texto que sea ingresado por un usuario de la aplicación.
         /// </summary>
         /// <param name="cadena">Recibe por parametro un cadena de tipo String.</param>
         /// <returns>Retorna la cadena una vez que se le aplicaron todos los limpiadores de cadena.</returns>
@@ -28,8 +27,7 @@ namespace ClassLibrary
 
         /// <summary>
         /// Este método sirve para limpiar las cadenas de respuestas que el usuario ingresará.
-        /// Creemos necesario tener un limpiador de cadenas así, ya que el usuario podria
-        /// digitar el texto de cualquier forma, con mayusculas, minusculas o combinaciones de ambas.
+        /// Creemos necesario tener un limpiador de cadenas así, ya que el usuario podria digitar el texto de cualquier forma, con mayusculas, minusculas o combinaciones de ambas.
         /// </summary>
         /// <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String.</param>
         /// <returns>Devuelve la cadena pero con las modificaciones realizadas.</returns>

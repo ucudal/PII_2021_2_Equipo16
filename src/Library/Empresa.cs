@@ -11,13 +11,15 @@ namespace ClassLibrary
     {
         /// <summary>
         /// Inicializa una instancia de Empresa.
+        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
         /// <returns></returns>
-        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, Rubro rubro, Habilitaciones habilitacion) 
+                : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = habilitacion;
         }
@@ -88,9 +90,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Quita de las publicaciones, la oferta que fue aceptada, ser aceptada implica que se llegó a un acuerdo
-        /// con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista
-        /// de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
+        /// Quita de las publicaciones, la oferta que fue aceptada, ser aceptada implica que se llegó a un acuerdo con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
         /// </summary>
         /// <param name="nombreOfertaParaAceptar">Oferta que se quiere aceptar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
@@ -129,7 +129,7 @@ namespace ClassLibrary
             Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
         }
 
-        //Habilitaciones que tengo yo a nivel de empresa
+        //Habilitaciones que tengo yo a nivel de empresa.
 
         /// <summary>
         /// Agerga habilitaciones que pueda tener la empresa.

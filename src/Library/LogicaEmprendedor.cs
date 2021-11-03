@@ -51,7 +51,7 @@ namespace ClassLibrary
                if (item.Nombre == nombreOferta)
                {
                     item.interesado = emprendedor.Nombre;
-                    item.EmpresaCreadora.InteresadosEnOfertas.Add(item); //agregado para solucionar test
+                    item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test.
                } 
             }
         }
@@ -60,8 +60,8 @@ namespace ClassLibrary
         /// Este método llama a CalcularOfertasCompradas de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        /// <param name="fechaInicio"></param>
-        /// <param name="fechaFinal"></param>
+        /// <param name="fechaInicio">Se indica Fecha de Inicio.</param>
+        /// <param name="fechaFinal">Se indica Fecha de Cierre.</param>
         public static void CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
             emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);

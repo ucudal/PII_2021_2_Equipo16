@@ -11,8 +11,7 @@ namespace Test.Library
     public class HabilitacionesTests
     {
         /// <summary>
-        /// Este método permite evaluar lo que sucede cuando se ingresa
-        /// un nombre de habilitacion que esta en la lista de habilitaciones.
+        /// Este método permite evaluar lo que sucede cuando se ingresa un nombre de habilitacion que esta en la lista de habilitaciones.
         /// </summary>
         [Test]
         public void TestHabilitacion()
@@ -49,9 +48,7 @@ namespace Test.Library
 
         /// <summary>
         /// Este test permite comprobar que se pueden agregar habilitaciones a la lista de habilitaciones.
-        /// Inicialmente la lista contiene 5 elementos y "brutal" que es la habilitacion que se quiere agregar
-        /// no está dentro de la lista. Por lo cual al agregarla la lista pasara a contar con 6 elementos que es 
-        /// lo que se espera que devuelva la cuenta de ListaHabilitaciones.
+        /// Inicialmente la lista contiene 5 elementos y "brutal" que es la habilitacion que se quiere agregar no está dentro de la lista. Por lo cual al agregarla la lista pasara a contar con 6 elementos que es lo que se espera que devuelva la cuenta de ListaHabilitaciones.
         /// </summary>
         [Test]
         public void TestAgregarHabilitaciones()
@@ -64,9 +61,8 @@ namespace Test.Library
         }
 
         /// <summary>
-        /// Este test permite comprobar si se pueden eliminar habilitaciones de la lista
-        /// para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
-        /// y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
+        /// Este test permite comprobar si se pueden eliminar habilitaciones de la lista para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
+        /// Y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
         /// </summary>
         [Test]
         public void TestEliminarHabilitaciones()

@@ -10,33 +10,16 @@ namespace ClassLibrary
     public class Habilitaciones : IHabilitaciones
     {
         /// <summary>
-        /// Esta lista contiene un conjunto de habilitaciones predeterminadas
+        /// Esta lista contiene un conjunto de habilitaciones predeterminadas.
         /// </summary>
-        /// <returns></returns>
         public List<string> ListaHabilitaciones = new List<string>
             { "iso 9009", "apa", "soa", "unit", "ieee" };
 
         /// <summary>
-        /// Inicializa una instancia de habilitaciones
+        /// Inicializa una instancia de habilitaciones.
         /// </summary>
         public Habilitaciones()
         {
-           /* if (ListaHabilitaciones.Contains(nombre))
-            {
-                this.Nombre = nombre;
-            }
-            else 
-            {
-                Console.WriteLine("El nombre de la habilitación no existe, ¿desea agregarlo?");
-                string respuesta = Console.ReadLine().ToString();
-                respuesta = LimpiadorCadenas.LimpiaCadena(respuesta);
-                if (respuesta == "si")
-                {
-                    ListaHabilitaciones.Add(nombre);
-                    Console.WriteLine($"Fue agregada la habilitación '{nombre}' de la lista.");
-                    this.Nombre = nombre;
-                }
-            }*/
         }
 
         /// <summary>
@@ -46,7 +29,7 @@ namespace ClassLibrary
         public string Nombre { get; set; }
 
         /// <summary>
-        /// Este método retorna un string con las habilitaciones de la lista
+        /// Este método retorna un string con las habilitaciones de la lista.
         /// Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final.
         /// </summary>
         public string HabilitacionesDisponibles()
@@ -73,8 +56,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Este método imprime en consola la lista de habilitaciones
-        /// para realizar esto utiliza un StringBuilder y recorre la lista de Hablilitaciones.
+        /// Este método imprime en consola la lista de habilitaciones para realizar esto utiliza un StringBuilder y recorre la lista de Habilitaciones.
         /// </summary>
         public void GetHabilitacionList()
         {
