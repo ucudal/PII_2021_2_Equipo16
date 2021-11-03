@@ -447,7 +447,7 @@
             </summary>
             <param name="emprendedor">Un emprendedor.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,System.String)">
             <summary>
             Este método llama a InteresadoEnOferta de Emprendedor.
             </summary>
@@ -555,7 +555,7 @@
             Booleano, false si no hay interesado en la oferta, true si lo hay.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Oferta.interesado">
+        <member name="P:ClassLibrary.Oferta.interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>
