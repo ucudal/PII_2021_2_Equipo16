@@ -14,7 +14,6 @@ namespace ClassLibrary
         /// </summary>
         public Rubro()
         {
-            
         }
 
         /// <summary>
@@ -28,13 +27,15 @@ namespace ClassLibrary
         /// </summary>
         /// <returns>Retorna una nueva lista llamada RubrosList de tipo string.</returns>
         public static List<string> RubrosList = new List<string>()
-            {"textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria"};
-        
+            {
+                "textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria",
+            };
+
         /// <summary>
         /// Añade un rubro a la lista, devuelve un string confirmando la acción.
         /// </summary>
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
-    
+
         public void AddRubro(string rubro)
         {
             if (!Rubro.RubrosList.Contains(rubro))
@@ -71,23 +72,22 @@ namespace ClassLibrary
 
             Console.WriteLine(getRubrosList.ToString());
         }
+
         /// <summary>
         /// Chequea si un rubro existe en la lista.
         /// </summary>
-        /// <param name="rubro">rubro</param>
-        /// <returns>booleano</returns>
+        /// <param name="rubro">Rubro.</param>
+        /// <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
         public static bool CheckRubro(string rubro)
         {
             if (RubrosList.Contains(rubro))
             {
-                
                 return true;
             }
             else
             {
                 Console.WriteLine($"El rubro '{rubro}' no existe.");
                 return false;
-                
             }
         }
     }

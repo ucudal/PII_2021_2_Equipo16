@@ -115,7 +115,7 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,ClassLibrary.Habilitaciones,System.String)">
             <summary>
-            /// Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
             </summary>
             <param name="nombre">Nombre del emprededor.</param>
@@ -179,13 +179,12 @@
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
             <param name="habilitacion">Habilitaciones de la empresa.</param>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Empresa.AceptarInvitacion(System.String)">
             <summary>
             Acepta una invitación.
             </summary>
-            <param name="nombreEmpresa">Nombre de la empresa</param>
+            <param name="nombreEmpresa">Nombre de la empresa.</param>
         </member>
         <member name="F:ClassLibrary.Empresa.Habilitacion">
             <summary>
@@ -514,6 +513,8 @@
             <summary>
             Acepta la invitación del administrador.
             </summary>
+            <param name="empresa">Empresa.</param>
+            <param name="nombreEmpresa">Nombre de la Empresa.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.CrearProducto(ClassLibrary.Empresa,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
             <summary>
@@ -735,8 +736,8 @@
             <summary>
             Chequea si un rubro existe en la lista.
             </summary>
-            <param name="rubro">rubro</param>
-            <returns>booleano</returns>
+            <param name="rubro">Rubro.</param>
+            <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
         </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
