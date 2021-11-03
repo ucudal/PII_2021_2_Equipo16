@@ -1,11 +1,12 @@
-using NUnit.Framework;
-using ClassLibrary;
+       using ClassLibrary;
+    using NUnit.Framework;
+ 
 
     /// <summary>
     /// Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
     /// </summary>
     [TestFixture]
-    public class UsuarioTest
+    public class UsuarioTests
     {       
         
         /// <summary>
@@ -17,8 +18,6 @@ using ClassLibrary;
             Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
 
             Assert.AreEqual("Joaquin", usuario.Nombre);
-
-          
         }
          
          /// <summary>
@@ -30,7 +29,6 @@ using ClassLibrary;
             Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
 
             Assert.AreEqual("Montevideo", usuario.Ubicacion);
-
         }
         /// <summary>
         ///  Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
@@ -41,7 +39,6 @@ using ClassLibrary;
             Usuario usuario = new Usuario("Joaquin", "Montevideo", new Rubro("Textil"));
 
             Assert.AreEqual("Textil", usuario.Rubro.Nombre);
-
         }
     }
 

@@ -1,5 +1,6 @@
-using NUnit.Framework;
 using ClassLibrary;
+using NUnit.Framework;
+
 
 namespace Test.Library
 { 
@@ -7,8 +8,7 @@ namespace Test.Library
     /// Clase de pruebas de RubroTest
     /// </summary>
     [TestFixture]
-    public class RubroTest
-
+    public class RubroTests
     {
         /// <summary>
         /// En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
