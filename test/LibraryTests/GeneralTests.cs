@@ -10,9 +10,8 @@ namespace Test.Library
     public class GeneralTests
     {
         /// <summary>
-        /// Test de historia de usuario
-        /// Se crean 1 empresa y 1 emprendedor, la empresa publica 3 ofertas, se hace una busqueda por tags en esas publicaciones
-        /// el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
+        /// Test de historia de usuario.
+        /// Se crean 1 empresa y 1 emprendedor, la empresa publica 3 ofertas, se hace una busqueda por tags en esas publicaciones el emprendedor se interesa en una oferta y por último la empresa acepta una oferta.
         /// </summary>
         [Test]
         public void TestGeneral1()

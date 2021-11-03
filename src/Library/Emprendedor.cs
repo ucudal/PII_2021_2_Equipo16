@@ -5,7 +5,7 @@ using System.Globalization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manisfestar su interés en las que sean de su agrado.
+    /// Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
@@ -24,7 +24,8 @@ namespace ClassLibrary
         private string especializaciones;
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
+        /// /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
+        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
         /// </summary>
         /// <param name="nombre">Nombre del emprededor.</param>
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
@@ -57,7 +58,7 @@ namespace ClassLibrary
         /// <summary>
         /// Agrega habilitaciones.
         /// </summary>
-        /// <param name="habilitacionBuscada">Nombre de la habilitacion a agregar.</param>
+        /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
             if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
