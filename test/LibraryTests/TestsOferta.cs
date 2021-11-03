@@ -68,24 +68,6 @@ namespace Test.Library
             int expected = 4;
             oferta.RemoveHabilitacion("apa");
             Assert.AreEqual(expected, oferta.habilitacionesOferta.Count);
-
         }
-
-        /// <summary>
-        /// Test que permite ver el correcto funcionamiento del método GetHabilitationList.
-        /// </summary>
-      /*  [Test]
-        public void TestGetHabilitationList()
-        {
-            Rubro rubro = new Rubro("textil");
-            Habilitaciones habilitacion = new Habilitaciones("iso 9009");
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", rubro, habilitacion);
-            Oferta oferta = new Oferta("Guantes de nylon", "nylon", 20, "g", "nylon, guantes, buceo", "Buceo", aleatoria);
-
-            string expected = "1- iso 9009.\n2- apa.\n3- soa.\n4- unit.\n5- ieee.";
-         
-            //Assert.AreEqual(expected, oferta.GetHabilitacionList());
-        }
-    }*/
-}
+    }
 }

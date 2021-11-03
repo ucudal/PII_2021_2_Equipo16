@@ -8,7 +8,7 @@ namespace ClassLibrary
         /// <summary>
         /// Acepta la invitación del administrador.
         /// </summary>
-        public void AceptarInvitacion()
+        public static void AceptarInvitacion()
         {
 
         }
@@ -23,7 +23,7 @@ namespace ClassLibrary
         /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
         /// <param name="tags">Palabra clave.</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-        public void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
+        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion)
         {
             empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion);
         }
@@ -43,7 +43,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa">Empresa que aceptará la oferta.</param>
         /// <param name="oferta">Oferta que se desea Aceptar.</param>
-        public void AceptarOferta(Empresa empresa, Oferta oferta)
+        public static void AceptarOferta(Empresa empresa, Oferta oferta)
         {
             empresa.AceptarOferta(oferta, Logica.PublicacionesA);
         }
@@ -54,7 +54,7 @@ namespace ClassLibrary
         /// <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
         /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
         /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        public void CalcularOfertasVendidasSegunTiempo(Empresa empresa, string fechaInicio, string fechaFinal)
+        public static void CalcularOfertasVendidasSegunTiempo(Empresa empresa, string fechaInicio, string fechaFinal)
         {
             empresa.CalcularOfertasVendidasSegunTiempo(fechaInicio, fechaFinal);
         }
@@ -64,7 +64,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa">Empresa a la que se desea agregar una habilitacion.</param>
         /// <param name="habilitacionBuscada">Habilitacion para ser agregada.</param>
-        public void AddHabilitacion(Empresa empresa, string habilitacionBuscada)
+        public static void AddHabilitacion(Empresa empresa, string habilitacionBuscada)
         {
             empresa.AddHabilitacion(habilitacionBuscada);
         }
@@ -74,7 +74,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa">Empresa a la que se desea remover una habilitacion.</param>
         /// <param name="habilitacion">Habilitacion para ser removida.</param>
-        public void RemoveHabilitacion(Empresa empresa, string habilitacion)
+        public static void RemoveHabilitacion(Empresa empresa, string habilitacion)
         {
             empresa.RemoveHabilitacion(habilitacion);
         }
@@ -83,7 +83,7 @@ namespace ClassLibrary
         /// Llama al método GetHabilitacion en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa.</param>
-        public void GetHabilitacionList(Empresa empresa)
+        public static void GetHabilitacionList(Empresa empresa)
         {
             empresa.GetHabilitacionList();
         }
