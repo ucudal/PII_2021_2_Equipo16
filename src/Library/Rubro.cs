@@ -50,10 +50,16 @@ namespace ClassLibrary
         /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
         public void AddRubro(string rubro)
         {
-            RubrosList.Add(rubro);
-            Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
+            if (!(RubrosList.Contains(rubro)))
+            {
+                RubrosList.Add(rubro);
+                Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
+            }
+            else
+            {
+                Console.WriteLine($"El rubro '{rubro}' ya existe.");
+            }    
         }
-
         /// <summary>
         /// Elimina un rubro de la lista, devuelve un string confirmando la acción.
         /// </summary>
