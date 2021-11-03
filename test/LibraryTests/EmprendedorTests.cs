@@ -15,18 +15,17 @@ namespace Test.Library
         [Test]
         public void TestRegistroEmprendedor()
         {
-            Rubro rubro = new Rubro();
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
             string expected = "Juan Pérez";
             string expected2 = "Barrio Sur";
-            string expected3 = "entretenimiento";
+            string expected3 = "textil";
             Habilitaciones expected4 = habilitacion;
             string expected5 = "Lavado de Autos Express";
 
             Assert.AreEqual(expected, juancho.Nombre);
             Assert.AreEqual(expected2, juancho.Ubicacion);
-            Assert.AreEqual(expected3, juancho.Rubro.Nombre);
+            Assert.AreEqual(expected3, juancho.Rubro);
             Assert.AreEqual(expected4, juancho.Habilitacion);
             Assert.AreEqual(expected5, juancho.Especializaciones);
         }
@@ -37,9 +36,8 @@ namespace Test.Library
         [Test]
         public void TestAddHabilitaciones()
         {
-            Rubro rubro = new Rubro();
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
 
             int expected = 1;
             
@@ -53,9 +51,8 @@ namespace Test.Library
         [Test]
         public void TestQuitarHabilitaciones()
         {
-            Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", rubro, habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
 
             int expected = 1;
             

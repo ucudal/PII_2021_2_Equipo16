@@ -1,3 +1,4 @@
+using System;
 namespace ClassLibrary
 {
     /// <summary>
@@ -16,9 +17,16 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="habilitacion">Habilitacion.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public static void RegistroEmprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
+        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones)
         {
-            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, habilitacion, especializaciones);
+            if (Rubro.CheckRubro(rubro))
+            { 
+             Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, habilitacion, especializaciones); 
+            }
+            else
+            {
+                Console.WriteLine("El rubro no existe.");
+            }      
         }
 
         /// <summary>

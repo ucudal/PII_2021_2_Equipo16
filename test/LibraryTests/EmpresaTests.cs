@@ -15,18 +15,17 @@ namespace Test.Library
         [Test]
         public void EmpresaTest()
         {
-            Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", rubro, habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
 
             string expected = "empresaTest";
             string expected2 = "La Blanqueada";
-            string expected3 = "entretenimiento";
+            string expected3 = "textil";
             Habilitaciones expected4 = habilitacion;
  
             Assert.AreEqual(expected, empresaTest.Nombre);
             Assert.AreEqual(expected2, empresaTest.Ubicacion);
-            Assert.AreEqual(expected3, empresaTest.Rubro.Nombre);
+            Assert.AreEqual(expected3, empresaTest.Rubro);
             Assert.AreEqual(expected4, empresaTest.Habilitacion);
         }
 
@@ -36,9 +35,8 @@ namespace Test.Library
         [Test]
         public void TestAddHabilitaciones()
         {
-            Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", rubro, habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
 
             int expected = 1;
             
@@ -52,9 +50,8 @@ namespace Test.Library
         [Test]
         public void TestQuitarHabilitaciones()
         {   
-            Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", rubro, habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
     
             int expected = 1;
             
