@@ -1,7 +1,7 @@
 # Proyecto_Kick-Off Grupo 16 "NULL"
 
 Nuestro proyecto final de P2.
-Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
+Proxima entrega miércoles 3 de Noviembre, creación del Core del Bot.
 
 2/11/21 - Ramón Lorenzo
 -Fixes en clase Oferta: Clase terminada con sus tests funcionando y comentarios XML realizados.

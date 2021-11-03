@@ -5,6 +5,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de imprimir por consola los atributos de oferta.
     /// </summary>
+    /// <remarks>En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.</remarks>
     public class ConsolePrinter : IPrinter
     {
         /// <summary>
