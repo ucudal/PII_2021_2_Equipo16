@@ -51,7 +51,7 @@ namespace ClassLibrary
                if (item.Nombre == nombreOferta)
                {
                     item.interesado = emprendedor.Nombre;
-                    item.HayInteresado = true;
+                    item.EmpresaCreadora.InteresadosEnOfertas.Add(item); //agregado para solucionar test
                } 
             }
         }
