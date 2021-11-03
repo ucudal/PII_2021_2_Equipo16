@@ -41,7 +41,7 @@ namespace ClassLibrary
         /// Este método llama a InteresadoEnOferta de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        /// <param name="oferta">Una oferta.</param>
+        /// <param name="nombreOferta">Una oferta.</param>
         
         // Se hizo en equipo.
         public static void InteresadoEnOferta(Emprendedor emprendedor, string nombreOferta)
