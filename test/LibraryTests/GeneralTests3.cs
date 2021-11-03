@@ -17,12 +17,12 @@ namespace Test.Library
         {
             Empresa  empresaConaprole = new Empresa("Conaprole", "Pakistan", new Rubro("textil"), new Habilitaciones());
 
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 1", "El mejor de todos", 5500, "Cantidad", "auto", "Carrasco", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola2", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO2", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 12", "El mejor de todos", 5500, "Cantidad", "auto", "Carrasco", "Constante");
+            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 1", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
+            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola2", "Líquido", 2000, "Litros", "bebidas", "Nigeria", "Constante");
+            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO2", "Líquido", 2000, "Litros", "bebidas", "Nigeria", "Constante");
+            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 12", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
 
             // Quiero buscar por ubicacion, tag, material
 
@@ -33,9 +33,9 @@ namespace Test.Library
             //LogicaBuscadores.BuscarPorMaterial("Nix");
             int expectedMat = 4;
 
-            Assert.AreEqual(expectedUbi, LogicaBuscadores.BuscarPorUbicacion("Carrasco").Count);
-            Assert.AreEqual(expectedTag, LogicaBuscadores.BuscarPorTags("auto").Count);
-            Assert.AreEqual(expectedMat, LogicaBuscadores.BuscarPorMaterial("Nix").Count);
+            Assert.AreEqual(expectedUbi, LogicaBuscadores.BuscarPorUbicacion("Nigeria").Count);
+            Assert.AreEqual(expectedTag, LogicaBuscadores.BuscarPorTags("coche").Count);
+            Assert.AreEqual(expectedMat, LogicaBuscadores.BuscarPorMaterial("Líquido").Count);
         }
     }
 }
