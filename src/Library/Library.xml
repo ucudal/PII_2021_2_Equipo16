@@ -113,7 +113,7 @@
             Lista de habilitaciones del emprendedor.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,ClassLibrary.Rubro,ClassLibrary.Habilitaciones,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,ClassLibrary.Habilitaciones,System.String)">
             <summary>
             /// Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
@@ -170,7 +170,7 @@
             Esta clase representa una Empresa, que se encarga de crear Ofertas, eliminarlas, aceptarlas y calcular el consumo de ofertas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,ClassLibrary.Rubro,ClassLibrary.Habilitaciones)">
+        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String,ClassLibrary.Habilitaciones)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Empresa"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
@@ -179,6 +179,7 @@
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
             <param name="habilitacion">Habilitaciones de la empresa.</param>
+            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Empresa.AceptarInvitacion(System.String)">
             <summary>
@@ -458,7 +459,7 @@
             Contiene un método para llamar a cada método de la clase Emprendedor.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,ClassLibrary.Rubro,ClassLibrary.Habilitaciones,System.String)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,System.String,ClassLibrary.Habilitaciones,System.String)">
             <summary>
             Registro de usuario para ser emprendedor.
             </summary>
@@ -696,11 +697,10 @@
             Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
+        <member name="M:ClassLibrary.Rubro.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
-            <param name="nombre">Nombre.</param>
         </member>
         <member name="P:ClassLibrary.Rubro.Nombre">
             <summary>
@@ -731,12 +731,19 @@
             Obtiene lista de rubros.
             </summary>
         </member>
+        <member name="M:ClassLibrary.Rubro.CheckRubro(System.String)">
+            <summary>
+            Chequea si un rubro existe en la lista.
+            </summary>
+            <param name="rubro">rubro</param>
+            <returns>booleano</returns>
+        </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
             Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,ClassLibrary.Rubro)">
+        <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Usuario"/>.
             </summary>

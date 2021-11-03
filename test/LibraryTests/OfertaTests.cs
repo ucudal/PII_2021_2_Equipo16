@@ -15,9 +15,8 @@ namespace Test.Library
         [Test]
         public void TestCreacionOferta()
         {
-            Rubro rubro = new Rubro("entretenimiento");
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafakin Coke", "Tres Cruces", rubro, habilitacion);
+            Empresa aleatoria = new Empresa("Madafakin Coke", "Tres Cruces", "textil", habilitacion);
             Oferta oferta = new Oferta("Sillas de acero", "acero", 35, "kg", "acero, sillas, tres cruces", "Tres Cruces", "Constante", aleatoria);
 
             string expected = "Sillas de acero";
@@ -43,9 +42,8 @@ namespace Test.Library
         [Test]
         public void TestAgregarHabilitaciones()
         {
-            Rubro rubro = new Rubro("textil");
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", rubro, habilitacion);
+            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil", habilitacion);
             Oferta oferta = new Oferta("Guantes de nylon", "nylon", 20, "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
 
             int expected = 1;
@@ -59,9 +57,8 @@ namespace Test.Library
         [Test]
         public void TestRemoverHabilitaciones()
         {
-            Rubro rubro = new Rubro("textil");
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", rubro, habilitacion);
+            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil", habilitacion);
             Oferta oferta = new Oferta("Guantes de nylon", "nylon", 20, "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
 
             oferta.AddHabilitacion("soa");

@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="nombre">Recibe un parametro de tipo string con el valor de "nombre".</param>
         /// <param name="ubicacion">Recibe un parametro de tipo string con el valor de "ubicacion".</param>
         /// <param name="rubro">Recibe un parametro de tipo Rubro con el valor de "rubro".</param>
-        public Usuario(string nombre, string ubicacion, Rubro rubro)
+        public Usuario(string nombre, string ubicacion, string rubro)
         {
             this.Nombre = nombre;
             this.Ubicacion = ubicacion;
@@ -38,6 +38,6 @@ namespace ClassLibrary
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public Rubro Rubro { get; set; }
+        public string Rubro { get; set; }
     }
 }

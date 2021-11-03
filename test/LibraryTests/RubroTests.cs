@@ -17,10 +17,10 @@ namespace Test.Library
         [Test]
         public void TestAgregarRubro()
         {
-            Rubro rubro = new Rubro("Deportes");
+            Rubro rubro = new Rubro();
             int expected = 10; // ya que 9 es el largo de la actual y es un rubro nuevo.
             rubro.AddRubro("Cocina");
-            Assert.AreEqual(expected, rubro.RubrosList.Count);
+            Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
         
         /// <summary>
@@ -29,10 +29,11 @@ namespace Test.Library
         [Test]
         public void TestAgregarRubroRepetido()
         {
-            Rubro rubro = new Rubro("Deportes");
-            int expected = 9; // ya que 9 es el largo de la actual y es un rubro existente.
+            Rubro rubro = new Rubro();
+            int expected = 11; // ya que 10 es el largo de la actual y es un rubro existente.
             rubro.AddRubro("Deportes");
-            Assert.AreEqual(expected, rubro.RubrosList.Count);
+            rubro.AddRubro("Deportes");
+            Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
         
         /// <summary>
@@ -41,10 +42,10 @@ namespace Test.Library
         [Test]
         public void TestEliminarRubro()
         {
-            Rubro rubro = new Rubro("Deportes");
-            int expected = 8; // ya que 9 es el largo de la actual y queremos eliminar un rubro.
+            Rubro rubro = new Rubro();
+            int expected = 10; // ya que 11 es el largo de la actual y queremos eliminar un rubro.
             rubro.RemoveRubro("Deportes");
-            Assert.AreEqual(expected, rubro.RubrosList.Count);
+            Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
     }
 }

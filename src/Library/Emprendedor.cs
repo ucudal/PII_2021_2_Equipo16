@@ -32,7 +32,7 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="habilitacion">Habilitaciones del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public Emprendedor(string nombre, string ubicacion, Rubro rubro, Habilitaciones habilitacion, string especializaciones)
+        public Emprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones)
             : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
