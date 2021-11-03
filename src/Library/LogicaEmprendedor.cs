@@ -65,6 +65,7 @@ namespace ClassLibrary
                 emprendedor.OfertasInteresado.Add(item);
                 item.Interesado.Add(emprendedor.Nombre);
                 item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+
                } 
             }
         }

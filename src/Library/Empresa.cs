@@ -11,6 +11,7 @@ namespace ClassLibrary
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
+        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
@@ -110,9 +111,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Quita de las publicaciones, la oferta que fue aceptada, ser aceptada implica que se llegó a un acuerdo
-        /// con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista
-        /// de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
+        /// Quita de las publicaciones, la oferta que fue aceptada, ser aceptada implica que se llegó a un acuerdo con un emprendedor y se quiere quitar la oferta de las publicaciones, además de agregarla a la lista de ofertasAceptadas que contiene la empresa, para realizar un control de cuantas se aceptan.
         /// </summary>
         /// <param name="nombreOfertaParaAceptar">Oferta que se quiere aceptar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
@@ -154,7 +153,7 @@ namespace ClassLibrary
             return cantidadVendida;
         }
 
-        // Habilitaciones que tengo yo a nivel de empresa
+        //Habilitaciones que tengo yo a nivel de empresa.
 
         /// <summary>
         /// Agrega habilitaciones que pueda tener la empresa.
@@ -178,7 +177,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Muestra todas las habilitaicones posibles para agregar.
+        /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
         public void GetHabilitacionList()
         {

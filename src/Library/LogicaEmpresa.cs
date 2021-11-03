@@ -3,7 +3,7 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase se encarga de la lógica relacioanda a Empresa.
+    /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
     public static class LogicaEmpresa
     {
@@ -19,7 +19,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa">Empresa que creará la oferta.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de lo que se oferece.</param>
+        /// <param name="material">Material de lo que se ofrece.</param>
         /// <param name="precio">Precio de la oferta.</param>
         /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
         /// <param name="tags">Palabra clave.</param>
@@ -44,7 +44,7 @@ namespace ClassLibrary
         /// Llama al método EliminarProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que eliminará la oferta.</param>
-        /// <param name="oferta">Oferta que se desea elimianr.</param>
+        /// <param name="oferta">Oferta que se desea eliminar.</param>
         public static void EliminarProducto(Empresa empresa, Oferta oferta)
         {
             Empresa.EliminarProducto(oferta, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
@@ -76,7 +76,7 @@ namespace ClassLibrary
         /// <summary>
         /// Llama al método AddHabilitacion en empresa con los parametros pasados.
         /// </summary>
-        /// <param name="empresa">Empresa a la que se desea agregar una habilitacion.</param>
+        /// <param name="empresa">Empresa a la que se desea agregar una habilitación.</param>
         /// <param name="habilitacionBuscada">Habilitacion para ser agregada.</param>
         public static void AddHabilitacion(Empresa empresa, string habilitacionBuscada)
         {
@@ -86,7 +86,7 @@ namespace ClassLibrary
         /// <summary>
         /// Llama al método RemoveHabilitacion en empresa con los parametros pasados.
         /// </summary>
-        /// <param name="empresa">Empresa a la que se desea remover una habilitacion.</param>
+        /// <param name="empresa">Empresa a la que se desea remover una habilitación.</param>
         /// <param name="habilitacion">Habilitacion para ser removida.</param>
         public static void RemoveHabilitacion(Empresa empresa, string habilitacion)
         {

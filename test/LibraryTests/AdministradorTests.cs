@@ -23,8 +23,7 @@ namespace Test.Library
         /// <summary>
         /// Este test lo que permite es ver si el metodo InvitarEmpresa de la Clase Administrador funciona.
         /// Para poder realizar esto se instancia un administrador y una empresa luego el administrador invita a la empresa a unirse.
-        /// Inicialmente la lista de empresas que tiene el administrador esta vacia,
-        /// pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
+        /// Inicialmente la lista de empresas que tiene el administrador esta vacia, pero cuando se invita a la empresa pasa a tener 1 miembro, que es lo que evalua este test.
         /// </summary>
         [Test]
         public void TestInvitar()
