@@ -3,11 +3,15 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
-3/10/21 - Piero Saucedo
+3/11/21 - Juan Pérez    
+Modificación de los comentarios xml.
+Agregue las UML para esta entrega.
+
+3/11/21 - Piero Saucedo
 Corregidos +100 errores de convención.
 
-1-2/10/21 - Joaquín Pérez
-Correción de xml en diversas clases.
+1-2/11/21 - Joaquín Pérez
+Corrección de xml en diversas clases.
 Creación de dos clases de testo TestsOferta y RubroTest, ambas terminadas.
 Arrancamos en grupo la clase TestGeneral.
 
@@ -17,7 +21,7 @@ Modifique la clase de LimpiadorCadenas, le agregue un nuevo metodo para limpiar 
 A los metodos de la clase Habilitaciones le agregue que impriman en consola la operacion que realizaron, para saber que realmente esten realizando la operacion correspondiente.
 
 2/11/21 - Piero Saucedo
-Creada una nueva clase LogicaEmprendedor y otra nueva clase LogicaBuscadores, comentarios XML incluídos. Modificaciones de comentarios XML en todas las clases (para evitar Warnings).
+Creada una nueva clase LogicaEmprendedor y otra nueva clase LogicaBuscadores, comentarios XML incluidos. Modificaciones de comentarios XML en todas las clases (para evitar Warnings).
 Resueltos una gran cantidad de Warnings en todas las clases (+400). 
 Añadidos exclusiones en el archivo Analyzers.ruleset para ocultar temporalmente algunos Warnings.
 
@@ -51,7 +55,7 @@ Agregué el constructor de Rubro.
 
 
 30/10/21 - Ramón Lorenzo
-Modificadas las clases Oferta: - se añadió un parámetro ID, que es única para cada una de ellas, se utilizó la libreía Guid, para más facilidad.
+Modificadas las clases Oferta: - se añadió un parámetro ID, que es única para cada una de ellas, se utilizó la librería Guid, para más facilidad.
                                - se modificaron los métodos AddHabilitacion y RemoveHabilitacion, para que ya no pida el certificador al llamar el método.
                                
                        Emprendedor: - se añadieron varios métodos de buscar, por materiales, tags y ubicación. (Sujeto a modificación).
