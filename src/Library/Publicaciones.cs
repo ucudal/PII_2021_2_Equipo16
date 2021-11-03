@@ -11,7 +11,6 @@ namespace ClassLibrary
     {
         private Publicaciones()
         {
-
         }
         private static Publicaciones instance;
         
