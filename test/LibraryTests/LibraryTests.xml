@@ -194,7 +194,7 @@
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTests.TestEliminarRubroInvalido">
+        <member name="M:Test.Library.RubroTests.TestEliminarRubroQueNoExiste">
             <summary>
             Test para comprobar si se puede eliminar un rubro que no existe.
             </summary>
@@ -217,11 +217,6 @@
         <member name="M:Test.Library.UsuarioTests.TestearUsuarioRubro">
             <summary>
             Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
-            </summary>
-        </member>
-        <member name="M:Test.Library.UsuarioTests.TestearUsuarioRubroInvalido">
-            <summary>
-            Testea el Nombre del Usuario para corroborar que la instancia fue creada correctamente.
             </summary>
         </member>
     </members>
