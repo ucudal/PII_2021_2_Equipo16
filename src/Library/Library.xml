@@ -211,6 +211,11 @@
             Obtiene o establece Ofertas de la lista de OfertasAceptadas.
             </summary>
         </member>
+        <member name="P:ClassLibrary.Empresa.MisOfertas">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Empresa.CrearProducto(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
             <summary>
             Crea un producto, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -432,6 +437,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="F:ClassLibrary.Logica.Habilitaciones">
+            <summary>
+            Guarda una instancia de Habilitaciones.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>
             Esta clase contiene a los buscadores.
@@ -574,6 +585,22 @@
             </summary>
             <param name="empresa">Empresa a la que se desea remover una habilitación.</param>
             <param name="habilitacion">Habilitacion para ser removida.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.AddHabilitacionOferta(ClassLibrary.Empresa,System.String,System.String)">
+            <summary>
+            Metodo AddHabilitacionOferta de las ofertas de la empresa.
+            </summary>
+            <param name="empresa">empresa</param>
+            <param name="habilitacion">habilitacion a agregar</param>
+            <param name="nombreOferta">nombre de la oferta</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.RemoveHabilitacionOferta(ClassLibrary.Empresa,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="empresa"></param>
+            <param name="habilitacion"></param>
+            <param name="nombreOferta"></param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.GetHabilitacionList(ClassLibrary.Empresa)">
             <summary>

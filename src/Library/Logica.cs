@@ -40,5 +40,11 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public static List<string> ListaNombreOfertas = new List<string>();
+
+        /// <summary>
+        /// Guarda una instancia de Habilitaciones.
+        /// </summary>
+        /// <returns></returns>
+        public static Habilitaciones Habilitaciones = new Habilitaciones(); 
     }
 }

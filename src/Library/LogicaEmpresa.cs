@@ -95,7 +95,40 @@ namespace ClassLibrary
         {
             empresa.RemoveHabilitacion(habilitacion);
         }
-
+        /// <summary>
+        /// Metodo AddHabilitacionOferta de las ofertas de la empresa.
+        /// </summary>
+        /// <param name="empresa">empresa</param>
+        /// <param name="habilitacion">habilitacion a agregar</param>
+        /// <param name="nombreOferta">nombre de la oferta</param>
+        public static void AddHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
+        {
+            foreach (Oferta oferta in empresa.MisOfertas)
+            {
+                if (oferta.Nombre == nombreOferta)
+                {
+                    oferta.AddHabilitacion(habilitacion);
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <param name="habilitacion"></param>
+        /// <param name="nombreOferta"></param>
+        public static void RemoveHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
+        {   
+            Oferta ofertaH = null;
+            foreach (Oferta oferta in empresa.MisOfertas)
+            {
+                if (oferta.Nombre == nombreOferta)
+                {
+                    ofertaH = oferta;
+                }
+            }
+            ofertaH.RemoveHabilitacion(habilitacion);
+        }
         /// <summary>
         /// Llama al método GetHabilitacion en empresa con los parametros pasados.
         /// </summary>
