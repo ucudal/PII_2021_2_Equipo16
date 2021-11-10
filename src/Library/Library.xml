@@ -806,5 +806,45 @@
             </summary>
             <value>Tipo Rubro.</value>
         </member>
+        <member name="T:Test.Library.IMensaje">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Test.Library.IMensaje.Id">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Test.Library.IMensaje.Text">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Test.Library.TelegramMsgAdapter">
+            <summary>
+            La clase que encapsula el mensaje que recibe
+            </summary>
+        </member>
+        <member name="M:Test.Library.TelegramMsgAdapter.#ctor(Telegram.Bot.Types.Message)">
+            <summary>
+            Inicializa una instancia de la clase TelegramMsgAdapter
+            </summary>
+            <param name="msg">Recibe un tipo Message de Telegram</param>
+        </member>
+        <member name="P:Test.Library.TelegramMsgAdapter.Id">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Test.Library.TelegramMsgAdapter.Text">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
     </members>
 </doc>
