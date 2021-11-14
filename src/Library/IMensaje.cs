@@ -1,4 +1,4 @@
-namespace Test.Library
+namespace ClassLibrary
 {
     using Telegram.Bot.Types;
     
