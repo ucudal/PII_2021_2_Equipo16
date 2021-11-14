@@ -16,11 +16,13 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicacion del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
+        /// <param name="id">Id del chat.</param>
+        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
         {
             if (Rubro.CheckRubro(rubro))
             { 
              Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
+             Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
             }
             else
             {

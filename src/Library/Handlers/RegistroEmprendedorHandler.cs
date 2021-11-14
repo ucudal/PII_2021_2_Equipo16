@@ -35,8 +35,9 @@ namespace ClassLibrary
                 string ubicacionEmprendedor = mensajeProcesado[2];
                 string rubroEmprendedor = mensajeProcesado[3];
                 string especializacionesEmprendedor = mensajeProcesado[4];
-
-                LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor);
+                
+                // En el ultimo param le agrego el Id del chat para saber quien es. (Emprendedor o empresa)
+                LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, message.Id);
 
                 response = $"Se ha registrado con nombre {nombreEmprendedor}, ubicacion {ubicacionEmprendedor}, rubro {rubroEmprendedor}, especializacion {especializacionesEmprendedor}. ";
                 
