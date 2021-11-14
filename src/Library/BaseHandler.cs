@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Telegram.Bot.Types;
 
-namespace Ucu.Poo.TelegramBot
+namespace ClassLibrary
 {
     /// <summary>
     /// Clase base para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
@@ -50,7 +50,7 @@ namespace Ucu.Poo.TelegramBot
         /// true o no lo procesa y retorna false.
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="responder">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario</returns>
         protected virtual bool InternalHandle(IMensaje message, out string responder)
         {
