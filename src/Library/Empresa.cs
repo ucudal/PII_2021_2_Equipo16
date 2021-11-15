@@ -40,6 +40,7 @@ namespace ClassLibrary
             }
         }
 
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -122,6 +123,7 @@ namespace ClassLibrary
                 {
                     ofertaEncontrada = ofertaEnLista;
                     this.ofertasAceptadas.Add(ofertaEnLista);
+                    this.FechaOfertasEntregadas.Add(DateTime.Now, ofertaEnLista);
                 }
             }
 
@@ -139,15 +141,16 @@ namespace ClassLibrary
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in this.ofertasAceptadas)
+            foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
             {
-                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
+                if (par.Key >= fInicio && par.Key <= fFinal)
                 {
                    cantidadVendida += 1;
                 }
             }
 
-            Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
+            string texto = $"Se vendieron {cantidadVendida} ofertas";
+            Console.WriteLine(texto);
             return cantidadVendida;
         }
 
