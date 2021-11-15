@@ -53,9 +53,9 @@ namespace ClassLibrary
         /// Este método llama a GetHabilitacionList de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        public static void GetHabilitacionList(Emprendedor emprendedor)
+        public static string GetHabilitacionList(Emprendedor emprendedor)
         {
-            emprendedor.GetHabilitacionList();
+            return emprendedor.GetHabilitacionList();
         }
 
         /// <summary>

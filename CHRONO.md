@@ -3,6 +3,10 @@
 Nuestro proyecto final de P2.
 Proxima entrega miercoles 29 de setiembre, aplicacion de tarjetas CRC y UML.
 
+15/11/21 - Joaquín Pérez
+Correción en Habilitaciones.
+Creación de Handler para obtener lista de habilitaciones y Agregar habilitación.
+
 3/11/21 - Joaquín Pérez
 Correción de los errores en Test de diversas clases.
 Optimización del código Rubro, para pasar un rubro como string.
