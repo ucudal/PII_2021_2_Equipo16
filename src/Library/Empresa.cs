@@ -93,11 +93,19 @@ namespace ClassLibrary
         /// <summary>
         /// Elimina una oferta creada de las publicaciones.
         /// </summary>
-        /// <param name="oferta">Oferta a eliminar.</param>
+        /// <param name="nombreOfertaParaEliminar">Oferta a eliminar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
-        public static void EliminarProducto(Oferta oferta, Publicaciones publicaciones)
+        public void EliminarProducto(string nombreOfertaParaEliminar, Publicaciones publicaciones)
         {
-            publicaciones.OfertasPublicados.Remove(oferta);
+            Oferta ofertaParaEliminar = null;
+            foreach (Oferta ofertaEnLista in publicaciones.OfertasPublicados)
+            {
+                if (ofertaEnLista.Nombre == nombreOfertaParaEliminar)
+                {
+                    ofertaParaEliminar = ofertaEnLista;   
+                }
+            }
+            publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
         }
 
         /// <summary>

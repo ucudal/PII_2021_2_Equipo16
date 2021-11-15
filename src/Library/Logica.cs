@@ -46,5 +46,17 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public static Habilitaciones Habilitaciones = new Habilitaciones(); 
+
+        /// <summary>
+        /// Guarda un conjunto Emprendedor, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, Emprendedor> Emprendedores = new Dictionary<string, Emprendedor>();
+
+        /// <summary>
+        /// Guarda un conjunto Empresa, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
     }
 }
