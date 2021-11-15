@@ -237,6 +237,11 @@
             Test para comprobar si efectivamente el metodo elimina un Rubro.
             </summary>
         </member>
+        <member name="M:Test.Library.RubroTests.TestEliminarRubroQueNoExiste">
+            <summary>
+            Test para comprobar si se puede eliminar un rubro que no existe.
+            </summary>
+        </member>
         <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.
@@ -254,7 +259,7 @@
         </member>
         <member name="M:Test.Library.UsuarioTests.TestearUsuarioRubro">
             <summary>
-             Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
+            Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
             </summary>
         </member>
     </members>
