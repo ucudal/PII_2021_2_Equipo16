@@ -5,13 +5,13 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
     /// </summary>
-    public class GetHabListEmprendedor : BaseHandler
+    public class GetHabListEmprendedorHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public AddHabOfertaHandler (BaseHandler next) : base(next)
+        public GetHabListEmprendedorHandler (BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"Lista de habilitaciones", "lista de habilitaciones", "Habilitaciones", "habilitaciones"};
         }
