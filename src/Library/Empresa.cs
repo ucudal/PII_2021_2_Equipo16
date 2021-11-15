@@ -17,7 +17,6 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         /// <param name="habilitacion">Habilitaciones de la empresa.</param>
-        /// <returns></returns>
         public Empresa(String nombre, String ubicacion, string rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = habilitacion;
@@ -26,12 +25,13 @@ namespace ClassLibrary
         /// <summary>
         /// Acepta una invitación.
         /// </summary>
-        /// <param name="nombreEmpresa">Nombre de la empresa</param>
+        /// <param name="nombreEmpresa">Nombre de la empresa.</param>
         public void AceptarInvitacion(string nombreEmpresa)
         {
             if (nombreEmpresa == this.Nombre)
             {
                 Console.WriteLine("Invitación aceptada");
+                
                 // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
             }
             else
@@ -39,6 +39,7 @@ namespace ClassLibrary
                 Console.WriteLine("Invitación inválida, intente otra vez");
             }
         }
+
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -92,11 +93,19 @@ namespace ClassLibrary
         /// <summary>
         /// Elimina una oferta creada de las publicaciones.
         /// </summary>
-        /// <param name="oferta">Oferta a eliminar.</param>
+        /// <param name="nombreOfertaParaEliminar">Oferta a eliminar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
-        public static void EliminarProducto(Oferta oferta, Publicaciones publicaciones)
+        public void EliminarProducto(string nombreOfertaParaEliminar, Publicaciones publicaciones)
         {
-            publicaciones.OfertasPublicados.Remove(oferta);
+            Oferta ofertaParaEliminar = null;
+            foreach (Oferta ofertaEnLista in publicaciones.OfertasPublicados)
+            {
+                if (ofertaEnLista.Nombre == nombreOfertaParaEliminar)
+                {
+                    ofertaParaEliminar = ofertaEnLista;   
+                }
+            }
+            publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
         }
 
         /// <summary>
@@ -142,7 +151,7 @@ namespace ClassLibrary
             return cantidadVendida;
         }
 
-        //Habilitaciones que tengo yo a nivel de empresa.
+        // Habilitaciones que tengo yo a nivel de empresa.
 
         /// <summary>
         /// Agrega habilitaciones que pueda tener la empresa.

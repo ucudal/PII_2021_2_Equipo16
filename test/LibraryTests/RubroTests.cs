@@ -47,5 +47,17 @@ namespace Test.Library
             rubro.RemoveRubro("Deportes");
             Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
+        
+        /// <summary>
+        /// Test para comprobar si se puede eliminar un rubro que no existe.
+        /// </summary>
+        [Test]
+        public void TestEliminarRubroQueNoExiste()
+        {
+            Rubro rubro = new Rubro();
+            int expected = 10;
+            rubro.RemoveRubro("Vehículos"); // Como se intenta eliminar algo que no existe, la cantidad se mantiene igual.
+            Assert.AreEqual(expected, Rubro.RubrosList.Count);
+        }
     }
 }

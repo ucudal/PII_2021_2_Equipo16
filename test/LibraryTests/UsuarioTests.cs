@@ -30,7 +30,7 @@ namespace Test.Library
         }
         
         /// <summary>
-        ///  Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
+        /// Testea el rubro del usuario para saber si la creación del mismo fue adecuada.
         /// </summary>
         [Test]
         public void TestearUsuarioRubro()

@@ -10,8 +10,11 @@ namespace ClassLibrary
         /// <summary>
         /// Acepta la invitación del administrador.
         /// </summary>
-        public static void AceptarInvitacion()
+        /// <param name="empresa">Empresa.</param>
+        /// <param name="nombreEmpresa">Nombre de la Empresa.</param>
+        public static void AceptarInvitacion(Empresa empresa, string nombreEmpresa)
         {
+            empresa.AceptarInvitacion(nombreEmpresa);
         }
 
         /// <summary>
@@ -44,10 +47,10 @@ namespace ClassLibrary
         /// Llama al método EliminarProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que eliminará la oferta.</param>
-        /// <param name="oferta">Oferta que se desea eliminar.</param>
-        public static void EliminarProducto(Empresa empresa, Oferta oferta)
+        /// <param name="ofertaNombre">Nombre de la oferta que se desea eliminar.</param>
+        public static void EliminarProducto(Empresa empresa, string ofertaNombre)
         {
-            Empresa.EliminarProducto(oferta, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+            empresa.EliminarProducto(ofertaNombre, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
             Console.WriteLine("Producto eliminado exitosamente");
         }
 

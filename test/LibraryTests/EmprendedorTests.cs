@@ -61,5 +61,37 @@ namespace Test.Library
             juancho.RemoveHabilitacion("soa");
             Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
         }
+        /// <summary>
+        /// Test que sirve para ver que sucede al intentar eliminar una habilitación que no existe.
+        /// </summary>
+        [Test]
+        public void TestQuitarHabilitacionesMal()
+        {
+            Habilitaciones habilitacion = new Habilitaciones();
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+
+            int expected = 2;
+            
+            juancho.AddHabilitacion("soa");
+            juancho.AddHabilitacion("soa");
+            juancho.RemoveHabilitacion("apa");
+            Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
+        }
+        /// <summary>
+        /// Test que sirve para ver el comportamiento del código al añadirle al emprendedor una habilitacion que no existe.
+        /// </summary>
+         [Test]
+        public void TestAddHabilitacionesMal()
+        {
+            Habilitaciones habilitacion = new Habilitaciones();
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+
+            int expected = 2;
+            
+            juancho.AddHabilitacion("soa");
+            juancho.AddHabilitacion("soa");
+            juancho.AddHabilitacion("hola");
+            Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
+        }
     }
 }
