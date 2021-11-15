@@ -232,11 +232,11 @@
             Se usa Creator.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.Empresa.EliminarProducto(ClassLibrary.Oferta,ClassLibrary.Publicaciones)">
+        <member name="M:ClassLibrary.Empresa.EliminarProducto(System.String,ClassLibrary.Publicaciones)">
             <summary>
             Elimina una oferta creada de las publicaciones.
             </summary>
-            <param name="oferta">Oferta a eliminar.</param>
+            <param name="nombreOfertaParaEliminar">Oferta a eliminar.</param>
             <param name="publicaciones">Publicaciones.</param>
         </member>
         <member name="M:ClassLibrary.Empresa.AceptarOferta(System.String,ClassLibrary.Publicaciones)">
@@ -316,6 +316,228 @@
             </summary>
             <param name="habilitacion">Recibe por parametro un string del nombre de la habilitación deseada.</param>
         </member>
+        <member name="T:ClassLibrary.AddHabOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.AddHabOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.AddHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.BaseHandler">
+            <summary>
+            Clase base para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
+            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
+            pasa al siguiente. Esta clase base implmementa la responsabilidad de recibir el mensaje y pasarlo al siguiente
+            "handler" en caso que el mensaje no sea procesado. La responsabilidad de decidir si el mensaje se procesa o no, y
+            de procesarlo, se delega a las clases sucesoras de esta clase base.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.BaseHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="P:ClassLibrary.BaseHandler.Keywords">
+            <summary>
+            Obtiene o asigna el conjunto de palabras clave que este "handler" puede procesar.
+            </summary>
+            <value>Un array de palabras clave.</value>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.#ctor(ClassLibrary.IHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.BaseHandler"/>.
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.#ctor(System.String[],ClassLibrary.IHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.BaseHandler"/> con una lista de comandos.
+            </summary>
+            <param name="keywords">La lista de comandos.</param>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método debe ser sobreescrito por las clases sucesores. La clase sucesora procesa el mensaje y retorna
+            true o no lo procesa y retorna false.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="responder">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.InternalCancel">
+            <summary>
+            Este método puede ser sobreescrito en las clases sucesores que procesan varios mensajes cambiando de estado
+            entre mensajes deben sobreescribir este método para volver al estado inicial. En la clase base no hace nada.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.CanHandle(ClassLibrary.IMensaje)">
+            <summary>
+            Determina si este "handler" puede procesar el mensaje. En la clase base se utiliza el array
+            <see cref="P:ClassLibrary.BaseHandler.Keywords"/> para buscar el texto en el mensaje ignorando mayúsculas y minúsculas. Las
+            clases sucesores pueden sobreescribir este método para proveer otro mecanismo para determina si procesan o no
+            un mensaje.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <returns>true si el mensaje puede ser pocesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.Handle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.BaseHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial. En los "handler" sin estado no hace nada. Los "handlers" que
+            procesan varios mensajes cambiando de estado entre mensajes deben sobreescribir este método para volver al
+            estado inicial.
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.EliminarProductoHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.EliminarProductoHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.EliminarProductoHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.GetHabListEmprendedorHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.GetHabListEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.GetHabListEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.IHandler">
+            <summary>
+            Interfaz para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
+            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
+            pasa al siguiente. Esta interfaz define un atributo para definir el próximo "handler" y una una operación para
+            recibir el mensaje y pasarlo al siguiente "handler" en caso que el mensaje no sea procesado. La responsabilidad de
+            decidir si el mensaje se procesa o no, y de procesarlo, se realiza en las clases que implementan esta interfaz.
+            </summary>
+            <remarks>
+            La interfaz se crea en función del principio de inversión de dependencias, para que los clientes de la cadena de
+            responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
+            </remarks>
+        </member>
+        <member name="P:ClassLibrary.IHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Handle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
+            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
+            caso de error por ejemplo.
+            </summary>
+        </member>
+        <member name="T:ClassLibrary.RegistroEmprendedorHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.RegistroEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.RegistroEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.RemoverHabEmprendedor">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.RemoverHabEmprendedor.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.RemoverHabEmprendedor.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.RemoverHabOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.RemoverHabOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.RemoverHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
             Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
@@ -350,6 +572,23 @@
             <summary>
             Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
             </summary>
+        </member>
+        <member name="T:ClassLibrary.IMensaje">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.IMensaje.Id">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.IMensaje.Text">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClassLibrary.IPrinter">
             <summary>
@@ -443,6 +682,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="F:ClassLibrary.Logica.Emprendedores">
+            <summary>
+            Guarda un conjunto Emprendedor, y su chat id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.Logica.Empresas">
+            <summary>
+            Guarda un conjunto Empresa, y su chat id.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>
             Esta clase contiene a los buscadores.
@@ -478,15 +729,15 @@
             Contiene un método para llamar a cada método de la clase Emprendedor.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,System.String,ClassLibrary.Habilitaciones,System.String)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Registro de usuario para ser emprendedor.
             </summary>
             <param name="nombre">Nombre del emprendedor.</param>
             <param name="ubicacion">Ubicacion del emprendedor.</param>
             <param name="rubro">Rubro del emprendedor.</param>
-            <param name="habilitacion">Habilitacion.</param>
             <param name="especializaciones">Especializaciones del emprendedor.</param>
+            <param name="id">Id del chat.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.AddHabilitacion(ClassLibrary.Emprendedor,System.String)">
             <summary>
@@ -549,12 +800,12 @@
             <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
             <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.EliminarProducto(ClassLibrary.Empresa,ClassLibrary.Oferta)">
+        <member name="M:ClassLibrary.LogicaEmpresa.EliminarProducto(ClassLibrary.Empresa,System.String)">
             <summary>
             Llama al método EliminarProducto en empresa con los parametros pasados.
             </summary>
             <param name="empresa">Empresa que eliminará la oferta.</param>
-            <param name="oferta">Oferta que se desea eliminar.</param>
+            <param name="ofertaNombre">Nombre de la oferta que se desea eliminar.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.AceptarOferta(ClassLibrary.Empresa,System.String)">
             <summary>
@@ -775,6 +1026,29 @@
             <param name="rubro">Rubro.</param>
             <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
         </member>
+        <member name="T:ClassLibrary.TelegramMsgAdapter">
+            <summary>
+            La clase que encapsula el mensaje que recibe
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.TelegramMsgAdapter.#ctor(Telegram.Bot.Types.Message)">
+            <summary>
+            Inicializa una instancia de la clase TelegramMsgAdapter
+            </summary>
+            <param name="msg">Recibe un tipo Message de Telegram</param>
+        </member>
+        <member name="P:ClassLibrary.TelegramMsgAdapter.Id">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.TelegramMsgAdapter.Text">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
             Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
@@ -805,46 +1079,6 @@
             Obtiene o establece el valor con el rubro del usuario.
             </summary>
             <value>Tipo Rubro.</value>
-        </member>
-        <member name="T:Test.Library.IMensaje">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Test.Library.IMensaje.Id">
-            <summary>
-            
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Test.Library.IMensaje.Text">
-            <summary>
-            
-            </summary>
-            <value></value>
-        </member>
-        <member name="T:Test.Library.TelegramMsgAdapter">
-            <summary>
-            La clase que encapsula el mensaje que recibe
-            </summary>
-        </member>
-        <member name="M:Test.Library.TelegramMsgAdapter.#ctor(Telegram.Bot.Types.Message)">
-            <summary>
-            Inicializa una instancia de la clase TelegramMsgAdapter
-            </summary>
-            <param name="msg">Recibe un tipo Message de Telegram</param>
-        </member>
-        <member name="P:Test.Library.TelegramMsgAdapter.Id">
-            <summary>
-            
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:Test.Library.TelegramMsgAdapter.Text">
-            <summary>
-            
-            </summary>
-            <value></value>
         </member>
     </members>
 </doc>
