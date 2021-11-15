@@ -18,6 +18,8 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            IHandler handler = new RegistroEmprendedorHandler(new GetHabListEmprendedorHandler(null));
+
         }
     }
 }

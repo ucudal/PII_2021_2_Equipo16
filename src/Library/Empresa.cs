@@ -70,7 +70,7 @@ namespace ClassLibrary
         /// </summary>
         public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
         /// <summary>
-        /// Crea un producto, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
@@ -83,7 +83,7 @@ namespace ClassLibrary
         /// <remarks>
         /// Se usa Creator.
         /// </remarks>
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
             Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
