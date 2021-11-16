@@ -74,6 +74,7 @@ namespace ClassLibrary
                 emprendedor.OfertasInteresado.Add(item);
                 item.Interesado.Add(emprendedor.Nombre);
                 item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
 
                } 
             }
