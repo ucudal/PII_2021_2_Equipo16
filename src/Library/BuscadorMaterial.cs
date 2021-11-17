@@ -3,7 +3,8 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa un buscador por Material, que implementa la infertaz IBuscador.
+    /// Esta clase representa un buscador por Material, que implementa la interfaz IBuscador.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     /// <remarks>
     /// En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.

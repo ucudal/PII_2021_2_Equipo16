@@ -3,6 +3,10 @@ namespace ClassLibrary
     /// <summary>
     /// Esta interface contiene los métodos para agregar, quitar o consultar habilitaciones.
     /// </summary>
+    /// <remarks>
+    /// Mediante el uso de esta interfaz, se puede incluir el comportamiento de varias fuentes en una clase.
+    /// Por ejemplo, la implementacion que realizan las clases Emprendedor, Empresa y Ofertas.
+    /// </remarks>
     public interface IHabilitaciones
     {
         /// <summary>

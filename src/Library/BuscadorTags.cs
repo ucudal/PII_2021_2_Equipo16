@@ -4,6 +4,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Clase buscador por tag, que implementa la interfaz IBuscador.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     public class BuscadorTags : IBuscador
     {
