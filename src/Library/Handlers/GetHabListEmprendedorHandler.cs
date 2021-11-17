@@ -1,5 +1,3 @@
-using Telegram.Bot.Types;
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -17,7 +15,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+        /// Procesa el mensaje "Lista de habilitaciones" y retorna true; retorna false en caso contrario.
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
