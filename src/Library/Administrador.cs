@@ -4,7 +4,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
-    /// 
+    /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente. 
     /// </summary>
     public class Administrador
     {

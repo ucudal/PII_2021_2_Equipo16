@@ -6,6 +6,8 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa una Empresa, que se encarga de crear Ofertas, eliminarlas, aceptarlas y calcular el consumo de ofertas.
+    /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     public class Empresa : Usuario, IHabilitaciones
     {

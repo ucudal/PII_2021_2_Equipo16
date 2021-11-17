@@ -3,6 +3,13 @@
 Nuestro proyecto final de P2.
 Proxima entrega miércoles 3 de Noviembre, creación del Core del Bot, actualizados CRC y UML.
 
+08/11/21 al 17/11/21 - Juan Pérez
+Creación de los handler:
+                        AddHabEmpresaHandler
+                        GetListHabEmrpesaHandler
+                        CalcularOfertasCompradasHandler
+Anexion de comentarios de utilizacion de patrones y principios.
+
 2/11/21 - Ramón Lorenzo
 -Fixes en clase Oferta: Clase terminada con sus tests funcionando y comentarios XML realizados.
 -Fixes en clase Emprendedor: Clase terminada con sus tests funcionando y comentarios XML realizados.
