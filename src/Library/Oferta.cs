@@ -5,6 +5,8 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa una oferta.
+    /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     public class Oferta : IHabilitaciones
     {

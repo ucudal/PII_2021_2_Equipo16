@@ -1,4 +1,6 @@
 using Telegram.Bot.Types;
+using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -13,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public RegistroEmprendedorHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"Registrarse", "registrarse"};
+            this.Keywords = new string[] {"/Registrarse"};
         }
 
         /// <summary>
@@ -24,24 +26,53 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (this.CanHandle(message))
+            if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
-                // Se le pide al usuario que ingrese "Registrarse, nombre, ubicacion, rubro, especializaion
-                // Para poder hacerle un split.
-                // El usuario ya conoce los comandos y de que forma me tiene que ingresar los datos.
-                string[] mensajeProcesado = message.Text.Split();
-                // El 0 es Registrarse.
-                string nombreEmprendedor = mensajeProcesado[1];
-                string ubicacionEmprendedor = mensajeProcesado[2];
-                string rubroEmprendedor = mensajeProcesado[3];
-                string especializacionesEmprendedor = mensajeProcesado[4];
-                
-                // En el ultimo param le agrego el Id del chat para saber quien es. (Emprendedor o empresa)
-                LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, message.Id);
+                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+            }
+            else
+            {
+                Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
+                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+            }
 
-                response = $"Se ha registrado con nombre {nombreEmprendedor}, ubicacion {ubicacionEmprendedor}, rubro {rubroEmprendedor}, especializacion {especializacionesEmprendedor}. ";
+            // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarse") == true)
+            {
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Registrarse");
+                if (listaConParam.Count == 0)
+                {
+                    response = "ingrese el nombre";
+                    return true;
+                    Console.WriteLine("Entro aca");
+                }
+                if (listaConParam.Count == 1)
+                {
+                    response = "ingrese la ubicacion";
+                    return true;
+                }
+                if (listaConParam.Count == 2)
+                {
+                    response = "ingrese rubro";
+                    return true;
+                }
+                if (listaConParam.Count == 3)
+                {
+                    response = "ingrese especializaciones";
+                    return true;
+                }
+                if (listaConParam.Count == 4)
+                {
+                    string nombreEmprendedor = listaConParam[3];
+                    string ubicacionEmprendedor = listaConParam[2];
+                    string rubroEmprendedor = listaConParam[1];
+                    string especializacionesEmprendedor = listaConParam[0];
+                    LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, message.Id);
+                    response = $"Se ha registrado con nombre {nombreEmprendedor}, ubicacion {ubicacionEmprendedor}, rubro {rubroEmprendedor}, especializacion {especializacionesEmprendedor}. ";
+                    return true;
+                }
                 
-                return true;
+
             }
 
             response = string.Empty;

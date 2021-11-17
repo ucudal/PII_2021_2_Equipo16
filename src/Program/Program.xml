@@ -14,5 +14,27 @@
             Punto de entrada al programa principal.
             </summary>
         </member>
+        <member name="M:ConsoleApplication.Program.HandleUpdateAsync(Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
+            <summary>
+            Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
+            respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
+            </summary>
+        </member>
+        <member name="M:ConsoleApplication.Program.HandleMessageReceived(Telegram.Bot.Types.Message)">
+            <summary>
+            Maneja los mensajes que se envían al bot.
+            Lo único que hacemos por ahora es escuchar 3 tipos de mensajes:
+            - "hola": responde con texto
+            - "chau": responde con texto
+            - "foto": responde con una foto
+            </summary>
+            <param name="message">El mensaje recibido</param>
+            <returns></returns>
+        </member>
+        <member name="M:ConsoleApplication.Program.HandleErrorAsync(System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Manejo de excepciones. Por ahora simplemente la imprimimos en la consola.
+            </summary>
+        </member>
     </members>
 </doc>
