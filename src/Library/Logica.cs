@@ -58,5 +58,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public static Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
+
+        public static Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
     }
 }
