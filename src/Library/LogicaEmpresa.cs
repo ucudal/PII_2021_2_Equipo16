@@ -5,6 +5,9 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
+    /// <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// buscando mantener un equilibrio entre cohesión y acoplamiento.
+    /// </remarks>
     public static class LogicaEmpresa
     {
         /// <summary>
