@@ -16,12 +16,12 @@ namespace Test.Library
         public void TestGeneral3()
         {
             Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil", new Habilitaciones());
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-colaAAA", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZEROAAA", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 1AAA", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola2AAA", "Líquido", 2000, "Litros", "bebidas", "Nigeria", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO2AAA", "Líquido", 2000, "Litros", "bebidas", "Nigeria", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 12AAA", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-colaAAA", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZEROAAA", "Líquido", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1AAA", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola2AAA", "Líquido", 2000, "Litros", "bebidas", "Nigeria", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO2AAA", "Líquido", 2000, "Litros", "bebidas", "Nigeria", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 12AAA", "El mejor de todos", 5500, "Cantidad", "coche", "Carrasco", "Constante");
 
             // Quiero buscar por ubicacion, tag, material
             

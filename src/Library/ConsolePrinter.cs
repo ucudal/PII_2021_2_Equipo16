@@ -5,7 +5,9 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de imprimir por consola los atributos de oferta.
     /// </summary>
-    /// <remarks>En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.</remarks>
+    /// <remarks>
+    /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.
+    /// </remarks>
     public class ConsolePrinter : IPrinter
     {
         /// <summary>
@@ -15,6 +17,15 @@ namespace ClassLibrary
         public void OfertaPrinter(Oferta oferta)
         {
             Console.WriteLine($"Nombre: {oferta.Nombre}, ID: {oferta.Id}, Material: {oferta.Material}, Precio {oferta.Precio}, Unidad: {oferta.Unidad}, Ubicación {oferta.Ubicacion}, Fecha de Publicación {Oferta.FechaDePublicacion}");
+        }
+
+        /// <summary>
+        /// Este método imprime una string con información.
+        /// </summary>
+        /// <param name="dato"></param>
+        public static void DatoPrinter(String dato)
+        {
+            Console.WriteLine(dato);
         }
     }
 }
