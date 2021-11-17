@@ -1,5 +1,6 @@
 using Telegram.Bot.Types;
 using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -36,24 +37,29 @@ namespace ClassLibrary
             }
 
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            if (this.CanHandle(message))
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarse") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/Registrarse");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Registrarse");
                 if (listaConParam.Count == 0)
                 {
                     response = "ingrese el nombre";
+                    return true;
+                    Console.WriteLine("Entro aca");
                 }
                 if (listaConParam.Count == 1)
                 {
                     response = "ingrese la ubicacion";
+                    return true;
                 }
                 if (listaConParam.Count == 2)
                 {
                     response = "ingrese rubro";
+                    return true;
                 }
                 if (listaConParam.Count == 3)
                 {
                     response = "ingrese especializaciones";
+                    return true;
                 }
                 if (listaConParam.Count == 4)
                 {
@@ -65,6 +71,7 @@ namespace ClassLibrary
                     response = $"Se ha registrado con nombre {nombreEmprendedor}, ubicacion {ubicacionEmprendedor}, rubro {rubroEmprendedor}, especializacion {especializacionesEmprendedor}. ";
                     return true;
                 }
+                
 
             }
 

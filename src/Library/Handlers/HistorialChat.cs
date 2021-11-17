@@ -36,6 +36,36 @@ namespace ClassLibrary
             MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez
             return ParametrosIngresadosDelComando;
         }
+
+        /// <summary>
+        /// Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+        /// </summary>
+        /// <param name="comando"></param>
+        /// <returns></returns>
+        public bool ComprobarUltimoComandoIngresado(string comando)
+        {
+            foreach (string elemento in MensajesDelUser)
+            {
+               MensajesDelUserReves.Add(elemento); 
+            }
+
+            foreach (string item in MensajesDelUserReves)
+            {
+                if (item.StartsWith("!"))
+                {
+                    if (item == comando)
+                    {
+                        MensajesDelUserReves.Clear();
+                        return true;
+                    } 
+                    MensajesDelUserReves.Clear();
+                    return false;
+                }
+                
+            }
+            MensajesDelUserReves.Clear();
+            return false;
+        }
     }
 
 }

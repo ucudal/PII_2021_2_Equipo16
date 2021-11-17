@@ -447,6 +447,20 @@
             <param name="response">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
+        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
+            <summary>
+            Devueleve una lista que contiene los mensajes despues de el comando ingresado
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
+            <summary>
+            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.IHandler">
             <summary>
             Interfaz para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
