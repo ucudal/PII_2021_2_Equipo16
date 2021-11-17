@@ -3,6 +3,9 @@ namespace ClassLibrary
     /// <summary>
     /// Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
     /// </summary>
+    /// <remarks>
+    /// Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
+    /// </remarks>
     public class Usuario
     {
         private string nombre;
