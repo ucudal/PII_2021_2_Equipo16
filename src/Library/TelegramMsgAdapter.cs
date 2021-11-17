@@ -8,7 +8,7 @@ namespace ClassLibrary
     /// </summary>
     public class TelegramMsgAdapter : IMensaje
     {
-        private Message mensaje;
+        public Message mensaje;
 
         /// <summary>
         /// Inicializa una instancia de la clase TelegramMsgAdapter
