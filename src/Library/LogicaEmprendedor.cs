@@ -6,6 +6,8 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Contiene un método para llamar a cada método de la clase Emprendedor.
+    /// La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public static class LogicaEmprendedor
     {
@@ -74,6 +76,7 @@ namespace ClassLibrary
                 emprendedor.OfertasInteresado.Add(item);
                 item.Interesado.Add(emprendedor.Nombre);
                 item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
 
                } 
             }

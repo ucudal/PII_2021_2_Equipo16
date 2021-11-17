@@ -9,6 +9,14 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
+    /// <remarks>
+    /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+    /// la clase Empresa tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// Además, utilizamos herencia para lograr una refactorización de código aceptable, ya que sería muy tedioso y
+    /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
+    /// </remarks>
+
     public class Empresa : Usuario, IHabilitaciones
     {
         /// <summary>
@@ -42,6 +50,7 @@ namespace ClassLibrary
             }
         }
 
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -72,7 +81,7 @@ namespace ClassLibrary
         /// </summary>
         public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
         /// <summary>
-        /// Crea un producto, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
@@ -85,7 +94,7 @@ namespace ClassLibrary
         /// <remarks>
         /// Se usa Creator.
         /// </remarks>
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
             Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
@@ -124,6 +133,7 @@ namespace ClassLibrary
                 {
                     ofertaEncontrada = ofertaEnLista;
                     this.ofertasAceptadas.Add(ofertaEnLista);
+                    this.FechaOfertasEntregadas.Add(DateTime.Now, ofertaEnLista);
                 }
             }
 
@@ -141,15 +151,16 @@ namespace ClassLibrary
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in this.ofertasAceptadas)
+            foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
             {
-                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
+                if (par.Key >= fInicio && par.Key <= fFinal)
                 {
                    cantidadVendida += 1;
                 }
             }
 
-            Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
+            string texto = $"Se vendieron {cantidadVendida} ofertas";
+            Console.WriteLine(texto);
             return cantidadVendida;
         }
 

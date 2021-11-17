@@ -5,6 +5,9 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
+    /// <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// buscando mantener un equilibrio entre cohesión y acoplamiento.
+    /// </remarks>
     public static class LogicaEmpresa
     {
         /// <summary>
@@ -28,7 +31,7 @@ namespace ClassLibrary
         /// <param name="tags">Palabra clave.</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
+        public static void CrearOferta(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
@@ -36,7 +39,7 @@ namespace ClassLibrary
             }
             else
             {
-                empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+                empresa.CrearOferta(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
                 Logica.ListaNombreOfertas.Add(nombre);
                 Console.WriteLine("Producto creado exitosamente");
             }

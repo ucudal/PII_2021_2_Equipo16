@@ -11,6 +11,9 @@ namespace ClassLibrary
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
+
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
@@ -94,20 +97,19 @@ namespace ClassLibrary
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
         {
-            int dineroGastado = 0;
             int ofertasCompradas1 = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in this.OfertasInteresado)
+
+            foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
-                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
+                if (par.Key >= fInicio && par.Key <= fFinal)
                 {
                 ofertasCompradas1++;
-                dineroGastado = dineroGastado + oferta.Precio;
                 }
             }
-
-            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
+            string texto = $"Se han comprado {ofertasCompradas1} ofertas en el tiempo indicado";
+            Console.WriteLine(texto);
             return ofertasCompradas1;
         }
     }
