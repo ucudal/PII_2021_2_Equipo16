@@ -133,9 +133,9 @@ namespace ClassLibrary
         /// Llama al método GetHabilitacion en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa.</param>
-        public static void GetHabilitacionList(Empresa empresa)
+        public static string GetHabilitacionList(Empresa empresa)
         {
-            empresa.GetHabilitacionList();
+            return empresa.GetHabilitacionList();
         }
     }
 }
