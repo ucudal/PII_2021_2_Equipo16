@@ -28,7 +28,7 @@ namespace ClassLibrary
         /// <param name="tags">Palabra clave.</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public static void CrearProducto(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
+        public static void CrearOferta(Empresa empresa, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
@@ -36,7 +36,7 @@ namespace ClassLibrary
             }
             else
             {
-                empresa.CrearProducto(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+                empresa.CrearOferta(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
                 Logica.ListaNombreOfertas.Add(nombre);
                 Console.WriteLine("Producto creado exitosamente");
             }

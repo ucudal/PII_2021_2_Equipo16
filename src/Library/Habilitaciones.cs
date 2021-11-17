@@ -60,7 +60,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime en consola la lista de habilitaciones para realizar esto utiliza un StringBuilder y recorre la lista de Habilitaciones.
         /// </summary>
-        public void GetHabilitacionList()
+        public string GetHabilitacionList()
         {
             StringBuilder texto = new StringBuilder("Lista de Habilitaciones: \n");
             foreach (string nombreHabilitacion in this.ListaHabilitaciones)
@@ -68,7 +68,7 @@ namespace ClassLibrary
                 texto.Append($"- {nombreHabilitacion}");
             }
 
-            Console.WriteLine(texto.ToString());
+           return texto.ToString();
         }
 
         /// <summary>

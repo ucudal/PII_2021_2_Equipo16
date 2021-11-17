@@ -54,9 +54,9 @@ namespace ClassLibrary
         /// Este método llama a GetHabilitacionList de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        public static void GetHabilitacionList(Emprendedor emprendedor)
+        public static string GetHabilitacionList(Emprendedor emprendedor)
         {
-            emprendedor.GetHabilitacionList();
+            return emprendedor.GetHabilitacionList();
         }
 
         /// <summary>
@@ -74,6 +74,7 @@ namespace ClassLibrary
                 emprendedor.OfertasInteresado.Add(item);
                 item.Interesado.Add(emprendedor.Nombre);
                 item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
 
                } 
             }

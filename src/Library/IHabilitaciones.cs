@@ -20,6 +20,6 @@ namespace ClassLibrary
         /// <summary>
         /// Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
         /// </summary>
-        void GetHabilitacionList();
+         string GetHabilitacionList();
     }
 }
