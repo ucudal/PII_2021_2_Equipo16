@@ -26,10 +26,9 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        /// <param name="habilitacion">Habilitaciones de la empresa.</param>
-        public Empresa(String nombre, String ubicacion, string rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
-            this.Habilitacion = habilitacion;
+            this.Habilitacion = new Habilitaciones();
         }
 
         /// <summary>
