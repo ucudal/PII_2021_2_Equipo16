@@ -17,7 +17,7 @@ namespace Test.Library
         [Test]
         public void TestGeneral2()
         {
-            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil", new Habilitaciones());
+            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil");
             Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", "textil", new Habilitaciones(), "Decorado de interiores");
 
             LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-colaA", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");

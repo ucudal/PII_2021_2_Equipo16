@@ -1,6 +1,7 @@
+using System;
 using Telegram.Bot.Types;
 using System.Collections.Generic;
-using System;
+
 
 namespace ClassLibrary
 {
@@ -15,7 +16,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public RegistroEmprendedorHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/Registrarse"};
+            this.Keywords = new string[] {"!Registrarse"};
         }
 
         /// <summary>
@@ -26,16 +27,33 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
+            
+            
             if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
-                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+                if (this.CanHandle(message))
+                {
+                    Console.WriteLine("Entre");
+                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                }
+                else
+                {
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarse") == true))
+                    {
+                        Console.WriteLine("Entre22");
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    }
+                    else
+                    {
+                        response = string.Empty;
+                        return false;
+                    }
+                }
             }
-            else
-            {
-                Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
-                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
-            }
-
+            
+            
+            
+            
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
             if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarse") == true)
             {
@@ -77,6 +95,9 @@ namespace ClassLibrary
 
             response = string.Empty;
             return false;
+            
+            
+            
         }
     }
 }

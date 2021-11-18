@@ -39,7 +39,7 @@ namespace ConsoleApplication
             
             Bot = new TelegramBotClient(Token);
 
-            firstHandler = new RegistroEmprendedorHandler(new GetHabListEmprendedorHandler(null));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(null)));
             
             
             Message message = new Message();
