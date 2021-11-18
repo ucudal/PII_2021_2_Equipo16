@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public CrearOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"Crear producto", "crear producto"};
+            this.Keywords = new string[] {"!CrearOferta"};
         }
 
         /// <summary>
@@ -28,12 +28,24 @@ namespace ClassLibrary
         {
             if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
-                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
-            }
-            else
-            {
-                Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
-                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+                if (this.CanHandle(message))
+                {
+                    //Console.WriteLine("Entre");
+                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                }
+                else
+                {
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true))
+                    {
+                        //Console.WriteLine("Entre22");
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    }
+                    else
+                    {
+                        response = string.Empty;
+                        return false;
+                    }
+                }
             }
 
             if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true)
