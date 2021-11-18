@@ -1,4 +1,6 @@
+using System;
 using Telegram.Bot.Types;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -13,29 +15,74 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public EliminarProductoHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"Remover habilitacion", "remover habilitacion"};
+            this.Keywords = new string[] {"!Eliminar oferta", "!eliminar oferta"};
         }
 
         /// <summary>
-        /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+        /// Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
         /// <param name="response">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (this.CanHandle(message))
+
+            if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
+                if (this.CanHandle(message))
+                {
+                    //Console.WriteLine("Entre");
+                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                }
+                else
+                {
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Eliminar oferta") == true))
+                    {
+                        //Console.WriteLine("Entre22");
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    }
+                    else
+                    {
+                        response = string.Empty;
+                        return false;
+                    }
+                }
+            }
+
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Eliminar oferta") == true)
+            {
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Eliminar oferta");
+
                 // El mensaje debe tener el formato "Eliminar producto,nombre de la oferta,habilitacion"
                 string[] mensajeProcesado = message.Text.Split();
-                if (Logica.Empresas.ContainsKey(message.Id))
+
+                if (listaConParam.Count == 0)
                 {
-                    Empresa value = Logica.Empresas[message.Id];
-                    LogicaEmpresa.EliminarProducto(value, mensajeProcesado[1]);
-                    
-                    response = $"Se ha eliminado la oferta {mensajeProcesado[1]}.";
+                    response = "Ingrese el nombre de la oferta que desea eliminar";
                     return true;
                 }
+
+                if (listaConParam.Count == 1)
+                {
+                    string nombreOfertaParaEliminar = listaConParam[0];
+
+                    if (Logica.Empresas.ContainsKey(message.Id))
+                    {
+                        Empresa value = Logica.Empresas[message.Id];
+                        LogicaEmpresa.EliminarProducto(value, nombreOfertaParaEliminar);
+                        
+                        response = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
+                        return true;
+                    }
+                    else
+                    {
+                        response = "Usted no está registrado como empresa";
+                        return true;
+                    }
+  
+                }
+
+                
                 
             }
 

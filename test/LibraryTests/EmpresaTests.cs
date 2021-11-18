@@ -16,17 +16,17 @@ namespace Test.Library
         public void EmpresaTest()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
 
             string expected = "empresaTest";
             string expected2 = "La Blanqueada";
             string expected3 = "textil";
-            Habilitaciones expected4 = habilitacion;
+            
  
             Assert.AreEqual(expected, empresaTest.Nombre);
             Assert.AreEqual(expected2, empresaTest.Ubicacion);
             Assert.AreEqual(expected3, empresaTest.Rubro);
-            Assert.AreEqual(expected4, empresaTest.Habilitacion);
+            
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Test.Library
         public void TestAddHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
 
             int expected = 1;
             
@@ -51,7 +51,7 @@ namespace Test.Library
         public void TestQuitarHabilitaciones()
         {   
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
     
             int expected = 1;
             
@@ -67,7 +67,7 @@ namespace Test.Library
         public void TestAddHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
 
             int expected = 1;
             
@@ -83,7 +83,7 @@ namespace Test.Library
         public void TestQuitarHabilitacionesMal()
         {   
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil", habilitacion);
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
     
             int expected = 2;
             
