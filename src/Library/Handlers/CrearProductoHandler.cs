@@ -31,7 +31,7 @@ namespace ClassLibrary
                 if (Logica.Empresas.ContainsKey(message.Id))
                 {
                     Empresa value = Logica.Empresas[message.Id];
-                    LogicaEmpresa.CrearProducto(value, mensajeProcesado[1], mensajeProcesado[2]);
+                    //LogicaEmpresa.CrearProducto(value, mensajeProcesado[1], mensajeProcesado[2]);
 
                     response = $"Se ha creado la oferta {mensajeProcesado[2]}.";
                     return true;
@@ -42,4 +42,6 @@ namespace ClassLibrary
             response = string.Empty;
             return false;
         }
+    }
+}
 

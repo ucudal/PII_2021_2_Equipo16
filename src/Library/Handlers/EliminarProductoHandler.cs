@@ -1,4 +1,5 @@
 using Telegram.Bot.Types;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -24,18 +25,52 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (this.CanHandle(message))
+
+            if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
+                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+            }
+            else
+            {
+                Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
+                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+            }
+
+
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Eliminar producto") == true)
+            {
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Eliminar producto");
+
                 // El mensaje debe tener el formato "Eliminar producto,nombre de la oferta,habilitacion"
                 string[] mensajeProcesado = message.Text.Split();
-                if (Logica.Empresas.ContainsKey(message.Id))
+
+                if (listaConParam.Count == 0)
                 {
-                    Empresa value = Logica.Empresas[message.Id];
-                    LogicaEmpresa.EliminarProducto(value, mensajeProcesado[1]);
-                    
-                    response = $"Se ha eliminado la oferta {mensajeProcesado[1]}.";
+                    response = "Ingrese el nombre de la oferta que desea eliminar";
                     return true;
                 }
+
+                if (listaConParam.Count == 1)
+                {
+                    string nombreOfertaParaEliminar = listaConParam[0];
+
+                    if (Logica.Empresas.ContainsKey(message.Id))
+                    {
+                        Empresa value = Logica.Empresas[message.Id];
+                        LogicaEmpresa.EliminarProducto(value, nombreOfertaParaEliminar);
+                        
+                        response = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
+                        return true;
+                    }
+                    else
+                    {
+                        response = "Usted no está registrado como empresa";
+                        return true;
+                    }
+  
+                }
+
+                
                 
             }
 
