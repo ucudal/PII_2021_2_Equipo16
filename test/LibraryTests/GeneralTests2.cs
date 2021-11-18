@@ -20,12 +20,12 @@ namespace Test.Library
             Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil");
             Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", "textil", new Habilitaciones(), "Decorado de interiores");
 
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-colaA", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1A", "El mejor de todos", 5500, "Cantidad", "auto", "Carrasco", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola2A", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO2A", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 12A", "El mejor de todos", 5500, "Cantidad", "auto", "Aguas verdes", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-colaA", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1A", "El mejor de todos", "5500", "Cantidad", "auto", "Carrasco", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola2A", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO2A", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 12A", "El mejor de todos", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
 
             // Quiero como empresa calcular las ofertas entregadas segun x tiempo.
             LogicaEmpresa.AceptarOferta(empresaConaprole, "Fiat 1A");
