@@ -198,7 +198,7 @@
             mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String,ClassLibrary.Habilitaciones)">
+        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Empresa"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
@@ -206,7 +206,6 @@
             <param name="nombre">Nombre de la empresa.</param>
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
-            <param name="habilitacion">Habilitaciones de la empresa.</param>
         </member>
         <member name="M:ClassLibrary.Empresa.AceptarInvitacion(System.String)">
             <summary>
@@ -507,26 +506,6 @@
             <param name="response">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
-        <member name="T:ClassLibrary.ComandoHandler">
-            <summary>
-            Esta clase contiene un método para aceptar una oferta.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.ComandoHandler.#ctor(ClassLibrary.BaseHandler)">
-            <summary>
-            Este método se encarga de aceptar una oferta.
-            </summary>
-            <param name="next"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.ComandoHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
-            <summary>
-            
-            </summary>
-            <param name="message"></param>
-            <param name="response"></param>
-            <returns></returns>
-        </member>
         <member name="T:ClassLibrary.CrearProductoHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -559,7 +538,7 @@
         </member>
         <member name="M:ClassLibrary.EliminarProductoHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
             </summary>
             <param name="message">El mensaje a procesar.</param>
             <param name="response">La respuesta al mensaje procesado.</param>
