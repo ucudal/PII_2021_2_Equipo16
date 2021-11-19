@@ -26,7 +26,7 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicacion de la oferta.</param>
         /// <param name="empresa">Empresa que publica la oferta.</param>
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
+        public Oferta(string nombre, string material, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
             this.Material = material;
@@ -59,7 +59,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece el Precio de la Oferta.
         /// </summary>
-        public int Precio { get; set; }
+        public string Precio { get; set; }
 
         /// <summary>
         /// Obtiene o establece la Cantidad de unidades a ofertar.

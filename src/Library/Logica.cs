@@ -66,5 +66,7 @@ namespace ClassLibrary
         /// <typeparam name="HistorialChat"></typeparam>
         /// <returns></returns>
         public static Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
+
+        public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
     }
 }

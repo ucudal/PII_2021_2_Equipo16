@@ -99,7 +99,7 @@ namespace ClassLibrary
         /// <remarks>
         /// Se usa Creator.
         /// </remarks>
-        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
             Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);

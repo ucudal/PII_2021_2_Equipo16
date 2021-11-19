@@ -238,7 +238,7 @@
             
             </summary>
         </member>
-        <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
             </summary>
@@ -504,6 +504,25 @@
             </summary>
             <param name="message">El mensaje a procesar.</param>
             <param name="response">La respuesta al mensaje procesado.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.CrearOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.CrearOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.CrearOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="response"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.CrearProductoHandler">
@@ -1001,7 +1020,7 @@
             <param name="empresa">Empresa.</param>
             <param name="nombreEmpresa">Nombre de la Empresa.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Llama al método CrearProducto en empresa con los parametros pasados.
             </summary>
@@ -1085,7 +1104,7 @@
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.Int32,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Oferta"/>.
             </summary>
