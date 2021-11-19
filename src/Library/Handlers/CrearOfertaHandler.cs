@@ -95,11 +95,12 @@ namespace ClassLibrary
                     string materialOferta = listaConParam[1];
                     string nombreOferta = listaConParam[0];
                     if (Logica.Empresas.ContainsKey(message.Id))
-                {
-                    Empresa value = Logica.Empresas[message.Id];
-                    LogicaEmpresa.CrearOferta(value, nombreOferta,materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
-                    response = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta},del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de : {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. ";
-                    return true;
+                    {
+                        Empresa value = Logica.Empresas[message.Id];
+                        LogicaEmpresa.CrearOferta(value, nombreOferta,materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+                        response = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta},del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de : {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. ";
+                        return true;
+                    }
                 }
                 else
                 {
@@ -107,11 +108,9 @@ namespace ClassLibrary
                     return true;
                 }
             }
-
             response = string.Empty;
             return false;
         }
     }
-}
 }
 
