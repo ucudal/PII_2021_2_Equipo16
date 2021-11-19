@@ -9,15 +9,15 @@ namespace ClassLibrary
     public interface IMensaje
     {
         /// <summary>
-        /// 
+        /// Esta property contiene la identificacion unica del Usuario, que interactua en la app.
         /// </summary>
-        /// <value></value>
+        /// <value>El valor esta dado por el token asignado por Telegram.</value>
         string Id {get;}
 
         /// <summary>
-        /// 
+        /// Esta property contiene el mensaje ingresado pro el Usuario.
         /// </summary>
-        /// <value></value>
+        /// <value>El valor esta dado por una cadena de caracteres ingresador por el Usuario.</value>
         string Text {get;}
     }
 }

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using Telegram.Bot.Types;
 
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -108,7 +107,6 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            }
 
             response = string.Empty;
             return false;
@@ -116,4 +114,3 @@ namespace ClassLibrary
     }
 }
 
- 

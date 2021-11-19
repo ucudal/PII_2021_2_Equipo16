@@ -11,8 +11,13 @@ namespace ClassLibrary
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
-
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="DateTime"></typeparam>
+        /// <typeparam name="Oferta"></typeparam>
+        /// <returns></returns>
+         public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.

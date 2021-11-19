@@ -62,7 +62,7 @@ namespace ClassLibrary
                 {
                     response = "ingrese el nombre";
                     return true;
-                    Console.WriteLine("Entro aca");
+                    //Console.WriteLine("Entro aca");
                 }
                 if (listaConParam.Count == 1)
                 {

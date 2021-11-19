@@ -49,6 +49,12 @@ namespace ClassLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="DateTime"></typeparam>
+        /// <typeparam name="Oferta"></typeparam>
+        /// <returns></returns>
         public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
