@@ -60,5 +60,7 @@ namespace ClassLibrary
         public static Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
 
         public static Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
+
+        public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
     }
 }

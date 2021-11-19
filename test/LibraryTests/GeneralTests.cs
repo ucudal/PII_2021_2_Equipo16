@@ -23,9 +23,9 @@ namespace Test.Library
             string expectedEmprendedor = "Lebron James";
 
             // Quiero como empresa publicar varias oferta.
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1", "El mejor de todos", 5500, "Cantidad", "auto", "Aguas verdes", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1", "El mejor de todos", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
 
             int expectedPublicaciones = 3; // Esperado numero de ofertas en lista.
             Assert.AreEqual(expectedPublicaciones, Logica.PublicacionesA.OfertasPublicados.Count);
