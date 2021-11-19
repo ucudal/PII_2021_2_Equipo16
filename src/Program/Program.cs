@@ -43,6 +43,7 @@ namespace ConsoleApplication
             
             
             Message message = new Message();
+            
             string response;
 
             //IHandler result = firstHandler.Handle(new TelegramMsgAdapter(message), out response);

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public CalcularOfertasCompradasHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"Calcular ofertas", "ofertas compradas", "Calcular ofertas compradas"};
+            this.Keywords = new string[] {"!CalcularOfertas"};
         }
 
         /// <summary>
@@ -24,28 +26,58 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (this.CanHandle(message))
+            
+            if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
-                // El mensaje debe tener el formato "Agregar habilitacion de oferta, habilitacion, nombre de la oferta" o sus keywords
-                string[] mensajeProcesado = message.Text.Split();
-                if (Logica.Empresas.ContainsKey(message.Id))
+                if (this.CanHandle(message))
                 {
-                    Empresa value = Logica.Empresas[message.Id];
-                    /* #########################################################
-                    FALTA TERMINAR A LA ESPERA DE METODO PARA LLAMAR "RESPONSE"
-                    
-                    int hab = LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
-
-                    response = $"La lista de habilitaciones es: \n {hab}.";
-                    ############################################################
-                    */
-                    response = "falta terminar";
-                    return true;
+                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                }
+                else
+                {
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertas") == true))
+                    {
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    }
+                    else
+                    {
+                        response = string.Empty;
+                        return false;
+                    }
                 }
             }
+
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertas") == true)
+            {
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CalcularOfertas");
+                if (listaConParam.Count == 0)
+                {
+                    response = "ingrese la fecha de inicio";
+                    return true;
+                }
+                if (listaConParam.Count == 1)
+                {
+                    response = "ingrese la fecha final";
+                    return true;
+                }
+                if (listaConParam.Count == 2)
+                {
+                    string fechaInicio = listaConParam[1];
+                    string fechaFinal = listaConParam[0];
+
+                    if (Logica.Empresas.ContainsKey(message.Id))
+                    {
+                        Empresa value = Logica.Empresas[message.Id];
+                        LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
+
+                        response = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}.";
+                        return true;
+                    }
+                }
+            }
+            
             response = string.Empty;
             return false;
         }
-
     }
 }

@@ -3,10 +3,23 @@ using System.Collections.Generic;
 
 namespace ClassLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HistorialChat
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="string"></typeparam>
+        /// <returns></returns>
         public List<string> MensajesDelUser = new List<string>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="string"></typeparam>
+        /// <returns></returns>
         public List<string> MensajesDelUserReves = new List<string>();
 
         /// <summary>
