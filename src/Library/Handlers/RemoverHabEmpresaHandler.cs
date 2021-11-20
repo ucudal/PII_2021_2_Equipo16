@@ -5,24 +5,26 @@ using Telegram.Bot.Types;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase contiene un método para aceptar una oferta.
+    /// Esta clase contiene un método para remover habilitaciones de empresas.
     /// </summary>
-    public class AceptarOfertaHandler : BaseHandler
+    public class RemoveHabEmpresaHandler : BaseHandler
     {
         /// <summary>
-        /// Este método se encarga de aceptar una oferta.
+        /// Inicializa una nueva instancia de la clase.
         /// </summary>
         /// <param name="next"></param>
-        public AceptarOfertaHandler (BaseHandler next) : base(next)
+        /// <returns></returns>
+        public RemoveHabEmpresaHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!AceptarOferta"};
+            this.Keywords = new string[] {"!RemoverHab"};
         }
-
+        
         /// <summary>
-        /// 
+        /// Se encarga de procesar el mensaje para determinar si se removerá una habilitación.
         /// </summary>
         /// <param name="mensaje">El mensaje a procesar.</param>
         /// <param name="respuesta">La respusta al mensaje procesado.</param>
+        /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
@@ -33,7 +35,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarOferta") == true)
+                    if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
                     {
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
@@ -45,29 +47,29 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarOferta") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!AceptarOferta");
+                // El mensaje debe tener el formato "Remover habilitacion, Nombre de habilitación".
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!RemoverHab");
                 if (listaComandos.Count == 0)
                 {
-                    respuesta = $"Ingrese el Nombre de la oferta que desee aceptar {listaComandos.Count}.";
+                    respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaComandos.Count}.";
                     return true;
                 }
                 
                 if (listaComandos.Count == 1)
                 {
-                    string nombreOfertaParaAceptar = listaComandos[0];
-
+                    string habilitacion = listaComandos[0];
                     if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
-                        LogicaEmpresa.AceptarOferta(value, nombreOfertaParaAceptar);
+                        LogicaEmpresa.RemoveHabilitacion(value, habilitacion);
                         
-                        respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito.";
+                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito.";
                     }
                     else
                     {
-                        respuesta = "No se ha podido aceptar la oferta, usted no está registrado como Empresa.";
+                        respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa.";
                     }
                     return true;
                 }
