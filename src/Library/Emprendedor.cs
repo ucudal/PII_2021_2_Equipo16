@@ -12,12 +12,10 @@ namespace ClassLibrary
     public class Emprendedor : Usuario, IHabilitaciones
     {
         /// <summary>
-        /// 
+        /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
-        /// <typeparam name="DateTime"></typeparam>
-        /// <typeparam name="Oferta"></typeparam>
         /// <returns></returns>
-         public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
@@ -102,7 +100,7 @@ namespace ClassLibrary
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
         {
-            int ofertasCompradas1 = 0;
+            int ofertasCompradas = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
 
@@ -110,12 +108,12 @@ namespace ClassLibrary
             {
                 if (par.Key >= fInicio && par.Key <= fFinal)
                 {
-                ofertasCompradas1++;
+                ofertasCompradas++;
                 }
             }
-            string texto = $"Se han comprado {ofertasCompradas1} ofertas en el tiempo indicado";
-            Console.WriteLine(texto);
-            return ofertasCompradas1;
+            string texto = $"Se han comprado {ofertasCompradas} ofertas en el tiempo indicado";
+            ConsolePrinter.DatoPrinter(texto);
+            return ofertasCompradas;
         }
     }
 }
