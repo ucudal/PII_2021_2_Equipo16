@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -11,7 +13,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public GetHabListEmprendedorHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"Lista de habilitaciones", "lista de habilitaciones", "Habilitaciones", "habilitaciones"};
+            this.Keywords = new string[] {"!ListaDeHabilitaciones"};
         }
 
         /// <summary>
@@ -22,23 +24,49 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (this.CanHandle(message))
+             if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
-                // El mensaje debe tener el formato "Agregar habilitacion de oferta,habilitacion ,nombre de la oferta" o sus keywords
-                string[] mensajeProcesado = message.Text.Split();
-                if (Logica.Emprendedores.ContainsKey(message.Id))
+                if (this.CanHandle(message))
+                {
+                    //Console.WriteLine("Entre");
+                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                }
+                else
+                {
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true))
+                    {
+                        //Console.WriteLine("Entre22");
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    }
+                    else
+                    {
+                        response = string.Empty;
+                        return false;
+                    }
+                }
+            }
+
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true)
+            {
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitaciones");
+                
+                if (Logica.Empresas.ContainsKey(message.Id))
                 {
                     Emprendedor value = Logica.Emprendedores[message.Id];
                     string hab = LogicaEmprendedor.GetHabilitacionList(value);
-
-                    response = $"La lista de habilitaciones es: \n {hab}.";
+                    response = $"La lista de habilitaciones es \n {hab} ";
                     return true;
                 }
-
-            }
-
+                }
+                else
+                {
+                    response = "No se ha podido obtener las habilitaciones";
+                    return true;
+                }
             response = string.Empty;
             return false;
+            }
         }
-    }
-} 
+            
+    } 
+    
