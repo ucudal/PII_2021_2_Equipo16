@@ -5,17 +5,18 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class CalcularOfertasCompradasHandler : BaseHandler 
+    public class CalcularOfertasVendidasHandler : BaseHandler
     {
-         /// <summary>
+        /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next">El próximo "handler"</param>
-        public CalcularOfertasCompradasHandler(BaseHandler next):base(next)
+        public CalcularOfertasVendidasHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"!CalcularOfertasCompradas"};
+            this.Keywords = new string[] {"!CalcularOfertasVendidas"};
         }
+
         /// <summary>
         /// Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
         /// En caso contrario retorna false.
@@ -25,30 +26,30 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
+            
             if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
                 if (this.CanHandle(message))
                 {
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
-            
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasCompradas") == true))
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasVendidas") == true))
                     {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
                     {
-                    response = string.Empty;
-                    return false;
+                        response = string.Empty;
+                        return false;
                     }
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasCompradas") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasVendidas") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CalcularOfertasCompradas");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CalcularOfertasVendidas");
                 if (listaConParam.Count == 0)
                 {
                     response = "ingrese la fecha de inicio";
@@ -64,17 +65,19 @@ namespace ClassLibrary
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-                    if (Logica.Emprendedores.ContainsKey(message.Id))
+                    if (Logica.Empresas.ContainsKey(message.Id))
                     {
-                        Emprendedor value = Logica.Emprendedores[message.Id];
-                        LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
-                        response = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}.";
+                        Empresa value = Logica.Empresas[message.Id];
+                        LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
+
+                        response = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}.";
                         return true;
                     }
                 }
             }
-        response = string.Empty;
-        return false;
+            
+            response = string.Empty;
+            return false;
+        }
     }
-}
 }
