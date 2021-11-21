@@ -9,9 +9,9 @@ namespace ClassLibrary
     public class HistorialChat
     {
         /// <summary>
-        /// 
+        /// Contiene los mensajes enviador por el Usuario.
         /// </summary>
-        /// <typeparam name="string"></typeparam>
+        /// <typeparam name="string">Utiliza el tipo string.</typeparam>
         /// <returns></returns>
         public List<string> MensajesDelUser = new List<string>();
 
@@ -37,7 +37,6 @@ namespace ClassLibrary
             }
 
             MensajesDelUserReves.Reverse(); 
-            int contador = -1; //Ya que el index de las listas empieza en 0
             foreach (string mensajeParametro in MensajesDelUserReves)
             {
                 if (mensajeParametro == comando)

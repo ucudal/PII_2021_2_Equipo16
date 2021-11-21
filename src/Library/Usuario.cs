@@ -5,6 +5,7 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
+    /// 
     /// </remarks>
     public class Usuario
     {

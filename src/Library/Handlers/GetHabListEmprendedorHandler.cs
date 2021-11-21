@@ -28,14 +28,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    //Console.WriteLine("Entre");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true))
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true))
                     {
-                        //Console.WriteLine("Entre22");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -53,20 +51,20 @@ namespace ClassLibrary
                 if (Logica.Empresas.ContainsKey(message.Id))
                 {
                     Emprendedor value = Logica.Emprendedores[message.Id];
+                    // Utiliza el metodo de la clase LogicaEmprendedor para obtener la lista de habilitaciones que tiene el Emprendedor en cuestion.
                     string hab = LogicaEmprendedor.GetHabilitacionList(value);
-                    response = $"La lista de habilitaciones es \n {hab} ";
+                    response = $"La lista de habilitaciones es \n{hab} ";
                     return true;
                 }
                 }
                 else
                 {
+                    // En caso de que el Emprendedor no contenga habilitaciones relacionadas.
                     response = "No se ha podido obtener las habilitaciones";
                     return true;
                 }
             response = string.Empty;
             return false;
-            }
         }
-            
-    } 
-    
+    }
+} 
