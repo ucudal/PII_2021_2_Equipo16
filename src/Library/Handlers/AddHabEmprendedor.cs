@@ -5,14 +5,14 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class AddHabEmpresaHandler : BaseHandler
+    public class AddHabEmprendedorHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public AddHabEmpresaHandler(BaseHandler next):base(next)
+        public AddHabEmprendedorHandler(BaseHandler next):base(next)
         {
             this.Keywords = new string[] {"!AgregarHabilitacion"};
         }
@@ -60,8 +60,8 @@ namespace ClassLibrary
                     string nuevaHab = listaConParam[0];
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {
-                        Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.AddHabilitacion(value,nuevaHab);
+                        Emprendedor value = Logica.Emprendedores[message.Id];
+                        LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
                         response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
                         return true;
                     }
