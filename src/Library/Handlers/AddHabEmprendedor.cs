@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next"></param>
         public AddHabEmprendedorHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"!AgregarHabilitacion"};
+            this.Keywords = new string[] {"!AgregarHabilitacionEmprendedor"};
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacion") == true))
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacionEmprendedor") == true))
                     {
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
@@ -46,9 +46,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacion") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacionEmprendedor") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!AgregarHabilitacion");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!AgregarHabilitacionEmprendedor");
                 
                 if (listaConParam.Count == 0)
                 {
@@ -58,7 +58,7 @@ namespace ClassLibrary
                 if (listaConParam.Count == 1)
                 {
                     string nuevaHab = listaConParam[0];
-                    if (Logica.Empresas.ContainsKey(message.Id))
+                    if (Logica.Emprendedores.ContainsKey(message.Id))
                     {
                         Emprendedor value = Logica.Emprendedores[message.Id];
                         LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
