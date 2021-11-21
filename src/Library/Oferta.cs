@@ -73,6 +73,11 @@ namespace ClassLibrary
         public string Tags { get; set; }
 
         /// <summary>
+        /// Obtiene o establece la Ubicación de la oferta.
+        /// </summary>
+        public string Ubicacion { get; set; }
+
+        /// <summary>
         /// Obtiene la ID única para cada Oferta.
         /// </summary>
         public Guid Id { get; private set; }
@@ -117,11 +122,20 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public string GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
            return this.habilitacion.HabilitacionesDisponibles();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string GetListaHabiltacionesDeOfertaParticular()
+        {
+            return HabilitacionesOferta.ToString();
+        }
+        
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
@@ -132,11 +146,6 @@ namespace ClassLibrary
                 return DateTime.Now;
             }
         }
-
-        /// <summary>
-        /// Obtiene o establece la Ubicación de la oferta.
-        /// </summary>
-        public string Ubicacion { get; set; }
 
         /// <summary>
         /// 

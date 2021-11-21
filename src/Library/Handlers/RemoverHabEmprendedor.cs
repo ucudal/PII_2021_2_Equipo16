@@ -36,7 +36,7 @@ namespace ClassLibrary
                 {
                     if ((message.Text.StartsWith("!") == false) && Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
                     {
-                        Console.WriteLine("EntreRemoveHabEMprendedor");
+                        Console.WriteLine("EntreRemoveHabEmprendedor");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else

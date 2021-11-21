@@ -78,7 +78,7 @@ namespace ClassLibrary
             }
             else
             {
-                return emprendedor.GetHabilitacionList();
+                return emprendedor.GetListaHabilitaciones();
             }
         }
 

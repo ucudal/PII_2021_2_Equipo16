@@ -52,7 +52,7 @@ namespace ClassLibrary
                 
                 if (listaConParam.Count == 0)
                 {
-                    response = "ingrese la habilitacion que desea agregar";
+                    response = "Ingrese la habilitación que desea agregar.";
                     return true;
                 }
                 if (listaConParam.Count == 1)
@@ -67,6 +67,7 @@ namespace ClassLibrary
                     }
                 }
             }
+            
             response = string.Empty;
             return false;
         }

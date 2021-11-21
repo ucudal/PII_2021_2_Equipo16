@@ -193,7 +193,7 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public string GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
            return this.Habilitacion.HabilitacionesDisponibles();
         }

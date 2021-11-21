@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -174,9 +175,9 @@ namespace ClassLibrary
         /// Llama al método GetHabilitacion en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa.</param>
-        public static string GetHabilitacionList(Empresa empresa)
+        public static string GetListaHabilitaciones(Empresa empresa)
         {
-            return empresa.GetHabilitacionList();
+            return empresa.GetListaHabilitaciones();
         }
     }
 }

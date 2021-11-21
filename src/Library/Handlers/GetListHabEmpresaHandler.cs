@@ -62,7 +62,7 @@ namespace ClassLibrary
                     {
                         Empresa value = Logica.Empresas[message.Id];
                         // Utiliza el método de la clase LogicaEmpresa para obtener la lista de habilitaciones que tiene la Empresas en cuestion.
-                        string hab = LogicaEmpresa.GetHabilitacionList(value);
+                        string hab = LogicaEmpresa.GetListaHabilitaciones(value);
                         response = $"La lista de habilitaciones es \n{hab}";
                         return true;
                     }

@@ -54,7 +54,7 @@ namespace ClassLibrary
                 if (listaConParam.Count == 0)
                 {
 
-                    response = "ingrese la habilitacion que desea agregar";
+                    response = "Ingrese la habilitación que desea agregar.";
 
                     return true;
                 }
