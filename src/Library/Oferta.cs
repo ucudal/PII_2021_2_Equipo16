@@ -127,6 +127,7 @@ namespace ClassLibrary
            return this.habilitacion.HabilitacionesDisponibles();
         }
 
+        /*
         /// <summary>
         /// 
         /// </summary>
@@ -135,6 +136,7 @@ namespace ClassLibrary
         {
             return HabilitacionesOferta.ToString();
         }
+        */
         
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.

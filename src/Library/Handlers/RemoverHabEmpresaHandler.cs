@@ -16,7 +16,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public RemoveHabEmpresaHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!RemoverHab"};
+            this.Keywords = new string[] {"!RemoverHabEmpresa"};
         }
         
         /// <summary>
@@ -36,7 +36,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
+                    if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHabEmpresa") == true)
                     {
                         Console.WriteLine("EntreRemoveHabEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
@@ -49,10 +49,10 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHabEmpresa") == true)
             {
                 // El mensaje debe tener el formato "Remover habilitacion, Nombre de habilitación".
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!RemoverHab");
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!RemoverHabEmpresa");
                 if (listaComandos.Count == 0)
                 {
                     respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaComandos.Count}.";

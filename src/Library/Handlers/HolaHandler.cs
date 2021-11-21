@@ -32,8 +32,8 @@ namespace ClassLibrary
                 Console.WriteLine("Entre primeravez");
                 Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
 
-                response = "Hola!";
-                return true;     
+                response = "Hola! por favor si le invitaron, escriba !AceptarInvitacion \nSi desea registrarse como emprendedor, escirba !Registrarse \nCualquier duda use !Comandos";
+                return true;    
             }
 
             response = string.Empty;
