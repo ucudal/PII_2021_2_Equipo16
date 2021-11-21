@@ -199,6 +199,10 @@ namespace ClassLibrary
            return this.Habilitacion.HabilitacionesDisponibles();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");
