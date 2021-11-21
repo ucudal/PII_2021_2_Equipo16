@@ -52,6 +52,7 @@ namespace ClassLibrary
                 if (Logica.Empresas.ContainsKey(message.Id))
                 {
                     Empresa value = Logica.Empresas[message.Id];
+                    // Utiliza el método de la clase LogicaEmpresa para obtener la lista de habilitaciones que tiene la Empresas en cuestion.
                     string hab = LogicaEmpresa.GetHabilitacionList(value);
                     response = $"La lista de habilitaciones es \n{hab} ";
                     return true;
@@ -59,12 +60,12 @@ namespace ClassLibrary
                 }
                 else
                 {
+                    // En caso de que la Empresa no contenga habilitaciones relacionadas.
                     response = "No se ha podido obtener las habilitaciones";
                     return true;
                 }
             response = string.Empty;
             return false;
-            }
         }
-
     }
+}
