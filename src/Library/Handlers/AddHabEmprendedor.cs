@@ -48,16 +48,16 @@ namespace ClassLibrary
 
             if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
+                List<string> listaConParametros = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
-                if (listaConParam.Count == 0)
+                if (listaConParametros.Count == 0)
                 {
                     response = "Ingrese la habilitación que desea agregar.";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string nuevaHab = listaConParam[0];
+                    string nuevaHab = listaConParametros[0];
                     if (Logica.Emprendedores.ContainsKey(message.Id))
                     {
                         Emprendedor value = Logica.Emprendedores[message.Id];

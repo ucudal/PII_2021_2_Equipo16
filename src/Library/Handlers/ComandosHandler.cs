@@ -21,20 +21,20 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="response"></param>
+        /// <param name="mensaje"></param>
+        /// <param name="respuesta"></param>
         /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (message == null)
+            if (mensaje == null)
             {
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
 
-            if (this.CanHandle(message))
+            if (this.CanHandle(mensaje))
             {
                 Console.WriteLine("Entro a !Comandos");
-                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 StringBuilder texto = new StringBuilder("Los comandos disponibles son: ");
 
                 texto.Append("\n[COMANDOS PARA EMPRESAS]");
@@ -63,11 +63,11 @@ namespace ClassLibrary
                 texto.Append("\n/listadehabilitacionesemprendedor - Para emprendedores que quieren ver la lista de habilitaciones que existen");
                 texto.Append("\n/interesado - Use para interesarse en una oferta");
                 
-                response = texto.ToString();
+                respuesta = texto.ToString();
                 return true;    
             }
 
-            response= string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

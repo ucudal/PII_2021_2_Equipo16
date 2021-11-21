@@ -19,69 +19,69 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/registrarse") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse") == true))
                     {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
             
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/registrarse") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/registrarse");
-                if (listaConParam.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registrarse");
+                if (listaConParametros.Count == 0)
                 {
-                    response = "Ingrese el nombre";
+                    respuesta = "Ingrese el nombre";
                     return true;
                     //Console.WriteLine("Entro aca");
                 }
-                if (listaConParam.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    response = "Ingrese la ubicacion";
+                    respuesta = "Ingrese la ubicacion";
                     return true;
                 }
-                if (listaConParam.Count == 2)
+                if (listaConParametros.Count == 2)
                 {
-                    response = "Ingrese rubro";
+                    respuesta = "Ingrese rubro";
                     return true;
                 }
-                if (listaConParam.Count == 3)
+                if (listaConParametros.Count == 3)
                 {
-                    response = "Ingrese especializaciones";
+                    respuesta = "Ingrese especializaciones";
                     return true;
                 }
-                if (listaConParam.Count == 4)
+                if (listaConParametros.Count == 4)
                 {
-                    string nombreEmprendedor = listaConParam[3];
-                    string ubicacionEmprendedor = listaConParam[2];
-                    string rubroEmprendedor = listaConParam[1];
-                    string especializacionesEmprendedor = listaConParam[0];
-                    LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, message.Id);
-                    response = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. ";
+                    string nombreEmprendedor = listaConParametros[3];
+                    string ubicacionEmprendedor = listaConParametros[2];
+                    string rubroEmprendedor = listaConParametros[1];
+                    string especializacionesEmprendedor = listaConParametros[0];
+                    LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, mensaje.Id);
+                    respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. ";
                     return true;
                 }
             }
 
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;   
         }
     }

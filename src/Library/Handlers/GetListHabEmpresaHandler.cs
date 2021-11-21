@@ -22,57 +22,57 @@ namespace ClassLibrary
         /// Este método procesa el mensaje "Lista de habilitaciones" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (message == null)
+            if (mensaje == null)
             {
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
             else
             {    
-                if (Logica.HistorialDeChats.ContainsKey(message.Id))
+                if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
                 {
-                    if (this.CanHandle(message))
+                    if (this.CanHandle(mensaje))
                     {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true))
+                        if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true))
                         {
-                            Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                            Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                         }
                         else
                         {
-                            response = string.Empty;
+                            respuesta = string.Empty;
                             return false;
                         }
                     }
                 }
-                if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true)
+                if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true)
                 {
-                    List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/listadehabilitacionesempresa");
+                    List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/listadehabilitacionesempresa");
                     
-                    if (Logica.Empresas.ContainsKey(message.Id))
+                    if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[message.Id];
+                        Empresa value = Logica.Empresas[mensaje.Id];
                         // Utiliza el método de la clase LogicaEmpresa para obtener la lista de habilitaciones que tiene la Empresas en cuestion.
                         string hab = LogicaEmpresa.GetListaHabilitaciones(value);
-                        response = $"La lista de habilitaciones es \n{hab}";
+                        respuesta = $"La lista de habilitaciones es \n{hab}";
                         return true;
                     }
                     else
                     {
                         // En caso de que la Empresa no contenga habilitaciones relacionadas.
-                        response = "No se han podido obtener las habilitaciones.";
+                        respuesta = "No se han podido obtener las habilitaciones.";
                         return true;
                     }
                 }
                 
-                response = string.Empty;
+                respuesta = string.Empty;
                 return false;
             }
         }

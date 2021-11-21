@@ -20,55 +20,55 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (message == null)
+            if (mensaje == null)
             {
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
             
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true))
                     {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
             
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/buscarmaterial");
-                if (listaComandos.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
+                if (listaConParametros.Count == 0)
                 {
-                    response = "Ingrese el Material por el que desea filtrar en su búsqueda.";
+                    respuesta = "Ingrese el Material por el que desea filtrar en su búsqueda.";
                     return true;
                 }
-                else if (listaComandos.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
-                    string palabraClave = listaComandos[0];
+                    string palabraClave = listaConParametros[0];
                     
                     LogicaBuscadores.BuscarPorMaterial(palabraClave);
-                    response = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave));
+                    respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave));
                     return true;
                 }          
             }
 
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

@@ -19,66 +19,66 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true))
                     {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/eliminaroferta");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/eliminaroferta");
 
                 // El mensaje debe tener el formato "Eliminar producto,nombre de la oferta,habilitacion"
-                string[] mensajeProcesado = message.Text.Split();
+                string[] mensajeProcesado = mensaje.Text.Split();
 
-                if (listaConParam.Count == 0)
+                if (listaConParametros.Count == 0)
                 {
-                    response = "Ingrese el nombre de la oferta que desea eliminar";
+                    respuesta = "Ingrese el nombre de la oferta que desea eliminar";
                     return true;
                 }
 
-                if (listaConParam.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string nombreOfertaParaEliminar = listaConParam[0];
+                    string nombreOfertaParaEliminar = listaConParametros[0];
 
-                    if (Logica.Empresas.ContainsKey(message.Id))
+                    if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[message.Id];
+                        Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
                         
-                        response = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
+                        respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
                         return true;
                     }
                     else
                     {
-                        response = "Usted no está registrado como empresa";
+                        respuesta = "Usted no está registrado como empresa";
                         return true;
                     }
                 }
             }
 
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

@@ -84,7 +84,8 @@ namespace ClassLibrary
                     {
                         Console.WriteLine(item);
                     }
-                    respuesta = $"Listaconparam es {listaComandos.Count}";
+                    
+                    respuesta = $"ListaConParametros es {listaComandos.Count}";
                     return true;
                 }
             }

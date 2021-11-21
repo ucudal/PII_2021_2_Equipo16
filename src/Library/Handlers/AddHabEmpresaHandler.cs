@@ -21,56 +21,55 @@ namespace ClassLibrary
         /// Este método procesa el mensaje "Agregar habilitación" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true))
                     {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
                 
-                if (listaConParam.Count == 0)
+                if (listaConParametros.Count == 0)
                 {
 
-                    response = "Ingrese la habilitación que desea agregar.";
-
+                    respuesta = "Ingrese la habilitación que desea agregar.";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string nuevaHab = listaConParam[0];
-                    if (Logica.Empresas.ContainsKey(message.Id))
+                    string nuevaHab = listaConParametros[0];
+                    if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[message.Id];
+                        Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AddHabilitacion(value,nuevaHab);
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
+                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
                         return true;
                     }
                 }
             }
             
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

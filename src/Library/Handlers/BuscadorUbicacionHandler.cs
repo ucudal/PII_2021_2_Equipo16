@@ -21,9 +21,9 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje mensaje, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (mensaje == null)
             {
@@ -44,7 +44,7 @@ namespace ClassLibrary
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
@@ -52,23 +52,23 @@ namespace ClassLibrary
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
-                if (listaComandos.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
+                if (listaConParametros.Count == 0)
                 {
-                    response = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
+                    respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
                     return true;
                 }
-                if (listaComandos.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string palabraClave = listaComandos[0];
+                    string palabraClave = listaConParametros[0];
                     
                     LogicaBuscadores.BuscarPorUbicacion(palabraClave);
-                    response = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave));
+                    respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave));
                     return true;
                 }          
             }
 
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }
