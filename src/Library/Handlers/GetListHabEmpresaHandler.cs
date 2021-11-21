@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public GetLisHabEmpresaHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"!ListaDeHabilitacionesEmpresa"};
+            this.Keywords = new string[] {"/listadehabilitacionesempresa"};
         }
 
         /// <summary>
@@ -37,14 +37,12 @@ namespace ClassLibrary
                 {
                     if (this.CanHandle(message))
                     {
-                        Console.WriteLine("EntreGetHabEmpresa");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
                     {
-                        if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true))
+                        if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true))
                         {
-                            Console.WriteLine("EntreGetHabEmpresa");
                             Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                         }
                         else
@@ -54,9 +52,9 @@ namespace ClassLibrary
                         }
                     }
                 }
-                if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true)
+                if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true)
                 {
-                    List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitacionesEmpresa");
+                    List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/listadehabilitacionesempresa");
                     
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {

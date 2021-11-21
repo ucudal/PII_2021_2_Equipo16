@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -178,6 +177,16 @@ namespace ClassLibrary
         public static string GetListaHabilitaciones(Empresa empresa)
         {
             return empresa.GetListaHabilitaciones();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
+        public static string VerInteresados(Empresa empresa)
+        {
+            return empresa.VerInteresados();
         }
     }
 }

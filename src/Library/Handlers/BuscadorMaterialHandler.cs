@@ -1,5 +1,4 @@
 using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -15,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public BuscadorMaterialHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!BuscarMaterial"};
+            this.Keywords = new string[] {"/buscarmaterial"};
         }
 
         /// <summary>
@@ -35,14 +34,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreBuscadorMat");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!BuscarMaterial") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true))
                     {
-                        Console.WriteLine("EntreBuscadorMat");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -53,9 +50,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!BuscarMaterial") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!BuscarMaterial");
+                List<string> listaComandos = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/buscarmaterial");
                 if (listaComandos.Count == 0)
                 {
                     response = "Ingrese el Material por el que desea filtrar en su búsqueda.";

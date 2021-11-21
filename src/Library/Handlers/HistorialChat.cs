@@ -60,11 +60,12 @@ namespace ClassLibrary
                MensajesDelUserReves.Add(elemento); 
                Console.WriteLine("Este elemento es " + elemento);
             }
+            
             MensajesDelUserReves.Reverse();
 
             foreach (string item in MensajesDelUserReves)
             {
-                if (item.StartsWith("!"))
+                if (item.StartsWith("/"))
                 {
                     if (item == comando)
                     {

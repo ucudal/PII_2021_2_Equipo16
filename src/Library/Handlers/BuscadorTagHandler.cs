@@ -1,5 +1,4 @@
 using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -15,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public BuscadorTagHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!BuscarTag"};
+            this.Keywords = new string[] {"/buscartag"};
         }
 
         /// <summary>
@@ -35,14 +34,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreBuscadorTag");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!BuscarTag") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/buscartag") == true))
                     {
-                        Console.WriteLine("BuscadorTag");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -53,9 +50,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!BuscarTag") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/buscartag") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!BuscarTag");
+                List<string> listaComandos = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/buscartag");
                 if (listaComandos.Count == 0)
                 {
                     response = "Ingrese el Tag por el que sea filtrar en su búsqueda.";

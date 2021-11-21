@@ -125,7 +125,7 @@ namespace ClassLibrary
         public string GetListaHabilitaciones()
         {
            return this.habilitacion.HabilitacionesDisponibles();
-        }a 
+        }
         
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
@@ -137,9 +137,10 @@ namespace ClassLibrary
                 return DateTime.Now;
             }
         }
-
+        
         /// <summary>
-        /// 
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+        /// ya que conoce lo necesario.
         /// </summary>
         /// <returns></returns>
         public string TextoOferta()
@@ -161,6 +162,22 @@ namespace ClassLibrary
             }
 
             return text.ToString();
+        }
+
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+        /// ya que conoce lo necesario.
+        /// </summary>
+        /// <returns></returns>
+
+        public string TextoInteresados()
+        {
+            StringBuilder texto = new StringBuilder($"\nLos interesados en {this.Nombre} son: ");
+            foreach (string interesado in Interesado)
+            {
+                texto.Append("\n" + interesado);
+            }
+            return texto.ToString();
         }
     }
 }

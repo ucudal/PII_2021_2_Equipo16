@@ -1,5 +1,3 @@
-using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -31,14 +29,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreInterasado");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Interesado") == true))
                     {
-                        Console.WriteLine("EntreInteresado");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -71,10 +67,11 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    response = "No se ha podido manifestar el interés de manera exitosa";
+                    response = "No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente";
                     return true;
                 }
             }
+            
             response = string.Empty;
             return false;
         }

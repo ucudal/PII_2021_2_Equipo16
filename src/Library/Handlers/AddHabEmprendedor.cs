@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next"></param>
         public AddHabEmprendedorHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"!AgregarHabilitacionEmprendedor"};
+            this.Keywords = new string[] {"/agregarhabilitacionemprendedor"};
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacionEmprendedor") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true))
                     {
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
@@ -46,9 +46,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacionEmprendedor") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!AgregarHabilitacionEmprendedor");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
                 if (listaConParam.Count == 0)
                 {

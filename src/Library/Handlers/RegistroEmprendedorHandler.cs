@@ -1,7 +1,4 @@
-using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
-
 
 namespace ClassLibrary
 {
@@ -16,7 +13,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public RegistroEmprendedorHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!Registrarse"};
+            this.Keywords = new string[] {"/registrarse"};
         }
 
         /// <summary>
@@ -31,14 +28,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreRegistro");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarme") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/registrarse") == true))
                     {
-                        Console.WriteLine("EntreRegistro");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -50,12 +45,12 @@ namespace ClassLibrary
             }
             
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarme") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/registrarse") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Registrarme");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/registrarse");
                 if (listaConParam.Count == 0)
                 {
-                    response = "Issngrese el nombre";
+                    response = "Ingrese el nombre";
                     return true;
                     //Console.WriteLine("Entro aca");
                 }

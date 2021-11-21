@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System;
 
 namespace ClassLibrary
 {
@@ -15,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public CalcularOfertasVendidasHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!CalcularOfertasVendidas"};
+            this.Keywords = new string[] {"/calcularofertasvendidas"};
         }
 
         /// <summary>
@@ -32,14 +31,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreCalcularOfertasV");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasVendidas") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertasvendidas") == true))
                     {
-                        Console.WriteLine("EntreCalcualrOfertasV");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -50,9 +47,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasVendidas") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertasvendidas") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CalcularOfertasVendidas");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertasvendidas");
                 if (listaConParam.Count == 0)
                 {
                     response = "Ingrese la fecha de inicio";

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Telegram.Bot.Types;
 
 namespace ClassLibrary
 {
@@ -16,7 +15,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public RemoveHabEmpresaHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!RemoverHabEmpresa"};
+            this.Keywords = new string[] {"/removerhabempresa"};
         }
         
         /// <summary>
@@ -31,14 +30,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreRemoveHabEmpresa");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHabEmpresa") == true)
+                    if ((mensaje.Text.StartsWith("/") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
                     {
-                        Console.WriteLine("EntreRemoveHabEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -49,10 +46,10 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHabEmpresa") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
             {
                 // El mensaje debe tener el formato "Remover habilitacion, Nombre de habilitación".
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!RemoverHabEmpresa");
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
                 if (listaComandos.Count == 0)
                 {
                     respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaComandos.Count}.";
@@ -85,7 +82,7 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            
+
             respuesta = string.Empty;
             return false;
         }

@@ -1,4 +1,3 @@
-using Telegram.Bot.Types;
 using System;
 using System.Text;
 
@@ -16,7 +15,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public ComandosHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!Comandos", "!comandos", "!Ayuda", "!ayuda", "!Help", "!help"};
+            this.Keywords = new string[] {"/comandos"};
         }
 
         /// <summary>

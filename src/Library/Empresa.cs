@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -196,6 +197,24 @@ namespace ClassLibrary
         public string GetListaHabilitaciones()
         {
            return this.Habilitacion.HabilitacionesDisponibles();
+        }
+
+        public string VerInteresados()
+        {
+            StringBuilder texto = new StringBuilder("Interesados: ");
+            if (InteresadosEnOfertas.Count > 0)
+            {
+                foreach (Oferta oferta in InteresadosEnOfertas)
+                {
+
+                    texto.Append(oferta.TextoInteresados());
+                }
+            }
+            else
+            {
+                texto.Append("0 interesados");
+            }
+            return texto.ToString();
         }
     }
 }

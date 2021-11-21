@@ -5,20 +5,20 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class AddHabEmpresaHandler : BaseHandler
+    public class VerInteresados : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public AddHabEmpresaHandler(BaseHandler next):base(next)
+        public VerInteresados(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"/agregarhabilitacionempresa"};
+            this.Keywords = new string[] {"/verinteresados"};
         }
 
         /// <summary>
-        /// Este método procesa el mensaje "Agregar habilitación" y retorna true.
+        /// Este método procesa el mensaje "!VerInteresados" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
@@ -34,7 +34,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true))
                     {
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
@@ -46,27 +46,15 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
-                
-                if (listaConParam.Count == 0)
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/verinteresados");
+                if (Logica.Empresas.ContainsKey(message.Id))
                 {
-
-                    response = "Ingrese la habilitación que desea agregar.";
-
+                    Empresa value = Logica.Empresas[message.Id];
+                    string texto = LogicaEmpresa.VerInteresados(value);
+                    response = texto;
                     return true;
-                }
-                if (listaConParam.Count == 1)
-                {
-                    string nuevaHab = listaConParam[0];
-                    if (Logica.Empresas.ContainsKey(message.Id))
-                    {
-                        Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.AddHabilitacion(value,nuevaHab);
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
-                        return true;
-                    }
                 }
             }
             

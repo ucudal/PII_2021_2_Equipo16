@@ -1,6 +1,3 @@
-using Telegram.Bot.Types;
-using System;
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -29,10 +26,9 @@ namespace ClassLibrary
 
             if (this.CanHandle(message))
             {
-                Console.WriteLine("Entre primeravez");
                 Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
 
-                response = "Hola! por favor si le invitaron, escriba !AceptarInvitacion \nSi desea registrarse como emprendedor, escirba !Registrarse \nCualquier duda use !Comandos";
+                response = "Hola! por favor si le invitaron, escriba /aceptarinvitacion \nSi desea registrarse como emprendedor, escirba /registrarse \nCualquier duda use /comandos";
                 return true;    
             }
 

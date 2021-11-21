@@ -906,6 +906,27 @@
             <param name="response">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
+        <member name="T:ClassLibrary.VerInteresados">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerInteresados.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:ClassLibrary.VerInteresados.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "!VerInteresados" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
             Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
@@ -1367,7 +1388,15 @@
         </member>
         <member name="M:ClassLibrary.Oferta.TextoOferta">
             <summary>
-            
+            Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+            ya que conoce lo necesario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Oferta.TextoInteresados">
+            <summary>
+            Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+            ya que conoce lo necesario.
             </summary>
             <returns></returns>
         </member>

@@ -1,5 +1,3 @@
-using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -15,7 +13,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public EliminarOfertaHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!EliminarOferta"};
+            this.Keywords = new string[] {"/eliminaroferta"};
         }
 
         /// <summary>
@@ -31,14 +29,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreEliminarOferta");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!EliminarOferta") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true))
                     {
-                        Console.WriteLine("EntreEliminarOferta");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -49,9 +45,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!EliminarOferta") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!EliminarOferta");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/eliminaroferta");
 
                 // El mensaje debe tener el formato "Eliminar producto,nombre de la oferta,habilitacion"
                 string[] mensajeProcesado = message.Text.Split();
@@ -74,7 +70,6 @@ namespace ClassLibrary
                         response = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
                         return true;
                     }
-                    
                     else
                     {
                         response = "Usted no está registrado como empresa";

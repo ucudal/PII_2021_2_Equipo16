@@ -1,5 +1,4 @@
 using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -15,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public BuscadorUbicacionHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!BuscarUbicacion"};
+            this.Keywords = new string[] {"/buscarubicacion"};
         }
 
         /// <summary>
@@ -35,14 +34,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreBuscadorUbi");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarUbicacion") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true))
                     {
-                        Console.WriteLine("EntreBuscadorUbi");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -53,9 +50,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarUbicacion") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!BuscarUbicacion");
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
                 if (listaComandos.Count == 0)
                 {
                     response = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
