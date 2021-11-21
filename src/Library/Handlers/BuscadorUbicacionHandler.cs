@@ -58,7 +58,7 @@ namespace ClassLibrary
                 {
                     string palabraClave = listaComandos[0];
                     
-                    LogicaBuscadores.BuscarPorTags(palabraClave);
+                    LogicaBuscadores.BuscarPorUbicacion(palabraClave);
                     respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave));
                     return true;
                 }          
