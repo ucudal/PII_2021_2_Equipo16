@@ -140,5 +140,10 @@ namespace ClassLibrary
         {
             return empresa.GetHabilitacionList();
         }
+
+        public static string VerInteresados(Empresa empresa)
+        {
+            return empresa.VerInteresados();
+        }
     }
 }

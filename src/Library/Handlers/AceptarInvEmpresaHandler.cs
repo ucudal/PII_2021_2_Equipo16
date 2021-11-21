@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public AceptarInvEmpresaHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!AceptarInvitacion"};
+            this.Keywords = new string[] {"/aceptarinvitacion"};
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarInvitacion") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true))
                     {
                         Console.WriteLine("EntreInviEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
@@ -48,9 +48,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarInvitacion") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!AceptarInvitacion");
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
                 if (listaComandos.Count == 0)
                 {
                     respuesta = "Ingrese el Nombre de su Empresa.";

@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public BuscadorTagHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!BuscarTag"};
+            this.Keywords = new string[] {"/buscartag"};
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarTag") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscartag") == true))
                     {
                         Console.WriteLine("BuscadorTag");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
@@ -48,9 +48,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarTag") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscartag") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!BuscarTag");
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscartag");
                 if (listaComandos.Count == 0)
                 {
                     respuesta = "Ingrese el Tag por el que sea filtrar en su búsqueda.";

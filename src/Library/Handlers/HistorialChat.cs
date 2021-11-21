@@ -65,7 +65,7 @@ namespace ClassLibrary
 
             foreach (string item in MensajesDelUserReves)
             {
-                if (item.StartsWith("!"))
+                if (item.StartsWith("/"))
                 {
                     if (item == comando)
                     {

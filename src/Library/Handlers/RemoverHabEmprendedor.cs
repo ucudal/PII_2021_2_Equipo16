@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public RemoverHabEmprendedor (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!RemoverHabEmprendedor"};
+            this.Keywords = new string[] {"/removerhabemprendedor"};
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!RemoverHabEmprendedor") == true)
+                    if ((message.Text.StartsWith("/") == false) && Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/removerhabemprendedor") == true)
                     {
                         Console.WriteLine("EntreRemoveHabEMprendedor");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
@@ -51,11 +51,11 @@ namespace ClassLibrary
             
             
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!RemoverHabEmprendedor") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/removerhabemprendedor") == true)
             {
                 Console.WriteLine("XDXD");
                 // El mensaje debe tener el formato "Remover habilitacion, x"
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!RemoverHabEmprendedor");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/removerhabemprendedor");
                 if (listaConParam.Count == 0)
                 {
                     response = $"ingrese el nombre de la habilitacion a eliminar {listaConParam.Count}";

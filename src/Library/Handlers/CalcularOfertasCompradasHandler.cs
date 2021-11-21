@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public CalcularOfertasCompradasHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"!CalcularOfertasCompradas"};
+            this.Keywords = new string[] {"/calcularofertascompradas"};
         }
         /// <summary>
         /// Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
@@ -36,7 +36,7 @@ namespace ClassLibrary
             
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasCompradas") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true))
                     {
                         Console.WriteLine("EntreCalcularOfertasC");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
@@ -49,9 +49,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasCompradas") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CalcularOfertasCompradas");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
                     response = "ingrese la fecha de inicio";
