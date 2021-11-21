@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -12,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next"></param>
         public AddHabEmpresaHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"Agregar habilitación", "agregar habilitacion"};
+            this.Keywords = new string[] {"!AgregarHabilitacion"};
         }
 
         /// <summary>
@@ -24,16 +26,45 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-             if (this.CanHandle(message))
+            if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
-                string[] mensajeTratado = message.Text.Split();
-                if (Logica.Empresas.ContainsKey(message.Id))
+                if (this.CanHandle(message))
                 {
-                    Empresa value = Logica.Empresas[message.Id];
-                    LogicaEmpresa.AddHabilitacion(value, mensajeTratado[1]);
-                    
-                    response = $"Se ha agregado la habilitación {mensajeTratado[1]}.";
+                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                }
+                else
+                {
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacion") == true))
+                    {
+                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    }
+                    else
+                    {
+                        response = string.Empty;
+                        return false;
+                    }
+                }
+            }
+
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!AgregarHabilitacion") == true)
+            {
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!AgregarHabilitacion");
+                
+                if (listaConParam.Count == 0)
+                {
+                    response = "ingrese la habilitacion que desea agregar";
                     return true;
+                }
+                if (listaConParam.Count == 1)
+                {
+                    string nuevaHab = listaConParam[0];
+                    if (Logica.Empresas.ContainsKey(message.Id))
+                    {
+                        Empresa value = Logica.Empresas[message.Id];
+                        LogicaEmpresa.AddHabilitacion(value,nuevaHab);
+                        response = $"Se ha agregado {nuevaHab} a la lista de habilitaciones.";
+                        return true;
+                    }
                 }
             }
             response = string.Empty;
