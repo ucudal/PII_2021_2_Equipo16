@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -136,5 +137,25 @@ namespace ClassLibrary
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
         public string Ubicacion { get; set; }
+
+        public string TextoOferta()
+        {
+            StringBuilder text = new StringBuilder("********************");
+            text.Append($"Nombre: {this.Nombre} \n");
+            text.Append($"Material: {this.Material} \n");
+            text.Append($"Precio: {this.Precio} \n");
+            text.Append($"Unidad: {this.Unidad} \n");
+            text.Append($"Tag: {this.Tags} \n");
+            text.Append($"Ubicación: {this.Ubicacion} \n");
+            text.Append($"Es una oferta {this.Nombre} \n");
+            text.Append($"Requerimientos: ");
+            foreach (string habilitaciones in HabilitacionesDeOferta)
+            {
+                text.Append(habilitaciones);
+            }
+
+            return text.ToString();
+
+        }
     }
 }
