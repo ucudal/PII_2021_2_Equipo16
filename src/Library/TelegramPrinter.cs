@@ -1,4 +1,6 @@
 using System;
+using System.Text;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -8,7 +10,7 @@ namespace ClassLibrary
     /// <remarks>
     /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.
     /// </remarks>
-    public class ConsolePrinter : IPrinter
+    public class TelegramPrinter : IPrinter
     {
         /// <summary>
         /// Este método imprime por consola los atributos de oferta.
@@ -17,17 +19,23 @@ namespace ClassLibrary
         public string OfertaPrinter(Oferta oferta)
         {
             string texto = $"Nombre: {oferta.Nombre}, ID: {oferta.Id}, Material: {oferta.Material}, Precio {oferta.Precio}, Unidad: {oferta.Unidad}, Ubicación {oferta.Ubicacion}, Fecha de Publicación {Oferta.FechaDePublicacion}";
-            Console.WriteLine(texto);
             return texto;
         }
 
         /// <summary>
         /// Este método imprime una string con información.
         /// </summary>
-        /// <param name="dato"></param>
-        public static void DatoPrinter(String dato)
+        /// <param name="resultadoBusqueda"></param>
+        public static string BusquedaPrinter(List<Oferta> resultadoBusqueda)
         {
-            Console.WriteLine(dato);
+            StringBuilder textoBusqueda = new StringBuilder();
+            foreach (Oferta oferta in resultadoBusqueda)
+            {
+                textoBusqueda.Append(oferta.TextoOferta()); 
+                textoBusqueda.Append("\n");
+            }
+
+            return textoBusqueda.ToString();
         }
     }
 }

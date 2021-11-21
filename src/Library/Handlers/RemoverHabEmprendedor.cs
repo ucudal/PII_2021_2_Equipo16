@@ -69,9 +69,6 @@ namespace ClassLibrary
                     string habilitacion = listaConParam[0];
                     if (Logica.Emprendedores.ContainsKey(message.Id))
                     {
-
-                        response = $"Se ha removido la habilitacion {habilitacion}.";
-                        return true;
                         //Console.WriteLine("Entro aca111");
                         Emprendedor value = Logica.Emprendedores[message.Id];
                         LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
