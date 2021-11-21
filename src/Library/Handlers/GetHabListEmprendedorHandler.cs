@@ -33,7 +33,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true))
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true))
                     {
                         //Console.WriteLine("Entre22");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
@@ -54,7 +54,7 @@ namespace ClassLibrary
                 {
                     Emprendedor value = Logica.Emprendedores[message.Id];
                     string hab = LogicaEmprendedor.GetHabilitacionList(value);
-                    response = $"La lista de habilitaciones es \n {hab} ";
+                    response = $"La lista de habilitaciones es \n{hab} ";
                     return true;
                 }
                 }
@@ -69,4 +69,3 @@ namespace ClassLibrary
         }
             
     } 
-    
