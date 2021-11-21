@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public CrearOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!CrearOferta"};
+            this.Keywords = new string[] {"/crearoferta"};
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true))
                     {
                         Console.WriteLine("EntreCrearOferta");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
@@ -48,9 +48,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CrearOferta");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/crearoferta");
                 if (listaConParam.Count == 0)
                 {
                     response = "ingrese el nombre de la oferta";

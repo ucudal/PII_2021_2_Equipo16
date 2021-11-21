@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public GetHabListEmprendedorHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!ListaDeHabilitacionesEmprendedor"};
+            this.Keywords = new string[] {"/listadehabilitacionesemprendedor"};
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmprendedor") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true))
                     {
                         Console.WriteLine("EntreGetHabEmprendedor");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
@@ -46,9 +46,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmprendedor") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitacionesEmprendedor");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/listadehabilitacionesemprendedor");
                 
                 if (Logica.Emprendedores.ContainsKey(message.Id))
                 {

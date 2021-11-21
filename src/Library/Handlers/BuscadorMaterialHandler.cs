@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public BuscadorMaterialHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!BuscarMaterial"};
+            this.Keywords = new string[] {"/buscarmaterial"};
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarMaterial") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true))
                     {
                         Console.WriteLine("EntreBuscadorMat");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
@@ -48,9 +48,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarMaterial") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!BuscarMaterial");
+                List<string> listaConParam = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese el Material por el que sea filtrar en su búsqueda.";

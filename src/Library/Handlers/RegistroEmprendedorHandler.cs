@@ -16,7 +16,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public RegistroEmprendedorHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!Registrarse"};
+            this.Keywords = new string[] {"/registrarse"};
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarse") == true))
+                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/registrarse") == true))
                     {
                         Console.WriteLine("EntreRegistro");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
@@ -55,9 +55,9 @@ namespace ClassLibrary
             
             
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Registrarse") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/registrarse") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Registrarse");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/registrarse");
                 if (listaConParam.Count == 0)
                 {
                     response = "ingrese el nombre";

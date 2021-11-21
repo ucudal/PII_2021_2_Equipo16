@@ -137,7 +137,12 @@ namespace ClassLibrary
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
         public string Ubicacion { get; set; }
-
+        
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+        /// ya que conoce lo necesario.
+        /// </summary>
+        /// <returns></returns>
         public string TextoOferta()
         {
             StringBuilder text = new StringBuilder("********************");
@@ -156,6 +161,22 @@ namespace ClassLibrary
 
             return text.ToString();
 
+        }
+
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+        /// ya que conoce lo necesario.
+        /// </summary>
+        /// <returns></returns>
+
+        public string TextoInteresados()
+        {
+            StringBuilder texto = new StringBuilder($"\nLos interesados en {this.Nombre} son: ");
+            foreach (string interesado in Interesado)
+            {
+                texto.Append("\n" + interesado);
+            }
+            return texto.ToString();
         }
     }
 }

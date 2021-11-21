@@ -15,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next"></param>
         public AceptarOfertaHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!AceptarOferta"};
+            this.Keywords = new string[] {"/aceptaroferta"};
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarOferta") == true)
+                    if ((mensaje.Text.StartsWith("/") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
                     {
                         Console.WriteLine("EntreAceptarOferta");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
@@ -47,9 +47,9 @@ namespace ClassLibrary
                 }
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarOferta") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!AceptarOferta");
+                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
                 if (listaComandos.Count == 0)
                 {
                     respuesta = $"Ingrese el Nombre de la oferta que desee aceptar {listaComandos.Count}.";
