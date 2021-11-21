@@ -16,52 +16,56 @@ namespace ClassLibrary
         /// <returns></returns>
         public ComandosHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!Comandos", "!comandos", "!Ayuda", "!ayuda"};
+            this.Keywords = new string[] {"!Comandos", "!comandos", "!Ayuda", "!ayuda", "!Help", "!help"};
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="mensaje"></param>
+        /// <param name="message"></param>
         /// <param name="response"></param>
         /// <returns></returns>
-        protected override bool InternalHandle(IMensaje mensaje, out string response)
+        protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (this.CanHandle(mensaje))
+            if (message == null)
             {
-                Console.WriteLine("Entre primeravez");
-                Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                StringBuilder texto = new StringBuilder("Los comandos son");
+                throw new ArgumentNullException("Message no puede ser nulo.");
+            }
 
-                texto.Append("\n!AceptarInvitacion - Para empresas invitadas");
-                texto.Append("\n!Registrarse - Para emprendedores");
-                texto.Append("\n!AceptarOferta - Para empresas que quieren aceptar una de sus ofertas cuando haya negociado algo");
-                texto.Append("\n!AceptarInvitacion - Para empresas invitadas");
-                texto.Append("\n!AgregarHabilitacionEmprendedor - Para emprendedores que quieren agregar una habilitacion que posean");
-                texto.Append("\n!AgregarHabilitacionEmpresa- Para empresas que quieren agregar una habilitacion que posean");
-                texto.Append("\n!BuscarMaterial - Para buscar entre todas las ofertas aquellas que tienen el material especificado");
-                texto.Append("\n!BuscarTag - Para buscar entre todas las ofertas aquellas que tienen el tag especificado");
-                texto.Append("\n!BuscarUbicacion - Para buscar entre todas las ofertas aquellas que tienen la ubicacion especificada");
-                texto.Append("\n!CalcularOfertasCompradas - Para emprendedores que quieren saber cuantas en ofertas se interesaron en un periodo de tiempo");
-                texto.Append("\n!CalcularOfertasVendidas - Para empresas que quieren saber cuantas ofertas vendieron en un periodo de tiempo");
-                texto.Append("\n!CrearHabOferta - Para empresas que quieren agregar una habilitacion/requerimiento a su oferta");
-                texto.Append("\n!RemoverHabOferta - Para empresas que desean remover una habilitacion/requeriemiento de una oferta");
-                texto.Append("\n!CrearOferta - Para empresas que desean crear ofertas y publicarlas");
-                texto.Append("\n!EliminarOferta - Para empresas que desean eliminar una oferta publicada");
-                texto.Append("\n!ListaDeHabilitacionesEmpresa - Para empresas que quieren ver la lista de habilitaciones que existen");
-                texto.Append("\n!ListaDeHabilitacionesEmprendedor - Para emprendedores que quieren ver la lista de habilitaciones que existen");
-                texto.Append("\n!Interesado - Para emprendedores que quieren interesarse en una oferta");
-                texto.Append("\n!RemoverHabEmprendedor - Para emprendedores que desean remover una de sus habilitaciones");
-                texto.Append("\n!RemoverHabEmpresa - Para empresas que desean remover una de sus habilitaciones");
+            if (this.CanHandle(message))
+            {
+                Console.WriteLine("Entro a !Comandos");
+                Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                StringBuilder texto = new StringBuilder("Los comandos disponibles son: ");
+
+                texto.Append("\n[COMANDOS PARA EMPRESAS]");
+                texto.Append("\n");
+                texto.Append("\n/aceptarinvitacion - Use para aceptar una invitación siendo usted una empresa");
+                texto.Append("\n/aceptaroferta - Use para aceptar una oferta siendo usted una empresa, luedo de concluir una negociación");
+                texto.Append("\n/agregarhabilitacionempresa - Use para agregar una habilitación que posea siendo usted una empresa");
+                texto.Append("\n/crearhaboferta - Use si desea agregar una habilitación a su oferta");
+                texto.Append("\n/removerhaboferta - Use para remover una habilitación de una oferta");
+                texto.Append("\n/crearoferta - Use si desea crear una oferta y publicarla");
+                texto.Append("\n/eliminaroferta - Use si desea eliminar una oferta publicada");
+                texto.Append("\n/calcularofertasvendidas - Use si desea saber cuantas ofertas se han vendido en un período de tiempo");
+                texto.Append("\n/removerhabempresa - Use para remover una habilitación propia de su empresa");
+                texto.Append("\n/listadehabilitacionesempresa - Para empresas que quieren ver la lista de habilitaciones que existen");
+                texto.Append("\n/verinteresados - Use si desea ver a todos los interesados en sus ofertas");
+                texto.Append("\n");
+                texto.Append("\n[COMANDOS PARA EMPRENDEDORES]");
+                texto.Append("\n");
+                texto.Append("\n/registrarse - Use para registrarse siendo usted un emprendedor");
+                texto.Append("\n/agregarhabilitacionemprendedor - Use para agregar una habilitación que posea");
+                texto.Append("\n/removerhabemprendedor - Use si desea remover una de sus habilitaciones");
+                texto.Append("\n/buscarmaterial - Use para buscar entre todas aquellas ofertas que tienen el material que usted especificó");
+                texto.Append("\n/buscartag - Use para buscar entre todas aquellas ofertas que tienen el tag que usted especificó");
+                texto.Append("\n/buscarubicacion - Use para buscar entre todas aquellas ofertas que tienen la ubicación que usted especificó");
+                texto.Append("\n/calcularofertascompradas - Use para conocer en cuantas ofertas se interesaron en un determinado período de tiempo");
+                texto.Append("\n/listadehabilitacionesemprendedor - Para emprendedores que quieren ver la lista de habilitaciones que existen");
+                texto.Append("\n/interesado - Use para interesarse en una oferta");
                 
-
-
-
                 response = texto.ToString();
-                return true;
-                
-
-                
+                return true;    
             }
 
             response= string.Empty;

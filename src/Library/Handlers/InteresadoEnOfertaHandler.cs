@@ -54,7 +54,7 @@ namespace ClassLibrary
                 List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!Interesado");
                 if (listaConParam.Count == 0)
                 {
-                    response = "ingrese el nombre de la oferta en la que quiera manifestar su interés";
+                    response = "Ingrese el nombre de la oferta en la que quiera manifestar su interés";
                     return true;
                 }
                 if (listaConParam.Count == 1)

@@ -125,18 +125,7 @@ namespace ClassLibrary
         public string GetListaHabilitaciones()
         {
            return this.habilitacion.HabilitacionesDisponibles();
-        }
-
-        /*
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public string GetListaHabiltacionesDeOfertaParticular()
-        {
-            return HabilitacionesOferta.ToString();
-        }
-        */
+        }a 
         
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
@@ -155,7 +144,8 @@ namespace ClassLibrary
         /// <returns></returns>
         public string TextoOferta()
         {
-            StringBuilder text = new StringBuilder("******************************\n");
+            StringBuilder text = new StringBuilder();
+            text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
             text.Append($"Material: {this.Material} \n");
             text.Append($"Precio: {this.Precio} \n");
@@ -163,7 +153,8 @@ namespace ClassLibrary
             text.Append($"Tag: {this.Tags} \n");
             text.Append($"Ubicación: {this.Ubicacion} \n");
             text.Append($"Es una oferta {this.Nombre} \n");
-            text.Append($"Requerimientos: ");
+            text.Append($"Requerimientos: \n");
+            text.Append($"******************************\n");
             foreach (string habilitaciones in HabilitacionesDeOferta)
             {
                 text.Append(habilitaciones);
