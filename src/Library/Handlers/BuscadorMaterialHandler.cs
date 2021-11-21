@@ -30,12 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
+                    Console.WriteLine("EntreBuscadorMat");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarMaterial") == true))
                     {
+                        Console.WriteLine("EntreBuscadorMat");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else

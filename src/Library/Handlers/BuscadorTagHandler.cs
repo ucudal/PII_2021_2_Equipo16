@@ -30,12 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
+                    Console.WriteLine("EntreBuscadorTag");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarTag") == true))
                     {
+                        Console.WriteLine("BuscadorTag");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else

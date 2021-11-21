@@ -1,3 +1,4 @@
+using System;
 namespace ClassLibrary
 {
     /// <summary>
@@ -29,6 +30,7 @@ namespace ClassLibrary
                 string[] mensajeTratado = message.Text.Split();
                 if (Logica.Empresas.ContainsKey(message.Id))
                 {
+                    Console.WriteLine("EntreAddHab");
                     Empresa value = Logica.Empresas[message.Id];
                     LogicaEmpresa.AddHabilitacion(value, mensajeTratado[1]);
                     

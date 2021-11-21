@@ -30,12 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
+                    Console.WriteLine("EntreBuscadorUbi");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!BuscarUbicacion") == true))
                     {
+                        Console.WriteLine("EntreBuscadorUbi");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else

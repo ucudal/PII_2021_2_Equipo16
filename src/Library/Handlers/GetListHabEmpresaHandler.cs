@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -14,7 +15,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public GetLisHabEmpresaHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"!ListaDeHabilitaciones"};
+            this.Keywords = new string[] {"!ListaDeHabilitacionesEmpresa"};
         }
 
         /// <summary>
@@ -30,12 +31,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
+                    Console.WriteLine("EntreGetHabEmpresa");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true))
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true))
                     {
+                        Console.WriteLine("EntreGetHabEmpresa");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -45,9 +48,9 @@ namespace ClassLibrary
                     }
                 }
             }
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitaciones");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitacionesEmpresa");
                 
                 if (Logica.Empresas.ContainsKey(message.Id))
                 {
@@ -57,13 +60,14 @@ namespace ClassLibrary
                     response = $"La lista de habilitaciones es \n{hab} ";
                     return true;
                 }
-                }
+                
                 else
                 {
                     // En caso de que la Empresa no contenga habilitaciones relacionadas.
                     response = "No se ha podido obtener las habilitaciones";
                     return true;
                 }
+            }
             response = string.Empty;
             return false;
         }

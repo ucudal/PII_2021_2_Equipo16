@@ -31,14 +31,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    //Console.WriteLine("Entre");
+                    Console.WriteLine("EntreEliminarOferta");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Eliminar oferta") == true))
                     {
-                        //Console.WriteLine("Entre22");
+                        Console.WriteLine("EntreEliminarOferta");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Telegram.Bot.Types;
+using System;
 
 namespace ClassLibrary
 {
@@ -29,14 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    //Console.WriteLine("Entre");
+                    Console.WriteLine("EntreCrearOferta");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearOferta") == true))
                     {
-                        //Console.WriteLine("Entre22");
+                        Console.WriteLine("EntreCrearOferta");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -87,13 +88,13 @@ namespace ClassLibrary
                 }
                 if (listaConParam.Count == 7)
                 {
-                    string puntualConstante = listaConParam[6];
-                    string ubicacionOferta = listaConParam[5];
-                    string tagOferta = listaConParam[4];
+                    string puntualConstante = listaConParam[0];
+                    string ubicacionOferta = listaConParam[1];
+                    string tagOferta = listaConParam[2];
                     string unidadesOferta = listaConParam[3];
-                    string precioOferta = listaConParam[2];
-                    string materialOferta = listaConParam[1];
-                    string nombreOferta = listaConParam[0];
+                    string precioOferta = listaConParam[4];
+                    string materialOferta = listaConParam[5];
+                    string nombreOferta = listaConParam[6];
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {
                         Empresa value = Logica.Empresas[message.Id];

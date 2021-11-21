@@ -28,7 +28,7 @@
             </summary>
             <returns>Retorna la lista de Empresas que contiene.</returns>
         </member>
-        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(System.String,System.String,System.String)">
             <summary>
             Este método permite invitar una empresa a unirse a la aplicación.
             </summary>
@@ -486,6 +486,63 @@
             estado inicial.
             </summary>
         </member>
+        <member name="T:ClassLibrary.BuscadorMaterialHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BuscadorMaterialHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BuscadorMaterialHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.BuscadorTagHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BuscadorTagHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BuscadorTagHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.BuscadorUbicacionHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.BuscadorUbicacionHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.BuscadorUbicacionHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            
+            </summary>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
         <member name="T:ClassLibrary.CalcularOfertasCompradasHandler">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
@@ -632,9 +689,9 @@
         </member>
         <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
             <summary>
-            
+            Contiene los mensajes enviador por el Usuario.
             </summary>
-            <typeparam name="string"></typeparam>
+            <typeparam name="string">Utiliza el tipo string.</typeparam>
             <returns></returns>
         </member>
         <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">

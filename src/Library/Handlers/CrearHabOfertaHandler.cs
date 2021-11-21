@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Telegram.Bot.Types;
+using System;
 
 namespace ClassLibrary
 {
@@ -29,14 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    //Console.WriteLine("Entre");
+                    Console.WriteLine("EntreCrearHabOferta");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CrearHabOferta") == true))
                     {
-                        //Console.WriteLine("Entre22");
+                        Console.WriteLine("EntreCrearHabOferta");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -70,7 +71,7 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {
                         Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.RemoveHabilitacionOferta(value, nombreOferta, nombreHabParaAgregar);
+                        LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
                         
                         response = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}.";
                         return true;

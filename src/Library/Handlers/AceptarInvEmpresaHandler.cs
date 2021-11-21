@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -29,12 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
+                    Console.WriteLine("EntreInviEmpresa");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!AceptarInvitacion") == true))
                     {
+                        Console.WriteLine("EntreInviEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else

@@ -31,12 +31,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
+                    Console.WriteLine("EntreRemoveHabEmpresa");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("!") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
                     {
+                        Console.WriteLine("EntreRemoveHabEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else

@@ -40,9 +40,12 @@ namespace ClassLibrary
         /// Este método permite invitar una empresa a unirse a la aplicación.
         /// </summary>
         /// <param name="empresa">Recibe un objeto de tipo empresa como parametro.</param>
-        public void InvitarEmpresa(Empresa empresa)
+        public void InvitarEmpresa(string nombre, string ubicacion, string rubro)
         {
+            Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
+            Logica.EmpresasInvitadas.Add(empresa);
+
         }
     }
 }
