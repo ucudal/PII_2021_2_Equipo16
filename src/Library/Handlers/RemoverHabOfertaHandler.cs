@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Telegram.Bot.Types;
-
+using System;
 namespace ClassLibrary
 {
     /// <summary>
@@ -30,14 +30,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    //Console.WriteLine("Entre");
+                    Console.WriteLine("EntreRemoveHabOferta");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!RemoverHabOferta") == true))
                     {
-                        //Console.WriteLine("Entre22");
+                        Console.WriteLine("EntreRemoveHabOferta");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -72,7 +72,7 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {
                         Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.RemoveHabilitacionOferta(value, nombreOferta, nombreHabParaEliminar);
+                        LogicaEmpresa.RemoveHabilitacionOferta(value, nombreHabParaEliminar, nombreOferta);
                         
                         response = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}.";
                         return true;
