@@ -31,12 +31,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
+                    Console.WriteLine("EntreInterasado");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!Interesado") == true))
                     {
+                        Console.WriteLine("EntreInteresado");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else

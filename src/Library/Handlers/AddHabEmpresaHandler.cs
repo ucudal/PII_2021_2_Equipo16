@@ -1,3 +1,4 @@
+
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -52,7 +53,9 @@ namespace ClassLibrary
                 
                 if (listaConParam.Count == 0)
                 {
+
                     response = "ingrese la habilitacion que desea agregar";
+
                     return true;
                 }
                 if (listaConParam.Count == 1)

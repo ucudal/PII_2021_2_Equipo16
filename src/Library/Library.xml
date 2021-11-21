@@ -28,7 +28,7 @@
             </summary>
             <returns>Retorna la lista de Empresas que contiene.</returns>
         </member>
-        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(System.String,System.String,System.String)">
             <summary>
             Este método permite invitar una empresa a unirse a la aplicación.
             </summary>

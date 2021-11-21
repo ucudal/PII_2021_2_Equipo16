@@ -36,10 +36,12 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            Administrador admin = new Administrador("Admin");
+            admin.InvitarEmpresa("conaprole", "pakistan", "textil");
             
             Bot = new TelegramBotClient(Token);
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(null)));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarProductoHandler(new GetHabListEmprendedorHandler(new GetLisHabEmpresaHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(null)))))))))))))))))));
             
             
             Message message = new Message();

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System;
 namespace ClassLibrary
 {
     /// <summary>
@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public GetHabListEmprendedorHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"!ListaDeHabilitaciones"};
+            this.Keywords = new string[] {"!ListaDeHabilitacionesEmprendedor"};
         }
 
         /// <summary>
@@ -28,12 +28,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
+                    Console.WriteLine("EntreGetHabEmprendedor");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true))
+                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmprendedor") == true))
                     {
+                        Console.WriteLine("EntreGetHabEmprendedor");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
@@ -44,11 +46,11 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitaciones") == true)
+            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmprendedor") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitaciones");
+                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitacionesEmprendedor");
                 
-                if (Logica.Empresas.ContainsKey(message.Id))
+                if (Logica.Emprendedores.ContainsKey(message.Id))
                 {
                     Emprendedor value = Logica.Emprendedores[message.Id];
                     // Utiliza el metodo de la clase LogicaEmprendedor para obtener la lista de habilitaciones que tiene el Emprendedor en cuestion.
@@ -56,13 +58,14 @@ namespace ClassLibrary
                     response = $"La lista de habilitaciones es \n{hab} ";
                     return true;
                 }
-                }
+                
                 else
                 {
                     // En caso de que el Emprendedor no contenga habilitaciones relacionadas.
                     response = "No se ha podido obtener las habilitaciones";
                     return true;
                 }
+            }
             response = string.Empty;
             return false;
         }

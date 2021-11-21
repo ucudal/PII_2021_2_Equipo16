@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -29,6 +30,7 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
+                    Console.WriteLine("EntreCalcularOfertasC");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
             
@@ -36,6 +38,7 @@ namespace ClassLibrary
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasCompradas") == true))
                     {
+                        Console.WriteLine("EntreCalcularOfertasC");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
                     }
                     else

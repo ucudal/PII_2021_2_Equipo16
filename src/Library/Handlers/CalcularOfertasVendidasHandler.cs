@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace ClassLibrary
 {
@@ -31,12 +32,14 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
+                    Console.WriteLine("EntreCalcularOfertasV");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
                 else
                 {
                     if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!CalcularOfertasVendidas") == true))
                     {
+                        Console.WriteLine("EntreCalcualrOfertasV");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
