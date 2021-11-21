@@ -1369,6 +1369,26 @@
             </summary>
             <value></value>
         </member>
+        <member name="T:ClassLibrary.TelegramPrinter">
+            <summary>
+            Esta clase se encarga de imprimir por consola los atributos de oferta.
+            </summary>
+            <remarks>
+            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método imprime por consola los atributos de oferta.
+            </summary>
+            <param name="oferta">Una oferta.</param>
+        </member>
+        <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
+            <summary>
+            Este método imprime una string con información.
+            </summary>
+            <param name="resultadoBusqueda"></param>
+        </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
             Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
