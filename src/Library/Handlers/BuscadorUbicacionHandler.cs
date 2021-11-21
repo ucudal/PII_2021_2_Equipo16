@@ -22,10 +22,15 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
+        /// <param name="response">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
+        protected override bool InternalHandle(IMensaje mensaje, out string response)
         {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Mensaje no puede ser nulo.");
+            }
+
             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
@@ -42,7 +47,7 @@ namespace ClassLibrary
                     }
                     else
                     {
-                        respuesta = string.Empty;
+                        response = string.Empty;
                         return false;
                     }
                 }
@@ -53,7 +58,7 @@ namespace ClassLibrary
                 List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("!BuscarUbicacion");
                 if (listaComandos.Count == 0)
                 {
-                    respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
+                    response = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
                     return true;
                 }
                 if (listaComandos.Count == 1)
@@ -61,12 +66,12 @@ namespace ClassLibrary
                     string palabraClave = listaComandos[0];
                     
                     LogicaBuscadores.BuscarPorUbicacion(palabraClave);
-                    respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave));
+                    response = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave));
                     return true;
                 }          
             }
 
-            respuesta = string.Empty;
+            response = string.Empty;
             return false;
         }
     }

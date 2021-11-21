@@ -25,6 +25,11 @@ namespace ClassLibrary
         /// <param name="respuesta">La respusta al mensaje procesado.</param>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Mensaje no puede ser nulo.");
+            }
+            
             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
@@ -67,12 +72,15 @@ namespace ClassLibrary
                         
                         respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito.";
                     }
+                    
                     else
                     {
                         respuesta = "No se ha podido aceptar la oferta, usted no está registrado como Empresa.";
                     }
+                    
                     return true;
                 }
+                
                 else
                 {
                     foreach (string item in listaComandos)

@@ -46,10 +46,6 @@ namespace ClassLibrary
                     }
                 }
             }
-            
-            
-            
-            
 
             if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!RemoverHab") == true)
             {
@@ -58,7 +54,7 @@ namespace ClassLibrary
                 List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!RemoverHab");
                 if (listaConParam.Count == 0)
                 {
-                    response = $"ingrese el nombre de la habilitacion a eliminar {listaConParam.Count}";
+                    response = $"Ingrese el nombre de la habilitación que desea eliminar {listaConParam.Count}.";
                     return true;
                     //prueba = $"params in lista {listaConParam.Count}";
                     //Console.WriteLine(prueba);
@@ -73,7 +69,7 @@ namespace ClassLibrary
                         Emprendedor value = Logica.Emprendedores[message.Id];
                         LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
                         
-                        response = $"Se ha removido la habilitacion {habilitacion}.";
+                        response = $"Se ha removido la habilitación {habilitacion} con éxito.";
                         return true;
                     }
                     else
@@ -91,11 +87,9 @@ namespace ClassLibrary
                     }
                     response = $"Listaconparam es {listaConParam.Count}";
                     return true;
-                }
-
-                
-                
+                } 
             }
+            
             response = string.Empty;
             return false;
         }

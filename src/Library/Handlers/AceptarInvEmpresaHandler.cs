@@ -59,7 +59,6 @@ namespace ClassLibrary
                 if (listaComandos.Count == 1)
                 {
                     string nombreEmpresa = listaComandos[0];
-                    
                     foreach (Empresa empresa in Logica.EmpresasInvitadas)
                     {
                         if (empresa.Nombre == nombreEmpresa)

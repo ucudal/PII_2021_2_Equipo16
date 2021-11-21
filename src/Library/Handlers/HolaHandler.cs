@@ -26,19 +26,17 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
+
             if (this.CanHandle(message))
             {
                 Console.WriteLine("Entre primeravez");
                 Logica.HistorialDeChats.Add(message.Id, new HistorialChat());
 
                 response = "Hola!";
-                return true;
-                
-
-                
+                return true;     
             }
 
-            response= string.Empty;
+            response = string.Empty;
             return false;
         }
     }

@@ -55,12 +55,12 @@ namespace ClassLibrary
 
                 if (listaConParam.Count == 0)
                 {
-                    response = "ingrese el nombre de la oferta a la que desea agregar una habilitacion";
+                    response = "Ingrese el nombre de la oferta a la que desea agregar una habilitación.";
                     return true;
                 }
                 if (listaConParam.Count == 1)
                 {
-                    response = "ingrese el nombre de la habilitacion que desea agregar";
+                    response = "Ingrese el nombre de la habilitación que desea agregar.";
                     return true;
                 }
                 if (listaConParam.Count == 2)
@@ -79,7 +79,7 @@ namespace ClassLibrary
                 }    
                 else
                 {
-                    response = "No se ha podido agregar la habilitación";
+                    response = "No se ha podido agregar la habilitación.";
                     return true;
                 }         
             }

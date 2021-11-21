@@ -11,14 +11,12 @@ namespace ClassLibrary
         /// <summary>
         /// Contiene los mensajes enviador por el Usuario.
         /// </summary>
-        /// <typeparam name="string">Utiliza el tipo string.</typeparam>
         /// <returns></returns>
         public List<string> MensajesDelUser = new List<string>();
 
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="string"></typeparam>
         /// <returns></returns>
         public List<string> MensajesDelUserReves = new List<string>();
 
@@ -30,7 +28,6 @@ namespace ClassLibrary
         public List<string> BuscarUltimoComando(string comando)
         {
             List<string> ParametrosIngresadosDelComando = new List<string>();
-
             foreach (string elemento in MensajesDelUser)
             {
                MensajesDelUserReves.Add(elemento); 
@@ -43,8 +40,10 @@ namespace ClassLibrary
                 {
                     return ParametrosIngresadosDelComando;
                 }
+                
                 ParametrosIngresadosDelComando.Add(mensajeParametro);
             }
+            
             MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez
             return ParametrosIngresadosDelComando;
         }
@@ -59,7 +58,7 @@ namespace ClassLibrary
             foreach (string elemento in MensajesDelUser)
             {
                MensajesDelUserReves.Add(elemento); 
-               Console.WriteLine("Este elemento es" + elemento);
+               Console.WriteLine("Este elemento es " + elemento);
             }
             MensajesDelUserReves.Reverse();
 
@@ -72,14 +71,14 @@ namespace ClassLibrary
                         MensajesDelUserReves.Clear();
                         return true;
                     } 
+                    
                     MensajesDelUserReves.Clear();
                     return false;
                 }
-                
             }
+            
             MensajesDelUserReves.Clear();
             return false;
         }
     }
-
 }

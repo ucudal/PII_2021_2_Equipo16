@@ -53,40 +53,40 @@ namespace ClassLibrary
                 List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!CrearOferta");
                 if (listaConParam.Count == 0)
                 {
-                    response = "ingrese el nombre de la oferta";
+                    response = "Ingrese el nombre de la oferta";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                else if (listaConParam.Count == 1)
                 {
-                    response = "ingrese el material";
+                    response = "Ingrese el material";
                     return true;
                 }
-                if (listaConParam.Count == 2)
+                else if (listaConParam.Count == 2)
                 {
-                    response = "ingrese el precio";
+                    response = "Ingrese el precio";
                     return true;
                 }
-                if (listaConParam.Count == 3)
+                else if (listaConParam.Count == 3)
                 {
-                    response = "ingrese unidad";
+                    response = "Ingrese unidad";
                     return true;
                 }
-                 if (listaConParam.Count == 4)
+                else if (listaConParam.Count == 4)
                 {
-                    response = "ingrese tag";
+                    response = "Ingrese un tag";
                     return true;
                 }
-                 if (listaConParam.Count == 5)
+                else if (listaConParam.Count == 5)
                 {
-                    response = "ingrese ubicación";
+                    response = "Ingrese una ubicación";
                     return true;
                 }
-                 if (listaConParam.Count == 6)
+                else if (listaConParam.Count == 6)
                 {
-                    response = "ingrese si es puntual o constante";
+                    response = "Elija si es una oferta puntual o constante";
                     return true;
                 }
-                if (listaConParam.Count == 7)
+                else if (listaConParam.Count == 7)
                 {
                     string puntualConstante = listaConParam[0];
                     string ubicacionOferta = listaConParam[1];
@@ -98,8 +98,8 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {
                         Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.CrearOferta(value, nombreOferta,materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
-                        response = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta},del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de : {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. ";
+                        LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+                        response = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}.";
                         return true;
                     }
                 }
@@ -114,4 +114,3 @@ namespace ClassLibrary
         }
     }
 }
-

@@ -54,7 +54,7 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario</returns>
         protected virtual bool InternalHandle(IMensaje message, out string responder)
         {
-            throw new InvalidOperationException("Este método debe ser sobrescrito");
+            throw new InvalidOperationException("Este método debe ser sobrescrito.");
         }
 
         /// <summary>

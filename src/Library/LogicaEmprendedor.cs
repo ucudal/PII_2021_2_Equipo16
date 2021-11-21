@@ -23,8 +23,8 @@ namespace ClassLibrary
         {
             if (Rubro.CheckRubro(rubro))
             { 
-             Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
-             Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
+                Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
+                Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
             }
             else
             {
@@ -39,7 +39,14 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public static void AddHabilitacion(Emprendedor emprendedor, string habilitacionBuscada)
         {
-            emprendedor.AddHabilitacion(habilitacionBuscada);
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                emprendedor.AddHabilitacion(habilitacionBuscada);
+            }
         }
 
         /// <summary>
@@ -49,7 +56,14 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitación a remover.</param>
         public static void RemoveHabilitacion(Emprendedor emprendedor, string habilitacion)
         {
-            emprendedor.RemoveHabilitacion(habilitacion);
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                emprendedor.RemoveHabilitacion(habilitacion);
+            }
         }
 
         /// <summary>
@@ -58,7 +72,14 @@ namespace ClassLibrary
         /// <param name="emprendedor">Un emprendedor.</param>
         public static string GetHabilitacionList(Emprendedor emprendedor)
         {
-            return emprendedor.GetHabilitacionList();
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                return emprendedor.GetHabilitacionList();
+            }
         }
 
         /// <summary>
@@ -69,16 +90,22 @@ namespace ClassLibrary
         // Se hizo en equipo.
         public static void InteresadoEnOferta(Emprendedor emprendedor, string nombreOferta)
         {
-            foreach (Oferta item in Logica.PublicacionesA.OfertasPublicados)
+            if (emprendedor == null)
             {
-               if (item.Nombre == nombreOferta)
-               {
-                emprendedor.OfertasInteresado.Add(item);
-                item.Interesado.Add(emprendedor.Nombre);
-                item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
-                emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
-
-               } 
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                foreach (Oferta item in Logica.Publicaciones.OfertasPublicados)
+                {
+                    if (item.Nombre == nombreOferta)
+                    {
+                        emprendedor.OfertasInteresado.Add(item);
+                        item.Interesado.Add(emprendedor.Nombre);
+                        item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                        emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
+                    }
+                }
             }
         }
 
@@ -91,7 +118,14 @@ namespace ClassLibrary
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         public static int CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
-            return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+            }
         }
     }
 }

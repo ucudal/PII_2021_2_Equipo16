@@ -7,13 +7,13 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
     /// </summary>
-    public class EliminarProductoHandler : BaseHandler
+    public class EliminarOfertaHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public EliminarProductoHandler (BaseHandler next) : base(next)
+        public EliminarOfertaHandler (BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"!Eliminar oferta", "!eliminar oferta"};
         }
@@ -26,7 +26,7 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-
+            
             if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
                 if (this.CanHandle(message))
@@ -69,21 +69,18 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(message.Id))
                     {
                         Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.EliminarProducto(value, nombreOfertaParaEliminar);
+                        LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
                         
                         response = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
                         return true;
                     }
+                    
                     else
                     {
                         response = "Usted no está registrado como empresa";
                         return true;
                     }
-  
                 }
-
-                
-                
             }
 
             response = string.Empty;

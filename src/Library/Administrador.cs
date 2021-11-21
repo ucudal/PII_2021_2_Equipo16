@@ -14,10 +14,11 @@ namespace ClassLibrary
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         public Administrador(string nombre)
         {
-            if ( string.IsNullOrEmpty(nombre))
+            if (string.IsNullOrEmpty(nombre))
             {
                 this.Nombre = "Jhon";
             }
+            
             else 
             {
                 this.Nombre = nombre;
@@ -37,9 +38,11 @@ namespace ClassLibrary
         public List<Empresa> Empresas = new List<Empresa>();
 
         /// <summary>
-        /// Este método permite invitar una empresa a unirse a la aplicación.
+        /// 
         /// </summary>
-        /// <param name="empresa">Recibe un objeto de tipo empresa como parametro.</param>
+        /// <param name="nombre"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="rubro"></param>
         public void InvitarEmpresa(string nombre, string ubicacion, string rubro)
         {
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);

@@ -138,9 +138,13 @@ namespace ClassLibrary
         /// </summary>
         public string Ubicacion { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string TextoOferta()
         {
-            StringBuilder text = new StringBuilder("********************");
+            StringBuilder text = new StringBuilder("******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
             text.Append($"Material: {this.Material} \n");
             text.Append($"Precio: {this.Precio} \n");
@@ -155,7 +159,6 @@ namespace ClassLibrary
             }
 
             return text.ToString();
-
         }
     }
 }

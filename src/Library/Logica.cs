@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <summary>
         /// Guarda una instancia de Publicaciones.
         /// </summary>
-        public static Publicaciones PublicacionesA = Publicaciones.Instance;
+        public static Publicaciones Publicaciones = Publicaciones.Instance;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
@@ -62,11 +62,13 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="string"></typeparam>
-        /// <typeparam name="HistorialChat"></typeparam>
         /// <returns></returns>
         public static Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
     }
 }

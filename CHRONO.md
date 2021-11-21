@@ -3,6 +3,13 @@
 Nuestro proyecto final de P2.
 Proxima entrega miércoles 3 de Noviembre, creación del Core del Bot, actualizados CRC y UML.
 
+20/11/21 - Piero Saucedo
+Añadidos Handlers para BuscadorMaterial, BuscadorTag y BuscadorUbicacion.
+Implementadas algunas excepciones.
+
+17/11/21 - Piero Saucedo
+Añadido un nuevo método en ConsolePrinter.
+
 08/11/21 al 17/11/21 - Juan Pérez
 Creación de los handler:
                         AddHabEmpresaHandler

@@ -27,49 +27,56 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (message == null)
             {
-                if (this.CanHandle(message))
+                throw new ArgumentNullException("Message no puede ser nulo.");
+            }
+            else
+            {    
+                if (Logica.HistorialDeChats.ContainsKey(message.Id))
                 {
-                    Console.WriteLine("EntreGetHabEmpresa");
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
-                }
-                else
-                {
-                    if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true))
+                    if (this.CanHandle(message))
                     {
                         Console.WriteLine("EntreGetHabEmpresa");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
-                        return false;
+                        if ((message.Text.StartsWith("!") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true))
+                        {
+                            Console.WriteLine("EntreGetHabEmpresa");
+                            Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        }
+                        else
+                        {
+                            response = string.Empty;
+                            return false;
+                        }
                     }
                 }
-            }
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true)
-            {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitacionesEmpresa");
-                
-                if (Logica.Empresas.ContainsKey(message.Id))
+                if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("!ListaDeHabilitacionesEmpresa") == true)
                 {
-                    Empresa value = Logica.Empresas[message.Id];
-                    // Utiliza el método de la clase LogicaEmpresa para obtener la lista de habilitaciones que tiene la Empresas en cuestion.
-                    string hab = LogicaEmpresa.GetHabilitacionList(value);
-                    response = $"La lista de habilitaciones es \n{hab} ";
-                    return true;
+                    List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("!ListaDeHabilitacionesEmpresa");
+                    
+                    if (Logica.Empresas.ContainsKey(message.Id))
+                    {
+                        Empresa value = Logica.Empresas[message.Id];
+                        // Utiliza el método de la clase LogicaEmpresa para obtener la lista de habilitaciones que tiene la Empresas en cuestion.
+                        string hab = LogicaEmpresa.GetHabilitacionList(value);
+                        response = $"La lista de habilitaciones es \n{hab}";
+                        return true;
+                    }
+                    else
+                    {
+                        // En caso de que la Empresa no contenga habilitaciones relacionadas.
+                        response = "No se han podido obtener las habilitaciones.";
+                        return true;
+                    }
                 }
                 
-                else
-                {
-                    // En caso de que la Empresa no contenga habilitaciones relacionadas.
-                    response = "No se ha podido obtener las habilitaciones";
-                    return true;
-                }
+                response = string.Empty;
+                return false;
             }
-            response = string.Empty;
-            return false;
         }
     }
 }
