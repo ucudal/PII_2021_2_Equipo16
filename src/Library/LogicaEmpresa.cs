@@ -17,7 +17,14 @@ namespace ClassLibrary
         /// <param name="nombreEmpresa">Nombre de la Empresa.</param>
         public static void AceptarInvitacion(Empresa empresa, string nombreEmpresa)
         {
-            empresa.AceptarInvitacion(nombreEmpresa);
+            if (empresa == null)
+            {
+                throw new ArgumentNullException("La Empresa no puede ser null.");
+            }
+            else
+            {
+                empresa.AceptarInvitacion(nombreEmpresa);
+            }
         }
 
         /// <summary>
@@ -35,26 +42,32 @@ namespace ClassLibrary
         {
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
-                Console.WriteLine("Nombre usado, por favor cambielo para poder crear el producto");
+                Console.WriteLine("El nombre ingresado ya existe, por favor intente de nuevo.");
             }
             else
             {
-                empresa.CrearOferta(Logica.PublicacionesA, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+                empresa.CrearOferta(Logica.Publicaciones, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
                 Logica.ListaNombreOfertas.Add(nombre);
-                Console.WriteLine("Producto creado exitosamente");
+                Console.WriteLine("Oferta creada exitosamente.");
             }
-            
         }
 
         /// <summary>
         /// Llama al método EliminarProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que eliminará la oferta.</param>
-        /// <param name="ofertaNombre">Nombre de la oferta que se desea eliminar.</param>
-        public static void EliminarProducto(Empresa empresa, string ofertaNombre)
+        /// <param name="nombre">Nombre de la oferta que se desea eliminar.</param>
+        public static void EliminarOferta(Empresa empresa, string nombre)
         {
-            empresa.EliminarProducto(ofertaNombre, Logica.PublicacionesA); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
-            Console.WriteLine("Producto eliminado exitosamente");
+            if (!Logica.ListaNombreOfertas.Contains(nombre))
+            {
+                Console.WriteLine("No existe una oferta con ese nombre, por favor intente de nuevo.");
+            }
+            else
+            {
+                empresa.EliminarOferta(nombre, Logica.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+                Console.WriteLine("Oferta eliminada exitosamente");
+            }
         }
 
         /// <summary>
@@ -64,7 +77,7 @@ namespace ClassLibrary
         /// <param name="ofertaQueSeAcepta">Nombre de oferta que se desea Aceptar.</param>
         public static void AceptarOferta(Empresa empresa, string ofertaQueSeAcepta)
         {
-            empresa.AceptarOferta(ofertaQueSeAcepta, Logica.PublicacionesA);
+            empresa.AceptarOferta(ofertaQueSeAcepta, Logica.Publicaciones);
         }
 
         /// <summary>
@@ -96,8 +109,16 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion para ser removida.</param>
         public static void RemoveHabilitacion(Empresa empresa, string habilitacion)
         {
-            empresa.RemoveHabilitacion(habilitacion);
+            if (empresa == null)
+            {
+                throw new ArgumentNullException("La Empresa no puede ser null.");
+            }
+            else
+            {
+                empresa.RemoveHabilitacion(habilitacion);
+            }
         }
+        
         /// <summary>
         /// Metodo AddHabilitacionOferta de las ofertas de la empresa.
         /// </summary>
@@ -106,14 +127,22 @@ namespace ClassLibrary
         /// <param name="nombreOferta">nombre de la oferta</param>
         public static void AddHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
         {
-            foreach (Oferta oferta in empresa.MisOfertas)
+            if (empresa == null)
             {
-                if (oferta.Nombre == nombreOferta)
+                throw new ArgumentNullException("La Empresa no puede ser null.");
+            }
+            else
+            {    
+                foreach (Oferta oferta in empresa.MisOfertas)
                 {
-                    oferta.AddHabilitacion(habilitacion);
+                    if (oferta.Nombre == nombreOferta)
+                    {
+                        oferta.AddHabilitacion(habilitacion);
+                    }
                 }
             }
         }
+        
         /// <summary>
         /// 
         /// </summary>
@@ -122,25 +151,39 @@ namespace ClassLibrary
         /// <param name="nombreOferta"></param>
         public static void RemoveHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
         {   
-            Oferta ofertaH = null;
-            foreach (Oferta oferta in empresa.MisOfertas)
+            if (empresa == null)
             {
-                if (oferta.Nombre == nombreOferta)
-                {
-                    ofertaH = oferta;
-                }
+                throw new ArgumentNullException("La Empresa no puede ser null.");
             }
-            ofertaH.RemoveHabilitacion(habilitacion);
+            else
+            {
+                Oferta ofertaH = null;
+                foreach (Oferta oferta in empresa.MisOfertas)
+                {
+                    if (oferta.Nombre == nombreOferta)
+                    {
+                        ofertaH = oferta;
+                    }
+                }
+                
+                ofertaH.RemoveHabilitacion(habilitacion);
+            }
         }
+        
         /// <summary>
         /// Llama al método GetHabilitacion en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa.</param>
-        public static string GetHabilitacionList(Empresa empresa)
+        public static string GetListaHabilitaciones(Empresa empresa)
         {
-            return empresa.GetHabilitacionList();
+            return empresa.GetListaHabilitaciones();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
         public static string VerInteresados(Empresa empresa)
         {
             return empresa.VerInteresados();

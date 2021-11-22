@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -19,54 +20,52 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje "Lista de habilitaciones" y retorna true; retorna false en caso contrario.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-             if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreGetHabEmprendedor");
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true))
                     {
-                        Console.WriteLine("EntreGetHabEmprendedor");
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/listadehabilitacionesemprendedor");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/listadehabilitacionesemprendedor");
                 
-                if (Logica.Emprendedores.ContainsKey(message.Id))
+                if (Logica.Emprendedores.ContainsKey(mensaje.Id))
                 {
-                    Emprendedor value = Logica.Emprendedores[message.Id];
+                    Emprendedor value = Logica.Emprendedores[mensaje.Id];
                     // Utiliza el metodo de la clase LogicaEmprendedor para obtener la lista de habilitaciones que tiene el Emprendedor en cuestion.
                     string hab = LogicaEmprendedor.GetHabilitacionList(value);
-                    response = $"La lista de habilitaciones es \n{hab} ";
+                    respuesta = $"La lista de habilitaciones es \n{hab} ";
                     return true;
                 }
-                
                 else
                 {
                     // En caso de que el Emprendedor no contenga habilitaciones relacionadas.
-                    response = "No se ha podido obtener las habilitaciones";
+                    respuesta = "No se ha podido obtener las habilitaciones";
                     return true;
                 }
             }
-            response = string.Empty;
+            
+            respuesta = string.Empty;
             return false;
         }
     }

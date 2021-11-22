@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using Telegram.Bot.Types;
-using System;
 
 namespace ClassLibrary
 {
@@ -21,97 +19,94 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="response"></param>
+        /// <param name="mensaje"></param>
+        /// <param name="respuesta"></param>
         /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreCrearOferta");
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true))
                     {
-                        Console.WriteLine("EntreCrearOferta");
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/crearoferta");
-                if (listaConParam.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
+                if (listaConParametros.Count == 0)
                 {
-                    response = "ingrese el nombre de la oferta";
+                    respuesta = "Ingrese el nombre de la oferta";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
-                    response = "ingrese el material";
+                    respuesta = "Ingrese el material";
                     return true;
                 }
-                if (listaConParam.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
-                    response = "ingrese el precio";
+                    respuesta = "Ingrese el precio";
                     return true;
                 }
-                if (listaConParam.Count == 3)
+                else if (listaConParametros.Count == 3)
                 {
-                    response = "ingrese unidad";
+                    respuesta = "Ingrese unidad";
                     return true;
                 }
-                 if (listaConParam.Count == 4)
+                else if (listaConParametros.Count == 4)
                 {
-                    response = "ingrese tag";
+                    respuesta = "Ingrese un tag";
                     return true;
                 }
-                 if (listaConParam.Count == 5)
+                else if (listaConParametros.Count == 5)
                 {
-                    response = "ingrese ubicación";
+                    respuesta = "Ingrese una ubicación";
                     return true;
                 }
-                 if (listaConParam.Count == 6)
+                else if (listaConParametros.Count == 6)
                 {
-                    response = "ingrese si es puntual o constante";
+                    respuesta = "Elija si es una oferta puntual o constante";
                     return true;
                 }
-                if (listaConParam.Count == 7)
+                else if (listaConParametros.Count == 7)
                 {
-                    string puntualConstante = listaConParam[0];
-                    string ubicacionOferta = listaConParam[1];
-                    string tagOferta = listaConParam[2];
-                    string unidadesOferta = listaConParam[3];
-                    string precioOferta = listaConParam[4];
-                    string materialOferta = listaConParam[5];
-                    string nombreOferta = listaConParam[6];
-                    if (Logica.Empresas.ContainsKey(message.Id))
+                    string puntualConstante = listaConParametros[0];
+                    string ubicacionOferta = listaConParametros[1];
+                    string tagOferta = listaConParametros[2];
+                    string unidadesOferta = listaConParametros[3];
+                    string precioOferta = listaConParametros[4];
+                    string materialOferta = listaConParametros[5];
+                    string nombreOferta = listaConParametros[6];
+                    if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[message.Id];
-                        LogicaEmpresa.CrearOferta(value, nombreOferta,materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
-                        response = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta},del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de : {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. ";
+                        Empresa value = Logica.Empresas[mensaje.Id];
+                        LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+                        respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}.";
                         return true;
                     }
                 }
                 else
                 {
-                    response = "No se ha podido registrar la oferta";
+                    respuesta = "No se ha podido registrar la oferta";
                     return true;
                 }
             }
-            response = string.Empty;
+            respuesta= string.Empty;
             return false;
         }
     }
 }
-

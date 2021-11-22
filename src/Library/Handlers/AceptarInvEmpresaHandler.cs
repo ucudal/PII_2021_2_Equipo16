@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System;
 
 namespace ClassLibrary
 {
@@ -30,14 +29,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreInviEmpresa");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true))
                     {
-                        Console.WriteLine("EntreInviEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -50,16 +47,15 @@ namespace ClassLibrary
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
-                if (listaComandos.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
+                if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el Nombre de su Empresa.";
                     return true;
                 }
-                if (listaComandos.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string nombreEmpresa = listaComandos[0];
-                    
+                    string nombreEmpresa = listaConParametros[0];
                     foreach (Empresa empresa in Logica.EmpresasInvitadas)
                     {
                         if (empresa.Nombre == nombreEmpresa)

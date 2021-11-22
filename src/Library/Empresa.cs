@@ -53,8 +53,6 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="DateTime"></typeparam>
-        /// <typeparam name="Oferta"></typeparam>
         /// <returns></returns>
         public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
         private List<string> habilitacionesEmpresa = new List<string>();
@@ -112,7 +110,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="nombreOfertaParaEliminar">Oferta a eliminar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
-        public void EliminarProducto(string nombreOfertaParaEliminar, Publicaciones publicaciones)
+        public void EliminarOferta(string nombreOfertaParaEliminar, Publicaciones publicaciones)
         {
             Oferta ofertaParaEliminar = null;
             foreach (Oferta ofertaEnLista in publicaciones.OfertasPublicados)
@@ -196,11 +194,15 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public string GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
            return this.Habilitacion.HabilitacionesDisponibles();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");

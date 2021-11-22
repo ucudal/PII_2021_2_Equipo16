@@ -17,7 +17,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con el Material especificado.</returns>
         public static List<Oferta> BuscarPorMaterial(string busqueda)
         {
-            return Logica.BuscadorMaterial.Buscar(Logica.PublicacionesA, busqueda);
+            return Logica.BuscadorMaterial.Buscar(Logica.Publicaciones, busqueda);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con el Tag especificado.</returns>
         public static List<Oferta> BuscarPorTags(string busqueda)
         {
-            return Logica.BuscadorTags.Buscar(Logica.PublicacionesA, busqueda);
+            return Logica.BuscadorTags.Buscar(Logica.Publicaciones, busqueda);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con la Ubicación especificada.</returns>
         public static List<Oferta> BuscarPorUbicacion(string busqueda)
         {
-            return Logica.BuscadorUbicacion.Buscar(Logica.PublicacionesA, busqueda);
+            return Logica.BuscadorUbicacion.Buscar(Logica.Publicaciones, busqueda);
         }
     }
 }

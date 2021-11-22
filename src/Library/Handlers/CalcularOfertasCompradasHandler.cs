@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System;
 
 namespace ClassLibrary
 {
@@ -8,15 +7,16 @@ namespace ClassLibrary
     /// </summary>
     public class CalcularOfertasCompradasHandler : BaseHandler 
     {
-         /// <summary>
+        /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
-        /// <param name="next">El próximo "handler"</param>
-        public CalcularOfertasCompradasHandler(BaseHandler next):base(next)
+        /// <param name="next">El próximo "handler."</param>
+        public CalcularOfertasCompradasHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/calcularofertascompradas"};
         }
+        
         /// <summary>
         /// Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
         /// En caso contrario retorna false.
@@ -30,7 +30,6 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(message))
                 {
-                    Console.WriteLine("EntreCalcularOfertasC");
                     Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
                 }
             
@@ -38,7 +37,6 @@ namespace ClassLibrary
                 {
                     if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true))
                     {
-                        Console.WriteLine("EntreCalcularOfertasC");
                         Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
                     }
                     else
@@ -54,12 +52,12 @@ namespace ClassLibrary
                 List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
-                    response = "ingrese la fecha de inicio";
+                    response = "Ingrese la fecha de inicio.";
                     return true;
                 }
                 if (listaConParam.Count == 1)
                 {
-                    response = "ingrese la fecha final";
+                    response = "Ingrese la fecha final.";
                     return true;
                 }
                 if (listaConParam.Count == 2)
@@ -76,6 +74,7 @@ namespace ClassLibrary
                     }
                 }
             }
+            
             response = string.Empty;
             return false;
         }

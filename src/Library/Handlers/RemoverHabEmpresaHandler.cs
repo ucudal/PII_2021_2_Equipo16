@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Telegram.Bot.Types;
 
 namespace ClassLibrary
 {
@@ -31,14 +30,12 @@ namespace ClassLibrary
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreRemoveHabEmpresa");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("/") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
                     {
-                        Console.WriteLine("EntreRemoveHabEmpresa");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -52,16 +49,16 @@ namespace ClassLibrary
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
             {
                 // El mensaje debe tener el formato "Remover habilitacion, Nombre de habilitación".
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
-                if (listaComandos.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
+                if (listaConParametros.Count == 0)
                 {
-                    respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaComandos.Count}.";
+                    respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaConParametros.Count}.";
                     return true;
                 }
                 
-                if (listaComandos.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string habilitacion = listaComandos[0];
+                    string habilitacion = listaConParametros[0];
                     if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
@@ -77,15 +74,15 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    foreach (string item in listaComandos)
+                    foreach (string item in listaConParametros)
                     {
                         Console.WriteLine(item);
                     }
-                    respuesta = $"Listaconparam es {listaComandos.Count}";
+                    respuesta = $"ListaConParametros es {listaConParametros.Count}";
                     return true;
                 }
             }
-            
+
             respuesta = string.Empty;
             return false;
         }

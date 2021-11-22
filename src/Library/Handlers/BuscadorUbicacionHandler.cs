@@ -1,5 +1,4 @@
 using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -26,18 +25,21 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Mensaje no puede ser nulo.");
+            }
+
             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreBuscadorUbi");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true))
                     {
-                        Console.WriteLine("EntreBuscadorUbi");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -50,15 +52,15 @@ namespace ClassLibrary
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)
             {
-                List<string> listaComandos = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
-                if (listaComandos.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
+                if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
                     return true;
                 }
-                if (listaComandos.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    string palabraClave = listaComandos[0];
+                    string palabraClave = listaConParametros[0];
                     
                     LogicaBuscadores.BuscarPorUbicacion(palabraClave);
                     respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave));

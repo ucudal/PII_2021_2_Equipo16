@@ -73,6 +73,11 @@ namespace ClassLibrary
         public string Tags { get; set; }
 
         /// <summary>
+        /// Obtiene o establece la Ubicación de la oferta.
+        /// </summary>
+        public string Ubicacion { get; set; }
+
+        /// <summary>
         /// Obtiene la ID única para cada Oferta.
         /// </summary>
         public Guid Id { get; private set; }
@@ -117,11 +122,11 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public string GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
            return this.habilitacion.HabilitacionesDisponibles();
         }
-
+        
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
@@ -132,11 +137,6 @@ namespace ClassLibrary
                 return DateTime.Now;
             }
         }
-
-        /// <summary>
-        /// Obtiene o establece la Ubicación de la oferta.
-        /// </summary>
-        public string Ubicacion { get; set; }
         
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
@@ -145,7 +145,8 @@ namespace ClassLibrary
         /// <returns></returns>
         public string TextoOferta()
         {
-            StringBuilder text = new StringBuilder("********************");
+            StringBuilder text = new StringBuilder();
+            text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
             text.Append($"Material: {this.Material} \n");
             text.Append($"Precio: {this.Precio} \n");
@@ -153,14 +154,14 @@ namespace ClassLibrary
             text.Append($"Tag: {this.Tags} \n");
             text.Append($"Ubicación: {this.Ubicacion} \n");
             text.Append($"Es una oferta {this.Nombre} \n");
-            text.Append($"Requerimientos: ");
+            text.Append($"Requerimientos: \n");
+            text.Append($"******************************\n");
             foreach (string habilitaciones in HabilitacionesDeOferta)
             {
                 text.Append(habilitaciones);
             }
 
             return text.ToString();
-
         }
 
         /// <summary>

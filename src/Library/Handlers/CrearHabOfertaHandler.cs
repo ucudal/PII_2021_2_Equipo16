@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Telegram.Bot.Types;
 using System;
 
 namespace ClassLibrary
@@ -21,69 +20,67 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
-                if (this.CanHandle(message))
+                if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreCrearHabOferta");
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true))
                     {
-                        Console.WriteLine("EntreCrearHabOferta");
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {
-                        response = string.Empty;
+                        respuesta = string.Empty;
                         return false;
                     }
                 }
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true)
             {
                 // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/crearhaboferta");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
 
-                if (listaConParam.Count == 0)
+                if (listaConParametros.Count == 0)
                 {
-                    response = "ingrese el nombre de la oferta a la que desea agregar una habilitacion";
+                    respuesta = "Ingrese el nombre de la oferta a la que desea agregar una habilitación.";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                if (listaConParametros.Count == 1)
                 {
-                    response = "ingrese el nombre de la habilitacion que desea agregar";
+                    respuesta = "Ingrese el nombre de la habilitación que desea agregar.";
                     return true;
                 }
-                if (listaConParam.Count == 2)
+                if (listaConParametros.Count == 2)
                 {
-                    string nombreOferta = listaConParam[1];
-                    string nombreHabParaAgregar = listaConParam[0];
+                    string nombreOferta = listaConParametros[1];
+                    string nombreHabParaAgregar = listaConParametros[0];
 
-                    if (Logica.Empresas.ContainsKey(message.Id))
+                    if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[message.Id];
+                        Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
                         
-                        response = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}.";
+                        respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}.";
                         return true;
                     }
                 }    
                 else
                 {
-                    response = "No se ha podido agregar la habilitación";
+                    respuesta = "No se ha podido agregar la habilitación.";
                     return true;
                 }         
             }
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Telegram.Bot.Types;
 
 namespace ClassLibrary
 {
@@ -25,18 +24,21 @@ namespace ClassLibrary
         /// <param name="respuesta">La respusta al mensaje procesado.</param>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Mensaje no puede ser nulo.");
+            }
+            
             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreAceptarOferta");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("/") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
                     {
-                        Console.WriteLine("EntreAceptarOferta");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -67,19 +69,23 @@ namespace ClassLibrary
                         
                         respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito.";
                     }
+                    
                     else
                     {
                         respuesta = "No se ha podido aceptar la oferta, usted no está registrado como Empresa.";
                     }
+                    
                     return true;
                 }
+                
                 else
                 {
                     foreach (string item in listaComandos)
                     {
                         Console.WriteLine(item);
                     }
-                    respuesta = $"Listaconparam es {listaComandos.Count}";
+                    
+                    respuesta = $"ListaConParametros es {listaComandos.Count}";
                     return true;
                 }
             }

@@ -61,7 +61,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime en consola la lista de habilitaciones para realizar esto utiliza un StringBuilder y recorre la lista de Habilitaciones.
         /// </summary>
-        public string GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
             StringBuilder texto = new StringBuilder("Lista de Habilitaciones: \n");
             foreach (string nombreHabilitacion in this.ListaHabilitaciones)

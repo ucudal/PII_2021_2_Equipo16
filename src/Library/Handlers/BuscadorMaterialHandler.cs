@@ -1,5 +1,4 @@
 using System;
-using Telegram.Bot.Types;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -26,18 +25,21 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Message no puede ser nulo.");
+            }
+            
             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
                 {
-                    Console.WriteLine("EntreBuscadorMat");
                     Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
                     if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true))
                     {
-                        Console.WriteLine("EntreBuscadorMat");
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
@@ -50,15 +52,15 @@ namespace ClassLibrary
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
-                if (listaConParam.Count == 0)
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
+                if (listaConParametros.Count == 0)
                 {
-                    respuesta = "Ingrese el Material por el que sea filtrar en su búsqueda.";
+                    respuesta = "Ingrese el Material por el que desea filtrar en su búsqueda.";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
-                    string palabraClave = listaConParam[0];
+                    string palabraClave = listaConParametros[0];
                     
                     LogicaBuscadores.BuscarPorMaterial(palabraClave);
                     respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave));
