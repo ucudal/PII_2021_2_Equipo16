@@ -80,12 +80,7 @@ namespace ClassLibrary
                 
                 else
                 {
-                    foreach (string item in listaComandos)
-                    {
-                        Console.WriteLine(item);
-                    }
-                    
-                    respuesta = $"ListaConParametros es {listaComandos.Count}";
+                    respuesta = $"Algo fue mal";
                     return true;
                 }
             }
