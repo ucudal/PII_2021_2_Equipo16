@@ -158,7 +158,7 @@ namespace ClassLibrary
             text.Append($"******************************\n");
             foreach (string habilitaciones in HabilitacionesDeOferta)
             {
-                text.Append(habilitaciones);
+                text.Append($"{habilitaciones}, ");
             }
 
             return text.ToString();
