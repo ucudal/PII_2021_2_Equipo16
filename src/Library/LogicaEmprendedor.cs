@@ -127,5 +127,9 @@ namespace ClassLibrary
                 return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
             }
         }
+        public static string VerEmprendedor(Emprendedor emprendedor)
+        {
+            return emprendedor.TextoEmprendedor();
+        }
     }
 }
