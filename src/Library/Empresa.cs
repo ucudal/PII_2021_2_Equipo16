@@ -40,13 +40,13 @@ namespace ClassLibrary
         {
             if (nombreEmpresa == this.Nombre)
             {
-                Console.WriteLine("Invitación aceptada");
+                ConsolePrinter.DatoPrinter("Invitación aceptada");
                 
                 // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
             }
             else
             {
-                Console.WriteLine("Invitación inválida, intente otra vez");
+                ConsolePrinter.DatoPrinter("Invitación inválida, intente otra vez");
             }
         }
 
@@ -164,7 +164,7 @@ namespace ClassLibrary
             }
 
             string texto = $"Se vendieron {cantidadVendida} ofertas";
-            Console.WriteLine(texto);
+            ConsolePrinter.DatoPrinter(texto);
             return cantidadVendida;
         }
 

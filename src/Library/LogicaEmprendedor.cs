@@ -28,7 +28,7 @@ namespace ClassLibrary
             }
             else
             {
-                Console.WriteLine("El rubro no existe.");
+                ConsolePrinter.DatoPrinter("El rubro no existe.");
             }      
         }
 
