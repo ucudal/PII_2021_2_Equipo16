@@ -47,11 +47,11 @@ namespace ClassLibrary
             if (!Rubro.RubrosList.Contains(rubro))
             {
                 Rubro.RubrosList.Add(rubro);
-                Console.WriteLine($"Rubro '{rubro}' agregado exitosamente.");
+                ConsolePrinter.DatoPrinter($"Rubro '{rubro}' agregado exitosamente.");
             }
             else
             {
-                Console.WriteLine($"El rubro '{rubro}' ya existe.");
+                ConsolePrinter.DatoPrinter($"El rubro '{rubro}' ya existe.");
             }
         }
 
@@ -62,7 +62,7 @@ namespace ClassLibrary
         public void RemoveRubro(string rubro)
         {
             Rubro.RubrosList.Remove(rubro);
-            Console.WriteLine($"Rubro '{rubro}' eliminado exitosamente.");
+            ConsolePrinter.DatoPrinter($"Rubro '{rubro}' eliminado exitosamente.");
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace ClassLibrary
                 getRubrosList.Append($"- {rubro}.");
             }
 
-            Console.WriteLine(getRubrosList.ToString());
+            ConsolePrinter.DatoPrinter(getRubrosList.ToString());
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace ClassLibrary
             }
             else
             {
-                Console.WriteLine($"El rubro '{rubro}' no existe.");
+                ConsolePrinter.DatoPrinter($"El rubro '{rubro}' no existe.");
                 return false;
             }
         }

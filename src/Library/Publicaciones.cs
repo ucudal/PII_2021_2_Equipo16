@@ -53,7 +53,7 @@ namespace ClassLibrary
                 getOfertasPublicados.Append($"- {oferta.Nombre}.");
             }
 
-            Console.WriteLine(getOfertasPublicados.ToString());
+            ConsolePrinter.DatoPrinter(getOfertasPublicados.ToString());
         }
     }
 }

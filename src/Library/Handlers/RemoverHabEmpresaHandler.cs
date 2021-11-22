@@ -48,7 +48,6 @@ namespace ClassLibrary
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
             {
-                // El mensaje debe tener el formato "Remover habilitacion, Nombre de habilitación".
                 List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
                 if (listaConParametros.Count == 0)
                 {
@@ -74,11 +73,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    foreach (string item in listaConParametros)
-                    {
-                        Console.WriteLine(item);
-                    }
-                    respuesta = $"ListaConParametros es {listaConParametros.Count}";
+                    respuesta = $"Algo fue mal";
                     return true;
                 }
             }

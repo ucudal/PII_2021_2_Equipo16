@@ -47,7 +47,6 @@ namespace ClassLibrary
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabemprendedor") == true)
             {
-                // El mensaje debe tener el formato "Remover habilitacion, x"
                 List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabemprendedor");
                 if (listaConParametros.Count == 0)
                 {
@@ -59,7 +58,6 @@ namespace ClassLibrary
                     string habilitacion = listaConParametros[0];
                     if (Logica.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        //Console.WriteLine("Entro aca111");
                         Emprendedor value = Logica.Emprendedores[mensaje.Id];
                         LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
                         
@@ -75,11 +73,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    foreach (string item in listaConParametros)
-                    {
-                        Console.WriteLine(item);
-                    }
-                    respuesta = $"ListaConParametros es {listaConParametros.Count}";
+                    respuesta = $"Algo fue mal";
                     return true;
                 } 
             }

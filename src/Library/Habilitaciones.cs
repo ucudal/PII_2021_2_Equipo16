@@ -55,7 +55,7 @@ namespace ClassLibrary
         public void AddHabilitacion(string habilitacionBuscada)
         {
             this.ListaHabilitaciones.Add(habilitacionBuscada);
-            Console.WriteLine($"Fue agregada la habilitación '{habilitacionBuscada}' de la lista.");
+            ConsolePrinter.DatoPrinter($"Fue agregada la habilitación '{habilitacionBuscada}' de la lista.");
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace ClassLibrary
         public void RemoveHabilitacion(string habilitacion)
         {
             this.ListaHabilitaciones.Remove(habilitacion);
-            Console.WriteLine($"Fue removida la habilitación '{habilitacion}' de la lista.");
+            ConsolePrinter.DatoPrinter($"Fue removida la habilitación '{habilitacion}' de la lista.");
         }
     }
 }
