@@ -22,79 +22,48 @@ namespace ClassLibrary
         {
         }
 
-        /// <summary>
-        /// Obtiene o establece un valor con el nombre del Rubro.
-        /// </summary>
-        /// <value>Retorna tipo string.</value>
-        public string Nombre { get; set; }
-
-        /// <summary>
-        /// Lista publica para que puedan acceder las demas clases, la lista contiene los objetos rubros creados.
-        /// </summary>
-        /// <returns>Retorna una nueva lista llamada RubrosList de tipo string.</returns>
-        public static List<string> RubrosList = new List<string>()
-            {
-                "textil", "construccion", "comercio", "servicio", "forestal", "comunicaciones", "entretenimiento", "deportes", "industria",
-            };
-
-        /// <summary>
-        /// Añade un rubro a la lista, devuelve un string confirmando la acción.
-        /// </summary>
-        /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
-
-        public void AddRubro(string rubro)
+        public enum Rubros
         {
-            if (!Rubro.RubrosList.Contains(rubro))
-            {
-                Rubro.RubrosList.Add(rubro);
-                ConsolePrinter.DatoPrinter($"Rubro '{rubro}' agregado exitosamente.");
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter($"El rubro '{rubro}' ya existe.");
-            }
+            Textil,
+            Construccion,
+            Comercio,
+
+            Servicio,
+
+            Forestal,
+            Comunicaciones,
+            Entretenimiento,
+            Deportes,
+            Industria,
         }
 
-        /// <summary>
-        /// Elimina un rubro de la lista, devuelve un string confirmando la acción.
-        /// </summary>
-        /// <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
-        public void RemoveRubro(string rubro)
-        {
-            Rubro.RubrosList.Remove(rubro);
-            ConsolePrinter.DatoPrinter($"Rubro '{rubro}' eliminado exitosamente.");
-        }
 
         /// <summary>
-        /// Obtiene lista de rubros.
+        /// Obtiene lista de rubros. Se usa SRP y Expert.
         /// </summary>
-        public void GetRubrosList()
+        public string GetRubros()
         {
             StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
-            foreach (string rubro in Rubro.RubrosList)
+            foreach (Rubros rubro in typeof(Rubros).GetEnumValues())
             {
-                getRubrosList.Append($"- {rubro}.");
+                getRubrosList.Append($"- {rubro.ToString()}.");
             }
 
             ConsolePrinter.DatoPrinter(getRubrosList.ToString());
+            return getRubrosList.ToString();
         }
 
         /// <summary>
-        /// Chequea si un rubro existe en la lista.
+        /// Chequea si un rubro existe en la lista. Se usa SRP y Expert.
         /// </summary>
         /// <param name="rubro">Rubro.</param>
         /// <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
+        
+
         public static bool CheckRubro(string rubro)
         {
-            if (RubrosList.Contains(rubro))
-            {
-                return true;
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter($"El rubro '{rubro}' no existe.");
-                return false;
-            }
+            Rubros rubroE;
+            return Enum.TryParse<Rubros>(rubro, true, out rubroE) ? true : throw new ArgumentException("Por favor ingrese un rubro que exista");
         }
     }
 }

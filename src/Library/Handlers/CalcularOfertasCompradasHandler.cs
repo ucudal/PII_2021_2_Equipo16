@@ -22,9 +22,9 @@ namespace ClassLibrary
         /// En caso contrario retorna false.
         /// </summary>
         /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        protected override bool InternalHandle(IMensaje message, out string respuesta)
         {
             if (Logica.HistorialDeChats.ContainsKey(message.Id))
             {
@@ -41,7 +41,7 @@ namespace ClassLibrary
                     }
                     else
                     {
-                    response = string.Empty;
+                    respuesta = string.Empty;
                     return false;
                     }
                 }
@@ -52,12 +52,12 @@ namespace ClassLibrary
                 List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
-                    response = "Ingrese la fecha de inicio.";
+                    respuesta = "Ingrese la fecha de inicio.";
                     return true;
                 }
                 if (listaConParam.Count == 1)
                 {
-                    response = "Ingrese la fecha final.";
+                    respuesta = "Ingrese la fecha final.";
                     return true;
                 }
                 if (listaConParam.Count == 2)
@@ -68,14 +68,24 @@ namespace ClassLibrary
                     if (Logica.Emprendedores.ContainsKey(message.Id))
                     {
                         Emprendedor value = Logica.Emprendedores[message.Id];
-                        LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
-                        response = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}.";
+
+                        try
+                        {
+                            LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            respuesta = e.Message;
+                            return true;    
+                        }
+
+                        respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}.";
                         return true;
                     }
                 }
             }
             
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

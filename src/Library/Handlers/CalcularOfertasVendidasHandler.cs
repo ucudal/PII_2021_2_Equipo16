@@ -68,7 +68,15 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
-                        LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
+                        try
+                        {
+                            LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            respuesta = e.Message;
+                            return true;
+                        }
 
                         respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}.";
                         return true;

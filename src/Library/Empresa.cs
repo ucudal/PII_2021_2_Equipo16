@@ -153,8 +153,20 @@ namespace ClassLibrary
         public int CalcularOfertasVendidas(string fechaInicio, string fechaFinal)
         {
             int cantidadVendida = 0;
-            DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
-            DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
+            DateTime fInicio;
+
+            if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
+            {
+                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+            }
+            
+            DateTime fFinal;
+
+            if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
+            {
+                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+            }
+
             foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
             {
                 if (par.Key >= fInicio && par.Key <= fFinal)
