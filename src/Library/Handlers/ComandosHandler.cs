@@ -33,7 +33,6 @@ namespace ClassLibrary
 
             if (this.CanHandle(mensaje))
             {
-                Console.WriteLine("Entro a !Comandos");
                 Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 StringBuilder texto = new StringBuilder("Los comandos disponibles son: ");
 
@@ -50,7 +49,6 @@ namespace ClassLibrary
                 texto.Append("\n/removerhabempresa - Use para remover una habilitación propia de su empresa");
                 texto.Append("\n/listadehabilitacionesempresa - Para empresas que quieren ver la lista de habilitaciones que existen");
                 texto.Append("\n/verinteresados - Use si desea ver a todos los interesados en sus ofertas");
-                texto.Append("\n/verempresa - Use si desea ver todos los atributos de la empresa deseada");
                 texto.Append("\n");
                 texto.Append("\n[COMANDOS PARA EMPRENDEDORES]");
                 texto.Append("\n");

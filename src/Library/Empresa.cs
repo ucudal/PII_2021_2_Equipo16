@@ -40,13 +40,13 @@ namespace ClassLibrary
         {
             if (nombreEmpresa == this.Nombre)
             {
-                Console.WriteLine("Invitación aceptada");
+                ConsolePrinter.DatoPrinter("Invitación aceptada");
                 
                 // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
             }
             else
             {
-                Console.WriteLine("Invitación inválida, intente otra vez");
+                ConsolePrinter.DatoPrinter("Invitación inválida, intente otra vez");
             }
         }
 
@@ -153,8 +153,20 @@ namespace ClassLibrary
         public int CalcularOfertasVendidas(string fechaInicio, string fechaFinal)
         {
             int cantidadVendida = 0;
-            DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
-            DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
+            DateTime fInicio;
+
+            if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
+            {
+                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+            }
+            
+            DateTime fFinal;
+
+            if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
+            {
+                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+            }
+
             foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
             {
                 if (par.Key >= fInicio && par.Key <= fFinal)
@@ -164,7 +176,7 @@ namespace ClassLibrary
             }
 
             string texto = $"Se vendieron {cantidadVendida} ofertas";
-            Console.WriteLine(texto);
+            ConsolePrinter.DatoPrinter(texto);
             return cantidadVendida;
         }
 
@@ -219,27 +231,6 @@ namespace ClassLibrary
                 texto.Append("0 interesados");
             }
             return texto.ToString();
-        }
-        
-        /// <summary>
-        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
-        /// ya que conoce lo necesario.
-        /// </summary>
-        /// <returns></returns>
-        public string TextoEmpresa()
-        {
-            StringBuilder text = new StringBuilder();
-            text.Append($"******************************\n");
-            text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Rubro: {this.Rubro} \n");
-            text.Append($"Ubicación: {this.Ubicacion} \n");
-            text.Append($"Habilitaciones: ");
-            foreach (string habilitaciones in HabilitacionesEmpresa)
-            {
-                text.Append($"{habilitaciones}, ");
-            }
-            text.Append($"******************************\n");
-            return text.ToString();
         }
     }
 }
