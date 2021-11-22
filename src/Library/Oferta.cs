@@ -153,7 +153,7 @@ namespace ClassLibrary
             text.Append($"Unidad: {this.Unidad} \n");
             text.Append($"Tag: {this.Tags} \n");
             text.Append($"Ubicación: {this.Ubicacion} \n");
-            text.Append($"Es una oferta {this.Nombre} \n");
+            text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
             text.Append($"******************************\n");
             foreach (string habilitaciones in HabilitacionesDeOferta)
