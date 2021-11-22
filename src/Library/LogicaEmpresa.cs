@@ -42,13 +42,13 @@ namespace ClassLibrary
         {
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
-                Console.WriteLine("El nombre ingresado ya existe, por favor intente de nuevo.");
+                ConsolePrinter.DatoPrinter("El nombre ingresado ya existe, por favor intente de nuevo.");
             }
             else
             {
                 empresa.CrearOferta(Logica.Publicaciones, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
                 Logica.ListaNombreOfertas.Add(nombre);
-                Console.WriteLine("Oferta creada exitosamente.");
+                ConsolePrinter.DatoPrinter("Oferta creada exitosamente.");
             }
         }
 
@@ -61,12 +61,12 @@ namespace ClassLibrary
         {
             if (!Logica.ListaNombreOfertas.Contains(nombre))
             {
-                Console.WriteLine("No existe una oferta con ese nombre, por favor intente de nuevo.");
+                ConsolePrinter.DatoPrinter("No existe una oferta con ese nombre, por favor intente de nuevo.");
             }
             else
             {
                 empresa.EliminarOferta(nombre, Logica.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
-                Console.WriteLine("Oferta eliminada exitosamente");
+                ConsolePrinter.DatoPrinter("Oferta eliminada exitosamente");
             }
         }
 

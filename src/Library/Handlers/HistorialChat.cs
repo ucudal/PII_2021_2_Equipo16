@@ -58,7 +58,7 @@ namespace ClassLibrary
             foreach (string elemento in MensajesDelUser)
             {
                MensajesDelUserReves.Add(elemento); 
-               Console.WriteLine("Este elemento es " + elemento);
+               ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
             
             MensajesDelUserReves.Reverse();

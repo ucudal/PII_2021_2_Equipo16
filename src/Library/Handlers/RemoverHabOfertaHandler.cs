@@ -47,7 +47,6 @@ namespace ClassLibrary
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhaboferta") == true)
             {
-                // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
                 List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhaboferta");
 
                 if (listaConParametros.Count == 0)

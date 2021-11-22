@@ -32,7 +32,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse") == true))
+                    if (!mensaje.Text.StartsWith("/") && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse"))
                     {
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
@@ -75,7 +75,17 @@ namespace ClassLibrary
                     string ubicacionEmprendedor = listaConParametros[2];
                     string rubroEmprendedor = listaConParametros[1];
                     string especializacionesEmprendedor = listaConParametros[0];
-                    LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, mensaje.Id);
+
+                    try
+                    {
+                        LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, mensaje.Id);
+                    }
+                    catch (System.ArgumentException e)
+                    {
+                        respuesta = e.Message;
+                        return true; // Tengo entendido que esto podria ser false ya que en realidad falla. consultar con profe
+                    }
+
                     respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. ";
                     return true;
                 }

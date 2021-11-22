@@ -33,7 +33,6 @@ namespace ClassLibrary
 
             if (this.CanHandle(mensaje))
             {
-                Console.WriteLine("Entro a !Comandos");
                 Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 StringBuilder texto = new StringBuilder("Los comandos disponibles son: ");
 

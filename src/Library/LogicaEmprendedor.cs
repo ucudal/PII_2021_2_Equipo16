@@ -28,7 +28,7 @@ namespace ClassLibrary
             }
             else
             {
-                Console.WriteLine("El rubro no existe.");
+                ConsolePrinter.DatoPrinter("El rubro no existe.");
             }      
         }
 
@@ -102,7 +102,10 @@ namespace ClassLibrary
                     {
                         emprendedor.OfertasInteresado.Add(item);
                         item.Interesado.Add(emprendedor.Nombre);
-                        item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                        if (!item.EmpresaCreadora.InteresadosEnOfertas.Contains(item))
+                        {
+                            item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                        }
                         emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
                     }
                 }

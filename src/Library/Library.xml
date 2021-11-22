@@ -588,7 +588,7 @@
             En caso contrario retorna false.
             </summary>
             <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.CalcularOfertasVendidasHandler">
@@ -1453,38 +1453,14 @@
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
         </member>
-        <member name="P:ClassLibrary.Rubro.Nombre">
+        <member name="M:ClassLibrary.Rubro.GetRubros">
             <summary>
-            Obtiene o establece un valor con el nombre del Rubro.
-            </summary>
-            <value>Retorna tipo string.</value>
-        </member>
-        <member name="F:ClassLibrary.Rubro.RubrosList">
-            <summary>
-            Lista publica para que puedan acceder las demas clases, la lista contiene los objetos rubros creados.
-            </summary>
-            <returns>Retorna una nueva lista llamada RubrosList de tipo string.</returns>
-        </member>
-        <member name="M:ClassLibrary.Rubro.AddRubro(System.String)">
-            <summary>
-            Añade un rubro a la lista, devuelve un string confirmando la acción.
-            </summary>
-            <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
-        </member>
-        <member name="M:ClassLibrary.Rubro.RemoveRubro(System.String)">
-            <summary>
-            Elimina un rubro de la lista, devuelve un string confirmando la acción.
-            </summary>
-            <param name="rubro">Recibe un parametro de tipo string con el nombre de "rubro".</param>
-        </member>
-        <member name="M:ClassLibrary.Rubro.GetRubrosList">
-            <summary>
-            Obtiene lista de rubros.
+            Obtiene lista de rubros. Se usa SRP y Expert.
             </summary>
         </member>
         <member name="M:ClassLibrary.Rubro.CheckRubro(System.String)">
             <summary>
-            Chequea si un rubro existe en la lista.
+            Chequea si un rubro existe en la lista. Se usa SRP y Expert.
             </summary>
             <param name="rubro">Rubro.</param>
             <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
