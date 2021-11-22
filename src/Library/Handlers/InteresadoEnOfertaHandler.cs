@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public InteresadoEnOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/Interesado"};
+            this.Keywords = new string[] {"/interesado"};
         }
         /// <summary>
         /// Este método procesa el mensaje "!InteresadoEnOferta" y retorna true.
@@ -33,7 +33,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/Interesado") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true))
                     {
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
@@ -45,9 +45,9 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/Interesado") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/Interesado");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesado");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta en la que quiera manifestar su interés";

@@ -179,7 +179,7 @@
             </summary>
             <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.GetHabilitacionList">
+        <member name="M:ClassLibrary.Emprendedor.GetListaHabilitaciones">
             <summary>
             Muestra todas las habilitaciones posibles para agregar.
             </summary>
@@ -302,10 +302,16 @@
             </summary>
             <param name="habilitacion">Habilitacion a eliminar.</param>
         </member>
-        <member name="M:ClassLibrary.Empresa.GetHabilitacionList">
+        <member name="M:ClassLibrary.Empresa.GetListaHabilitaciones">
             <summary>
             Muestra todas las habilitaciones posibles para agregar.
             </summary>
+        </member>
+        <member name="M:ClassLibrary.Empresa.VerInteresados">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.Habilitaciones">
             <summary>
@@ -342,7 +348,7 @@
             </summary>
             <param name="habilitacionBuscada"> Recibe un parametro de tipo string del nombre de la habilitación deseada.</param>
         </member>
-        <member name="M:ClassLibrary.Habilitaciones.GetHabilitacionList">
+        <member name="M:ClassLibrary.Habilitaciones.GetListaHabilitaciones">
             <summary>
             Este método imprime en consola la lista de habilitaciones para realizar esto utiliza un StringBuilder y recorre la lista de Habilitaciones.
             </summary>
@@ -429,8 +435,8 @@
             Este método procesa el mensaje "Agregar habilitación" y retorna true.
             En caso contrario retorna false.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.BaseHandler">
@@ -522,8 +528,8 @@
             <summary>
             
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.BuscadorTagHandler">
@@ -541,8 +547,8 @@
             <summary>
             
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.BuscadorUbicacionHandler">
@@ -561,7 +567,7 @@
             
             </summary>
             <param name="mensaje">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.CalcularOfertasCompradasHandler">
@@ -602,8 +608,8 @@
             Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
             En caso contrario retorna false.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.ComandosHandler">
@@ -623,7 +629,7 @@
             
             </summary>
             <param name="mensaje"></param>
-            <param name="response"></param>
+            <param name="respuesta"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.AddHabOfertaHandler">
@@ -641,8 +647,8 @@
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.CrearOfertaHandler">
@@ -660,8 +666,8 @@
             <summary>
             
             </summary>
-            <param name="message"></param>
-            <param name="response"></param>
+            <param name="mensaje"></param>
+            <param name="respuesta"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.EliminarOfertaHandler">
@@ -679,8 +685,8 @@
             <summary>
             Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.GetHabListEmprendedorHandler">
@@ -698,8 +704,8 @@
             <summary>
             Procesa el mensaje "Lista de habilitaciones" y retorna true; retorna false en caso contrario.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.GetLisHabEmpresaHandler">
@@ -719,8 +725,8 @@
             Este método procesa el mensaje "Lista de habilitaciones" y retorna true.
             En caso contrario retorna false.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.HistorialChat">
@@ -770,8 +776,8 @@
             <summary>
             
             </summary>
-            <param name="message"></param>
-            <param name="response"></param>
+            <param name="mensaje"></param>
+            <param name="respuesta"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.IHandler">
@@ -797,8 +803,8 @@
             <summary>
             Procesa el mensaje o la pasa al siguiente "handler" si existe.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
         </member>
         <member name="M:ClassLibrary.IHandler.Cancel">
@@ -825,8 +831,8 @@
             Este método procesa el mensaje "!InteresadoEnOferta" y retorna true.
             En caso contrario retorna false.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.RegistroEmprendedorHandler">
@@ -844,8 +850,8 @@
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.RemoverHabEmprendedor">
@@ -863,8 +869,8 @@
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.RemoveHabEmpresaHandler">
@@ -902,8 +908,8 @@
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.VerInteresados">
@@ -923,8 +929,8 @@
             Este método procesa el mensaje "!VerInteresados" y retorna true.
             En caso contrario retorna false.
             </summary>
-            <param name="message">El mensaje a procesar.</param>
-            <param name="response">La respuesta al mensaje procesado.</param>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.IBuscador">
@@ -965,7 +971,7 @@
             </summary>
             <param name="habilitacion">Recibe un string con el nombre de la habilitacion que se quiere eliminar.</param>
         </member>
-        <member name="M:ClassLibrary.IHabilitaciones.GetHabilitacionList">
+        <member name="M:ClassLibrary.IHabilitaciones.GetListaHabilitaciones">
             <summary>
             Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
             </summary>
@@ -1277,11 +1283,18 @@
             <param name="habilitacion"></param>
             <param name="nombreOferta"></param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.GetHabilitacionList(ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.LogicaEmpresa.GetListaHabilitaciones(ClassLibrary.Empresa)">
             <summary>
             Llama al método GetHabilitacion en empresa con los parametros pasados.
             </summary>
             <param name="empresa">Empresa.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.VerInteresados(ClassLibrary.Empresa)">
+            <summary>
+            
+            </summary>
+            <param name="empresa"></param>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.Oferta">
             <summary>
@@ -1338,6 +1351,11 @@
             Obtiene o establece los Tags de la Oferta.
             </summary>
         </member>
+        <member name="P:ClassLibrary.Oferta.Ubicacion">
+            <summary>
+            Obtiene o establece la Ubicación de la oferta.
+            </summary>
+        </member>
         <member name="P:ClassLibrary.Oferta.Id">
             <summary>
             Obtiene la ID única para cada Oferta.
@@ -1371,7 +1389,7 @@
             </summary>
             <param name="habilitacion">Habilitacion a quitar.</param>
         </member>
-        <member name="M:ClassLibrary.Oferta.GetHabilitacionList">
+        <member name="M:ClassLibrary.Oferta.GetListaHabilitaciones">
             <summary>
             Muestra todas las habilitaciones posibles para agregar.
             </summary>
@@ -1379,11 +1397,6 @@
         <member name="P:ClassLibrary.Oferta.FechaDePublicacion">
             <summary>
             Obtiene la Fecha en la que se publicó la oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.Ubicacion">
-            <summary>
-            Obtiene o establece la Ubicación de la oferta.
             </summary>
         </member>
         <member name="M:ClassLibrary.Oferta.TextoOferta">
