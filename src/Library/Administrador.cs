@@ -4,6 +4,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
+    /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente. 
     /// </summary>
     public class Administrador
     {
@@ -13,10 +14,11 @@ namespace ClassLibrary
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         public Administrador(string nombre)
         {
-            if ( string.IsNullOrEmpty(nombre))
+            if (string.IsNullOrEmpty(nombre))
             {
                 this.Nombre = "Jhon";
             }
+            
             else 
             {
                 this.Nombre = nombre;
@@ -36,12 +38,17 @@ namespace ClassLibrary
         public List<Empresa> Empresas = new List<Empresa>();
 
         /// <summary>
-        /// Este método permite invitar una empresa a unirse a la aplicación.
+        /// 
         /// </summary>
-        /// <param name="empresa">Recibe un objeto de tipo empresa como parametro.</param>
-        public void InvitarEmpresa(Empresa empresa)
+        /// <param name="nombre"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="rubro"></param>
+        public void InvitarEmpresa(string nombre, string ubicacion, string rubro)
         {
+            Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
+            Logica.EmpresasInvitadas.Add(empresa);
+
         }
     }
 }

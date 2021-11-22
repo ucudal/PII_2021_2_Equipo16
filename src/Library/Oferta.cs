@@ -1,10 +1,13 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 
 namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa una oferta.
+    /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     public class Oferta : IHabilitaciones
     {
@@ -24,7 +27,7 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicacion de la oferta.</param>
         /// <param name="empresa">Empresa que publica la oferta.</param>
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public Oferta(string nombre, string material, int precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
+        public Oferta(string nombre, string material, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
             this.Material = material;
@@ -57,7 +60,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece el Precio de la Oferta.
         /// </summary>
-        public int Precio { get; set; }
+        public string Precio { get; set; }
 
         /// <summary>
         /// Obtiene o establece la Cantidad de unidades a ofertar.
@@ -68,6 +71,11 @@ namespace ClassLibrary
         /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
         public string Tags { get; set; }
+
+        /// <summary>
+        /// Obtiene o establece la Ubicación de la oferta.
+        /// </summary>
+        public string Ubicacion { get; set; }
 
         /// <summary>
         /// Obtiene la ID única para cada Oferta.
@@ -114,11 +122,11 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public void GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
-            this.habilitacion.HabilitacionesDisponibles();
+           return this.habilitacion.HabilitacionesDisponibles();
         }
-
+        
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
@@ -129,10 +137,47 @@ namespace ClassLibrary
                 return DateTime.Now;
             }
         }
+        
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+        /// ya que conoce lo necesario.
+        /// </summary>
+        /// <returns></returns>
+        public string TextoOferta()
+        {
+            StringBuilder text = new StringBuilder();
+            text.Append($"******************************\n");
+            text.Append($"Nombre: {this.Nombre} \n");
+            text.Append($"Material: {this.Material} \n");
+            text.Append($"Precio: {this.Precio} \n");
+            text.Append($"Unidad: {this.Unidad} \n");
+            text.Append($"Tag: {this.Tags} \n");
+            text.Append($"Ubicación: {this.Ubicacion} \n");
+            text.Append($"Es una oferta {this.Nombre} \n");
+            text.Append($"Requerimientos: \n");
+            text.Append($"******************************\n");
+            foreach (string habilitaciones in HabilitacionesDeOferta)
+            {
+                text.Append($"{habilitaciones}, ");
+            }
+
+            return text.ToString();
+        }
 
         /// <summary>
-        /// Obtiene o establece la Ubicación de la oferta.
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
+        /// ya que conoce lo necesario.
         /// </summary>
-        public string Ubicacion { get; set; }
+        /// <returns></returns>
+
+        public string TextoInteresados()
+        {
+            StringBuilder texto = new StringBuilder($"\nLos interesados en {this.Nombre} son: ");
+            foreach (string interesado in Interesado)
+            {
+                texto.Append("\n" + interesado);
+            }
+            return texto.ToString();
+        }
     }
 }

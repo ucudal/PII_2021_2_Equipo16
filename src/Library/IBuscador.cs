@@ -5,6 +5,10 @@ namespace ClassLibrary
      /// <summary>
      /// Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
      /// </summary>
+     /// <remarks>
+     /// Mediante el uso de ésta interfaz, se puede incluir el comportamiento de varias fuentes en una clase.
+     /// Por ejemplo, la impletentación que realizan las clases BuscadorMaterial, BuscadorTags y BuscadorUbicacion.
+     /// </remarks>
     public interface IBuscador
     {
         /// <summary>

@@ -16,19 +16,19 @@ namespace Test.Library
         [Test]
         public void TestGeneral1()
         {
-            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil", new Habilitaciones());
+            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil");
             Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", "textil", new Habilitaciones(), "Decorado de interiores");
 
             string expectedEmpresa = "Conaprole";
             string expectedEmprendedor = "Lebron James";
 
             // Quiero como empresa publicar varias oferta.
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Coca-cola ZERO", "Nix", 2000, "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearProducto(empresaConaprole, "Fiat 1", "El mejor de todos", 5500, "Cantidad", "auto", "Aguas verdes", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1", "El mejor de todos", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
 
             int expectedPublicaciones = 3; // Esperado numero de ofertas en lista.
-            Assert.AreEqual(expectedPublicaciones, Logica.PublicacionesA.OfertasPublicados.Count);
+            Assert.AreEqual(expectedPublicaciones, Logica.Publicaciones.OfertasPublicados.Count);
 
             // Quiero como emprendedor buscar bebidas.
             // Al buscar por tags, deberian aparecer 2 opciones.
@@ -50,7 +50,7 @@ namespace Test.Library
             Assert.AreEqual(expectedEmpresa, empresaConaprole.Nombre);
             Assert.AreEqual(expectedEmprendedor, emprendedor1.Nombre);
             Assert.AreEqual(expectedInteresados, empresaConaprole.InteresadosEnOfertas.Count);
-            Assert.AreEqual(expectedPublicaciones1, Logica.PublicacionesA.OfertasPublicados.Count);
+            Assert.AreEqual(expectedPublicaciones1, Logica.Publicaciones.OfertasPublicados.Count);
             Assert.AreEqual(expectedAceptadas, empresaConaprole.OfertasAceptadas.Count);
         }    
     }

@@ -5,6 +5,9 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase contiene a los buscadores.
     /// </summary>
+    /// <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// buscando mantener un equilibrio entre cohesión y acoplamiento.
+    /// </remarks>
     public static class LogicaBuscadores
     {
         /// <summary>
@@ -14,7 +17,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con el Material especificado.</returns>
         public static List<Oferta> BuscarPorMaterial(string busqueda)
         {
-            return Logica.BuscadorMaterial.Buscar(Logica.PublicacionesA, busqueda);
+            return Logica.BuscadorMaterial.Buscar(Logica.Publicaciones, busqueda);
         }
 
         /// <summary>
@@ -25,7 +28,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con el Tag especificado.</returns>
         public static List<Oferta> BuscarPorTags(string busqueda)
         {
-            return Logica.BuscadorTags.Buscar(Logica.PublicacionesA, busqueda);
+            return Logica.BuscadorTags.Buscar(Logica.Publicaciones, busqueda);
         }
 
         /// <summary>
@@ -35,7 +38,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con la Ubicación especificada.</returns>
         public static List<Oferta> BuscarPorUbicacion(string busqueda)
         {
-            return Logica.BuscadorUbicacion.Buscar(Logica.PublicacionesA, busqueda);
+            return Logica.BuscadorUbicacion.Buscar(Logica.Publicaciones, busqueda);
         }
     }
 }

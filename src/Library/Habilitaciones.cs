@@ -5,7 +5,8 @@ using System.Text;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa las habilitaciones existentes.
+    /// Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     public class Habilitaciones : IHabilitaciones
     {
@@ -60,7 +61,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime en consola la lista de habilitaciones para realizar esto utiliza un StringBuilder y recorre la lista de Habilitaciones.
         /// </summary>
-        public void GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
             StringBuilder texto = new StringBuilder("Lista de Habilitaciones: \n");
             foreach (string nombreHabilitacion in this.ListaHabilitaciones)
@@ -68,7 +69,7 @@ namespace ClassLibrary
                 texto.Append($"- {nombreHabilitacion}");
             }
 
-            Console.WriteLine(texto.ToString());
+           return texto.ToString();
         }
 
         /// <summary>

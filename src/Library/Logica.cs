@@ -5,7 +5,7 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de crear y guardar instancias de Publicaciones, BuscadorUbicacion, BuscadorTags, BuscadorMaterial y ConsolePrinter.
     /// </summary>
-    /// <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public static class Logica
@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// <summary>
         /// Guarda una instancia de Publicaciones.
         /// </summary>
-        public static Publicaciones PublicacionesA = Publicaciones.Instance;
+        public static Publicaciones Publicaciones = Publicaciones.Instance;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
@@ -46,5 +46,29 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public static Habilitaciones Habilitaciones = new Habilitaciones(); 
+
+        /// <summary>
+        /// Guarda un conjunto Emprendedor, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, Emprendedor> Emprendedores = new Dictionary<string, Emprendedor>();
+
+        /// <summary>
+        /// Guarda un conjunto Empresa, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
     }
 }

@@ -6,9 +6,17 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
+    /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     public class Emprendedor : Usuario, IHabilitaciones
     {
+        /// <summary>
+        /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
@@ -79,9 +87,9 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public void GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
-           this.Habilitacion.HabilitacionesDisponibles();
+          return this.Habilitacion.HabilitacionesDisponibles();
         }
 
         /// <summary>
@@ -92,21 +100,20 @@ namespace ClassLibrary
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
         {
-            int dineroGastado = 0;
-            int ofertasCompradas1 = 0;
+            int ofertasCompradas = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in this.OfertasInteresado)
+
+            foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
-                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
+                if (par.Key >= fInicio && par.Key <= fFinal)
                 {
-                ofertasCompradas1++;
-                dineroGastado = dineroGastado + oferta.Precio;
+                ofertasCompradas++;
                 }
             }
-
-            Console.WriteLine("Se han comprado " + ofertasCompradas1 + " ofertas, gastando un total de " + dineroGastado + "$");
-            return ofertasCompradas1;
+            string texto = $"Se han comprado {ofertasCompradas} ofertas en el tiempo indicado";
+            ConsolePrinter.DatoPrinter(texto);
+            return ofertasCompradas;
         }
     }
 }

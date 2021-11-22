@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -6,7 +7,17 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa una Empresa, que se encarga de crear Ofertas, eliminarlas, aceptarlas y calcular el consumo de ofertas.
+    /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
+    /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
+    /// <remarks>
+    /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+    /// la clase Empresa tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// Además, utilizamos herencia para lograr una refactorización de código aceptable, ya que sería muy tedioso y
+    /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
+    /// </remarks>
+
     public class Empresa : Usuario, IHabilitaciones
     {
         /// <summary>
@@ -16,10 +27,9 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        /// <param name="habilitacion">Habilitaciones de la empresa.</param>
-        public Empresa(String nombre, String ubicacion, string rubro, Habilitaciones habilitacion) : base(nombre, ubicacion, rubro)
+        public Empresa(String nombre, String ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
-            this.Habilitacion = habilitacion;
+            this.Habilitacion = new Habilitaciones();
         }
 
         /// <summary>
@@ -40,6 +50,11 @@ namespace ClassLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
         private List<string> habilitacionesEmpresa = new List<string>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -70,7 +85,7 @@ namespace ClassLibrary
         /// </summary>
         public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
         /// <summary>
-        /// Crea un producto, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
@@ -83,7 +98,7 @@ namespace ClassLibrary
         /// <remarks>
         /// Se usa Creator.
         /// </remarks>
-        public void CrearProducto(Publicaciones publicaciones, string nombre, string material, int precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
             Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
@@ -93,11 +108,19 @@ namespace ClassLibrary
         /// <summary>
         /// Elimina una oferta creada de las publicaciones.
         /// </summary>
-        /// <param name="oferta">Oferta a eliminar.</param>
+        /// <param name="nombreOfertaParaEliminar">Oferta a eliminar.</param>
         /// <param name="publicaciones">Publicaciones.</param>
-        public static void EliminarProducto(Oferta oferta, Publicaciones publicaciones)
+        public void EliminarOferta(string nombreOfertaParaEliminar, Publicaciones publicaciones)
         {
-            publicaciones.OfertasPublicados.Remove(oferta);
+            Oferta ofertaParaEliminar = null;
+            foreach (Oferta ofertaEnLista in publicaciones.OfertasPublicados)
+            {
+                if (ofertaEnLista.Nombre == nombreOfertaParaEliminar)
+                {
+                    ofertaParaEliminar = ofertaEnLista;   
+                }
+            }
+            publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
         }
 
         /// <summary>
@@ -114,6 +137,7 @@ namespace ClassLibrary
                 {
                     ofertaEncontrada = ofertaEnLista;
                     this.ofertasAceptadas.Add(ofertaEnLista);
+                    this.FechaOfertasEntregadas.Add(DateTime.Now, ofertaEnLista);
                 }
             }
 
@@ -131,15 +155,16 @@ namespace ClassLibrary
             int cantidadVendida = 0;
             DateTime fInicio = DateTime.Parse(fechaInicio, CultureInfo.InvariantCulture);
             DateTime fFinal = DateTime.Parse(fechaFinal, CultureInfo.InvariantCulture);
-            foreach (Oferta oferta in this.ofertasAceptadas)
+            foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
             {
-                if (Oferta.FechaDePublicacion >= fInicio && Oferta.FechaDePublicacion <= fFinal)
+                if (par.Key >= fInicio && par.Key <= fFinal)
                 {
                    cantidadVendida += 1;
                 }
             }
 
-            Console.WriteLine($"Se vendieron {cantidadVendida} ofertas");
+            string texto = $"Se vendieron {cantidadVendida} ofertas";
+            Console.WriteLine(texto);
             return cantidadVendida;
         }
 
@@ -169,9 +194,31 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public void GetHabilitacionList()
+        public string GetListaHabilitaciones()
         {
-            this.Habilitacion.HabilitacionesDisponibles();
+           return this.Habilitacion.HabilitacionesDisponibles();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string VerInteresados()
+        {
+            StringBuilder texto = new StringBuilder("Interesados: ");
+            if (InteresadosEnOfertas.Count > 0)
+            {
+                foreach (Oferta oferta in InteresadosEnOfertas)
+                {
+
+                    texto.Append(oferta.TextoInteresados());
+                }
+            }
+            else
+            {
+                texto.Append("0 interesados");
+            }
+            return texto.ToString();
         }
     }
 }

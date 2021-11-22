@@ -6,6 +6,8 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Contiene un método para llamar a cada método de la clase Emprendedor.
+    /// La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public static class LogicaEmprendedor
     {
@@ -15,13 +17,14 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre del emprendedor.</param>
         /// <param name="ubicacion">Ubicacion del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
-        /// <param name="habilitacion">Habilitacion.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones)
+        /// <param name="id">Id del chat.</param>
+        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
         {
             if (Rubro.CheckRubro(rubro))
             { 
-             Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, habilitacion, especializaciones); 
+                Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
+                Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
             }
             else
             {
@@ -36,7 +39,14 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public static void AddHabilitacion(Emprendedor emprendedor, string habilitacionBuscada)
         {
-            emprendedor.AddHabilitacion(habilitacionBuscada);
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                emprendedor.AddHabilitacion(habilitacionBuscada);
+            }
         }
 
         /// <summary>
@@ -46,16 +56,30 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitación a remover.</param>
         public static void RemoveHabilitacion(Emprendedor emprendedor, string habilitacion)
         {
-            emprendedor.RemoveHabilitacion(habilitacion);
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                emprendedor.RemoveHabilitacion(habilitacion);
+            }
         }
 
         /// <summary>
         /// Este método llama a GetHabilitacionList de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
-        public static void GetHabilitacionList(Emprendedor emprendedor)
+        public static string GetHabilitacionList(Emprendedor emprendedor)
         {
-            emprendedor.GetHabilitacionList();
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                return emprendedor.GetListaHabilitaciones();
+            }
         }
 
         /// <summary>
@@ -66,15 +90,22 @@ namespace ClassLibrary
         // Se hizo en equipo.
         public static void InteresadoEnOferta(Emprendedor emprendedor, string nombreOferta)
         {
-            foreach (Oferta item in Logica.PublicacionesA.OfertasPublicados)
+            if (emprendedor == null)
             {
-               if (item.Nombre == nombreOferta)
-               {
-                emprendedor.OfertasInteresado.Add(item);
-                item.Interesado.Add(emprendedor.Nombre);
-                item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
-
-               } 
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                foreach (Oferta item in Logica.Publicaciones.OfertasPublicados)
+                {
+                    if (item.Nombre == nombreOferta)
+                    {
+                        emprendedor.OfertasInteresado.Add(item);
+                        item.Interesado.Add(emprendedor.Nombre);
+                        item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                        emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
+                    }
+                }
             }
         }
 
@@ -87,7 +118,14 @@ namespace ClassLibrary
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         public static int CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
-            return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+            if (emprendedor == null)
+            {
+                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
+            }
+            else
+            {
+                return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+            }
         }
     }
 }

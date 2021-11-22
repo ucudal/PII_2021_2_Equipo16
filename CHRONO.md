@@ -3,12 +3,30 @@
 Nuestro proyecto final de P2.
 Proxima entrega miércoles 3 de Noviembre, creación del Core del Bot, actualizados CRC y UML.
 
+20/11/21 - Piero Saucedo
+Añadidos Handlers para BuscadorMaterial, BuscadorTag y BuscadorUbicacion.
+Implementadas algunas excepciones.
+
+17/11/21 - Piero Saucedo
+Añadido un nuevo método en ConsolePrinter.
+
+08/11/21 al 17/11/21 - Juan Pérez
+Creación de los handler:
+                        AddHabEmpresaHandler
+                        GetListHabEmrpesaHandler
+                        CalcularOfertasCompradasHandler
+Anexion de comentarios de utilizacion de patrones y principios.
+
 2/11/21 - Ramón Lorenzo
 -Fixes en clase Oferta: Clase terminada con sus tests funcionando y comentarios XML realizados.
 -Fixes en clase Emprendedor: Clase terminada con sus tests funcionando y comentarios XML realizados.
 -Fixes en clase Habilitaciones: Arreglado el constructor, pedía una string cuando no era necesaria. 
 -Fixes en clase HabilitacionesTests: A raíz del problema anterior, todos los tests pasaban a dar error. Solucionado.
 
+
+15/11/21 - Joaquín Pérez
+Correción en Habilitaciones.
+Creación de Handler para obtener lista de habilitaciones y Agregar habilitación.
 
 3/11/21 - Joaquín Pérez
 Correción de los errores en Test de diversas clases.
