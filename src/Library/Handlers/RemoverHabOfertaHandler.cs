@@ -69,7 +69,7 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.RemoveHabilitacionOferta(value, nombreHabParaEliminar, nombreOferta);
                         
-                        respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}.";
+                        respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                     else
@@ -80,7 +80,7 @@ namespace ClassLibrary
                 }
             }
 
-            respuesta = OpcionesUso.AccionesEmpresas();
+            respuesta = string.Empty;
             return false;
         }
     }
