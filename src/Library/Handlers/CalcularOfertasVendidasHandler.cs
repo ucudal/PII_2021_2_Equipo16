@@ -52,12 +52,12 @@ namespace ClassLibrary
                 List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertasvendidas");
                 if (listaConParametros.Count == 0)
                 {
-                    respuesta = "Ingrese la fecha de inicio";
+                    respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd)";
                     return true;
                 }
                 if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese la fecha final";
+                    respuesta = "Ingrese la fecha final(yyyy-MM-dd)";
                     return true;
                 }
                 if (listaConParametros.Count == 2)
@@ -79,6 +79,11 @@ namespace ClassLibrary
                         }
 
                         respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmpresas()}";
+                        return true;
+                    }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
                         return true;
                     }
                 }

@@ -98,6 +98,11 @@ namespace ClassLibrary
                         respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                        return true;
+                    }
                 }
                 else
                 {

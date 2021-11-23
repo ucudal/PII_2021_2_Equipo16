@@ -73,6 +73,11 @@ namespace ClassLibrary
                         respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no tiene permisos para usar este comando.";
+                        return true; 
+                    }
                 }    
                 else
                 {

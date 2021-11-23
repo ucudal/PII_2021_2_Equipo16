@@ -72,6 +72,11 @@ namespace ClassLibrary
                         respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}.";
                         return true;
                     }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                        return true;
+                    }
                 }
             }
 

@@ -319,13 +319,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.Empresa.TextoEmpresa">
-            <summary>
-            Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
-            ya que conoce lo necesario.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:ClassLibrary.Habilitaciones">
             <summary>
             Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
@@ -967,6 +960,7 @@
             <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
+
         <member name="T:ClassLibrary.VerInteresados">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
@@ -1332,7 +1326,7 @@
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.RemoveHabilitacionOferta(ClassLibrary.Empresa,System.String,System.String)">
             <summary>
-            Metodo RemoveHabilitacionOferta de las ofertas de la empresa.
+            
             </summary>
             <param name="empresa"></param>
             <param name="habilitacion"></param>
@@ -1347,13 +1341,6 @@
         <member name="M:ClassLibrary.LogicaEmpresa.VerInteresados(ClassLibrary.Empresa)">
             <summary>
             
-            </summary>
-            <param name="empresa"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.VerEmpresa(ClassLibrary.Empresa)">
-            <summary>
-            Método que devuelve todos los atributos de la empresa
             </summary>
             <param name="empresa"></param>
             <returns></returns>
@@ -1517,12 +1504,12 @@
         </member>
         <member name="M:ClassLibrary.Rubro.GetRubros">
             <summary>
-            Obtiene lista de rubros. Se usa SRP y Expert.
+            Obtiene lista de rubros. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
             </summary>
         </member>
         <member name="M:ClassLibrary.Rubro.CheckRubro(System.String)">
             <summary>
-            Chequea si un rubro existe en la lista. Se usa SRP y Expert.
+            Chequea si un rubro existe en la lista. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
             </summary>
             <param name="rubro">Rubro.</param>
             <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
