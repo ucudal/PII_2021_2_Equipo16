@@ -61,7 +61,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 2)
                 {
-                    respuesta = "Ingrese rubro";
+                    respuesta = $"Ingrese rubro\n {Rubro.GetRubros()}";
                     return true;
                 }
                 if (listaConParametros.Count == 3)
@@ -86,7 +86,7 @@ namespace ClassLibrary
                         return true; // Tengo entendido que esto podria ser false ya que en realidad falla. consultar con profe
                     }
 
-                    respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. ";
+                    respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}.\n Si desea agrgar habilitaciones, use /agregarhabilitacionemprendedor ";
                     return true;
                 }
             }

@@ -39,14 +39,14 @@ namespace ClassLibrary
 
 
         /// <summary>
-        /// Obtiene lista de rubros. Se usa SRP y Expert.
+        /// Obtiene lista de rubros. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
         /// </summary>
-        public string GetRubros()
+        public static string GetRubros()
         {
-            StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
+            StringBuilder getRubrosList = new StringBuilder("Rubros disponibles: \n");
             foreach (Rubros rubro in typeof(Rubros).GetEnumValues())
             {
-                getRubrosList.Append($"- {rubro.ToString()}.");
+                getRubrosList.Append($"- {rubro.ToString()}.\n");
             }
 
             ConsolePrinter.DatoPrinter(getRubrosList.ToString());
@@ -54,7 +54,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Chequea si un rubro existe en la lista. Se usa SRP y Expert.
+        /// Chequea si un rubro existe en la lista. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
         /// </summary>
         /// <param name="rubro">Rubro.</param>
         /// <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
