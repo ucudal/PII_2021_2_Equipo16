@@ -63,7 +63,7 @@ namespace ClassLibrary
                     string palabraClave = listaConParametros[0];
                     
                     LogicaBuscadores.BuscarPorMaterial(palabraClave);
-                    respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave));
+                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }          
             }

@@ -79,7 +79,7 @@ namespace ClassLibrary
                             return true;    
                         }
 
-                        respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}.";
+                        respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }
                     else

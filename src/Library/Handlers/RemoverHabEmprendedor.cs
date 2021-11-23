@@ -61,19 +61,19 @@ namespace ClassLibrary
                         Emprendedor value = Logica.Emprendedores[mensaje.Id];
                         LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
                         
-                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito.";
+                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmprendedor()} ";
                         return true;
                     }
                     else
                     {
-                        respuesta = "Usted no está registrado como Emprendedor";
+                        respuesta = $"Usted no está registrado como Emprendedor. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }
 
                 }
                 else
                 {
-                    respuesta = $"Algo fue mal";
+                    respuesta = $"Algo fue mal. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 } 
             }

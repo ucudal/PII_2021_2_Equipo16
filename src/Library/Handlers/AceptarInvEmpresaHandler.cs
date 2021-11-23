@@ -61,14 +61,14 @@ namespace ClassLibrary
                         if (empresa.Nombre == nombreEmpresa)
                         {
                             Logica.Empresas.Add(mensaje.Id, empresa);
-                            respuesta = $"Gracias por unirte {nombreEmpresa}.\nSi tiene dudas con lo que puede hacer, use\n/comandos";
+                            respuesta = $"Gracias por unirte {nombreEmpresa}. {OpcionesUso.AccionesEmpresas()}";
                             return true;
                         }
                     }
                 }
                 else
                 {
-                    respuesta = "No te has podido unir.";
+                    respuesta = $"No te has podido unir. {OpcionesUso.AccionesEmpresas()}";
                     return true;
                 }
             }

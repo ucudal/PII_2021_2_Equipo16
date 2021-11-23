@@ -95,7 +95,7 @@ namespace ClassLibrary
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
-                        respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}.\nSi desea agregar requerimientos a su oferta\nUse: /crearhaboferta";
+                        respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                     else
@@ -106,7 +106,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    respuesta = "No se ha podido registrar la oferta";
+                    respuesta = "No se ha podido registrar la oferta" +OpcionesUso.AccionesEmpresas();
                     return true;
                 }
             }

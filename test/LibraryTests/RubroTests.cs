@@ -56,7 +56,7 @@ namespace Test.Library
         {
             Rubro rubro = new Rubro();
             int expected = 10;
-            ////rubro.RemoveRubro("Vehículos"); // Como se intenta eliminar algo que no existe, la cantidad se mantiene igual.
+            //rubro.RemoveRubro("Vehículos"); // Como se intenta eliminar algo que no existe, la cantidad se mantiene igual.
             //Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
     }

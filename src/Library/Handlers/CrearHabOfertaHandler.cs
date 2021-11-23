@@ -70,7 +70,7 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
                         
-                        respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}.";
+                        respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                     else
@@ -81,7 +81,7 @@ namespace ClassLibrary
                 }    
                 else
                 {
-                    respuesta = "No se ha podido agregar la habilitación.";
+                    respuesta = $"No se ha podido agregar la habilitación. {OpcionesUso.AccionesEmpresas()}";
                     return true;
                 }         
             }
