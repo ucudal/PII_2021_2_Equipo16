@@ -188,5 +188,14 @@ namespace ClassLibrary
         {
             return empresa.VerInteresados();
         }
+        /// <summary>
+        /// Método que devuelve todos los atributos de la empresa
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
+        public static string VerEmpresa(Empresa empresa)
+        {
+            return empresa.TextoEmpresa();
+        }
     }
 }
