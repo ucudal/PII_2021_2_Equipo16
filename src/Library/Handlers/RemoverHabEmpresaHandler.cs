@@ -63,17 +63,17 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.RemoveHabilitacion(value, habilitacion);
                         
-                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito.";
+                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmpresas()}";
                     }
                     else
                     {
-                        respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa.";
+                        respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa."+OpcionesUso.AccionesEmpresas();
                     }
                     return true;
                 }
                 else
                 {
-                    respuesta = $"Algo fue mal";
+                    respuesta = $"Algo fue mal. {OpcionesUso.AccionesEmpresas()}";
                     return true;
                 }
             }

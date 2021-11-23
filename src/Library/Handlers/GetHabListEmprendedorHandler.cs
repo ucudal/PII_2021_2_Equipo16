@@ -54,13 +54,13 @@ namespace ClassLibrary
                     Emprendedor value = Logica.Emprendedores[mensaje.Id];
                     // Utiliza el metodo de la clase LogicaEmprendedor para obtener la lista de habilitaciones que tiene el Emprendedor en cuestion.
                     string hab = LogicaEmprendedor.GetHabilitacionList(value);
-                    respuesta = $"La lista de habilitaciones es \n{hab} ";
+                    respuesta = $"La lista de habilitaciones es \n{hab}";
                     return true;
                 }
                 else
                 {
                     // En caso de que el Emprendedor no contenga habilitaciones relacionadas.
-                    respuesta = "No se ha podido obtener las habilitaciones";
+                    respuesta = "No se ha podido obtener las habilitaciones"+OpcionesUso.AccionesEmprendedor();
                     return true;
                 }
             }

@@ -61,13 +61,13 @@ namespace ClassLibrary
                     {
                         Emprendedor value = Logica.Emprendedores[mensaje.Id];
                         LogicaEmprendedor.InteresadoEnOferta(value, nombreOferta);
-                        respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa";
+                        respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa.";
                         return true;
                     }
                 }
                 else
                 {
-                    respuesta = "No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente";
+                    respuesta = $"No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
             }

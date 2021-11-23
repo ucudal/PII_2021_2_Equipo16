@@ -75,7 +75,7 @@ namespace ClassLibrary
                 }
             }
 
-            respuesta = string.Empty;
+            respuesta = OpcionesUso.AccionesEmpresas();
             return false;
         }
     }

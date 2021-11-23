@@ -52,7 +52,7 @@ namespace ClassLibrary
                 if (Logica.Empresas.ContainsKey(mensaje.Id))
                 {
                     Empresa value = Logica.Empresas[mensaje.Id];
-                    string texto = LogicaEmpresa.VerEmpresa(value);
+                    string texto = LogicaEmpresa.VerEmpresa(value) +OpcionesUso.AccionesEmpresas();
                     respuesta = texto;
                     return true;
                 }

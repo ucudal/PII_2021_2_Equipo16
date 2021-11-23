@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class HistorialChat
     {
         /// <summary>
-        /// Contiene los mensajes enviador por el Usuario.
+        /// Contiene los mensajes enviados por el Usuario.
         /// </summary>
         /// <returns></returns>
         public List<string> MensajesDelUser = new List<string>();

@@ -52,7 +52,7 @@ namespace ClassLibrary
                 if (Logica.Emprendedores.ContainsKey(mensaje.Id))
                 {
                     Emprendedor value = Logica.Emprendedores[mensaje.Id];
-                    respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)}";
+                    respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)} {OpcionesUso.AccionesEmprendedor()}";
                 }
             }
             

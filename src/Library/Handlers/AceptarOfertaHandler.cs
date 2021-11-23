@@ -67,12 +67,12 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AceptarOferta(value, nombreOfertaParaAceptar);
                         
-                        respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito.";
+                        respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";
                     }
                     
                     else
                     {
-                        respuesta = "No se ha podido aceptar la oferta, usted no está registrado como Empresa.";
+                        respuesta = $"No se ha podido aceptar la oferta, usted no está registrado como Empresa. {OpcionesUso.AccionesEmpresas()} ";
                     }
                     
                     return true;
@@ -80,7 +80,7 @@ namespace ClassLibrary
                 
                 else
                 {
-                    respuesta = $"Algo fue mal";
+                    respuesta = $"Algo fue mal.";
                     return true;
                 }
             }

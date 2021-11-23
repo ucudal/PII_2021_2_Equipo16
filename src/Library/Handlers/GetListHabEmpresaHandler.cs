@@ -67,7 +67,7 @@ namespace ClassLibrary
                     else
                     {
                         // En caso de que la Empresa no contenga habilitaciones relacionadas.
-                        respuesta = "No se han podido obtener las habilitaciones.";
+                        respuesta = "No se han podido obtener las habilitaciones."+OpcionesUso.AccionesEmpresas();
                         return true;
                     }
                 }

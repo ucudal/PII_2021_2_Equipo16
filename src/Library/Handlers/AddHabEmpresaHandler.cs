@@ -63,7 +63,7 @@ namespace ClassLibrary
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AddHabilitacion(value,nuevaHab);
-                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
+                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                 }

@@ -67,12 +67,12 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
                         
-                        respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
+                        respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                     else
                     {
-                        respuesta = "Usted no está registrado como empresa";
+                        respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();
                         return true;
                     }
                 }
