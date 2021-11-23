@@ -61,7 +61,7 @@ namespace ClassLibrary
                         if (empresa.Nombre == nombreEmpresa)
                         {
                             Logica.Empresas.Add(mensaje.Id, empresa);
-                            respuesta = $"Gracias por unirte {nombreEmpresa}.";
+                            respuesta = $"Gracias por unirte {nombreEmpresa}.\nSi tiene dudas con lo que puede hacer, use\n/comandos";
                             return true;
                         }
                     }

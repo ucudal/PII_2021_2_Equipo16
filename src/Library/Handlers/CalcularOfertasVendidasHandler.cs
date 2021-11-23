@@ -81,6 +81,11 @@ namespace ClassLibrary
                         respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}.";
                         return true;
                     }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                        return true;
+                    }
                 }
             }
 

@@ -1455,12 +1455,12 @@
         </member>
         <member name="M:ClassLibrary.Rubro.GetRubros">
             <summary>
-            Obtiene lista de rubros. Se usa SRP y Expert.
+            Obtiene lista de rubros. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
             </summary>
         </member>
         <member name="M:ClassLibrary.Rubro.CheckRubro(System.String)">
             <summary>
-            Chequea si un rubro existe en la lista. Se usa SRP y Expert.
+            Chequea si un rubro existe en la lista. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
             </summary>
             <param name="rubro">Rubro.</param>
             <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>

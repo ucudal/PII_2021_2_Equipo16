@@ -64,6 +64,11 @@ namespace ClassLibrary
                         respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa";
                         return true;
                     }
+                    else
+                    {
+                        respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
+                        return true;
+                    }
                 }
                 else
                 {
