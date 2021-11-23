@@ -65,6 +65,11 @@ namespace ClassLibrary
                         response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
                         return true;
                     }
+                    else
+                    {
+                        response = $"Usted no es un emprendedor, no puede usar este comando.";
+                        return true;
+                    }
                 }
             }
             
