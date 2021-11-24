@@ -30,7 +30,7 @@ namespace ClassLibrary
             List<Oferta> ofertasEncontradas = new List<Oferta>();
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
-                if (busqueda.Equals(oferta.Tags, System.StringComparison.OrdinalIgnoreCase))
+                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda).Equals((LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Tags)), System.StringComparison.OrdinalIgnoreCase))
                 {
                     ofertasEncontradas.Add(oferta);
                     Logica.PrinterConsola.OfertaPrinter(oferta);
