@@ -319,6 +319,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.Empresa.TextoEmpresa">
+            <summary>
+            Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
+            ya que conoce lo necesario.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Habilitaciones">
             <summary>
             Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
@@ -960,7 +967,6 @@
             <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
-
         <member name="T:ClassLibrary.VerInteresados">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
@@ -1251,6 +1257,13 @@
             <param name="fechaFinal">Fecha de final.</param>
             <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         </member>
+        <member name="M:ClassLibrary.LogicaEmprendedor.VerEmprendedor(ClassLibrary.Emprendedor)">
+            <summary>
+            Este método permite crear una ficha del emprendedor en texto, para poder obtener sus datos.
+            </summary>
+            <param name="emprendedor">Recibe por parametro un objeto de tipo Emprendedor.</param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.LogicaEmpresa">
             <summary>
             Esta clase se encarga de la lógica relacionada a Empresa.
@@ -1341,6 +1354,13 @@
         <member name="M:ClassLibrary.LogicaEmpresa.VerInteresados(ClassLibrary.Empresa)">
             <summary>
             
+            </summary>
+            <param name="empresa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.LogicaEmpresa.VerEmpresa(ClassLibrary.Empresa)">
+            <summary>
+            Método que devuelve todos los atributos de la empresa
             </summary>
             <param name="empresa"></param>
             <returns></returns>
@@ -1461,6 +1481,24 @@
             ya que conoce lo necesario.
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.OpcionesUso">
+            <summary>
+            Esta clase contiene los métodos para poder hacer más fácil la tarea de que el usuario ingrese un comando para poder operar en el bot.
+            Se utilizan métodos estaticos porque no se requiere una instanciación de la clase para utilizarlos.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.OpcionesUso.AccionesEmprendedor">
+            <summary>
+            Este método contiene todas las instrucciones que un emprendedor puede llegar a realizar.
+            </summary>
+            <returns>Retorna un string con cada comando.</returns>
+        </member>
+        <member name="M:ClassLibrary.OpcionesUso.AccionesEmpresas">
+            <summary>
+            Este método contiene todas las instrucciones que una empresa puede llegar a utilizar.
+            </summary>
+            <returns>Retorna un string con cada comando.</returns>
         </member>
         <member name="T:ClassLibrary.Publicaciones">
             <summary>

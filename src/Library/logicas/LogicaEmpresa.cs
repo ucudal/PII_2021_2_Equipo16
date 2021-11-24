@@ -43,6 +43,7 @@ namespace ClassLibrary
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
                 ConsolePrinter.DatoPrinter("El nombre ingresado ya existe, por favor intente de nuevo.");
+                throw new ArgumentException("El nombre ingresado ya existe, por favor intente uno nuevo.");
             }
             else
             {
