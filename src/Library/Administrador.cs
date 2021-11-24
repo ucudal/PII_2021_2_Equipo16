@@ -1,4 +1,7 @@
+
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -6,12 +9,14 @@ namespace ClassLibrary
     /// Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
     /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente. 
     /// </summary>
-    public class Administrador
+    public class Administrador : IJsonConvertible
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
         /// </summary>
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
+    
+       [JsonConstructor]
         public Administrador(string nombre)
         {
             if (string.IsNullOrEmpty(nombre))
@@ -50,5 +55,15 @@ namespace ClassLibrary
             Logica.EmpresasInvitadas.Add(empresa);
 
         }
+         public string ConvertToJson()
+        {
+            JsonSerializerOptions options = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };
+
+            return JsonSerializer.Serialize(this, options);
+         }
     }
 }
