@@ -22,7 +22,7 @@ namespace ClassLibrary
             List<Oferta> ofertasEncontradas = new List<Oferta>();
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
-                if (busqueda == oferta.Ubicacion)
+                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Ubicacion))
                 {
                     ofertasEncontradas.Add(oferta);
                     Logica.PrinterConsola.OfertaPrinter(oferta);
