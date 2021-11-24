@@ -252,5 +252,13 @@ namespace ClassLibrary
             text.Append($"******************************\n");
             return text.ToString();
         }
+        /// <summary>
+        /// Método que devuelve las ofertas publicadas por la empresa.
+        /// </summary>
+        /// <returns></returns>
+        public List<Oferta> VerMisOfertas()
+        {
+            return MisOfertas;
+        }
     }
 }

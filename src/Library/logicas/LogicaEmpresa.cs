@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -190,13 +191,22 @@ namespace ClassLibrary
             return empresa.VerInteresados();
         }
         /// <summary>
-        /// Método que devuelve todos los atributos de la empresa
+        /// Método que devuelve todos los atributos de la empresa.
         /// </summary>
         /// <param name="empresa"></param>
         /// <returns></returns>
         public static string VerEmpresa(Empresa empresa)
         {
             return empresa.TextoEmpresa();
+        }
+        /// <summary>
+        /// Método que devuelve las ofertas publicadas por la empresa.
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
+        public static List<Oferta> VerMisOfertas(Empresa empresa)
+        {
+            return empresa.VerMisOfertas();
         }
     }
 }
