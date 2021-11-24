@@ -120,5 +120,42 @@ namespace ClassLibrary
                 this.Next.Cancel();
             }
         }
+
+        /// <summary>
+        /// Se encarga de verificar si se ingresa un comando que corresponda al handler, o si ingresa un mensaje/parametro que corresponda al handler.
+        /// Al hacer este método, se puede reutilizar bastante código.
+        /// Si el HistorialDeChats, no contiene el mensaje.Id, retorna true de todas formas ya que en los handlers, siempre se trabaja con mensaje.Id,
+        /// y si no existe, siempre el handler retornará false y un out string response string.Empty, ya que los handlers son los responsables de encargarse.
+        /// </summary>
+        /// <param name="mensaje"></param>
+        /// <param name="comando"></param>
+        /// <returns></returns>
+        public virtual bool ChequearHandler(IMensaje mensaje, string comando)
+        {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Message no puede ser nulo.");
+            }
+
+            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            {
+                if (this.CanHandle(mensaje))
+                {
+                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                }
+                else
+                {
+                    if (!mensaje.Text.StartsWith("/") && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado(comando))
+                    {
+                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }

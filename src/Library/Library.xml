@@ -526,6 +526,17 @@
             estado inicial.
             </summary>
         </member>
+        <member name="M:ClassLibrary.BaseHandler.ChequearHandler(ClassLibrary.IMensaje,System.String)">
+            <summary>
+            Se encarga de verificar si se ingresa un comando que corresponda al handler, o si ingresa un mensaje/parametro que corresponda al handler.
+            Al hacer este método, se puede reutilizar bastante código.
+            Si el HistorialDeChats, no contiene el mensaje.Id, retorna true de todas formas ya que en los handlers, siempre se trabaja con mensaje.Id,
+            y si no existe, siempre el handler retornará false y un out string response string.Empty, ya que los handlers son los responsables de encargarse.
+            </summary>
+            <param name="mensaje"></param>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.BuscadorMaterialHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
