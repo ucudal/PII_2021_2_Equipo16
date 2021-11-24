@@ -26,25 +26,10 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (!this.ChequearHandler(message, "/calcularofertascompradas"))
             {
-                if (this.CanHandle(message))
-                {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
-                }
-            
-                else
-                {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true))
-                    {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
-                    }
-                    else
-                    {
-                    respuesta = string.Empty;
-                    return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
