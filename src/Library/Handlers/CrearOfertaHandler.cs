@@ -94,7 +94,18 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
-                        LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+
+                        try
+                        {
+                            LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            
+                            respuesta = $"{e.Message}\nUse /crearoferta de nuevo.";
+                            return true;
+                        }
+                        
                         respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
