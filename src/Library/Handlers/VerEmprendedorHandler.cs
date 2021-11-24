@@ -34,11 +34,13 @@ namespace ClassLibrary
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
             {
+                ConsolePrinter.DatoPrinter("Entro en empre");
                 List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
                 if (Logica.Emprendedores.ContainsKey(mensaje.Id))
                 {
                     Emprendedor value = Logica.Emprendedores[mensaje.Id];
                     respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)} {OpcionesUso.AccionesEmprendedor()}";
+                    return true;
                 }
             }
             
