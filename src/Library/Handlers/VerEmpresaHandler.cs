@@ -5,20 +5,20 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class VerEmprendedorHandler : BaseHandler
+    public class VerEmpresaHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerEmprendedorHandler(BaseHandler next):base(next)
+        public VerEmpresaHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"/veremprendedor"};
+            this.Keywords = new string[] {"/verempresa"};
         }
 
         /// <summary>
-        /// Este método procesa el mensaje "/VerEmprendedor" y retorna true.
+        /// Este método procesa el mensaje "!verempresa" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
         /// <param name="mensaje">El mensaje a procesar.</param>
@@ -34,7 +34,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true))
+                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verempresa") == true))
                     {
                         Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
@@ -46,13 +46,16 @@ namespace ClassLibrary
                 }
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verempresa") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
-                if (Logica.Emprendedores.ContainsKey(mensaje.Id))
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
+                if (Logica.Empresas.ContainsKey(mensaje.Id))
                 {
-                    Emprendedor value = Logica.Emprendedores[mensaje.Id];
-                    respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)} {OpcionesUso.AccionesEmprendedor()}";
+                    Empresa value = Logica.Empresas[mensaje.Id];
+                    string texto = LogicaEmpresa.VerEmpresa(value) +OpcionesUso.AccionesEmpresas();
+
+                    respuesta = texto;
+                    return true;
                 }
             }
             

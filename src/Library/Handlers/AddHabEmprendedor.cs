@@ -62,7 +62,12 @@ namespace ClassLibrary
                     {
                         Emprendedor value = Logica.Emprendedores[message.Id];
                         LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
+                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
+                        return true;
+                    }
+                    else
+                    {
+                        response = $"Usted no es un emprendedor, no puede usar este comando.";
                         return true;
                     }
                 }

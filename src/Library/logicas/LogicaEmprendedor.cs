@@ -102,7 +102,10 @@ namespace ClassLibrary
                     {
                         emprendedor.OfertasInteresado.Add(item);
                         item.Interesado.Add(emprendedor.Nombre);
-                        item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                        if (!item.EmpresaCreadora.InteresadosEnOfertas.Contains(item))
+                        {
+                            item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                        }
                         emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
                     }
                 }
@@ -127,6 +130,12 @@ namespace ClassLibrary
                 return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
             }
         }
+
+        /// <summary>
+        /// Este método permite crear una ficha del emprendedor en texto, para poder obtener sus datos.
+        /// </summary>
+        /// <param name="emprendedor">Recibe por parametro un objeto de tipo Emprendedor.</param>
+        /// <returns></returns>
         public static string VerEmprendedor(Emprendedor emprendedor)
         {
             return emprendedor.TextoEmprendedor();

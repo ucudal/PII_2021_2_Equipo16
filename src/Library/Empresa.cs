@@ -232,5 +232,25 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
+        /// ya que conoce lo necesario.
+        /// </summary>
+        /// <returns></returns>
+        public string TextoEmpresa()
+        {
+            StringBuilder text = new StringBuilder();
+            text.Append($"******************************\n");
+            text.Append($"Nombre: {this.Nombre} \n");
+            text.Append($"Rubro: {this.Rubro} \n");
+            text.Append($"Ubicación: {this.Ubicacion} \n");
+            text.Append($"Habilitaciones: ");
+            foreach (string habilitaciones in HabilitacionesEmpresa)
+            {
+                text.Append($"{habilitaciones}, ");
+            }
+            text.Append($"******************************\n");
+            return text.ToString();
+        }
     }
 }
