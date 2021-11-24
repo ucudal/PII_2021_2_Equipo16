@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -43,6 +44,7 @@ namespace ClassLibrary
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
                 ConsolePrinter.DatoPrinter("El nombre ingresado ya existe, por favor intente de nuevo.");
+                throw new ArgumentException("El nombre ingresado ya existe, por favor intente uno nuevo.");
             }
             else
             {
@@ -189,13 +191,22 @@ namespace ClassLibrary
             return empresa.VerInteresados();
         }
         /// <summary>
-        /// Método que devuelve todos los atributos de la empresa
+        /// Método que devuelve todos los atributos de la empresa.
         /// </summary>
         /// <param name="empresa"></param>
         /// <returns></returns>
         public static string VerEmpresa(Empresa empresa)
         {
             return empresa.TextoEmpresa();
+        }
+        /// <summary>
+        /// Método que devuelve las ofertas publicadas por la empresa.
+        /// </summary>
+        /// <param name="empresa"></param>
+        /// <returns></returns>
+        public static List<Oferta> VerMisOfertas(Empresa empresa)
+        {
+            return empresa.VerMisOfertas();
         }
     }
 }

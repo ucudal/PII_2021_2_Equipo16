@@ -30,24 +30,10 @@ namespace ClassLibrary
                 throw new ArgumentNullException("Mensaje no puede ser nulo.");
             }
 
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/buscarubicacion"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)

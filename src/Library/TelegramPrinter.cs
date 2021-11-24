@@ -34,7 +34,6 @@ namespace ClassLibrary
                 textoBusqueda.Append(oferta.TextoOferta()); 
                 textoBusqueda.Append("\n");
             }
-
             return textoBusqueda.ToString();
         }
     }

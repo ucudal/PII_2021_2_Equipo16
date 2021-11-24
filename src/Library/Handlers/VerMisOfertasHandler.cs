@@ -5,16 +5,16 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class VerEmpresaHandler : BaseHandler
+    public class VerMisOfertasHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerEmpresaHandler(BaseHandler next):base(next)
+        public VerMisOfertasHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"/verempresa"};
+            this.Keywords = new string[] {"/vermisofertas"};
         }
 
         /// <summary>
@@ -26,25 +26,24 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/verempresa"))
+            if (!this.ChequearHandler(mensaje, "/vermisofertas"))
             {
                 respuesta = string.Empty;
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verempresa") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/vermisofertas") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/vermisofertas");
                 if (Logica.Empresas.ContainsKey(mensaje.Id))
                 {
                     Empresa value = Logica.Empresas[mensaje.Id];
-                    string texto = LogicaEmpresa.VerEmpresa(value) +OpcionesUso.AccionesEmpresas();
+                    string texto = LogicaEmpresa.VerMisOfertas(value) + OpcionesUso.AccionesEmpresas();
 
                     respuesta = texto;
                     return true;
                 }
             }
-            
             respuesta = string.Empty;
             return false;
         }
