@@ -47,7 +47,16 @@ namespace ClassLibrary
                     if (Logica.Emprendedores.ContainsKey(message.Id))
                     {
                         Emprendedor value = Logica.Emprendedores[message.Id];
-                        LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
+                        try
+                        {
+                            LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            
+                            response = e.Message;
+                            return true;
+                        }
                         response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }

@@ -74,7 +74,7 @@ namespace ClassLibrary
             }
             else
             {
-                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible");
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible, use nuevamente /agregarhabilitacionemprendedor");
             }
         }
 

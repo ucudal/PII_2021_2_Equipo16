@@ -45,7 +45,6 @@ namespace ClassLibrary
         /// </summary>
         public List<string> Interesado = new List<string>();
 
-
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
         /// </summary>
@@ -106,6 +105,10 @@ namespace ClassLibrary
             if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
                 this.HabilitacionesOferta.Add(habilitacionBuscada);
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible, use nuevamente /crearhaboferta");
             }
         }
 
