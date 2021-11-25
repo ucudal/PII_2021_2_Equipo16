@@ -5,7 +5,9 @@
 //--------------------------------------------------------------------------------
 using System;
 using ClassLibrary;
+using System.IO;
 using System.Threading;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot;
@@ -35,8 +37,26 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            if (!System.IO.File.Exists(@"data.json"))
+            {
+        
             Administrador admin = new Administrador("Admin");
             admin.InvitarEmpresa("conaprole", "pakistan", "textil");
+
+            string json = admin.ConvertToJson();
+            System.IO.File.WriteAllText(@"data.json", json);
+            }
+            else
+            {
+                string json = System.IO.File.ReadAllText(@"data.json");
+                    JsonSerializerOptions options = new()
+                {
+                    ReferenceHandler = MyReferenceHandler.Instance,
+                    WriteIndented = true
+                };
+                Administrador admin = JsonSerializer.Deserialize<Administrador>(json,options);
+                admin.ConvertToJson();
+            }
             
             Bot = new TelegramBotClient(Token);
 

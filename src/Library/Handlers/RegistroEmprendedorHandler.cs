@@ -24,24 +24,10 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/registrarse"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if (!mensaje.Text.StartsWith("/") && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse"))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
             
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
@@ -61,7 +47,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 2)
                 {
-                    respuesta = "Ingrese rubro";
+                    respuesta = $"Ingrese rubro\n {ContenedorRubroHabilitaciones.Instancia.textoListaRubros()}";
                     return true;
                 }
                 if (listaConParametros.Count == 3)
@@ -86,7 +72,7 @@ namespace ClassLibrary
                         return true; // Tengo entendido que esto podria ser false ya que en realidad falla. consultar con profe
                     }
 
-                    respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. ";
+                    respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, la ubicacion {ubicacionEmprendedor}, el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
             }

@@ -526,17 +526,6 @@
             estado inicial.
             </summary>
         </member>
-        <member name="M:ClassLibrary.BaseHandler.ChequearHandler(ClassLibrary.IMensaje,System.String)">
-            <summary>
-            Se encarga de verificar si se ingresa un comando que corresponda al handler, o si ingresa un mensaje/parametro que corresponda al handler.
-            Al hacer este método, se puede reutilizar bastante código.
-            Si el HistorialDeChats, no contiene el mensaje.Id, retorna true de todas formas ya que en los handlers, siempre se trabaja con mensaje.Id,
-            y si no existe, siempre el handler retornará false y un out string response string.Empty, ya que los handlers son los responsables de encargarse.
-            </summary>
-            <param name="mensaje"></param>
-            <param name="comando"></param>
-            <returns></returns>
-        </member>
         <member name="T:ClassLibrary.BuscadorMaterialHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -1042,19 +1031,6 @@
             Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
             </summary>
         </member>
-        <member name="T:ClassLibrary.IJsonConvertible">
-            <summary>
-            Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato
-            Json.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.IJsonConvertible.ConvertToJson">
-            <summary>
-            Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en formato
-            Json utilizando JsonSerializer.Deserialize.
-            </summary>
-            <returns>El objeto convertido a texto en formato Json.</returns>
-        </member>
         <member name="T:ClassLibrary.IMensaje">
             <summary>
             Esta interfaz contiene los datos requerido para los envios de mensajes.
@@ -1281,13 +1257,6 @@
             <param name="fechaFinal">Fecha de final.</param>
             <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.VerEmprendedor(ClassLibrary.Emprendedor)">
-            <summary>
-            Este método permite crear una ficha del emprendedor en texto, para poder obtener sus datos.
-            </summary>
-            <param name="emprendedor">Recibe por parametro un objeto de tipo Emprendedor.</param>
-            <returns></returns>
-        </member>
         <member name="T:ClassLibrary.LogicaEmpresa">
             <summary>
             Esta clase se encarga de la lógica relacionada a Empresa.
@@ -1363,7 +1332,7 @@
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.RemoveHabilitacionOferta(ClassLibrary.Empresa,System.String,System.String)">
             <summary>
-            
+            Metodo RemoveHabilitacionOferta de las ofertas de la empresa.
             </summary>
             <param name="empresa"></param>
             <param name="habilitacion"></param>
@@ -1506,24 +1475,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:ClassLibrary.OpcionesUso">
-            <summary>
-            Esta clase contiene los métodos para poder hacer más fácil la tarea de que el usuario ingrese un comando para poder operar en el bot.
-            Se utilizan métodos estaticos porque no se requiere una instanciación de la clase para utilizarlos.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.OpcionesUso.AccionesEmprendedor">
-            <summary>
-            Este método contiene todas las instrucciones que un emprendedor puede llegar a realizar.
-            </summary>
-            <returns>Retorna un string con cada comando.</returns>
-        </member>
-        <member name="M:ClassLibrary.OpcionesUso.AccionesEmpresas">
-            <summary>
-            Este método contiene todas las instrucciones que una empresa puede llegar a utilizar.
-            </summary>
-            <returns>Retorna un string con cada comando.</returns>
-        </member>
         <member name="T:ClassLibrary.Publicaciones">
             <summary>
             Esta clase se encarga de las Publicaciones.
@@ -1566,12 +1517,12 @@
         </member>
         <member name="M:ClassLibrary.Rubro.GetRubros">
             <summary>
-            Obtiene lista de rubros. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
+            Obtiene lista de rubros. Se usa SRP y Expert.
             </summary>
         </member>
         <member name="M:ClassLibrary.Rubro.CheckRubro(System.String)">
             <summary>
-            Chequea si un rubro existe en la lista. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
+            Chequea si un rubro existe en la lista. Se usa SRP y Expert.
             </summary>
             <param name="rubro">Rubro.</param>
             <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>

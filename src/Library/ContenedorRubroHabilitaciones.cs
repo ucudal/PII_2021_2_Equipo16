@@ -76,5 +76,15 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
+
+        public string textoListaRubros()
+        {
+            StringBuilder texto = new StringBuilder();
+            foreach (Rubro item in this.listaRubros)
+            {
+                texto.Append($"-{item.Nombre}\n");
+            }
+            return texto.ToString();
+        }
     }
 }

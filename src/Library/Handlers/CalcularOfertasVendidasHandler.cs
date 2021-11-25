@@ -27,24 +27,10 @@ namespace ClassLibrary
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/calcularofertasvendidas"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertasvendidas") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertasvendidas") == true)
@@ -78,7 +64,12 @@ namespace ClassLibrary
                             return true;
                         }
 
-                        respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}.";
+                        respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmpresas()}";
+                        return true;
+                    }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
                         return true;
                     }
                 }

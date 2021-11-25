@@ -108,5 +108,15 @@ namespace ClassLibrary
                 return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
             }
         }
+
+        /// <summary>
+        /// Este método permite crear una ficha del emprendedor en texto, para poder obtener sus datos.
+        /// </summary>
+        /// <param name="emprendedor">Recibe por parametro un objeto de tipo Emprendedor.</param>
+        /// <returns></returns>
+        public static string VerEmprendedor(Emprendedor emprendedor)
+        {
+            return emprendedor.TextoEmprendedor();
+        }
     }
 }

@@ -25,24 +25,10 @@ namespace ClassLibrary
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/removerhaboferta"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhaboferta") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhaboferta") == true)
@@ -69,7 +55,12 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.RemoveHabilitacionOferta(value, nombreHabParaEliminar, nombreOferta);
                         
-                        respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}.";
+                        respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
+                        return true;
+                    }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
                         return true;
                     }
                 }

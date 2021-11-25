@@ -30,24 +30,10 @@ namespace ClassLibrary
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
             
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/buscarmaterial"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
@@ -63,7 +49,7 @@ namespace ClassLibrary
                     string palabraClave = listaConParametros[0];
                     
                     LogicaBuscadores.BuscarPorMaterial(palabraClave);
-                    respuesta = TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave));
+                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }          
             }

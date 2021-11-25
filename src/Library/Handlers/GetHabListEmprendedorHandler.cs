@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler".</param>
         public GetHabListHandler (BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/listadehabilitacione"};
+            this.Keywords = new string[] {"/listadehabilitaciones"};
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace ClassLibrary
         /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/listadehabilitaciones"))
             {
                 if (this.CanHandle(mensaje))
                 {

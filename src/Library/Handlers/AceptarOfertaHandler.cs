@@ -29,24 +29,10 @@ namespace ClassLibrary
                 throw new ArgumentNullException("Mensaje no puede ser nulo.");
             }
             
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/aceptaroferta"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
@@ -67,12 +53,12 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AceptarOferta(value, nombreOfertaParaAceptar);
                         
-                        respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito.";
+                        respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";
                     }
                     
                     else
                     {
-                        respuesta = "No se ha podido aceptar la oferta, usted no está registrado como Empresa.";
+                        respuesta = $"No se ha podido aceptar la oferta, usted no está registrado como Empresa. {OpcionesUso.AccionesEmpresas()} ";
                     }
                     
                     return true;
@@ -80,7 +66,7 @@ namespace ClassLibrary
                 
                 else
                 {
-                    respuesta = $"Algo fue mal";
+                    respuesta = $"Algo fue mal.";
                     return true;
                 }
             }

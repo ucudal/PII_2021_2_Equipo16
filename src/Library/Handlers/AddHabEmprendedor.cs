@@ -26,24 +26,10 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje message, out string response)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (!this.ChequearHandler(message, "/agregarhabilitacionemprendedor"))
             {
-                if (this.CanHandle(message))
-                {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
-                }
-                else
-                {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true))
-                    {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
-                    }
-                    else
-                    {
-                        response = string.Empty;
-                        return false;
-                    }
-                }
+                response = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
@@ -62,7 +48,12 @@ namespace ClassLibrary
                     {
                         Emprendedor value = Logica.Emprendedores[message.Id];
                         LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
+                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
+                        return true;
+                    }
+                    else
+                    {
+                        response = $"Usted no es un emprendedor, no puede usar este comando.";
                         return true;
                     }
                 }

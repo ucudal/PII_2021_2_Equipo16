@@ -25,24 +25,10 @@ namespace ClassLibrary
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/eliminaroferta"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
@@ -67,12 +53,12 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
                         
-                        respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}.";
+                        respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                     else
                     {
-                        respuesta = "Usted no está registrado como empresa";
+                        respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();
                         return true;
                     }
                 }

@@ -26,24 +26,10 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/removerhabempresa"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
             
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
@@ -63,17 +49,17 @@ namespace ClassLibrary
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.RemoveHabilitacion(value, habilitacion);
                         
-                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito.";
+                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmpresas()}";
                     }
                     else
                     {
-                        respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa.";
+                        respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa."+OpcionesUso.AccionesEmpresas();
                     }
                     return true;
                 }
                 else
                 {
-                    respuesta = $"Algo fue mal";
+                    respuesta = $"Algo fue mal. {OpcionesUso.AccionesEmpresas()}";
                     return true;
                 }
             }

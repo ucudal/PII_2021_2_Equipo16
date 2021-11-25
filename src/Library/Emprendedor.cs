@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 
 namespace ClassLibrary
 {
@@ -124,6 +125,27 @@ namespace ClassLibrary
             string texto = $"Se han comprado {ofertasCompradas} ofertas en el tiempo indicado";
             ConsolePrinter.DatoPrinter(texto);
             return ofertasCompradas;
+        }
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase emprendedor.
+        /// </summary>
+        /// <returns></returns>
+            public string TextoEmprendedor()
+        {
+            StringBuilder text = new StringBuilder();
+            text.Append($"******************************\n");
+            text.Append($"Nombre: {this.Nombre} \n");
+            text.Append($"Material: {this.Ubicacion} \n");
+            text.Append($"Precio: {this.Rubro} \n");
+            text.Append($"Especializaciones: {this.Especializaciones} \n");
+            text.Append($"Requerimientos: \n");
+            text.Append($"******************************\n");
+            foreach (string habilitaciones in HabilitacionesDeEmprendedor)
+            {
+                text.Append($"{habilitaciones}, ");
+            }
+
+            return text.ToString();
         }
     }
 }

@@ -5,20 +5,20 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class VerInteresados : BaseHandler
+    public class VerEmpresaHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerInteresados(BaseHandler next):base(next)
+        public VerEmpresaHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"/verinteresados"};
+            this.Keywords = new string[] {"/verempresa"};
         }
 
         /// <summary>
-        /// Este método procesa el mensaje "!VerInteresados" y retorna true.
+        /// Este método procesa el mensaje "!verempresa" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
         /// <param name="mensaje">El mensaje a procesar.</param>
@@ -26,25 +26,21 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/verinteresados"))
+            if (!this.ChequearHandler(mensaje, "/verempresa"))
             {
                 respuesta = string.Empty;
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verempresa") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verinteresados");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
                 if (Logica.Empresas.ContainsKey(mensaje.Id))
                 {
                     Empresa value = Logica.Empresas[mensaje.Id];
-                    string texto = LogicaEmpresa.VerInteresados(value)+OpcionesUso.AccionesEmpresas();
+                    string texto = LogicaEmpresa.VerEmpresa(value) +OpcionesUso.AccionesEmpresas();
+
                     respuesta = texto;
-                    return true;
-                }
-                else
-                {
-                    respuesta = $"Usted no es una empresa, no puede usar este comando.";
                     return true;
                 }
             }

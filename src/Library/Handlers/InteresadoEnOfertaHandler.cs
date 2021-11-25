@@ -25,24 +25,10 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/interesado"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true)
@@ -61,13 +47,18 @@ namespace ClassLibrary
                     {
                         Emprendedor value = Logica.Emprendedores[mensaje.Id];
                         LogicaEmprendedor.InteresadoEnOferta(value, nombreOferta);
-                        respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa";
+                        respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa.";
+                        return true;
+                    }
+                    else
+                    {
+                        respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
                         return true;
                     }
                 }
                 else
                 {
-                    respuesta = "No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente";
+                    respuesta = $"No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
             }

@@ -26,24 +26,10 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/agregarhabilitacionempresa"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
 
             if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
@@ -63,7 +49,12 @@ namespace ClassLibrary
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
                         LogicaEmpresa.AddHabilitacion(value,nuevaHab);
-                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones.";
+                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}";
+                        return true;
+                    }
+                    else
+                    {
+                        respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
                         return true;
                     }
                 }
