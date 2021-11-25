@@ -45,7 +45,6 @@ namespace ClassLibrary
         /// </summary>
         public List<string> Interesado = new List<string>();
 
-        private Habilitaciones habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
@@ -104,7 +103,7 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
                 this.HabilitacionesOferta.Add(habilitacionBuscada);
             }
@@ -119,13 +118,6 @@ namespace ClassLibrary
             this.HabilitacionesOferta.Remove(habilitacion);
         }
 
-        /// <summary>
-        /// Muestra todas las habilitaciones posibles para agregar.
-        /// </summary>
-        public string GetListaHabilitaciones()
-        {
-           return this.habilitacion.HabilitacionesDisponibles();
-        }
         
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.

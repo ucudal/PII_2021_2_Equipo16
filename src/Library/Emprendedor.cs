@@ -38,19 +38,17 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre del emprededor.</param>
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
-        /// <param name="habilitacion">Habilitaciones del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public Emprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones)
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
             : base(nombre, ubicacion, rubro)
         {
+            if (!ContenedorRubroHabilitaciones.Instancia.ChequearRubro(rubro))
+            {
+                throw new ArgumentException($"{rubro} no se encuentra disponible");
+            }
             this.Especializaciones = especializaciones;
-            this.Habilitacion = habilitacion;
         }
 
-        /// <summary>
-        /// Habilitaciones del emprendedor.
-        /// </summary>
-        public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene una lista de las habilitaciones del emprendedor.
@@ -69,9 +67,13 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
                 this.HabilitacionesEmprendedor.Add(habilitacionBuscada);
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible");
             }
         }
 
@@ -87,10 +89,6 @@ namespace ClassLibrary
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public string GetListaHabilitaciones()
-        {
-          return this.Habilitacion.HabilitacionesDisponibles();
-        }
 
         /// <summary>
         /// Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.

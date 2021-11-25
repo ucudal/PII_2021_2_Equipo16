@@ -170,14 +170,6 @@ namespace ClassLibrary
             }
         }
         
-        /// <summary>
-        /// Llama al método GetHabilitacion en empresa con los parametros pasados.
-        /// </summary>
-        /// <param name="empresa">Empresa.</param>
-        public static string GetListaHabilitaciones(Empresa empresa)
-        {
-            return empresa.GetListaHabilitaciones();
-        }
 
         /// <summary>
         /// 

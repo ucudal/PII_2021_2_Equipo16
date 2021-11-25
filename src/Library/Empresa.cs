@@ -29,7 +29,10 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro de la empresa.</param>
         public Empresa(String nombre, String ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
-            this.Habilitacion = new Habilitaciones();
+            if (!ContenedorRubroHabilitaciones.Instancia.ChequearRubro(rubro))
+            {
+                throw new ArgumentException($"{rubro} no se encuentra disponible");
+            }
         }
 
         /// <summary>
@@ -63,7 +66,6 @@ namespace ClassLibrary
         /// <summary>
         /// Habilitaciones de la empresa.
         /// </summary>
-        public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
@@ -188,9 +190,13 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
                 this.habilitacionesEmpresa.Add(habilitacionBuscada);
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible");
             }
         }
 
@@ -203,13 +209,6 @@ namespace ClassLibrary
             this.habilitacionesEmpresa.Remove(habilitacion);
         }
 
-        /// <summary>
-        /// Muestra todas las habilitaciones posibles para agregar.
-        /// </summary>
-        public string GetListaHabilitaciones()
-        {
-           return this.Habilitacion.HabilitacionesDisponibles();
-        }
 
         /// <summary>
         /// 
