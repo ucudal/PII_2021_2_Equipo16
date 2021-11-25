@@ -43,7 +43,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el nombre de la habilitación que desea agregar.";
+                    respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{ContenedorRubroHabilitaciones.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 2)
@@ -54,7 +54,15 @@ namespace ClassLibrary
                     if (Logica.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Logica.Empresas[mensaje.Id];
-                        LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
+                        try
+                        {
+                            LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            respuesta = e.Message;
+                            return true;
+                        }
                         
                         respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;

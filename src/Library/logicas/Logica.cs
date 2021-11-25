@@ -41,11 +41,6 @@ namespace ClassLibrary
         /// <returns></returns>
         public static List<string> ListaNombreOfertas = new List<string>();
 
-        /// <summary>
-        /// Guarda una instancia de Habilitaciones.
-        /// </summary>
-        /// <returns></returns>
-        public static Habilitaciones Habilitaciones = new Habilitaciones(); 
 
         /// <summary>
         /// Guarda un conjunto Emprendedor, y su chat id.
@@ -70,5 +65,6 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
+
     }
 }

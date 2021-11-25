@@ -21,15 +21,8 @@ namespace ClassLibrary
         /// <param name="id">Id del chat.</param>
         public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
         {
-            if (Rubro.CheckRubro(rubro))
-            { 
-                Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
-                Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter("El rubro no existe.");
-            }      
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones); 
+            Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
         }
 
         /// <summary>
@@ -66,21 +59,6 @@ namespace ClassLibrary
             }
         }
 
-        /// <summary>
-        /// Este método llama a GetHabilitacionList de Emprendedor.
-        /// </summary>
-        /// <param name="emprendedor">Un emprendedor.</param>
-        public static string GetHabilitacionList(Emprendedor emprendedor)
-        {
-            if (emprendedor == null)
-            {
-                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
-            }
-            else
-            {
-                return emprendedor.GetListaHabilitaciones();
-            }
-        }
 
         /// <summary>
         /// Este método llama a InteresadoEnOferta de Emprendedor.

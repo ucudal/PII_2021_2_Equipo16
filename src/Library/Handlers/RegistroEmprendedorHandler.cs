@@ -47,7 +47,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 2)
                 {
-                    respuesta = $"Ingrese rubro\n {Rubro.GetRubros()}";
+                    respuesta = $"Ingrese rubro\n {ContenedorRubroHabilitaciones.Instancia.textoListaRubros()}";
                     return true;
                 }
                 if (listaConParametros.Count == 3)

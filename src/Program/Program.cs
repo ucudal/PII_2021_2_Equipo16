@@ -37,30 +37,16 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            if (!System.IO.File.Exists(@"data.json"))
-            {
+            
         
             Administrador admin = new Administrador("Admin");
             admin.InvitarEmpresa("conaprole", "pakistan", "textil");
 
-            string json = admin.ConvertToJson();
-            System.IO.File.WriteAllText(@"data.json", json);
-            }
-            else
-            {
-                string json = System.IO.File.ReadAllText(@"data.json");
-                    JsonSerializerOptions options = new()
-                {
-                    ReferenceHandler = MyReferenceHandler.Instance,
-                    WriteIndented = true
-                };
-                Administrador admin = JsonSerializer.Deserialize<Administrador>(json,options);
-                admin.ConvertToJson();
-            }
+            
             
             Bot = new TelegramBotClient(Token);
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListEmprendedorHandler(new GetLisHabEmpresaHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new VerMisOfertasHandler(null)))))))))))))))))))))))));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new GetHabListHandler(new VerEmprendedorHandler(null))))))))))))))))))))))));
             
             
             Message message = new Message();
