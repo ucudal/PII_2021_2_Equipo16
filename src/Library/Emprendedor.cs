@@ -45,7 +45,7 @@ namespace ClassLibrary
         {
             if (!ContenedorRubroHabilitaciones.Instancia.ChequearRubro(rubro))
             {
-                throw new ArgumentException($"{rubro} no se encuentra disponible");
+                throw new ArgumentException($"{rubro} no se encuentra disponible. Ingrese de nuevo el comando /registrarse");
             }
             this.Especializaciones = especializaciones;
         }

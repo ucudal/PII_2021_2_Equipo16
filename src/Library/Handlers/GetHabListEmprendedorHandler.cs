@@ -27,13 +27,16 @@ namespace ClassLibrary
         {
             if (!this.ChequearHandler(mensaje, "/listadehabilitaciones"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    respuesta = $"La lista de habilitaciones es:\n{ContenedorRubroHabilitaciones.Instancia.textoListaHabilitaciones()}";
-                    return true;
-                }   
+                respuesta = string.Empty;
+                return false;
+                  
             }
+            if (this.CanHandle(mensaje))
+            {
+                Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                respuesta = $"La lista de habilitaciones es:\n{ContenedorRubroHabilitaciones.Instancia.textoListaHabilitaciones()}";
+                return true;
+            } 
             
             respuesta = string.Empty;
             return false;
