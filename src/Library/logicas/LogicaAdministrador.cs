@@ -38,10 +38,11 @@ namespace ClassLibrary
             }
             else
             {
-                foreach (Empresa empresa in Logica.EmpresasInvitadas)
+                foreach (Empresa empresa in administrador.Empresas)
                 {
                     if (nombreEmpresa == empresa.Nombre)
                     {
+                        administrador.InvitarEmpresa(empresa);
                         ConsolePrinter.DatoPrinter($"Se ha agregado a {empresa.Nombre}.");
                     }
                     else
@@ -65,5 +66,16 @@ namespace ClassLibrary
             administrador.CambioClave(clave, nuevaClave);
         }
 
+        /// <summary>
+        /// Este método crea una nueva empresa conocida por el administrador.
+        /// </summary>
+        /// <param name="administrador">Recibe por parametro el Administrador de referencia.</param>
+        /// <param name="nombreEmpresa">Recibe por parametro el nombre de la empresa.</param>
+        /// <param name="ubicacionEmpresa">Recibe por paramtro la ubicacion de la empresa.</param>
+        /// <param name="rubroEmpresa">Recibe por parametro el rubro al que pertenece la empresa.</param>
+        public static void CrearEmpresa(Administrador administrador, string nombreEmpresa, string ubicacionEmpresa, string rubroEmpresa)
+        {
+            administrador.CrearEmpresa(nombreEmpresa, ubicacionEmpresa, rubroEmpresa);
+        }
     }
 }

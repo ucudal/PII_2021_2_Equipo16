@@ -74,15 +74,22 @@ namespace ClassLibrary
         /// <summary>
         /// Invita a la empresa a unirse en el bot.
         /// </summary>
+        /// <param name="empresa">Recibe por parametro la empresa que va a invitar.</param>
+        public void InvitarEmpresa(Empresa empresa)
+        {
+            Logica.EmpresasInvitadas.Add(empresa);
+        }
+
+        /// <summary>
+        /// Este metodo crea la empresa que el administrador conoce.
+        /// </summary>
         /// <param name="nombre">Recibe el nombre de la empresa como string.</param>
         /// <param name="ubicacion">Recibe la ubicacion de la empresa como un string.</param>
         /// <param name="rubro">Recibe el rubro de la empresa como un string.</param>
-        public void InvitarEmpresa(string nombre, string ubicacion, string rubro)
+        public void CrearEmpresa(string nombre, string ubicacion, string rubro)
         {
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
-            Logica.EmpresasInvitadas.Add(empresa);
-
         }
 
         /// <summary>

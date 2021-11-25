@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/InvitarEmpresa".
+    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/invitarempresa".
     /// </summary>
     public class InvitarEmpresaHandler : BaseHandler
     {
@@ -12,10 +12,9 @@ namespace ClassLibrary
         /// Esta clase procesa los mensajes ingresador por el usuario, con el fin de invitar a una empresa a integrar el bot.
         /// </summary>
         /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        /// <returns></returns>
         public InvitarEmpresaHandler(BaseHandler next) : base(next)
         {
-        this.Keywords = new string[] {"/InvitarEmpresa"};
+        this.Keywords = new string[] {"/invitarempresa"};
         }  
 
         /// <summary>
@@ -27,15 +26,15 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
          protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/InvitarEmpresa"))
+            if (!this.ChequearHandler(mensaje, "/invitarempresa"))
             {
                 respuesta = string.Empty;
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /cambiarClave, entra al if.
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/InvitarEmpresa") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/invitarempresa") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/InvitarEmpresa");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/invitarempresa");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la empresa que desea invitar";
@@ -60,7 +59,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    respuesta = $"No se ha podido, invitar a la empresa. \nIntente nuevamente /InvitarEmpresa \n";
+                    respuesta = $"No se ha podido, invitar a la empresa. \nIntente nuevamente /invitarempresa \n";
                     return true;
                 }              
             }

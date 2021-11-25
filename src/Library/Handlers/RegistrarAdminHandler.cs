@@ -8,13 +8,12 @@ namespace ClassLibrary
     public class RegistrarAdminHandler : BaseHandler
     {
         /// <summary>
-        /// 
+        /// Un "handler" del patrón Chain of Responsability que implementa el comando "/registaradmin".
         /// </summary>
-        /// <param name="next"></param>
-        /// <returns></returns>
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public RegistrarAdminHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/registar_admin"};
+            this.Keywords = new string[] {"/registaradmin"};
         }
 
         /// <summary>
@@ -25,15 +24,15 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/registar_admin"))
+            if (!this.ChequearHandler(mensaje, "/registaradmin"))
             {
                 respuesta = string.Empty;
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registar_admin") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registaradmin") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registar_admin");
+                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registaradmin");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre";
@@ -56,7 +55,7 @@ namespace ClassLibrary
                     catch (System.ArgumentException e)
                     {
                         respuesta = e.Message;
-                        return true; // Tengo entendido que esto podria ser false ya que en realidad falla. consultar con profe
+                        return true; 
                     }
                 
                     respuesta = $"Usted se ha registrado como un Administrador con el nombre {nombreAdmin}. \nPara mayor seguridad debe cambiar su contraseña utilizando el comando /cambiarClave \nQue disfrute el bot.";
