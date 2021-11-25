@@ -40,7 +40,7 @@ namespace ConsoleApplication
             if (!System.IO.File.Exists(@"data.json"))
             {
         
-            Administrador admin = new Administrador("Admin");
+            Administrador admin = new Administrador("Admin","equipo_16");
             admin.InvitarEmpresa("conaprole", "pakistan", "textil");
 
             string json = admin.ConvertToJson();

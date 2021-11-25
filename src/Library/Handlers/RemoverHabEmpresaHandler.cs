@@ -21,9 +21,9 @@ namespace ClassLibrary
         /// <summary>
         /// Se encarga de procesar el mensaje para determinar si se removerá una habilitación.
         /// </summary>
-        /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respusta al mensaje procesado.</param>
-        /// <returns></returns>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/removerhabempresa"))

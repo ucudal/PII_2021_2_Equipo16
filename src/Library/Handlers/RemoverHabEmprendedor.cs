@@ -20,9 +20,9 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
         /// </summary>
-        /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
-        /// <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/removerhabemprendedor"))
