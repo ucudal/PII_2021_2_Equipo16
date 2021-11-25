@@ -33,7 +33,7 @@ namespace ClassLibrary
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesAdministradores()
         {
-            string acciones = $" \nOpciones: \n- /InvitarEmpresa\n- /cambiarClave ";
+            string acciones = $" \nOpciones: \n- /crearempresa \n- /invitarempresa\n- /cambiarclave ";
             return acciones;
         }
     }
