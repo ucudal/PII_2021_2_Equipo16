@@ -31,9 +31,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhaboferta") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhaboferta") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhaboferta");
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhaboferta");
 
                 if (listaConParametros.Count == 0)
                 {
@@ -50,9 +50,9 @@ namespace ClassLibrary
                     string nombreOferta = listaConParametros[1];
                     string nombreHabParaEliminar = listaConParametros[0];
 
-                    if (Logica.Empresas.ContainsKey(mensaje.Id))
+                    if (ContenedorPrincipal.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[mensaje.Id];
+                        Empresa value = ContenedorPrincipal.Instancia.Empresas[mensaje.Id];
                         LogicaEmpresa.RemoveHabilitacionOferta(value, nombreHabParaEliminar, nombreOferta);
                         
                         respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";

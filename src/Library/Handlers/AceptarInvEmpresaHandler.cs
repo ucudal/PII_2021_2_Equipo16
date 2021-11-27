@@ -31,9 +31,9 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el Nombre de su Empresa.";
@@ -42,11 +42,11 @@ namespace ClassLibrary
                 if (listaConParametros.Count == 1)
                 {
                     string nombreEmpresa = listaConParametros[0];
-                    foreach (Empresa empresa in Logica.EmpresasInvitadas)
+                    foreach (Empresa empresa in ContenedorPrincipal.Instancia.EmpresasInvitadas)
                     {
                         if (empresa.Nombre == nombreEmpresa)
                         {
-                            Logica.Empresas.Add(mensaje.Id, empresa);
+                            ContenedorPrincipal.Instancia.Empresas.Add(mensaje.Id, empresa);
                             respuesta = $"Gracias por unirte {nombreEmpresa}. {OpcionesUso.AccionesEmpresas()}";
                             return true;
                         }

@@ -24,15 +24,15 @@ namespace ClassLibrary
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         public static void CrearOferta(Empresa empresa, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
-            if (Logica.ListaNombreOfertas.Contains(nombre))
+            if (ContenedorPrincipal.Instancia.ListaNombreOfertas.Contains(nombre))
             {
                 ConsolePrinter.DatoPrinter("El nombre ingresado ya existe, por favor intente de nuevo.");
                 throw new ArgumentException("El nombre ingresado ya existe, por favor intente uno nuevo.");
             }
             else
             {
-                empresa.CrearOferta(Logica.Publicaciones, nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, constantesPuntuales);
-                Logica.ListaNombreOfertas.Add(nombre);
+                empresa.CrearOferta(ContenedorPrincipal.Instancia.Publicaciones, nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, constantesPuntuales);
+                ContenedorPrincipal.Instancia.ListaNombreOfertas.Add(nombre);
                 ConsolePrinter.DatoPrinter("Oferta creada exitosamente.");
             }
         }
@@ -44,13 +44,13 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la oferta que se desea eliminar.</param>
         public static void EliminarOferta(Empresa empresa, string nombre)
         {
-            if (!Logica.ListaNombreOfertas.Contains(nombre))
+            if (!ContenedorPrincipal.Instancia.ListaNombreOfertas.Contains(nombre))
             {
                 ConsolePrinter.DatoPrinter("No existe una oferta con ese nombre, por favor intente de nuevo.");
             }
             else
             {
-                empresa.EliminarOferta(nombre, Logica.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+                empresa.EliminarOferta(nombre, ContenedorPrincipal.Instancia.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
                 ConsolePrinter.DatoPrinter("Oferta eliminada exitosamente");
             }
         }
@@ -62,7 +62,7 @@ namespace ClassLibrary
         /// <param name="ofertaQueSeAcepta">Nombre de oferta que se desea Aceptar.</param>
         public static void AceptarOferta(Empresa empresa, string ofertaQueSeAcepta)
         {
-            empresa.AceptarOferta(ofertaQueSeAcepta, Logica.Publicaciones);
+            empresa.AceptarOferta(ofertaQueSeAcepta, ContenedorPrincipal.Instancia.Publicaciones);
         }
 
         /// <summary>

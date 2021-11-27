@@ -33,7 +33,7 @@ namespace ClassLibrary
             }
             if (this.CanHandle(mensaje))
             {
-                Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 respuesta = $"La lista de habilitaciones es:\n{ContenedorRubroHabilitaciones.Instancia.textoListaHabilitaciones()}";
                 return true;
             } 

@@ -36,9 +36,9 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el Material por el que desea filtrar en su búsqueda.";

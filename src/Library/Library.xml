@@ -1075,7 +1075,7 @@
             <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String.</param>
             <returns>Devuelve la cadena pero con las modificaciones realizadas.</returns>
         </member>
-        <member name="T:ClassLibrary.Logica">
+        <member name="T:ClassLibrary.ContenedorPrincipal">
             <summary>
             Esta clase se encarga de crear y guardar instancias de Publicaciones, BuscadorUbicacion, BuscadorTags, BuscadorMaterial y ConsolePrinter.
             </summary>
@@ -1083,56 +1083,56 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="F:ClassLibrary.Logica.Publicaciones">
+        <member name="F:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorUbicacion">
+        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorTags">
+        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorMaterial">
+        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.PrinterConsola">
+        <member name="F:ClassLibrary.ContenedorPrincipal.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.ListaNombreOfertas">
+        <member name="F:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.Emprendedores">
+        <member name="F:ClassLibrary.ContenedorPrincipal.Emprendedores">
             <summary>
             Guarda un conjunto Emprendedor, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.Empresas">
+        <member name="F:ClassLibrary.ContenedorPrincipal.Empresas">
             <summary>
             Guarda un conjunto Empresa, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.HistorialDeChats">
+        <member name="F:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.EmpresasInvitadas">
+        <member name="F:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
             <summary>
             
             </summary>

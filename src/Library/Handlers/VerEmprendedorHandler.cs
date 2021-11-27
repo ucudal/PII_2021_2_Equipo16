@@ -32,13 +32,13 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
             {
                 ConsolePrinter.DatoPrinter("Entro en empre");
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
-                if (Logica.Emprendedores.ContainsKey(mensaje.Id))
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
+                if (ContenedorPrincipal.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {
-                    Emprendedor value = Logica.Emprendedores[mensaje.Id];
+                    Emprendedor value = ContenedorPrincipal.Instancia.Emprendedores[mensaje.Id];
                     respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)} {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
