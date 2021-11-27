@@ -70,5 +70,11 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
+
+        /// <summary>
+        /// Guarda un conjunto Administrador, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();
     }
 }

@@ -21,20 +21,20 @@ namespace ClassLibrary
         /// Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
-        /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string respuesta)
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(message, "/calcularofertascompradas"))
+            if (!this.ChequearHandler(mensaje, "/calcularofertascompradas"))
             {
                 respuesta = string.Empty;
                 return false;
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
+            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
+                List<string> listaConParam = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd).";
@@ -50,9 +50,9 @@ namespace ClassLibrary
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-                    if (Logica.Emprendedores.ContainsKey(message.Id))
+                    if (Logica.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Logica.Emprendedores[message.Id];
+                        Emprendedor value = Logica.Emprendedores[mensaje.Id];
 
                         try
                         {
