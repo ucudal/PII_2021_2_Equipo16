@@ -24,7 +24,7 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre de la habilitación.
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string Nombre { get => nombre;}
 
 
     }

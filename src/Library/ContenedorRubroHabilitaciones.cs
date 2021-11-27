@@ -40,7 +40,7 @@ namespace ClassLibrary
         };
 
         public List<Habilitaciones> ListaHabilitaciones { get => listaHabilitaciones;}
-        public List<Rubro> ListaRubros { get => listaRubros; set => listaRubros = value; }
+        public List<Rubro> ListaRubros { get => listaRubros;}
         
 
         public bool ChequearRubro(string rubroString)

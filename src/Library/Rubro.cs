@@ -25,6 +25,6 @@ namespace ClassLibrary
 
         private string nombre;
 
-        public string Nombre { get => nombre; set => nombre = value; }
+        public string Nombre { get => nombre;}
     }
 }

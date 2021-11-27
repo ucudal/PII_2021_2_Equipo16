@@ -11,10 +11,17 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
+        private string nombre;
+        private Material material;
+        private string tags;
+        private Ubicacion ubicacion;
+        private Empresa empresaCreadora;
+        private string constantesPuntuales;
+
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesOferta = new List<Habilitaciones>();
+        public List<Habilitaciones> HabilitacionesOferta { get; } = new List<Habilitaciones>();
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
@@ -29,54 +36,49 @@ namespace ClassLibrary
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
-            this.Nombre = nombre;
-            this.Material = new Material(nombreMaterial, cantidad, precio, unidad);
-            this.Tags = tags;
-            this.Ubicacion = new Ubicacion(ubicacion);
-            this.Id = Guid.NewGuid();
-            this.EmpresaCreadora = empresa;
-            this.ConstantesPuntuales = constantesPuntuales;
+            this.nombre = nombre;
+            this.material = new Material(nombreMaterial, cantidad, precio, unidad);
+            this.tags = tags;
+            this.ubicacion = new Ubicacion(ubicacion);
+            this.empresaCreadora = empresa;
+            this.constantesPuntuales = constantesPuntuales;
         }
 
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public List<string> Interesado = new List<string>();
+        public List<string> Interesado { get; } = new List<string>();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        public string Nombre { get; set; }
+        public string Nombre { get => nombre; }
 
         /// <summary>
         /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        public Material Material { get; set; }
+        public Material Material { get => material; }
 
         /// <summary>
         /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
-        public string Tags { get; set; }
+        public string Tags { get => tags; }
 
         /// <summary>
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        public Ubicacion Ubicacion { get; set; }
+        public Ubicacion Ubicacion { get => ubicacion; }
 
-        /// <summary>
-        /// Obtiene la ID única para cada Oferta.
-        /// </summary>
-        public Guid Id { get; private set; }
 
         /// <summary>
         /// Obtiene o establece la Empresa que publica la Oferta.
         /// </summary>
-        public Empresa EmpresaCreadora { get; set; }
+        public Empresa EmpresaCreadora { get => empresaCreadora; }
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        public string ConstantesPuntuales { get; set; }
+        public string ConstantesPuntuales { get => constantesPuntuales;}
 
 
         /// <summary>
@@ -112,7 +114,7 @@ namespace ClassLibrary
             this.HabilitacionesOferta.Remove(habEliminada);
         }
 
-        
+
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
@@ -123,7 +125,7 @@ namespace ClassLibrary
                 return DateTime.Now;
             }
         }
-        
+
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.

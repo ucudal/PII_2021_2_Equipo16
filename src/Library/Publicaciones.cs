@@ -40,7 +40,7 @@ namespace ClassLibrary
         /// <summary>
         /// Una lista que contiene las ofertas.
         /// </summary>
-        public List<Oferta> OfertasPublicados = new List<Oferta>();
+        public List<Oferta> OfertasPublicados {get;} = new List<Oferta>();
 
         /// <summary>
         /// Este método imprime las ofertas contenidas en OfertasPublicados.

@@ -124,18 +124,18 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
+        <member name="P:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
             <summary>
             Este diccionario contiene las ofertas compradas y la fecha correspondiente.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.OfertasInteresado">
+        <member name="P:ClassLibrary.Emprendedor.OfertasInteresado">
             <summary>
             Ofertas en las que se interesa el emprendedor.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
+        <member name="P:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
             <summary>
             Lista de habilitaciones del emprendedor.
             </summary>
@@ -211,7 +211,7 @@
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
         </member>
-        <member name="F:ClassLibrary.Empresa.FechaOfertasEntregadas">
+        <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
             
             </summary>
@@ -1083,56 +1083,56 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Publicaciones">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorTags">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.PrinterConsola">
+        <member name="P:ClassLibrary.ContenedorPrincipal.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Emprendedores">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
             <summary>
             Guarda un conjunto Emprendedor, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Empresas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
             <summary>
             Guarda un conjunto Empresa, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
+        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
             <summary>
             
             </summary>
@@ -1342,7 +1342,7 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Oferta.HabilitacionesOferta">
+        <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
@@ -1360,7 +1360,7 @@
             <param name="empresa">Empresa que publica la oferta.</param>
             <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         </member>
-        <member name="F:ClassLibrary.Oferta.Interesado">
+        <member name="P:ClassLibrary.Oferta.Interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>
@@ -1383,11 +1383,6 @@
         <member name="P:ClassLibrary.Oferta.Ubicacion">
             <summary>
             Obtiene o establece la Ubicación de la oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.Id">
-            <summary>
-            Obtiene la ID única para cada Oferta.
             </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
@@ -1464,7 +1459,7 @@
             Obtiene una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Publicaciones.OfertasPublicados">
+        <member name="P:ClassLibrary.Publicaciones.OfertasPublicados">
             <summary>
             Una lista que contiene las ofertas.
             </summary>

@@ -16,17 +16,17 @@ namespace ClassLibrary
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
-        public List<Oferta> OfertasInteresado = new List<Oferta>();
+        public List<Oferta> OfertasInteresado {get;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesEmprendedor = new List<Habilitaciones>();
+        public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
 
         private List<Oferta> ofertasCompradas = new List<Oferta>();
 
@@ -43,7 +43,7 @@ namespace ClassLibrary
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
             : base(nombre, ubicacion, rubro)
         {
-            this.Especializaciones = especializaciones;
+            this.especializaciones = especializaciones;
         }
 
 
@@ -55,7 +55,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; set; }
+        public string Especializaciones {get{return this.especializaciones;}}
 
         /// <summary>
         /// Agrega habilitaciones.

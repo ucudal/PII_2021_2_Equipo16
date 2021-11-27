@@ -20,7 +20,7 @@ namespace ClassLibrary
         /// .
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string NombreCalle { get => nombreCalle; set => nombreCalle = value; }
+        public string NombreCalle { get => nombreCalle;}
 
 
     }

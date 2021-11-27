@@ -35,7 +35,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get;} = new Dictionary<DateTime, Oferta>();
         private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -53,17 +53,17 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
-        public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
+        public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas;}
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
-        public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
+        public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas;}
 
         /// <summary>
         /// 
         /// </summary>
-        public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
+        public List<Oferta> MisOfertas { get => this.misOfertas;}
         /// <summary>
         /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
@@ -82,7 +82,7 @@ namespace ClassLibrary
         {   
             Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
-            this.MisOfertas.Add(productoCreado);
+            this.misOfertas.Add(productoCreado);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace ClassLibrary
         public void RemoveHabilitacion(string habilitacion)
         {
             Habilitaciones habEliminada = new Habilitaciones(null);
-            foreach (Habilitaciones hab in habilitacionesEmpresa)
+            foreach (Habilitaciones hab in this.HabilitacionesEmpresa)
             {
                 if (habilitacion == hab.Nombre)
                 {
@@ -203,9 +203,9 @@ namespace ClassLibrary
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");
-            if (InteresadosEnOfertas.Count > 0)
+            if (this.InteresadosEnOfertas.Count > 0)
             {
-                foreach (Oferta oferta in InteresadosEnOfertas)
+                foreach (Oferta oferta in this.InteresadosEnOfertas)
                 {
 
                     texto.Append(oferta.TextoInteresados());
@@ -230,7 +230,7 @@ namespace ClassLibrary
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Habilitaciones: ");
-            foreach (Habilitaciones habilitaciones in HabilitacionesEmpresa)
+            foreach (Habilitaciones habilitaciones in this.HabilitacionesEmpresa)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
