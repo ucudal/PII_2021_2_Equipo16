@@ -24,10 +24,10 @@ namespace ClassLibrary
             List<Oferta> ofertasEncontradas = new List<Oferta>();
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
-                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material))
+                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Nombre))
                 {
                     ofertasEncontradas.Add(oferta);
-                    Logica.PrinterConsola.OfertaPrinter(oferta);
+                    ContenedorPrincipal.Instancia.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
 

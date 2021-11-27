@@ -30,9 +30,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta";
@@ -40,7 +40,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el material";
+                    respuesta = "Ingrese el nombre del material";
                     return true;
                 }
                 else if (listaConParametros.Count == 2)
@@ -55,7 +55,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 4)
                 {
-                    respuesta = "Ingrese un tag";
+                    respuesta = "Ingrese un tag o palabra clave";
                     return true;
                 }
                 else if (listaConParametros.Count == 5)
@@ -70,20 +70,28 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 7)
                 {
-                    string puntualConstante = listaConParametros[0];
-                    string ubicacionOferta = listaConParametros[1];
-                    string tagOferta = listaConParametros[2];
-                    string unidadesOferta = listaConParametros[3];
-                    string precioOferta = listaConParametros[4];
-                    string materialOferta = listaConParametros[5];
-                    string nombreOferta = listaConParametros[6];
-                    if (Logica.Empresas.ContainsKey(mensaje.Id))
+                    respuesta = "Ingrese la cantidad";
+                    return true;
+                }
+                else if (listaConParametros.Count == 8)
+                {
+                    string cantidadMaterial = listaConParametros[0];
+                    string puntualConstante = listaConParametros[1];
+                    string ubicacionOferta = listaConParametros[2];
+                    string tagOferta = listaConParametros[3];
+                    string unidadesOferta = listaConParametros[4];
+                    string precioOferta = listaConParametros[5];
+                    string nombreMaterialOferta = listaConParametros[6];
+                    string nombreOferta = listaConParametros[7];
+                    
+
+                    if (ContenedorPrincipal.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[mensaje.Id];
+                        Empresa value = ContenedorPrincipal.Instancia.Empresas[mensaje.Id];
 
                         try
                         {
-                            LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+                            LogicaEmpresa.CrearOferta(value, nombreOferta, nombreMaterialOferta, cantidadMaterial, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
                         }
                         catch (System.ArgumentException e)
                         {
@@ -92,7 +100,7 @@ namespace ClassLibrary
                             return true;
                         }
                         
-                        respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
+                        respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {nombreMaterialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y el tag {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }
                     else

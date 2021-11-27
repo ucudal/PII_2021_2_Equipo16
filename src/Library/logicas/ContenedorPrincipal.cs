@@ -8,63 +8,81 @@ namespace ClassLibrary
     /// <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
-    public static class Logica
+    public class ContenedorPrincipal
     {
+        private ContenedorPrincipal()
+        {
+        }
+        private static ContenedorPrincipal instancia;
+
+        public static ContenedorPrincipal Instancia
+        {
+            get
+            {
+                if (instancia == null)
+                {
+                    instancia = new ContenedorPrincipal();
+                }
+
+                return instancia;
+            }
+        }
+
         /// <summary>
         /// Guarda una instancia de Publicaciones.
         /// </summary>
-        public static Publicaciones Publicaciones = Publicaciones.Instance;
+        public Publicaciones Publicaciones = Publicaciones.Instance;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
         /// </summary>
-        public static BuscadorUbicacion BuscadorUbicacion = new BuscadorUbicacion();
+        public BuscadorUbicacion BuscadorUbicacion = new BuscadorUbicacion();
 
         /// <summary>
         /// Guarda una instancia de BuscadorTags.
         /// </summary>
-        public static BuscadorTags BuscadorTags = new BuscadorTags();
+        public BuscadorTags BuscadorTags = new BuscadorTags();
 
         /// <summary>
         /// Guarda una instancia de BuscadorMat.
         /// </summary>
-        public static BuscadorMaterial BuscadorMaterial = new BuscadorMaterial();
+        public BuscadorMaterial BuscadorMaterial = new BuscadorMaterial();
 
         /// <summary>
         /// Guarda una instancia de ConsolePrinter.
         /// </summary>
-        public static ConsolePrinter PrinterConsola = new ConsolePrinter();
+        public ConsolePrinter PrinterConsola = new ConsolePrinter();
 
         /// <summary>
         /// Guarda strings con los nombres de oferta para que no se repitan.
         /// </summary>
         /// <returns></returns>
-        public static List<string> ListaNombreOfertas = new List<string>();
+        public List<string> ListaNombreOfertas = new List<string>();
 
 
         /// <summary>
         /// Guarda un conjunto Emprendedor, y su chat id.
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<string, Emprendedor> Emprendedores = new Dictionary<string, Emprendedor>();
+        public Dictionary<string, Emprendedor> Emprendedores = new Dictionary<string, Emprendedor>();
 
         /// <summary>
         /// Guarda un conjunto Empresa, y su chat id.
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
+        public Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
+        public Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public static List<Empresa> EmpresasInvitadas = new List<Empresa>();
+        public List<Empresa> EmpresasInvitadas = new List<Empresa>();
 
     }
 }

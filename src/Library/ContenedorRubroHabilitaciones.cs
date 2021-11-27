@@ -54,6 +54,17 @@ namespace ClassLibrary
             }
             return false;
         }
+        public Rubro GetRubro(string rubroString)
+        {
+            foreach (Rubro rubro in this.ListaRubros)
+            {
+                if (rubro.Nombre == rubroString)
+                {
+                    return rubro;
+                }
+            }
+            return null;
+        }
 
         public bool ChequearHabilitacion(string habilitacionString)
         {
@@ -65,6 +76,18 @@ namespace ClassLibrary
                 }
             }
             return false;
+        }
+
+        public Habilitaciones GetHabilitacion(string habilitacionString)
+        {
+            foreach (Habilitaciones hab in this.ListaHabilitaciones)
+            {
+                if (hab.Nombre == habilitacionString)
+                {
+                    return hab;
+                }
+            }
+            return null;
         }
 
         public string textoListaHabilitaciones()

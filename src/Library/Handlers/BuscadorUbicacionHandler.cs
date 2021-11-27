@@ -36,9 +36,9 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";

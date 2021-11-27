@@ -150,13 +150,11 @@
             <param name="rubro">Rubro del emprendedor.</param>
             <param name="especializaciones">Especializaciones del emprendedor.</param>
         </member>
-        <member name="P:ClassLibrary.Emprendedor.HabilitacionesDeEmprendedor">
+        <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
             Obtiene una lista de las habilitaciones del emprendedor.
             </summary>
             <value>HabilitacionesEmprendedor.</value>
-        </member>
-        <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
             Obtiene o establece las Especializaciones del emprendedor.
             </summary>
@@ -213,12 +211,6 @@
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
         </member>
-        <member name="M:ClassLibrary.Empresa.AceptarInvitacion(System.String)">
-            <summary>
-            Acepta una invitación.
-            </summary>
-            <param name="nombreEmpresa">Nombre de la empresa.</param>
-        </member>
         <member name="F:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
             
@@ -248,7 +240,7 @@
             
             </summary>
         </member>
-        <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
             </summary>
@@ -1083,7 +1075,7 @@
             <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String.</param>
             <returns>Devuelve la cadena pero con las modificaciones realizadas.</returns>
         </member>
-        <member name="T:ClassLibrary.Logica">
+        <member name="T:ClassLibrary.ContenedorPrincipal">
             <summary>
             Esta clase se encarga de crear y guardar instancias de Publicaciones, BuscadorUbicacion, BuscadorTags, BuscadorMaterial y ConsolePrinter.
             </summary>
@@ -1091,56 +1083,56 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="F:ClassLibrary.Logica.Publicaciones">
+        <member name="F:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorUbicacion">
+        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorTags">
+        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorMaterial">
+        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.PrinterConsola">
+        <member name="F:ClassLibrary.ContenedorPrincipal.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.ListaNombreOfertas">
+        <member name="F:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.Emprendedores">
+        <member name="F:ClassLibrary.ContenedorPrincipal.Emprendedores">
             <summary>
             Guarda un conjunto Emprendedor, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.Empresas">
+        <member name="F:ClassLibrary.ContenedorPrincipal.Empresas">
             <summary>
             Guarda un conjunto Empresa, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.HistorialDeChats">
+        <member name="F:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.EmpresasInvitadas">
+        <member name="F:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
             <summary>
             
             </summary>
@@ -1241,14 +1233,7 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.AceptarInvitacion(ClassLibrary.Empresa,System.String)">
-            <summary>
-            Acepta la invitación del administrador.
-            </summary>
-            <param name="empresa">Empresa.</param>
-            <param name="nombreEmpresa">Nombre de la Empresa.</param>
-        </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Llama al método CrearProducto en empresa con los parametros pasados.
             </summary>
@@ -1335,6 +1320,21 @@
             <param name="empresa"></param>
             <returns></returns>
         </member>
+        <member name="T:ClassLibrary.Material">
+            <summary>
+            Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
+            </summary>
+            <remarks>
+            Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+            la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
+            todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
+            </summary>
+        </member>
         <member name="T:ClassLibrary.Oferta">
             <summary>
             Esta clase representa una oferta.
@@ -1347,7 +1347,7 @@
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Oferta"/>.
             </summary>
@@ -1375,16 +1375,6 @@
             Obtiene o establece el Material del producto a ofertar.
             </summary>
         </member>
-        <member name="P:ClassLibrary.Oferta.Precio">
-            <summary>
-            Obtiene o establece el Precio de la Oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.Unidad">
-            <summary>
-            Obtiene o establece la Cantidad de unidades a ofertar.
-            </summary>
-        </member>
         <member name="P:ClassLibrary.Oferta.Tags">
             <summary>
             Obtiene o establece los Tags de la Oferta.
@@ -1409,12 +1399,6 @@
             <summary>
             Obtiene o establece un valor que indica si la Oferta es constante o puntual.
             </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.HabilitacionesDeOferta">
-            <summary>
-            Obtiene una lista de Habilitaciones de la Oferta.
-            </summary>
-            <value>habilitacionesOferta.</value>
         </member>
         <member name="M:ClassLibrary.Oferta.AddHabilitacion(System.String)">
             <summary>
@@ -1552,6 +1536,22 @@
             Este método imprime una string con información.
             </summary>
             <param name="resultadoBusqueda"></param>
+        </member>
+        <member name="T:ClassLibrary.Ubicacion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Ubicacion.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Ubicacion"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Ubicacion.NombreCalle">
+            <summary>
+            .
+            </summary>
+            <value>Valor es un string del nombre.</value>
         </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>

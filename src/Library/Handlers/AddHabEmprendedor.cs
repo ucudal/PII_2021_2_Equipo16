@@ -32,9 +32,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
+            if (ContenedorPrincipal.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
+                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
                 if (listaConParametros.Count == 0)
                 {
@@ -44,9 +44,9 @@ namespace ClassLibrary
                 if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-                    if (Logica.Emprendedores.ContainsKey(message.Id))
+                    if (ContenedorPrincipal.Instancia.Emprendedores.ContainsKey(message.Id))
                     {
-                        Emprendedor value = Logica.Emprendedores[message.Id];
+                        Emprendedor value = ContenedorPrincipal.Instancia.Emprendedores[message.Id];
                         try
                         {
                             LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
