@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -41,8 +43,8 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="habilitacion">Habilitaciones del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public Emprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones)
-            : base(nombre, ubicacion, rubro)
+        [JsonConstructor]
+        public Emprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones): base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
             this.Habilitacion = habilitacion;
@@ -102,7 +104,6 @@ namespace ClassLibrary
         public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
         {
             int ofertasCompradas = 0;
-
             DateTime fInicio;
 
             if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
@@ -116,7 +117,6 @@ namespace ClassLibrary
             {
                 throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
             }
-
             foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
                 if (par.Key >= fInicio && par.Key <= fFinal)
@@ -124,15 +124,17 @@ namespace ClassLibrary
                 ofertasCompradas++;
                 }
             }
+            
             string texto = $"Se han comprado {ofertasCompradas} ofertas en el tiempo indicado";
             ConsolePrinter.DatoPrinter(texto);
             return ofertasCompradas;
         }
+        
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase emprendedor.
         /// </summary>
         /// <returns></returns>
-            public string TextoEmprendedor()
+        public string TextoEmprendedor()
         {
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
@@ -148,6 +150,20 @@ namespace ClassLibrary
             }
 
             return text.ToString();
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertToJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

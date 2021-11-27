@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -27,6 +29,7 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
+        [JsonConstructor]
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = new Habilitaciones();
@@ -259,6 +262,20 @@ namespace ClassLibrary
         public List<Oferta> VerMisOfertas()
         {
             return MisOfertas;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertToJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

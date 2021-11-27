@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -64,7 +63,6 @@ namespace ClassLibrary
             }
         }
         
-
         /// <summary>
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
         /// </summary>

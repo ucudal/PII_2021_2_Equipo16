@@ -22,14 +22,15 @@ namespace ClassLibrary
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public enum Rubros
         {
             Textil,
             Construccion,
             Comercio,
-
             Servicio,
-
             Forestal,
             Comunicaciones,
             Entretenimiento,
