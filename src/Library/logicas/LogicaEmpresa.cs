@@ -12,23 +12,6 @@ namespace ClassLibrary
     public static class LogicaEmpresa
     {
         /// <summary>
-        /// Acepta la invitación del administrador.
-        /// </summary>
-        /// <param name="empresa">Empresa.</param>
-        /// <param name="nombreEmpresa">Nombre de la Empresa.</param>
-        public static void AceptarInvitacion(Empresa empresa, string nombreEmpresa)
-        {
-            if (empresa == null)
-            {
-                throw new ArgumentNullException("La Empresa no puede ser null.");
-            }
-            else
-            {
-                empresa.AceptarInvitacion(nombreEmpresa);
-            }
-        }
-
-        /// <summary>
         /// Llama al método CrearProducto en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que creará la oferta.</param>
@@ -39,7 +22,7 @@ namespace ClassLibrary
         /// <param name="tags">Palabra clave.</param>
         /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public static void CrearOferta(Empresa empresa, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
+        public static void CrearOferta(Empresa empresa, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
             if (Logica.ListaNombreOfertas.Contains(nombre))
             {
@@ -48,7 +31,7 @@ namespace ClassLibrary
             }
             else
             {
-                empresa.CrearOferta(Logica.Publicaciones, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
+                empresa.CrearOferta(Logica.Publicaciones, nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, constantesPuntuales);
                 Logica.ListaNombreOfertas.Add(nombre);
                 ConsolePrinter.DatoPrinter("Oferta creada exitosamente.");
             }

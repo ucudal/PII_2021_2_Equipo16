@@ -27,30 +27,8 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        public Empresa(String nombre, String ubicacion, string rubro) : base(nombre, ubicacion, rubro)
+        public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
-            if (!ContenedorRubroHabilitaciones.Instancia.ChequearRubro(rubro))
-            {
-                throw new ArgumentException($"{rubro} no se encuentra disponible");
-            }
-        }
-
-        /// <summary>
-        /// Acepta una invitación.
-        /// </summary>
-        /// <param name="nombreEmpresa">Nombre de la empresa.</param>
-        public void AceptarInvitacion(string nombreEmpresa)
-        {
-            if (nombreEmpresa == this.Nombre)
-            {
-                ConsolePrinter.DatoPrinter("Invitación aceptada");
-                
-                // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter("Invitación inválida, intente otra vez");
-            }
         }
 
         /// <summary>
@@ -58,7 +36,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
-        private List<string> habilitacionesEmpresa = new List<string>();
+        private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
         private List<Oferta> ofertasAceptadas = new List<Oferta>();
         private List<Oferta> interesadosEnOfertas = new List<Oferta>();
         private List<Oferta> misOfertas = new List<Oferta>();
@@ -70,7 +48,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
-        public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
+        public List<Habilitaciones> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
@@ -100,9 +78,9 @@ namespace ClassLibrary
         /// <remarks>
         /// Se usa Creator.
         /// </remarks>
-        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
+            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
             this.MisOfertas.Add(productoCreado);
         }
@@ -192,7 +170,7 @@ namespace ClassLibrary
         {
             if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.habilitacionesEmpresa.Add(habilitacionBuscada);
+                this.habilitacionesEmpresa.Add(ContenedorRubroHabilitaciones.Instancia.GetHabilitacion(habilitacionBuscada));
             }
             else
             {
@@ -206,7 +184,15 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a eliminar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.habilitacionesEmpresa.Remove(habilitacion);
+            Habilitaciones habEliminada = new Habilitaciones(null);
+            foreach (Habilitaciones hab in habilitacionesEmpresa)
+            {
+                if (habilitacion == hab.Nombre)
+                {
+                    habEliminada = hab;
+                }
+            }
+            this.habilitacionesEmpresa.Remove(habEliminada);
         }
 
 
@@ -241,12 +227,12 @@ namespace ClassLibrary
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Rubro: {this.Rubro} \n");
-            text.Append($"Ubicación: {this.Ubicacion} \n");
+            text.Append($"Rubro: {this.Rubro.Nombre} \n");
+            text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Habilitaciones: ");
-            foreach (string habilitaciones in HabilitacionesEmpresa)
+            foreach (Habilitaciones habilitaciones in HabilitacionesEmpresa)
             {
-                text.Append($"{habilitaciones}, ");
+                text.Append($"{habilitaciones.Nombre}, ");
             }
             text.Append($"******************************\n");
             return text.ToString();

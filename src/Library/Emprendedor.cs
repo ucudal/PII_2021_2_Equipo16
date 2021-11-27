@@ -26,7 +26,7 @@ namespace ClassLibrary
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<string> HabilitacionesEmprendedor = new List<string>();
+        public List<Habilitaciones> HabilitacionesEmprendedor = new List<Habilitaciones>();
 
         private List<Oferta> ofertasCompradas = new List<Oferta>();
 
@@ -43,10 +43,6 @@ namespace ClassLibrary
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
             : base(nombre, ubicacion, rubro)
         {
-            if (!ContenedorRubroHabilitaciones.Instancia.ChequearRubro(rubro))
-            {
-                throw new ArgumentException($"{rubro} no se encuentra disponible. Ingrese de nuevo el comando /registrarse");
-            }
             this.Especializaciones = especializaciones;
         }
 
@@ -55,7 +51,6 @@ namespace ClassLibrary
         /// Obtiene una lista de las habilitaciones del emprendedor.
         /// </summary>
         /// <value>HabilitacionesEmprendedor.</value>
-        public List<string> HabilitacionesDeEmprendedor { get => this.HabilitacionesEmprendedor; }
 
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
@@ -70,7 +65,7 @@ namespace ClassLibrary
         {
             if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.HabilitacionesEmprendedor.Add(habilitacionBuscada);
+                this.HabilitacionesEmprendedor.Add(ContenedorRubroHabilitaciones.Instancia.GetHabilitacion(habilitacionBuscada));
             }
             else
             {
@@ -84,7 +79,15 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.HabilitacionesEmprendedor.Remove(habilitacion);
+            Habilitaciones habEliminada = new Habilitaciones(null);
+            foreach (Habilitaciones hab in HabilitacionesEmprendedor)
+            {
+                if (habilitacion == hab.Nombre)
+                {
+                    habEliminada = hab;
+                }
+            }
+            this.HabilitacionesEmprendedor.Remove(habEliminada);
         }
 
         /// <summary>
@@ -135,14 +138,14 @@ namespace ClassLibrary
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Material: {this.Ubicacion} \n");
-            text.Append($"Precio: {this.Rubro} \n");
+            text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
+            text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
             text.Append($"Requerimientos: \n");
             text.Append($"******************************\n");
-            foreach (string habilitaciones in HabilitacionesDeEmprendedor)
+            foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {
-                text.Append($"{habilitaciones}, ");
+                text.Append($"{habilitaciones.Nombre}, ");
             }
 
             return text.ToString();
