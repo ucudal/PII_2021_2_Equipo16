@@ -11,12 +11,18 @@ namespace ClassLibrary
     /// /// </summary>
     public class ContenedorRubroHabilitaciones
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public ContenedorRubroHabilitaciones()
         {
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Rubro> ListaRubros {get;} = new List<Rubro>()
         {
             new Rubro("textil"),
@@ -24,6 +30,10 @@ namespace ClassLibrary
             new Rubro("deportes"),
         };
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public List<Habilitaciones> ListaHabilitaciones {get;} = new List<Habilitaciones>()
         {
             new Habilitaciones("apa"),

@@ -32,21 +32,12 @@ namespace ClassLibrary
                 return false;
             }
 
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true)
-            {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verinteresados");
-                if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                {
-                    Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
-=======
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verinteresados");
                 if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                 {
                     Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
->>>>>>> deV2
                     string texto = LogicaEmpresa.VerInteresados(value)+OpcionesUso.AccionesEmpresas();
                     respuesta = texto;
                     return true;

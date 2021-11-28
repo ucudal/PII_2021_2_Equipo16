@@ -32,38 +32,21 @@ namespace ClassLibrary
                 return false;
             }
 
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
                 if (listaConParametros.Count == 0)
                 {
-                    respuesta = "Ingrese la habilitación que desea agregar.";
-=======
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
-            {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
-                
-                if (listaConParametros.Count == 0)
-                {
-                    response = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
->>>>>>> deV2
+                    respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-<<<<<<< HEAD
-                    if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
-                        LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
-                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
-=======
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(message.Id))
-                    {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[message.Id];
+                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
                         try
                         {
                             LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
@@ -71,11 +54,10 @@ namespace ClassLibrary
                         catch (System.ArgumentException e)
                         {
                             
-                            response = e.Message;
+                            respuesta = e.Message;
                             return true;
                         }
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
->>>>>>> deV2
+                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }
                     else

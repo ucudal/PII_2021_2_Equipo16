@@ -32,9 +32,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearempresa") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearempresa") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearempresa");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearempresa");
                 
                 if (listaConParametros.Count == 0)
                 {
@@ -57,9 +57,9 @@ namespace ClassLibrary
                     string empresaUbicacion = listaConParametros[1];
                     string empresaRubro = listaConParametros[0];
 
-                    if (Singleton<Logica>.Instancia.Administradores.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
                     {
-                        Administrador value = Singleton<Logica>.Instancia.Administradores[mensaje.Id];
+                        Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
                         LogicaAdministrador.CrearEmpresa(value, empresaNombre, empresaUbicacion, empresaRubro);
                         respuesta = $"Se ha creado la empresa '{empresaNombre}' la cual esta ubicada en '{empresaUbicacion}' y su rubro es '{empresaRubro}'. {OpcionesUso.AccionesAdministradores()}";
                         return true;

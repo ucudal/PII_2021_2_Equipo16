@@ -31,15 +31,9 @@ namespace ClassLibrary
                 return false;
             }
             
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
-            {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
-=======
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
->>>>>>> deV2
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el Nombre de su Empresa.";
@@ -48,19 +42,11 @@ namespace ClassLibrary
                 if (listaConParametros.Count == 1)
                 {
                     string nombreEmpresa = listaConParametros[0];
-<<<<<<< HEAD
-                    foreach (Empresa empresa in Singleton<Logica>.Instancia.EmpresasInvitadas)
-                    {
-                        if (empresa.Nombre == nombreEmpresa)
-                        {
-                            Singleton<Logica>.Instancia.Empresas.Add(mensaje.Id, empresa);
-=======
                     foreach (Empresa empresa in Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas)
                     {
                         if (empresa.Nombre == nombreEmpresa)
                         {
                             Singleton<ContenedorPrincipal>.Instancia.Empresas.Add(mensaje.Id, empresa);
->>>>>>> deV2
                             respuesta = $"Gracias por unirte {nombreEmpresa}. {OpcionesUso.AccionesEmpresas()}";
                             return true;
                         }

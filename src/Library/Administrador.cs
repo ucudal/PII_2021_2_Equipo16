@@ -75,7 +75,7 @@ namespace ClassLibrary
         /// <param name="empresa">Recibe por parametro la empresa que va a invitar.</param>
         public void InvitarEmpresa(Empresa empresa)
         {
-            Singleton<Logica>.Instancia.EmpresasInvitadas.Add(empresa);
+            Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
         }
 
         /// <summary>
@@ -88,26 +88,23 @@ namespace ClassLibrary
         {
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
-<<<<<<< HEAD
-=======
             Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
 
->>>>>>> deV2
         }
 
         /// <summary>
         /// Convierte a formato .Json.
         /// </summary>
         /// <returns>Tipo string.</returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
-            JsonSerializerOptions options = new()
+            JsonSerializerOptions opciones = new()
             {
+                WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this, options);
-         }
+            return JsonSerializer.Serialize(this, opciones);
+        }
     }
 }

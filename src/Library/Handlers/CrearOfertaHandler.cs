@@ -30,15 +30,9 @@ namespace ClassLibrary
                 return false;
             }
 
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
-            {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
-=======
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
->>>>>>> deV2
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta";
@@ -76,18 +70,6 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 7)
                 {
-<<<<<<< HEAD
-                    string puntualConstante = listaConParametros[0];
-                    string ubicacionOferta = listaConParametros[1];
-                    string tagOferta = listaConParametros[2];
-                    string unidadesOferta = listaConParametros[3];
-                    string precioOferta = listaConParametros[4];
-                    string materialOferta = listaConParametros[5];
-                    string nombreOferta = listaConParametros[6];
-                    if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                    {
-                        Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
-=======
                     respuesta = "Ingrese la cantidad";
                     return true;
                 }
@@ -106,7 +88,6 @@ namespace ClassLibrary
                     if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
->>>>>>> deV2
 
                         try
                         {

@@ -32,15 +32,9 @@ namespace ClassLibrary
                 return false;
             }
 
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
             {
-                List<string> listaConParam = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
-=======
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
-            {
-                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
->>>>>>> deV2
+                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd).";
@@ -56,15 +50,9 @@ namespace ClassLibrary
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-<<<<<<< HEAD
-                    if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
-=======
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(message.Id))
-                    {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[message.Id];
->>>>>>> deV2
+                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
 
                         try
                         {

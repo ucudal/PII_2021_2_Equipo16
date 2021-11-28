@@ -36,15 +36,9 @@ namespace ClassLibrary
                 return false;
             }
             
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
-            {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
-=======
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarmaterial") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
->>>>>>> deV2
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el Material por el que desea filtrar en su búsqueda.";

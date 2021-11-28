@@ -39,9 +39,28 @@ namespace ClassLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public string Nombre { get; private set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public string Cantidad { get; private set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public string Precio { get; private set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public string Unidad { get; private set;}
     }
 }

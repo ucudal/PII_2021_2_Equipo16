@@ -17,16 +17,17 @@ namespace ClassLibrary
         public List<Habilitaciones> HabilitacionesOferta { get; } = new List<Habilitaciones>();
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
+        /// 
         /// </summary>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material del producto que se oferta.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad ed la oferta.</param>
-        /// <param name="tags">Tags de la oferta.</param>
-        /// <param name="ubicacion">Ubicacion de la oferta.</param>
-        /// <param name="empresa">Empresa que publica la oferta.</param>
-        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="constantesPuntuales"></param>
+        /// <param name="empresa"></param>
         public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;

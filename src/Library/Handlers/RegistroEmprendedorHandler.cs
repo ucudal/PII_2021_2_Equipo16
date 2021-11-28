@@ -31,15 +31,9 @@ namespace ClassLibrary
             }
             
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse") == true)
-            {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registrarse");
-=======
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarse") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registrarse");
->>>>>>> deV2
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre";

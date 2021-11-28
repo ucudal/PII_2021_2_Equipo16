@@ -9,11 +9,6 @@ namespace ClassLibrary
     /// </summary>
     public class HistorialChat
     {
-        public HistorialChat()
-        {
-
-        }
-        
         /// <summary>
         /// 
         /// </summary>
@@ -103,16 +98,15 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {
-                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
             };
 
-            string json = JsonSerializer.Serialize(this, opciones);
-            return json;
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

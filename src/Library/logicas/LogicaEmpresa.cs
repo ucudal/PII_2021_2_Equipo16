@@ -12,38 +12,30 @@ namespace ClassLibrary
     public static class LogicaEmpresa
     {
         /// <summary>
-        /// Llama al método CrearProducto en empresa con los parametros pasados.
+        /// 
         /// </summary>
-        /// <param name="empresa">Empresa que creará la oferta.</param>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de lo que se ofrece.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
-        /// <param name="tags">Palabra clave.</param>
-        /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        /// <param name="empresa"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="constantesPuntuales"></param>
         public static void CrearOferta(Empresa empresa, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
-<<<<<<< HEAD
-            if (Singleton<Logica>.Instancia.ListaNombreOfertas.Contains(nombre))
-=======
             if (Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Contains(nombre))
->>>>>>> deV2
             {
                 ConsolePrinter.DatoPrinter("El nombre ingresado ya existe, por favor intente de nuevo.");
                 throw new ArgumentException("El nombre ingresado ya existe, por favor intente uno nuevo.");
             }
             else
             {
-<<<<<<< HEAD
-                empresa.CrearOferta(Singleton<Logica>.Instancia.Publicaciones, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
-                Singleton<Logica>.Instancia.ListaNombreOfertas.Add(nombre);
-=======
                 ConsolePrinter.DatoPrinter("entro en else");
                 empresa.CrearOferta(Singleton<ContenedorPrincipal>.Instancia.Publicaciones, nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, constantesPuntuales);
                 ConsolePrinter.DatoPrinter("entro en else2");
                 Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Add(nombre);
->>>>>>> deV2
                 ConsolePrinter.DatoPrinter("Oferta creada exitosamente.");
             }
         }
@@ -55,21 +47,13 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la oferta que se desea eliminar.</param>
         public static void EliminarOferta(Empresa empresa, string nombre)
         {
-<<<<<<< HEAD
-            if (!Singleton<Logica>.Instancia.ListaNombreOfertas.Contains(nombre))
-=======
             if (!Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Contains(nombre))
->>>>>>> deV2
             {
                 ConsolePrinter.DatoPrinter("No existe una oferta con ese nombre, por favor intente de nuevo.");
             }
             else
             {
-<<<<<<< HEAD
-                empresa.EliminarOferta(nombre, Singleton<Logica>.Instancia.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
-=======
                 empresa.EliminarOferta(nombre, Singleton<ContenedorPrincipal>.Instancia.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
->>>>>>> deV2
                 ConsolePrinter.DatoPrinter("Oferta eliminada exitosamente");
             }
         }
@@ -81,11 +65,7 @@ namespace ClassLibrary
         /// <param name="ofertaQueSeAcepta">Nombre de oferta que se desea Aceptar.</param>
         public static void AceptarOferta(Empresa empresa, string ofertaQueSeAcepta)
         {
-<<<<<<< HEAD
-            empresa.AceptarOferta(ofertaQueSeAcepta, Singleton<Logica>.Instancia.Publicaciones);
-=======
             empresa.AceptarOferta(ofertaQueSeAcepta, Singleton<ContenedorPrincipal>.Instancia.Publicaciones);
->>>>>>> deV2
         }
 
         /// <summary>
@@ -178,7 +158,6 @@ namespace ClassLibrary
             }
         }
         
-
         /// <summary>
         /// 
         /// </summary>

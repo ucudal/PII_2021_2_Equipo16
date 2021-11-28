@@ -40,30 +40,11 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-<<<<<<< HEAD
         [JsonConstructor]
-        public Emprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones): base(nombre, ubicacion, rubro)
-=======
-        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
-            : base(nombre, ubicacion, rubro)
->>>>>>> deV2
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
         }
-
-<<<<<<< HEAD
-        /// <summary>
-        /// Habilitaciones del emprendedor.
-        /// </summary>
-        [JsonInclude]
-        public Habilitaciones Habilitacion = new Habilitaciones();
-=======
->>>>>>> deV2
-
-        /// <summary>
-        /// Obtiene una lista de las habilitaciones del emprendedor.
-        /// </summary>
-        /// <value>HabilitacionesEmprendedor.</value>
 
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
@@ -168,14 +149,14 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {
-                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
             };
-            
+
             return JsonSerializer.Serialize(this, opciones);
         }
     }

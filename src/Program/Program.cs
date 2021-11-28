@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 using System;
 using ClassLibrary;
-using System.IO;
 using System.Threading;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -37,16 +36,6 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-<<<<<<< HEAD
-            Bot = new TelegramBotClient(Token);
-            
-            Administrador administrador = new Administrador("Admin","equipo_16");
-            Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
-            administrador.InvitarEmpresa(empresa);
-            Logica logica = Singleton<Logica>.Instancia;
-=======
-            
-        
             Administrador admin = new Administrador("Admin");
             admin.InvitarEmpresa("conaprole", "pakistan", "textil");
 
@@ -70,7 +59,6 @@ namespace ConsoleApplication
             firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new GetHabListHandler(new VerEmprendedorHandler(null))))))))))))))))))))))));
             
 
->>>>>>> deV2
             
             
             firstHandler = new HolaHandler(
@@ -125,7 +113,7 @@ namespace ConsoleApplication
 
 
             Console.WriteLine("se termina el programa");
-            string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertToJson();
+            string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertirJson();
             System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", contenedorToJson1); 
 
             // Terminamos el bot.

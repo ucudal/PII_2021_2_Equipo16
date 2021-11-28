@@ -1,22 +1,10 @@
-<<<<<<< HEAD
+
 namespace ClassLibrary
 {
     /// <summary>
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public static class Singleton<T> where T : class, new()
-    {
-        private static T instancia;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <value></value>
-=======
-
-namespace ClassLibrary
-{
     public class Singleton<T> where T : class, new()
     {
         private static T instancia;
@@ -25,7 +13,10 @@ namespace ClassLibrary
         {
         }
 
->>>>>>> deV2
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public static T Instancia
         {
             get
@@ -36,13 +27,10 @@ namespace ClassLibrary
                 }
                 return instancia;
             }
-<<<<<<< HEAD
-=======
             set
             {
                 instancia = value;
             }
->>>>>>> deV2
         }
     }
 }

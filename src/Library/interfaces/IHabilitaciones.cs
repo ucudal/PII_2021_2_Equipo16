@@ -20,10 +20,5 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="habilitacion">Recibe un string con el nombre de la habilitacion que se quiere eliminar.</param>
         void RemoveHabilitacion(string habilitacion);
-
-        /// <summary>
-        /// Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
-        /// </summary>
-        
     }
 }
