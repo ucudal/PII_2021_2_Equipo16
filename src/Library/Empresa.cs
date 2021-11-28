@@ -36,10 +36,10 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get;} = new Dictionary<DateTime, Oferta>();
-        private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
-        private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        private List<Oferta> misOfertas = new List<Oferta>();
+        //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
+        //private List<Oferta> ofertasAceptadas = new List<Oferta>();
+        //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
+        //private List<Oferta> misOfertas = new List<Oferta>();
 
         /// <summary>
         /// Habilitaciones de la empresa.
@@ -48,22 +48,22 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
+        public List<Habilitaciones> HabilitacionesEmpresa { get; private set; }
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
-        public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas;}
+        public List<Oferta> InteresadosEnOfertas { get; private set; }
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
-        public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas;}
+        public List<Oferta> OfertasAceptadas { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public List<Oferta> MisOfertas { get => this.misOfertas;}
+        public List<Oferta> MisOfertas { get; }
         /// <summary>
         /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>
@@ -82,7 +82,7 @@ namespace ClassLibrary
         {   
             Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
-            this.misOfertas.Add(productoCreado);
+            this.MisOfertas.Add(productoCreado);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace ClassLibrary
                 if (ofertaEnLista.Nombre == nombreOfertaParaAceptar)
                 {
                     ofertaEncontrada = ofertaEnLista;
-                    this.ofertasAceptadas.Add(ofertaEnLista);
+                    this.OfertasAceptadas.Add(ofertaEnLista);
                     this.FechaOfertasEntregadas.Add(DateTime.Now, ofertaEnLista);
                 }
             }
@@ -168,9 +168,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.habilitacionesEmpresa.Add(ContenedorRubroHabilitaciones.Instancia.GetHabilitacion(habilitacionBuscada));
+                this.HabilitacionesEmpresa.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
             }
             else
             {
@@ -192,7 +192,7 @@ namespace ClassLibrary
                     habEliminada = hab;
                 }
             }
-            this.habilitacionesEmpresa.Remove(habEliminada);
+            this.HabilitacionesEmpresa.Remove(habEliminada);
         }
 
 

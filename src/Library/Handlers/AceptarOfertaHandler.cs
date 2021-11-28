@@ -35,9 +35,9 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
             {
-                List<string> listaComandos = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
+                List<string> listaComandos = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
                 if (listaComandos.Count == 0)
                 {
                     respuesta = $"Ingrese el Nombre de la oferta que desee aceptar {listaComandos.Count}.";
@@ -48,9 +48,9 @@ namespace ClassLibrary
                 {
                     string nombreOfertaParaAceptar = listaComandos[0];
 
-                    if (ContenedorPrincipal.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = ContenedorPrincipal.Instancia.Empresas[mensaje.Id];
+                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
                         LogicaEmpresa.AceptarOferta(value, nombreOfertaParaAceptar);
                         
                         respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";

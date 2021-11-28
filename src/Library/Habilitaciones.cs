@@ -16,15 +16,14 @@ namespace ClassLibrary
         /// </summary>
         public Habilitaciones(string nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
-        private string nombre;
 
         /// <summary>
         /// Obtiene o establece el nombre de la habilitación.
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string Nombre { get => nombre;}
+        public string Nombre { get; private set;}
 
 
     }

@@ -12,15 +12,14 @@ namespace ClassLibrary
         /// </summary>
         public Ubicacion(string nombre)
         {
-            this.nombreCalle = nombre;
+            this.NombreCalle = nombre;
         }
-        private string nombreCalle;
 
         /// <summary>
         /// .
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string NombreCalle { get => nombreCalle;}
+        public string NombreCalle { get; private set;}
 
 
     }

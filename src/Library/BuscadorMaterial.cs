@@ -27,7 +27,7 @@ namespace ClassLibrary
                 if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Nombre))
                 {
                     ofertasEncontradas.Add(oferta);
-                    ContenedorPrincipal.Instancia.PrinterConsola.OfertaPrinter(oferta);
+                    Singleton<ContenedorPrincipal>.Instancia.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
 

@@ -21,13 +21,13 @@ namespace ClassLibrary
         {
             this.Nombre = nombre;
             this.Ubicacion = new Ubicacion(ubicacion);
-            if (!ContenedorRubroHabilitaciones.Instancia.ChequearRubro(rubro))
+            if (!Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearRubro(rubro))
             {
                 throw new ArgumentException($"{rubro} no se encuentra disponible");
             }
             else
             {
-                this.Rubro = ContenedorRubroHabilitaciones.Instancia.GetRubro(rubro);
+                this.Rubro = Singleton<ContenedorRubroHabilitaciones>.Instancia.GetRubro(rubro);
             }
         }
 
@@ -35,18 +35,18 @@ namespace ClassLibrary
         /// Obtiene o establece un valor que indica el nombre del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Nombre { get; set; }
+        public string Nombre { get; private set; }
 
         /// <summary>
         /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public Ubicacion Ubicacion { get; set; }
+        public Ubicacion Ubicacion { get; private set; }
 
         /// <summary>
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public Rubro Rubro { get; set; }
+        public Rubro Rubro { get; private set; }
     }
 }

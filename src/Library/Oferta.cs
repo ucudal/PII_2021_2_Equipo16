@@ -11,13 +11,6 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
-        private string nombre;
-        private Material material;
-        private string tags;
-        private Ubicacion ubicacion;
-        private Empresa empresaCreadora;
-        private string constantesPuntuales;
-
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
@@ -36,12 +29,12 @@ namespace ClassLibrary
         /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
-            this.nombre = nombre;
-            this.material = new Material(nombreMaterial, cantidad, precio, unidad);
-            this.tags = tags;
-            this.ubicacion = new Ubicacion(ubicacion);
-            this.empresaCreadora = empresa;
-            this.constantesPuntuales = constantesPuntuales;
+            this.Nombre = nombre;
+            this.Material = new Material(nombreMaterial, cantidad, precio, unidad);
+            this.Tags = tags;
+            this.Ubicacion = new Ubicacion(ubicacion);
+            this.EmpresaCreadora = empresa;
+            this.ConstantesPuntuales = constantesPuntuales;
         }
 
         /// <summary>
@@ -52,33 +45,33 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        public string Nombre { get => nombre; }
+        public string Nombre { get; private set; }
 
         /// <summary>
         /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        public Material Material { get => material; }
+        public Material Material { get; private set; }
 
         /// <summary>
         /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
-        public string Tags { get => tags; }
+        public string Tags { get; private set; }
 
         /// <summary>
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        public Ubicacion Ubicacion { get => ubicacion; }
+        public Ubicacion Ubicacion { get; private set; }
 
 
         /// <summary>
         /// Obtiene o establece la Empresa que publica la Oferta.
         /// </summary>
-        public Empresa EmpresaCreadora { get => empresaCreadora; }
+        public Empresa EmpresaCreadora { get; private set; }
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        public string ConstantesPuntuales { get => constantesPuntuales;}
+        public string ConstantesPuntuales { get; private set;}
 
 
         /// <summary>
@@ -87,9 +80,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.HabilitacionesOferta.Add(ContenedorRubroHabilitaciones.Instancia.GetHabilitacion(habilitacionBuscada));
+                this.HabilitacionesOferta.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
             }
             else
             {
@@ -118,7 +111,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
-        public static DateTime FechaDePublicacion
+        public DateTime FechaDePublicacion
         {
             get
             {

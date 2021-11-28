@@ -8,6 +8,11 @@ namespace ClassLibrary
     /// </summary>
     public class HistorialChat
     {
+        public HistorialChat()
+        {
+
+        }
+        
         /// <summary>
         /// Contiene los mensajes enviados por el Usuario.
         /// </summary>

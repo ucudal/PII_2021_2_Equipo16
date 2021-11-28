@@ -19,6 +19,10 @@ namespace ClassLibrary
                 }
                 return instancia;
             }
+            set
+            {
+                instancia = value;
+            }
         }
     }
 }

@@ -20,11 +20,9 @@ namespace ClassLibrary
         /// </summary>
         public Rubro(string nombre)
         {
-            this.nombre = nombre;
+            this.Nombre = nombre;
         }
 
-        private string nombre;
-
-        public string Nombre { get => nombre;}
+        public string Nombre { get; private set;}
     }
 }

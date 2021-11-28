@@ -10,28 +10,15 @@ namespace ClassLibrary
     /// </remarks>
     public class ContenedorPrincipal
     {
-        private ContenedorPrincipal()
+        public ContenedorPrincipal()
         {
         }
-        private static ContenedorPrincipal instancia;
-
-        public static ContenedorPrincipal Instancia
-        {
-            get
-            {
-                if (instancia == null)
-                {
-                    instancia = new ContenedorPrincipal();
-                }
-
-                return instancia;
-            }
-        }
+        
 
         /// <summary>
         /// Guarda una instancia de Publicaciones.
         /// </summary>
-        public Publicaciones Publicaciones {get;} = Publicaciones.Instance;
+        public Publicaciones Publicaciones {get;} = Singleton<Publicaciones>.Instancia;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.

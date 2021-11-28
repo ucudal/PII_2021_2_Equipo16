@@ -18,15 +18,15 @@ namespace ClassLibrary
         /// </summary>
         public Material(string nombre, string cantidad, string precio, string unidad)
         {
-            this.nombre = nombre;
-            this.unidad = unidad;
+            this.Nombre = nombre;
+            this.Unidad = unidad;
             if (!Int32.TryParse(cantidad, out _))
             {
                 throw new ArgumentException("Debe ingresar la cantiad en formalto numerico");
             }
             else
             {
-               this.cantidad = cantidad; 
+               this.Cantidad = cantidad; 
             }
 
             if (!Int32.TryParse(precio, out _))
@@ -35,18 +35,13 @@ namespace ClassLibrary
             }
             else
             {
-                this.precio = precio;
+                this.Precio = precio;
             }
         }
 
-        private string nombre;
-        private string cantidad;
-        private string precio;
-        private string unidad;
-
-        public string Nombre { get => nombre;}
-        public string Cantidad { get => cantidad;}
-        public string Precio { get => precio;}
-        public string Unidad { get => unidad;}
+        public string Nombre { get; private set;}
+        public string Cantidad { get; private set;}
+        public string Precio { get; private set;}
+        public string Unidad { get; private set;}
     }
 }

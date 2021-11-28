@@ -31,10 +31,10 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true)
             {
                 // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
-                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
 
                 if (listaConParametros.Count == 0)
                 {
@@ -43,7 +43,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 1)
                 {
-                    respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{ContenedorRubroHabilitaciones.Instancia.textoListaHabilitaciones()}";
+                    respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 2)
@@ -51,9 +51,9 @@ namespace ClassLibrary
                     string nombreOferta = listaConParametros[1];
                     string nombreHabParaAgregar = listaConParametros[0];
 
-                    if (ContenedorPrincipal.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = ContenedorPrincipal.Instancia.Empresas[mensaje.Id];
+                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
                         try
                         {
                             LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);

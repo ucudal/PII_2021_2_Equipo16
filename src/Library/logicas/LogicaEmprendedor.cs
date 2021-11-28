@@ -22,7 +22,7 @@ namespace ClassLibrary
         public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
         {
             Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones); 
-            ContenedorPrincipal.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
+            Singleton<ContenedorPrincipal>.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace ClassLibrary
             }
             else
             {
-                foreach (Oferta item in ContenedorPrincipal.Instancia.Publicaciones.OfertasPublicados)
+                foreach (Oferta item in Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados)
                 {
                     if (item.Nombre == nombreOferta)
                     {

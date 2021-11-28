@@ -11,55 +11,26 @@ namespace ClassLibrary
     /// /// </summary>
     public class ContenedorRubroHabilitaciones
     {
-        private ContenedorRubroHabilitaciones()
+        public ContenedorRubroHabilitaciones()
         {
 
         }
-        private static ContenedorRubroHabilitaciones instancia;
-
-        /// <summary>
-        /// Méotdo de acceso static, para poder obetener la instancia o en su defecto crearla si no existe.
-        /// </summary>
-        /// <value></value>
-        public static ContenedorRubroHabilitaciones Instancia
-        {
-            get
-            {
-                if (instancia == null)
-                {
-                    instancia = new ContenedorRubroHabilitaciones();
-                }
-
-                return instancia;
-            }
-        }
 
 
-        private List<Rubro> listaRubros = new List<Rubro>()
+        public List<Rubro> ListaRubros {get;} = new List<Rubro>()
         {
             new Rubro("textil"),
             new Rubro("metalurgia"),
             new Rubro("deportes"),
         };
 
-        private List<Habilitaciones> listaHabilitaciones = new List<Habilitaciones>()
+        public List<Habilitaciones> ListaHabilitaciones {get;} = new List<Habilitaciones>()
         {
             new Habilitaciones("apa"),
             new Habilitaciones("iso"),
             new Habilitaciones("soa"),
         };
 
-        /// <summary>
-        /// Lista que contiene las habilitaciones disponibles para el cliente.
-        /// </summary>
-        /// <value></value>
-        public List<Habilitaciones> ListaHabilitaciones { get => listaHabilitaciones;}
-
-        /// <summary>
-        /// Lista que contiene los rubros disponibles para el cliente.
-        /// </summary>
-        /// <value></value>
-        public List<Rubro> ListaRubros { get => listaRubros;}
         
         /// <summary>
         /// Método agregado para poder chequear si el rubro que se ingresa, existe en la lista de los rubros disponibles.
@@ -136,7 +107,7 @@ namespace ClassLibrary
         public string textoListaHabilitaciones()
         {
             StringBuilder texto = new StringBuilder();
-            foreach (Habilitaciones item in this.listaHabilitaciones)
+            foreach (Habilitaciones item in this.ListaHabilitaciones)
             {
                 texto.Append($"-{item.Nombre}\n");
             }
@@ -150,7 +121,7 @@ namespace ClassLibrary
         public string textoListaRubros()
         {
             StringBuilder texto = new StringBuilder();
-            foreach (Rubro item in this.listaRubros)
+            foreach (Rubro item in this.ListaRubros)
             {
                 texto.Append($"-{item.Nombre}\n");
             }

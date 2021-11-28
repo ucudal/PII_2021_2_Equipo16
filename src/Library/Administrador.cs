@@ -52,7 +52,7 @@ namespace ClassLibrary
         {
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
-            ContenedorPrincipal.Instancia.EmpresasInvitadas.Add(empresa);
+            Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
 
         }
          public string ConvertToJson()

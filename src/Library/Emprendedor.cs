@@ -28,9 +28,7 @@ namespace ClassLibrary
         /// </summary>
         public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
 
-        private List<Oferta> ofertasCompradas = new List<Oferta>();
-
-        private string especializaciones;
+        //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
@@ -43,7 +41,7 @@ namespace ClassLibrary
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
             : base(nombre, ubicacion, rubro)
         {
-            this.especializaciones = especializaciones;
+            this.Especializaciones = especializaciones;
         }
 
 
@@ -55,7 +53,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones {get{return this.especializaciones;}}
+        public string Especializaciones { get; private set;}
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -63,9 +61,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.HabilitacionesEmprendedor.Add(ContenedorRubroHabilitaciones.Instancia.GetHabilitacion(habilitacionBuscada));
+                this.HabilitacionesEmprendedor.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
             }
             else
             {
