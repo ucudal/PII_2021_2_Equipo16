@@ -17,20 +17,18 @@ namespace ClassLibrary
     public class Publicaciones : IJsonConvertible
     {
         /// <summary>
-        /// Constructor para archivo .json.
+        /// 
         /// </summary>
         [JsonConstructor]
         public Publicaciones()
         {
-            
         }
-        
-
+ 
         /// <summary>
         /// Una lista que contiene las ofertas.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> OfertasPublicados = new List<Oferta>();
+        public List<Oferta> OfertasPublicados {get; private set;} = new List<Oferta>();
 
         /// <summary>
         /// Este método imprime las ofertas contenidas en OfertasPublicados.
@@ -50,7 +48,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {

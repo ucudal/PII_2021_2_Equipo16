@@ -1,5 +1,5 @@
+
 using System;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -14,18 +14,37 @@ namespace ClassLibrary
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
     /// </remarks>
 
-    public class Rubro
+    public class Material
     {
         [JsonConstructor]
-        public Rubro()
+        public Material()
         {
+
         }
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
-        public Rubro(string nombre)
+        public Material(string nombre, string cantidad, string precio, string unidad)
         {
             this.Nombre = nombre;
+            this.Unidad = unidad;
+            if (!Int32.TryParse(cantidad, out _))
+            {
+                throw new ArgumentException("Debe ingresar la cantiad en formalto numerico");
+            }
+            else
+            {
+               this.Cantidad = cantidad; 
+            }
+
+            if (!Int32.TryParse(precio, out _))
+            {
+                throw new ArgumentException("Debe ingresar el precio en formalto numerico");
+            }
+            else
+            {
+                this.Precio = precio;
+            }
         }
 
         /// <summary>
@@ -33,6 +52,24 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Nombre { get; set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public string Cantidad { get; set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public string Precio { get; set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public string Unidad { get; set;}
 
         public string ConvertirJson()
         {

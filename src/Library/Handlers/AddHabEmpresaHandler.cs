@@ -32,23 +32,32 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
                 
                 if (listaConParametros.Count == 0)
                 {
 
-                    respuesta = "Ingrese la habilitación que desea agregar.";
+                    respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-                    if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
-                        LogicaEmpresa.AddHabilitacion(value,nuevaHab);
+                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                        try
+                        {
+                            LogicaEmpresa.AddHabilitacion(value,nuevaHab);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            respuesta = e.Message;
+                            return true;
+                        }
+                        
                         respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}";
                         return true;
                     }

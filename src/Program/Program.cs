@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 using System;
 using ClassLibrary;
-using System.IO;
 using System.Threading;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -28,7 +27,7 @@ namespace ConsoleApplication
         //
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string Token = "2131709654:AAHbaaHyt92koTwZ8aaBPzfiSIyscVoAouU";
+        private static string Token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
 
         private static IHandler firstHandler;
 
@@ -37,54 +36,29 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            Administrador admin = new Administrador("Admin", "Equipo16");
+            Empresa empresaTest = new Empresa("conaprole", "pakistan", "textil");
+            admin.InvitarEmpresa(empresaTest);
+            
+
+            
+            
             Bot = new TelegramBotClient(Token);
-            
-            Administrador administrador = new Administrador("Admin","equipo_16");
-            Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
-            administrador.InvitarEmpresa(empresa);
-            
+
             JsonSerializerOptions opciones = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };  
 
-            if (System.IO.File.Exists(@"..\Library\Persistencia\logica.json"))
+            if (System.IO.File.Exists(@"..\Library\Persistencia\Contenedor.json"))
             {
-                string logicaToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
-                Singleton<Logica>.Instancia = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);  
+                string contenedorToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\Contenedor.json");
+                Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(contenedorToJson, opciones);  
             }
-            
-            
 
-            firstHandler = new HolaHandler(
-                new RegistroEmprendedorHandler(
-                    new RemoverHabEmprendedor(
-                        new AceptarInvEmpresaHandler(
-                            new AceptarOfertaHandler(
-                                new AddHabEmpresaHandler(
-                                    new BuscadorMaterialHandler(
-                                        new BuscadorTagHandler(
-                                            new BuscadorUbicacionHandler(
-                                                new CalcularOfertasCompradasHandler(
-                                                    new CalcularOfertasVendidasHandler(
-                                                        new AddHabOfertaHandler(
-                                                            new CrearOfertaHandler(
-                                                                new EliminarOfertaHandler(
-                                                                    new GetHabListEmprendedorHandler(
-                                                                        new GetLisHabEmpresaHandler(
-                                                                            new InteresadoEnOfertaHandler(
-                                                                                new RemoveHabEmpresaHandler(
-                                                                                    new RemoverHabOfertaHandler(
-                                                                                        new AddHabEmprendedorHandler(
-                                                                                            new ComandosHandler(
-                                                                                                new VerInteresados(
-                                                                                                    new VerEmpresaHandler(
-                                                                                                        new VerEmprendedorHandler(
-                                                                                                            new VerMisOfertasHandler(
-                                                                                                                new VerUbicacionEmprendedorHandler(Bot,
-                null))))))))))))))))))))))))));
-
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(new VerMisOfertasHandler(null))))))))))))))))))))))))))));
+           
             Message message = new Message();
             
             //string response;
@@ -109,11 +83,8 @@ namespace ConsoleApplication
             Console.ReadLine();
 
             Console.WriteLine("se termina el programa");
-            //Logica logica = Singleton<Logica>.Instancia;
-            string logicaToJson1 = Singleton<Logica>.Instancia.ConvertToJson();
-            System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson1); 
-            
-            
+            string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertirJson();
+            System.IO.File.WriteAllText(@"..\Library\Persistencia\Contenedor.json", contenedorToJson1); 
 
             // Terminamos el bot.
             cts.Cancel();

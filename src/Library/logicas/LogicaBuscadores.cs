@@ -17,7 +17,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con el Material especificado.</returns>
         public static List<Oferta> BuscarPorMaterial(string busqueda)
         {
-            return Singleton<Logica>.Instancia.BuscadorMaterial.Buscar(Singleton<Logica>.Instancia.Publicaciones, busqueda);
+            return Singleton<ContenedorPrincipal>.Instancia.BuscadorMaterial.Buscar(Singleton<ContenedorPrincipal>.Instancia.Publicaciones, busqueda);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con el Tag especificado.</returns>
         public static List<Oferta> BuscarPorTags(string busqueda)
         {
-            return Singleton<Logica>.Instancia.BuscadorTags.Buscar(Singleton<Logica>.Instancia.Publicaciones, busqueda);
+            return Singleton<ContenedorPrincipal>.Instancia.BuscadorTags.Buscar(Singleton<ContenedorPrincipal>.Instancia.Publicaciones, busqueda);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace ClassLibrary
         /// <returns>Retorna las publicaciones que coinciden con la Ubicación especificada.</returns>
         public static List<Oferta> BuscarPorUbicacion(string busqueda)
         {
-            return Singleton<Logica>.Instancia.BuscadorUbicacion.Buscar(Singleton<Logica>.Instancia.Publicaciones, busqueda);
+            return Singleton<ContenedorPrincipal>.Instancia.BuscadorUbicacion.Buscar(Singleton<ContenedorPrincipal>.Instancia.Publicaciones, busqueda);
         }
     }
 }

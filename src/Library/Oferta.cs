@@ -13,41 +13,35 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones, IJsonConvertible
     {
-        /// <summary>
-        /// Constructor para json.
-        /// </summary>
         [JsonConstructor]
         public Oferta()
         {
 
         }
-
-        /*/// <summary>
-        /// Esta lista contiene las habilitaciones de las Ofertas.
-        /// </summary>*/
-        // [JsonInclude]
-        //public List<string> HabilitacionesOferta = new List<string>();
+        /// <summary>
+        /// Constructor para json.
+        /// </summary>
+        [JsonInclude]
+        public List<Habilitaciones> HabilitacionesOferta { get; set; } = new List<Habilitaciones>();
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
+        /// 
         /// </summary>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material del producto que se oferta.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad ed la oferta.</param>
-        /// <param name="tags">Tags de la oferta.</param>
-        /// <param name="ubicacion">Ubicacion de la oferta.</param>
-        /// <param name="empresa">Empresa que publica la oferta.</param>
-        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public Oferta(string nombre, string material, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="constantesPuntuales"></param>
+        /// <param name="empresa"></param>
+        public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
-            this.Material = material;
-            this.Precio = precio;
-            this.Unidad = unidad;
+            this.Material = new Material(nombreMaterial, cantidad, precio, unidad);
             this.Tags = tags;
-            this.Ubicacion = ubicacion;
-            this.Id = Guid.NewGuid();
+            this.Ubicacion = new Ubicacion(ubicacion);
             this.EmpresaCreadora = empresa;
             this.ConstantesPuntuales = constantesPuntuales;
         }
@@ -56,12 +50,7 @@ namespace ClassLibrary
         /// Nombre del interesado en la oferta.
         /// </summary>
         [JsonInclude]
-        public List<string> Interesado = new List<string>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public Habilitaciones Habilitacion = new Habilitaciones();
+        public List<string> Interesado { get; set; } = new List<string>();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
@@ -71,17 +60,8 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        public string Material { get; set; }
-
-        /// <summary>
-        /// Obtiene o establece el Precio de la Oferta.
-        /// </summary>
-        public string Precio { get; set; }
-
-        /// <summary>
-        /// Obtiene o establece la Cantidad de unidades a ofertar.
-        /// </summary>
-        public string Unidad { get; set; }
+        [JsonInclude]
+        public Material Material { get; set; }
 
         /// <summary>
         /// Obtiene o establece los Tags de la Oferta.
@@ -91,29 +71,15 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        public string Ubicacion { get; set; }
+        public Ubicacion Ubicacion { get; set; }
 
-        /// <summary>
-        /// Obtiene la ID única para cada Oferta.
-        /// </summary>
-        public Guid Id { get; private set; }
-
-        /// <summary>
-        /// Obtiene o establece la Empresa que publica la Oferta.
-        /// </summary>
-        public Empresa EmpresaCreadora { get; set; }
+        public Empresa EmpresaCreadora {get; set;}
+       
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        public string ConstantesPuntuales { get; set; }
-
-        /// <summary>
-        /// Obtiene una lista de Habilitaciones de la Oferta.
-        /// </summary>
-        /// <value>habilitacionesOferta.</value>
-        [JsonInclude]
-        public List<string> HabilitacionesDeOferta { get; private set; }
+        public string ConstantesPuntuales { get; set;}
 
         /// <summary>
         /// Añade una habilitación a la oferta.
@@ -121,9 +87,13 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.HabilitacionesDeOferta.Add(habilitacionBuscada);
+                this.HabilitacionesOferta.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible, use nuevamente /crearhaboferta");
             }
         }
 
@@ -133,28 +103,28 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a quitar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.HabilitacionesDeOferta.Remove(habilitacion);
+            Habilitaciones habEliminada = new Habilitaciones(null);
+            foreach (Habilitaciones hab in this.HabilitacionesOferta)
+            {
+                if (habilitacion == hab.Nombre)
+                {
+                    habEliminada = hab;
+                }
+            }
+            this.HabilitacionesOferta.Remove(habEliminada);
         }
 
         /// <summary>
-        /// Muestra todas las habilitaciones posibles para agregar.
-        /// </summary>
-        public string GetListaHabilitaciones()
-        {
-           return this.Habilitacion.HabilitacionesDisponibles();
-        }
-        
-        /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.
         /// </summary>
-        public static DateTime FechaDePublicacion
+        public DateTime FechaDePublicacion
         {
             get
             {
                 return DateTime.Now;
             }
         }
-        
+
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.
@@ -165,17 +135,17 @@ namespace ClassLibrary
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Material: {this.Material} \n");
-            text.Append($"Precio: {this.Precio} \n");
-            text.Append($"Unidad: {this.Unidad} \n");
+            text.Append($"Material: {this.Material.Nombre} \n");
+            text.Append($"Precio: {this.Material.Precio} \n");
+            text.Append($"Unidad: {this.Material.Unidad} \n");
             text.Append($"Tag: {this.Tags} \n");
-            text.Append($"Ubicación: {this.Ubicacion} \n");
+            text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
             text.Append($"******************************\n");
-            foreach (string habilitaciones in HabilitacionesDeOferta)
+            foreach (Habilitaciones habilitaciones in HabilitacionesOferta)
             {
-                text.Append($"{habilitaciones}, ");
+                text.Append($"{habilitaciones.Nombre}, ");
             }
 
             return text.ToString();
@@ -197,11 +167,7 @@ namespace ClassLibrary
             return texto.ToString();
         }
 
-        /// <summary>
-        /// Convierte a json.
-        /// </summary>
-        /// <returns>Retorna en formato .json.</returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {

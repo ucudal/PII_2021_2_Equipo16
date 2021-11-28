@@ -19,21 +19,22 @@ namespace ClassLibrary
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+        [JsonInclude]
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get; set;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
-        public List<Oferta> OfertasInteresado = new List<Oferta>();
+        [JsonInclude]
+        public List<Oferta> OfertasInteresado {get; set;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<string> HabilitacionesEmprendedor = new List<string>();
+        [JsonInclude]
+        public List<Habilitaciones> HabilitacionesEmprendedor {get; set;} = new List<Habilitaciones>();
 
-        private List<Oferta> ofertasCompradas = new List<Oferta>();
-
-        private string especializaciones;
+        //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
@@ -42,31 +43,22 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre del emprededor.</param>
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
-        /// <param name="habilitacion">Habilitaciones del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         [JsonConstructor]
-        public Emprendedor(string nombre, string ubicacion, string rubro, Habilitaciones habilitacion, string especializaciones): base(nombre, ubicacion, rubro)
+        public Emprendedor() : base()
+        {
+
+        }
+        
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
-            this.Habilitacion = habilitacion;
         }
-
-        /// <summary>
-        /// Habilitaciones del emprendedor.
-        /// </summary>
-        [JsonInclude]
-        public Habilitaciones Habilitacion = new Habilitaciones();
-
-        /// <summary>
-        /// Obtiene una lista de las habilitaciones del emprendedor.
-        /// </summary>
-        /// <value>HabilitacionesEmprendedor.</value>
-        public List<string> HabilitacionesDeEmprendedor { get => this.HabilitacionesEmprendedor; }
 
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; set; }
+        public string Especializaciones { get; set;}
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -74,9 +66,13 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.HabilitacionesEmprendedor.Add(habilitacionBuscada);
+                this.HabilitacionesEmprendedor.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible, use nuevamente /agregarhabilitacionemprendedor");
             }
         }
 
@@ -86,16 +82,20 @@ namespace ClassLibrary
         /// <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.HabilitacionesEmprendedor.Remove(habilitacion);
+            Habilitaciones habEliminada = new Habilitaciones(null);
+            foreach (Habilitaciones hab in HabilitacionesEmprendedor)
+            {
+                if (habilitacion == hab.Nombre)
+                {
+                    habEliminada = hab;
+                }
+            }
+            this.HabilitacionesEmprendedor.Remove(habEliminada);
         }
 
         /// <summary>
         /// Muestra todas las habilitaciones posibles para agregar.
         /// </summary>
-        public string GetListaHabilitaciones()
-        {
-          return this.Habilitacion.HabilitacionesDisponibles();
-        }
 
         /// <summary>
         /// Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
@@ -141,14 +141,14 @@ namespace ClassLibrary
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Material: {this.Ubicacion} \n");
-            text.Append($"Precio: {this.Rubro} \n");
+            text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
+            text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
             text.Append($"Requerimientos: \n");
             text.Append($"******************************\n");
-            foreach (string habilitaciones in HabilitacionesDeEmprendedor)
+            foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {
-                text.Append($"{habilitaciones}, ");
+                text.Append($"{habilitaciones.Nombre}, ");
             }
 
             return text.ToString();
@@ -158,14 +158,14 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {
-                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
             };
-            
+
             return JsonSerializer.Serialize(this, opciones);
         }
         

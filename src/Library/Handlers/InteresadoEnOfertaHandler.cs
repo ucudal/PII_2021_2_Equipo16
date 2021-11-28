@@ -31,9 +31,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesado");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesado");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta en la que quiera manifestar su interés";
@@ -43,9 +43,9 @@ namespace ClassLibrary
                 {
                     string nombreOferta = listaConParametros[0];
 
-                    if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
+                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
                         LogicaEmprendedor.InteresadoEnOferta(value, nombreOferta);
                         respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa.";
                         return true;

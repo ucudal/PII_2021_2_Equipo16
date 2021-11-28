@@ -38,85 +38,65 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
+        [JsonConstructor]
+        public Empresa() : base()
+        {
+
+        }
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
-            this.Habilitacion = new Habilitaciones();
-        }
-
-        /// <summary>
-        /// Acepta una invitación.
-        /// </summary>
-        /// <param name="nombreEmpresa">Nombre de la empresa.</param>
-        public void AceptarInvitacion(string nombreEmpresa)
-        {
-            if (nombreEmpresa == this.Nombre)
-            {
-                ConsolePrinter.DatoPrinter("Invitación aceptada");
-                
-                // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter("Invitación inválida, intente otra vez");
-            }
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
-        private List<string> habilitacionesEmpresa = new List<string>();
-        private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        private List<Oferta> misOfertas = new List<Oferta>();
-
-        /// <summary>
-        /// Habilitaciones de la empresa.
-        /// </summary>
         [JsonInclude]
-        public Habilitaciones Habilitacion = new Habilitaciones();
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get; private set;} = new Dictionary<DateTime, Oferta>();
+        //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
+        //private List<Oferta> ofertasAceptadas = new List<Oferta>();
+        //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
+        //private List<Oferta> misOfertas = new List<Oferta>();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
         [JsonInclude]
-        public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
+        public List<Habilitaciones> HabilitacionesEmpresa { get; private set; } = new List<Habilitaciones>();
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
+        public List<Oferta> InteresadosEnOfertas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
+        public List<Oferta> OfertasAceptadas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// 
         /// </summary>
         [JsonInclude]
-        public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
+        public List<Oferta> MisOfertas { get; private set;} = new List<Oferta>();
+        
         /// <summary>
-        /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// 
         /// </summary>
-        /// <param name="publicaciones">Publicaciones.</param>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de la oferta.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad de la oferta.</param>
-        /// <param name="tags">Tags de la oferta (palabras claves).</param>
-        /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
-        /// <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
-        /// <remarks>
-        /// Se usa Creator.
-        /// </remarks>
-        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        /// <param name="publicaciones"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="puntualesConstantes"></param>
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
+            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
             this.MisOfertas.Add(productoCreado);
         }
@@ -137,6 +117,7 @@ namespace ClassLibrary
                 }
             }
             publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
+            this.MisOfertas.Remove(ofertaParaEliminar);
         }
 
         /// <summary>
@@ -152,7 +133,7 @@ namespace ClassLibrary
                 if (ofertaEnLista.Nombre == nombreOfertaParaAceptar)
                 {
                     ofertaEncontrada = ofertaEnLista;
-                    this.ofertasAceptadas.Add(ofertaEnLista);
+                    this.OfertasAceptadas.Add(ofertaEnLista);
                     this.FechaOfertasEntregadas.Add(DateTime.Now, ofertaEnLista);
                 }
             }
@@ -204,9 +185,13 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.habilitacionesEmpresa.Add(habilitacionBuscada);
+                this.HabilitacionesEmpresa.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible, use nuevamente /agregarhabilitacionempresa");
             }
         }
 
@@ -216,15 +201,15 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a eliminar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.habilitacionesEmpresa.Remove(habilitacion);
-        }
-
-        /// <summary>
-        /// Muestra todas las habilitaciones posibles para agregar.
-        /// </summary>
-        public string GetListaHabilitaciones()
-        {
-           return this.Habilitacion.HabilitacionesDisponibles();
+            Habilitaciones habEliminada = new Habilitaciones(null);
+            foreach (Habilitaciones hab in this.HabilitacionesEmpresa)
+            {
+                if (habilitacion == hab.Nombre)
+                {
+                    habEliminada = hab;
+                }
+            }
+            this.HabilitacionesEmpresa.Remove(habEliminada);
         }
 
         /// <summary>
@@ -234,9 +219,9 @@ namespace ClassLibrary
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");
-            if (InteresadosEnOfertas.Count > 0)
+            if (this.InteresadosEnOfertas.Count > 0)
             {
-                foreach (Oferta oferta in InteresadosEnOfertas)
+                foreach (Oferta oferta in this.InteresadosEnOfertas)
                 {
 
                     texto.Append(oferta.TextoInteresados());
@@ -258,12 +243,12 @@ namespace ClassLibrary
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Rubro: {this.Rubro} \n");
-            text.Append($"Ubicación: {this.Ubicacion} \n");
+            text.Append($"Rubro: {this.Rubro.Nombre} \n");
+            text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Habilitaciones: ");
-            foreach (string habilitaciones in HabilitacionesEmpresa)
+            foreach (Habilitaciones habilitaciones in this.HabilitacionesEmpresa)
             {
-                text.Append($"{habilitaciones}, ");
+                text.Append($"{habilitaciones.Nombre}, ");
             }
             text.Append($"******************************\n");
             return text.ToString();
@@ -281,12 +266,12 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {
-                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
             };
 
             return JsonSerializer.Serialize(this, opciones);
