@@ -25,12 +25,12 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verubicacion") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verubicacion") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacion");
-                if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacion");
+                if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {
-                    Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
                     string filePath = @$"ubicacion{value.Nombre}.png";
                     using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
                     
@@ -61,7 +61,7 @@ namespace ClassLibrary
         public async Task Direccion(IMensaje mensaje)
         {
             
-            Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
+            Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
             string direccion = value.Ubicacion;
             LocationApiClient client = new LocationApiClient();
 
@@ -71,7 +71,7 @@ namespace ClassLibrary
         private async Task SendProfileImage(IMensaje mensaje)
         {
             // Can be null during testing
-            Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
+            Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
             
             await bot.SendChatActionAsync(mensaje.Id, ChatAction.UploadPhoto);
             string filePath = @$"ubicacion{value.Nombre}.png";

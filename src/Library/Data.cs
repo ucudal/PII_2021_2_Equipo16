@@ -35,7 +35,7 @@ namespace ClassLibrary
             {
                 ConsolePrinter.DatoPrinter("entro aca primer if");
                 //Logica logica = Singleton<Logica>.Instancia;
-                string logicaToJson = Singleton<Logica>.Instancia.ConvertToJson();
+                string logicaToJson = Singleton<ContenedorPrincipal>.Instancia.ConvertToJson();
                 System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson);
             }
             else
@@ -43,7 +43,7 @@ namespace ClassLibrary
                 ConsolePrinter.DatoPrinter("entro aca else");
                 
                 string logicaToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
-                Singleton<Logica>.Instancia = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);
+                Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(logicaToJson, opciones);
             }
         }
     }
