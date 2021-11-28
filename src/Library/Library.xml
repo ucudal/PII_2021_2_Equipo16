@@ -1357,11 +1357,23 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="P:ClassLibrary.Logica.Item(System.String)">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
         <member name="M:ClassLibrary.Logica.ConvertToJson">
             <summary>
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Logica.LoadFromJson(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="json"></param>
         </member>
         <member name="T:ClassLibrary.LogicaAdministrador">
             <summary>

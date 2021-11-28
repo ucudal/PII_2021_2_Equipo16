@@ -18,7 +18,6 @@ namespace ClassLibrary
         [JsonConstructor]
         public Logica()
         {
-
         }
         
         /// <summary>
@@ -99,6 +98,21 @@ namespace ClassLibrary
         /// <returns></returns>
         [JsonInclude]
         public Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        [JsonInclude]
+        [JsonExtensionData]
+        public Administrador this[string key]
+        {
+            // returns value if exists
+            get { return Administradores[key]; }
+
+            // updates if exists, adds if doesn't exist
+            set { Administradores[key] = value; }
+        }
 
         /// <summary>
         /// 
@@ -116,30 +130,18 @@ namespace ClassLibrary
             return json;
         }
 
-        /*
         /// <summary>
         /// 
         /// </summary>
         /// <param name="json"></param>
         public void LoadFromJson(string json)
         {
-            this.Initialize();
-            this. = JsonSerializer.Deserialize<Logica>(json);
             JsonSerializerOptions options = new()
             {
-                 ReferenceHandler = MyReferenceHandler.Instance,
-                 WriteIndented = true
-            };
-
-            this. = JsonSerializer.Deserialize<Logica>(json, options);
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            }; 
+            Logica logica = JsonSerializer.Deserialize<Logica>(json, options);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [JsonInclude]
-        public List<string> jsondelortomastevalequefunciones = new List<string>();
-        */
     }
 }

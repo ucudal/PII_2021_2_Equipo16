@@ -4,13 +4,9 @@ namespace ClassLibrary
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Singleton<T> where T : class, new()
+    public static class Singleton<T> where T : class, new()
     {
         private static T instancia;
-
-        private Singleton()
-        {
-        }
 
         /// <summary>
         /// 
