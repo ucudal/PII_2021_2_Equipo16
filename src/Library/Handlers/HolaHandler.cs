@@ -26,8 +26,8 @@ namespace ClassLibrary
 
             if (this.CanHandle(mensaje))
             {
-                Singleton<Logica>.Instancia.HistorialDeChats.Add(mensaje.Id, new HistorialChat());
-                //Data.Actualizar();
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.Add(mensaje.Id, new HistorialChat());
+
                 respuesta = "Hola! por favor si le invitaron, escriba /aceptarinvitacion \nSi desea registrarse como emprendedor, escriba /registrarse \nCualquier duda use /comandos";
                 return true;    
             }

@@ -18,53 +18,11 @@ namespace ClassLibrary
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
-        public Rubro()
+        public Rubro(string nombre)
         {
+            this.Nombre = nombre;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public enum Rubros
-        {
-            Textil,
-            Construccion,
-            Comercio,
-            Servicio,
-            Forestal,
-            Comunicaciones,
-            Entretenimiento,
-            Deportes,
-            Industria,
-        }
-
-
-        /// <summary>
-        /// Obtiene lista de rubros. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
-        /// </summary>
-        public static string GetRubros()
-        {
-            StringBuilder getRubrosList = new StringBuilder("Rubros disponibles: \n");
-            foreach (Rubros rubro in typeof(Rubros).GetEnumValues())
-            {
-                getRubrosList.Append($"- {rubro.ToString()}.\n");
-            }
-
-            ConsolePrinter.DatoPrinter(getRubrosList.ToString());
-            return getRubrosList.ToString();
-        }
-
-        /// <summary>
-        /// Chequea si un rubro existe en la lista. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
-        /// </summary>
-        /// <param name="rubro">Rubro.</param>
-        /// <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
-        
-
-        public static bool CheckRubro(string rubro)
-        {
-            Rubros rubroE;
-            return Enum.TryParse<Rubros>(rubro, true, out rubroE) ? true : throw new ArgumentException("Por favor ingrese un rubro que exista");
-        }
+        public string Nombre { get; private set;}
     }
 }

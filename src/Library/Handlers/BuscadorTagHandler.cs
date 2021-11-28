@@ -36,9 +36,9 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscartag") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscartag") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscartag");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscartag");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el Tag por el que sea filtrar en su búsqueda.";

@@ -5,7 +5,7 @@ namespace Test.Library
     using Telegram.Bot.Types;
     
     /// <summary>
-    /// Esta clase permite realizar los tests de la clase Emprendedor.
+    /// Esta clase permite realizar los tests del Handler CrearOfertaHandlerTest.
     /// </summary>
     [TestFixture]
     public class CrearOfertaHandlerTests
@@ -13,7 +13,7 @@ namespace Test.Library
         CrearOfertaHandler handler;
         Message mensaje;
         TelegramMsgAdapter telegramMsgAdapter;
-        Singleton<ContenedorPrincipal> contenedorPrincipal;
+        ContenedorPrincipal contenedorPrincipal
 
         /// <summary>
         /// 
@@ -24,16 +24,46 @@ namespace Test.Library
             mensaje = new Message();
             telegramMsgAdapter = new TelegramMsgAdapter(mensaje);
             CrearOfertaHandler handler = new CrearOfertaHandler(null);
-            contenedorPrincipal = Singleton<ContenedorPrincipal>.Instance;
-            
+            contenedorPrincipal = Singleton<ContenedorPrincipal>.Instancia;
+            mensaje.From = new User();
+            mensaje.From.Id = 163417;
+            telegramMsgAdapter = new TelegramMsgAdapter(mensaje);
         }
   
         /// <summary>
-        /// 
+        /// Caso de prueba para el Handler CrearOfertaHandler.
         /// </summary>
         [Test]
-        public void BuscadorTagHandlerTest()
+        public void CrearOfertaHandlerTest()
         {
+            mensaje.Text = handler.Keywords[0];
+            string respuesta;
+
+            IHandler result = handler.Handle(telegramMsgAdapter, out respuesta);
+
+            Assert.That(result, Is.Not.Null);
+            
+            mensaje.Text = ""; 
+            handler.Handle(telegramMsgAdapter, out respuesta);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(respuesta, Is.EqualTo(
+                "No se ha ingresado un número, ingrese un numero válido."
+                ));
+
+            message.Text = "80";
+            handler.Handle(msj, out response);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(response, Is.EqualTo(
+                "Usted ha ingresado un número incorrecto, por favor vuelva a intentarlo"
+                ));
+            
+            message.Text = "0";
+            handler.Handle(msj, out response);
+            Assert.That(result, Is.Not.Null);
+            Assert.That(response, Is.EqualTo(
+                "Su rubro es: "+ db.Rubros[0].Nombre +"\n"+"\n"+"Ahora ingrese su ciudad:"
+                ));
+
             
         }
 
@@ -104,7 +134,7 @@ namespace Test.Library
             Assert.That(result, Is.Not.Null);
             Assert.That(response, Is.EqualTo(
                 "Se procedera con su registro como emprendedor."+"\n"+"\n"+"Ingrese su nombre:"
-                ));
+
             
             message.Text = "NombreEmprendedor";
             handler.Handle(msj, out response);

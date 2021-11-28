@@ -7,13 +7,20 @@ namespace ClassLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class HistorialChat
+    public class HistorialChat : IJsonConvertible
     {
         /// <summary>
-        /// 
-        /// </summary>
+       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
         public HistorialChat()
+        {
+
+        }
+        
+        public HistorialChat() 
         {
         }
 
@@ -95,7 +102,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertToJson()

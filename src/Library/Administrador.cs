@@ -88,6 +88,8 @@ namespace ClassLibrary
         {
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
+            Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
+
         }
 
         /// <summary>
