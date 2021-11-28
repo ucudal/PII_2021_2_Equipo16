@@ -31,9 +31,9 @@ namespace ClassLibrary
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /cambiarClave, entra al if.
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/cambiarclave") == true)
+            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/cambiarclave") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/cambiarclave");
+                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/cambiarclave");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese su contraseña";
@@ -49,9 +49,9 @@ namespace ClassLibrary
                     string claveVieja = listaConParametros[1];
                     string claveNueva = listaConParametros[0];
                     
-                    if (Logica.Administradores.ContainsKey(mensaje.Id))
+                    if (Singleton<Logica>.Instancia.Administradores.ContainsKey(mensaje.Id))
                     {
-                        Administrador value = Logica.Administradores[mensaje.Id];
+                        Administrador value = Singleton<Logica>.Instancia.Administradores[mensaje.Id];
                         LogicaAdministrador.CambioClave(value,claveVieja, claveNueva);
                         respuesta = $"Se ha cambiado su contraseña. {OpcionesUso.AccionesAdministradores()}";
                         return true;

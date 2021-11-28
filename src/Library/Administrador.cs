@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -64,7 +63,6 @@ namespace ClassLibrary
             }
         }
         
-
         /// <summary>
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
         /// </summary>
@@ -77,7 +75,7 @@ namespace ClassLibrary
         /// <param name="empresa">Recibe por parametro la empresa que va a invitar.</param>
         public void InvitarEmpresa(Empresa empresa)
         {
-            Logica.EmpresasInvitadas.Add(empresa);
+            Singleton<Logica>.Instancia.EmpresasInvitadas.Add(empresa);
         }
 
         /// <summary>

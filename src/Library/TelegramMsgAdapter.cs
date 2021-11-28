@@ -1,8 +1,8 @@
+using System;
+using Telegram.Bot.Types;
+
 namespace ClassLibrary
 {
-    using System;
-    using Telegram.Bot.Types;
-
     /// <summary>
     /// La clase que encapsula el mensaje que recibe
     /// </summary>

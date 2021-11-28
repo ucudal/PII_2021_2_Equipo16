@@ -37,36 +37,60 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            if (!System.IO.File.Exists(@"data.json"))
+            Bot = new TelegramBotClient(Token);
+            
+            Administrador administrador = new Administrador("Admin","equipo_16");
+            Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
+            administrador.InvitarEmpresa(empresa);
+            
+            JsonSerializerOptions opciones = new()
             {
-        
-            Administrador admin = new Administrador("Admin","equipo_16");
-            admin.InvitarEmpresa("conaprole", "pakistan", "textil");
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };      
 
-            string json = admin.ConvertToJson();
-            System.IO.File.WriteAllText(@"data.json", json);
+            if (!System.IO.File.Exists(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json"))
+            {
+                Logica logica = Singleton<Logica>.Instancia;
+                string logicaToJson = Singleton<Logica>.Instancia.ConvertToJson();
+                System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson);
             }
             else
             {
-                string json = System.IO.File.ReadAllText(@"data.json");
-                    JsonSerializerOptions options = new()
-                {
-                    ReferenceHandler = MyReferenceHandler.Instance,
-                    WriteIndented = true
-                };
-                Administrador admin = JsonSerializer.Deserialize<Administrador>(json,options);
-                admin.ConvertToJson();
+                string logicaToJson = System.IO.File.ReadAllText(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json");
+                Logica logica = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);
             }
-            
-            Bot = new TelegramBotClient(Token);
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListEmprendedorHandler(new GetLisHabEmpresaHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new VerMisOfertasHandler(null)))))))))))))))))))))))));
-            
-            
+            firstHandler = new HolaHandler(
+                new RegistroEmprendedorHandler(
+                    new RemoverHabEmprendedor(
+                        new AceptarInvEmpresaHandler(
+                            new AceptarOfertaHandler(
+                                new AddHabEmpresaHandler(
+                                    new BuscadorMaterialHandler(
+                                        new BuscadorTagHandler(
+                                            new BuscadorUbicacionHandler(
+                                                new CalcularOfertasCompradasHandler(
+                                                    new CalcularOfertasVendidasHandler(
+                                                        new AddHabOfertaHandler(
+                                                            new CrearOfertaHandler(
+                                                                new EliminarOfertaHandler(
+                                                                    new GetHabListEmprendedorHandler(
+                                                                        new GetLisHabEmpresaHandler(
+                                                                            new InteresadoEnOfertaHandler(
+                                                                                new RemoveHabEmpresaHandler(
+                                                                                    new RemoverHabOfertaHandler(
+                                                                                        new AddHabEmprendedorHandler(
+                                                                                            new ComandosHandler(
+                                                                                                new VerInteresados(
+                                                                                                    new VerEmpresaHandler(
+                                                                                                        new VerEmprendedorHandler(
+                                                                                                            new VerMisOfertasHandler(
+                null)))))))))))))))))))))))));
+
             Message message = new Message();
             
-            string response;
-
+            //string response;
             //IHandler result = firstHandler.Handle(new TelegramMsgAdapter(message), out response);
 
             Console.WriteLine("Escribí un comando o 'salir':");
@@ -90,6 +114,7 @@ namespace ConsoleApplication
             // Terminamos el bot.
             cts.Cancel();
         }
+        
         /// <summary>
         /// Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
         /// respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.

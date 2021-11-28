@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -18,7 +20,7 @@ namespace ClassLibrary
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
 
-    public class Empresa : Usuario, IHabilitaciones
+    public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
@@ -27,6 +29,7 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
+        [JsonConstructor]
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = new Habilitaciones();
@@ -63,26 +66,31 @@ namespace ClassLibrary
         /// <summary>
         /// Habilitaciones de la empresa.
         /// </summary>
+        [JsonInclude]
         public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
+        [JsonInclude]
         public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
 
         /// <summary>
         /// 
         /// </summary>
+        [JsonInclude]
         public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
         /// <summary>
         /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -259,6 +267,21 @@ namespace ClassLibrary
         public List<Oferta> VerMisOfertas()
         {
             return MisOfertas;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertToJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

@@ -36,9 +36,15 @@
             </summary>
             <returns>Retorna la lista de Empresas que contiene.</returns>
         </member>
-        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Administrador.InvitarEmpresa(ClassLibrary.Empresa)">
             <summary>
             Invita a la empresa a unirse en el bot.
+            </summary>
+            <param name="empresa">Recibe por parametro la empresa que va a invitar.</param>
+        </member>
+        <member name="M:ClassLibrary.Administrador.CrearEmpresa(System.String,System.String,System.String)">
+            <summary>
+            Este metodo crea la empresa que el administrador conoce.
             </summary>
             <param name="nombre">Recibe el nombre de la empresa como string.</param>
             <param name="ubicacion">Recibe la ubicacion de la empresa como un string.</param>
@@ -212,6 +218,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.Emprendedor.ConvertToJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Empresa">
             <summary>
             Esta clase representa una Empresa, que se encarga de crear Ofertas, eliminarlas, aceptarlas y calcular el consumo de ofertas.
@@ -343,6 +355,12 @@
         <member name="M:ClassLibrary.Empresa.VerMisOfertas">
             <summary>
             Método que devuelve las ofertas publicadas por la empresa.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Empresa.ConvertToJson">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>
@@ -659,7 +677,7 @@
         </member>
         <member name="T:ClassLibrary.CambioClaveHandler">
             <summary>
-            
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/cambiarclave".
             </summary>
         </member>
         <member name="M:ClassLibrary.CambioClaveHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -697,6 +715,26 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
+        <member name="T:ClassLibrary.CrearEmpresaAdminHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/crearempresa".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.CrearEmpresaAdminHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "crear empresa".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.CrearEmpresaAdminHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "Crear empresa" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
         <member name="T:ClassLibrary.AddHabOfertaHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -718,7 +756,7 @@
         </member>
         <member name="T:ClassLibrary.CrearOfertaHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/crearoferta".
             </summary>
         </member>
         <member name="M:ClassLibrary.CrearOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -793,37 +831,6 @@
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-        </member>
-        <member name="T:ClassLibrary.HistorialChat">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
-            <summary>
-            Contiene los mensajes enviados por el Usuario.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
-            <summary>
-            Devueleve una lista que contiene los mensajes despues de el comando ingresado
-            </summary>
-            <param name="comando"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
-            <summary>
-            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
-            </summary>
-            <param name="comando"></param>
-            <returns></returns>
         </member>
         <member name="T:ClassLibrary.HolaHandler">
             <summary>
@@ -902,7 +909,7 @@
         </member>
         <member name="T:ClassLibrary.InvitarEmpresaHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "/InvitarEmpresa".
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/invitarempresa".
             </summary>
         </member>
         <member name="M:ClassLibrary.InvitarEmpresaHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -911,7 +918,6 @@
             Esta clase procesa los mensajes ingresador por el usuario, con el fin de invitar a una empresa a integrar el bot.
             </summary>
             <param name="next">Recibe por parametro el siguiente Handler.</param>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.InvitarEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -929,10 +935,9 @@
         </member>
         <member name="M:ClassLibrary.RegistrarAdminHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/registaradmin".
             </summary>
-            <param name="next"></param>
-            <returns></returns>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.RegistrarAdminHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1103,18 +1108,47 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.IJsonConvertible">
+        <member name="T:ClassLibrary.HistorialChat">
             <summary>
-            Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato
-            Json.
+            
             </summary>
         </member>
-        <member name="M:ClassLibrary.IJsonConvertible.ConvertToJson">
+        <member name="M:ClassLibrary.HistorialChat.#ctor">
             <summary>
-            Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en formato
-            Json utilizando JsonSerializer.Deserialize.
+            
             </summary>
-            <returns>El objeto convertido a texto en formato Json.</returns>
+        </member>
+        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
+            <summary>
+            Contiene los mensajes enviados por el Usuario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
+            <summary>
+            Devueleve una lista que contiene los mensajes despues de el comando ingresado
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
+            <summary>
+            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.ConvertToJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
@@ -1159,6 +1193,19 @@
             Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
             </summary>
         </member>
+        <member name="T:ClassLibrary.IJsonConvertible">
+            <summary>
+            Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato
+            Json.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.IJsonConvertible.ConvertToJson">
+            <summary>
+            Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en formato
+            Json utilizando JsonSerializer.Deserialize.
+            </summary>
+            <returns>El objeto convertido a texto en formato Json.</returns>
+        </member>
         <member name="T:ClassLibrary.IMensaje">
             <summary>
             Esta interfaz contiene los datos requerido para los envios de mensajes.
@@ -1200,7 +1247,7 @@
             Mediante el uso de esta interfaz, se puede incluir el comportamiento de varias fuentes en una clase.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.ITelegram.SendMessage">
+        <member name="M:ClassLibrary.ITelegram.EnviaMessage">
             <summary>
             Este método permite enviar mensajes.
             </summary>
@@ -1237,6 +1284,11 @@
             <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
+        </member>
+        <member name="M:ClassLibrary.Logica.#ctor">
+            <summary>
+            
+            </summary>
         </member>
         <member name="F:ClassLibrary.Logica.Publicaciones">
             <summary>
@@ -1305,6 +1357,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.Logica.ConvertToJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.LogicaAdministrador">
             <summary>
             Esta clase se encarga de la lógica relacionada con el Administrador.
@@ -1332,6 +1390,15 @@
             <param name="administrador">Recibe por parametro el Administrador de referencia</param>
             <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
             <param name="clave">Recibe por parametro la pass antigua.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaAdministrador.CrearEmpresa(ClassLibrary.Administrador,System.String,System.String,System.String)">
+            <summary>
+            Este método crea una nueva empresa conocida por el administrador.
+            </summary>
+            <param name="administrador">Recibe por parametro el Administrador de referencia.</param>
+            <param name="nombreEmpresa">Recibe por parametro el nombre de la empresa.</param>
+            <param name="ubicacionEmpresa">Recibe por paramtro la ubicacion de la empresa.</param>
+            <param name="rubroEmpresa">Recibe por parametro el rubro al que pertenece la empresa.</param>
         </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>
@@ -1534,6 +1601,34 @@
             <param name="empresa"></param>
             <returns></returns>
         </member>
+        <member name="T:ClassLibrary.MyReferenceHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.MyReferenceHandler.Instance">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.MyReferenceHandler.#ctor">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.MyReferenceHandler.CreateResolver">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.MyReferenceHandler.Reset">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:ClassLibrary.Oferta">
             <summary>
             Esta clase representa una oferta.
@@ -1679,7 +1774,7 @@
             <summary>
             Esta clase se encarga de las Publicaciones.
             </summary>
-            /// <remarks>
+            <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
             la clase Publicaciones tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
@@ -1700,6 +1795,12 @@
             Este método imprime las ofertas contenidas en OfertasPublicados.
             </summary>
         </member>
+        <member name="M:ClassLibrary.Publicaciones.ConvertToJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Rubro">
             <summary>
             Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
@@ -1715,6 +1816,11 @@
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
         </member>
+        <member name="T:ClassLibrary.Rubro.Rubros">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Rubro.GetRubros">
             <summary>
             Obtiene lista de rubros. Se usa SRP y Expert ya que conoce todo lo necesario para llevar a cabo esta responsabilidad.
@@ -1726,6 +1832,18 @@
             </summary>
             <param name="rubro">Rubro.</param>
             <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
+        </member>
+        <member name="T:ClassLibrary.Singleton`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:ClassLibrary.Singleton`1.Instancia">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClassLibrary.TelegramMsgAdapter">
             <summary>
@@ -1781,7 +1899,6 @@
             </summary>
             <remarks>
             Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
-            
             </remarks>
         </member>
         <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,System.String)">

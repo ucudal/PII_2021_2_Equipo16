@@ -6,9 +6,17 @@ using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class MyReferenceHandler : ReferenceHandler
     {
         private static MyReferenceHandler instance;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public static MyReferenceHandler Instance
         {
             get
@@ -21,9 +29,22 @@ namespace ClassLibrary
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public MyReferenceHandler() => Reset();
         private ReferenceResolver _rootedResolver;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override ReferenceResolver CreateResolver() => _rootedResolver;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void Reset() => _rootedResolver = new MyReferenceResolver();
     }
 

@@ -31,13 +31,13 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true)
+            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesemprendedor") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/listadehabilitacionesemprendedor");
+                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/listadehabilitacionesemprendedor");
                 
-                if (Logica.Emprendedores.ContainsKey(mensaje.Id))
+                if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {
-                    Emprendedor value = Logica.Emprendedores[mensaje.Id];
+                    Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
                     // Utiliza el metodo de la clase LogicaEmprendedor para obtener la lista de habilitaciones que tiene el Emprendedor en cuestion.
                     string hab = LogicaEmprendedor.GetHabilitacionList(value);
                     respuesta = $"La lista de habilitaciones es \n{hab}";
