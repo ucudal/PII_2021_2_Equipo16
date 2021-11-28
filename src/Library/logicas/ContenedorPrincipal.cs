@@ -19,12 +19,6 @@ namespace ClassLibrary
         public ContenedorPrincipal()
         {
         }
-        
-        /// <summary>
-        /// Guarda una instancia de Publicaciones.
-        /// </summary>
-        [JsonInclude]
-        public Publicaciones Publicaciones = Singleton<Publicaciones>.Instancia;
 
         /// <summary>
         /// 
