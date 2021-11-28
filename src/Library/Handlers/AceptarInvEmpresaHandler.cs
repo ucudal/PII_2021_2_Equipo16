@@ -47,6 +47,7 @@ namespace ClassLibrary
                         if (empresa.Nombre == nombreEmpresa)
                         {
                             Singleton<Logica>.Instancia.Empresas.Add(mensaje.Id, empresa);
+                            Data.Actualizar();
                             respuesta = $"Gracias por unirte {nombreEmpresa}. {OpcionesUso.AccionesEmpresas()}";
                             return true;
                         }

@@ -43,23 +43,7 @@ namespace ConsoleApplication
             Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
             administrador.InvitarEmpresa(empresa);
             
-            JsonSerializerOptions opciones = new()
-            {
-                ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
-            };      
-
-            if (!System.IO.File.Exists(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json"))
-            {
-                Logica logica = Singleton<Logica>.Instancia;
-                string logicaToJson = Singleton<Logica>.Instancia.ConvertToJson();
-                System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson);
-            }
-            else
-            {
-                string logicaToJson = System.IO.File.ReadAllText(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json");
-                Logica logica = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);
-            }
+            
 
             firstHandler = new HolaHandler(
                 new RegistroEmprendedorHandler(

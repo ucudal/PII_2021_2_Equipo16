@@ -137,6 +137,25 @@
             </summary>
             <param name="dato"></param>
         </member>
+        <member name="T:ClassLibrary.Data">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Data.#ctor">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.Data.Actualizar">
+            <summary>
+            Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
