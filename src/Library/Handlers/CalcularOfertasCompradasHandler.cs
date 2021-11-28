@@ -21,20 +21,20 @@ namespace ClassLibrary
         /// Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
-        /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string respuesta)
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(message, "/calcularofertascompradas"))
+            if (!this.ChequearHandler(mensaje, "/calcularofertascompradas"))
             {
                 respuesta = string.Empty;
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
             {
-                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
+                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd).";
@@ -50,9 +50,9 @@ namespace ClassLibrary
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(message.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[message.Id];
+                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
 
                         try
                         {

@@ -1,5 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -8,21 +9,26 @@ namespace ClassLibrary
     /// </summary>
     public class HistorialChat
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonConstructor]
         public HistorialChat()
         {
-
         }
-        
+
         /// <summary>
         /// Contiene los mensajes enviados por el Usuario.
         /// </summary>
         /// <returns></returns>
+        [JsonInclude]
         public List<string> MensajesDelUser = new List<string>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
+        [JsonInclude]
         public List<string> MensajesDelUserReves = new List<string>();
 
         /// <summary>
@@ -30,6 +36,7 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="comando"></param>
         /// <returns></returns>
+        
         public List<string> BuscarUltimoComando(string comando)
         {
             List<string> ParametrosIngresadosDelComando = new List<string>();
@@ -85,6 +92,21 @@ namespace ClassLibrary
             
             MensajesDelUserReves.Clear();
             return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

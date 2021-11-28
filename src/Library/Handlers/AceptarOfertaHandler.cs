@@ -20,8 +20,9 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respusta al mensaje procesado.</param>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (mensaje == null)
@@ -55,7 +56,6 @@ namespace ClassLibrary
                         
                         respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";
                     }
-                    
                     else
                     {
                         respuesta = $"No se ha podido aceptar la oferta, usted no está registrado como Empresa. {OpcionesUso.AccionesEmpresas()} ";

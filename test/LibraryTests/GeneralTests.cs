@@ -28,7 +28,7 @@ namespace Test.Library
             LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1", "El mejor de todos", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
 
             int expectedPublicaciones = 3; // Esperado numero de ofertas en lista.
-            Assert.AreEqual(expectedPublicaciones, Logica.Publicaciones.OfertasPublicados.Count);
+            Assert.AreEqual(expectedPublicaciones, Singleton<Logica>.Instancia.Publicaciones.OfertasPublicados.Count);
 
             // Quiero como emprendedor buscar bebidas.
             // Al buscar por tags, deberian aparecer 2 opciones.
@@ -50,7 +50,7 @@ namespace Test.Library
             Assert.AreEqual(expectedEmpresa, empresaConaprole.Nombre);
             Assert.AreEqual(expectedEmprendedor, emprendedor1.Nombre);
             Assert.AreEqual(expectedInteresados, empresaConaprole.InteresadosEnOfertas.Count);
-            Assert.AreEqual(expectedPublicaciones1, Logica.Publicaciones.OfertasPublicados.Count);
+            Assert.AreEqual(expectedPublicaciones1, Singleton<Logica>.Instancia.Publicaciones.OfertasPublicados.Count);
             Assert.AreEqual(expectedAceptadas, empresaConaprole.OfertasAceptadas.Count);
         }    
     }

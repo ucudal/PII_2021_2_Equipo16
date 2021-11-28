@@ -1,0 +1,569 @@
+{
+  "$id": "1",
+  "HistorialDeChats": {
+    "$id": "2",
+    "2100989690": {
+      "$id": "3",
+      "MensajesDelUser": {
+        "$id": "4",
+        "$values": [
+          "/aceptarinvitacion",
+          "conaprole",
+          "/crearoferta",
+          "Oferta1",
+          "Mat",
+          "998",
+          "Sjsk",
+          "Tag",
+          "Ubi",
+          "Kskswj",
+          "90",
+          "/agregarhabilitacionempresa",
+          "apa",
+          "/verempresa",
+          "/crearhaboferta",
+          "Oferta1",
+          "iso",
+          "/buscartag",
+          "Tag",
+          "/crearoferta",
+          "Oferta2",
+          "Mat2",
+          "38",
+          "Uni",
+          "Nsnsjs",
+          "Ubi",
+          "Pun",
+          "90",
+          "/buscarubicacion",
+          "Ubi",
+          "/buscarubicacion",
+          "Ubi",
+          "/comandos",
+          "/crearhaboferta",
+          "Oferta1",
+          "apa",
+          "/crearhaboferta",
+          "Oferta2",
+          "soa",
+          "/buscarubicacion",
+          "Ubi",
+          "/buscarubicacion",
+          "Ubi",
+          "/listadehabilitaciones",
+          "/listadehabilitaciones",
+          "/aceptaroferta",
+          "Oferta1",
+          "/calcularofertasvendidas",
+          "1111-11-11",
+          "2222-11-11",
+          "/verempresa",
+          "/agregarhabilitacionempresa",
+          "iso",
+          "/agregarhabilitacionempresa",
+          "soa",
+          "/verempresa",
+          "/removerhabempresa",
+          "iso",
+          "/verempresa",
+          "/crearoferta",
+          "Oferta3",
+          "Mat3",
+          "900",
+          "Jsjsj",
+          "Nsjsjs",
+          "Nsnwb",
+          "Jqwj",
+          "87",
+          "/buscarmaterial",
+          "Mat3",
+          "/buscarubicacion",
+          "Ubi",
+          "/removerhaboferta",
+          "Oferta2",
+          "soa",
+          "/buscarmaterial",
+          "Mat2",
+          "/eliminaroferta",
+          "Oferta3",
+          "/buscarmaterial",
+          "Mat3",
+          "/eliminaroferta",
+          "Oferta3",
+          "/vermisofertas",
+          "/vermisofertas",
+          "/crearhaboferta",
+          "Dksi",
+          "Kdjs",
+          "/crearoferta",
+          "Oferta4",
+          "Mat4",
+          "Jdjsjssj",
+          "Jsksksjd",
+          "Ksksj",
+          "Sksksks",
+          "Jsjsd",
+          "Dndn",
+          "/crearoferta",
+          "Oferta4",
+          "Mat4",
+          "099",
+          "Uni",
+          "Tag",
+          "Ubi",
+          "Sjwjsjjw",
+          "29",
+          "/vermisofertas",
+          "/buscarubicacion",
+          "Ubi",
+          "/eliminaroferta",
+          "Oferta4",
+          "/buscarubicacion",
+          "Ubi",
+          "/vermisofertas",
+          "/buscarubicacion",
+          "Ubi",
+          "/verinteresados",
+          "/verinteresados",
+          "/crearoferta",
+          "/calcularofertasvendidas",
+          "1111-11-11",
+          "2222-11-11"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "5",
+        "$values": [
+          "2222-11-11",
+          "1111-11-11",
+          "/calcularofertasvendidas",
+          "/crearoferta",
+          "/verinteresados",
+          "/verinteresados",
+          "Ubi",
+          "/buscarubicacion",
+          "/vermisofertas",
+          "Ubi",
+          "/buscarubicacion",
+          "Oferta4",
+          "/eliminaroferta",
+          "Ubi",
+          "/buscarubicacion",
+          "/vermisofertas",
+          "29",
+          "Sjwjsjjw",
+          "Ubi",
+          "Tag",
+          "Uni",
+          "099",
+          "Mat4",
+          "Oferta4",
+          "/crearoferta",
+          "Dndn",
+          "Jsjsd",
+          "Sksksks",
+          "Ksksj",
+          "Jsksksjd",
+          "Jdjsjssj",
+          "Mat4",
+          "Oferta4",
+          "/crearoferta",
+          "Kdjs",
+          "Dksi",
+          "/crearhaboferta",
+          "/vermisofertas",
+          "/vermisofertas",
+          "Oferta3",
+          "/eliminaroferta",
+          "Mat3",
+          "/buscarmaterial",
+          "Oferta3",
+          "/eliminaroferta",
+          "Mat2",
+          "/buscarmaterial",
+          "soa",
+          "Oferta2",
+          "/removerhaboferta",
+          "Ubi",
+          "/buscarubicacion",
+          "Mat3",
+          "/buscarmaterial",
+          "87",
+          "Jqwj",
+          "Nsnwb",
+          "Nsjsjs",
+          "Jsjsj",
+          "900",
+          "Mat3",
+          "Oferta3",
+          "/crearoferta",
+          "/verempresa",
+          "iso",
+          "/removerhabempresa",
+          "/verempresa",
+          "soa",
+          "/agregarhabilitacionempresa",
+          "iso",
+          "/agregarhabilitacionempresa",
+          "/verempresa",
+          "2222-11-11",
+          "1111-11-11",
+          "/calcularofertasvendidas",
+          "Oferta1",
+          "/aceptaroferta",
+          "/listadehabilitaciones",
+          "/listadehabilitaciones",
+          "Ubi",
+          "/buscarubicacion",
+          "Ubi",
+          "/buscarubicacion",
+          "soa",
+          "Oferta2",
+          "/crearhaboferta",
+          "apa",
+          "Oferta1",
+          "/crearhaboferta",
+          "/comandos",
+          "Ubi",
+          "/buscarubicacion",
+          "Ubi",
+          "/buscarubicacion",
+          "90",
+          "Pun",
+          "Ubi",
+          "Nsnsjs",
+          "Uni",
+          "38",
+          "Mat2",
+          "Oferta2",
+          "/crearoferta",
+          "Tag",
+          "/buscartag",
+          "iso",
+          "Oferta1",
+          "/crearhaboferta",
+          "/verempresa",
+          "apa",
+          "/agregarhabilitacionempresa",
+          "90",
+          "Kskswj",
+          "Ubi",
+          "Tag",
+          "Sjsk",
+          "998",
+          "Mat",
+          "Oferta1",
+          "/crearoferta",
+          "conaprole",
+          "/aceptarinvitacion"
+        ]
+      }
+    },
+    "2124515755": {
+      "$id": "6",
+      "MensajesDelUser": {
+        "$id": "7",
+        "$values": [
+          "/registrarse",
+          "ola",
+          "brasil",
+          "textil",
+          "chau",
+          "/buscarubicacion",
+          "Ubi",
+          "/veremprendedor",
+          "/agregarhabilitacionemprendedor",
+          "apa",
+          "xd",
+          "/veremprendedor",
+          "/listadehabilitaciones",
+          "/listadehabilitaciones",
+          "agora sim",
+          "/interesado",
+          "Oferta2",
+          "/agregarhabilitacionemprendedor",
+          "iso",
+          "/listadehabilitaciones",
+          "/listadehabilitaciones",
+          "/veremprendedor",
+          "Sigue andando",
+          "/buscarubicacion",
+          "Ubi",
+          "Nais",
+          "/removerhabemprendedor",
+          "iso",
+          "/veremprendedor"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "8",
+        "$values": [
+          "/veremprendedor",
+          "iso",
+          "/removerhabemprendedor",
+          "Nais",
+          "Ubi",
+          "/buscarubicacion",
+          "Sigue andando",
+          "/veremprendedor",
+          "/listadehabilitaciones",
+          "/listadehabilitaciones",
+          "iso",
+          "/agregarhabilitacionemprendedor",
+          "Oferta2",
+          "/interesado",
+          "agora sim",
+          "/listadehabilitaciones",
+          "/listadehabilitaciones",
+          "/veremprendedor",
+          "xd",
+          "apa",
+          "/agregarhabilitacionemprendedor",
+          "/veremprendedor",
+          "Ubi",
+          "/buscarubicacion",
+          "chau",
+          "textil",
+          "brasil",
+          "ola",
+          "/registrarse"
+        ]
+      }
+    }
+  },
+  "EmpresasInvitadas": {
+    "$id": "9",
+    "$values": [
+      {
+        "$id": "10",
+        "FechaOfertasEntregadas": {
+          "$id": "11",
+          "2021-11-28T18:19:19.6722427-03:00": {
+            "$id": "12",
+            "HabilitacionesOferta": {
+              "$id": "13",
+              "$values": [
+                {
+                  "$id": "14",
+                  "Nombre": null
+                },
+                {
+                  "$id": "15",
+                  "Nombre": "apa"
+                }
+              ]
+            },
+            "Interesado": {
+              "$id": "16",
+              "$values": []
+            },
+            "Nombre": "Oferta1",
+            "Material": {
+              "$id": "17",
+              "Nombre": "Mat",
+              "Cantidad": "90",
+              "Precio": "998",
+              "Unidad": "Sjsk"
+            },
+            "Tags": "Tag",
+            "Ubicacion": {
+              "$id": "18",
+              "NombreCalle": "Ubi"
+            },
+            "EmpresaCreadora": {
+              "$ref": "10"
+            },
+            "ConstantesPuntuales": "Kskswj",
+            "FechaDePublicacion": "2021-11-28T19:07:42.0741849-03:00"
+          }
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "19",
+          "$values": [
+            {
+              "$id": "20",
+              "Nombre": null
+            },
+            {
+              "$id": "21",
+              "Nombre": "soa"
+            }
+          ]
+        },
+        "InteresadosEnOfertas": {
+          "$id": "22",
+          "$values": [
+            {
+              "$id": "23",
+              "HabilitacionesOferta": {
+                "$id": "24",
+                "$values": []
+              },
+              "Interesado": {
+                "$id": "25",
+                "$values": [
+                  "ola"
+                ]
+              },
+              "Nombre": "Oferta2",
+              "Material": {
+                "$id": "26",
+                "Nombre": "Mat2",
+                "Cantidad": "90",
+                "Precio": "38",
+                "Unidad": "Uni"
+              },
+              "Tags": "Nsnsjs",
+              "Ubicacion": {
+                "$id": "27",
+                "NombreCalle": "Ubi"
+              },
+              "EmpresaCreadora": {
+                "$ref": "10"
+              },
+              "ConstantesPuntuales": "Pun",
+              "FechaDePublicacion": "2021-11-28T19:07:42.0758795-03:00"
+            }
+          ]
+        },
+        "OfertasAceptadas": {
+          "$id": "28",
+          "$values": [
+            {
+              "$ref": "12"
+            }
+          ]
+        },
+        "MisOfertas": {
+          "$id": "29",
+          "$values": [
+            {
+              "$ref": "12"
+            },
+            {
+              "$ref": "23"
+            },
+            {
+              "$id": "30",
+              "HabilitacionesOferta": {
+                "$id": "31",
+                "$values": []
+              },
+              "Interesado": {
+                "$id": "32",
+                "$values": []
+              },
+              "Nombre": "Oferta3",
+              "Material": {
+                "$id": "33",
+                "Nombre": "Mat3",
+                "Cantidad": "87",
+                "Precio": "900",
+                "Unidad": "Jsjsj"
+              },
+              "Tags": "Nsjsjs",
+              "Ubicacion": {
+                "$id": "34",
+                "NombreCalle": "Nsnwb"
+              },
+              "EmpresaCreadora": {
+                "$ref": "10"
+              },
+              "ConstantesPuntuales": "Jqwj",
+              "FechaDePublicacion": "2021-11-28T19:07:42.0762393-03:00"
+            }
+          ]
+        },
+        "Nombre": "conaprole",
+        "Ubicacion": {
+          "$id": "35",
+          "NombreCalle": "pakistan"
+        },
+        "Rubro": {
+          "$id": "36",
+          "Nombre": "textil"
+        }
+      }
+    ]
+  },
+  "Emprendedores": {
+    "$id": "37",
+    "2124515755": {
+      "$id": "38",
+      "FechaDeOfertasCompradas": {
+        "$id": "39",
+        "2021-11-28T18:49:45.5198375-03:00": {
+          "$ref": "23"
+        }
+      },
+      "OfertasInteresado": {
+        "$id": "40",
+        "$values": [
+          {
+            "$ref": "23"
+          }
+        ]
+      },
+      "HabilitacionesEmprendedor": {
+        "$id": "41",
+        "$values": [
+          {
+            "$id": "42",
+            "Nombre": "apa"
+          }
+        ]
+      },
+      "Especializaciones": "chau",
+      "Nombre": "ola",
+      "Ubicacion": {
+        "$id": "43",
+        "NombreCalle": "brasil"
+      },
+      "Rubro": {
+        "$id": "44",
+        "Nombre": "textil"
+      }
+    }
+  },
+  "Empresas": {
+    "$id": "45",
+    "2100989690": {
+      "$ref": "10"
+    }
+  },
+  "Publicaciones": {
+    "$id": "46",
+    "OfertasPublicados": {
+      "$id": "47",
+      "$values": [
+        {
+          "$ref": "23"
+        }
+      ]
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "48"
+  },
+  "BuscadorTags": {
+    "$id": "49"
+  },
+  "BuscadorMaterial": {
+    "$id": "50"
+  },
+  "PrinterConsola": {
+    "$id": "51"
+  },
+  "ListaNombreOfertas": {
+    "$id": "52",
+    "$values": [
+      "Oferta1",
+      "Oferta2",
+      "Oferta3",
+      "Oferta4"
+    ]
+  },
+  "Administradores": {
+    "$id": "53"
+  }
+}

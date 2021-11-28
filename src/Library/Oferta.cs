@@ -1,6 +1,8 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -11,22 +13,29 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
+        [JsonConstructor]
+        public Oferta()
+        {
+
+        }
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesOferta { get; } = new List<Habilitaciones>();
+        [JsonInclude]
+        public List<Habilitaciones> HabilitacionesOferta { get; set; } = new List<Habilitaciones>();
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
+        /// 
         /// </summary>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material del producto que se oferta.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad ed la oferta.</param>
-        /// <param name="tags">Tags de la oferta.</param>
-        /// <param name="ubicacion">Ubicacion de la oferta.</param>
-        /// <param name="empresa">Empresa que publica la oferta.</param>
-        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="constantesPuntuales"></param>
+        /// <param name="empresa"></param>
         public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
@@ -40,38 +49,37 @@ namespace ClassLibrary
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
-        public List<string> Interesado { get; } = new List<string>();
+        [JsonInclude]
+        public List<string> Interesado { get; set; } = new List<string>();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        public string Nombre { get; private set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        public Material Material { get; private set; }
+        [JsonInclude]
+        public Material Material { get; set; }
 
         /// <summary>
         /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
-        public string Tags { get; private set; }
+        public string Tags { get; set; }
 
         /// <summary>
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        public Ubicacion Ubicacion { get; private set; }
+        public Ubicacion Ubicacion { get; set; }
 
-
-        /// <summary>
-        /// Obtiene o establece la Empresa que publica la Oferta.
-        /// </summary>
-        public Empresa EmpresaCreadora { get; private set; }
+        public Empresa EmpresaCreadora {get; set;}
+       
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        public string ConstantesPuntuales { get; private set;}
+        public string ConstantesPuntuales { get; set;}
 
 
         /// <summary>
@@ -159,6 +167,17 @@ namespace ClassLibrary
                 texto.Append("\n" + interesado);
             }
             return texto.ToString();
+        }
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

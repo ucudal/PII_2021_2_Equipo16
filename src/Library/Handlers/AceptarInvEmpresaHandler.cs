@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/aceptarinvitacion".
     /// </summary>
     public class AceptarInvEmpresaHandler : BaseHandler
     {
@@ -20,9 +20,9 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje y determina si la Empresa aceptó la invitación.
         /// </summary>
-        /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respusta al mensaje procesado.</param>
-        /// <returns></returns>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         { 
             if (!this.ChequearHandler(mensaje, "/aceptarinvitacion"))

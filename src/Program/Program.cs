@@ -5,7 +5,6 @@
 //--------------------------------------------------------------------------------
 using System;
 using ClassLibrary;
-using System.IO;
 using System.Threading;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -28,7 +27,7 @@ namespace ConsoleApplication
         //
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string Token = "2131709654:AAHbaaHyt92koTwZ8aaBPzfiSIyscVoAouU";
+        private static string Token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
 
         private static IHandler firstHandler;
 
@@ -37,10 +36,10 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
+            Administrador admin = new Administrador("Admin", "Equipo16");
+            Empresa empresaTest = new Empresa("conaprole", "pakistan", "textil");
+            admin.InvitarEmpresa(empresaTest);
             
-        
-            Administrador admin = new Administrador("Admin");
-            admin.InvitarEmpresa("conaprole", "pakistan", "textil");
 
             
             
@@ -52,21 +51,22 @@ namespace ConsoleApplication
                 WriteIndented = true
             };  
 
-            if (System.IO.File.Exists(@"..\Library\Persistencia\logica.json"))
+            if (System.IO.File.Exists(@"..\Library\Persistencia\Contenedor.json"))
             {
-                string contenedorToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
+                string contenedorToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\Contenedor.json");
                 Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(contenedorToJson, opciones);  
             }
 
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new GetHabListHandler(new VerEmprendedorHandler(null))))))))))))))))))))))));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(new VerMisOfertasHandler(null))))))))))))))))))))))))))));
             
 
             
+            
+           
             Message message = new Message();
             
-            string response;
-
+            //string response;
             //IHandler result = firstHandler.Handle(new TelegramMsgAdapter(message), out response);
 
             Console.WriteLine("Escribí un comando o 'salir':");
@@ -89,12 +89,13 @@ namespace ConsoleApplication
 
 
             Console.WriteLine("se termina el programa");
-            string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertToJson();
-            System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", contenedorToJson1); 
+            string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertirJson();
+            System.IO.File.WriteAllText(@"..\Library\Persistencia\Contenedor.json", contenedorToJson1); 
 
             // Terminamos el bot.
             cts.Cancel();
         }
+        
         /// <summary>
         /// Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
         /// respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -10,23 +12,26 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
-    public class Emprendedor : Usuario, IHabilitaciones
+    public class Emprendedor : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get;} = new Dictionary<DateTime, Oferta>();
+        [JsonInclude]
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get; set;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
-        public List<Oferta> OfertasInteresado {get;} = new List<Oferta>();
+        [JsonInclude]
+        public List<Oferta> OfertasInteresado {get; set;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
+        [JsonInclude]
+        public List<Habilitaciones> HabilitacionesEmprendedor {get; set;} = new List<Habilitaciones>();
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
@@ -38,22 +43,21 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
-            : base(nombre, ubicacion, rubro)
+        [JsonConstructor]
+        public Emprendedor() : base()
+        {
+
+        }
+        
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
         }
 
-
-        /// <summary>
-        /// Obtiene una lista de las habilitaciones del emprendedor.
-        /// </summary>
-        /// <value>HabilitacionesEmprendedor.</value>
-
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; private set;}
+        public string Especializaciones { get; set;}
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -101,7 +105,6 @@ namespace ClassLibrary
         public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
         {
             int ofertasCompradas = 0;
-
             DateTime fInicio;
 
             if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
@@ -115,7 +118,6 @@ namespace ClassLibrary
             {
                 throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
             }
-
             foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
                 if (par.Key >= fInicio && par.Key <= fFinal)
@@ -123,15 +125,17 @@ namespace ClassLibrary
                 ofertasCompradas++;
                 }
             }
+            
             string texto = $"Se han comprado {ofertasCompradas} ofertas en el tiempo indicado";
             ConsolePrinter.DatoPrinter(texto);
             return ofertasCompradas;
         }
+        
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase emprendedor.
         /// </summary>
         /// <returns></returns>
-            public string TextoEmprendedor()
+        public string TextoEmprendedor()
         {
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
@@ -147,6 +151,21 @@ namespace ClassLibrary
             }
 
             return text.ToString();
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

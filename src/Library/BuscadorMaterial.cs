@@ -24,6 +24,7 @@ namespace ClassLibrary
             List<Oferta> ofertasEncontradas = new List<Oferta>();
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
+                ConsolePrinter.DatoPrinter(ofertasEncontradas.Count.ToString());
                 if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Nombre))
                 {
                     ofertasEncontradas.Add(oferta);

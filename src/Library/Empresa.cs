@@ -2,6 +2,8 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -18,7 +20,7 @@ namespace ClassLibrary
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
 
-    public class Empresa : Usuario, IHabilitaciones
+    public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
@@ -27,6 +29,11 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
+        [JsonConstructor]
+        public Empresa() : base()
+        {
+
+        }
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
         }
@@ -35,49 +42,49 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get;} = new Dictionary<DateTime, Oferta>();
+        [JsonInclude]
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get; private set;} = new Dictionary<DateTime, Oferta>();
         //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
         //private List<Oferta> ofertasAceptadas = new List<Oferta>();
         //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
         //private List<Oferta> misOfertas = new List<Oferta>();
 
         /// <summary>
-        /// Habilitaciones de la empresa.
-        /// </summary>
-
-        /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
+        [JsonInclude]
         public List<Habilitaciones> HabilitacionesEmpresa { get; private set; } = new List<Habilitaciones>();
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> InteresadosEnOfertas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> OfertasAceptadas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// 
         /// </summary>
-        public List<Oferta> MisOfertas { get; } = new List<Oferta>();
+        [JsonInclude]
+        public List<Oferta> MisOfertas { get; private set;} = new List<Oferta>();
+        
         /// <summary>
-        /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// 
         /// </summary>
-        /// <param name="publicaciones">Publicaciones.</param>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de la oferta.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad de la oferta.</param>
-        /// <param name="tags">Tags de la oferta (palabras claves).</param>
-        /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
-        /// <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
-        /// <remarks>
-        /// Se usa Creator.
-        /// </remarks>
+        /// <param name="publicaciones"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="puntualesConstantes"></param>
         public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
             Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
@@ -101,6 +108,7 @@ namespace ClassLibrary
                 }
             }
             publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
+            this.MisOfertas.Remove(ofertaParaEliminar);
         }
 
         /// <summary>
@@ -195,7 +203,6 @@ namespace ClassLibrary
             this.HabilitacionesEmpresa.Remove(habEliminada);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -244,6 +251,21 @@ namespace ClassLibrary
         public List<Oferta> VerMisOfertas()
         {
             return MisOfertas;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

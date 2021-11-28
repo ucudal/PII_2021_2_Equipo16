@@ -15,7 +15,7 @@ namespace Test.Library
         [Test]
         public void TestAdministrador()
         {
-            Administrador admin = new Administrador("Admin");
+            Administrador admin = new Administrador("Admin", "equipo_16");
             string expected = "Admin";
             Assert.AreEqual(expected, admin.Nombre);
         }
@@ -28,10 +28,10 @@ namespace Test.Library
         [Test]
         public void TestInvitar()
         {
-            Administrador admin = new Administrador("Admin");
+            Administrador admin = new Administrador("Admin", "equipo_16");
             Empresa empresa = new Empresa("royal", "calle 1", "textil");
             //admin.InvitarEmpresa(empresa);
-            int expected = 1;
+            //int expected = 1;
             //Assert.AreEqual(expected, admin.Empresas.Count);
         }
 
@@ -42,7 +42,7 @@ namespace Test.Library
         [Test]
         public void TestAdministradorFalso()
         {
-            Administrador admin = new Administrador("");
+            Administrador admin = new Administrador("","equipo_16");
             string expected = "Jhon";
             Assert.AreEqual(expected, admin.Nombre);
         }

@@ -1,3 +1,5 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -6,6 +8,11 @@ namespace ClassLibrary
     /// </summary>
     public class Ubicacion
     {
+        [JsonConstructor]
+        public Ubicacion()
+        {
+
+        }
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Ubicacion"/>.
@@ -19,7 +26,18 @@ namespace ClassLibrary
         /// .
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string NombreCalle { get; private set;}
+        public string NombreCalle { get; set;}
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
 
 
     }

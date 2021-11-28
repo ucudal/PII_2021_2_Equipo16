@@ -11,7 +11,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
-        /// <param name="next"></param>
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public AddHabEmprendedorHandler(BaseHandler next):base(next)
         {
             this.Keywords = new string[] {"/agregarhabilitacionemprendedor"};
@@ -21,32 +21,32 @@ namespace ClassLibrary
         /// Este método procesa el mensaje "Agregar habilitación" y retorna true.
         /// En caso contrario retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
-        /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string response)
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(message, "/agregarhabilitacionemprendedor"))
+            if (!this.ChequearHandler(mensaje, "/agregarhabilitacionemprendedor"))
             {
-                response = string.Empty;
+                respuesta = string.Empty;
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
                 if (listaConParametros.Count == 0)
                 {
-                    response = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
+                    respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(message.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[message.Id];
+                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
                         try
                         {
                             LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
@@ -54,21 +54,21 @@ namespace ClassLibrary
                         catch (System.ArgumentException e)
                         {
                             
-                            response = e.Message;
+                            respuesta = e.Message;
                             return true;
                         }
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
+                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }
                     else
                     {
-                        response = $"Usted no es un emprendedor, no puede usar este comando.";
+                        respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
                         return true;
                     }
                 }
             }
             
-            response = string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/crearoferta".
     /// </summary>
     public class CrearOfertaHandler : BaseHandler
     {
@@ -19,9 +19,9 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="mensaje"></param>
-        /// <param name="respuesta"></param>
-        /// <returns></returns>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/crearoferta"))

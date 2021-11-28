@@ -12,16 +12,17 @@ namespace ClassLibrary
     public static class LogicaEmpresa
     {
         /// <summary>
-        /// Llama al método CrearProducto en empresa con los parametros pasados.
+        /// 
         /// </summary>
-        /// <param name="empresa">Empresa que creará la oferta.</param>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de lo que se ofrece.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
-        /// <param name="tags">Palabra clave.</param>
-        /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+        /// <param name="empresa"></param>
+        /// <param name="nombre"></param>
+        /// <param name="nombreMaterial"></param>
+        /// <param name="cantidad"></param>
+        /// <param name="precio"></param>
+        /// <param name="unidad"></param>
+        /// <param name="tags"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="constantesPuntuales"></param>
         public static void CrearOferta(Empresa empresa, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
             if (Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Contains(nombre))
@@ -157,7 +158,6 @@ namespace ClassLibrary
             }
         }
         
-
         /// <summary>
         /// 
         /// </summary>
@@ -181,9 +181,9 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa"></param>
         /// <returns></returns>
-        public static List<Oferta> VerMisOfertas(Empresa empresa)
+        public static string VerMisOfertas(Empresa empresa)
         {
-            return empresa.VerMisOfertas();
+            return TelegramPrinter.BusquedaPrinter(empresa.VerMisOfertas());
         }
     }
 }
