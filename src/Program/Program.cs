@@ -39,34 +39,26 @@ namespace ConsoleApplication
         {
             Bot = new TelegramBotClient(Token);
             
+            Administrador administrador = new Administrador("Admin","equipo_16");
+            Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
+            administrador.InvitarEmpresa(empresa);
+            
             JsonSerializerOptions opciones = new()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
             };      
 
-            if (!System.IO.File.Exists(@"PII_2021_2_Equipo16\src\Library\Persistencia\administrador.json"))
+            if (!System.IO.File.Exists(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json"))
             {
-                Administrador administrador = new Administrador("Admin","equipo_16");
-                string administradorToJson = administrador.ConvertToJson();
-                System.IO.File.WriteAllText(@"..\Library\Persistencia\administrador.json", administradorToJson);
+                Logica logica = Singleton<Logica>.Instancia;
+                string logicaToJson = Singleton<Logica>.Instancia.ConvertToJson();
+                System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson);
             }
             else
             {
-                string adminToJson = System.IO.File.ReadAllText(@"PII_2021_2_Equipo16\src\Library\Persistencia\administrador.json");
-                Administrador administrador = JsonSerializer.Deserialize<Administrador>(adminToJson, opciones);
-            }
-
-            if (!System.IO.File.Exists(@"PII_2021_2_Equipo16\src\Library\Persistencia\empresa.json"))
-            {   
-                Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
-                string empresaToJson = empresa.ConvertToJson();
-                System.IO.File.WriteAllText(@"..\Library\Persistencia\empresa.json", empresaToJson);
-            }
-            else
-            {
-                string empresaToJson = System.IO.File.ReadAllText(@"PII_2021_2_Equipo16\src\Library\Persistencia\empresa.json");
-                Empresa empresa = JsonSerializer.Deserialize<Empresa>(empresaToJson, opciones);
+                string logicaToJson = System.IO.File.ReadAllText(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json");
+                Logica logica = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);
             }
 
             firstHandler = new HolaHandler(

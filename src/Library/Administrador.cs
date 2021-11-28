@@ -75,7 +75,7 @@ namespace ClassLibrary
         /// <param name="empresa">Recibe por parametro la empresa que va a invitar.</param>
         public void InvitarEmpresa(Empresa empresa)
         {
-            Logica.EmpresasInvitadas.Add(empresa);
+            Singleton<Logica>.Instancia.EmpresasInvitadas.Add(empresa);
         }
 
         /// <summary>

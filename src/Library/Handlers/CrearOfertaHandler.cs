@@ -30,9 +30,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
+            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
+                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta";
@@ -77,9 +77,9 @@ namespace ClassLibrary
                     string precioOferta = listaConParametros[4];
                     string materialOferta = listaConParametros[5];
                     string nombreOferta = listaConParametros[6];
-                    if (Logica.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[mensaje.Id];
+                        Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
 
                         try
                         {

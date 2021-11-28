@@ -24,7 +24,7 @@ namespace ClassLibrary
             if (Rubro.CheckRubro(rubro))
             { 
                 Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
-                Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
+                Singleton<Logica>.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
             }
             else
             {
@@ -96,7 +96,7 @@ namespace ClassLibrary
             }
             else
             {
-                foreach (Oferta item in Logica.Publicaciones.OfertasPublicados)
+                foreach (Oferta item in Singleton<Logica>.Instancia.Publicaciones.OfertasPublicados)
                 {
                     if (item.Nombre == nombreOferta)
                     {

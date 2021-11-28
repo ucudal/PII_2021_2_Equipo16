@@ -14,7 +14,7 @@ namespace ClassLibrary
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
     /// </remarks>
 
-    public class Publicaciones
+    public class Publicaciones : IJsonConvertible
     {
         [JsonConstructor]
         private Publicaciones()
@@ -42,6 +42,7 @@ namespace ClassLibrary
         /// <summary>
         /// Una lista que contiene las ofertas.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> OfertasPublicados = new List<Oferta>();
 
         /// <summary>

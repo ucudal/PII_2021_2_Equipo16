@@ -12,7 +12,7 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
-    public class Emprendedor : Usuario, IHabilitaciones
+    public class Emprendedor : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
@@ -53,6 +53,7 @@ namespace ClassLibrary
         /// <summary>
         /// Habilitaciones del emprendedor.
         /// </summary>
+        [JsonInclude]
         public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
@@ -160,9 +161,10 @@ namespace ClassLibrary
         {
             JsonSerializerOptions opciones = new()
             {
+                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
             };
-
+            
             return JsonSerializer.Serialize(this, opciones);
         }
     }

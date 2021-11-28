@@ -20,7 +20,7 @@ namespace ClassLibrary
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
 
-    public class Empresa : Usuario, IHabilitaciones
+    public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
@@ -66,26 +66,31 @@ namespace ClassLibrary
         /// <summary>
         /// Habilitaciones de la empresa.
         /// </summary>
+        [JsonInclude]
         public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
+        [JsonInclude]
         public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
 
         /// <summary>
         /// 
         /// </summary>
+        [JsonInclude]
         public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
         /// <summary>
         /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
@@ -272,6 +277,7 @@ namespace ClassLibrary
         {
             JsonSerializerOptions opciones = new()
             {
+                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
             };
 

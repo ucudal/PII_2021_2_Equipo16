@@ -32,9 +32,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
+            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
             {
-                List<string> listaConParam = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
+                List<string> listaConParam = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd).";
@@ -50,9 +50,9 @@ namespace ClassLibrary
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-                    if (Logica.Emprendedores.ContainsKey(mensaje.Id))
+                    if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {
-                        Emprendedor value = Logica.Emprendedores[mensaje.Id];
+                        Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
 
                         try
                         {

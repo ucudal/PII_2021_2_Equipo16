@@ -39,13 +39,13 @@ namespace ClassLibrary
                     return false;
                 }
                 
-                if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true)
+                if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/listadehabilitacionesempresa") == true)
                 {
-                    List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/listadehabilitacionesempresa");
+                    List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/listadehabilitacionesempresa");
                     
-                    if (Logica.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = Logica.Empresas[mensaje.Id];
+                        Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
                         // Utiliza el método de la clase LogicaEmpresa para obtener la lista de habilitaciones que tiene la Empresas en cuestion.
                         string hab = LogicaEmpresa.GetListaHabilitaciones(value);
                         respuesta = $"La lista de habilitaciones es \n{hab}";
