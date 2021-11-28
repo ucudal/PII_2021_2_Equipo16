@@ -27,7 +27,7 @@ namespace ConsoleApplication
         //
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string Token = "2131709654:AAHbaaHyt92koTwZ8aaBPzfiSIyscVoAouU";
+        private static string Token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
 
         private static IHandler firstHandler;
 
@@ -58,7 +58,7 @@ namespace ConsoleApplication
             }
 
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(null)))))))))))))))))))))))))));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(new VerMisOfertasHandler(null))))))))))))))))))))))))))));
             
 
             

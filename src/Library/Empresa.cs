@@ -87,7 +87,7 @@ namespace ClassLibrary
         /// <param name="puntualesConstantes"></param>
         public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
-            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this.Nombre);
+            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
             this.MisOfertas.Add(productoCreado);
         }
@@ -108,6 +108,7 @@ namespace ClassLibrary
                 }
             }
             publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
+            this.MisOfertas.Remove(ofertaParaEliminar);
         }
 
         /// <summary>

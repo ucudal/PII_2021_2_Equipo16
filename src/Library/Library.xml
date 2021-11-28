@@ -225,7 +225,7 @@
             Lista de habilitaciones del emprendedor.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
@@ -1268,6 +1268,30 @@
             
             </summary>
         </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
+            <summary>
+            Guarda un conjunto Emprendedor, y su chat id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
+            <summary>
+            Guarda un conjunto Empresa, y su chat id.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
@@ -1296,30 +1320,6 @@
         <member name="P:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
-            <summary>
-            Guarda un conjunto Emprendedor, y su chat id.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
-            <summary>
-            Guarda un conjunto Empresa, y su chat id.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
-            <summary>
-            
             </summary>
             <returns></returns>
         </member>
@@ -1628,7 +1628,7 @@
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             
             </summary>
@@ -1665,11 +1665,6 @@
         <member name="P:ClassLibrary.Oferta.Ubicacion">
             <summary>
             Obtiene o establece la Ubicación de la oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
-            <summary>
-            Obtiene o establece la Empresa que publica la Oferta.
             </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">

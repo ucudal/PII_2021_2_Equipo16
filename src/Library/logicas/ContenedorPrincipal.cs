@@ -19,12 +19,40 @@ namespace ClassLibrary
         public ContenedorPrincipal()
         {
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [JsonInclude]
+        public Dictionary<string, HistorialChat> HistorialDeChats {get; private set;} = new Dictionary<string, HistorialChat>();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        [JsonInclude]
+        public List<Empresa> EmpresasInvitadas {get; private set;} = new List<Empresa>();
+
+        /// <summary>
+        /// Guarda un conjunto Emprendedor, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        [JsonInclude]
+        public Dictionary<string, Emprendedor> Emprendedores {get; private set;} = new Dictionary<string, Emprendedor>();
+
+        /// <summary>
+        /// Guarda un conjunto Empresa, y su chat id.
+        /// </summary>
+        /// <returns></returns>
+        [JsonInclude]
+        public Dictionary<string, Empresa> Empresas {get; private set;} = new Dictionary<string, Empresa>();
         
         /// <summary>
         /// Guarda una instancia de Publicaciones.
         /// </summary>
         [JsonInclude]
-        public Publicaciones Publicaciones {get;} = Singleton<Publicaciones>.Instancia;
+        public Publicaciones Publicaciones {get; set;} = Singleton<Publicaciones>.Instancia;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
@@ -57,34 +85,8 @@ namespace ClassLibrary
         [JsonInclude]
         public List<string> ListaNombreOfertas {get; private set;} = new List<string>();
 
+        
 
-        /// <summary>
-        /// Guarda un conjunto Emprendedor, y su chat id.
-        /// </summary>
-        /// <returns></returns>
-        [JsonInclude]
-        public Dictionary<string, Emprendedor> Emprendedores {get; private set;} = new Dictionary<string, Emprendedor>();
-
-        /// <summary>
-        /// Guarda un conjunto Empresa, y su chat id.
-        /// </summary>
-        /// <returns></returns>
-        [JsonInclude]
-        public Dictionary<string, Empresa> Empresas {get; private set;} = new Dictionary<string, Empresa>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [JsonInclude]
-        public Dictionary<string, HistorialChat> HistorialDeChats {get; private set;} = new Dictionary<string, HistorialChat>();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        [JsonInclude]
-        public List<Empresa> EmpresasInvitadas {get; private set;} = new List<Empresa>();
 
         [JsonInclude]
         public Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();

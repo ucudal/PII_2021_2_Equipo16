@@ -22,7 +22,7 @@ namespace ClassLibrary
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
         [JsonInclude]
-        public List<Habilitaciones> HabilitacionesOferta { get; } = new List<Habilitaciones>();
+        public List<Habilitaciones> HabilitacionesOferta { get; set; } = new List<Habilitaciones>();
 
         /// <summary>
         /// 
@@ -36,13 +36,13 @@ namespace ClassLibrary
         /// <param name="ubicacion"></param>
         /// <param name="constantesPuntuales"></param>
         /// <param name="empresa"></param>
-        public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, string nombreEmpresa)
+        public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
             this.Material = new Material(nombreMaterial, cantidad, precio, unidad);
             this.Tags = tags;
             this.Ubicacion = new Ubicacion(ubicacion);
-            this.NombreEmpresaCreadora = nombreEmpresa;
+            this.EmpresaCreadora = empresa;
             this.ConstantesPuntuales = constantesPuntuales;
         }
 
@@ -50,51 +50,36 @@ namespace ClassLibrary
         /// Nombre del interesado en la oferta.
         /// </summary>
         [JsonInclude]
-        public List<string> Interesado { get; } = new List<string>();
+        public List<string> Interesado { get; set; } = new List<string>();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
         /// </summary>
-        public string Nombre { get; private set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Obtiene o establece el Material del producto a ofertar.
         /// </summary>
-        public Material Material { get; private set; }
+        [JsonInclude]
+        public Material Material { get; set; }
 
         /// <summary>
         /// Obtiene o establece los Tags de la Oferta.
         /// </summary>
-        public string Tags { get; private set; }
+        public string Tags { get; set; }
 
         /// <summary>
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
-        public Ubicacion Ubicacion { get; private set; }
+        public Ubicacion Ubicacion { get; set; }
 
-        public string NombreEmpresaCreadora {get; set;}
-        /// <summary>
-        /// Obtiene o establece la Empresa que publica la Oferta.
-        /// </summary>
-        public Empresa EmpresaCreadora 
-        { 
-            get
-            {
-                foreach (KeyValuePair<string, Empresa> pair in Singleton<ContenedorPrincipal>.Instancia.Empresas)
-                {
-                    if (pair.Value.Nombre == NombreEmpresaCreadora)
-                    {
-                        return pair.Value;
-                    }
-                }
-                return null;
-            }
-        }
+        public Empresa EmpresaCreadora {get; set;}
+       
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        public string ConstantesPuntuales { get; private set;}
+        public string ConstantesPuntuales { get; set;}
 
 
         /// <summary>
