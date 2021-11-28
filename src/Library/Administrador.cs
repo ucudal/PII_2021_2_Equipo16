@@ -91,9 +91,9 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Convierte a formato .Json.
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns>Tipo string.</returns>
+        /// <returns>tipo string</returns>
         public string ConvertToJson()
         {
             JsonSerializerOptions options = new()

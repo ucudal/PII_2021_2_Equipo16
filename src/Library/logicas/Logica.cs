@@ -11,10 +11,13 @@ namespace ClassLibrary
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public class Logica 
-    {
-        /// <summary>
-        /// 
-        /// </summary>
+    { 
+       /// <summary>
+       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
         [JsonConstructor]
         public Logica()
         {
@@ -101,9 +104,9 @@ namespace ClassLibrary
         public Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>tipo string</returns>
         public string ConvertToJson()
         {
             JsonSerializerOptions opciones = new()

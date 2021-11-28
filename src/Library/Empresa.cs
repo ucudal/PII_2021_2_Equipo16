@@ -22,18 +22,23 @@ namespace ClassLibrary
 
     public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
-        /// <summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+        [JsonConstructor]
+        public Empresa() : base(null, null, null)        
+        {
+
+        }
+         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
         /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        [JsonConstructor]
-        public Empresa() : base(null, null, null)        
-        {
-
-        }
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = new Habilitaciones();
@@ -224,7 +229,8 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
+        /// Este metodo muestra los interesados en una oferta.
         /// </summary>
         /// <returns></returns>
         public string VerInteresados()
@@ -274,7 +280,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertToJson()

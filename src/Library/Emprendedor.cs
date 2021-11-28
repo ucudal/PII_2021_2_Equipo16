@@ -152,9 +152,9 @@ namespace ClassLibrary
 
             return text.ToString();
         }
-        
+       
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertToJson()
