@@ -1,6 +1,6 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
 
 namespace ClassLibrary
 {
@@ -25,16 +25,26 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
+        
         public enum Rubros
         {
+            /// <value>Nombre de un rubro.</value>
             Textil,
+            /// <value>Nombre de un rubro.</value>
             Construccion,
+            /// <value>Nombre de un rubro.</value>
             Comercio,
+            /// <value>Nombre de un rubro.</value>
             Servicio,
+            /// <value>Nombre de un rubro.</value>
             Forestal,
+            /// <value>Nombre de un rubro.</value>
             Comunicaciones,
+            /// <value>Nombre de un rubro.</value>
             Entretenimiento,
+            /// <value>Nombre de un rubro.</value>
             Deportes,
+            /// <value>Nombre de un rubro.</value>
             Industria,
         }
 

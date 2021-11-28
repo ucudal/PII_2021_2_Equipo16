@@ -62,6 +62,7 @@ namespace ClassLibrary
                 texto.Append("\n/calcularofertascompradas - Use para conocer en cuantas ofertas se interesaron en un determinado período de tiempo");
                 texto.Append("\n/listadehabilitacionesemprendedor - Para emprendedores que quieren ver la lista de habilitaciones que existen");
                 texto.Append("\n/interesado - Use para interesarse en una oferta");
+                texto.Append("\n/verubicacion - Use para conocer la ubicacion de emprendedor");
                 
                 respuesta = texto.ToString();
                 return true;    

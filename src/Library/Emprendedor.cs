@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
@@ -167,5 +168,6 @@ namespace ClassLibrary
             
             return JsonSerializer.Serialize(this, opciones);
         }
+        
     }
 }

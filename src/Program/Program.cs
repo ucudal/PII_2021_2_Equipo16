@@ -82,7 +82,8 @@ namespace ConsoleApplication
                                                                                                     new VerEmpresaHandler(
                                                                                                         new VerEmprendedorHandler(
                                                                                                             new VerMisOfertasHandler(
-                null)))))))))))))))))))))))));
+                                                                                                                new VerUbicacionEmprendedorHandler(Bot,
+                null))))))))))))))))))))))))));
 
             Message message = new Message();
             

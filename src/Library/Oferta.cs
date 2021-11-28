@@ -13,16 +13,19 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones, IJsonConvertible
     {
+        /// <summary>
+        /// Constructor para json.
+        /// </summary>
         [JsonConstructor]
         public Oferta()
         {
 
         }
 
-        /// <summary>
+        /*/// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
-        /// </summary>
-       // [JsonInclude]
+        /// </summary>*/
+        // [JsonInclude]
         //public List<string> HabilitacionesOferta = new List<string>();
 
         /// <summary>
@@ -55,7 +58,10 @@ namespace ClassLibrary
         [JsonInclude]
         public List<string> Interesado = new List<string>();
 
-        public Habilitaciones habilitacion = new Habilitaciones();
+        /// <summary>
+        /// 
+        /// </summary>
+        public Habilitaciones Habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
@@ -115,7 +121,7 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
                 this.HabilitacionesDeOferta.Add(habilitacionBuscada);
             }
@@ -135,7 +141,7 @@ namespace ClassLibrary
         /// </summary>
         public string GetListaHabilitaciones()
         {
-           return this.habilitacion.HabilitacionesDisponibles();
+           return this.Habilitacion.HabilitacionesDisponibles();
         }
         
         /// <summary>
@@ -191,6 +197,10 @@ namespace ClassLibrary
             return texto.ToString();
         }
 
+        /// <summary>
+        /// Convierte a json.
+        /// </summary>
+        /// <returns>Retorna en formato .json.</returns>
         public string ConvertToJson()
         {
             JsonSerializerOptions opciones = new()

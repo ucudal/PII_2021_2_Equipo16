@@ -16,6 +16,9 @@ namespace ClassLibrary
 
     public class Publicaciones : IJsonConvertible
     {
+        /// <summary>
+        /// Constructor para archivo .json.
+        /// </summary>
         [JsonConstructor]
         public Publicaciones()
         {
