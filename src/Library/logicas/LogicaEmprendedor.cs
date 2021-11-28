@@ -21,6 +21,7 @@ namespace ClassLibrary
         /// <param name="id">Id del chat.</param>
         public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
         {
+<<<<<<< HEAD
             if (Rubro.CheckRubro(rubro))
             { 
                 Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
@@ -30,6 +31,10 @@ namespace ClassLibrary
             {
                 ConsolePrinter.DatoPrinter("El rubro no existe.");
             }      
+=======
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones); 
+            Singleton<ContenedorPrincipal>.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
+>>>>>>> deV2
         }
 
         /// <summary>
@@ -66,21 +71,6 @@ namespace ClassLibrary
             }
         }
 
-        /// <summary>
-        /// Este método llama a GetHabilitacionList de Emprendedor.
-        /// </summary>
-        /// <param name="emprendedor">Un emprendedor.</param>
-        public static string GetHabilitacionList(Emprendedor emprendedor)
-        {
-            if (emprendedor == null)
-            {
-                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
-            }
-            else
-            {
-                return emprendedor.GetListaHabilitaciones();
-            }
-        }
 
         /// <summary>
         /// Este método llama a InteresadoEnOferta de Emprendedor.
@@ -96,7 +86,11 @@ namespace ClassLibrary
             }
             else
             {
+<<<<<<< HEAD
                 foreach (Oferta item in Singleton<Logica>.Instancia.Publicaciones.OfertasPublicados)
+=======
+                foreach (Oferta item in Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados)
+>>>>>>> deV2
                 {
                     if (item.Nombre == nombreOferta)
                     {

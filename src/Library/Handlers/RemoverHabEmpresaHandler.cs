@@ -32,9 +32,15 @@ namespace ClassLibrary
                 return false;
             }
             
+<<<<<<< HEAD
             if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
             {
                 List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
+=======
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
+            {
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
+>>>>>>> deV2
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaConParametros.Count}.";
@@ -44,9 +50,15 @@ namespace ClassLibrary
                 if (listaConParametros.Count == 1)
                 {
                     string habilitacion = listaConParametros[0];
+<<<<<<< HEAD
                     if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
+=======
+                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    {
+                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+>>>>>>> deV2
                         LogicaEmpresa.RemoveHabilitacion(value, habilitacion);
                         
                         respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmpresas()}";

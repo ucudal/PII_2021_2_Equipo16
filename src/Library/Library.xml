@@ -137,6 +137,54 @@
             </summary>
             <param name="dato"></param>
         </member>
+        <member name="T:ClassLibrary.ContenedorRubroHabilitaciones">
+            <summary>
+            Contenedor que tiene Lista de rubros y habilitaciones posibles para el cliente.
+            Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
+            con el fin de hacer más rígido el programa.
+            Por otra parte también se utiliza el patrón Expert.
+            /// </summary>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearRubro(System.String)">
+            <summary>
+            Método agregado para poder chequear si el rubro que se ingresa, existe en la lista de los rubros disponibles.
+            </summary>
+            <param name="rubroString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.GetRubro(System.String)">
+            <summary>
+            Método que se encarga de retornar un rubro, si el Rubro.Nombre es igual al pasado por parametros.
+            </summary>
+            <param name="rubroString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearHabilitacion(System.String)">
+            <summary>
+            Método agregado para poder chequear la habilitación que se ingresa, existe en la lista de las habilitaciones disponibles.
+            </summary>
+            <param name="habilitacionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.GetHabilitacion(System.String)">
+            <summary>
+            Método que se encarga de retornar una habilitación, si la Habilitacion.Nombre es igual al pasado por parametros.
+            </summary>
+            <param name="habilitacionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaHabilitaciones">
+            <summary>
+            Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaRubros">
+            <summary>
+            Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
@@ -144,23 +192,23 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
+        <member name="P:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
             <summary>
             Este diccionario contiene las ofertas compradas y la fecha correspondiente.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.OfertasInteresado">
+        <member name="P:ClassLibrary.Emprendedor.OfertasInteresado">
             <summary>
             Ofertas en las que se interesa el emprendedor.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
+        <member name="P:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
             <summary>
             Lista de habilitaciones del emprendedor.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,ClassLibrary.Habilitaciones,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
@@ -168,21 +216,13 @@
             <param name="nombre">Nombre del emprededor.</param>
             <param name="ubicacion">Ubicación del emprendedor.</param>
             <param name="rubro">Rubro del emprendedor.</param>
-            <param name="habilitacion">Habilitaciones del emprendedor.</param>
             <param name="especializaciones">Especializaciones del emprendedor.</param>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.Habilitacion">
-            <summary>
-            Habilitaciones del emprendedor.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Emprendedor.HabilitacionesDeEmprendedor">
+        <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
             Obtiene una lista de las habilitaciones del emprendedor.
             </summary>
             <value>HabilitacionesEmprendedor.</value>
-        </member>
-        <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
             Obtiene o establece las Especializaciones del emprendedor.
             </summary>
@@ -199,12 +239,10 @@
             </summary>
             <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.GetListaHabilitaciones">
+        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasCompradas(System.String,System.String)">
             <summary>
             Muestra todas las habilitaciones posibles para agregar.
             </summary>
-        </member>
-        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasCompradas(System.String,System.String)">
             <summary>
             Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
             </summary>
@@ -247,24 +285,16 @@
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
         </member>
-        <member name="M:ClassLibrary.Empresa.AceptarInvitacion(System.String)">
-            <summary>
-            Acepta una invitación.
-            </summary>
-            <param name="nombreEmpresa">Nombre de la empresa.</param>
-        </member>
-        <member name="F:ClassLibrary.Empresa.FechaOfertasEntregadas">
+        <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Empresa.Habilitacion">
+        <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
             Habilitaciones de la empresa.
             </summary>
-        </member>
-        <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
             Obtiene las Habilitaciones que tiene la Empresa.
             </summary>
@@ -284,7 +314,7 @@
             
             </summary>
         </member>
-        <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
             </summary>
@@ -334,11 +364,6 @@
             </summary>
             <param name="habilitacion">Habilitacion a eliminar.</param>
         </member>
-        <member name="M:ClassLibrary.Empresa.GetListaHabilitaciones">
-            <summary>
-            Muestra todas las habilitaciones posibles para agregar.
-            </summary>
-        </member>
         <member name="M:ClassLibrary.Empresa.VerInteresados">
             <summary>
             
@@ -353,6 +378,7 @@
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.Empresa.VerMisOfertas">
+<<<<<<< HEAD
             <summary>
             Método que devuelve las ofertas publicadas por la empresa.
             </summary>
@@ -365,17 +391,20 @@
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.Habilitaciones">
+=======
+>>>>>>> deV2
+            <summary>
+            Método que devuelve las ofertas publicadas por la empresa.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.Habilitaciones">
             <summary>
             Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Habilitaciones.ListaHabilitaciones">
-            <summary>
-            Esta lista contiene un conjunto de habilitaciones predeterminadas.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.Habilitaciones.#ctor">
+        <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
@@ -385,30 +414,6 @@
             Obtiene o establece el nombre de la habilitación.
             </summary>
             <value>Valor es un string del nombre.</value>
-        </member>
-        <member name="M:ClassLibrary.Habilitaciones.HabilitacionesDisponibles">
-            <summary>
-            Este método retorna un string con las habilitaciones de la lista.
-            Para poder ver cuales son las habilitaciones utiliza un StringBuilder para poder obtener un string al final.
-            </summary>
-            <returns>Retorna las habilitaciones disponibles.</returns>
-        </member>
-        <member name="M:ClassLibrary.Habilitaciones.AddHabilitacion(System.String)">
-            <summary>
-            Este método permite agregar habilitaciones a la lista de habilitaciones.
-            </summary>
-            <param name="habilitacionBuscada"> Recibe un parametro de tipo string del nombre de la habilitación deseada.</param>
-        </member>
-        <member name="M:ClassLibrary.Habilitaciones.GetListaHabilitaciones">
-            <summary>
-            Este método imprime en consola la lista de habilitaciones para realizar esto utiliza un StringBuilder y recorre la lista de Habilitaciones.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.Habilitaciones.RemoveHabilitacion(System.String)">
-            <summary>
-            Este método sirve para eliminar habilitaciones que estan en la lista de Habilitaciones.
-            </summary>
-            <param name="habilitacion">Recibe por parametro un string del nombre de la habilitación deseada.</param>
         </member>
         <member name="T:ClassLibrary.AceptarInvEmpresaHandler">
             <summary>
@@ -792,18 +797,18 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.GetHabListEmprendedorHandler">
+        <member name="T:ClassLibrary.GetHabListHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
             </summary>
         </member>
-        <member name="M:ClassLibrary.GetHabListEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
+        <member name="M:ClassLibrary.GetHabListHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
             Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
             </summary>
             <param name="next">El próximo "handler".</param>
         </member>
-        <member name="M:ClassLibrary.GetHabListEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+        <member name="M:ClassLibrary.GetHabListHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Procesa el mensaje "Lista de habilitaciones" y retorna true; retorna false en caso contrario.
             </summary>
@@ -811,6 +816,7 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
+<<<<<<< HEAD
         <member name="T:ClassLibrary.GetLisHabEmpresaHandler">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
@@ -832,6 +838,8 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
+=======
+>>>>>>> deV2
         <member name="T:ClassLibrary.HolaHandler">
             <summary>
             Esta clase contiene un método para aceptar una oferta.
@@ -1150,6 +1158,58 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ClassLibrary.VerMisOfertasHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerMisOfertasHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:ClassLibrary.VerMisOfertasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "!verempresa" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.HistorialChat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
+            <summary>
+            Contiene los mensajes enviados por el Usuario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
+            <summary>
+            Devueleve una lista que contiene los mensajes despues de el comando ingresado
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
+            <summary>
+            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
             Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
@@ -1187,11 +1247,6 @@
             Este método se implementará para eliminar habilitaciones de las diferentes clases.
             </summary>
             <param name="habilitacion">Recibe un string con el nombre de la habilitacion que se quiere eliminar.</param>
-        </member>
-        <member name="M:ClassLibrary.IHabilitaciones.GetListaHabilitaciones">
-            <summary>
-            Este método se implementará para obtener la en texto la lista de habilitaciones de las clases.
-            </summary>
         </member>
         <member name="T:ClassLibrary.IJsonConvertible">
             <summary>
@@ -1277,7 +1332,7 @@
             <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String.</param>
             <returns>Devuelve la cadena pero con las modificaciones realizadas.</returns>
         </member>
-        <member name="T:ClassLibrary.Logica">
+        <member name="T:ClassLibrary.ContenedorPrincipal">
             <summary>
             Esta clase se encarga de crear y guardar instancias de Publicaciones, BuscadorUbicacion, BuscadorTags, BuscadorMaterial y ConsolePrinter.
             </summary>
@@ -1285,67 +1340,65 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
+<<<<<<< HEAD
         <member name="M:ClassLibrary.Logica.#ctor">
             <summary>
             
             </summary>
         </member>
         <member name="F:ClassLibrary.Logica.Publicaciones">
+=======
+        <member name="P:ClassLibrary.ContenedorPrincipal.Publicaciones">
+>>>>>>> deV2
             <summary>
             Guarda una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorUbicacion">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorTags">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.BuscadorMaterial">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.PrinterConsola">
+        <member name="P:ClassLibrary.ContenedorPrincipal.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Logica.ListaNombreOfertas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.Habilitaciones">
-            <summary>
-            Guarda una instancia de Habilitaciones.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:ClassLibrary.Logica.Emprendedores">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
             <summary>
             Guarda un conjunto Emprendedor, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.Empresas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
             <summary>
             Guarda un conjunto Empresa, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.HistorialDeChats">
+        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Logica.EmpresasInvitadas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
             <summary>
             
             </summary>
@@ -1476,12 +1529,6 @@
             <param name="emprendedor">Un emprendedor.</param>
             <param name="habilitacion">Nombre de la habilitación a remover.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.GetHabilitacionList(ClassLibrary.Emprendedor)">
-            <summary>
-            Este método llama a GetHabilitacionList de Emprendedor.
-            </summary>
-            <param name="emprendedor">Un emprendedor.</param>
-        </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.InteresadoEnOferta(ClassLibrary.Emprendedor,System.String)">
             <summary>
             Este método llama a InteresadoEnOferta de Emprendedor.
@@ -1513,14 +1560,7 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.AceptarInvitacion(ClassLibrary.Empresa,System.String)">
-            <summary>
-            Acepta la invitación del administrador.
-            </summary>
-            <param name="empresa">Empresa.</param>
-            <param name="nombreEmpresa">Nombre de la Empresa.</param>
-        </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Llama al método CrearProducto en empresa con los parametros pasados.
             </summary>
@@ -1586,12 +1626,6 @@
             <param name="habilitacion"></param>
             <param name="nombreOferta"></param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmpresa.GetListaHabilitaciones(ClassLibrary.Empresa)">
-            <summary>
-            Llama al método GetHabilitacion en empresa con los parametros pasados.
-            </summary>
-            <param name="empresa">Empresa.</param>
-        </member>
         <member name="M:ClassLibrary.LogicaEmpresa.VerInteresados(ClassLibrary.Empresa)">
             <summary>
             
@@ -1613,6 +1647,7 @@
             <param name="empresa"></param>
             <returns></returns>
         </member>
+<<<<<<< HEAD
         <member name="T:ClassLibrary.MyReferenceHandler">
             <summary>
             
@@ -1639,6 +1674,21 @@
         <member name="M:ClassLibrary.MyReferenceHandler.Reset">
             <summary>
             
+=======
+        <member name="T:ClassLibrary.Material">
+            <summary>
+            Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
+            </summary>
+            <remarks>
+            Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+            la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
+            todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
+>>>>>>> deV2
             </summary>
         </member>
         <member name="T:ClassLibrary.Oferta">
@@ -1648,12 +1698,12 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Oferta.HabilitacionesOferta">
+        <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
+        <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Oferta"/>.
             </summary>
@@ -1666,7 +1716,7 @@
             <param name="empresa">Empresa que publica la oferta.</param>
             <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         </member>
-        <member name="F:ClassLibrary.Oferta.Interesado">
+        <member name="P:ClassLibrary.Oferta.Interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>
@@ -1681,16 +1731,6 @@
             Obtiene o establece el Material del producto a ofertar.
             </summary>
         </member>
-        <member name="P:ClassLibrary.Oferta.Precio">
-            <summary>
-            Obtiene o establece el Precio de la Oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.Unidad">
-            <summary>
-            Obtiene o establece la Cantidad de unidades a ofertar.
-            </summary>
-        </member>
         <member name="P:ClassLibrary.Oferta.Tags">
             <summary>
             Obtiene o establece los Tags de la Oferta.
@@ -1699,11 +1739,6 @@
         <member name="P:ClassLibrary.Oferta.Ubicacion">
             <summary>
             Obtiene o establece la Ubicación de la oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.Id">
-            <summary>
-            Obtiene la ID única para cada Oferta.
             </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
@@ -1716,12 +1751,6 @@
             Obtiene o establece un valor que indica si la Oferta es constante o puntual.
             </summary>
         </member>
-        <member name="P:ClassLibrary.Oferta.HabilitacionesDeOferta">
-            <summary>
-            Obtiene una lista de Habilitaciones de la Oferta.
-            </summary>
-            <value>habilitacionesOferta.</value>
-        </member>
         <member name="M:ClassLibrary.Oferta.AddHabilitacion(System.String)">
             <summary>
             Añade una habilitación a la oferta.
@@ -1733,11 +1762,6 @@
             Quita una habilitación a la oferta.
             </summary>
             <param name="habilitacion">Habilitacion a quitar.</param>
-        </member>
-        <member name="M:ClassLibrary.Oferta.GetListaHabilitaciones">
-            <summary>
-            Muestra todas las habilitaciones posibles para agregar.
-            </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.FechaDePublicacion">
             <summary>
@@ -1792,12 +1816,7 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
-        <member name="P:ClassLibrary.Publicaciones.Instance">
-            <summary>
-            Obtiene una instancia de Publicaciones.
-            </summary>
-        </member>
-        <member name="F:ClassLibrary.Publicaciones.OfertasPublicados">
+        <member name="P:ClassLibrary.Publicaciones.OfertasPublicados">
             <summary>
             Una lista que contiene las ofertas.
             </summary>
@@ -1823,11 +1842,12 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.Rubro.#ctor">
+        <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="T:ClassLibrary.Rubro.Rubros">
             <summary>
             
@@ -1857,6 +1877,8 @@
             </summary>
             <value></value>
         </member>
+=======
+>>>>>>> deV2
         <member name="T:ClassLibrary.TelegramMsgAdapter">
             <summary>
             La clase que encapsula el mensaje que recibe
@@ -1904,6 +1926,22 @@
             Este método imprime una string con información.
             </summary>
             <param name="resultadoBusqueda"></param>
+        </member>
+        <member name="T:ClassLibrary.Ubicacion">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Ubicacion.#ctor(System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Ubicacion"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Ubicacion.NombreCalle">
+            <summary>
+            .
+            </summary>
+            <value>Valor es un string del nombre.</value>
         </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>

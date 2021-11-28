@@ -31,10 +31,17 @@ namespace ClassLibrary
                 return false;
             }
 
+<<<<<<< HEAD
             if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true)
             {
                 // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
                 List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
+=======
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearhaboferta") == true)
+            {
+                // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
+>>>>>>> deV2
 
                 if (listaConParametros.Count == 0)
                 {
@@ -43,7 +50,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el nombre de la habilitación que desea agregar.";
+                    respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 2)
@@ -51,10 +58,25 @@ namespace ClassLibrary
                     string nombreOferta = listaConParametros[1];
                     string nombreHabParaAgregar = listaConParametros[0];
 
+<<<<<<< HEAD
                     if (Singleton<Logica>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
                         Empresa value = Singleton<Logica>.Instancia.Empresas[mensaje.Id];
                         LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
+=======
+                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    {
+                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                        try
+                        {
+                            LogicaEmpresa.AddHabilitacionOferta(value, nombreHabParaAgregar, nombreOferta);
+                        }
+                        catch (System.ArgumentException e)
+                        {
+                            respuesta = e.Message;
+                            return true;
+                        }
+>>>>>>> deV2
                         
                         respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
                         return true;

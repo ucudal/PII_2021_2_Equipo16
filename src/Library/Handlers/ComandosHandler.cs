@@ -33,7 +33,11 @@ namespace ClassLibrary
 
             if (this.CanHandle(mensaje))
             {
+<<<<<<< HEAD
                 Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+=======
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+>>>>>>> deV2
                 StringBuilder texto = new StringBuilder("Los comandos disponibles son: ");
 
                 texto.Append("\n[COMANDOS PARA EMPRESAS]");

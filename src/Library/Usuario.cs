@@ -1,3 +1,4 @@
+using System;
 namespace ClassLibrary
 {
     /// <summary>
@@ -8,9 +9,6 @@ namespace ClassLibrary
     /// </remarks>
     public class Usuario
     {
-        private string nombre;
-        private string ubicacion;
-        private string rubro;
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Usuario"/>.
@@ -21,26 +19,33 @@ namespace ClassLibrary
         public Usuario(string nombre, string ubicacion, string rubro)
         {
             this.Nombre = nombre;
-            this.Ubicacion = ubicacion;
-            this.Rubro = rubro;
+            this.Ubicacion = new Ubicacion(ubicacion);
+            if (!Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearRubro(rubro))
+            {
+                throw new ArgumentException($"{rubro} no se encuentra disponible");
+            }
+            else
+            {
+                this.Rubro = Singleton<ContenedorRubroHabilitaciones>.Instancia.GetRubro(rubro);
+            }
         }
 
         /// <summary>
         /// Obtiene o establece un valor que indica el nombre del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Nombre { get; set; }
+        public string Nombre { get; private set; }
 
         /// <summary>
         /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Ubicacion { get; set; }
+        public Ubicacion Ubicacion { get; private set; }
 
         /// <summary>
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public string Rubro { get; set; }
+        public Rubro Rubro { get; private set; }
     }
 }

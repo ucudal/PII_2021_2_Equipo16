@@ -137,6 +137,7 @@ namespace ClassLibrary
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
 
+<<<<<<< HEAD
             if (Singleton<Logica>.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
@@ -148,6 +149,19 @@ namespace ClassLibrary
                     if (!mensaje.Text.StartsWith("/") && Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado(comando))
                     {
                         Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+=======
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
+            {
+                if (this.CanHandle(mensaje))
+                {
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                }
+                else
+                {
+                    if (!mensaje.Text.StartsWith("/") && Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado(comando))
+                    {
+                        Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+>>>>>>> deV2
                     }
                     else
                     {

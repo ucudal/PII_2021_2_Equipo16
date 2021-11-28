@@ -18,10 +18,12 @@ namespace ClassLibrary
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
-        public Rubro()
+        public Rubro(string nombre)
         {
+            this.Nombre = nombre;
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// 
         /// </summary>
@@ -66,5 +68,8 @@ namespace ClassLibrary
             Rubros rubroE;
             return Enum.TryParse<Rubros>(rubro, true, out rubroE) ? true : throw new ArgumentException("Por favor ingrese un rubro que exista");
         }
+=======
+        public string Nombre { get; private set;}
+>>>>>>> deV2
     }
 }

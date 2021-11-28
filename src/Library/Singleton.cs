@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 namespace ClassLibrary
 {
     /// <summary>
@@ -12,6 +13,19 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <value></value>
+=======
+
+namespace ClassLibrary
+{
+    public class Singleton<T> where T : class, new()
+    {
+        private static T instancia;
+
+        private Singleton()
+        {
+        }
+
+>>>>>>> deV2
         public static T Instancia
         {
             get
@@ -22,6 +36,13 @@ namespace ClassLibrary
                 }
                 return instancia;
             }
+<<<<<<< HEAD
+=======
+            set
+            {
+                instancia = value;
+            }
+>>>>>>> deV2
         }
     }
 }

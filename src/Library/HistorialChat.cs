@@ -9,6 +9,11 @@ namespace ClassLibrary
     /// </summary>
     public class HistorialChat
     {
+        public HistorialChat()
+        {
+
+        }
+        
         /// <summary>
         /// 
         /// </summary>

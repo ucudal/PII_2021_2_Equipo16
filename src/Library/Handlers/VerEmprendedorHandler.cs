@@ -32,6 +32,7 @@ namespace ClassLibrary
                 return false;
             }
 
+<<<<<<< HEAD
             if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
             {
                 ConsolePrinter.DatoPrinter("Entro en empre");
@@ -39,6 +40,15 @@ namespace ClassLibrary
                 if (Singleton<Logica>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {
                     Emprendedor value = Singleton<Logica>.Instancia.Emprendedores[mensaje.Id];
+=======
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
+            {
+                ConsolePrinter.DatoPrinter("Entro en empre");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
+                if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+                {
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+>>>>>>> deV2
                     respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)} {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
