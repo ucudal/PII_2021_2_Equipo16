@@ -30,6 +30,10 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         [JsonConstructor]
+        public Empresa() : base(null, null, null)        
+        {
+
+        }
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
             this.Habilitacion = new Habilitaciones();

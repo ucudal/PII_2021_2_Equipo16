@@ -35,7 +35,7 @@ namespace ClassLibrary
                 WriteIndented = true
             };      
             
-            if (!System.IO.File.Exists(@"PII_2021_2_Equipo16\src\Library\Persistencia\logica.json"))
+            if (!System.IO.File.Exists(@"..\Library\Persistencia\logica.json"))
             {
                 ConsolePrinter.DatoPrinter("entro aca primer if");
                 //Logica logica = Singleton<Logica>.Instancia;
@@ -45,11 +45,9 @@ namespace ClassLibrary
             else
             {
                 ConsolePrinter.DatoPrinter("entro aca else");
-                //Logica logica = Singleton<Logica>.Instancia;
-                string logicaToJson = Singleton<Logica>.Instancia.ConvertToJson();
-                System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson);
-                //string logicaToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
-                //Singleton<Logica>.Instancia = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);
+                
+                string logicaToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
+                Singleton<Logica>.Instancia = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);
             }
         }
     }

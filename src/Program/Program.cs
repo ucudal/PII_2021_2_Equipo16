@@ -43,6 +43,18 @@ namespace ConsoleApplication
             Empresa empresa = new Empresa("Conaprole", "UCU", "textil");
             administrador.InvitarEmpresa(empresa);
             
+            JsonSerializerOptions opciones = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };  
+
+            if (System.IO.File.Exists(@"..\Library\Persistencia\logica.json"))
+            {
+                string logicaToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
+                Singleton<Logica>.Instancia = JsonSerializer.Deserialize<Logica>(logicaToJson, opciones);  
+            }
+            
             
 
             firstHandler = new HolaHandler(
@@ -94,6 +106,13 @@ namespace ConsoleApplication
 
             // Esperamos a que el usuario aprete Enter en la consola para terminar el bot.
             Console.ReadLine();
+
+            Console.WriteLine("se termina el programa");
+            //Logica logica = Singleton<Logica>.Instancia;
+            string logicaToJson1 = Singleton<Logica>.Instancia.ConvertToJson();
+            System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", logicaToJson1); 
+            
+            
 
             // Terminamos el bot.
             cts.Cancel();

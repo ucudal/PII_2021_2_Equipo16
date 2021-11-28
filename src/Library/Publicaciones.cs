@@ -17,27 +17,11 @@ namespace ClassLibrary
     public class Publicaciones : IJsonConvertible
     {
         [JsonConstructor]
-        private Publicaciones()
+        public Publicaciones()
         {
+            
         }
-
-        private static Publicaciones instance;
-
-        /// <summary>
-        /// Obtiene una instancia de Publicaciones.
-        /// </summary>
-        public static Publicaciones Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new Publicaciones();
-                }
-
-                return instance;
-            }
-        }
+        
 
         /// <summary>
         /// Una lista que contiene las ofertas.

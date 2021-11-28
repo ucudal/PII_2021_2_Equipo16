@@ -25,7 +25,7 @@ namespace ClassLibrary
         /// Guarda una instancia de Publicaciones.
         /// </summary>
         [JsonInclude]
-        public Publicaciones Publicaciones = Publicaciones.Instance;
+        public Publicaciones Publicaciones = Singleton<Publicaciones>.Instancia;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.

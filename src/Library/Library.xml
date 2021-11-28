@@ -257,7 +257,7 @@
             mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Empresa.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Empresa"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
@@ -1655,11 +1655,6 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Oferta.HabilitacionesOferta">
-            <summary>
-            Esta lista contiene las habilitaciones de las Ofertas.
-            </summary>
-        </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Oferta"/>.
@@ -1798,11 +1793,6 @@
             la clase Publicaciones tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
-        </member>
-        <member name="P:ClassLibrary.Publicaciones.Instance">
-            <summary>
-            Obtiene una instancia de Publicaciones.
-            </summary>
         </member>
         <member name="F:ClassLibrary.Publicaciones.OfertasPublicados">
             <summary>

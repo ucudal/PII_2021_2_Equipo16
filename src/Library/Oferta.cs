@@ -1,6 +1,8 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -9,12 +11,19 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
-    public class Oferta : IHabilitaciones
+    public class Oferta : IHabilitaciones, IJsonConvertible
     {
+        [JsonConstructor]
+        public Oferta()
+        {
+
+        }
+
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
-        public List<string> HabilitacionesOferta = new List<string>();
+       // [JsonInclude]
+        //public List<string> HabilitacionesOferta = new List<string>();
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
@@ -43,9 +52,10 @@ namespace ClassLibrary
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
+        [JsonInclude]
         public List<string> Interesado = new List<string>();
 
-        private Habilitaciones habilitacion = new Habilitaciones();
+        public Habilitaciones habilitacion = new Habilitaciones();
 
         /// <summary>
         /// Obtiene o establece el nombre de la oferta.
@@ -96,7 +106,8 @@ namespace ClassLibrary
         /// Obtiene una lista de Habilitaciones de la Oferta.
         /// </summary>
         /// <value>habilitacionesOferta.</value>
-        public List<string> HabilitacionesDeOferta { get => this.HabilitacionesOferta; }
+        [JsonInclude]
+        public List<string> HabilitacionesDeOferta { get; private set; }
 
         /// <summary>
         /// Añade una habilitación a la oferta.
@@ -106,7 +117,7 @@ namespace ClassLibrary
         {
             if (this.habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
             {
-                this.HabilitacionesOferta.Add(habilitacionBuscada);
+                this.HabilitacionesDeOferta.Add(habilitacionBuscada);
             }
         }
 
@@ -116,7 +127,7 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a quitar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.HabilitacionesOferta.Remove(habilitacion);
+            this.HabilitacionesDeOferta.Remove(habilitacion);
         }
 
         /// <summary>
@@ -178,6 +189,17 @@ namespace ClassLibrary
                 texto.Append("\n" + interesado);
             }
             return texto.ToString();
+        }
+
+        public string ConvertToJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }
