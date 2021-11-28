@@ -33,7 +33,7 @@ namespace ClassLibrary
                 if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda).Equals((LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Tags)), System.StringComparison.OrdinalIgnoreCase))
                 {
                     ofertasEncontradas.Add(oferta);
-                    ContenedorPrincipal.Instancia.PrinterConsola.OfertaPrinter(oferta);
+                    Singleton<ContenedorPrincipal>.Instancia.PrinterConsola.OfertaPrinter(oferta);
                 }
             }
 

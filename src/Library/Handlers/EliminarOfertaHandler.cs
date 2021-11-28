@@ -31,9 +31,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
             {
-                List<string> listaConParametros = ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/eliminaroferta");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/eliminaroferta");
 
                 // El mensaje debe tener el formato "Eliminar producto,nombre de la oferta,habilitacion"
                 string[] mensajeProcesado = mensaje.Text.Split();
@@ -48,9 +48,9 @@ namespace ClassLibrary
                 {
                     string nombreOfertaParaEliminar = listaConParametros[0];
 
-                    if (ContenedorPrincipal.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                     {
-                        Empresa value = ContenedorPrincipal.Instancia.Empresas[mensaje.Id];
+                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
                         LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
                         
                         respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}. {OpcionesUso.AccionesEmpresas()}";

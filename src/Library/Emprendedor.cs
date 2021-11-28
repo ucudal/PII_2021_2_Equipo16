@@ -16,21 +16,19 @@ namespace ClassLibrary
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
-        public List<Oferta> OfertasInteresado = new List<Oferta>();
+        public List<Oferta> OfertasInteresado {get;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesEmprendedor = new List<Habilitaciones>();
+        public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
 
-        private List<Oferta> ofertasCompradas = new List<Oferta>();
-
-        private string especializaciones;
+        //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
@@ -55,7 +53,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; set; }
+        public string Especializaciones { get; private set;}
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -63,9 +61,9 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Nombre de la habilitación a agregar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (ContenedorRubroHabilitaciones.Instancia.ChequearHabilitacion(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.HabilitacionesEmprendedor.Add(ContenedorRubroHabilitaciones.Instancia.GetHabilitacion(habilitacionBuscada));
+                this.HabilitacionesEmprendedor.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
             }
             else
             {

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -8,81 +10,79 @@ namespace ClassLibrary
     /// <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
-    public class ContenedorPrincipal
+    public class ContenedorPrincipal: IJsonConvertible
     {
-        private ContenedorPrincipal()
+        public ContenedorPrincipal()
         {
         }
-        private static ContenedorPrincipal instancia;
-
-        public static ContenedorPrincipal Instancia
-        {
-            get
-            {
-                if (instancia == null)
-                {
-                    instancia = new ContenedorPrincipal();
-                }
-
-                return instancia;
-            }
-        }
+        
 
         /// <summary>
         /// Guarda una instancia de Publicaciones.
         /// </summary>
-        public Publicaciones Publicaciones = Publicaciones.Instance;
+        public Publicaciones Publicaciones {get;} = Singleton<Publicaciones>.Instancia;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
         /// </summary>
-        public BuscadorUbicacion BuscadorUbicacion = new BuscadorUbicacion();
+        public BuscadorUbicacion BuscadorUbicacion {get;} = new BuscadorUbicacion(); 
 
         /// <summary>
         /// Guarda una instancia de BuscadorTags.
         /// </summary>
-        public BuscadorTags BuscadorTags = new BuscadorTags();
+        public BuscadorTags BuscadorTags {get;} = new BuscadorTags();
 
         /// <summary>
         /// Guarda una instancia de BuscadorMat.
         /// </summary>
-        public BuscadorMaterial BuscadorMaterial = new BuscadorMaterial();
+        public BuscadorMaterial BuscadorMaterial {get;} = new BuscadorMaterial();
 
         /// <summary>
         /// Guarda una instancia de ConsolePrinter.
         /// </summary>
-        public ConsolePrinter PrinterConsola = new ConsolePrinter();
+        public ConsolePrinter PrinterConsola {get;} = new ConsolePrinter();
 
         /// <summary>
         /// Guarda strings con los nombres de oferta para que no se repitan.
         /// </summary>
         /// <returns></returns>
-        public List<string> ListaNombreOfertas = new List<string>();
+        public List<string> ListaNombreOfertas {get;} = new List<string>();
 
 
         /// <summary>
         /// Guarda un conjunto Emprendedor, y su chat id.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, Emprendedor> Emprendedores = new Dictionary<string, Emprendedor>();
+        public Dictionary<string, Emprendedor> Emprendedores {get;} = new Dictionary<string, Emprendedor>();
 
         /// <summary>
         /// Guarda un conjunto Empresa, y su chat id.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, Empresa> Empresas = new Dictionary<string, Empresa>();
+        public Dictionary<string, Empresa> Empresas {get;} = new Dictionary<string, Empresa>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string, HistorialChat> HistorialDeChats = new Dictionary<string, HistorialChat>();
+        public Dictionary<string, HistorialChat> HistorialDeChats {get;} = new Dictionary<string, HistorialChat>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        public List<Empresa> EmpresasInvitadas = new List<Empresa>();
+        public List<Empresa> EmpresasInvitadas {get;} = new List<Empresa>();
+
+        public string ConvertToJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
 
     }
 }

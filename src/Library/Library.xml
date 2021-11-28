@@ -117,6 +117,54 @@
             </summary>
             <param name="dato"></param>
         </member>
+        <member name="T:ClassLibrary.ContenedorRubroHabilitaciones">
+            <summary>
+            Contenedor que tiene Lista de rubros y habilitaciones posibles para el cliente.
+            Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
+            con el fin de hacer más rígido el programa.
+            Por otra parte también se utiliza el patrón Expert.
+            /// </summary>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearRubro(System.String)">
+            <summary>
+            Método agregado para poder chequear si el rubro que se ingresa, existe en la lista de los rubros disponibles.
+            </summary>
+            <param name="rubroString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.GetRubro(System.String)">
+            <summary>
+            Método que se encarga de retornar un rubro, si el Rubro.Nombre es igual al pasado por parametros.
+            </summary>
+            <param name="rubroString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearHabilitacion(System.String)">
+            <summary>
+            Método agregado para poder chequear la habilitación que se ingresa, existe en la lista de las habilitaciones disponibles.
+            </summary>
+            <param name="habilitacionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.GetHabilitacion(System.String)">
+            <summary>
+            Método que se encarga de retornar una habilitación, si la Habilitacion.Nombre es igual al pasado por parametros.
+            </summary>
+            <param name="habilitacionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaHabilitaciones">
+            <summary>
+            Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaRubros">
+            <summary>
+            Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
@@ -124,18 +172,18 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
+        <member name="P:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
             <summary>
             Este diccionario contiene las ofertas compradas y la fecha correspondiente.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.OfertasInteresado">
+        <member name="P:ClassLibrary.Emprendedor.OfertasInteresado">
             <summary>
             Ofertas en las que se interesa el emprendedor.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
+        <member name="P:ClassLibrary.Emprendedor.HabilitacionesEmprendedor">
             <summary>
             Lista de habilitaciones del emprendedor.
             </summary>
@@ -211,7 +259,7 @@
             <param name="ubicacion">Ubicación de la empresa.</param>
             <param name="rubro">Rubro de la empresa.</param>
         </member>
-        <member name="F:ClassLibrary.Empresa.FechaOfertasEntregadas">
+        <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
             
             </summary>
@@ -686,37 +734,6 @@
             <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.HistorialChat">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
-            <summary>
-            Contiene los mensajes enviados por el Usuario.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
-            <summary>
-            Devueleve una lista que contiene los mensajes despues de el comando ingresado
-            </summary>
-            <param name="comando"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
-            <summary>
-            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
-            </summary>
-            <param name="comando"></param>
-            <returns></returns>
-        </member>
         <member name="T:ClassLibrary.HolaHandler">
             <summary>
             Esta clase contiene un método para aceptar una oferta.
@@ -953,18 +970,36 @@
             <param name="respuesta">La respuesta al mensaje procesado.</param>
             <returns></returns>
         </member>
-        <member name="T:ClassLibrary.IJsonConvertible">
+        <member name="T:ClassLibrary.HistorialChat">
             <summary>
-            Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato
-            Json.
+            
             </summary>
         </member>
-        <member name="M:ClassLibrary.IJsonConvertible.ConvertToJson">
+        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
             <summary>
-            Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en formato
-            Json utilizando JsonSerializer.Deserialize.
+            Contiene los mensajes enviados por el Usuario.
             </summary>
-            <returns>El objeto convertido a texto en formato Json.</returns>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
+            <summary>
+            Devueleve una lista que contiene los mensajes despues de el comando ingresado
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
+            <summary>
+            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+            </summary>
+            <param name="comando"></param>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
@@ -1003,6 +1038,19 @@
             Este método se implementará para eliminar habilitaciones de las diferentes clases.
             </summary>
             <param name="habilitacion">Recibe un string con el nombre de la habilitacion que se quiere eliminar.</param>
+        </member>
+        <member name="T:ClassLibrary.IJsonConvertible">
+            <summary>
+            Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato
+            Json.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.IJsonConvertible.ConvertToJson">
+            <summary>
+            Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en formato
+            Json utilizando JsonSerializer.Deserialize.
+            </summary>
+            <returns>El objeto convertido a texto en formato Json.</returns>
         </member>
         <member name="T:ClassLibrary.IMensaje">
             <summary>
@@ -1083,56 +1131,56 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Publicaciones">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
             <summary>
             Guarda una instancia de BuscadorUbicacion.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorTags">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorTags">
             <summary>
             Guarda una instancia de BuscadorTags.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
+        <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorMaterial">
             <summary>
             Guarda una instancia de BuscadorMat.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.PrinterConsola">
+        <member name="P:ClassLibrary.ContenedorPrincipal.PrinterConsola">
             <summary>
             Guarda una instancia de ConsolePrinter.
             </summary>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Emprendedores">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
             <summary>
             Guarda un conjunto Emprendedor, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Empresas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
             <summary>
             Guarda un conjunto Empresa, y su chat id.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
+        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
             
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
+        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
             <summary>
             
             </summary>
@@ -1342,7 +1390,7 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="F:ClassLibrary.Oferta.HabilitacionesOferta">
+        <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
             Esta lista contiene las habilitaciones de las Ofertas.
             </summary>
@@ -1360,7 +1408,7 @@
             <param name="empresa">Empresa que publica la oferta.</param>
             <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
         </member>
-        <member name="F:ClassLibrary.Oferta.Interesado">
+        <member name="P:ClassLibrary.Oferta.Interesado">
             <summary>
             Nombre del interesado en la oferta.
             </summary>
@@ -1383,11 +1431,6 @@
         <member name="P:ClassLibrary.Oferta.Ubicacion">
             <summary>
             Obtiene o establece la Ubicación de la oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.Id">
-            <summary>
-            Obtiene la ID única para cada Oferta.
             </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
@@ -1459,12 +1502,7 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
-        <member name="P:ClassLibrary.Publicaciones.Instance">
-            <summary>
-            Obtiene una instancia de Publicaciones.
-            </summary>
-        </member>
-        <member name="F:ClassLibrary.Publicaciones.OfertasPublicados">
+        <member name="P:ClassLibrary.Publicaciones.OfertasPublicados">
             <summary>
             Una lista que contiene las ofertas.
             </summary>

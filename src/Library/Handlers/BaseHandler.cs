@@ -137,17 +137,17 @@ namespace ClassLibrary
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
 
-            if (ContenedorPrincipal.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
                 {
-                    ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                 }
                 else
                 {
-                    if (!mensaje.Text.StartsWith("/") && ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado(comando))
+                    if (!mensaje.Text.StartsWith("/") && Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado(comando))
                     {
-                        ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                        Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
                     }
                     else
                     {

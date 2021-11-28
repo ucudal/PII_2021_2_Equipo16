@@ -33,8 +33,8 @@ namespace ClassLibrary
             }
             if (this.CanHandle(mensaje))
             {
-                ContenedorPrincipal.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                respuesta = $"La lista de habilitaciones es:\n{ContenedorRubroHabilitaciones.Instancia.textoListaHabilitaciones()}";
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                 return true;
             } 
             
