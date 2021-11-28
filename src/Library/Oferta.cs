@@ -1,6 +1,8 @@
 using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -11,9 +13,15 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
+        [JsonConstructor]
+        public Oferta()
+        {
+
+        }
         /// <summary>
         /// Esta lista contiene las habilitaciones de las Ofertas.
         /// </summary>
+        [JsonInclude]
         public List<Habilitaciones> HabilitacionesOferta { get; } = new List<Habilitaciones>();
 
         /// <summary>
@@ -41,6 +49,7 @@ namespace ClassLibrary
         /// <summary>
         /// Nombre del interesado en la oferta.
         /// </summary>
+        [JsonInclude]
         public List<string> Interesado { get; } = new List<string>();
 
         /// <summary>

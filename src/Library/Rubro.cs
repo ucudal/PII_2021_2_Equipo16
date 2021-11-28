@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -15,6 +17,11 @@ namespace ClassLibrary
 
     public class Rubro
     {
+        [JsonConstructor]
+        public Rubro()
+        {
+
+        }
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
@@ -28,5 +35,16 @@ namespace ClassLibrary
         /// </summary>
         /// <value></value>
         public string Nombre { get; private set;}
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
     }
 }

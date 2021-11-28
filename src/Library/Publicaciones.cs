@@ -19,6 +19,7 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
+        [JsonConstructor]
         public Publicaciones()
         {
         }
@@ -27,6 +28,7 @@ namespace ClassLibrary
         /// <summary>
         /// Una lista que contiene las ofertas.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> OfertasPublicados {get;} = new List<Oferta>();
 
         /// <summary>

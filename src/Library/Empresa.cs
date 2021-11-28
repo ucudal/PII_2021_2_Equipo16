@@ -20,7 +20,7 @@ namespace ClassLibrary
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
 
-    public class Empresa : Usuario, IHabilitaciones
+    public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
@@ -30,6 +30,10 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         [JsonConstructor]
+        public Empresa() : base(null, null, null)
+        {
+
+        }
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
         }

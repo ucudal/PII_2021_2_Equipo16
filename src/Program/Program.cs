@@ -36,8 +36,10 @@ namespace ConsoleApplication
         /// </summary>
         public static void Main()
         {
-            Administrador admin = new Administrador("Admin");
-            admin.InvitarEmpresa("conaprole", "pakistan", "textil");
+            Administrador admin = new Administrador("Admin", "Equipo16");
+            Empresa empresaTest = new Empresa("conaprole", "pakistan", "textil");
+            admin.InvitarEmpresa(empresaTest);
+            
 
             
             
@@ -49,45 +51,19 @@ namespace ConsoleApplication
                 WriteIndented = true
             };  
 
-            if (System.IO.File.Exists(@"..\Library\Persistencia\logica.json"))
+            if (System.IO.File.Exists(@"..\Library\Persistencia\Contenedor.json"))
             {
-                string contenedorToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
+                string contenedorToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\Contenedor.json");
                 Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(contenedorToJson, opciones);  
             }
 
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new GetHabListHandler(new VerEmprendedorHandler(null))))))))))))))))))))))));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(null)))))))))))))))))))))))))));
             
 
             
             
-            firstHandler = new HolaHandler(
-                new RegistroEmprendedorHandler(
-                    new RemoverHabEmprendedor(
-                        new AceptarInvEmpresaHandler(
-                            new AceptarOfertaHandler(
-                                new AddHabEmpresaHandler(
-                                    new BuscadorMaterialHandler(
-                                        new BuscadorTagHandler(
-                                            new BuscadorUbicacionHandler(
-                                                new CalcularOfertasCompradasHandler(
-                                                    new CalcularOfertasVendidasHandler(
-                                                        new AddHabOfertaHandler(
-                                                            new CrearOfertaHandler(
-                                                                new EliminarOfertaHandler(
-                                                                    new GetHabListEmprendedorHandler(
-                                                                        new GetLisHabEmpresaHandler(
-                                                                            new InteresadoEnOfertaHandler(
-                                                                                new RemoveHabEmpresaHandler(
-                                                                                    new RemoverHabOfertaHandler(
-                                                                                        new AddHabEmprendedorHandler(
-                                                                                            new ComandosHandler(
-                                                                                                new VerInteresados(
-                                                                                                    new VerEmpresaHandler(
-                                                                                                        new VerEmprendedorHandler(
-                                                                                                            new VerMisOfertasHandler(
-                null)))))))))))))))))))))))));
-
+           
             Message message = new Message();
             
             //string response;
@@ -114,7 +90,7 @@ namespace ConsoleApplication
 
             Console.WriteLine("se termina el programa");
             string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertirJson();
-            System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", contenedorToJson1); 
+            System.IO.File.WriteAllText(@"..\Library\Persistencia\Contenedor.json", contenedorToJson1); 
 
             // Terminamos el bot.
             cts.Cancel();

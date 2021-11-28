@@ -1,0 +1,94 @@
+{
+  "$id": "1",
+  "Publicaciones": {
+    "$id": "2",
+    "OfertasPublicados": {
+      "$id": "3",
+      "$values": []
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "4"
+  },
+  "BuscadorTags": {
+    "$id": "5"
+  },
+  "BuscadorMaterial": {
+    "$id": "6"
+  },
+  "PrinterConsola": {
+    "$id": "7"
+  },
+  "ListaNombreOfertas": {
+    "$id": "8",
+    "$values": []
+  },
+  "Emprendedores": {
+    "$id": "9"
+  },
+  "Empresas": {
+    "$id": "10",
+    "2100989690": {
+      "$id": "11",
+      "FechaOfertasEntregadas": {
+        "$id": "12"
+      },
+      "HabilitacionesEmpresa": {
+        "$id": "13",
+        "$values": []
+      },
+      "InteresadosEnOfertas": {
+        "$id": "14",
+        "$values": []
+      },
+      "OfertasAceptadas": {
+        "$id": "15",
+        "$values": []
+      },
+      "MisOfertas": {
+        "$id": "16",
+        "$values": []
+      },
+      "Nombre": "conaprole",
+      "Ubicacion": {
+        "$id": "17",
+        "NombreCalle": "pakistan"
+      },
+      "Rubro": {
+        "$id": "18",
+        "Nombre": "textil"
+      }
+    }
+  },
+  "HistorialDeChats": {
+    "$id": "19",
+    "2100989690": {
+      "$id": "20",
+      "MensajesDelUser": {
+        "$id": "21",
+        "$values": [
+          "/aceptarinvitacion",
+          "conaprole"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "22",
+        "$values": [
+          "conaprole",
+          "/aceptarinvitacion"
+        ]
+      }
+    }
+  },
+  "EmpresasInvitadas": {
+    "$id": "23",
+    "$values": [
+      {
+        "$ref": "11"
+      }
+    ]
+  },
+  "Administradores": {
+    "$id": "24"
+  }
+}

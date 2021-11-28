@@ -18,16 +18,19 @@ namespace ClassLibrary
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         /// <returns></returns>
+        [JsonInclude]
         public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
+        [JsonInclude]
         public List<Oferta> OfertasInteresado {get;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
+        [JsonInclude]
         public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
@@ -41,6 +44,10 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         [JsonConstructor]
+        public Emprendedor() : base(null, null, null)
+        {
+
+        }
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;

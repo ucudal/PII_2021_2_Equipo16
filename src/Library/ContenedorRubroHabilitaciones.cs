@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -9,11 +11,12 @@ namespace ClassLibrary
     /// con el fin de hacer más rígido el programa.
     /// Por otra parte también se utiliza el patrón Expert.
     /// /// </summary>
-    public class ContenedorRubroHabilitaciones
+    public class ContenedorRubroHabilitaciones: IJsonConvertible
     {
         /// <summary>
         /// 
         /// </summary>
+        [JsonConstructor]
         public ContenedorRubroHabilitaciones()
         {
 
@@ -23,6 +26,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
+        [JsonInclude]
         public List<Rubro> ListaRubros {get;} = new List<Rubro>()
         {
             new Rubro("textil"),
@@ -34,6 +38,8 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <returns></returns>
+        [JsonInclude]
+
         public List<Habilitaciones> ListaHabilitaciones {get;} = new List<Habilitaciones>()
         {
             new Habilitaciones("apa"),
@@ -136,6 +142,17 @@ namespace ClassLibrary
                 texto.Append($"-{item.Nombre}\n");
             }
             return texto.ToString();
+        }
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }
