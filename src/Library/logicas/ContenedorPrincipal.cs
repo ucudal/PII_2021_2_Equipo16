@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -8,7 +10,7 @@ namespace ClassLibrary
     /// <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
-    public class ContenedorPrincipal
+    public class ContenedorPrincipal: IJsonConvertible
     {
         public ContenedorPrincipal()
         {
@@ -70,6 +72,17 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         public List<Empresa> EmpresasInvitadas {get;} = new List<Empresa>();
+
+        public string ConvertToJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
 
     }
 }

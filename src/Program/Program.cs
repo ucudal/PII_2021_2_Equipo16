@@ -46,8 +46,22 @@ namespace ConsoleApplication
             
             Bot = new TelegramBotClient(Token);
 
+            JsonSerializerOptions opciones = new()
+            {
+                ReferenceHandler = MyReferenceHandler.Instance,
+                WriteIndented = true
+            };  
+
+            if (System.IO.File.Exists(@"..\Library\Persistencia\logica.json"))
+            {
+                string contenedorToJson = System.IO.File.ReadAllText(@"..\Library\Persistencia\logica.json");
+                Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(contenedorToJson, opciones);  
+            }
+
+
             firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new GetHabListHandler(new VerEmprendedorHandler(null))))))))))))))))))))))));
             
+
             
             Message message = new Message();
             
@@ -72,6 +86,11 @@ namespace ConsoleApplication
 
             // Esperamos a que el usuario aprete Enter en la consola para terminar el bot.
             Console.ReadLine();
+
+
+            Console.WriteLine("se termina el programa");
+            string contenedorToJson1 = Singleton<ContenedorPrincipal>.Instancia.ConvertToJson();
+            System.IO.File.WriteAllText(@"..\Library\Persistencia\logica.json", contenedorToJson1); 
 
             // Terminamos el bot.
             cts.Cancel();

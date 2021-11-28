@@ -48,22 +48,22 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesEmpresa { get; private set; }
+        public List<Habilitaciones> HabilitacionesEmpresa { get; private set; } = new List<Habilitaciones>();
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
-        public List<Oferta> InteresadosEnOfertas { get; private set; }
+        public List<Oferta> InteresadosEnOfertas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
-        public List<Oferta> OfertasAceptadas { get; private set; }
+        public List<Oferta> OfertasAceptadas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// 
         /// </summary>
-        public List<Oferta> MisOfertas { get; }
+        public List<Oferta> MisOfertas { get; } = new List<Oferta>();
         /// <summary>
         /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
         /// </summary>

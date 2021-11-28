@@ -31,7 +31,9 @@ namespace ClassLibrary
             }
             else
             {
+                ConsolePrinter.DatoPrinter("entro en else");
                 empresa.CrearOferta(Singleton<ContenedorPrincipal>.Instancia.Publicaciones, nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, constantesPuntuales);
+                ConsolePrinter.DatoPrinter("entro en else2");
                 Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Add(nombre);
                 ConsolePrinter.DatoPrinter("Oferta creada exitosamente.");
             }
