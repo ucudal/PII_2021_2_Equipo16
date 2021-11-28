@@ -30,7 +30,7 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         [JsonConstructor]
-        public Empresa() : base(null, null, null)
+        public Empresa() : base()
         {
 
         }
@@ -43,7 +43,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get;} = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get; private set;} = new Dictionary<DateTime, Oferta>();
         //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
         //private List<Oferta> ofertasAceptadas = new List<Oferta>();
         //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -71,7 +71,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         [JsonInclude]
-        public List<Oferta> MisOfertas { get; } = new List<Oferta>();
+        public List<Oferta> MisOfertas { get; private set;} = new List<Oferta>();
         
         /// <summary>
         /// 
@@ -87,7 +87,7 @@ namespace ClassLibrary
         /// <param name="puntualesConstantes"></param>
         public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
         {   
-            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
+            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this.Nombre);
             publicaciones.OfertasPublicados.Add(productoCreado);
             this.MisOfertas.Add(productoCreado);
         }

@@ -43,11 +43,7 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        [JsonConstructor]
-        public Emprendedor() : base(null, null, null)
-        {
-
-        }
+        
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;

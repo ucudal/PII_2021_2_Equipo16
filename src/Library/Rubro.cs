@@ -34,7 +34,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <value></value>
-        public string Nombre { get; private set;}
+        public string Nombre { get; set;}
 
         public string ConvertirJson()
         {

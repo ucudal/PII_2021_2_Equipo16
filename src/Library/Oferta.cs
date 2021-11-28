@@ -36,13 +36,13 @@ namespace ClassLibrary
         /// <param name="ubicacion"></param>
         /// <param name="constantesPuntuales"></param>
         /// <param name="empresa"></param>
-        public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
+        public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, string nombreEmpresa)
         {
             this.Nombre = nombre;
             this.Material = new Material(nombreMaterial, cantidad, precio, unidad);
             this.Tags = tags;
             this.Ubicacion = new Ubicacion(ubicacion);
-            this.EmpresaCreadora = empresa;
+            this.NombreEmpresaCreadora = nombreEmpresa;
             this.ConstantesPuntuales = constantesPuntuales;
         }
 
@@ -72,11 +72,24 @@ namespace ClassLibrary
         /// </summary>
         public Ubicacion Ubicacion { get; private set; }
 
-
+        public string NombreEmpresaCreadora {get; set;}
         /// <summary>
         /// Obtiene o establece la Empresa que publica la Oferta.
         /// </summary>
-        public Empresa EmpresaCreadora { get; private set; }
+        public Empresa EmpresaCreadora 
+        { 
+            get
+            {
+                foreach (KeyValuePair<string, Empresa> pair in Singleton<ContenedorPrincipal>.Instancia.Empresas)
+                {
+                    if (pair.Value.Nombre == NombreEmpresaCreadora)
+                    {
+                        return pair.Value;
+                    }
+                }
+                return null;
+            }
+        }
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
@@ -169,6 +182,17 @@ namespace ClassLibrary
                 texto.Append("\n" + interesado);
             }
             return texto.ToString();
+        }
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

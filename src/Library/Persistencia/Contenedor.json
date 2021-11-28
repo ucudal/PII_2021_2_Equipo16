@@ -27,68 +27,48 @@
     "$id": "9"
   },
   "Empresas": {
-    "$id": "10",
-    "2100989690": {
-      "$id": "11",
-      "FechaOfertasEntregadas": {
-        "$id": "12"
-      },
-      "HabilitacionesEmpresa": {
-        "$id": "13",
-        "$values": []
-      },
-      "InteresadosEnOfertas": {
-        "$id": "14",
-        "$values": []
-      },
-      "OfertasAceptadas": {
-        "$id": "15",
-        "$values": []
-      },
-      "MisOfertas": {
-        "$id": "16",
-        "$values": []
-      },
-      "Nombre": "conaprole",
-      "Ubicacion": {
-        "$id": "17",
-        "NombreCalle": "pakistan"
-      },
-      "Rubro": {
-        "$id": "18",
-        "Nombre": "textil"
-      }
-    }
+    "$id": "10"
   },
   "HistorialDeChats": {
-    "$id": "19",
-    "2100989690": {
-      "$id": "20",
-      "MensajesDelUser": {
-        "$id": "21",
-        "$values": [
-          "/aceptarinvitacion",
-          "conaprole"
-        ]
-      },
-      "MensajesDelUserReves": {
-        "$id": "22",
-        "$values": [
-          "conaprole",
-          "/aceptarinvitacion"
-        ]
-      }
-    }
+    "$id": "11"
   },
   "EmpresasInvitadas": {
-    "$id": "23",
+    "$id": "12",
     "$values": [
       {
-        "$ref": "11"
+        "$id": "13",
+        "FechaOfertasEntregadas": {
+          "$id": "14"
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "15",
+          "$values": []
+        },
+        "InteresadosEnOfertas": {
+          "$id": "16",
+          "$values": []
+        },
+        "OfertasAceptadas": {
+          "$id": "17",
+          "$values": []
+        },
+        "MisOfertas": {
+          "$id": "18",
+          "$values": []
+        },
+        "Nombre": "conaprole",
+        "Ubicacion": {
+          "$id": "19",
+          "NombreCalle": "pakistan"
+        },
+        "Rubro": {
+          "$id": "20",
+          "Nombre": "textil"
+        }
       }
     ]
   },
   "Administradores": {
-    "$id": "24"
+    "$id": "21"
   }
 }
