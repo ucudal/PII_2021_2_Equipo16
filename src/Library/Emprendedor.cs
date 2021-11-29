@@ -35,6 +35,19 @@ namespace ClassLibrary
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
+       /// <summary>
+       /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
+        [JsonConstructor]
+        
+        public Emprendedor() : base()
+        {
+
+        }
+        
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
         /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
@@ -43,12 +56,6 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        [JsonConstructor]
-        public Emprendedor() : base()
-        {
-
-        }
-        
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;

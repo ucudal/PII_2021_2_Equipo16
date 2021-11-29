@@ -22,10 +22,11 @@ namespace ClassLibrary
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+       /// <summary>
+       /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonInclude]
         public List<Rubro> ListaRubros {get; set;} = new List<Rubro>()
         {
@@ -143,7 +144,11 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
-
+        
+        /// <summary>
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

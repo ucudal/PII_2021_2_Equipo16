@@ -16,9 +16,12 @@ namespace ClassLibrary
 
     public class Publicaciones : IJsonConvertible
     {
-        /// <summary>
-        /// 
-        /// </summary>
+
+       /// <summary>
+       /// Constructor sin parametros de la clase Publicaciones, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
         public Publicaciones()
         {

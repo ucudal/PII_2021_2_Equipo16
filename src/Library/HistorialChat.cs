@@ -9,9 +9,12 @@ namespace ClassLibrary
     /// </summary>
     public class HistorialChat : IJsonConvertible
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
         [JsonConstructor]
         public HistorialChat()
         {
@@ -108,7 +111,9 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this, opciones);
         }
-
+        /// <summary>
+        /// Metodo con el fin de poder limpiar el historial del chat para no consumir tanta memoria.
+        /// </summary>
         public void HistorialClear()
         {
             this.MensajesDelUser.Clear();

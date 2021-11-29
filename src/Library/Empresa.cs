@@ -32,18 +32,14 @@ namespace ClassLibrary
         {
 
         }
-         /// <summary>
+
+        /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
         /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        [JsonConstructor]
-        public Empresa() : base()
-        {
-
-        }
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
         }

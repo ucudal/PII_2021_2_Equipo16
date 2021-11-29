@@ -13,6 +13,11 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
+       /// <summary>
+       /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
         public Oferta()
         {
@@ -72,7 +77,10 @@ namespace ClassLibrary
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
         public Ubicacion Ubicacion { get; set; }
-
+        
+        /// <summary>
+        /// Obtiene o establece la empresa creadora de la oferta.
+        /// </summary>
         public Empresa EmpresaCreadora {get; set;}
        
 
@@ -168,7 +176,11 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
-
+        
+        /// <summary>
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
