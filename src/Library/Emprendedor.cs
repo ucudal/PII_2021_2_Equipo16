@@ -36,11 +36,14 @@ namespace ClassLibrary
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+       /// <summary>
+       /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
         [JsonConstructor]
+        
         public Emprendedor() : base()
         {
 
@@ -49,11 +52,10 @@ namespace ClassLibrary
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="ubicacion"></param>
-        /// <param name="rubro"></param>
-        /// <param name="especializaciones"></param>
-        /// <returns></returns>
+        /// <param name="nombre">Nombre del emprededor.</param>
+        /// <param name="ubicacion">Ubicación del emprendedor.</param>
+        /// <param name="rubro">Rubro del emprendedor.</param>
+        /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
@@ -157,9 +159,9 @@ namespace ClassLibrary
 
             return text.ToString();
         }
-        
+       
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()
