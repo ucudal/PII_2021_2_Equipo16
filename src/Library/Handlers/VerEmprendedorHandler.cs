@@ -31,9 +31,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
-
             if (listaConParametros.Count == 0)
             {
                 respuesta = "Ingrese el nombre del emprenedor que quiera ver";
@@ -41,7 +39,6 @@ namespace ClassLibrary
             }
 
             string nombreBuscado = listaConParametros[0];
-            
             foreach (KeyValuePair<string, Emprendedor> par in Singleton<ContenedorPrincipal>.Instancia.Emprendedores)
             {
                 if (par.Value.Nombre == nombreBuscado)

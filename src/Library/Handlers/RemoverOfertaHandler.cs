@@ -5,13 +5,13 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
     /// </summary>
-    public class EliminarOfertaHandler : BaseHandler
+    public class RemoverOfertaHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public EliminarOfertaHandler (BaseHandler next) : base(next)
+        public RemoverOfertaHandler (BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/eliminaroferta"};
         }
@@ -24,14 +24,12 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            
             if (!this.ChequearHandler(mensaje, "/eliminaroferta"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/eliminaroferta");
 
@@ -42,8 +40,7 @@ namespace ClassLibrary
                     respuesta = "Ingrese el nombre de la oferta que desea eliminar";
                     return true;
                 }
-
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string nombreOfertaParaEliminar = listaConParametros[0];
                     Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
@@ -54,7 +51,6 @@ namespace ClassLibrary
                     return true;   
                 }
             }
-
             else
             {
                 respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();

@@ -29,8 +29,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
                 if (listaConParametros.Count == 0)
@@ -106,6 +105,7 @@ namespace ClassLibrary
                 respuesta = $"Usted no es una empresa, no puede usar este comando.";
                 return true;
             }
+            
             respuesta= string.Empty;
             return false;
         }

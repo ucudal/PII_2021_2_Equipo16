@@ -31,8 +31,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/vermisofertas");
                     
@@ -42,8 +41,7 @@ namespace ClassLibrary
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
 
                 respuesta = texto;
-                return true;
-                       
+                return true;       
             }
             else
             {

@@ -29,8 +29,7 @@ namespace ClassLibrary
             {
                 throw new ArgumentNullException("Mensaje no puede ser nulo.");
             }
-
-            if (!this.ChequearHandler(mensaje, "/buscarubicacion"))
+            else if (!this.ChequearHandler(mensaje, "/buscarubicacion"))
             {
                 respuesta = string.Empty;
                 return false;
@@ -42,7 +41,7 @@ namespace ClassLibrary
                 respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
                 return true;
             }
-            if (listaConParametros.Count == 1)
+            else if (listaConParametros.Count == 1)
             {
                 string palabraClave = listaConParametros[0];
                 
@@ -51,7 +50,6 @@ namespace ClassLibrary
                 respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
                 return true;
             }          
-
             respuesta = string.Empty;
             return false;
         }

@@ -31,21 +31,20 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
-                    respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd).";
+                    respuesta = "Ingrese la fecha de inicio (YYYY-MM-DD).";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                else if (listaConParam.Count == 1)
                 {
-                    respuesta = "Ingrese la fecha final(yyyy-MM-dd).";
+                    respuesta = "Ingrese la fecha final (YYYY-MM-DD).";
                     return true;
                 }
-                if (listaConParam.Count == 2)
+                else if (listaConParam.Count == 2)
                 {
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];

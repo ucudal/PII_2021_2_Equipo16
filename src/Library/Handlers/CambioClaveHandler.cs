@@ -31,7 +31,7 @@ namespace ClassLibrary
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /cambiarClave, entra al if.
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/cambiarclave") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/cambiarclave") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/cambiarclave");
                 if (listaConParametros.Count == 0)
@@ -39,12 +39,12 @@ namespace ClassLibrary
                     respuesta = "Ingrese su contraseña";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     respuesta = "Ingrese la nueva contraseña";
                     return true;
                 }
-                if (listaConParametros.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
                     string claveVieja = listaConParametros[1];
                     string claveNueva = listaConParametros[0];
@@ -72,5 +72,4 @@ namespace ClassLibrary
             return false;   
         }
     }
-
 }

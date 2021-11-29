@@ -30,8 +30,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabemprendedor");
                 if (listaConParametros.Count == 0)
@@ -39,7 +38,7 @@ namespace ClassLibrary
                     respuesta = $"Ingrese el nombre de la habilitación que desea eliminar.";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string habilitacion = listaConParametros[0];
                     

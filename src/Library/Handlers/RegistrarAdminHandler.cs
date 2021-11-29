@@ -30,7 +30,7 @@ namespace ClassLibrary
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registaradmin") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registaradmin") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registaradmin");
                 if (listaConParametros.Count == 0)
@@ -38,12 +38,12 @@ namespace ClassLibrary
                     respuesta = "Ingrese el nombre";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     respuesta = "Ingrese la clave";
                     return true;
                 }
-                if (listaConParametros.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
                     string nombreAdmin = listaConParametros[1];
                     string claveAdmin = listaConParametros[0];

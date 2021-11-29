@@ -5,16 +5,16 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class AddHabEmpresaHandler : BaseHandler
+    public class AgregarHabEmprendedorHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
-        /// <param name="next"></param>
-        public AddHabEmpresaHandler(BaseHandler next):base(next)
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
+        public AgregarHabEmprendedorHandler(BaseHandler next):base(next)
         {
-            this.Keywords = new string[] {"/agregarhabilitacionempresa"};
+            this.Keywords = new string[] {"/agregarhabilitacionemprendedor"};
         }
 
         /// <summary>
@@ -22,49 +22,46 @@ namespace ClassLibrary
         /// En caso contrario retorna false.
         /// </summary>
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/agregarhabilitacionempresa"))
+            if (!this.ChequearHandler(mensaje, "/agregarhabilitacionemprendedor"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-                    
-                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
                     try
                     {
-                        LogicaEmpresa.AddHabilitacion(value,nuevaHab);
+                        LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
                     }
                     catch (System.ArgumentException e)
                     {
                         respuesta = e.Message;
                         return true;
                     }
-                    
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}";
-                    return true;   
-                }
+                    respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
+                    return true;  
+                }    
             }
-
             else
             {
-                respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
+                respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
                 return true;
             }
             

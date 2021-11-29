@@ -29,8 +29,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
@@ -40,12 +39,12 @@ namespace ClassLibrary
                     respuesta = "Ingrese el nombre de la oferta a la que desea agregar una habilitación.";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
-                if (listaConParametros.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
                     string nombreOferta = listaConParametros[1];
                     string nombreHabParaAgregar = listaConParametros[0];

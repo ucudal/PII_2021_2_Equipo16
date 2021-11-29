@@ -33,7 +33,6 @@ namespace ClassLibrary
             }
             
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
-
             if (listaConParametros.Count == 0)
             {
                 respuesta = "Ingrese el nombre de la empresa que quiera ver";
@@ -41,12 +40,11 @@ namespace ClassLibrary
             }
 
             string nombreBuscado = listaConParametros[0];
-            
             foreach (KeyValuePair<string, Empresa> par in Singleton<ContenedorPrincipal>.Instancia.Empresas)
             {
                 if (par.Value.Nombre == nombreBuscado)
                 {
-                    string texto = LogicaEmpresa.VerEmpresa(par.Value) +OpcionesUso.AccionesEmpresas();
+                    string texto = LogicaEmpresa.VerEmpresa(par.Value) +OpcionesUso.AccionesEmprendedor();
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = texto;
                     return true;
