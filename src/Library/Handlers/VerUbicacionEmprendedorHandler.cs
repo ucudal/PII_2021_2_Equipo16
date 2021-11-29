@@ -62,7 +62,7 @@ namespace ClassLibrary
         {
             
             Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-            string direccion = value.Ubicacion;
+            string direccion = value.Ubicacion.ToString();
             LocationApiClient client = new LocationApiClient();
 
             Location direccionActual = await client.GetLocationAsync(direccion);

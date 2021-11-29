@@ -84,7 +84,7 @@ namespace Test.Library
         public void TestAddHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil","ropa",  habilitacion, "Lavado de Autos Express");
 
             int expected = 2;
             

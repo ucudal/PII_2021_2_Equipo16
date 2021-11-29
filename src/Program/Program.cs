@@ -27,7 +27,7 @@ namespace ConsoleApplication
         //
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string Token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
+        private static string Token = "2131709654:AAHbaaHyt92koTwZ8aaBPzfiSIyscVoAouU";
 
         private static IHandler firstHandler;
 
