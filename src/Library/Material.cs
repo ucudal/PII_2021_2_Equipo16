@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
+    /// Clase publica Material, para que puedan acceder a sus atributos y metodos.
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
@@ -15,9 +15,11 @@ namespace ClassLibrary
 
     public class Material
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase Material, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
         public Material()
         {
@@ -50,31 +52,31 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Obtiene o establece el nombre del material.
         /// </summary>
-        /// <value></value>
+        /// <value>string</value>
         public string Nombre { get; set;}
         
         /// <summary>
-        /// 
+        /// obtiene o establece la cantidad del material.
         /// </summary>
-        /// <value></value>
+        /// <value>string</value>
         public string Cantidad { get; set;}
         
         /// <summary>
-        /// 
+        /// obtiene o establece el precio del material.
         /// </summary>
-        /// <value></value>
+        /// <value>string</value>
         public string Precio { get; set;}
         
         /// <summary>
-        /// 
+        /// obtiene o establece la unidad del material.
         /// </summary>
-        /// <value></value>
+        /// <value>string</value>
         public string Unidad { get; set;}
-
+        
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()
