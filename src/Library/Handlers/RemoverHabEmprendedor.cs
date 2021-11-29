@@ -31,31 +31,25 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabemprendedor") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabemprendedor");
                 if (listaConParametros.Count == 0)
                 {
-                    respuesta = $"Ingrese el nombre de la habilitación que desea eliminar {listaConParametros.Count}.";
+                    respuesta = $"Ingrese el nombre de la habilitación que desea eliminar.";
                     return true;
                 }
                 if (listaConParametros.Count == 1)
                 {
                     string habilitacion = listaConParametros[0];
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
-                    {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-                        LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
-                        
-                        respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmprendedor()} ";
-                        return true;
-                    }
-                    else
-                    {
-                        respuesta = $"Usted no está registrado como Emprendedor. {OpcionesUso.AccionesEmprendedor()}";
-                        return true;
-                    }
-
+                    
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+                    LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    
+                    respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmprendedor()} ";
+                    return true;
+                    
                 }
                 else
                 {
@@ -63,9 +57,11 @@ namespace ClassLibrary
                     return true;
                 } 
             }
-            
-            respuesta = string.Empty;
-            return false;
+            else
+            {
+                respuesta = $"Usted no está registrado como Emprendedor. {OpcionesUso.AccionesEmprendedor()}";
+                return true;
+            }
         }
     }
 }

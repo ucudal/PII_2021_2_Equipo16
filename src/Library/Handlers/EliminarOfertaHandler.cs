@@ -31,11 +31,10 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/eliminaroferta") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/eliminaroferta");
 
-                // El mensaje debe tener el formato "Eliminar producto,nombre de la oferta,habilitacion"
                 string[] mensajeProcesado = mensaje.Text.Split();
 
                 if (listaConParametros.Count == 0)
@@ -47,21 +46,19 @@ namespace ClassLibrary
                 if (listaConParametros.Count == 1)
                 {
                     string nombreOfertaParaEliminar = listaConParametros[0];
-
-                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                    {
-                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                        LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
-                        
-                        respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}. {OpcionesUso.AccionesEmpresas()}";
-                        return true;
-                    }
-                    else
-                    {
-                        respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();
-                        return true;
-                    }
+                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                    LogicaEmpresa.EliminarOferta(value, nombreOfertaParaEliminar);
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    
+                    respuesta = $"Se ha eliminado la oferta {nombreOfertaParaEliminar}. {OpcionesUso.AccionesEmpresas()}";
+                    return true;   
                 }
+            }
+
+            else
+            {
+                respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();
+                return true;
             }
 
             respuesta = string.Empty;

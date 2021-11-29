@@ -36,7 +36,7 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptaroferta") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaComandos = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
                 if (listaComandos.Count == 0)
@@ -49,18 +49,11 @@ namespace ClassLibrary
                 {
                     string nombreOfertaParaAceptar = listaComandos[0];
 
-                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                    {
-                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                        LogicaEmpresa.AceptarOferta(value, nombreOfertaParaAceptar);
-                        
-                        respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";
-                    }
-                    else
-                    {
-                        respuesta = $"No se ha podido aceptar la oferta, usted no está registrado como Empresa. {OpcionesUso.AccionesEmpresas()} ";
-                    }
+                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                    LogicaEmpresa.AceptarOferta(value, nombreOfertaParaAceptar);
                     
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";
                     return true;
                 }
                 
@@ -70,9 +63,11 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            
-            respuesta = string.Empty;
-            return false;
+            else
+            {
+                respuesta = $"No se ha podido aceptar la oferta, usted no está registrado como Empresa. {OpcionesUso.AccionesEmpresas()} ";
+                return true;
+            }
         }
     }
 }
