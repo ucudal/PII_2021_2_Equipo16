@@ -1,0 +1,193 @@
+{
+  "$id": "1",
+  "Publicaciones": {
+    "$id": "2",
+    "OfertasPublicados": {
+      "$id": "3",
+      "$values": [
+        {
+          "$id": "4",
+          "Nombre": "Oferta1",
+          "Material": "Mayerial",
+          "Precio": "9338",
+          "Unidad": "Ksks",
+          "Tags": "Jsjsk",
+          "Ubicacion": "Sjsks",
+          "Id": "00000000-0000-0000-0000-000000000000",
+          "EmpresaCreadora": {
+            "$id": "5",
+            "HabilitacionesEmpresa": {
+              "$id": "6",
+              "$values": []
+            },
+            "InteresadosEnOfertas": {
+              "$id": "7",
+              "$values": []
+            },
+            "OfertasAceptadas": {
+              "$id": "8",
+              "$values": []
+            },
+            "MisOfertas": {
+              "$id": "9",
+              "$values": [
+                {
+                  "$ref": "4"
+                }
+              ]
+            },
+            "Habilitacion": {
+              "$id": "10",
+              "Nombre": null
+            },
+            "Nombre": "Conaprole",
+            "Ubicacion": "UCU",
+            "Rubro": "textil"
+          },
+          "ConstantesPuntuales": "Sksk",
+          "HabilitacionesDeOferta": {
+            "$id": "11",
+            "$values": [
+              "apa",
+              "soa"
+            ]
+          },
+          "Interesado": {
+            "$id": "12",
+            "$values": []
+          }
+        }
+      ]
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "13"
+  },
+  "BuscadorTags": {
+    "$id": "14"
+  },
+  "BuscadorMaterial": {
+    "$id": "15"
+  },
+  "PrinterConsola": {
+    "$id": "16"
+  },
+  "ListaNombreOfertas": {
+    "$id": "17",
+    "$values": [
+      "Oferta1"
+    ]
+  },
+  "Habilitaciones": {
+    "$id": "18",
+    "Nombre": null
+  },
+  "Emprendedores": {
+    "$id": "19"
+  },
+  "Empresas": {
+    "$id": "20",
+    "2100989690": {
+      "$ref": "5"
+    }
+  },
+  "HistorialDeChats": {
+    "$id": "21",
+    "2100989690": {
+      "$id": "22",
+      "MensajesDelUser": {
+        "$id": "23",
+        "$values": [
+          "/aceptarinvitacion",
+          "Conaprole",
+          "/listadehabilitacionesempresa",
+          "/agregarhabilitacionempresa",
+          "apa",
+          "/crearoferta",
+          "Oferta1",
+          "Mayerial",
+          "9338",
+          "Ksks",
+          "Jsjsk",
+          "Sjsks",
+          "Sksk",
+          "/listadehabilitacionesempresa",
+          "/verempresa",
+          "/agregarhabilitacionempresa",
+          "apa",
+          "/verempresa",
+          "/buscarmaterial",
+          "Mayerial",
+          "/crearhaboferta",
+          "Oferta1",
+          "apa",
+          "/buscarmaterial",
+          "Mayerial",
+          "/buscarmaterial",
+          "Mayerial",
+          "/listadehabilitacionesempresa",
+          "/crearhaboferta",
+          "Oferta1",
+          "soa",
+          "/buscarmaterial",
+          "Mayerial",
+          "/listadehabilitacionesempresa",
+          "/buscarmaterial",
+          "Mayerial"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "24",
+        "$values": [
+          "Mayerial",
+          "/buscarmaterial",
+          "/listadehabilitacionesempresa",
+          "Mayerial",
+          "/buscarmaterial",
+          "soa",
+          "Oferta1",
+          "/crearhaboferta",
+          "/listadehabilitacionesempresa",
+          "Mayerial",
+          "/buscarmaterial",
+          "Mayerial",
+          "/buscarmaterial",
+          "apa",
+          "Oferta1",
+          "/crearhaboferta",
+          "Mayerial",
+          "/buscarmaterial",
+          "/verempresa",
+          "apa",
+          "/agregarhabilitacionempresa",
+          "/verempresa",
+          "/listadehabilitacionesempresa",
+          "Sksk",
+          "Sjsks",
+          "Jsjsk",
+          "Ksks",
+          "9338",
+          "Mayerial",
+          "Oferta1",
+          "/crearoferta",
+          "apa",
+          "/agregarhabilitacionempresa",
+          "/listadehabilitacionesempresa",
+          "Conaprole",
+          "/aceptarinvitacion"
+        ]
+      }
+    }
+  },
+  "EmpresasInvitadas": {
+    "$id": "25",
+    "$values": [
+      {
+        "$ref": "5"
+      }
+    ]
+  },
+  "Administradores": {
+    "$id": "26"
+  }
+}

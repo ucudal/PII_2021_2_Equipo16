@@ -471,7 +471,8 @@
         </member>
         <member name="M:ClassLibrary.AceptarOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Este método se encarga de aceptar una oferta.
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
             <param name="next"></param>
         </member>
@@ -1087,6 +1088,37 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
+        <member name="T:ClassLibrary.VerUbicacionEmprendedorHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacion".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.Direccion(ClassLibrary.IMensaje)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.HistorialChat">
             <summary>
             
@@ -1289,6 +1321,180 @@
             </summary>
             <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String.</param>
             <returns>Devuelve la cadena pero con las modificaciones realizadas.</returns>
+        </member>
+        <member name="T:ClassLibrary.Distance">
+            <summary>
+            Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los métodos
+            <see cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)"/> o
+            <see cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Distance.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontraron o no las coordenas o las direcciones de origen y
+            destino.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.Distance.TravelDistance">
+            <summary>
+            Obtiene o establece la distancia entre las coordenadas o las direcciones de origen y destino.
+            </summary>
+            <value>La distancia en metros.</value>
+        </member>
+        <member name="P:ClassLibrary.Distance.TravelDuration">
+            <summary>
+            Obtiene o establece el tiempo que se demora en llegar de las coordenadas o de las direcciones de origen a las de destino.
+            </summary>
+            <value>El tiempo que se demora en minutos.</value>
+        </member>
+        <member name="T:ClassLibrary.Location">
+            <summary>
+            Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método
+            <see cref="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Location.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontró o no la dirección. En ese caso son válidos los demás
+            valores. En caso contrario los demás valores son indeterminados.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.AddresLine">
+            <summary>
+            Obtiene o establece la dirección: calle y número, ruta y kilómetro, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.CountryRegion">
+            <summary>
+            Obtiene o establece el país.
+            </summary>
+            <value>Por ejemplo, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.FormattedAddress">
+            <summary>
+            Obtiene o establece la dirección completa, incluyendo ciudad, código postal, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738, Montevideo, 11200, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Locality">
+            <summary>
+            Obtiene o establece la localidad o ciudad.
+            </summary>
+            <value>Por ejemplo, Montevideo.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.PostalCode">
+            <summary>
+            Obtiene o establece el código postal.
+            </summary>
+            <value>Por ejemplo, 11200.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Latitude">
+            <summary>
+            Obtiene o establece la latitud de la dirección.
+            </summary>
+            <value>El valor de la latitud en formato decimal.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Longitude">
+            <summary>
+            Obtiene o establece la longitud de la dirección.
+            </summary>
+            <value>El valor de la longitud en formato decimal.</value>
+        </member>
+        <member name="T:ClassLibrary.LocationApiClient">
+            <summary>
+            Un cliente de la API de localización.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtiene las coordenadas de una dirección.
+            </summary>
+            <param name="address">La dirección.</param>
+            <param name="city">La ciudad. Es opcional. El valor predeterminado es Montevideo.</param>
+            <param name="department">El departamento, estado, provincia, etc. Es opcional. El valor predeterminado es `ontevideo.</param>
+            <param name="country">El país. Es opcional. El valor predeterminado es Uruguay.</param>
+            <returns>Las coordenadas de la dirección.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetLocation(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)">
+            <summary>
+            Obtiene la distancia entre dos coordenadas.
+            </summary>
+            <param name="from">La coordenada de origen.</param>
+            <param name="to">La coordenada de destino.</param>
+            <returns>La distancia entre las dos coordenadas.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistance(ClassLibrary.Location,ClassLibrary.Location)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)">
+            <summary>
+            Obtiene la distancia entre dos direcciones.
+            </summary>
+            <param name="from">La dirección de origen.</param>
+            <param name="to">La dirección de destino.</param>
+            <returns>La distancia entre las dos direcciones.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistance(System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)">
+            <summary>
+            Descarga una mapa de una coordenada.
+            </summary>
+            <param name="latitude">La latitud de la coordenada.</param>
+            <param name="longitude">La longitud de la coordenada.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. El formato es PNG.</param>
+            <param name="zoomLevel">El nivel de zoom del mapa entre 1 y 20. Es opcional. El valor predeterminado es
+            15.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadMap(System.Double,System.Double,System.String,System.Int32)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Un mapa con una ruta entre dos coordenadas.
+            </summary>
+            <param name="fromLatitude">La latitud de la coordenada de origen.</param>
+            <param name="fromLongitude">La longitu de la coordenada de origen.</param>
+            <param name="toLatitude">La latitud de la coordenada de destino.</param>
+            <param name="toLongitude">La longitud de la coordenada de destino.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. Es formato es PNG.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadRoute(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.Dispose">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.Dispose(System.Boolean)">
+            <inheritdoc cref="T:System.IDisposable" />
         </member>
         <member name="T:ClassLibrary.ContenedorPrincipal">
             <summary>
@@ -1682,7 +1888,7 @@
         </member>
         <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
-            Esta lista contiene las habilitaciones de las Ofertas.
+            Constructor para json.
             </summary>
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
