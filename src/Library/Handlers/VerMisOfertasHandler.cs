@@ -34,6 +34,7 @@ namespace ClassLibrary
             else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/vermisofertas");
+                    
                 Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
                 string texto = LogicaEmpresa.VerMisOfertas(value) + OpcionesUso.AccionesEmpresas();
 
@@ -46,7 +47,7 @@ namespace ClassLibrary
             {
                 respuesta = "Usted no es una empresa, no puede usar este comando.";
                 return true;
-            }  
+            }         
         }
     }
 }

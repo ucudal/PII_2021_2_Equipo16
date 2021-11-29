@@ -1211,14 +1211,14 @@
         </member>
         <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
             <summary>
-            Devueleve una lista que contiene los mensajes despues de el comando ingresado
+            Devueleve una lista que contiene los mensajes despues de el comando ingresado.
             </summary>
             <param name="comando"></param>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
             <summary>
-            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers.
             </summary>
             <param name="comando"></param>
             <returns></returns>
@@ -1634,12 +1634,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:ClassLibrary.ContenedorPrincipal.ConvertirJson">
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
@@ -1662,17 +1656,19 @@
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.InvitarEmpresa(ClassLibrary.Administrador,System.String)">
             <summary>
-            Invita a la empresa a unirse en el bot.
+            Invita a la empresa a unirse al bot.
             </summary>
+            <param name="administrador"></param>
+            <param name="nombreEmpresa"></param>
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.CambioClave(ClassLibrary.Administrador,System.String,System.String)">
             <summary>
             Implementa los cambios de claves del Administrador.
             Inicialmente se le recomienda al Administrador cambiar su clave cuando se registra.
             </summary>
-            <param name="administrador">Recibe por parametro el Administrador de referencia</param>
-            <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
+            <param name="administrador">Recibe por parametro el Administrador de referencia.</param>
             <param name="clave">Recibe por parametro la pass antigua.</param>
+            <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.CrearEmpresa(ClassLibrary.Administrador,System.String,System.String,System.String)">
             <summary>
@@ -1885,8 +1881,12 @@
         </member>
         <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
+            
             </summary>
+            <param name="nombre"></param>
+            <param name="cantidad"></param>
+            <param name="precio"></param>
+            <param name="unidad"></param>
         </member>
         <member name="P:ClassLibrary.Material.Nombre">
             <summary>

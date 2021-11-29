@@ -56,7 +56,7 @@ namespace ClassLibrary
                     }
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
-                    return true; 
+                    return true;  
                 }    
             }
             else

@@ -90,15 +90,14 @@ namespace ClassLibrary
                         LogicaEmpresa.CrearOferta(value, nombreOferta, nombreMaterialOferta, cantidadMaterial, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
                     }
                     catch (System.ArgumentException e)
-                    {
-                        
+                    { 
                         respuesta = $"{e.Message}\nUse /crearoferta de nuevo.";
                         return true;
                     }
                     
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {nombreMaterialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y el tag {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
-                    return true;
+                    return true; 
                 }
             }
             else

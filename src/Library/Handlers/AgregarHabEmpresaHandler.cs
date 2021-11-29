@@ -37,7 +37,6 @@ namespace ClassLibrary
                 
                 if (listaConParametros.Count == 0)
                 {
-
                     respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }

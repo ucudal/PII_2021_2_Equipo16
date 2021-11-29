@@ -25,7 +25,7 @@ namespace ClassLibrary
             if (!this.ChequearHandler(mensaje, "/listadehabilitaciones"))
             {
                 respuesta = string.Empty;
-                return false;  
+                return false;    
             }
             
             Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
