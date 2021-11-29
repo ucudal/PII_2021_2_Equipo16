@@ -17,7 +17,6 @@ namespace ClassLibrary
        /// para la serialización de datos en la clase.
        /// </summary>
        /// <returns></returns>
-    
         [JsonConstructor]
         public Usuario()
         {
