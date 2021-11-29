@@ -11,7 +11,7 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
-    public class Oferta : IHabilitaciones
+    public class Oferta : IHabilitaciones, IJsonConvertible
     {
         [JsonConstructor]
         public Oferta()
@@ -19,7 +19,7 @@ namespace ClassLibrary
 
         }
         /// <summary>
-        /// Esta lista contiene las habilitaciones de las Ofertas.
+        /// Constructor para json.
         /// </summary>
         [JsonInclude]
         public List<Habilitaciones> HabilitacionesOferta { get; set; } = new List<Habilitaciones>();
@@ -81,7 +81,6 @@ namespace ClassLibrary
         /// </summary>
         public string ConstantesPuntuales { get; set;}
 
-
         /// <summary>
         /// Añade una habilitación a la oferta.
         /// </summary>
@@ -114,7 +113,6 @@ namespace ClassLibrary
             }
             this.HabilitacionesOferta.Remove(habEliminada);
         }
-
 
         /// <summary>
         /// Obtiene la Fecha en la que se publicó la oferta.

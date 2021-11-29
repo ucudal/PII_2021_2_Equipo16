@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -20,7 +19,6 @@ namespace ClassLibrary
         [JsonConstructor]
         public Rubro()
         {
-
         }
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
