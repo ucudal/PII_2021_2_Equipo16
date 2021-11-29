@@ -9,7 +9,8 @@ namespace ClassLibrary
     public class AceptarOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Este método se encarga de aceptar una oferta.
+        /// Inicializa una nueva instancia de la clase.
+        /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
         public AceptarOfertaHandler (BaseHandler next) : base(next)

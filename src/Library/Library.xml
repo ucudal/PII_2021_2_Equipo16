@@ -441,7 +441,8 @@
         </member>
         <member name="M:ClassLibrary.AceptarOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Este método se encarga de aceptar una oferta.
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
             <param name="next"></param>
         </member>
@@ -1090,6 +1091,37 @@
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.VerUbicacionEmprendedorHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacion".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.Direccion(ClassLibrary.IMensaje)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.HistorialChat">
             <summary>
