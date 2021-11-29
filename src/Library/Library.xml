@@ -487,6 +487,25 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
+        <member name="T:ClassLibrary.AddHabOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.AddHabOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.AddHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
         <member name="T:ClassLibrary.AgregarHabEmprendedorHandler">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
@@ -768,25 +787,6 @@
             <summary>
             Este método procesa el mensaje "Crear empresa" y retorna true.
             En caso contrario retorna false.
-            </summary>
-            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
-            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-        </member>
-        <member name="T:ClassLibrary.AddHabOfertaHandler">
-            <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.AddHabOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
-            <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
-            </summary>
-            <param name="next">El próximo "handler".</param>
-        </member>
-        <member name="M:ClassLibrary.AddHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
-            <summary>
-            Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -1568,6 +1568,12 @@
         <member name="P:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>

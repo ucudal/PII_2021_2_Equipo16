@@ -48,7 +48,7 @@ namespace ClassLibrary
                 
                     LogicaBuscadores.BuscarPorMaterial(palabraClave);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
+                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave))}";
                     return true;
                 }          
 

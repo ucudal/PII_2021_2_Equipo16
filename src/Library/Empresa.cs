@@ -27,8 +27,9 @@ namespace ClassLibrary
        /// para la serialización de datos en la clase.
        /// </summary>
        /// <returns></returns>
+       
         [JsonConstructor]
-        public Empresa() : base(null, null, null)        
+        public Empresa() : base()        
         {
 
         }
