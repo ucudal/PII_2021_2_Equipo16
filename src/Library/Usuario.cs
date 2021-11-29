@@ -57,12 +57,13 @@ namespace ClassLibrary
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-<<<<<<< HEAD
-        public Rubro Rubro { get; private set; }   
-=======
         
         public Rubro Rubro { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
@@ -72,11 +73,6 @@ namespace ClassLibrary
             };
 
             return JsonSerializer.Serialize(this, opciones);
-        }
-
-        
-
-        
->>>>>>> deV2
+        }  
     }
 }
