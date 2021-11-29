@@ -52,7 +52,7 @@
         </member>
         <member name="M:ClassLibrary.Administrador.ConvertirJson">
             <summary>
-            Convierte a formato .Json.
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns>Tipo string.</returns>
         </member>
@@ -152,7 +152,8 @@
         </member>
         <member name="P:ClassLibrary.ContenedorRubroHabilitaciones.ListaRubros">
             <summary>
-            
+            Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
             <returns></returns>
         </member>
@@ -202,6 +203,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ConvertirJson">
+            <summary>
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
@@ -227,7 +234,8 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
             <returns></returns>
         </member>
@@ -235,11 +243,10 @@
             <summary>
             
             </summary>
-            <param name="nombre"></param>
-            <param name="ubicacion"></param>
-            <param name="rubro"></param>
-            <param name="especializaciones"></param>
-            <returns></returns>
+            <param name="nombre">Nombre del emprededor.</param>
+            <param name="ubicacion">Ubicación del emprendedor.</param>
+            <param name="rubro">Rubro del emprendedor.</param>
+            <param name="especializaciones">Especializaciones del emprendedor.</param>
         </member>
         <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
@@ -277,7 +284,7 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -297,7 +304,8 @@
         </member>
         <member name="M:ClassLibrary.Empresa.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
             <returns></returns>
         </member>
@@ -305,10 +313,9 @@
             <summary>
             
             </summary>
-            <param name="nombre"></param>
-            <param name="ubicacion"></param>
-            <param name="rubro"></param>
-            <returns></returns>
+            <param name="nombre">Nombre de la empresa.</param>
+            <param name="ubicacion">Ubicación de la empresa.</param>
+            <param name="rubro">Rubro de la empresa.</param>
         </member>
         <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
@@ -386,7 +393,8 @@
         </member>
         <member name="M:ClassLibrary.Empresa.VerInteresados">
             <summary>
-            
+            Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
+            Este metodo muestra los interesados en una oferta.
             </summary>
             <returns></returns>
         </member>
@@ -405,7 +413,7 @@
         </member>
         <member name="M:ClassLibrary.Empresa.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -417,14 +425,15 @@
         </member>
         <member name="M:ClassLibrary.Habilitaciones.#ctor">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
+            Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
             <summary>
-            
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
-            <param name="nombre"></param>
         </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
             <summary>
@@ -434,7 +443,7 @@
         </member>
         <member name="M:ClassLibrary.Habilitaciones.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -1120,8 +1129,10 @@
         </member>
         <member name="M:ClassLibrary.HistorialChat.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.HistorialChat.MensajesDelUser">
             <summary>
@@ -1137,27 +1148,27 @@
         </member>
         <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
             <summary>
-            Devueleve una lista que contiene los mensajes despues de el comando ingresado
+            Devueleve una lista que contiene los mensajes despues de el comando ingresado.
             </summary>
             <param name="comando"></param>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
             <summary>
-            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers.
             </summary>
             <param name="comando"></param>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.HistorialClear">
             <summary>
-            
+            Metodo con el fin de poder limpiar el historial del chat para no consumir tanta memoria.
             </summary>
         </member>
         <member name="T:ClassLibrary.IBuscador">
@@ -1500,8 +1511,10 @@
         </member>
         <member name="M:ClassLibrary.ContenedorPrincipal.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
@@ -1558,15 +1571,9 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="M:ClassLibrary.ContenedorPrincipal.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -1586,17 +1593,19 @@
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.InvitarEmpresa(ClassLibrary.Administrador,System.String)">
             <summary>
-            Invita a la empresa a unirse en el bot.
+            Invita a la empresa a unirse al bot.
             </summary>
+            <param name="administrador"></param>
+            <param name="nombreEmpresa"></param>
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.CambioClave(ClassLibrary.Administrador,System.String,System.String)">
             <summary>
             Implementa los cambios de claves del Administrador.
             Inicialmente se le recomienda al Administrador cambiar su clave cuando se registra.
             </summary>
-            <param name="administrador">Recibe por parametro el Administrador de referencia</param>
-            <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
+            <param name="administrador">Recibe por parametro el Administrador de referencia.</param>
             <param name="clave">Recibe por parametro la pass antigua.</param>
+            <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.CrearEmpresa(ClassLibrary.Administrador,System.String,System.String,System.String)">
             <summary>
@@ -1792,7 +1801,7 @@
         </member>
         <member name="T:ClassLibrary.Material">
             <summary>
-            Clase publica Rubro, para que puedan acceder a sus atributos y metodos.
+            Clase publica Material, para que puedan acceder a sus atributos y metodos.
             </summary>
             <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
@@ -1802,41 +1811,47 @@
         </member>
         <member name="M:ClassLibrary.Material.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Material, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
+            
             </summary>
+            <param name="nombre"></param>
+            <param name="cantidad"></param>
+            <param name="precio"></param>
+            <param name="unidad"></param>
         </member>
         <member name="P:ClassLibrary.Material.Nombre">
             <summary>
-            
+            Obtiene o establece el nombre del material.
             </summary>
-            <value></value>
+            <value>string</value>
         </member>
         <member name="P:ClassLibrary.Material.Cantidad">
             <summary>
-            
+            obtiene o establece la cantidad del material.
             </summary>
-            <value></value>
+            <value>string</value>
         </member>
         <member name="P:ClassLibrary.Material.Precio">
             <summary>
-            
+            obtiene o establece el precio del material.
             </summary>
-            <value></value>
+            <value>string</value>
         </member>
         <member name="P:ClassLibrary.Material.Unidad">
             <summary>
-            
+            obtiene o establece la unidad del material.
             </summary>
-            <value></value>
+            <value>string</value>
         </member>
         <member name="M:ClassLibrary.Material.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -1874,6 +1889,13 @@
             Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
+        </member>
+        <member name="M:ClassLibrary.Oferta.#ctor">
+            <summary>
+            Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
+            </summary>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
@@ -1921,9 +1943,8 @@
         </member>
         <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
             <summary>
-            
+            Obtiene o establece la empresa creadora de la oferta.
             </summary>
-            <value></value>
         </member>
         <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">
             <summary>
@@ -1963,7 +1984,7 @@
         </member>
         <member name="M:ClassLibrary.Oferta.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -2003,8 +2024,10 @@
         </member>
         <member name="M:ClassLibrary.Publicaciones.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Publicaciones, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Publicaciones.OfertasPublicados">
             <summary>
@@ -2018,7 +2041,7 @@
         </member>
         <member name="M:ClassLibrary.Publicaciones.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -2034,8 +2057,10 @@
         </member>
         <member name="M:ClassLibrary.Rubro.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
             <summary>
@@ -2050,7 +2075,7 @@
         </member>
         <member name="M:ClassLibrary.Rubro.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -2121,8 +2146,11 @@
         </member>
         <member name="M:ClassLibrary.Ubicacion.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Ubicacion, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
+            
         </member>
         <member name="M:ClassLibrary.Ubicacion.#ctor(System.String)">
             <summary>
@@ -2137,7 +2165,7 @@
         </member>
         <member name="M:ClassLibrary.Ubicacion.ConvertirJson">
             <summary>
-            
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
             <returns></returns>
         </member>
@@ -2151,8 +2179,10 @@
         </member>
         <member name="M:ClassLibrary.Usuario.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase Usuario, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
+            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,System.String)">
             <summary>
@@ -2181,6 +2211,10 @@
             <value>Tipo Rubro.</value>
         </member>
         <member name="M:ClassLibrary.Usuario.ConvertirJson">
+            <summary>
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+            </summary>
+            <returns></returns>
             <summary>
             
             </summary>

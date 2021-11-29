@@ -26,9 +26,9 @@
             Lo único que hacemos por ahora es escuchar 3 tipos de mensajes:
             - "hola": responde con texto
             - "chau": responde con texto
-            - "foto": responde con una foto
+            - "foto": responde con una foto.
             </summary>
-            <param name="message">El mensaje recibido</param>
+            <param name="message">El mensaje recibido.</param>
             <returns></returns>
         </member>
         <member name="M:ConsoleApplication.Program.HandleErrorAsync(System.Exception,System.Threading.CancellationToken)">

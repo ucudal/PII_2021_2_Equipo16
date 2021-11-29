@@ -82,7 +82,7 @@ namespace ClassLibrary
         }
         private async Task SendProfileImage(IMensaje mensaje)
         {
-            // Can be null during testing
+            // Can be null during testing.
             Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
             
             await bot.SendChatActionAsync(mensaje.Id, ChatAction.UploadPhoto);
@@ -90,7 +90,6 @@ namespace ClassLibrary
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
             await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa");
-        
         }
     }
 }

@@ -28,8 +28,10 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Invita a la empresa a unirse en el bot.
+        /// Invita a la empresa a unirse al bot.
         /// </summary>
+        /// <param name="administrador"></param>
+        /// <param name="nombreEmpresa"></param>
         public static void InvitarEmpresa(Administrador administrador, string nombreEmpresa)
         {
             if (administrador == null)
@@ -58,9 +60,9 @@ namespace ClassLibrary
         /// Implementa los cambios de claves del Administrador.
         /// Inicialmente se le recomienda al Administrador cambiar su clave cuando se registra.
         /// </summary>
-        /// <param name="administrador">Recibe por parametro el Administrador de referencia</param>
-        /// <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
+        /// <param name="administrador">Recibe por parametro el Administrador de referencia.</param>
         /// <param name="clave">Recibe por parametro la pass antigua.</param>
+        /// <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
         public static void CambioClave(Administrador administrador,string clave, string nuevaClave)
         {
             administrador.CambioClave(clave, nuevaClave);

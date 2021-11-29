@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 namespace ClassLibrary
 {
     /// <summary>
@@ -60,7 +59,6 @@ namespace ClassLibrary
             }
         }
 
-
         /// <summary>
         /// Este método llama a InteresadoEnOferta de Emprendedor.
         /// </summary>
@@ -119,6 +117,5 @@ namespace ClassLibrary
         {
             return emprendedor.TextoEmprendedor();
         }
-        
     }
 }
