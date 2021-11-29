@@ -37,19 +37,23 @@ namespace ClassLibrary
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
-        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
+        /// 
         /// </summary>
-        /// <param name="nombre">Nombre del emprededor.</param>
-        /// <param name="ubicacion">Ubicación del emprendedor.</param>
-        /// <param name="rubro">Rubro del emprendedor.</param>
-        /// <param name="especializaciones">Especializaciones del emprendedor.</param>
+        /// <returns></returns>
         [JsonConstructor]
         public Emprendedor() : base()
         {
 
         }
         
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="rubro"></param>
+        /// <param name="especializaciones"></param>
+        /// <returns></returns>
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;

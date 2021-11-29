@@ -202,6 +202,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
@@ -227,13 +233,19 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.#ctor">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
-            Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
+            
             </summary>
-            <param name="nombre">Nombre del emprededor.</param>
-            <param name="ubicacion">Ubicación del emprendedor.</param>
-            <param name="rubro">Rubro del emprendedor.</param>
-            <param name="especializaciones">Especializaciones del emprendedor.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nombre"></param>
+            <param name="ubicacion"></param>
+            <param name="rubro"></param>
+            <param name="especializaciones"></param>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
@@ -291,12 +303,18 @@
         </member>
         <member name="M:ClassLibrary.Empresa.#ctor">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Empresa"/>.
-            Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
+            
             </summary>
-            <param name="nombre">Nombre de la empresa.</param>
-            <param name="ubicacion">Ubicación de la empresa.</param>
-            <param name="rubro">Rubro de la empresa.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nombre"></param>
+            <param name="ubicacion"></param>
+            <param name="rubro"></param>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
@@ -408,11 +426,23 @@
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
         </member>
+        <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nombre"></param>
+        </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
             <summary>
             Obtiene o establece el nombre de la habilitación.
             </summary>
             <value>Valor es un string del nombre.</value>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.AceptarInvEmpresaHandler">
             <summary>
@@ -836,40 +866,6 @@
             <param name="respuesta"></param>
             <returns></returns>
         </member>
-        <member name="T:ClassLibrary.IHandler">
-            <summary>
-            Interfaz para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
-            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
-            pasa al siguiente. Esta interfaz define un atributo para definir el próximo "handler" y una una operación para
-            recibir el mensaje y pasarlo al siguiente "handler" en caso que el mensaje no sea procesado. La responsabilidad de
-            decidir si el mensaje se procesa o no, y de procesarlo, se realiza en las clases que implementan esta interfaz.
-            </summary>
-            <remarks>
-            La interfaz se crea en función del principio de inversión de dependencias, para que los clientes de la cadena de
-            responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
-            </remarks>
-        </member>
-        <member name="P:ClassLibrary.IHandler.Next">
-            <summary>
-            Obtiene el próximo "handler".
-            </summary>
-            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
-        </member>
-        <member name="M:ClassLibrary.IHandler.Handle(ClassLibrary.IMensaje,System.String@)">
-            <summary>
-            Procesa el mensaje o la pasa al siguiente "handler" si existe.
-            </summary>
-            <param name="mensaje">El mensaje a procesar.</param>
-            <param name="respuesta">La respuesta al mensaje procesado.</param>
-            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
-        </member>
-        <member name="M:ClassLibrary.IHandler.Cancel">
-            <summary>
-            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
-            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
-            caso de error por ejemplo.
-            </summary>
-        </member>
         <member name="T:ClassLibrary.InteresadoEnOfertaHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -1165,6 +1161,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.HistorialChat.HistorialClear">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
             Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
@@ -1202,6 +1203,40 @@
             Este método se implementará para eliminar habilitaciones de las diferentes clases.
             </summary>
             <param name="habilitacion">Recibe un string con el nombre de la habilitacion que se quiere eliminar.</param>
+        </member>
+        <member name="T:ClassLibrary.IHandler">
+            <summary>
+            Interfaz para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
+            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
+            pasa al siguiente. Esta interfaz define un atributo para definir el próximo "handler" y una una operación para
+            recibir el mensaje y pasarlo al siguiente "handler" en caso que el mensaje no sea procesado. La responsabilidad de
+            decidir si el mensaje se procesa o no, y de procesarlo, se realiza en las clases que implementan esta interfaz.
+            </summary>
+            <remarks>
+            La interfaz se crea en función del principio de inversión de dependencias, para que los clientes de la cadena de
+            responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
+            </remarks>
+        </member>
+        <member name="P:ClassLibrary.IHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Handle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
+            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
+            caso de error por ejemplo.
+            </summary>
         </member>
         <member name="T:ClassLibrary.IJsonConvertible">
             <summary>
@@ -1529,6 +1564,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ClassLibrary.ContenedorPrincipal.ConvertirJson">
             <summary>
             
@@ -1765,6 +1806,11 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.Material.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
@@ -1793,6 +1839,12 @@
             
             </summary>
             <value></value>
+        </member>
+        <member name="M:ClassLibrary.Material.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.MyReferenceHandler">
             <summary>
@@ -1827,6 +1879,11 @@
             Esta clase representa una oferta.
             Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Oferta.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
@@ -1873,6 +1930,12 @@
             Obtiene o establece la Ubicación de la oferta.
             </summary>
         </member>
+        <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
         <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">
             <summary>
             Obtiene o establece un valor que indica si la Oferta es constante o puntual.
@@ -1906,6 +1969,12 @@
             <summary>
             Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
             ya que conoce lo necesario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Oferta.ConvertirJson">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>
@@ -1974,6 +2043,11 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.Rubro.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
@@ -1984,6 +2058,12 @@
             
             </summary>
             <value></value>
+        </member>
+        <member name="M:ClassLibrary.Rubro.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.Singleton`1">
             <summary>
@@ -2050,6 +2130,11 @@
             
             </summary>
         </member>
+        <member name="M:ClassLibrary.Ubicacion.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Ubicacion.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Ubicacion"/>.
@@ -2061,6 +2146,12 @@
             </summary>
             <value>Valor es un string del nombre.</value>
         </member>
+        <member name="M:ClassLibrary.Ubicacion.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
             Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
@@ -2068,6 +2159,11 @@
             <remarks>
             Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
             </remarks>
+        </member>
+        <member name="M:ClassLibrary.Usuario.#ctor">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,System.String)">
             <summary>
@@ -2094,6 +2190,12 @@
             Obtiene o establece el valor con el rubro del usuario.
             </summary>
             <value>Tipo Rubro.</value>
+        </member>
+        <member name="M:ClassLibrary.Usuario.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>

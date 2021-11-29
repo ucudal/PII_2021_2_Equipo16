@@ -8,6 +8,9 @@ namespace ClassLibrary
     /// </summary>
     public class Ubicacion
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public Ubicacion()
         {
@@ -28,6 +31,10 @@ namespace ClassLibrary
         /// <value>Valor es un string del nombre.</value>
         public string NombreCalle { get; set;}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
@@ -38,7 +45,5 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this, opciones);
         }
-
-
     }
 }

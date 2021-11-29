@@ -12,6 +12,9 @@ namespace ClassLibrary
     /// </remarks>
     public class Usuario
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public Usuario()
         {
@@ -57,9 +60,12 @@ namespace ClassLibrary
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        
         public Rubro Rubro { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
@@ -69,10 +75,6 @@ namespace ClassLibrary
             };
 
             return JsonSerializer.Serialize(this, opciones);
-        }
-
-        
-
-        
+        }  
     }
 }

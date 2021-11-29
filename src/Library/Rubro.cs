@@ -16,6 +16,9 @@ namespace ClassLibrary
 
     public class Rubro
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public Rubro()
         {
@@ -34,6 +37,10 @@ namespace ClassLibrary
         /// <value></value>
         public string Nombre { get; set;}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

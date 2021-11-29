@@ -109,6 +109,9 @@ namespace ClassLibrary
             return JsonSerializer.Serialize(this, opciones);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void HistorialClear()
         {
             this.MensajesDelUser.Clear();

@@ -13,6 +13,9 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones, IJsonConvertible
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public Oferta()
         {
@@ -73,6 +76,10 @@ namespace ClassLibrary
         /// </summary>
         public Ubicacion Ubicacion { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
         public Empresa EmpresaCreadora {get; set;}
        
 
@@ -167,6 +174,10 @@ namespace ClassLibrary
             return texto.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

@@ -47,8 +47,6 @@ namespace ClassLibrary
                 respuesta = $"Usted no es una empresa, no puede usar este comando.";
                 return true;
             }
-                
-                
             
             respuesta = string.Empty;
             return false;
