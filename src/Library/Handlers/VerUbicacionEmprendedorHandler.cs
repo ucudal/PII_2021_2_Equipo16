@@ -30,12 +30,6 @@ namespace ClassLibrary
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacion");
                 if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {
-                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-                    string filePath = @$"ubicacion{value.Nombre}.png";
-                    using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
-                    
-                    var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-
                     Direccion(mensaje);
 
                     SendProfileImage(mensaje);
@@ -43,9 +37,6 @@ namespace ClassLibrary
                     respuesta = "";
                     return true;
                     
-
-                    //string texto = LogicaEmprendedor.VerInteresados(value)+OpcionesUso.AccionesEmpresas();
-                    //respuesta = texto;
                 }
                 else
                 {
@@ -60,9 +51,8 @@ namespace ClassLibrary
 
         public async Task Direccion(IMensaje mensaje)
         {
-            
             Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-            string direccion = value.Ubicacion.ToString();
+            string direccion = @$"ubicacion{value.Nombre}.png";
             LocationApiClient client = new LocationApiClient();
 
             Location direccionActual = await client.GetLocationAsync(direccion);
