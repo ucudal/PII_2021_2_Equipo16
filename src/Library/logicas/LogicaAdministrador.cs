@@ -79,5 +79,15 @@ namespace ClassLibrary
         {
             administrador.CrearEmpresa(nombreEmpresa, ubicacionEmpresa, rubroEmpresa);
         }
+
+        public static void AgregarRubro(Administrador administrador, string nombrRubro)
+        {
+            administrador.AgregarRubro(nombrRubro);
+        }
+
+        public static void AgregarHabilitacion(Administrador administrador, string nombrHabilitacion)
+        {
+            administrador.AgregarHabilitacion(nombrHabilitacion);
+        }
     }
 }

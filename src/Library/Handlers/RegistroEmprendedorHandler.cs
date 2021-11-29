@@ -58,7 +58,7 @@ namespace ClassLibrary
                     }
                     else if (listaConParametros.Count == 2)
                     {
-                        respuesta = $"Ingrese rubro\n {Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaRubros()}";
+                        respuesta = $"Ingrese rubro\n {Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaRubros()}";
                         return true;
                     }
                     else if (listaConParametros.Count == 3)

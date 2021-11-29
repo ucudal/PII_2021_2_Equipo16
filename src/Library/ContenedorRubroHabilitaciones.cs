@@ -144,6 +144,26 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
+
+        /// <summary>
+        /// Crea un rubro y lo agrega a la lista de rubros.
+        /// </summary>
+        /// <param name="nombreRubro"></param>
+        public void CrearRubro(string nombreRubro)
+        {
+            Rubro rubro = new Rubro(nombreRubro);
+            this.ListaRubros.Add(rubro);
+        }
+        
+        /// <summary>
+        /// Crea una habilitacion y la agrega a la lista de habilitaciones.
+        /// </summary>
+        /// <param name="nombreHabilitacion"></param>
+        public void CrearHabilitacion(string nombreHabilitacion)
+        {
+            Habilitaciones hab = new Habilitaciones(nombreHabilitacion);
+            this.ListaHabilitaciones.Add(hab);
+        }
         
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
