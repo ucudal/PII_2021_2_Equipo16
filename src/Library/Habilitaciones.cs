@@ -12,10 +12,13 @@ namespace ClassLibrary
     /// </summary>
     public class Habilitaciones
     {
+        
+       /// <summary>
+       /// Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
 
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Habilitaciones"/>.
-        /// </summary>
         [JsonConstructor]
         public Habilitaciones()
         {
@@ -23,9 +26,8 @@ namespace ClassLibrary
         }
         
         /// <summary>
-        /// 
+        /// Inicializa una nueva instancia de la clase <see cref="Habilitaciones"/>.
         /// </summary>
-        /// <param name="nombre"></param>
         public Habilitaciones(string nombre)
         {
             this.Nombre = nombre;
@@ -38,7 +40,7 @@ namespace ClassLibrary
         public string Nombre { get; set;}
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

@@ -12,9 +12,12 @@ namespace ClassLibrary
     /// </remarks>
     public class ContenedorPrincipal: IJsonConvertible
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
         [JsonConstructor]
         public ContenedorPrincipal()
         {
@@ -85,15 +88,18 @@ namespace ClassLibrary
         [JsonInclude]
         public List<string> ListaNombreOfertas {get; private set;} = new List<string>();
 
+<<<<<<< HEAD
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
+=======
+>>>>>>> 2fd0325c9d3fa143c4fc8ad9ece45580849bd0f0
         [JsonInclude]
         public Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

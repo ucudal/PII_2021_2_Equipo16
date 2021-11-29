@@ -11,11 +11,13 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
-    public class Oferta : IHabilitaciones, IJsonConvertible
+    public class Oferta : IHabilitaciones
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
         public Oferta()
         {
@@ -75,11 +77,10 @@ namespace ClassLibrary
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
         public Ubicacion Ubicacion { get; set; }
-
+        
         /// <summary>
-        /// 
+        /// Obtiene o establece la empresa creadora de la oferta.
         /// </summary>
-        /// <value></value>
         public Empresa EmpresaCreadora {get; set;}
        
 
@@ -173,9 +174,9 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
-
+        
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()
