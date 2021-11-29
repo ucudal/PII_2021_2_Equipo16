@@ -16,18 +16,17 @@ namespace Test.Library
         public void TestRegistroEmprendedor()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
-            string expected = "Juan Pérez";
-            string expected2 = "Barrio Sur";
-            string expected3 = "textil";
-            Habilitaciones expected4 = habilitacion;
-            string expected5 = "Lavado de Autos Express";
+            Emprendedor emprendedor = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
+            string expected = "EmprendedorTest";
+            string expected2 = "UbicacionTest";
+            string expected3 = "RubroTest";
+            string expected4 = "Lavado de Autos Express";
 
-            Assert.AreEqual(expected, juancho.Nombre);
-            Assert.AreEqual(expected2, juancho.Ubicacion);
-            Assert.AreEqual(expected3, juancho.Rubro);
-            Assert.AreEqual(expected4, juancho.Habilitacion);
-            Assert.AreEqual(expected5, juancho.Especializaciones);
+            Assert.AreEqual(expected, emprendedor.Nombre);
+            Assert.AreEqual(expected2, emprendedor.Ubicacion);
+            Assert.AreEqual(expected3, emprendedor.Rubro);
+            Assert.AreEqual(expected4, emprendedor.Habilitacion);
+            Assert.AreEqual(expected5, emprendedor.Especializaciones);
         }
 
         /// <summary>

@@ -52,8 +52,6 @@ namespace ClassLibrary
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public Rubro Rubro { get; private set; }
-
-        
+        public Rubro Rubro { get; private set; }   
     }
 }

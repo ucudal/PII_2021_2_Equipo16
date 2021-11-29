@@ -50,7 +50,7 @@ namespace Test.Library
             Assert.AreEqual(expectedEmpresa, empresaConaprole.Nombre);
             Assert.AreEqual(expectedEmprendedor, emprendedor1.Nombre);
             Assert.AreEqual(expectedInteresados, empresaConaprole.InteresadosEnOfertas.Count);
-            Assert.AreEqual(expectedPublicaciones1, Singleton<Logica>.Instancia.Publicaciones.OfertasPublicados.Count);
+            Assert.AreEqual(expectedPublicaciones1, Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Count);
             Assert.AreEqual(expectedAceptadas, empresaConaprole.OfertasAceptadas.Count);
         }    
     }
