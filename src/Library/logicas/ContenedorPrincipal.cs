@@ -89,7 +89,7 @@ namespace ClassLibrary
         public List<string> ListaNombreOfertas {get; private set;} = new List<string>();
 
         /// <summary>
-        /// Guarda un conjunto Administrador, y su chat id.
+        /// 
         /// </summary>
         /// <returns></returns>
         [JsonInclude]

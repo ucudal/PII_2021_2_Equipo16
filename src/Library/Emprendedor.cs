@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
@@ -46,7 +45,6 @@ namespace ClassLibrary
         
         public Emprendedor() : base()
         {
-
         }
         
         /// <summary>
@@ -114,16 +112,16 @@ namespace ClassLibrary
             int ofertasCompradas = 0;
             DateTime fInicio;
 
-            if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
+            if (!DateTime.TryParseExact(fechaInicio, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
-                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
             
             DateTime fFinal;
 
-            if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
+            if (!DateTime.TryParseExact(fechaFinal, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
-                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
             foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
@@ -151,12 +149,12 @@ namespace ClassLibrary
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
             text.Append($"Requerimientos: \n");
-            text.Append($"******************************\n");
             foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
-
+            text.Append($"\n");
+            text.Append($"******************************\n");
             return text.ToString();
         }
        

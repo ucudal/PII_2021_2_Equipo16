@@ -89,6 +89,7 @@ namespace Test.Library
             Habilitaciones habilitacion = new Habilitaciones(hab);
             Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", "ropa");
 
+
             int expected = 2;
             
             juancho.AddHabilitacion("soa");

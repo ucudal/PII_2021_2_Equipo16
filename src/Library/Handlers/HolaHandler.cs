@@ -23,7 +23,6 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-
             if (this.CanHandle(mensaje))
             {
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.Add(mensaje.Id, new HistorialChat());
