@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public AgregarHabEmpresaHandler(BaseHandler next):base(next)
+        public AgregarHabEmpresaHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/agregarhabilitacionempresa"};
         }

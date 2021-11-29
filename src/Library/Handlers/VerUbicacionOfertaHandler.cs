@@ -50,27 +50,25 @@ namespace ClassLibrary
                     respuesta = $"Ingrese la ubicacion de la oferta.";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {   
-                        
                         Direccion(mensaje, listaConParametros[0]);
 
                         SendProfileImage(mensaje);
 
                         respuesta = "";
-                        return true;
-                        
+                        return true; 
                     }
                     else
                     {
-                        respuesta = $"Usted no es una emprendedor, no puede usar este comando.";
+                        respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
                         return true;
                     }
                 }
             }
-            
+
             respuesta = string.Empty;
             return false;
         }       
@@ -91,15 +89,9 @@ namespace ClassLibrary
             Location direccionActual = await client.GetLocationAsync(direccion);
             Location direccionOferta = await client.GetLocationAsync(nombreOferta);
             
-            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
-            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
-            await client.DownloadRouteAsync(
-                direccionActual.Latitude,
-                direccionActual.Longitude,
-                direccionOferta.Latitude,
-                direccionOferta.Longitude,
-                @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
-            
+            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
+            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+            await client.DownloadRouteAsync(direccionActual.Latitude, direccionActual.Longitude, direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
         }
         
         private async Task SendProfileImage(IMensaje mensaje)
@@ -112,7 +104,6 @@ namespace ClassLibrary
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
             await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");
-        
         }
     }
 }

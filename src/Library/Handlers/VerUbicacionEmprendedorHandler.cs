@@ -34,7 +34,7 @@ namespace ClassLibrary
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/verubicacion"))
             {
@@ -46,13 +46,12 @@ namespace ClassLibrary
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacion");
                 if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {         
-                    Direccion(mensaje);
+                    this.Direccion(mensaje);
 
-                    SendProfileImage(mensaje);
+                    this.SendProfileImage(mensaje);
 
-                    respuesta = "";
+                    respuesta = string.Empty;
                     return true;
-                    
                 }
                 else
                 {
@@ -90,8 +89,6 @@ namespace ClassLibrary
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
             await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa.\n {OpcionesUso.AccionesEmprendedor()}");
-        
-
         }
     }
 }

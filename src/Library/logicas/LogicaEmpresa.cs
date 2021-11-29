@@ -5,7 +5,8 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
-    /// <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// <remarks>
+    /// La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public static class LogicaEmpresa
@@ -52,7 +53,7 @@ namespace ClassLibrary
             }
             else
             {
-                empresa.EliminarOferta(nombre, Singleton<ContenedorPrincipal>.Instancia.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+                empresa.EliminarOferta(nombre, Singleton<ContenedorPrincipal>.Instancia.Publicaciones);
                 ConsolePrinter.DatoPrinter("Oferta eliminada exitosamente");
             }
         }
@@ -71,8 +72,8 @@ namespace ClassLibrary
         /// Llama al método CalcularOfertasVendidasSegunTiempo en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
-        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
+        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato YYYY-MM-DD.</param>
+        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato YYYY-MM-DD.</param>
         /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
         public static int CalcularOfertasVendidas(Empresa empresa, string fechaInicio, string fechaFinal)
         {
@@ -109,9 +110,9 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo AddHabilitacionOferta de las ofertas de la empresa.
         /// </summary>
-        /// <param name="empresa">empresa</param>
-        /// <param name="habilitacion">habilitacion a agregar</param>
-        /// <param name="nombreOferta">nombre de la oferta</param>
+        /// <param name="empresa">empresa.</param>
+        /// <param name="habilitacion">habilitacion a agregar.</param>
+        /// <param name="nombreOferta">nombre de la oferta.</param>
         public static void AddHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
         {
             if (empresa == null)
@@ -129,7 +130,7 @@ namespace ClassLibrary
                 }
             }
         }
-        
+
         /// <summary>
         /// 
         /// </summary>

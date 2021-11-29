@@ -35,13 +35,13 @@ namespace ClassLibrary
         /// <returns></returns>
         public MyReferenceHandler() => Reset();
         private ReferenceResolver _rootedResolver;
-        
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public override ReferenceResolver CreateResolver() => _rootedResolver;
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -51,8 +51,8 @@ namespace ClassLibrary
     class MyReferenceResolver : ReferenceResolver
     {
         private uint _referenceCount;
-        private readonly Dictionary<string, object> _referenceIdToObjectMap = new();
-        private readonly Dictionary<object, string> _objectToReferenceIdMap = new(ReferenceEqualityComparer.Instance);
+        private readonly Dictionary<string, object> _referenceIdToObjectMap = new ();
+        private readonly Dictionary<object, string> _objectToReferenceIdMap = new (ReferenceEqualityComparer.Instance);
 
         public override void AddReference(string referenceId, object value)
         {
@@ -64,15 +64,15 @@ namespace ClassLibrary
 
         public override string GetReference(object value, out bool alreadyExists)
         {
-            if (_objectToReferenceIdMap.TryGetValue(value, out string referenceId))
+            if (this._objectToReferenceIdMap.TryGetValue(value, out string referenceId))
             {
                 alreadyExists = true;
             }
             else
             {
-                _referenceCount++;
-                referenceId = _referenceCount.ToString();
-                _objectToReferenceIdMap.Add(value, referenceId);
+                this._referenceCount++;
+                referenceId = this._referenceCount.ToString();
+                this._objectToReferenceIdMap.Add(value, referenceId);
                 alreadyExists = false;
             }
 

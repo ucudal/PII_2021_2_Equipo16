@@ -11,7 +11,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "crear empresa".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
-        public CrearEmpresaAdminHandler(BaseHandler next): base(next)
+        public CrearEmpresaAdminHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/crearempresa"};
         }
@@ -39,7 +39,7 @@ namespace ClassLibrary
                     respuesta = "Ingrese nombre de la empresa";
                     return true;
                 }
-                else if (listaConParametros.Count ==1)
+                else if (listaConParametros.Count == 1)
                 {
                     respuesta = "Ingrese la ubicacion de la empresa";
                     return true;

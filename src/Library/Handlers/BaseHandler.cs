@@ -48,10 +48,10 @@ namespace ClassLibrary
         /// Este método debe ser sobreescrito por las clases sucesores. La clase sucesora procesa el mensaje y retorna
         /// true o no lo procesa y retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="responder">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario</returns>
-        protected virtual bool InternalHandle(IMensaje message, out string responder)
+        protected virtual bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             throw new InvalidOperationException("Este método debe ser sobrescrito.");
         }

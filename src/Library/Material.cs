@@ -58,25 +58,25 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre del material.
         /// </summary>
         /// <value>string</value>
-        public string Nombre { get; set;}
+        public string Nombre { get; set; }
         
         /// <summary>
         /// obtiene o establece la cantidad del material.
         /// </summary>
         /// <value>string</value>
-        public string Cantidad { get; set;}
+        public string Cantidad { get; set; }
         
         /// <summary>
         /// obtiene o establece el precio del material.
         /// </summary>
         /// <value>string</value>
-        public string Precio { get; set;}
+        public string Precio { get; set; }
         
         /// <summary>
         /// obtiene o establece la unidad del material.
         /// </summary>
         /// <value>string</value>
-        public string Unidad { get; set;}
+        public string Unidad { get; set; }
         
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 

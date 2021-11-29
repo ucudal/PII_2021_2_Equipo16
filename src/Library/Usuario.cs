@@ -13,16 +13,15 @@ namespace ClassLibrary
     public class Usuario
     {
         /// <summary>
-       /// Constructor sin parametros de la clase Usuario, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
-    
+        /// Constructor sin parametros de la clase Usuario, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
+        /// <returns></returns>
         [JsonConstructor]
         public Usuario()
         {
-
         }
+        
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Usuario"/>.
         /// </summary>
@@ -67,11 +66,6 @@ namespace ClassLibrary
         
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
-        /// </summary>
-        /// <returns></returns>
-
-        /// <summary>
-        /// 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

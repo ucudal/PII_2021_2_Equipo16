@@ -1,8 +1,7 @@
-
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Singleton<T> where T : class, new()
@@ -14,7 +13,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <value></value>
         public static T Instancia
@@ -25,6 +24,7 @@ namespace ClassLibrary
                 {
                     instancia = new T();
                 }
+                
                 return instancia;
             }
             set

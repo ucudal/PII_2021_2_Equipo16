@@ -10,11 +10,10 @@ namespace ClassLibrary
     public class HistorialChat : IJsonConvertible
     {
        /// <summary>
-       /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
-       
+        /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
+        /// <returns></returns>
         [JsonConstructor]
         public HistorialChat()
         {
@@ -25,14 +24,14 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUser {get; set;} = new List<string>();
+        public List<string> MensajesDelUser { get; set; } = new List<string>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUserReves {get; set; } = new List<string>();
+        public List<string> MensajesDelUserReves { get; set; } = new List<string>();
 
         /// <summary>
         /// Devueleve una lista que contiene los mensajes despues de el comando ingresado.
@@ -42,13 +41,13 @@ namespace ClassLibrary
         public List<string> BuscarUltimoComando(string comando)
         {
             List<string> ParametrosIngresadosDelComando = new List<string>();
-            foreach (string elemento in MensajesDelUser)
+            foreach (string elemento in this.MensajesDelUser)
             {
-               MensajesDelUserReves.Add(elemento); 
+               this.MensajesDelUserReves.Add(elemento); 
             }
 
-            MensajesDelUserReves.Reverse(); 
-            foreach (string mensajeParametro in MensajesDelUserReves)
+            this.MensajesDelUserReves.Reverse(); 
+            foreach (string mensajeParametro in this.MensajesDelUserReves)
             {
                 if (mensajeParametro == comando)
                 {
@@ -58,7 +57,7 @@ namespace ClassLibrary
                 ParametrosIngresadosDelComando.Add(mensajeParametro);
             }
             
-            MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
+            this.MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
             return ParametrosIngresadosDelComando;
         }
 
@@ -69,13 +68,13 @@ namespace ClassLibrary
         /// <returns></returns>
         public bool ComprobarUltimoComandoIngresado(string comando)
         {
-            foreach (string elemento in MensajesDelUser)
+            foreach (string elemento in this.MensajesDelUser)
             {
-               MensajesDelUserReves.Add(elemento); 
+               this.MensajesDelUserReves.Add(elemento); 
                //ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
             
-            MensajesDelUserReves.Reverse();
+            this.MensajesDelUserReves.Reverse();
 
             foreach (string item in MensajesDelUserReves)
             {
@@ -83,16 +82,16 @@ namespace ClassLibrary
                 {
                     if (item == comando)
                     {
-                        MensajesDelUserReves.Clear();
+                        this.MensajesDelUserReves.Clear();
                         return true;
                     } 
-                    
-                    MensajesDelUserReves.Clear();
+
+                    this.MensajesDelUserReves.Clear();
                     return false;
                 }
             }
             
-            MensajesDelUserReves.Clear();
+            this.MensajesDelUserReves.Clear();
             return false;
         }
 
@@ -109,6 +108,7 @@ namespace ClassLibrary
             };
             return JsonSerializer.Serialize(this, opciones);
         }
+
         /// <summary>
         /// Metodo con el fin de poder limpiar el historial del chat para no consumir tanta memoria.
         /// </summary>

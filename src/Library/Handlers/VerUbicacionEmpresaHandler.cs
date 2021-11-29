@@ -34,27 +34,24 @@ namespace ClassLibrary
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/verubicacionempresa"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verubicacionempresa") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verubicacionempresa") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacionempresa");
                 if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                 {   
-                    
                     Direccion(mensaje);
 
                     SendProfileImage(mensaje);
 
                     respuesta = "";
                     return true;
-                    
                 }
                 else
                 {
@@ -82,6 +79,7 @@ namespace ClassLibrary
             Location direccionActual = await client.GetLocationAsync(direccion);
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
         }
+        
         private async Task SendProfileImage(IMensaje mensaje)
         {
             // Can be null during testing
@@ -92,7 +90,6 @@ namespace ClassLibrary
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
             await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa. {OpcionesUso.AccionesEmpresas()}");
-        
         }
     }
 }

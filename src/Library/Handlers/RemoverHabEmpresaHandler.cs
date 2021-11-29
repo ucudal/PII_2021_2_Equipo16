@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -39,8 +38,7 @@ namespace ClassLibrary
                     respuesta = $"Ingrese el nombre de la habilitación a eliminar.";
                     return true;
                 }
-                
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string habilitacion = listaConParametros[0];
                     if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
@@ -54,10 +52,9 @@ namespace ClassLibrary
                     }
                 }
             }
-                
             else
             {
-                respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa."+OpcionesUso.AccionesEmpresas();
+                respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa." + OpcionesUso.AccionesEmpresas();
                 return true;
             }
 

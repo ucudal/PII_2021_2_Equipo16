@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -12,13 +9,11 @@ namespace ClassLibrary
     /// </summary>
     public class Habilitaciones
     {
-        
-       /// <summary>
-       /// Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
-
+        /// <summary>
+        /// Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
+        /// <returns></returns>
         [JsonConstructor]
         public Habilitaciones()
         {

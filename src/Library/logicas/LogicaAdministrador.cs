@@ -51,7 +51,6 @@ namespace ClassLibrary
                     {
                         ConsolePrinter.DatoPrinter($"La empresa {empresa.Nombre} no esta en los registros del bot.");
                     }
-
                 }
             }
         }

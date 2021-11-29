@@ -6,10 +6,7 @@
     <Rule Id="SA1633" Action="None" />
     <Rule Id="SA1401" Action="None" />
     <Rule Id="SA1600" Action="None" />
-    <Rule Id="SA1614" Action="None" />
-    <Rule Id="SA1616" Action="None" />
     <Rule Id="SA1606" Action="None" />
-    <Rule Id="SA1028" Action="None" />
 
   </Rules>
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
@@ -19,9 +16,8 @@
     <Rule Id="CA1307" Action="None" />
     <Rule Id="CA2211" Action="None" />
     <Rule Id="CA1002" Action="None" />
-    <Rule Id="CA1051" Action="None" />
-    <Rule Id="CA1062" Action="None" />
     <Rule Id="CA2208" Action="None" />
+    CA2208
   </Rules>
 </RuleSet>
 

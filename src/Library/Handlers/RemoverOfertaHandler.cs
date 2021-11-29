@@ -53,7 +53,7 @@ namespace ClassLibrary
             }
             else
             {
-                respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();
+                respuesta = "Usted no está registrado como empresa" + OpcionesUso.AccionesEmpresas();
                 return true;
             }
 

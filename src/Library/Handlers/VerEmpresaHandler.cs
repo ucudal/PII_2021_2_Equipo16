@@ -31,7 +31,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-            
+
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
             if (listaConParametros.Count == 0)
             {
@@ -44,13 +44,13 @@ namespace ClassLibrary
             {
                 if (par.Value.Nombre == nombreBuscado)
                 {
-                    string texto = LogicaEmpresa.VerEmpresa(par.Value) +OpcionesUso.AccionesEmprendedor();
+                    string texto = LogicaEmpresa.VerEmpresa(par.Value) + OpcionesUso.AccionesEmprendedor();
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = texto;
                     return true;
                 }
             }
-            
+
             respuesta = string.Empty;
             return false;
         }

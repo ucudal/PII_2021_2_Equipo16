@@ -106,7 +106,7 @@ namespace ClassLibrary
                 return true;
             }
             
-            respuesta= string.Empty;
+            respuesta = string.Empty;
             return false;
         }
     }
