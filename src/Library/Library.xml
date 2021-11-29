@@ -202,12 +202,6 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ConvertirJson">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
             Esta clase representa un Emprendedor, que se encarga de buscar ofertas, y de manifestar su interés en las que sean de su agrado.
@@ -484,19 +478,19 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.AddHabEmprendedorHandler">
+        <member name="T:ClassLibrary.AgregarHabEmprendedorHandler">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
             </summary>
         </member>
-        <member name="M:ClassLibrary.AddHabEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
+        <member name="M:ClassLibrary.AgregarHabEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
             <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
-        <member name="M:ClassLibrary.AddHabEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+        <member name="M:ClassLibrary.AgregarHabEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Este método procesa el mensaje "Agregar habilitación" y retorna true.
             En caso contrario retorna false.
@@ -505,19 +499,19 @@
             <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.AddHabEmpresaHandler">
+        <member name="T:ClassLibrary.AgregarHabEmpresaHandler">
             <summary>
             Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
             </summary>
         </member>
-        <member name="M:ClassLibrary.AddHabEmpresaHandler.#ctor(ClassLibrary.BaseHandler)">
+        <member name="M:ClassLibrary.AgregarHabEmpresaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
             <param name="next"></param>
         </member>
-        <member name="M:ClassLibrary.AddHabEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+        <member name="M:ClassLibrary.AgregarHabEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Este método procesa el mensaje "Agregar habilitación" y retorna true.
             En caso contrario retorna false.
@@ -808,25 +802,6 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.EliminarOfertaHandler">
-            <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.EliminarOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
-            <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
-            </summary>
-            <param name="next">El próximo "handler".</param>
-        </member>
-        <member name="M:ClassLibrary.EliminarOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
-            <summary>
-            Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
-            </summary>
-            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
-            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-        </member>
         <member name="T:ClassLibrary.GetHabListHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -999,6 +974,25 @@
         <member name="M:ClassLibrary.RemoverHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.RemoverOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.RemoverOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            </summary>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:ClassLibrary.RemoverOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -1881,11 +1875,6 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Oferta.#ctor">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
             Constructor para json.
@@ -1981,7 +1970,7 @@
         <member name="T:ClassLibrary.OpcionesUso">
             <summary>
             Esta clase contiene los métodos para poder hacer más fácil la tarea de que el usuario ingrese un comando para poder operar en el bot.
-            Se utilizan métodos estaticos porque no se requiere una instanciación de la clase para utilizarlos.
+            Se utilizan métodos estaticos porque no se requiere instanciar la clase para utilizarlos.
             </summary>
         </member>
         <member name="M:ClassLibrary.OpcionesUso.AccionesEmprendedor">

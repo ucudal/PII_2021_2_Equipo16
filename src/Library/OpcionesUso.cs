@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Esta clase contiene los métodos para poder hacer más fácil la tarea de que el usuario ingrese un comando para poder operar en el bot.
-    /// Se utilizan métodos estaticos porque no se requiere una instanciación de la clase para utilizarlos.
+    /// Se utilizan métodos estaticos porque no se requiere instanciar la clase para utilizarlos.
     /// </summary>
     public class OpcionesUso
     {

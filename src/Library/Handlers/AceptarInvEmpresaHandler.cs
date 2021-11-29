@@ -30,32 +30,44 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-            
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/aceptarinvitacion") == true)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
-                if (listaConParametros.Count == 0)
+                if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
                 {
-                    respuesta = "Ingrese el Nombre de su Empresa.";
+                    respuesta = "Usted ya se ha registrado previamente.";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                 {
-                    string nombreEmpresa = listaConParametros[0];
-                    foreach (Empresa empresa in Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas)
-                    {
-                        if (empresa.Nombre == nombreEmpresa)
-                        {
-                            Singleton<ContenedorPrincipal>.Instancia.Empresas.Add(mensaje.Id, empresa);
-                            respuesta = $"Gracias por unirte {nombreEmpresa}. {OpcionesUso.AccionesEmpresas()}";
-                            return true;
-                        }
-                    }
+                    respuesta = "Error: Usted ya se ha registrado como emprendedor previamente.";
+                    return true;
                 }
                 else
                 {
-                    respuesta = $"No te has podido unir. {OpcionesUso.AccionesEmpresas()}";
-                    return true;
+                    List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
+                    if (listaConParametros.Count == 0)
+                    {
+                        respuesta = "Ingrese el Nombre de su Empresa.";
+                        return true;
+                    }
+                    else if (listaConParametros.Count == 1)
+                    {
+                        string nombreEmpresa = listaConParametros[0];
+                        foreach (Empresa empresa in Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas)
+                        {
+                            if (empresa.Nombre == nombreEmpresa)
+                            {
+                                Singleton<ContenedorPrincipal>.Instancia.Empresas.Add(mensaje.Id, empresa);
+                                respuesta = $"Gracias por unirte {nombreEmpresa}. {OpcionesUso.AccionesEmpresas()}";
+                                return true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        respuesta = $"No te has podido unir. {OpcionesUso.AccionesEmpresas()}";
+                        return true;
+                    }
                 }
             }
 

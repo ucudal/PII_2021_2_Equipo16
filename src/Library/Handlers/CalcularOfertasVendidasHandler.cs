@@ -26,14 +26,12 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            
             if (!this.ChequearHandler(mensaje, "/calcularofertasvendidas"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertasvendidas");
                 if (listaConParametros.Count == 0)
@@ -41,17 +39,16 @@ namespace ClassLibrary
                     respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd)";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     respuesta = "Ingrese la fecha final(yyyy-MM-dd)";
                     return true;
                 }
-                if (listaConParametros.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
                     string fechaInicio = listaConParametros[1];
                     string fechaFinal = listaConParametros[0];
 
-                    
                     Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
                     try
                     {

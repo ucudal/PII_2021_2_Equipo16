@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">El próximo "handler"</param>
         public InteresadoEnOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/interesado"};
+            this.Keywords = new string[] {"/interesarme"};
         }
         /// <summary>
         /// Este método procesa el mensaje "!InteresadoEnOferta" y retorna true.
@@ -25,21 +25,20 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/interesado"))
+            if (!this.ChequearHandler(mensaje, "/interesarme"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesado");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesarme");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta en la que quiera manifestar su interés";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string nombreOferta = listaConParametros[0];
 

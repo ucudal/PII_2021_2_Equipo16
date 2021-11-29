@@ -29,8 +29,7 @@ namespace ClassLibrary
             {
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
-
-            if (!this.ChequearHandler(mensaje, "/buscartag"))
+            else if (!this.ChequearHandler(mensaje, "/buscartag"))
             {
                 respuesta = string.Empty;
                 return false;
@@ -42,7 +41,7 @@ namespace ClassLibrary
                 respuesta = "Ingrese el Tag por el que sea filtrar en su búsqueda.";
                 return true;
             }
-            if (listaConParametros.Count == 1)
+            else if (listaConParametros.Count == 1)
             {
                 string palabraClave = listaConParametros[0];
                 
@@ -51,7 +50,6 @@ namespace ClassLibrary
                 respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorTags(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
                 return true;
             }          
-            
 
             respuesta = string.Empty;
             return false;

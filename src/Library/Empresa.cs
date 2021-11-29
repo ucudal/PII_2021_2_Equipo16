@@ -22,22 +22,23 @@ namespace ClassLibrary
 
     public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+       /// <summary>
+       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
-        public Empresa() : base()
+        public Empresa() : base(null, null, null)        
         {
 
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="ubicacion"></param>
-        /// <param name="rubro"></param>
-        /// <returns></returns>
+        /// <param name="nombre">Nombre de la empresa.</param>
+        /// <param name="ubicacion">Ubicación de la empresa.</param>
+        /// <param name="rubro">Rubro de la empresa.</param>
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
         }
@@ -147,16 +148,16 @@ namespace ClassLibrary
             int cantidadVendida = 0;
             DateTime fInicio;
 
-            if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
+            if (!DateTime.TryParseExact(fechaInicio, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
-                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
             
             DateTime fFinal;
 
-            if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
+            if (!DateTime.TryParseExact(fechaFinal, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
-                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
 
             foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
@@ -208,7 +209,8 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
+        /// Este metodo muestra los interesados en una oferta.
         /// </summary>
         /// <returns></returns>
         public string VerInteresados()
@@ -241,10 +243,12 @@ namespace ClassLibrary
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Habilitaciones: ");
+            text.Append($"\n");
             foreach (Habilitaciones habilitaciones in this.HabilitacionesEmpresa)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
+            text.Append($"\n");
             text.Append($"******************************\n");
             return text.ToString();
         }
@@ -258,7 +262,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()
