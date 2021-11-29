@@ -1634,6 +1634,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ClassLibrary.ContenedorPrincipal.ConvertirJson">
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
