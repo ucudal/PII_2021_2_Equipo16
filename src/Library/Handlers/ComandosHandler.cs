@@ -64,6 +64,7 @@ namespace ClassLibrary
                 texto.Append("\n/interesado - Use para interesarse en una oferta");
                 texto.Append("\n/verubicacion - Use para conocer la ubicacion de emprendedor");
                 
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                 respuesta = texto.ToString();
                 return true;    
             }

@@ -32,12 +32,12 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhabempresa") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhabempresa");
                 if (listaConParametros.Count == 0)
                 {
-                    respuesta = $"Ingrese el nombre de la habilitación a eliminar {listaConParametros.Count}.";
+                    respuesta = $"Ingrese el nombre de la habilitación a eliminar.";
                     return true;
                 }
                 
@@ -48,20 +48,18 @@ namespace ClassLibrary
                     {
                         Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
                         LogicaEmpresa.RemoveHabilitacion(value, habilitacion);
+                        Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                         
                         respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmpresas()}";
+                        return true;
                     }
-                    else
-                    {
-                        respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa."+OpcionesUso.AccionesEmpresas();
-                    }
-                    return true;
                 }
-                else
-                {
-                    respuesta = $"Algo fue mal. {OpcionesUso.AccionesEmpresas()}";
-                    return true;
-                }
+            }
+                
+            else
+            {
+                respuesta = "No se ha podido remover la habilitación, usted no está registrado como Empresa."+OpcionesUso.AccionesEmpresas();
+                return true;
             }
 
             respuesta = string.Empty;

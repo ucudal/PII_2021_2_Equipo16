@@ -32,7 +32,7 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearempresa") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearempresa");
                 
@@ -57,19 +57,18 @@ namespace ClassLibrary
                     string empresaUbicacion = listaConParametros[1];
                     string empresaRubro = listaConParametros[0];
 
-                    if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
-                    {
-                        Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
-                        LogicaAdministrador.CrearEmpresa(value, empresaNombre, empresaUbicacion, empresaRubro);
-                        respuesta = $"Se ha creado la empresa '{empresaNombre}' la cual esta ubicada en '{empresaUbicacion}' y su rubro es '{empresaRubro}'. {OpcionesUso.AccionesAdministradores()}";
-                        return true;
-                    }
-                    else
-                    {
-                        respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
-                        return true;
-                    }
+                    
+                    Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
+                    LogicaAdministrador.CrearEmpresa(value, empresaNombre, empresaUbicacion, empresaRubro);
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"Se ha creado la empresa '{empresaNombre}' la cual esta ubicada en '{empresaUbicacion}' y su rubro es '{empresaRubro}'. {OpcionesUso.AccionesAdministradores()}";
+                    return true;
                 }
+            }
+            else
+            {
+                respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
+                return true;
             }
             
             respuesta = string.Empty;
