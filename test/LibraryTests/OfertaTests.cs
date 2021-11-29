@@ -16,8 +16,8 @@ namespace Test.Library
         public void TestCreacionOferta()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafakin Coke", "Tres Cruces", "textil");
-            Oferta oferta = new Oferta("Sillas de acero", "acero", "35", "kg", "acero, sillas, tres cruces", "Tres Cruces", "Constante", aleatoria);
+            Empresa empresaTest = new Empresa("Madafakin Coke", "Tres Cruces", "textil");
+            Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
 
             string expected = "Sillas de acero";
             string expected2 = "acero";
@@ -29,8 +29,8 @@ namespace Test.Library
 
             Assert.AreEqual(expected, oferta.Nombre);
             Assert.AreEqual(expected2, oferta.Material);
-            Assert.AreEqual(expected3, oferta.Precio);
-            Assert.AreEqual(expected4, oferta.Unidad);
+            Assert.AreEqual(expected3, oferta.Material.Precio);
+            Assert.AreEqual(expected4, oferta.Material.Unidad);
             Assert.AreEqual(expected5, oferta.Tags);
             Assert.AreEqual(expected6, oferta.Ubicacion);
             Assert.AreEqual(expected7, oferta.EmpresaCreadora.Nombre);
@@ -43,8 +43,8 @@ namespace Test.Library
         public void TestAgregarHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
-            Oferta oferta = new Oferta("Guantes de nylon", "nylon", "20", "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
+            Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
+            Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
 
             int expected = 1;
             oferta.AddHabilitacion("soa");
@@ -58,8 +58,8 @@ namespace Test.Library
         public void TestRemoverHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
-            Oferta oferta = new Oferta("Guantes de nylon", "nylon", "20", "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
+            Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
+            Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
 
             oferta.AddHabilitacion("soa");
             oferta.AddHabilitacion("apa");
@@ -75,8 +75,8 @@ namespace Test.Library
         public void TestAgregarHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
-            Oferta oferta = new Oferta("Guantes de nylon", "nylon", "20", "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
+            Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
+            Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
 
             int expected = 1;
             oferta.AddHabilitacion("soa");
@@ -91,8 +91,8 @@ namespace Test.Library
         public void TestRemoverHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa aleatoria = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
-            Oferta oferta = new Oferta("Guantes de nylon", "nylon", "20", "g", "nylon, guantes, buceo", "Buceo", "Constante", aleatoria);
+            Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "textil");
+            Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
 
             oferta.AddHabilitacion("soa");
             oferta.AddHabilitacion("apa");

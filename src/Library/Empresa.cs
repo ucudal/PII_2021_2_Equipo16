@@ -23,17 +23,21 @@ namespace ClassLibrary
     public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
-        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
+        /// 
         /// </summary>
-        /// <param name="nombre">Nombre de la empresa.</param>
-        /// <param name="ubicacion">Ubicación de la empresa.</param>
-        /// <param name="rubro">Rubro de la empresa.</param>
+        /// <returns></returns>
         [JsonConstructor]
         public Empresa() : base()
         {
 
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="ubicacion"></param>
+        /// <param name="rubro"></param>
+        /// <returns></returns>
         public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
         {
         }

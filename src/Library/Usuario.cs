@@ -12,6 +12,9 @@ namespace ClassLibrary
     /// </remarks>
     public class Usuario
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public Usuario()
         {
@@ -57,7 +60,6 @@ namespace ClassLibrary
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        
         public Rubro Rubro { get; set; }
 
         /// <summary>

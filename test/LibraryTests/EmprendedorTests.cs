@@ -16,17 +16,19 @@ namespace Test.Library
         public void TestRegistroEmprendedor()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor emprendedor = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
+            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
             string expected = "EmprendedorTest";
             string expected2 = "UbicacionTest";
             string expected3 = "RubroTest";
-            string expected4 = "Lavado de Autos Express";
+            Habilitaciones expected4 = habilitacion;
+            string expected5 = "EspecializacionesTest";
 
-            Assert.AreEqual(expected, emprendedor.Nombre);
-            Assert.AreEqual(expected2, emprendedor.Ubicacion);
-            Assert.AreEqual(expected3, emprendedor.Rubro);
-            Assert.AreEqual(expected4, emprendedor.Habilitacion);
-            Assert.AreEqual(expected5, emprendedor.Especializaciones);
+
+            Assert.AreEqual(expected, emprendedorTest.Nombre);
+            Assert.AreEqual(expected2, emprendedorTest.Ubicacion);
+            Assert.AreEqual(expected3, emprendedorTest.Rubro);
+            Assert.AreEqual(expected4, emprendedorTest.HabilitacionesEmprendedor);
+            Assert.AreEqual(expected5, emprendedorTest.Especializaciones);
         }
 
         /// <summary>
@@ -36,12 +38,12 @@ namespace Test.Library
         public void TestAddHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
 
             int expected = 1;
             
-            juancho.AddHabilitacion("soa");
-            Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
+            emprendedorTest.AddHabilitacion("soa");
+            Assert.AreEqual(expected, emprendedorTest.HabilitacionesEmprendedor.Count);
         }
         
         /// <summary>
@@ -51,7 +53,7 @@ namespace Test.Library
         public void TestQuitarHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
 
             int expected = 1;
             
@@ -67,7 +69,7 @@ namespace Test.Library
         public void TestQuitarHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
 
             int expected = 2;
             
@@ -83,7 +85,7 @@ namespace Test.Library
         public void TestAddHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("Juan Pérez", "Barrio Sur", "textil", habilitacion, "Lavado de Autos Express");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "RubroTest", "EspecializacionesTest");
 
             int expected = 2;
             

@@ -15,6 +15,9 @@ namespace ClassLibrary
 
     public class Material
     {
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public Material()
         {
@@ -70,6 +73,10 @@ namespace ClassLibrary
         /// <value></value>
         public string Unidad { get; set;}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

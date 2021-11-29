@@ -21,6 +21,11 @@ namespace ClassLibrary
         {
 
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
         public Habilitaciones(string nombre)
         {
             this.Nombre = nombre;
@@ -32,6 +37,10 @@ namespace ClassLibrary
         /// <value>Valor es un string del nombre.</value>
         public string Nombre { get; set;}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
@@ -42,7 +51,5 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this, opciones);
         }
-
-
     }
 }
