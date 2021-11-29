@@ -44,7 +44,7 @@ namespace ClassLibrary
             {
                 if (par.Value.Nombre == nombreBuscado)
                 {
-                    string texto = LogicaEmpresa.VerEmpresa(par.Value) +OpcionesUso.AccionesEmprendedor();
+                    string texto = LogicaEmpresa.VerEmpresa(par.Value);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = texto;
                     return true;

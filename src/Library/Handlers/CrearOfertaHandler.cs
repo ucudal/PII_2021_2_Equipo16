@@ -39,7 +39,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el nombre del material";
+                    respuesta = "Ingrese el tipo del material:\n-Reciclado\n-Residuo";
                     return true;
                 }
                 else if (listaConParametros.Count == 2)

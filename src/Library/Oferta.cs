@@ -144,17 +144,19 @@ namespace ClassLibrary
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
             text.Append($"Material: {this.Material.Nombre} \n");
-            text.Append($"Precio: {this.Material.Precio} \n");
+            text.Append($"Precio: ${this.Material.Precio} \n");
             text.Append($"Unidad: {this.Material.Unidad} \n");
+            text.Append($"Cantidad: {this.Material.Cantidad} \n");
             text.Append($"Tag: {this.Tags} \n");
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
-            text.Append($"******************************\n");
+           
             foreach (Habilitaciones habilitaciones in HabilitacionesOferta)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
+             text.Append($"\n******************************");
 
             return text.ToString();
         }

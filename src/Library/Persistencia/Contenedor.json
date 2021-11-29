@@ -2,7 +2,7 @@
   "$id": "1",
   "HistorialDeChats": {
     "$id": "2",
-    "867965110": {
+    "2100989690": {
       "$id": "3",
       "MensajesDelUser": {
         "$id": "4",
@@ -13,7 +13,7 @@
         "$values": []
       }
     },
-    "2100989690": {
+    "867965110": {
       "$id": "6",
       "MensajesDelUser": {
         "$id": "7",
@@ -24,21 +24,15 @@
         "$values": []
       }
     },
-    "1548068317": {
+    "2114355575": {
       "$id": "9",
       "MensajesDelUser": {
         "$id": "10",
-        "$values": [
-          "/agregarhabilitacionemprendedor",
-          "Soa"
-        ]
+        "$values": []
       },
       "MensajesDelUserReves": {
         "$id": "11",
-        "$values": [
-          "Soa",
-          "/agregarhabilitacionemprendedor"
-        ]
+        "$values": []
       }
     }
   },
@@ -48,173 +42,188 @@
       {
         "$id": "13",
         "FechaOfertasEntregadas": {
-          "$id": "14"
+          "$id": "14",
+          "2021-11-29T19:51:05.0231755-03:00": {
+            "$id": "15",
+            "HabilitacionesOferta": {
+              "$id": "16",
+              "$values": [
+                {
+                  "$id": "17",
+                  "Nombre": "apa"
+                }
+              ]
+            },
+            "Interesado": {
+              "$id": "18",
+              "$values": [
+                "Almacen Katy"
+              ]
+            },
+            "Nombre": "Leche de la buena",
+            "Material": {
+              "$id": "19",
+              "Nombre": "Reciclado",
+              "Cantidad": "90",
+              "Precio": "3000",
+              "Unidad": "Litros"
+            },
+            "Tags": "Leche",
+            "Ubicacion": {
+              "$id": "20",
+              "NombreCalle": "Pocitos"
+            },
+            "EmpresaCreadora": {
+              "$ref": "13"
+            },
+            "ConstantesPuntuales": "Puntual",
+            "FechaDePublicacion": "2021-11-29T20:19:29.8681625-03:00"
+          }
         },
         "HabilitacionesEmpresa": {
-          "$id": "15",
+          "$id": "21",
           "$values": []
         },
         "InteresadosEnOfertas": {
-          "$id": "16",
-          "$values": []
+          "$id": "22",
+          "$values": [
+            {
+              "$ref": "15"
+            }
+          ]
         },
         "OfertasAceptadas": {
-          "$id": "17",
-          "$values": []
+          "$id": "23",
+          "$values": [
+            {
+              "$ref": "15"
+            }
+          ]
         },
         "MisOfertas": {
-          "$id": "18",
-          "$values": []
+          "$id": "24",
+          "$values": [
+            {
+              "$ref": "15"
+            }
+          ]
         },
         "Nombre": "conaprole",
         "Ubicacion": {
-          "$id": "19",
+          "$id": "25",
           "NombreCalle": "pakistan"
         },
         "Rubro": {
-          "$id": "20",
+          "$id": "26",
           "Nombre": "textil"
         }
       }
     ]
   },
   "Emprendedores": {
-    "$id": "21",
+    "$id": "27",
     "867965110": {
-      "$id": "22",
-      "FechaDeOfertasCompradas": {
-        "$id": "23"
-      },
-      "OfertasInteresado": {
-        "$id": "24",
-        "$values": []
-      },
-      "HabilitacionesEmprendedor": {
-        "$id": "25",
-        "$values": [
-          {
-            "$id": "26",
-            "Nombre": "Habtesttttt"
-          }
-        ]
-      },
-      "Especializaciones": "a",
-      "Nombre": "queso",
-      "Ubicacion": {
-        "$id": "27",
-        "NombreCalle": "a"
-      },
-      "Rubro": {
-        "$ref": "20"
-      }
-    },
-    "1548068317": {
       "$id": "28",
       "FechaDeOfertasCompradas": {
-        "$id": "29"
+        "$id": "29",
+        "2021-11-29T19:48:52.6160399-03:00": {
+          "$ref": "15"
+        }
       },
       "OfertasInteresado": {
         "$id": "30",
-        "$values": []
+        "$values": [
+          {
+            "$ref": "15"
+          }
+        ]
       },
       "HabilitacionesEmprendedor": {
         "$id": "31",
-        "$values": []
+        "$values": [
+          {
+            "$ref": "17"
+          }
+        ]
       },
-      "Especializaciones": "Decorado de interiores",
-      "Nombre": "Agustin",
+      "Especializaciones": "almacen",
+      "Nombre": "Almacen Katy",
       "Ubicacion": {
         "$id": "32",
-        "NombreCalle": "Tres Cruces"
+        "NombreCalle": "Comandante Braga 3723"
       },
       "Rubro": {
-        "$id": "33",
-        "Nombre": "deportes"
+        "$ref": "26"
       }
     }
   },
   "Empresas": {
-    "$id": "34"
+    "$id": "33",
+    "2100989690": {
+      "$ref": "13"
+    }
   },
   "Publicaciones": {
-    "$id": "35",
+    "$id": "34",
     "OfertasPublicados": {
-      "$id": "36",
+      "$id": "35",
       "$values": []
     }
   },
   "ContenedorRubrosHabs": {
-    "$id": "37",
+    "$id": "36",
     "ListaRubros": {
-      "$id": "38",
+      "$id": "37",
       "$values": [
         {
-          "$ref": "20"
+          "$ref": "26"
         },
         {
-          "$id": "39",
+          "$id": "38",
           "Nombre": "metalurgia"
         },
         {
-          "$id": "40",
+          "$id": "39",
           "Nombre": "deportes"
-        },
-        {
-          "$id": "41",
-          "Nombre": "Eubreismskdjdj"
-        },
-        {
-          "$id": "42",
-          "Nombre": "Kilakalaisndsk"
         }
       ]
     },
     "ListaHabilitaciones": {
-      "$id": "43",
+      "$id": "40",
       "$values": [
         {
-          "$id": "44",
-          "Nombre": "apa"
+          "$ref": "17"
         },
         {
-          "$id": "45",
+          "$id": "41",
           "Nombre": "iso"
         },
         {
-          "$id": "46",
+          "$id": "42",
           "Nombre": "soa"
-        },
-        {
-          "$ref": "26"
         }
       ]
     }
   },
   "BuscadorUbicacion": {
-    "$id": "47"
+    "$id": "43"
   },
   "BuscadorTags": {
-    "$id": "48"
+    "$id": "44"
   },
   "BuscadorMaterial": {
-    "$id": "49"
+    "$id": "45"
   },
   "PrinterConsola": {
-    "$id": "50"
+    "$id": "46"
   },
   "ListaNombreOfertas": {
-    "$id": "51",
-    "$values": []
+    "$id": "47",
+    "$values": [
+      "Leche de la buena"
+    ]
   },
   "Administradores": {
-    "$id": "52",
-    "2100989690": {
-      "$id": "53",
-      "Nombre": "Ksks",
-      "Empresas": {
-        "$id": "54",
-        "$values": []
-      }
-    }
+    "$id": "48"
   }
 }

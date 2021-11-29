@@ -148,7 +148,7 @@ namespace ClassLibrary
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
-            text.Append($"Requerimientos: \n");
+            text.Append($"Habilitaciones: \n");
             foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {
                 text.Append($"{habilitaciones.Nombre}, ");

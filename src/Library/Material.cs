@@ -37,7 +37,7 @@ namespace ClassLibrary
             this.Unidad = unidad;
             if (!Int32.TryParse(cantidad, out _))
             {
-                throw new ArgumentException("Debe ingresar la cantiad en formalto numerico");
+                throw new ArgumentException("Debe ingresar la cantiad en formato numerico");
             }
             else
             {
@@ -46,7 +46,7 @@ namespace ClassLibrary
 
             if (!Int32.TryParse(precio, out _))
             {
-                throw new ArgumentException("Debe ingresar el precio en formalto numerico");
+                throw new ArgumentException("Debe ingresar el precio en formato numerico");
             }
             else
             {
