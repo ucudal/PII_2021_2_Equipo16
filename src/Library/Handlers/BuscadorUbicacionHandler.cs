@@ -36,7 +36,6 @@ namespace ClassLibrary
                 return false;
             }
             
-            
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
             if (listaConParametros.Count == 0)
             {
@@ -52,7 +51,6 @@ namespace ClassLibrary
                 respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
                 return true;
             }          
-            
 
             respuesta = string.Empty;
             return false;

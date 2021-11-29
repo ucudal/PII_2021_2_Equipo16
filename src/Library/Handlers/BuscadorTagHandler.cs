@@ -51,7 +51,6 @@ namespace ClassLibrary
                 respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorTags(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
                 return true;
             }          
-            
 
             respuesta = string.Empty;
             return false;

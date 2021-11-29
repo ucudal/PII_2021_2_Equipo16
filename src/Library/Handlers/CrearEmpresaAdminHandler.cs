@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -57,7 +56,6 @@ namespace ClassLibrary
                     string empresaUbicacion = listaConParametros[1];
                     string empresaRubro = listaConParametros[0];
 
-                    
                     Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
                     LogicaAdministrador.CrearEmpresa(value, empresaNombre, empresaUbicacion, empresaRubro);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();

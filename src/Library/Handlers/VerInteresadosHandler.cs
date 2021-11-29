@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerInteresados(BaseHandler next):base(next)
+        public VerInteresados(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/verinteresados"};
         }

@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerEmpresaHandler(BaseHandler next):base(next)
+        public VerEmpresaHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/verempresa"};
         }
@@ -31,7 +31,6 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-            
             
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
 
@@ -53,7 +52,6 @@ namespace ClassLibrary
                     return true;
                 }
             }
-            
             
             respuesta = string.Empty;
             return false;

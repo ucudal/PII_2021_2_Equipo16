@@ -3,13 +3,13 @@
 //     Copyright (c) Programación II. Derechos reservados.
 // </copyright>
 //--------------------------------------------------------------------------------
-using System;
 using ClassLibrary;
+using System;
 using System.Threading;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot;
+using Telegram.Bot.Extensions.Polling;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -21,13 +21,13 @@ namespace ConsoleApplication
     public static class Program
     {
         // La instancia del bot.
-        private static TelegramBotClient Bot;
+        private static TelegramBotClient bot;
 
         // El token provisto por Telegram al crear el bot.
         //
         // *Importante*:
         // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string Token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
+        private static string token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
 
         private static IHandler firstHandler;
 
@@ -40,12 +40,9 @@ namespace ConsoleApplication
             Empresa empresaTest = new Empresa("conaprole", "pakistan", "textil");
             admin.InvitarEmpresa(empresaTest);
             
+            bot = new TelegramBotClient(token);
 
-            
-            
-            Bot = new TelegramBotClient(Token);
-
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true
@@ -57,13 +54,12 @@ namespace ConsoleApplication
                 Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(contenedorToJson, opciones);  
             }
 
-            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(new VerUbicacionEmprendedorHandler(Bot, new VerMisOfertasHandler(null)))))))))))))))))))))))))))));
+            firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(new VerUbicacionEmprendedorHandler(bot, new VerMisOfertasHandler(null)))))))))))))))))))))))))))));
            
             Message message = new Message();
             
-            //string response;
-            //IHandler result = firstHandler.Handle(new TelegramMsgAdapter(message), out response);
-
+            // string response;
+            // IHandler result = firstHandler.Handle(new TelegramMsgAdapter(message), out response);
             Console.WriteLine("Escribí un comando o 'salir':");
             Console.Write("> ");
 
@@ -72,10 +68,10 @@ namespace ConsoleApplication
             // Comenzamos a escuchar mensajes. Esto se hace en otro hilo (en background). El primer método
             // HandleUpdateAsync es invocado por el bot cuando se recibe un mensaje. El segundo método HandleErrorAsync
             // es invocado cuando ocurre un error.
-            Bot.StartReceiving(
+            bot.StartReceiving(
                 new DefaultUpdateHandler(HandleUpdateAsync, HandleErrorAsync),
-                cts.Token
-            );
+                cts.Token);
+            
 
             Console.WriteLine($"Bot is up!");
 
@@ -98,13 +94,13 @@ namespace ConsoleApplication
         {
             try
             {
-                // Sólo respondemos a mensajes de texto
+                // Sólo respondemos a mensajes de texto.
                 if (update.Type == UpdateType.Message)
                 {
                     await HandleMessageReceived(update.Message);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 await HandleErrorAsync(e, cancellationToken);
             }
@@ -115,9 +111,9 @@ namespace ConsoleApplication
         /// Lo único que hacemos por ahora es escuchar 3 tipos de mensajes:
         /// - "hola": responde con texto
         /// - "chau": responde con texto
-        /// - "foto": responde con una foto
+        /// - "foto": responde con una foto.
         /// </summary>
-        /// <param name="message">El mensaje recibido</param>
+        /// <param name="message">El mensaje recibido.</param>
         /// <returns></returns>
         private static async Task HandleMessageReceived(Message message)
         {
@@ -129,7 +125,7 @@ namespace ConsoleApplication
 
             if (!string.IsNullOrEmpty(response))
             {
-                await Bot.SendTextMessageAsync(message.Chat.Id, response);
+                await bot.SendTextMessageAsync(message.Chat.Id, response);
             }
         }
 

@@ -48,8 +48,7 @@ namespace ClassLibrary
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     
                     respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmprendedor()} ";
-                    return true;
-                    
+                    return true; 
                 }
                 else
                 {

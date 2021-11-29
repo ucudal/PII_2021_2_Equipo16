@@ -72,7 +72,6 @@ namespace ClassLibrary
                 respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
                 return true;
             }
-            
             respuesta = string.Empty;
             return false;
         }

@@ -35,11 +35,10 @@ namespace ClassLibrary
         public List<string> MensajesDelUserReves {get; set; } = new List<string>();
 
         /// <summary>
-        /// Devueleve una lista que contiene los mensajes despues de el comando ingresado
+        /// Devueleve una lista que contiene los mensajes despues de el comando ingresado.
         /// </summary>
         /// <param name="comando"></param>
         /// <returns></returns>
-        
         public List<string> BuscarUltimoComando(string comando)
         {
             List<string> ParametrosIngresadosDelComando = new List<string>();
@@ -59,12 +58,12 @@ namespace ClassLibrary
                 ParametrosIngresadosDelComando.Add(mensajeParametro);
             }
             
-            MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez
+            MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
             return ParametrosIngresadosDelComando;
         }
 
         /// <summary>
-        /// Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
+        /// Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers.
         /// </summary>
         /// <param name="comando"></param>
         /// <returns></returns>
@@ -108,7 +107,6 @@ namespace ClassLibrary
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
             };
-
             return JsonSerializer.Serialize(this, opciones);
         }
         /// <summary>
