@@ -80,9 +80,11 @@ namespace ConsoleApplication
                                                                                                         new InvitarEmpresaHandler(
                                                                                                             new CambioClaveHandler(
                                                                                                                 new RegistrarAdminHandler(
-                                                                                                                    new VerUbicacionEmprendedorHandler(
-                                                                                                                        Bot, new VerMisOfertasHandler(
-                    null)))))))))))))))))))))))))))));
+                                                                                                                    new VerUbicacionEmprendedorHandler(Bot,
+                                                                                                                        new VerUbicacionEmpresaHandler(Bot,
+                                                                                                                            new VerUbicacionOfertaHandler(Bot, 
+                                                                                                                                new VerMisOfertasHandler(
+                    null)))))))))))))))))))))))))))))));
            
             Message message = new Message();
             

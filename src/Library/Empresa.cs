@@ -28,7 +28,7 @@ namespace ClassLibrary
        /// </summary>
        /// <returns></returns>
         [JsonConstructor]
-        public Empresa() : base(null, null, null)        
+        public Empresa() : base()        
         {
 
         }

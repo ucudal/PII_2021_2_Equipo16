@@ -89,7 +89,7 @@ namespace ClassLibrary
             string filePath = @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png";
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa");
+            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa.\n {OpcionesUso.AccionesEmprendedor()}");
         
         }
     }

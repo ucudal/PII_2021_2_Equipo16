@@ -52,7 +52,7 @@ namespace ClassLibrary
                 }
                 if (listaConParametros.Count == 1)
                 {
-                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
                     {   
                         
                         Direccion(mensaje, listaConParametros[0]);
@@ -84,31 +84,34 @@ namespace ClassLibrary
         /// <returns></returns>
         public async Task Direccion(IMensaje mensaje, string nombreOferta)
         {
-            Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+            Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
             string direccion = value.Ubicacion.NombreCalle;
             LocationApiClient client = new LocationApiClient();
 
             Location direccionActual = await client.GetLocationAsync(direccion);
             Location direccionOferta = await client.GetLocationAsync(nombreOferta);
+            
+            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
+            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
             await client.DownloadRouteAsync(
                 direccionActual.Latitude,
                 direccionActual.Longitude,
                 direccionOferta.Latitude,
                 direccionOferta.Longitude,
                 @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
-            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+            
         }
         
         private async Task SendProfileImage(IMensaje mensaje)
         {
             // Can be null during testing
-            Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+            Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
             
             await bot.SendChatActionAsync(mensaje.Id, ChatAction.UploadPhoto);
             string filePath = @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png";
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo.");
+            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");
         
         }
     }

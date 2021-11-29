@@ -1636,7 +1636,7 @@
         </member>
         <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
             <summary>
-            Guarda un conjunto Administrador, y su chat id.
+            
             </summary>
             <returns></returns>
         </member>
