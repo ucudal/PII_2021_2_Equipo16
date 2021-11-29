@@ -136,8 +136,7 @@ namespace ClassLibrary
             {
                 throw new ArgumentNullException("Message no puede ser nulo.");
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
             {
                 if (this.CanHandle(mensaje))
                 {
@@ -155,6 +154,7 @@ namespace ClassLibrary
                     }
                 }
             }
+            
             return true;
         }
     }

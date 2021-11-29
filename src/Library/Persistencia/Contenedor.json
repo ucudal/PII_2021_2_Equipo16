@@ -2,22 +2,28 @@
   "$id": "1",
   "HistorialDeChats": {
     "$id": "2",
-    "2100989690": {
+    "2124515755": {
       "$id": "3",
       "MensajesDelUser": {
         "$id": "4",
-        "$values": []
+        "$values": [
+          "/aceptarinvitacion",
+          "conaprole",
+          "/registrarme"
+        ]
       },
       "MensajesDelUserReves": {
         "$id": "5",
         "$values": []
       }
     },
-    "2124515755": {
+    "867965110": {
       "$id": "6",
       "MensajesDelUser": {
         "$id": "7",
-        "$values": []
+        "$values": [
+          "/aceptarinvitacion"
+        ]
       },
       "MensajesDelUserReves": {
         "$id": "8",
@@ -31,162 +37,93 @@
       {
         "$id": "10",
         "FechaOfertasEntregadas": {
-          "$id": "11",
-          "2021-11-28T21:50:56.5058097-03:00": {
-            "$id": "12",
-            "HabilitacionesOferta": {
-              "$id": "13",
-              "$values": []
-            },
-            "Interesado": {
-              "$id": "14",
-              "$values": [
-                "queseyo"
-              ]
-            },
-            "Nombre": "Oferta1",
-            "Material": {
-              "$id": "15",
-              "Nombre": "Mat",
-              "Cantidad": "10",
-              "Precio": "2999",
-              "Unidad": "Uni"
-            },
-            "Tags": "Tag",
-            "Ubicacion": {
-              "$id": "16",
-              "NombreCalle": "Ubi"
-            },
-            "EmpresaCreadora": {
-              "$ref": "10"
-            },
-            "ConstantesPuntuales": "Puntual",
-            "FechaDePublicacion": "2021-11-28T21:56:57.7671569-03:00"
-          }
+          "$id": "11"
         },
         "HabilitacionesEmpresa": {
-          "$id": "17",
-          "$values": [
-            {
-              "$id": "18",
-              "Nombre": "apa"
-            }
-          ]
+          "$id": "12",
+          "$values": []
         },
         "InteresadosEnOfertas": {
-          "$id": "19",
-          "$values": [
-            {
-              "$ref": "12"
-            }
-          ]
+          "$id": "13",
+          "$values": []
         },
         "OfertasAceptadas": {
-          "$id": "20",
-          "$values": [
-            {
-              "$ref": "12"
-            }
-          ]
+          "$id": "14",
+          "$values": []
         },
         "MisOfertas": {
-          "$id": "21",
-          "$values": [
-            {
-              "$ref": "12"
-            }
-          ]
+          "$id": "15",
+          "$values": []
         },
         "Nombre": "conaprole",
         "Ubicacion": {
-          "$id": "22",
+          "$id": "16",
           "NombreCalle": "pakistan"
         },
         "Rubro": {
-          "$id": "23",
+          "$id": "17",
           "Nombre": "textil"
         }
       }
     ]
   },
   "Emprendedores": {
-    "$id": "24",
-    "2124515755": {
-      "$id": "25",
+    "$id": "18",
+    "867965110": {
+      "$id": "19",
       "FechaDeOfertasCompradas": {
-        "$id": "26",
-        "2021-11-28T21:46:58.884596-03:00": {
-          "$ref": "12"
-        }
+        "$id": "20"
       },
       "OfertasInteresado": {
-        "$id": "27",
-        "$values": [
-          {
-            "$ref": "12"
-          }
-        ]
+        "$id": "21",
+        "$values": []
       },
       "HabilitacionesEmprendedor": {
-        "$id": "28",
-        "$values": [
-          {
-            "$id": "29",
-            "Nombre": "soa"
-          },
-          {
-            "$ref": "29"
-          },
-          {
-            "$id": "30",
-            "Nombre": "soa"
-          }
-        ]
+        "$id": "22",
+        "$values": []
       },
-      "Especializaciones": "nos",
-      "Nombre": "queseyo",
+      "Especializaciones": "E",
+      "Nombre": "XxPieroGamer69xX",
       "Ubicacion": {
-        "$id": "31",
-        "NombreCalle": "sudafrica"
+        "$id": "23",
+        "NombreCalle": "Minas"
       },
       "Rubro": {
-        "$id": "32",
-        "Nombre": "textil"
+        "$id": "24",
+        "Nombre": "metalurgia"
       }
     }
   },
   "Empresas": {
-    "$id": "33",
-    "2100989690": {
+    "$id": "25",
+    "2124515755": {
       "$ref": "10"
     }
   },
   "Publicaciones": {
-    "$id": "34",
+    "$id": "26",
     "OfertasPublicados": {
-      "$id": "35",
+      "$id": "27",
       "$values": []
     }
   },
   "BuscadorUbicacion": {
-    "$id": "36"
+    "$id": "28"
   },
   "BuscadorTags": {
-    "$id": "37"
+    "$id": "29"
   },
   "BuscadorMaterial": {
-    "$id": "38"
+    "$id": "30"
   },
   "PrinterConsola": {
-    "$id": "39"
+    "$id": "31"
   },
   "ListaNombreOfertas": {
-    "$id": "40",
-    "$values": [
-      "Oferta1"
-    ]
+    "$id": "32",
+    "$values": []
   },
   "Administradores": {
-    "$id": "41"
+    "$id": "33"
   }
 }
