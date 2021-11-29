@@ -34,8 +34,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
-        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
+        /// 
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>

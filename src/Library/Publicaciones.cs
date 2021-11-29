@@ -26,8 +26,7 @@ namespace ClassLibrary
         public Publicaciones()
         {
         }
-
-
+ 
         /// <summary>
         /// Una lista que contiene las ofertas.
         /// </summary>

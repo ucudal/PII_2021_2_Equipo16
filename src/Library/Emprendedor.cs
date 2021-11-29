@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
@@ -49,8 +50,7 @@ namespace ClassLibrary
         }
         
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Emprendedor"/>.
-        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
+        /// 
         /// </summary>
         /// <param name="nombre">Nombre del emprededor.</param>
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
@@ -174,5 +174,6 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this, opciones);
         }
+        
     }
 }

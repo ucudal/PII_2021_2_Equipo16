@@ -49,7 +49,5 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this, opciones);
         }
-
-
     }
 }

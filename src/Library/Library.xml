@@ -227,13 +227,19 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.#ctor">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
-            Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
+            
             </summary>
-            <param name="nombre">Nombre del emprededor.</param>
-            <param name="ubicacion">Ubicación del emprendedor.</param>
-            <param name="rubro">Rubro del emprendedor.</param>
-            <param name="especializaciones">Especializaciones del emprendedor.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nombre"></param>
+            <param name="ubicacion"></param>
+            <param name="rubro"></param>
+            <param name="especializaciones"></param>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
@@ -291,12 +297,18 @@
         </member>
         <member name="M:ClassLibrary.Empresa.#ctor">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Empresa"/>.
-            Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
+            
             </summary>
-            <param name="nombre">Nombre de la empresa.</param>
-            <param name="ubicacion">Ubicación de la empresa.</param>
-            <param name="rubro">Rubro de la empresa.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nombre"></param>
+            <param name="ubicacion"></param>
+            <param name="rubro"></param>
+            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
@@ -408,11 +420,23 @@
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
         </member>
+        <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="nombre"></param>
+        </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
             <summary>
             Obtiene o establece el nombre de la habilitación.
             </summary>
             <value>Valor es un string del nombre.</value>
+        </member>
+        <member name="M:ClassLibrary.Habilitaciones.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.AceptarInvEmpresaHandler">
             <summary>
@@ -441,7 +465,8 @@
         </member>
         <member name="M:ClassLibrary.AceptarOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Este método se encarga de aceptar una oferta.
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
             <param name="next"></param>
         </member>
@@ -835,40 +860,6 @@
             <param name="respuesta"></param>
             <returns></returns>
         </member>
-        <member name="T:ClassLibrary.IHandler">
-            <summary>
-            Interfaz para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
-            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
-            pasa al siguiente. Esta interfaz define un atributo para definir el próximo "handler" y una una operación para
-            recibir el mensaje y pasarlo al siguiente "handler" en caso que el mensaje no sea procesado. La responsabilidad de
-            decidir si el mensaje se procesa o no, y de procesarlo, se realiza en las clases que implementan esta interfaz.
-            </summary>
-            <remarks>
-            La interfaz se crea en función del principio de inversión de dependencias, para que los clientes de la cadena de
-            responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
-            </remarks>
-        </member>
-        <member name="P:ClassLibrary.IHandler.Next">
-            <summary>
-            Obtiene el próximo "handler".
-            </summary>
-            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
-        </member>
-        <member name="M:ClassLibrary.IHandler.Handle(ClassLibrary.IMensaje,System.String@)">
-            <summary>
-            Procesa el mensaje o la pasa al siguiente "handler" si existe.
-            </summary>
-            <param name="mensaje">El mensaje a procesar.</param>
-            <param name="respuesta">La respuesta al mensaje procesado.</param>
-            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
-        </member>
-        <member name="M:ClassLibrary.IHandler.Cancel">
-            <summary>
-            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
-            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
-            caso de error por ejemplo.
-            </summary>
-        </member>
         <member name="T:ClassLibrary.InteresadoEnOfertaHandler">
             <summary>
             Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
@@ -1091,6 +1082,37 @@
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
+        <member name="T:ClassLibrary.VerUbicacionEmprendedorHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacion".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmprendedorHandler.Direccion(ClassLibrary.IMensaje)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.HistorialChat">
             <summary>
             
@@ -1133,6 +1155,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.HistorialChat.HistorialClear">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:ClassLibrary.IBuscador">
             <summary>
             Interfaz IBuscador que define el metodo a implementar por las clases de busqueda.
@@ -1170,6 +1197,40 @@
             Este método se implementará para eliminar habilitaciones de las diferentes clases.
             </summary>
             <param name="habilitacion">Recibe un string con el nombre de la habilitacion que se quiere eliminar.</param>
+        </member>
+        <member name="T:ClassLibrary.IHandler">
+            <summary>
+            Interfaz para implementar el patrón Chain of Responsibility. En ese patrón se pasa un mensaje a través de una
+            cadena de "handlers" que pueden procesar o no el mensaje. Cada "handler" decide si procesa el mensaje, o si se lo
+            pasa al siguiente. Esta interfaz define un atributo para definir el próximo "handler" y una una operación para
+            recibir el mensaje y pasarlo al siguiente "handler" en caso que el mensaje no sea procesado. La responsabilidad de
+            decidir si el mensaje se procesa o no, y de procesarlo, se realiza en las clases que implementan esta interfaz.
+            </summary>
+            <remarks>
+            La interfaz se crea en función del principio de inversión de dependencias, para que los clientes de la cadena de
+            responsabilidad, que pueden ser concretos, no dependan de una clase "handler" que potencialmente es abstracta.
+            </remarks>
+        </member>
+        <member name="P:ClassLibrary.IHandler.Next">
+            <summary>
+            Obtiene el próximo "handler".
+            </summary>
+            <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Handle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="mensaje">El mensaje a procesar.</param>
+            <param name="respuesta">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.IHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial y cancela el próximo "handler" si existe. Es utilizado para que los
+            "handlers" que procesan varios mensajes cambiando de estado entre mensajes puedan volver al estado inicial en
+            caso de error por ejemplo.
+            </summary>
         </member>
         <member name="T:ClassLibrary.IJsonConvertible">
             <summary>
@@ -1255,6 +1316,180 @@
             <param name="respuesta">Recibe como parametro una cadena de caracteres de tipo String.</param>
             <returns>Devuelve la cadena pero con las modificaciones realizadas.</returns>
         </member>
+        <member name="T:ClassLibrary.Distance">
+            <summary>
+            Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los métodos
+            <see cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)"/> o
+            <see cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Distance.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontraron o no las coordenas o las direcciones de origen y
+            destino.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.Distance.TravelDistance">
+            <summary>
+            Obtiene o establece la distancia entre las coordenadas o las direcciones de origen y destino.
+            </summary>
+            <value>La distancia en metros.</value>
+        </member>
+        <member name="P:ClassLibrary.Distance.TravelDuration">
+            <summary>
+            Obtiene o establece el tiempo que se demora en llegar de las coordenadas o de las direcciones de origen a las de destino.
+            </summary>
+            <value>El tiempo que se demora en minutos.</value>
+        </member>
+        <member name="T:ClassLibrary.Location">
+            <summary>
+            Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método
+            <see cref="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)"/>.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.Location.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontró o no la dirección. En ese caso son válidos los demás
+            valores. En caso contrario los demás valores son indeterminados.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.AddresLine">
+            <summary>
+            Obtiene o establece la dirección: calle y número, ruta y kilómetro, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.CountryRegion">
+            <summary>
+            Obtiene o establece el país.
+            </summary>
+            <value>Por ejemplo, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.FormattedAddress">
+            <summary>
+            Obtiene o establece la dirección completa, incluyendo ciudad, código postal, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738, Montevideo, 11200, Uruguay.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Locality">
+            <summary>
+            Obtiene o establece la localidad o ciudad.
+            </summary>
+            <value>Por ejemplo, Montevideo.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.PostalCode">
+            <summary>
+            Obtiene o establece el código postal.
+            </summary>
+            <value>Por ejemplo, 11200.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Latitude">
+            <summary>
+            Obtiene o establece la latitud de la dirección.
+            </summary>
+            <value>El valor de la latitud en formato decimal.</value>
+        </member>
+        <member name="P:ClassLibrary.Location.Longitude">
+            <summary>
+            Obtiene o establece la longitud de la dirección.
+            </summary>
+            <value>El valor de la longitud en formato decimal.</value>
+        </member>
+        <member name="T:ClassLibrary.LocationApiClient">
+            <summary>
+            Un cliente de la API de localización.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtiene las coordenadas de una dirección.
+            </summary>
+            <param name="address">La dirección.</param>
+            <param name="city">La ciudad. Es opcional. El valor predeterminado es Montevideo.</param>
+            <param name="department">El departamento, estado, provincia, etc. Es opcional. El valor predeterminado es `ontevideo.</param>
+            <param name="country">El país. Es opcional. El valor predeterminado es Uruguay.</param>
+            <returns>Las coordenadas de la dirección.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetLocation(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)">
+            <summary>
+            Obtiene la distancia entre dos coordenadas.
+            </summary>
+            <param name="from">La coordenada de origen.</param>
+            <param name="to">La coordenada de destino.</param>
+            <returns>La distancia entre las dos coordenadas.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistance(ClassLibrary.Location,ClassLibrary.Location)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(ClassLibrary.Location,ClassLibrary.Location)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)">
+            <summary>
+            Obtiene la distancia entre dos direcciones.
+            </summary>
+            <param name="from">La dirección de origen.</param>
+            <param name="to">La dirección de destino.</param>
+            <returns>La distancia entre las dos direcciones.</returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.GetDistance(System.String,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.GetDistanceAsync(System.String,System.String)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)">
+            <summary>
+            Descarga una mapa de una coordenada.
+            </summary>
+            <param name="latitude">La latitud de la coordenada.</param>
+            <param name="longitude">La longitud de la coordenada.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. El formato es PNG.</param>
+            <param name="zoomLevel">El nivel de zoom del mapa entre 1 y 20. Es opcional. El valor predeterminado es
+            15.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadMap(System.Double,System.Double,System.String,System.Int32)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Un mapa con una ruta entre dos coordenadas.
+            </summary>
+            <param name="fromLatitude">La latitud de la coordenada de origen.</param>
+            <param name="fromLongitude">La longitu de la coordenada de origen.</param>
+            <param name="toLatitude">La latitud de la coordenada de destino.</param>
+            <param name="toLongitude">La longitud de la coordenada de destino.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. Es formato es PNG.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.DownloadRoute(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <inheritdoc cref="M:ClassLibrary.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.Dispose">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
+        <member name="M:ClassLibrary.LocationApiClient.Dispose(System.Boolean)">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
         <member name="T:ClassLibrary.ContenedorPrincipal">
             <summary>
             Esta clase se encarga de crear y guardar instancias de Publicaciones, BuscadorUbicacion, BuscadorTags, BuscadorMaterial y ConsolePrinter.
@@ -1320,6 +1555,12 @@
         <member name="P:ClassLibrary.ContenedorPrincipal.ListaNombreOfertas">
             <summary>
             Guarda strings con los nombres de oferta para que no se repitan.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>
@@ -1559,6 +1800,11 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.Material.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
@@ -1587,6 +1833,12 @@
             
             </summary>
             <value></value>
+        </member>
+        <member name="M:ClassLibrary.Material.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.MyReferenceHandler">
             <summary>
@@ -1625,7 +1877,7 @@
         </member>
         <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
-            Esta lista contiene las habilitaciones de las Ofertas.
+            Constructor para json.
             </summary>
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
@@ -1667,6 +1919,12 @@
             Obtiene o establece la Ubicación de la oferta.
             </summary>
         </member>
+        <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
         <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">
             <summary>
             Obtiene o establece un valor que indica si la Oferta es constante o puntual.
@@ -1700,6 +1958,12 @@
             <summary>
             Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
             ya que conoce lo necesario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.Oferta.ConvertirJson">
+            <summary>
+            
             </summary>
             <returns></returns>
         </member>
@@ -1768,6 +2032,11 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.Rubro.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
@@ -1778,6 +2047,12 @@
             
             </summary>
             <value></value>
+        </member>
+        <member name="M:ClassLibrary.Rubro.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:ClassLibrary.Singleton`1">
             <summary>
@@ -1844,6 +2119,11 @@
             
             </summary>
         </member>
+        <member name="M:ClassLibrary.Ubicacion.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:ClassLibrary.Ubicacion.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Ubicacion"/>.
@@ -1855,6 +2135,12 @@
             </summary>
             <value>Valor es un string del nombre.</value>
         </member>
+        <member name="M:ClassLibrary.Ubicacion.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
             Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
@@ -1862,6 +2148,11 @@
             <remarks>
             Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
             </remarks>
+        </member>
+        <member name="M:ClassLibrary.Usuario.#ctor">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:ClassLibrary.Usuario.#ctor(System.String,System.String,System.String)">
             <summary>
@@ -1888,6 +2179,12 @@
             Obtiene o establece el valor con el rubro del usuario.
             </summary>
             <value>Tipo Rubro.</value>
+        </member>
+        <member name="M:ClassLibrary.Usuario.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
     </members>
 </doc>
