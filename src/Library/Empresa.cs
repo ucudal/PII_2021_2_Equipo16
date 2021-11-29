@@ -30,7 +30,7 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
         [JsonConstructor]
-        public Empresa() : base(null, null, null)
+        public Empresa() : base()
         {
 
         }
@@ -43,7 +43,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get;} = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get; private set;} = new Dictionary<DateTime, Oferta>();
         //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
         //private List<Oferta> ofertasAceptadas = new List<Oferta>();
         //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
@@ -71,7 +71,7 @@ namespace ClassLibrary
         /// 
         /// </summary>
         [JsonInclude]
-        public List<Oferta> MisOfertas { get; } = new List<Oferta>();
+        public List<Oferta> MisOfertas { get; private set;} = new List<Oferta>();
         
         /// <summary>
         /// 
@@ -108,6 +108,7 @@ namespace ClassLibrary
                 }
             }
             publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
+            this.MisOfertas.Remove(ofertaParaEliminar);
         }
 
         /// <summary>

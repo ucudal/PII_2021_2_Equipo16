@@ -27,7 +27,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<Rubro> ListaRubros {get;} = new List<Rubro>()
+        public List<Rubro> ListaRubros {get; set;} = new List<Rubro>()
         {
             new Rubro("textil"),
             new Rubro("metalurgia"),
@@ -40,7 +40,7 @@ namespace ClassLibrary
         /// <returns></returns>
         [JsonInclude]
 
-        public List<Habilitaciones> ListaHabilitaciones {get;} = new List<Habilitaciones>()
+        public List<Habilitaciones> ListaHabilitaciones {get; set;} = new List<Habilitaciones>()
         {
             new Habilitaciones("apa"),
             new Habilitaciones("iso"),

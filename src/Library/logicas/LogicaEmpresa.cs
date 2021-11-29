@@ -181,9 +181,9 @@ namespace ClassLibrary
         /// </summary>
         /// <param name="empresa"></param>
         /// <returns></returns>
-        public static List<Oferta> VerMisOfertas(Empresa empresa)
+        public static string VerMisOfertas(Empresa empresa)
         {
-            return empresa.VerMisOfertas();
+            return TelegramPrinter.BusquedaPrinter(empresa.VerMisOfertas());
         }
     }
 }

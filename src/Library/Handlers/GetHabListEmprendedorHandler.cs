@@ -31,15 +31,14 @@ namespace ClassLibrary
                 return false;
                   
             }
-            if (this.CanHandle(mensaje))
-            {
-                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
-                return true;
-            } 
             
-            respuesta = string.Empty;
-            return false;
+            Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+            Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+            respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
+            return true;
+            
+            
+            
         }
     }
 } 

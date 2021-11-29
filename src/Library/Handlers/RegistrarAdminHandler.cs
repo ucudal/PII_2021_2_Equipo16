@@ -57,7 +57,8 @@ namespace ClassLibrary
                         respuesta = e.Message;
                         return true; 
                     }
-                
+
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = $"Usted se ha registrado como un Administrador con el nombre {nombreAdmin}. \nPara mayor seguridad debe cambiar su contraseña utilizando el comando /cambiarClave \nQue disfrute el bot.";
                     return true;
                 }

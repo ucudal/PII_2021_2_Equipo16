@@ -31,19 +31,29 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
+            
+            
+            List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verempresa") == true && Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa").Count == 0)
+            if (listaConParametros.Count == 0)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
-                if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                {
-                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                    string texto = LogicaEmpresa.VerEmpresa(value) +OpcionesUso.AccionesEmpresas();
+                respuesta = "Ingrese el nombre de la empresa que quiera ver";
+                return true;
+            }
 
+            string nombreBuscado = listaConParametros[0];
+            
+            foreach (KeyValuePair<string, Empresa> par in Singleton<ContenedorPrincipal>.Instancia.Empresas)
+            {
+                if (par.Value.Nombre == nombreBuscado)
+                {
+                    string texto = LogicaEmpresa.VerEmpresa(par.Value) +OpcionesUso.AccionesEmpresas();
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = texto;
                     return true;
                 }
             }
+            
             
             respuesta = string.Empty;
             return false;

@@ -63,6 +63,7 @@ namespace ClassLibrary
                 texto.Append("\n/listadehabilitacionesemprendedor - Para emprendedores que quieren ver la lista de habilitaciones que existen");
                 texto.Append("\n/interesado - Use para interesarse en una oferta");
                 
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                 respuesta = texto.ToString();
                 return true;    
             }

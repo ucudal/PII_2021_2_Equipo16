@@ -12,7 +12,11 @@ namespace ClassLibrary
     /// </remarks>
     public class Usuario
     {
-        //
+        [JsonConstructor]
+        public Usuario()
+        {
+
+        }
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Usuario"/>.
         /// </summary>
@@ -40,18 +44,39 @@ namespace ClassLibrary
         /// Obtiene o establece un valor que indica el nombre del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Nombre { get; private set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public Ubicacion Ubicacion { get; private set; }
+        
+        public Ubicacion Ubicacion { get; set; }
 
         /// <summary>
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
+<<<<<<< HEAD
         public Rubro Rubro { get; private set; }   
+=======
+        
+        public Rubro Rubro { get; set; }
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
+
+        
+
+        
+>>>>>>> deV2
     }
 }

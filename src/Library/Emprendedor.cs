@@ -19,19 +19,19 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get;} = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get; set;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> OfertasInteresado {get;} = new List<Oferta>();
+        public List<Oferta> OfertasInteresado {get; set;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         [JsonInclude]
-        public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
+        public List<Habilitaciones> HabilitacionesEmprendedor {get; set;} = new List<Habilitaciones>();
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
@@ -44,10 +44,11 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         [JsonConstructor]
-        public Emprendedor() : base(null, null, null)
+        public Emprendedor() : base()
         {
 
         }
+        
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
@@ -56,7 +57,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; private set;}
+        public string Especializaciones { get; set;}
 
         /// <summary>
         /// Agrega habilitaciones.

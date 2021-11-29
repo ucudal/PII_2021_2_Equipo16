@@ -30,7 +30,7 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre de la habilitación.
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string Nombre { get; private set;}
+        public string Nombre { get; set;}
 
         public string ConvertirJson()
         {

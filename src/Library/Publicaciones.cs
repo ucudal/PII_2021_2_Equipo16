@@ -29,7 +29,7 @@ namespace ClassLibrary
         /// Una lista que contiene las ofertas.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> OfertasPublicados {get;} = new List<Oferta>();
+        public List<Oferta> OfertasPublicados {get; private set;} = new List<Oferta>();
 
         /// <summary>
         /// Este método imprime las ofertas contenidas en OfertasPublicados.

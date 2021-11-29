@@ -50,25 +50,25 @@ namespace ClassLibrary
         /// 
         /// </summary>
         /// <value></value>
-        public string Nombre { get; private set;}
+        public string Nombre { get; set;}
         
         /// <summary>
         /// 
         /// </summary>
         /// <value></value>
-        public string Cantidad { get; private set;}
+        public string Cantidad { get; set;}
         
         /// <summary>
         /// 
         /// </summary>
         /// <value></value>
-        public string Precio { get; private set;}
+        public string Precio { get; set;}
         
         /// <summary>
         /// 
         /// </summary>
         /// <value></value>
-        public string Unidad { get; private set;}
+        public string Unidad { get; set;}
 
         public string ConvertirJson()
         {
