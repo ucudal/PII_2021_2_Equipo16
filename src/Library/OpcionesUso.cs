@@ -12,7 +12,7 @@
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesEmprendedor()
         {
-            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertascompradas\n- /listadehabilitacionesemprendedor";
+            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertascompradas\n- /listadehabilitacionesemprendedor\n- /verubicacion\n- /ubicacionoferta";
             return acciones;
         }
         

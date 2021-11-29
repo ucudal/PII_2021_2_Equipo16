@@ -47,7 +47,7 @@ namespace ClassLibrary
                     List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptarinvitacion");
                     if (listaConParametros.Count == 0)
                     {
-                        respuesta = "Ingrese el Nombre de su Empresa.";
+                        respuesta = "Ingrese la clave de su Empresa.";  // La clave en este caso se le invita, la clave es el nombre de la empresa.
                         return true;
                     }
                     else if (listaConParametros.Count == 1)

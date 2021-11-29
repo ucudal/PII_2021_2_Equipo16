@@ -10,7 +10,7 @@
             Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente. 
             </summary>
         </member>
-        <member name="M:ClassLibrary.Administrador.#ctor(System.String,System.String)">
+        <member name="M:ClassLibrary.Administrador.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Administrador"/>.
             </summary>
@@ -202,6 +202,18 @@
             Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearRubro(System.String)">
+            <summary>
+            Crea un rubro y lo agrega a la lista de rubros.
+            </summary>
+            <param name="nombreRubro"></param>
+        </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearHabilitacion(System.String)">
+            <summary>
+            Crea una habilitacion y la agrega a la lista de habilitaciones.
+            </summary>
+            <param name="nombreHabilitacion"></param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ConvertirJson">
             <summary>
@@ -540,6 +552,48 @@
             <param name="next"></param>
         </member>
         <member name="M:ClassLibrary.AgregarHabEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "Agregar habilitación" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.AgregarHabilitacionHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.AgregarHabilitacionHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:ClassLibrary.AgregarHabilitacionHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "Agregar habilitación" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="T:ClassLibrary.AgregarRubroHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.AgregarRubroHandler.#ctor(ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:ClassLibrary.AgregarRubroHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Este método procesa el mensaje "Agregar habilitación" y retorna true.
             En caso contrario retorna false.
@@ -1120,6 +1174,69 @@
             Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
             </summary>
             <param name="mensaje"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.VerUbicacionEmpresaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacionempresa".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmpresaHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmpresaHandler.Direccion(ClassLibrary.IMensaje)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.VerUbicacionOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/ubicacionoferta".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionOfertaHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionOfertaHandler.Direccion(ClassLibrary.IMensaje,System.String)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <param name="nombreOferta"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.HistorialChat">
