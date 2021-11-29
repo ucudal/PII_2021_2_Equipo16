@@ -76,7 +76,7 @@ namespace ClassLibrary
         public async Task Direccion(IMensaje mensaje)
         {
             Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-            string direccion = @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png";
+            string direccion = value.Ubicacion.NombreCalle;
             LocationApiClient client = new LocationApiClient();
 
             Location direccionActual = await client.GetLocationAsync(direccion);
