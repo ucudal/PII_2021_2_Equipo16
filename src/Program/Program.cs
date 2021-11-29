@@ -57,42 +57,7 @@ namespace ConsoleApplication
                 Singleton<ContenedorPrincipal>.Instancia = JsonSerializer.Deserialize<ContenedorPrincipal>(contenedorToJson, opciones);  
             }
 
-<<<<<<< HEAD
-            firstHandler = new HolaHandler(
-                new RegistroEmprendedorHandler(
-                    new RemoverHabEmprendedor(
-                        new AceptarInvEmpresaHandler(
-                            new AceptarOfertaHandler(
-                                new AddHabEmpresaHandler(
-                                    new BuscadorMaterialHandler(
-                                        new BuscadorTagHandler(
-                                            new BuscadorUbicacionHandler(
-                                                new CalcularOfertasCompradasHandler(
-                                                    new CalcularOfertasVendidasHandler(
-                                                        new AddHabOfertaHandler(
-                                                            new CrearOfertaHandler(
-                                                                new EliminarOfertaHandler(
-                                                                    new GetHabListHandler(
-                                                                        new InteresadoEnOfertaHandler(
-                                                                            new RemoveHabEmpresaHandler(
-                                                                                new RemoverHabOfertaHandler(
-                                                                                    new AddHabEmprendedorHandler(
-                                                                                        new ComandosHandler(
-                                                                                            new VerInteresados(
-                                                                                                new VerEmpresaHandler(
-                                                                                                    new VerEmprendedorHandler(
-                                                                                                        new CrearEmpresaAdminHandler(
-                                                                                                            new InvitarEmpresaHandler(
-                                                                                                                new CambioClaveHandler(
-                                                                                                                    new RegistrarAdminHandler(
-                null)))))))))))))))))))))))))));
-            
-
-            
-            
-=======
             firstHandler = new HolaHandler(new RegistroEmprendedorHandler(new RemoverHabEmprendedor(new AceptarInvEmpresaHandler(new AceptarOfertaHandler(new AddHabEmpresaHandler(new BuscadorMaterialHandler(new BuscadorTagHandler(new BuscadorUbicacionHandler(new CalcularOfertasCompradasHandler(new CalcularOfertasVendidasHandler(new AddHabOfertaHandler(new CrearOfertaHandler(new EliminarOfertaHandler(new GetHabListHandler(new InteresadoEnOfertaHandler(new RemoveHabEmpresaHandler(new RemoverHabOfertaHandler(new AddHabEmprendedorHandler(new ComandosHandler(new VerInteresados(new VerEmpresaHandler(new VerEmprendedorHandler(new CrearEmpresaAdminHandler(new InvitarEmpresaHandler(new CambioClaveHandler(new RegistrarAdminHandler(new VerUbicacionEmprendedorHandler(Bot, new VerMisOfertasHandler(null)))))))))))))))))))))))))))));
->>>>>>> deV2
            
             Message message = new Message();
             
