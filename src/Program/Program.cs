@@ -26,8 +26,8 @@ namespace ConsoleApplication
         // El token provisto por Telegram al crear el bot.
         //
         // *Importante*:
-        // Para probar este ejemplo, crea un bot nuevo y eeemplaza este token por el de tu bot.
-        private static string token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
+        // Para probar este ejemplo, crea un bot nuevo y remplaza este token por el de tu bot.
+        private static string Token = "2100835603:AAHgL1rK6jaRjti3_9Ria8UUlCV8xj0Go7E";
 
         private static IHandler firstHandler;
 
@@ -40,7 +40,7 @@ namespace ConsoleApplication
             Empresa empresaTest = new Empresa("conaprole", "pakistan", "textil");
             admin.InvitarEmpresa(empresaTest);
             
-            bot = new TelegramBotClient(token);
+            bot = new TelegramBotClient(Token);
 
             JsonSerializerOptions opciones = new ()
             {
@@ -80,9 +80,12 @@ namespace ConsoleApplication
                                                                                                         new InvitarEmpresaHandler(
                                                                                                             new CambioClaveHandler(
                                                                                                                 new RegistrarAdminHandler(
-                                                                                                                    new VerUbicacionEmprendedorHandler(
-                                                                                                                        bot, new VerMisOfertasHandler(
-                    null)))))))))))))))))))))))))))));
+                                                                                                                    new VerUbicacionEmprendedorHandler(bot,
+                                                                                                                        new VerUbicacionEmpresaHandler(bot,
+                                                                                                                            new VerUbicacionOfertaHandler(bot, 
+                                                                                                                                new VerMisOfertasHandler(
+                    null)))))))))))))))))))))))))))))));
+
            
             Message message = new Message();
             

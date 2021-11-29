@@ -1122,6 +1122,69 @@
             <param name="mensaje"></param>
             <returns></returns>
         </member>
+        <member name="T:ClassLibrary.VerUbicacionEmpresaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacionempresa".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmpresaHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionEmpresaHandler.Direccion(ClassLibrary.IMensaje)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ClassLibrary.VerUbicacionOfertaHandler">
+            <summary>
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/ubicacionoferta".
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionOfertaHandler.#ctor(Telegram.Bot.TelegramBotClient,ClassLibrary.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
+            </summary>
+            <param name="client">Recibe por parametro el bot de origen.</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+            <summary>
+            Este método procesa el mensaje "/verubicacion" y retorna true.
+            En caso contrario retorna false.
+            </summary>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        </member>
+        <member name="M:ClassLibrary.VerUbicacionOfertaHandler.Direccion(ClassLibrary.IMensaje,System.String)">
+            <summary>
+            Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
+            Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
+            </summary>
+            <param name="mensaje"></param>
+            <param name="nombreOferta"></param>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.HistorialChat">
             <summary>
             
