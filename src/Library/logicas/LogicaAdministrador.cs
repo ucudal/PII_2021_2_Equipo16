@@ -19,7 +19,7 @@ namespace ClassLibrary
             if (clave == "equipo_16")
             {
                 Administrador admin = new Administrador(nombre, clave);
-                Singleton<Logica>.Instancia.Administradores.Add(id, admin);
+                Singleton<ContenedorPrincipal>.Instancia.Administradores.Add(id, admin);
             }
             else
             {

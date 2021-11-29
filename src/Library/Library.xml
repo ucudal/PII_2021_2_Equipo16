@@ -50,7 +50,7 @@
             <param name="ubicacion">Recibe la ubicacion de la empresa como un string.</param>
             <param name="rubro">Recibe el rubro de la empresa como un string.</param>
         </member>
-        <member name="M:ClassLibrary.Administrador.ConvertToJson">
+        <member name="M:ClassLibrary.Administrador.ConvertirJson">
             <summary>
             Convierte a formato .Json.
             </summary>
@@ -145,6 +145,23 @@
             Por otra parte también se utiliza el patrón Expert.
             /// </summary>
         </member>
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.ContenedorRubroHabilitaciones.ListaRubros">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorRubroHabilitaciones.ListaHabilitaciones">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearRubro(System.String)">
             <summary>
             Método agregado para poder chequear si el rubro que se ingresa, existe en la lista de los rubros disponibles.
@@ -208,7 +225,7 @@
             Lista de habilitaciones del emprendedor.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Emprendedor"/>.
             Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Emprendedor.
@@ -219,10 +236,6 @@
             <param name="especializaciones">Especializaciones del emprendedor.</param>
         </member>
         <member name="P:ClassLibrary.Emprendedor.Especializaciones">
-            <summary>
-            Obtiene una lista de las habilitaciones del emprendedor.
-            </summary>
-            <value>HabilitacionesEmprendedor.</value>
             <summary>
             Obtiene o establece las Especializaciones del emprendedor.
             </summary>
@@ -256,7 +269,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.ConvertToJson">
+        <member name="M:ClassLibrary.Emprendedor.ConvertirJson">
             <summary>
             
             </summary>
@@ -293,9 +306,6 @@
         </member>
         <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
-            Habilitaciones de la empresa.
-            </summary>
-            <summary>
             Obtiene las Habilitaciones que tiene la Empresa.
             </summary>
         </member>
@@ -316,19 +326,17 @@
         </member>
         <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+            
             </summary>
-            <param name="publicaciones">Publicaciones.</param>
-            <param name="nombre">Nombre de la oferta.</param>
-            <param name="material">Material de la oferta.</param>
-            <param name="precio">Precio de la oferta.</param>
-            <param name="unidad">Unidad de la oferta.</param>
-            <param name="tags">Tags de la oferta (palabras claves).</param>
-            <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
-            <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
-            <remarks>
-            Se usa Creator.
-            </remarks>
+            <param name="publicaciones"></param>
+            <param name="nombre"></param>
+            <param name="nombreMaterial"></param>
+            <param name="cantidad"></param>
+            <param name="precio"></param>
+            <param name="unidad"></param>
+            <param name="tags"></param>
+            <param name="ubicacion"></param>
+            <param name="puntualesConstantes"></param>
         </member>
         <member name="M:ClassLibrary.Empresa.EliminarOferta(System.String,ClassLibrary.Publicaciones)">
             <summary>
@@ -383,13 +391,19 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:ClassLibrary.Empresa.ConvertirJson">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:ClassLibrary.Habilitaciones">
             <summary>
             Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
+        <member name="M:ClassLibrary.Habilitaciones.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
@@ -1087,13 +1101,13 @@
             
             </summary>
         </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
+        <member name="P:ClassLibrary.HistorialChat.MensajesDelUser">
             <summary>
             Contiene los mensajes enviados por el Usuario.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
+        <member name="P:ClassLibrary.HistorialChat.MensajesDelUserReves">
             <summary>
             
             </summary>
@@ -1113,62 +1127,10 @@
             <param name="comando"></param>
             <returns></returns>
         </member>
-        <member name="M:ClassLibrary.HistorialChat.ConvertToJson">
+        <member name="M:ClassLibrary.HistorialChat.ConvertirJson">
             <summary>
             
             </summary>
-            <returns></returns>
-        </member>
-        <member name="T:ClassLibrary.VerMisOfertasHandler">
-            <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.VerMisOfertasHandler.#ctor(ClassLibrary.BaseHandler)">
-            <summary>
-            Inicializa una nueva instancia de la clase.
-            Esta clase procesa el mensaje ingresado por el usuario.
-            </summary>
-            <param name="next"></param>
-        </member>
-        <member name="M:ClassLibrary.VerMisOfertasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
-            <summary>
-            Este método procesa el mensaje "!verempresa" y retorna true.
-            En caso contrario retorna false.
-            </summary>
-            <param name="mensaje">El mensaje a procesar.</param>
-            <param name="respuesta">La respuesta al mensaje procesado.</param>
-            <returns></returns>
-        </member>
-        <member name="T:ClassLibrary.HistorialChat">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
-            <summary>
-            Contiene los mensajes enviados por el Usuario.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
-            <summary>
-            Devueleve una lista que contiene los mensajes despues de el comando ingresado
-            </summary>
-            <param name="comando"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
-            <summary>
-            Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers
-            </summary>
-            <param name="comando"></param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.IBuscador">
@@ -1215,7 +1177,7 @@
             Json.
             </summary>
         </member>
-        <member name="M:ClassLibrary.IJsonConvertible.ConvertToJson">
+        <member name="M:ClassLibrary.IJsonConvertible.ConvertirJson">
             <summary>
             Convierte el objeto a texto en formato Json. El objeto puede ser reconstruido a partir del texto en formato
             Json utilizando JsonSerializer.Deserialize.
@@ -1301,6 +1263,35 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.ContenedorPrincipal.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
+            <summary>
+            Guarda un conjunto Emprendedor, y su chat id.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
+            <summary>
+            Guarda un conjunto Empresa, y su chat id.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
@@ -1332,37 +1323,7 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.Emprendedores">
-            <summary>
-            Guarda un conjunto Emprendedor, y su chat id.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.Empresas">
-            <summary>
-            Guarda un conjunto Empresa, y su chat id.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:ClassLibrary.ContenedorPrincipal.EmpresasInvitadas">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="F:ClassLibrary.Logica.Administradores">
-            <summary>
-            Guarda un conjunto Administrador, y su chat id.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:ClassLibrary.Logica.ConvertToJson">
+        <member name="M:ClassLibrary.ContenedorPrincipal.ConvertirJson">
             <summary>
             
             </summary>
@@ -1502,16 +1463,17 @@
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.CrearOferta(ClassLibrary.Empresa,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Llama al método CrearProducto en empresa con los parametros pasados.
+            
             </summary>
-            <param name="empresa">Empresa que creará la oferta.</param>
-            <param name="nombre">Nombre de la oferta.</param>
-            <param name="material">Material de lo que se ofrece.</param>
-            <param name="precio">Precio de la oferta.</param>
-            <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
-            <param name="tags">Palabra clave.</param>
-            <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-            <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+            <param name="empresa"></param>
+            <param name="nombre"></param>
+            <param name="nombreMaterial"></param>
+            <param name="cantidad"></param>
+            <param name="precio"></param>
+            <param name="unidad"></param>
+            <param name="tags"></param>
+            <param name="ubicacion"></param>
+            <param name="constantesPuntuales"></param>
         </member>
         <member name="M:ClassLibrary.LogicaEmpresa.EliminarOferta(ClassLibrary.Empresa,System.String)">
             <summary>
@@ -1602,6 +1564,58 @@
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
         </member>
+        <member name="P:ClassLibrary.Material.Nombre">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Cantidad">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Precio">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ClassLibrary.Material.Unidad">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClassLibrary.MyReferenceHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.MyReferenceHandler.Instance">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:ClassLibrary.MyReferenceHandler.#ctor">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.MyReferenceHandler.CreateResolver">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ClassLibrary.MyReferenceHandler.Reset">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:ClassLibrary.Oferta">
             <summary>
             Esta clase representa una oferta.
@@ -1616,16 +1630,17 @@
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Oferta"/>.
+            
             </summary>
-            <param name="nombre">Nombre de la oferta.</param>
-            <param name="material">Material del producto que se oferta.</param>
-            <param name="precio">Precio de la oferta.</param>
-            <param name="unidad">Unidad ed la oferta.</param>
-            <param name="tags">Tags de la oferta.</param>
-            <param name="ubicacion">Ubicacion de la oferta.</param>
-            <param name="empresa">Empresa que publica la oferta.</param>
-            <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
+            <param name="nombre"></param>
+            <param name="nombreMaterial"></param>
+            <param name="cantidad"></param>
+            <param name="precio"></param>
+            <param name="unidad"></param>
+            <param name="tags"></param>
+            <param name="ubicacion"></param>
+            <param name="constantesPuntuales"></param>
+            <param name="empresa"></param>
         </member>
         <member name="P:ClassLibrary.Oferta.Interesado">
             <summary>
@@ -1650,11 +1665,6 @@
         <member name="P:ClassLibrary.Oferta.Ubicacion">
             <summary>
             Obtiene o establece la Ubicación de la oferta.
-            </summary>
-        </member>
-        <member name="P:ClassLibrary.Oferta.EmpresaCreadora">
-            <summary>
-            Obtiene o establece la Empresa que publica la Oferta.
             </summary>
         </member>
         <member name="P:ClassLibrary.Oferta.ConstantesPuntuales">
@@ -1727,6 +1737,11 @@
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
+        <member name="M:ClassLibrary.Publicaciones.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:ClassLibrary.Publicaciones.OfertasPublicados">
             <summary>
             Una lista que contiene las ofertas.
@@ -1737,7 +1752,7 @@
             Este método imprime las ofertas contenidas en OfertasPublicados.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Publicaciones.ConvertToJson">
+        <member name="M:ClassLibrary.Publicaciones.ConvertirJson">
             <summary>
             
             </summary>
@@ -1757,6 +1772,24 @@
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
+        </member>
+        <member name="P:ClassLibrary.Rubro.Nombre">
+            <summary>
+            
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:ClassLibrary.Singleton`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:ClassLibrary.Singleton`1.Instancia">
+            <summary>
+            
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClassLibrary.TelegramMsgAdapter">
             <summary>

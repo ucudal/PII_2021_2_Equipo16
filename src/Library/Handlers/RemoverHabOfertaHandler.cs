@@ -31,7 +31,7 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/removerhaboferta") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhaboferta");
 
@@ -49,21 +49,20 @@ namespace ClassLibrary
                 {
                     string nombreOferta = listaConParametros[1];
                     string nombreHabParaEliminar = listaConParametros[0];
-
-                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                    {
-                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                        LogicaEmpresa.RemoveHabilitacionOferta(value, nombreHabParaEliminar, nombreOferta);
-                        
-                        respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
-                        return true;
-                    }
-                    else
-                    {
-                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
-                        return true;
-                    }
+                    
+                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                    LogicaEmpresa.RemoveHabilitacionOferta(value, nombreHabParaEliminar, nombreOferta);
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    
+                    respuesta = $"Se ha removido la habilitacion {nombreHabParaEliminar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
+                    return true;
                 }
+            }
+
+            else
+            {
+                respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                return true;
             }
 
             respuesta = string.Empty;

@@ -36,23 +36,23 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscarubicacion") == true)
+            
+            List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
+            if (listaConParametros.Count == 0)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
-                if (listaConParametros.Count == 0)
-                {
-                    respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
-                    return true;
-                }
-                if (listaConParametros.Count == 1)
-                {
-                    string palabraClave = listaConParametros[0];
-                    
-                    LogicaBuscadores.BuscarPorUbicacion(palabraClave);
-                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
-                    return true;
-                }          
+                respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
+                return true;
             }
+            if (listaConParametros.Count == 1)
+            {
+                string palabraClave = listaConParametros[0];
+                
+                LogicaBuscadores.BuscarPorUbicacion(palabraClave);
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
+                return true;
+            }          
+            
 
             respuesta = string.Empty;
             return false;

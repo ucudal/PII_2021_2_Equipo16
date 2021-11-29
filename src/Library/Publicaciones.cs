@@ -15,22 +15,21 @@ namespace ClassLibrary
     /// </remarks>
 
     public class Publicaciones : IJsonConvertible
-    { 
-       /// <summary>
-       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        [JsonConstructor]
         public Publicaciones()
         {
-
         }
 
 
         /// <summary>
         /// Una lista que contiene las ofertas.
         /// </summary>
-        public List<Oferta> OfertasPublicados {get;} = new List<Oferta>();
+        [JsonInclude]
+        public List<Oferta> OfertasPublicados {get; private set;} = new List<Oferta>();
 
         /// <summary>
         /// Este método imprime las ofertas contenidas en OfertasPublicados.
@@ -50,7 +49,7 @@ namespace ClassLibrary
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {

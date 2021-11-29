@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -14,6 +16,11 @@ namespace ClassLibrary
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Habilitaciones"/>.
         /// </summary>
+        [JsonConstructor]
+        public Habilitaciones()
+        {
+
+        }
         public Habilitaciones(string nombre)
         {
             this.Nombre = nombre;
@@ -23,7 +30,18 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre de la habilitación.
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string Nombre { get; private set;}
+        public string Nombre { get; set;}
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
 
 
     }

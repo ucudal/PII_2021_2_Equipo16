@@ -1,5 +1,8 @@
 
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -13,6 +16,11 @@ namespace ClassLibrary
 
     public class Material
     {
+        [JsonConstructor]
+        public Material()
+        {
+
+        }
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
@@ -38,28 +46,40 @@ namespace ClassLibrary
                 this.Precio = precio;
             }
         }
-        /// <summary>
-        /// String del nombre del material.
-        /// </summary>
-        /// <value></value>        
-        public string Nombre { get; private set;}
 
         /// <summary>
-        /// String de la cantidad del material.
+        /// 
         /// </summary>
         /// <value></value>
-        public string Cantidad { get; private set;}
-
+        public string Nombre { get; set;}
+        
         /// <summary>
-        /// String del precio del material.
+        /// 
         /// </summary>
         /// <value></value>
-        public string Precio { get; private set;}
-
+        public string Cantidad { get; set;}
+        
         /// <summary>
-        /// String de la unidad del material.
+        /// 
         /// </summary>
         /// <value></value>
-        public string Unidad { get; private set;}
+        public string Precio { get; set;}
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <value></value>
+        public string Unidad { get; set;}
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
     }
 }

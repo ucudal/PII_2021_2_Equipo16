@@ -32,9 +32,9 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
+                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese la fecha de inicio(yyyy-MM-dd).";
@@ -50,29 +50,27 @@ namespace ClassLibrary
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(message.Id))
-                    {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[message.Id];
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
 
-                        try
-                        {
-                            LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
-                        }
-                        catch (System.ArgumentException e)
-                        {
-                            respuesta = e.Message;
-                            return true;    
-                        }
-
-                        respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
-                        return true;
-                    }
-                    else
+                    try
                     {
-                        respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
-                        return true;
+                        LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
                     }
+                    catch (System.ArgumentException e)
+                    {
+                        respuesta = e.Message;
+                        return true;    
+                    }
+
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
+                    return true;
                 }
+            }
+            else
+            {
+                respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
+                return true;
             }
             
             respuesta = string.Empty;

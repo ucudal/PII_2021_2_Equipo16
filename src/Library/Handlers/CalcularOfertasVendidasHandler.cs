@@ -33,7 +33,7 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/calcularofertasvendidas") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertasvendidas");
                 if (listaConParametros.Count == 0)
@@ -51,28 +51,27 @@ namespace ClassLibrary
                     string fechaInicio = listaConParametros[1];
                     string fechaFinal = listaConParametros[0];
 
-                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    
+                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                    try
                     {
-                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                        try
-                        {
-                            LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
-                        }
-                        catch (System.ArgumentException e)
-                        {
-                            respuesta = e.Message;
-                            return true;
-                        }
+                        LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal);
+                    }
+                    catch (System.ArgumentException e)
+                    {
+                        respuesta = e.Message;
+                        return true;
+                    }
 
-                        respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmpresas()}";
-                        return true;
-                    }
-                    else
-                    {
-                        respuesta = $"Usted no es una empresa, no puede usar este comando.";
-                        return true;
-                    }
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmpresas()}";
+                    return true;
                 }
+            }
+            else
+            {
+                respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                return true;
             }
 
             respuesta = string.Empty;

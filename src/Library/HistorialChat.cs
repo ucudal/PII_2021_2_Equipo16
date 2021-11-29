@@ -10,17 +10,10 @@ namespace ClassLibrary
     public class HistorialChat : IJsonConvertible
     {
         /// <summary>
-       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
+        /// 
+        /// </summary>
         [JsonConstructor]
         public HistorialChat()
-        {
-
-        }
-        
-        public HistorialChat() 
         {
         }
 
@@ -29,14 +22,14 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUser = new List<string>();
+        public List<string> MensajesDelUser {get; set;} = new List<string>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUserReves = new List<string>();
+        public List<string> MensajesDelUserReves {get; set; } = new List<string>();
 
         /// <summary>
         /// Devueleve una lista que contiene los mensajes despues de el comando ingresado
@@ -77,7 +70,7 @@ namespace ClassLibrary
             foreach (string elemento in MensajesDelUser)
             {
                MensajesDelUserReves.Add(elemento); 
-               ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
+               //ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
             
             MensajesDelUserReves.Reverse();
@@ -105,16 +98,21 @@ namespace ClassLibrary
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {
-                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
             };
 
-            string json = JsonSerializer.Serialize(this, opciones);
-            return json;
+            return JsonSerializer.Serialize(this, opciones);
+        }
+
+        public void HistorialClear()
+        {
+            this.MensajesDelUser.Clear();
+            this.MensajesDelUserReves.Clear();
         }
     }
 }

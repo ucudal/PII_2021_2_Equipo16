@@ -32,9 +32,9 @@ namespace ClassLibrary
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /cambiarClave, entra al if.
-            if (Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/invitarempresa") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/invitarempresa") == true)
             {
-                List<string> listaConParametros = Singleton<Logica>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/invitarempresa");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/invitarempresa");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la empresa que desea invitar";
@@ -44,9 +44,9 @@ namespace ClassLibrary
                 {
                     string empresaNombre = listaConParametros[0];
                     
-                    if (Singleton<Logica>.Instancia.Administradores.ContainsKey(mensaje.Id))
+                    if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
                     {
-                        Administrador value = Singleton<Logica>.Instancia.Administradores[mensaje.Id];
+                        Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
                         LogicaAdministrador.InvitarEmpresa(value, empresaNombre);
                         respuesta = $"Se ha invitado a {empresaNombre}. {OpcionesUso.AccionesAdministradores()}";
                         return true;

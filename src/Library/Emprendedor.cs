@@ -18,17 +18,20 @@ namespace ClassLibrary
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get;} = new Dictionary<DateTime, Oferta>();
+        [JsonInclude]
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get; set;} = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
-        public List<Oferta> OfertasInteresado {get;} = new List<Oferta>();
+        [JsonInclude]
+        public List<Oferta> OfertasInteresado {get; set;} = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
-        public List<Habilitaciones> HabilitacionesEmprendedor {get;} = new List<Habilitaciones>();
+        [JsonInclude]
+        public List<Habilitaciones> HabilitacionesEmprendedor {get; set;} = new List<Habilitaciones>();
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
@@ -40,22 +43,21 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones)
-            : base(nombre, ubicacion, rubro)
+        [JsonConstructor]
+        public Emprendedor() : base()
+        {
+
+        }
+        
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
         }
 
-
-        /// <summary>
-        /// Obtiene una lista de las habilitaciones del emprendedor.
-        /// </summary>
-        /// <value>HabilitacionesEmprendedor.</value>
-
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; private set;}
+        public string Especializaciones { get; set;}
 
         /// <summary>
         /// Agrega habilitaciones.
@@ -155,14 +157,14 @@ namespace ClassLibrary
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
-        public string ConvertToJson()
+        public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
             {
-                ReferenceHandler = MyReferenceHandler.Instance,
                 WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
             };
-            
+
             return JsonSerializer.Serialize(this, opciones);
         }
     }

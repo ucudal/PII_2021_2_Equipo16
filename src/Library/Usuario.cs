@@ -1,4 +1,7 @@
 using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace ClassLibrary
 {
     /// <summary>
@@ -9,7 +12,11 @@ namespace ClassLibrary
     /// </remarks>
     public class Usuario
     {
+        [JsonConstructor]
+        public Usuario()
+        {
 
+        }
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Usuario"/>.
         /// </summary>
@@ -18,6 +25,9 @@ namespace ClassLibrary
         /// <param name="rubro">Recibe un parametro de tipo Rubro con el valor de "rubro".</param>
         public Usuario(string nombre, string ubicacion, string rubro)
         {
+            Console.WriteLine($"rubro es {rubro}");
+            Console.WriteLine($"nombre es {nombre}");
+            Console.WriteLine($"ubi es {ubicacion}");
             this.Nombre = nombre;
             this.Ubicacion = new Ubicacion(ubicacion);
             if (!Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearRubro(rubro))
@@ -34,18 +44,35 @@ namespace ClassLibrary
         /// Obtiene o establece un valor que indica el nombre del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Nombre { get; private set; }
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public Ubicacion Ubicacion { get; private set; }
+        
+        public Ubicacion Ubicacion { get; set; }
 
         /// <summary>
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public Rubro Rubro { get; private set; }
+        
+        public Rubro Rubro { get; set; }
+
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
+
+        
+
+        
     }
 }

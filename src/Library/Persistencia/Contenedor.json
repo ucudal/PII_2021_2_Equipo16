@@ -1,0 +1,192 @@
+{
+  "$id": "1",
+  "HistorialDeChats": {
+    "$id": "2",
+    "2100989690": {
+      "$id": "3",
+      "MensajesDelUser": {
+        "$id": "4",
+        "$values": []
+      },
+      "MensajesDelUserReves": {
+        "$id": "5",
+        "$values": []
+      }
+    },
+    "2124515755": {
+      "$id": "6",
+      "MensajesDelUser": {
+        "$id": "7",
+        "$values": []
+      },
+      "MensajesDelUserReves": {
+        "$id": "8",
+        "$values": []
+      }
+    }
+  },
+  "EmpresasInvitadas": {
+    "$id": "9",
+    "$values": [
+      {
+        "$id": "10",
+        "FechaOfertasEntregadas": {
+          "$id": "11",
+          "2021-11-28T21:50:56.5058097-03:00": {
+            "$id": "12",
+            "HabilitacionesOferta": {
+              "$id": "13",
+              "$values": []
+            },
+            "Interesado": {
+              "$id": "14",
+              "$values": [
+                "queseyo"
+              ]
+            },
+            "Nombre": "Oferta1",
+            "Material": {
+              "$id": "15",
+              "Nombre": "Mat",
+              "Cantidad": "10",
+              "Precio": "2999",
+              "Unidad": "Uni"
+            },
+            "Tags": "Tag",
+            "Ubicacion": {
+              "$id": "16",
+              "NombreCalle": "Ubi"
+            },
+            "EmpresaCreadora": {
+              "$ref": "10"
+            },
+            "ConstantesPuntuales": "Puntual",
+            "FechaDePublicacion": "2021-11-28T21:56:57.7671569-03:00"
+          }
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "17",
+          "$values": [
+            {
+              "$id": "18",
+              "Nombre": "apa"
+            }
+          ]
+        },
+        "InteresadosEnOfertas": {
+          "$id": "19",
+          "$values": [
+            {
+              "$ref": "12"
+            }
+          ]
+        },
+        "OfertasAceptadas": {
+          "$id": "20",
+          "$values": [
+            {
+              "$ref": "12"
+            }
+          ]
+        },
+        "MisOfertas": {
+          "$id": "21",
+          "$values": [
+            {
+              "$ref": "12"
+            }
+          ]
+        },
+        "Nombre": "conaprole",
+        "Ubicacion": {
+          "$id": "22",
+          "NombreCalle": "pakistan"
+        },
+        "Rubro": {
+          "$id": "23",
+          "Nombre": "textil"
+        }
+      }
+    ]
+  },
+  "Emprendedores": {
+    "$id": "24",
+    "2124515755": {
+      "$id": "25",
+      "FechaDeOfertasCompradas": {
+        "$id": "26",
+        "2021-11-28T21:46:58.884596-03:00": {
+          "$ref": "12"
+        }
+      },
+      "OfertasInteresado": {
+        "$id": "27",
+        "$values": [
+          {
+            "$ref": "12"
+          }
+        ]
+      },
+      "HabilitacionesEmprendedor": {
+        "$id": "28",
+        "$values": [
+          {
+            "$id": "29",
+            "Nombre": "soa"
+          },
+          {
+            "$ref": "29"
+          },
+          {
+            "$id": "30",
+            "Nombre": "soa"
+          }
+        ]
+      },
+      "Especializaciones": "nos",
+      "Nombre": "queseyo",
+      "Ubicacion": {
+        "$id": "31",
+        "NombreCalle": "sudafrica"
+      },
+      "Rubro": {
+        "$id": "32",
+        "Nombre": "textil"
+      }
+    }
+  },
+  "Empresas": {
+    "$id": "33",
+    "2100989690": {
+      "$ref": "10"
+    }
+  },
+  "Publicaciones": {
+    "$id": "34",
+    "OfertasPublicados": {
+      "$id": "35",
+      "$values": []
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "36"
+  },
+  "BuscadorTags": {
+    "$id": "37"
+  },
+  "BuscadorMaterial": {
+    "$id": "38"
+  },
+  "PrinterConsola": {
+    "$id": "39"
+  },
+  "ListaNombreOfertas": {
+    "$id": "40",
+    "$values": [
+      "Oferta1"
+    ]
+  },
+  "Administradores": {
+    "$id": "41"
+  }
+}

@@ -75,7 +75,7 @@ namespace ClassLibrary
         /// <param name="empresa">Recibe por parametro la empresa que va a invitar.</param>
         public void InvitarEmpresa(Empresa empresa)
         {
-            Singleton<Logica>.Instancia.EmpresasInvitadas.Add(empresa);
+            Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
         }
 
         /// <summary>
@@ -95,16 +95,16 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns>tipo string</returns>
-        public string ConvertToJson()
+        /// <returns>Tipo string.</returns>
+        public string ConvertirJson()
         {
-            JsonSerializerOptions options = new()
+            JsonSerializerOptions opciones = new()
             {
+                WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
-                WriteIndented = true
             };
 
-            return JsonSerializer.Serialize(this, options);
-         }
+            return JsonSerializer.Serialize(this, opciones);
+        }
     }
 }

@@ -32,40 +32,39 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionemprendedor") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[message.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionemprendedor");
                 
                 if (listaConParametros.Count == 0)
                 {
-                    response = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
+                    respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
                     return true;
                 }
                 if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-                    if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(message.Id))
+
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+                    try
                     {
-                        Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[message.Id];
-                        try
-                        {
-                            LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
-                        }
-                        catch (System.ArgumentException e)
-                        {
-                            
-                            response = e.Message;
-                            return true;
-                        }
-                        response = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
+                        LogicaEmprendedor.AddHabilitacion(value,nuevaHab);
+                    }
+                    catch (System.ArgumentException e)
+                    {
+                        respuesta = e.Message;
                         return true;
                     }
-                    else
-                    {
-                        respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
-                        return true;
-                    }
-                }
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}";
+                    return true;
+                    
+                }    
+            }
+            else
+            {
+                respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
+                return true;
             }
             
             respuesta = string.Empty;
