@@ -32,17 +32,29 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/veremprendedor") == true)
+
+            
+            List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
+
+            if (listaConParametros.Count == 0)
             {
-                ConsolePrinter.DatoPrinter("Entro en empre");
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
-                if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+                respuesta = "Ingrese el nombre del emprenedor que quiera ver";
+                return true;
+            }
+
+            string nombreBuscado = listaConParametros[0];
+            
+            foreach (KeyValuePair<string, Emprendedor> par in Singleton<ContenedorPrincipal>.Instancia.Emprendedores)
+            {
+                if (par.Value.Nombre == nombreBuscado)
                 {
-                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-                    respuesta = $"La información del emprendedor es la siguiente : {LogicaEmprendedor.VerEmprendedor(value)} {OpcionesUso.AccionesEmprendedor()}";
+                    string texto = LogicaEmprendedor.VerEmprendedor(par.Value) +OpcionesUso.AccionesEmpresas();
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = texto;
                     return true;
                 }
             }
+            
             
             respuesta = string.Empty;
             return false;

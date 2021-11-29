@@ -32,20 +32,27 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/vermisofertas") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/vermisofertas");
-                if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                {
-                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                    string texto = LogicaEmpresa.VerMisOfertas(value) + OpcionesUso.AccionesEmpresas();
+                
+                
+                Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                string texto = LogicaEmpresa.VerMisOfertas(value) + OpcionesUso.AccionesEmpresas();
 
-                    respuesta = texto;
-                    return true;
-                }
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+
+                respuesta = texto;
+                return true;
+                       
             }
-            respuesta = string.Empty;
-            return false;
+            else
+            {
+                respuesta = "Usted no es una empresa, no puede usar este comando.";
+                return true;
+            }
+                
+            
         }
     }
 }

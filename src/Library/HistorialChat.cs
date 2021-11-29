@@ -22,14 +22,14 @@ namespace ClassLibrary
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUser = new List<string>();
+        public List<string> MensajesDelUser {get; set;} = new List<string>();
 
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUserReves = new List<string>();
+        public List<string> MensajesDelUserReves {get; set; } = new List<string>();
 
         /// <summary>
         /// Devueleve una lista que contiene los mensajes despues de el comando ingresado
@@ -70,7 +70,7 @@ namespace ClassLibrary
             foreach (string elemento in MensajesDelUser)
             {
                MensajesDelUserReves.Add(elemento); 
-               ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
+               //ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
             
             MensajesDelUserReves.Reverse();
@@ -107,6 +107,12 @@ namespace ClassLibrary
             };
 
             return JsonSerializer.Serialize(this, opciones);
+        }
+
+        public void HistorialClear()
+        {
+            this.MensajesDelUser.Clear();
+            this.MensajesDelUserReves.Clear();
         }
     }
 }

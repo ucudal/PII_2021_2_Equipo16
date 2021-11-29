@@ -1101,13 +1101,13 @@
             
             </summary>
         </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUser">
+        <member name="P:ClassLibrary.HistorialChat.MensajesDelUser">
             <summary>
             Contiene los mensajes enviados por el Usuario.
             </summary>
             <returns></returns>
         </member>
-        <member name="F:ClassLibrary.HistorialChat.MensajesDelUserReves">
+        <member name="P:ClassLibrary.HistorialChat.MensajesDelUserReves">
             <summary>
             
             </summary>

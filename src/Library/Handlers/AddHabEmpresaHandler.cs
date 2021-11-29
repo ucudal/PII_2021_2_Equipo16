@@ -32,7 +32,7 @@ namespace ClassLibrary
                 return false;
             }
 
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/agregarhabilitacionempresa") == true)
+            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
                 
@@ -45,28 +45,28 @@ namespace ClassLibrary
                 if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
-                    if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                    
+                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                    try
                     {
-                        Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
-                        try
-                        {
-                            LogicaEmpresa.AddHabilitacion(value,nuevaHab);
-                        }
-                        catch (System.ArgumentException e)
-                        {
-                            respuesta = e.Message;
-                            return true;
-                        }
-                        
-                        respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}";
+                        LogicaEmpresa.AddHabilitacion(value,nuevaHab);
+                    }
+                    catch (System.ArgumentException e)
+                    {
+                        respuesta = e.Message;
                         return true;
                     }
-                    else
-                    {
-                        respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
-                        return true;
-                    }
+                    
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}";
+                    return true;   
                 }
+            }
+
+            else
+            {
+                respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
+                return true;
             }
             
             respuesta = string.Empty;

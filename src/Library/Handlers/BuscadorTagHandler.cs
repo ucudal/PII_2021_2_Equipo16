@@ -36,23 +36,22 @@ namespace ClassLibrary
                 return false;
             }
             
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/buscartag") == true)
+            List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscartag");
+            if (listaConParametros.Count == 0)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscartag");
-                if (listaConParametros.Count == 0)
-                {
-                    respuesta = "Ingrese el Tag por el que sea filtrar en su búsqueda.";
-                    return true;
-                }
-                if (listaConParametros.Count == 1)
-                {
-                    string palabraClave = listaConParametros[0];
-                    
-                    LogicaBuscadores.BuscarPorTags(palabraClave);
-                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorTags(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
-                    return true;
-                }          
+                respuesta = "Ingrese el Tag por el que sea filtrar en su búsqueda.";
+                return true;
             }
+            if (listaConParametros.Count == 1)
+            {
+                string palabraClave = listaConParametros[0];
+                
+                LogicaBuscadores.BuscarPorTags(palabraClave);
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorTags(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
+                return true;
+            }          
+            
 
             respuesta = string.Empty;
             return false;
