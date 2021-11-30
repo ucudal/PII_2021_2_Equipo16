@@ -45,6 +45,7 @@ namespace ClassLibrary
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/ubicacionoferta") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/ubicacionoferta");
+                // Se le pide al emprendedor que ingrese la ubicacion de la oferta que quiere consultar.
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = $"Ingrese la ubicacion de la oferta.";
@@ -53,13 +54,19 @@ namespace ClassLibrary
                 else if (listaConParametros.Count == 1)
                 {
                     if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
+<<<<<<< HEAD
                     {   
+=======
+                    {                           
+>>>>>>> deV2
                         Direccion(mensaje, listaConParametros[0]);
 
-                        SendProfileImage(mensaje);
-
                         respuesta = "";
+<<<<<<< HEAD
                         return true; 
+=======
+                        return true;                        
+>>>>>>> deV2
                     }
                     else
                     {
@@ -86,12 +93,28 @@ namespace ClassLibrary
             string direccion = value.Ubicacion.NombreCalle;
             LocationApiClient client = new LocationApiClient();
 
+            // Utilizando los datos ingresados por parametros, se crea una variable Location con los datos.
+            // Al emprendedor se le asigna una variable y a la ubicacion de la oferta otra variable del mismo tipo para poder generar la ruta de ubicacion en el mapa.
             Location direccionActual = await client.GetLocationAsync(direccion);
             Location direccionOferta = await client.GetLocationAsync(nombreOferta);
             
+<<<<<<< HEAD
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
             await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
             await client.DownloadRouteAsync(direccionActual.Latitude, direccionActual.Longitude, direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+=======
+            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
+            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+            await client.DownloadRouteAsync(
+                direccionActual.Latitude,
+                direccionActual.Longitude,
+                direccionOferta.Latitude,
+                direccionOferta.Longitude,
+                @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+
+            // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.
+            SendProfileImage(mensaje);            
+>>>>>>> deV2
         }
         
         private async Task SendProfileImage(IMensaje mensaje)
@@ -103,7 +126,11 @@ namespace ClassLibrary
             string filePath = @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png";
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
+<<<<<<< HEAD
             await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");
+=======
+            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");        
+>>>>>>> deV2
         }
     }
 }

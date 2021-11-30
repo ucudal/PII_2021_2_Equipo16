@@ -1,9 +1,13 @@
 namespace ClassLibrary
 {
     /// <summary>
+<<<<<<< HEAD
     ///
+=======
+    /// Esta clase utiliza el patron singleton.
+>>>>>>> deV2
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Recibe por parametro una variable generica.</typeparam>
     public class Singleton<T> where T : class, new()
     {
         private static T instancia;
@@ -29,7 +33,7 @@ namespace ClassLibrary
             }
             set
             {
-                instancia = value;
+                instancia = value; // Agregado para poder Deserializar.
             }
         }
     }

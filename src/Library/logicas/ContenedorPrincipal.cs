@@ -15,16 +15,14 @@ namespace ClassLibrary
        /// <summary>
        /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
-       
+       /// </summary>       
         [JsonConstructor]
         public ContenedorPrincipal()
         {
         }
 
         /// <summary>
-        /// 
+        /// Guarda un conjunto de Chats que ingresa el usuario.
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
@@ -56,6 +54,12 @@ namespace ClassLibrary
         /// </summary>
         [JsonInclude]
         public Publicaciones Publicaciones {get; set;} = Singleton<Publicaciones>.Instancia;
+        
+        /// <summary>
+        /// Contenedor de rubros y habilitaciones.
+        /// </summary>
+        [JsonInclude]
+        public ContenedorRubroHabilitaciones ContenedorRubrosHabs {get; set;} = Singleton<ContenedorRubroHabilitaciones>.Instancia;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
@@ -89,7 +93,7 @@ namespace ClassLibrary
         public List<string> ListaNombreOfertas {get; private set;} = new List<string>();
 
         /// <summary>
-        /// 
+        /// Guarda un conjunto de administradores.
         /// </summary>
         /// <returns></returns>
         [JsonInclude]

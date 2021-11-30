@@ -64,7 +64,7 @@ namespace ClassLibrary
             }
             else
             {
-                respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
+                respuesta = $"Usted no es un administrador, no puede utilizar este comando.";
                 return true;
             }
             

@@ -13,16 +13,27 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
+<<<<<<< HEAD
         /// <summary>
         /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
         /// para la serialización de datos en la clase.
         /// </summary>
         /// <returns></returns>
+=======
+       /// <summary>
+       /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+>>>>>>> deV2
         [JsonConstructor]
         public Oferta()
         {
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> deV2
         /// <summary>
         /// Constructor para json.
         /// </summary>
@@ -30,17 +41,17 @@ namespace ClassLibrary
         public List<Habilitaciones> HabilitacionesOferta { get; set; } = new List<Habilitaciones>();
 
         /// <summary>
-        /// 
+        /// Inicializa una nueva instancia de la clase.
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="nombreMaterial"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="precio"></param>
-        /// <param name="unidad"></param>
-        /// <param name="tags"></param>
-        /// <param name="ubicacion"></param>
-        /// <param name="constantesPuntuales"></param>
-        /// <param name="empresa"></param>
+        /// <param name="nombre">Recibe por parametro el nombre de la oferta.</param>
+        /// <param name="nombreMaterial">Recibe por parametro el nombre del material de la oferta.</param>
+        /// <param name="cantidad">Recibe por parametro la cantidad de la oferta.</param>
+        /// <param name="precio">Recibe por parametro el precio de la oferta.</param>
+        /// <param name="unidad">Recibe por parametro la unidad de la oferta.</param>
+        /// <param name="tags">Recibe por parametro el tags de la oferta.</param>
+        /// <param name="ubicacion">Recibe por parametro la ubicacion de la oferta.</param>
+        /// <param name="constantesPuntuales">Recibe por parametro que indica si es contante de la oferta.</param>
+        /// <param name="empresa">Recibe por parametro la empresa que creo la oferta.</param>
         public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
@@ -136,24 +147,26 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string con la información de la Oferta.</returns>
         public string TextoOferta()
         {
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
             text.Append($"Material: {this.Material.Nombre} \n");
-            text.Append($"Precio: {this.Material.Precio} \n");
+            text.Append($"Precio: ${this.Material.Precio} \n");
             text.Append($"Unidad: {this.Material.Unidad} \n");
+            text.Append($"Cantidad: {this.Material.Cantidad} \n");
             text.Append($"Tag: {this.Tags} \n");
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
-            text.Append($"******************************\n");
+           
             foreach (Habilitaciones habilitaciones in HabilitacionesOferta)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
+             text.Append($"\n******************************");
 
             return text.ToString();
         }
@@ -162,7 +175,11 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.
         /// </summary>
+<<<<<<< HEAD
         /// <returns></returns>
+=======
+        /// <returns>Retorna un string listando los interesados en la oferta.</returns>
+>>>>>>> deV2
         public string TextoInteresados()
         {
             StringBuilder texto = new StringBuilder($"\nLos interesados en {this.Nombre} son: ");
@@ -176,7 +193,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serializacion.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

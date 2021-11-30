@@ -84,7 +84,7 @@ namespace ConsoleApplication
                                                                                                                         new VerUbicacionEmpresaHandler(bot,
                                                                                                                             new VerUbicacionOfertaHandler(bot, 
                                                                                                                                 new VerMisOfertasHandler(
-                    null)))))))))))))))))))))))))))))));
+                    new AgregarRubroHandler(new AgregarHabilitacionHandler(null)))))))))))))))))))))))))))))))));
 
            
             Message message = new Message();

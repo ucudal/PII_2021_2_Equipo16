@@ -7,16 +7,15 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Este handler sirve pare referenciar a los handlers.
     /// </summary>
     public class MyReferenceHandler : ReferenceHandler
     {
         private static MyReferenceHandler instance;
         
         /// <summary>
-        /// 
+        /// Sirve para la instanciacion de handler de referencia.
         /// </summary>
-        /// <value></value>
         public static MyReferenceHandler Instance
         {
             get
@@ -30,20 +29,20 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Con esto se resetea el handler de referencia.
         /// </summary>
         /// <returns></returns>
         public MyReferenceHandler() => Reset();
         private ReferenceResolver _rootedResolver;
 
         /// <summary>
-        /// 
+        /// Con esto se resetea el handler de referencia.
         /// </summary>
         /// <returns></returns>
         public override ReferenceResolver CreateResolver() => _rootedResolver;
 
         /// <summary>
-        /// 
+        /// Con esto se resetea el handler de referencia.
         /// </summary>
         public void Reset() => _rootedResolver = new MyReferenceResolver();
     }

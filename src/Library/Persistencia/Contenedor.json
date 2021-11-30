@@ -2,32 +2,36 @@
   "$id": "1",
   "HistorialDeChats": {
     "$id": "2",
-    "2124515755": {
+    "1548068317": {
       "$id": "3",
       "MensajesDelUser": {
         "$id": "4",
         "$values": [
-          "/aceptarinvitacion",
-          "conaprole",
-          "/registrarme"
+          "/verubicacion"
         ]
       },
       "MensajesDelUserReves": {
         "$id": "5",
-        "$values": []
+        "$values": [
+          "/verubicacion"
+        ]
       }
     },
-    "867965110": {
+    "2100989690": {
       "$id": "6",
       "MensajesDelUser": {
         "$id": "7",
         "$values": [
-          "/aceptarinvitacion"
+          "/verubicacion",
+          "/verubicacionempresa"
         ]
       },
       "MensajesDelUserReves": {
         "$id": "8",
-        "$values": []
+        "$values": [
+          "/verubicacionempresa",
+          "/verubicacion"
+        ]
       }
     }
   },
@@ -69,7 +73,7 @@
   },
   "Emprendedores": {
     "$id": "18",
-    "867965110": {
+    "1548068317": {
       "$id": "19",
       "FechaDeOfertasCompradas": {
         "$id": "20"
@@ -82,11 +86,11 @@
         "$id": "22",
         "$values": []
       },
-      "Especializaciones": "E",
-      "Nombre": "XxPieroGamer69xX",
+      "Especializaciones": "decorado",
+      "Nombre": "Agustin",
       "Ubicacion": {
         "$id": "23",
-        "NombreCalle": "Minas"
+        "NombreCalle": "Eduardo V\u00EDctor Haedo 2370"
       },
       "Rubro": {
         "$id": "24",
@@ -95,10 +99,7 @@
     }
   },
   "Empresas": {
-    "$id": "25",
-    "2124515755": {
-      "$ref": "10"
-    }
+    "$id": "25"
   },
   "Publicaciones": {
     "$id": "26",
@@ -107,23 +108,74 @@
       "$values": []
     }
   },
+  "ContenedorRubrosHabs": {
+    "$id": "28",
+    "ListaRubros": {
+      "$id": "29",
+      "$values": [
+        {
+          "$ref": "17"
+        },
+        {
+          "$ref": "24"
+        },
+        {
+          "$id": "30",
+          "Nombre": "deportes"
+        },
+        {
+          "$id": "31",
+          "Nombre": "Policia"
+        }
+      ]
+    },
+    "ListaHabilitaciones": {
+      "$id": "32",
+      "$values": [
+        {
+          "$id": "33",
+          "Nombre": "apa"
+        },
+        {
+          "$id": "34",
+          "Nombre": "iso"
+        },
+        {
+          "$id": "35",
+          "Nombre": "soa"
+        },
+        {
+          "$id": "36",
+          "Nombre": "Habi124949"
+        }
+      ]
+    }
+  },
   "BuscadorUbicacion": {
-    "$id": "28"
+    "$id": "37"
   },
   "BuscadorTags": {
-    "$id": "29"
+    "$id": "38"
   },
   "BuscadorMaterial": {
-    "$id": "30"
+    "$id": "39"
   },
   "PrinterConsola": {
-    "$id": "31"
+    "$id": "40"
   },
   "ListaNombreOfertas": {
-    "$id": "32",
+    "$id": "41",
     "$values": []
   },
   "Administradores": {
-    "$id": "33"
+    "$id": "42",
+    "2100989690": {
+      "$id": "43",
+      "Nombre": "Adminnn",
+      "Empresas": {
+        "$id": "44",
+        "$values": []
+      }
+    }
   }
 }

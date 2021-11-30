@@ -30,8 +30,8 @@ namespace ClassLibrary
         /// <summary>
         /// Invita a la empresa a unirse al bot.
         /// </summary>
-        /// <param name="administrador"></param>
-        /// <param name="nombreEmpresa"></param>
+        /// <param name="administrador">Recibe por parametro un Administrador.</param>
+        /// <param name="nombreEmpresa">Recibe por parametro un string con nombre la empresa.</param>
         public static void InvitarEmpresa(Administrador administrador, string nombreEmpresa)
         {
             if (administrador == null)
@@ -77,6 +77,26 @@ namespace ClassLibrary
         public static void CrearEmpresa(Administrador administrador, string nombreEmpresa, string ubicacionEmpresa, string rubroEmpresa)
         {
             administrador.CrearEmpresa(nombreEmpresa, ubicacionEmpresa, rubroEmpresa);
+        }
+
+        /// <summary>
+        /// Este método sive para agregar nuevos rubros.
+        /// </summary>
+        /// <param name="administrador">Recibe por parametro un administrador.</param>
+        /// <param name="nombrRubro">Recibe por paramtro el nombre del rubro.</param>
+        public static void AgregarRubro(Administrador administrador, string nombrRubro)
+        {
+            administrador.AgregarRubro(nombrRubro);
+        }
+
+        /// <summary>
+        /// Este método sirve para agregar habilitaciones.
+        /// </summary>
+        /// <param name="administrador">Recibe por parametro un administrador.</param>
+        /// <param name="nombrHabilitacion">Recibe por parametro el nombre de la habilitacion.</param>
+        public static void AgregarHabilitacion(Administrador administrador, string nombrHabilitacion)
+        {
+            administrador.AgregarHabilitacion(nombrHabilitacion);
         }
     }
 }

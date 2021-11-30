@@ -8,12 +8,20 @@ namespace ClassLibrary
     /// </summary>
     public class Ubicacion
     {
+<<<<<<< HEAD
         /// <summary>
         /// Constructor sin parametros de la clase Ubicacion, ya que es esencial el atributo JsonConstructor
         /// para la serialización de datos en la clase.
         /// </summary>
         /// <returns></returns>
         /// 
+=======
+        
+       /// <summary>
+       /// Constructor sin parametros de la clase Ubicacion, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+>>>>>>> deV2
         [JsonConstructor]
         public Ubicacion()
         {
@@ -29,7 +37,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// .
+        /// Esta propiedad contiene el nombre de la calle.
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
         public string NombreCalle { get; set; }
@@ -37,7 +45,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serialización.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

@@ -48,9 +48,13 @@ namespace ClassLibrary
                 {         
                     this.Direccion(mensaje);
 
+<<<<<<< HEAD
                     this.SendProfileImage(mensaje);
 
                     respuesta = string.Empty;
+=======
+                    respuesta = "";
+>>>>>>> deV2
                     return true;
                 }
                 else
@@ -68,7 +72,7 @@ namespace ClassLibrary
         /// Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
         /// Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
         /// </summary>
-        /// <param name="mensaje"></param>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <returns></returns>
         public async Task Direccion(IMensaje mensaje)
         {
@@ -78,6 +82,9 @@ namespace ClassLibrary
 
             Location direccionActual = await client.GetLocationAsync(direccion);
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
+
+            // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.     
+            SendProfileImage(mensaje);
         }
         private async Task SendProfileImage(IMensaje mensaje)
         {

@@ -14,34 +14,50 @@ namespace ClassLibrary
 
     public class Rubro
     {
+<<<<<<< HEAD
         /// <summary>
         /// Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
         /// para la serialización de datos en la clase.
         /// </summary>
         /// <returns></returns>
 
+=======
+       /// <summary>
+       /// Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+>>>>>>> deV2
         [JsonConstructor]
         public Rubro()
         {
         }
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
         /// </summary>
+        /// <param name="nombre">Recibe por parametro el nombre del rubro.</param>
         public Rubro(string nombre)
         {
             this.Nombre = nombre;
         }
 
         /// <summary>
+<<<<<<< HEAD
         ///
         /// </summary>
         /// <value></value>
         public string Nombre { get; set; }
+=======
+        /// Esta propiedad contiene el nombre del rubro.
+        /// </summary>
+        /// <value>El nombre del Rubro</value>
+        public string Nombre { get; set;}
+>>>>>>> deV2
 
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serializacion.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

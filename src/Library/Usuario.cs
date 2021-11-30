@@ -30,9 +30,6 @@ namespace ClassLibrary
         /// <param name="rubro">Recibe un parametro de tipo Rubro con el valor de "rubro".</param>
         public Usuario(string nombre, string ubicacion, string rubro)
         {
-            Console.WriteLine($"rubro es {rubro}");
-            Console.WriteLine($"nombre es {nombre}");
-            Console.WriteLine($"ubi es {ubicacion}");
             this.Nombre = nombre;
             this.Ubicacion = new Ubicacion(ubicacion);
             if (!Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearRubro(rubro))

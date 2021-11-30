@@ -13,11 +13,17 @@ namespace ClassLibrary
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
-        /// </summary>
+        /// </summary>    
+        [JsonConstructor]
+        public Administrador()
+        {
+
+        }
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
+        /// </summary>  
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         /// <param name="clave">Recibe una clave de entrada.</param>
-    
-       [JsonConstructor]
         public Administrador(string nombre, string clave)
         {
             if (string.IsNullOrEmpty(nombre))
@@ -67,6 +73,7 @@ namespace ClassLibrary
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
         /// </summary>
         /// <returns>Retorna la lista de Empresas que contiene.</returns>
+        [JsonInclude]
         public List<Empresa> Empresas = new List<Empresa>();
 
         /// <summary>
@@ -89,6 +96,22 @@ namespace ClassLibrary
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
             Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
+        }
+
+        /// <summary>
+        /// Este método sive para agregar nuevos rubros.
+        /// </summary>
+        public void AgregarRubro(string nombreRubro)
+        {
+            Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearRubro(nombreRubro);
+        }
+
+        /// <summary>
+        /// Este método sirve para agregar habilitaciones.
+        /// </summary>
+        public void AgregarHabilitacion(string nombreHab)
+        {
+            Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearHabilitacion(nombreHab);
         }
 
         /// <summary>
