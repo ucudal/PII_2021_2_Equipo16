@@ -11,7 +11,7 @@ namespace ClassLibrary
         /// <summary>
         /// El mensaje recibido desde Telegram.
         /// </summary>
-        public Message mensaje;
+        public Message Mensaje;
 
         /// <summary>
         /// Inicializa una instancia de la clase TelegramMsgAdapter
@@ -19,30 +19,30 @@ namespace ClassLibrary
         /// <param name="msg">Recibe un tipo Message de Telegram.</param>
         public TelegramMsgAdapter(Message msg)
         {
-            this.mensaje = msg;
+            this.Mensaje = msg;
         }
 
         /// <summary>
-        ///
+        /// Obtiene el ID de los mensajes del chat.
         /// </summary>
         /// <value></value>
         public string Id
         {
             get
             {
-                return this.mensaje.Chat.Id.ToString();
+                return this.Mensaje.Chat.Id.ToString();
             }
         }
 
         /// <summary>
-        ///
+        /// Obtiene el mensaje.
         /// </summary>
         /// <value></value>
         public string Text
         {
             get
             {
-                return this.mensaje.Text;
+                return this.Mensaje.Text;
             }
         }
     }

@@ -7,7 +7,8 @@
         <member name="T:ClassLibrary.Administrador">
             <summary>
             Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
-            Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente. 
+            Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente y la
+            responsable de llamar al método de agregar rubros y habilitaciones.
             </summary>
         </member>
         <member name="M:ClassLibrary.Administrador.#ctor">
@@ -59,11 +60,13 @@
             <summary>
             Este método sive para agregar nuevos rubros.
             </summary>
+            <param name="nombreRubro">Nombre del Rubro.</param>
         </member>
         <member name="M:ClassLibrary.Administrador.AgregarHabilitacion(System.String)">
             <summary>
             Este método sirve para agregar habilitaciones.
             </summary>
+            <param name="nombreHab">Nombre de la habilitación.</param>
         </member>
         <member name="M:ClassLibrary.Administrador.ConvertirJson">
             <summary>
@@ -77,7 +80,7 @@
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
             <remarks>
-            En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
+            En este caso se aplicó Polimorfismo al implementar IBuscador ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
             Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar y que las clases que implementen la interfaz, implemente ese método pero a nivel interno funcionando de forma diferente a las otras clases que lo implementan.
             Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna la oferta que contenga lo buscado.
             </remarks>
@@ -107,7 +110,7 @@
             el uso de mayúsculas o minúsculas.
             Y como resultado el código será más rápido y ganará en precisión y confiabilidad.
             Se encarga de buscar ofertas según el Tags de la misma, implementa IBuscador.
-            En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una búsqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
+            En este caso se aplicó Polimorfismo al implementar IBuscador ya que evitamos tener una clase que haga una búsqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
             Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar y que las clases que implementen la interfaz, implemente ese método pero a nivel interno funcionando de forma diferente a las otras clases que lo implementan.
             Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna la oferta que contenga lo buscado.
             </remarks>
@@ -119,7 +122,7 @@
             <summary>
             Se encarga de buscar ofertas segun la ubicación de la misma, implementa IBuscador.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
-            En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
+            En este caso se aplicó Polimorfismo al implementar IBuscador ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
             Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar y que las clases que implementen la interfaz, implemente ese método pero a nivel interno funcionando de forma diferente a las otras clases que lo implementan.
             Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna la oferta que contenga lo buscado.
             </summary>
@@ -155,9 +158,7 @@
         <member name="T:ClassLibrary.ContenedorRubroHabilitaciones">
             <summary>
             Contenedor que tiene Lista de rubros y habilitaciones posibles para el cliente.
-            Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
-            con el fin de hacer más rígido el programa.
-            Por otra parte también se utiliza el patrón Expert.
+            Por otra parte se utiliza el patrón Expert, ya que tiene métodos exclusivos directamente relacioandos a lo que conoce.
             </summary>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.#ctor">
@@ -222,13 +223,13 @@
             <summary>
             Crea un rubro y lo agrega a la lista de rubros.
             </summary>
-            <param name="nombreRubro"></param>
+            <param name="nombreRubro">Nombre del rubro.</param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearHabilitacion(System.String)">
             <summary>
             Crea una habilitacion y la agrega a la lista de habilitaciones.
             </summary>
-            <param name="nombreHabilitacion"></param>
+            <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ConvertirJson">
             <summary>
@@ -242,6 +243,13 @@
             Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
+            <remarks>
+            Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+            la clase Emprendedor tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer
+            todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+            Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
+            mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
+            </remarks>
         </member>
         <member name="P:ClassLibrary.Emprendedor.FechaDeOfertasCompradas">
             <summary>
@@ -306,7 +314,7 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.ConvertirJson">
             <summary>
-            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
             </summary>
             <returns>Retorna el objeto serializado.</returns>
         </member>
@@ -320,7 +328,7 @@
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
             la clase Empresa tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
-            Además, utilizamos herencia para lograr una refactorización de código aceptable, ya que sería muy tedioso y
+            Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
             mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
             </remarks>
         </member>
@@ -442,6 +450,9 @@
             Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
+            <remarks>
+            Se utiliza el patrón Expert, ya que entendemos que esta clase es la encargada, de conocer lo que conoce para su correcto funcionamiento.  
+            </remarks>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.#ctor">
             <summary>
@@ -453,6 +464,7 @@
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
+            <param name="nombre">Nombre.</param>
         </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
             <summary>
@@ -617,7 +629,7 @@
         </member>
         <member name="P:ClassLibrary.BaseHandler.Next">
             <summary>
-            Obtiene el próximo "handler".
+            Obtiene o establece el próximo "handler".
             </summary>
             <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
         </member>
@@ -1249,7 +1261,8 @@
         </member>
         <member name="T:ClassLibrary.HistorialChat">
             <summary>
-            Esta clase es la encargada de registrar los mensajes del Usuario.
+            Esta clase se formó usando Expert y SRP, surgió de la necesidad de que el usuario que se comunique con el bot,
+            y tenga un historial relacionado.
             </summary>
         </member>
         <member name="M:ClassLibrary.HistorialChat.#ctor">
@@ -1945,8 +1958,7 @@
             </summary>
             <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-            la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
-            todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+            la clase Material se encarga de conocer todo lo necesario para hacer posible su correcto funcionamiento.
             </remarks>
         </member>
         <member name="M:ClassLibrary.Material.#ctor">
@@ -1996,7 +2008,7 @@
         </member>
         <member name="T:ClassLibrary.MyReferenceHandler">
             <summary>
-            Este handler sirve pare referenciar a los handlers.
+            Este handler sirve pare referenciar a los handlers, usa Singleton.
             </summary>
         </member>
         <member name="P:ClassLibrary.MyReferenceHandler.Instance">
@@ -2025,6 +2037,11 @@
             Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
             La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
             </summary>
+            <remarks>
+            Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+            la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer
+            todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+            </remarks>
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor">
             <summary>
@@ -2153,7 +2170,7 @@
             </summary>
             <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-            la clase Publicaciones tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer
+            la clase Publicaciones tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
@@ -2185,13 +2202,13 @@
             </summary>
             <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-            la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
-            todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+            la clase Rubro tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+            todo lo necesario para hacer posible su correcto funcionamiento.
             </remarks>
         </member>
         <member name="M:ClassLibrary.Rubro.#ctor">
             <summary>
-            Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
+            Inicializa un constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
         </member>
@@ -2203,7 +2220,7 @@
         </member>
         <member name="P:ClassLibrary.Rubro.Nombre">
             <summary>
-            Esta propiedad contiene el nombre del rubro.
+            Obtiene o establece el nombre del rubro.
             </summary>
             <value>El nombre del Rubro.</value>
         </member>
@@ -2215,22 +2232,23 @@
         </member>
         <member name="T:ClassLibrary.Singleton`1">
             <summary>
-            Esta clase utiliza el patron singleton.
+            Esta clase utiliza el patron singleton, para lograr que instancias se puedan usar a lo largo del programa sin necesidad de crear una nueva
+            cada vez, o definirlas como estáticas.
             </summary>
             <typeparam name="T">Recibe por parametro una variable generica.</typeparam>
         </member>
         <member name="P:ClassLibrary.Singleton`1.Instancia">
-             <summary>
-            
-             </summary>
-             <value></value>
+            <summary>
+            Obtiene o establece la Instancia del Singleton.
+            </summary>
         </member>
         <member name="T:ClassLibrary.TelegramMsgAdapter">
             <summary>
-            Esta clase encapsula el mensaje que recibe.
+            La clase que encapsula el mensaje que recibe
+            En este caso se aplicó el patrón Adapter para poder adaptar el mensaje recibido por Telegram.
             </summary>
         </member>
-        <member name="F:ClassLibrary.TelegramMsgAdapter.mensaje">
+        <member name="F:ClassLibrary.TelegramMsgAdapter.Mensaje">
             <summary>
             El mensaje recibido desde Telegram.
             </summary>
@@ -2242,30 +2260,24 @@
             <param name="msg">Recibe un tipo Message de Telegram.</param>
         </member>
         <member name="P:ClassLibrary.TelegramMsgAdapter.Id">
-             <summary>
-            
-             </summary>
-             <value></value>
+            <summary>
+            Obtiene el ID de los mensajes del chat.
+            </summary>
+            <value></value>
         </member>
         <member name="P:ClassLibrary.TelegramMsgAdapter.Text">
-             <summary>
-            
-             </summary>
-             <value></value>
+            <summary>
+            Obtiene el mensaje.
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClassLibrary.TelegramPrinter">
             <summary>
             Esta clase se encarga de imprimir por consola los atributos de oferta.
             </summary>
             <remarks>
-            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.
+            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
             </remarks>
-        </member>
-        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
-            <summary>
-            Este método imprime por consola los atributos de oferta.
-            </summary>
-            <param name="oferta">Una oferta.</param>
         </member>
         <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
             <summary>
@@ -2273,10 +2285,19 @@
             </summary>
             <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
         </member>
+        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método imprime por consola los atributos de oferta.
+            </summary>
+            <param name="oferta">Una oferta.</param>
+        </member>
         <member name="T:ClassLibrary.Ubicacion">
             <summary>
             Esta clase se encarga de contener la Ubicacion.
             </summary>
+            <remarks>
+            Para la cración de esta clase se aplicó el patrón Expert puesto que la ubicación es la que tiene que conocer a la calle y no otras clases directamente.
+            </remarks>
         </member>
         <member name="M:ClassLibrary.Ubicacion.#ctor">
             <summary>
@@ -2307,7 +2328,8 @@
             Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
             </summary>
             <remarks>
-            Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
+            Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa aplicando Herencia.
+            Por otra parte está clase se formó respetando el patrón Expert
             </remarks>
         </member>
         <member name="M:ClassLibrary.Usuario.#ctor">

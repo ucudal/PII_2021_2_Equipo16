@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase <see cref="RemoverOfertaHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public RemoverOfertaHandler (BaseHandler next)
+        public RemoverOfertaHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "/eliminaroferta" };

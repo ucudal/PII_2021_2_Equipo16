@@ -15,7 +15,7 @@ namespace ClassLibrary
     public class Rubro
     {
        /// <summary>
-       /// Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
+       /// Inicializa un constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
         [JsonConstructor]
@@ -33,7 +33,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Esta propiedad contiene el nombre del rubro.
+        /// Obtiene o establece el nombre del rubro.
         /// </summary>
         /// <value>El nombre del Rubro.</value>
         public string Nombre { get; set; }

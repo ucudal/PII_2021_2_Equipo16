@@ -12,16 +12,6 @@ namespace ClassLibrary
     public class TelegramPrinter : IPrinter
     {
         /// <summary>
-        /// Este método imprime por consola los atributos de oferta.
-        /// </summary>
-        /// <param name="oferta">Una oferta.</param>
-        public string OfertaPrinter(Oferta oferta)
-        {
-            string texto = $"Nombre: {oferta.Nombre}, Material: {oferta.Material.Nombre}, Precio {oferta.Material.Precio}, Unidad: {oferta.Material.Unidad}, Ubicación {oferta.Ubicacion.NombreCalle}, Fecha de Publicación {oferta.FechaDePublicacion}";
-            return texto;
-        }
-
-        /// <summary>
         /// Este método imprime una string con información.
         /// </summary>
         /// <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
@@ -35,6 +25,16 @@ namespace ClassLibrary
             }
 
             return textoBusqueda.ToString();
+        }
+
+        /// <summary>
+        /// Este método imprime por consola los atributos de oferta.
+        /// </summary>
+        /// <param name="oferta">Una oferta.</param>
+        public string OfertaPrinter(Oferta oferta)
+        {
+            string texto = $"Nombre: {oferta.Nombre}, Material: {oferta.Material.Nombre}, Precio {oferta.Material.Precio}, Unidad: {oferta.Material.Unidad}, Ubicación {oferta.Ubicacion.NombreCalle}, Fecha de Publicación {oferta.FechaDePublicacion}";
+            return texto;
         }
     }
 }

@@ -13,7 +13,7 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-    /// la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+    /// la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
     /// </remarks>
     public class Oferta : IHabilitaciones
@@ -26,6 +26,7 @@ namespace ClassLibrary
         public Oferta()
         {
         }
+
         /// <summary>
         /// Constructor para json.
         /// </summary>
@@ -121,6 +122,7 @@ namespace ClassLibrary
                     habEliminada = hab;
                 }
             }
+
             this.HabilitacionesOferta.Remove(habEliminada);
         }
 
@@ -153,12 +155,11 @@ namespace ClassLibrary
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
-
             foreach (Habilitaciones habilitaciones in this.HabilitacionesOferta)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
-            
+
             text.Append($"\n******************************");
             return text.ToString();
         }
@@ -175,7 +176,7 @@ namespace ClassLibrary
             {
                 texto.Append("\n" + interesado);
             }
-            
+
             return texto.ToString();
         }
 
