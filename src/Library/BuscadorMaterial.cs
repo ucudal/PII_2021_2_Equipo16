@@ -25,7 +25,7 @@ namespace ClassLibrary
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
                 ConsolePrinter.DatoPrinter(ofertasEncontradas.Count.ToString());
-                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Nombre))
+                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Tipo))
                 {
                     ofertasEncontradas.Add(oferta);
                     Singleton<ContenedorPrincipal>.Instancia.PrinterConsola.OfertaPrinter(oferta);
