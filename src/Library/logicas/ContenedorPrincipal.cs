@@ -54,7 +54,10 @@ namespace ClassLibrary
         /// </summary>
         [JsonInclude]
         public Publicaciones Publicaciones {get; set;} = Singleton<Publicaciones>.Instancia;
-
+        
+        /// <summary>
+        /// Contenedor de rubros y habilitaciones.
+        /// </summary>
         [JsonInclude]
         public ContenedorRubroHabilitaciones ContenedorRubrosHabs {get; set;} = Singleton<ContenedorRubroHabilitaciones>.Instancia;
 

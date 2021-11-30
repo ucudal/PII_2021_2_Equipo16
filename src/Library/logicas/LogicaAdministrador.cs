@@ -80,11 +80,21 @@ namespace ClassLibrary
             administrador.CrearEmpresa(nombreEmpresa, ubicacionEmpresa, rubroEmpresa);
         }
 
+        /// <summary>
+        /// Este método sive para agregar nuevos rubros.
+        /// </summary>
+        /// <param name="administrador">Recibe por parametro un administrador.</param>
+        /// <param name="nombrRubro">Recibe por paramtro el nombre del rubro.</param>
         public static void AgregarRubro(Administrador administrador, string nombrRubro)
         {
             administrador.AgregarRubro(nombrRubro);
         }
 
+        /// <summary>
+        /// Este método sirve para agregar habilitaciones.
+        /// </summary>
+        /// <param name="administrador">Recibe por parametro un administrador.</param>
+        /// <param name="nombrHabilitacion">Recibe por parametro el nombre de la habilitacion.</param>
         public static void AgregarHabilitacion(Administrador administrador, string nombrHabilitacion)
         {
             administrador.AgregarHabilitacion(nombrHabilitacion);
