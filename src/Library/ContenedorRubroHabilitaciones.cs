@@ -10,11 +10,12 @@ namespace ClassLibrary
     /// Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
     /// con el fin de hacer más rígido el programa.
     /// Por otra parte también se utiliza el patrón Expert.
-    /// /// </summary>
+    /// </summary>
     public class ContenedorRubroHabilitaciones: IJsonConvertible
     {
         /// <summary>
-        /// 
+        /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
         /// </summary>
         [JsonConstructor]
         public ContenedorRubroHabilitaciones()
@@ -26,7 +27,6 @@ namespace ClassLibrary
        /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
         [JsonInclude]
         public List<Rubro> ListaRubros {get; set;} = new List<Rubro>()
         {
@@ -36,9 +36,9 @@ namespace ClassLibrary
         };
 
         /// <summary>
-        /// 
+        /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase. 
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
 
         public List<Habilitaciones> ListaHabilitaciones {get; set;} = new List<Habilitaciones>()
@@ -48,12 +48,11 @@ namespace ClassLibrary
             new Habilitaciones("soa"),
         };
 
-        
         /// <summary>
         /// Método agregado para poder chequear si el rubro que se ingresa, existe en la lista de los rubros disponibles.
         /// </summary>
-        /// <param name="rubroString"></param>
-        /// <returns></returns>
+        /// <param name="rubroString">Recibe por parametro un string con el rubro.</param>
+        /// <returns>Retorna true si existe un rubro con ese nombre, en caso contrario retorna false.</returns>
         public bool ChequearRubro(string rubroString)
         {
             foreach (Rubro rubro in this.ListaRubros)
@@ -69,8 +68,8 @@ namespace ClassLibrary
         /// <summary>
         /// Método que se encarga de retornar un rubro, si el Rubro.Nombre es igual al pasado por parametros.
         /// </summary>
-        /// <param name="rubroString"></param>
-        /// <returns></returns>
+        /// <param name="rubroString">Recibe por parametro un string de rubro.</param>
+        /// <returns>Retorna rubro si existe un rubro con ese nombre, en caso contrario retorna null.</returns>
         public Rubro GetRubro(string rubroString)
         {
             foreach (Rubro rubro in this.ListaRubros)
@@ -86,8 +85,8 @@ namespace ClassLibrary
         /// <summary>
         /// Método agregado para poder chequear la habilitación que se ingresa, existe en la lista de las habilitaciones disponibles.
         /// </summary>
-        /// <param name="habilitacionString"></param>
-        /// <returns></returns>
+        /// <param name="habilitacionString">Recibe por parametro un string de habilitaciones.</param>
+        /// <returns>Retorna true si existe una habilitacion con ese nombre, en caso contrario retorna false.</returns>
         public bool ChequearHabilitacion(string habilitacionString)
         {
             foreach (Habilitaciones hab in this.ListaHabilitaciones)
@@ -103,8 +102,8 @@ namespace ClassLibrary
         /// <summary>
         /// Método que se encarga de retornar una habilitación, si la Habilitacion.Nombre es igual al pasado por parametros.
         /// </summary>
-        /// <param name="habilitacionString"></param>
-        /// <returns></returns>
+        /// <param name="habilitacionString">Recibe por parametro un string de la Habilitacion.</param>
+        /// <returns>Retorna rubro si existe una habilitacion con ese nombre, en caso contrario retorna null.</returns>
         public Habilitaciones GetHabilitacion(string habilitacionString)
         {
             foreach (Habilitaciones hab in this.ListaHabilitaciones)
@@ -120,7 +119,7 @@ namespace ClassLibrary
         /// <summary>
         /// Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string listando las habilitaciones.</returns>
         public string textoListaHabilitaciones()
         {
             StringBuilder texto = new StringBuilder();
@@ -134,7 +133,7 @@ namespace ClassLibrary
         /// <summary>
         /// Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string listando los rubros.</returns>
         public string textoListaRubros()
         {
             StringBuilder texto = new StringBuilder();
@@ -168,7 +167,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la serialización.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

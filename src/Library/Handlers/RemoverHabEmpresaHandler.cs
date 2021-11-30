@@ -4,14 +4,14 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase contiene un método para remover habilitaciones de empresas.
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/removerhabempresa".
     /// </summary>
     public class RemoveHabEmpresaHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// </summary>
-        /// <param name="next"></param>
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         /// <returns></returns>
         public RemoveHabEmpresaHandler (BaseHandler next) : base(next)
         {

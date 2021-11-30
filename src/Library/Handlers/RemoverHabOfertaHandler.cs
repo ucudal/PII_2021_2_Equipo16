@@ -3,14 +3,14 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/removerhaboferta".
     /// </summary>
     public class RemoverHabOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/removerhaboferta".
         /// </summary>
-        /// <param name="next">El próximo "handler".</param>
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public RemoverHabOfertaHandler (BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/removerhaboferta"};

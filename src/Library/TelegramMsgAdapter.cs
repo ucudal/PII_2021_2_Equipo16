@@ -9,7 +9,7 @@ namespace ClassLibrary
     public class TelegramMsgAdapter : IMensaje
     {
         /// <summary>
-        /// 
+        /// El mensaje recibido desde Telegram.
         /// </summary>
         public Message mensaje;
 
