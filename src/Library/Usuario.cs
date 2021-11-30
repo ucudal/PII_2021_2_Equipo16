@@ -13,8 +13,11 @@ namespace ClassLibrary
     public class Usuario
     {
         /// <summary>
-        /// 
-        /// </summary>
+       /// Constructor sin parametros de la clase Usuario, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+    
         [JsonConstructor]
         public Usuario()
         {
@@ -28,9 +31,6 @@ namespace ClassLibrary
         /// <param name="rubro">Recibe un parametro de tipo Rubro con el valor de "rubro".</param>
         public Usuario(string nombre, string ubicacion, string rubro)
         {
-            Console.WriteLine($"rubro es {rubro}");
-            Console.WriteLine($"nombre es {nombre}");
-            Console.WriteLine($"ubi es {ubicacion}");
             this.Nombre = nombre;
             this.Ubicacion = new Ubicacion(ubicacion);
             if (!Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearRubro(rubro))
@@ -61,6 +61,11 @@ namespace ClassLibrary
         /// </summary>
         /// <value>Tipo Rubro.</value>
         public Rubro Rubro { get; set; }
+        
+        /// <summary>
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// </summary>
+        /// <returns></returns>
 
         /// <summary>
         /// 

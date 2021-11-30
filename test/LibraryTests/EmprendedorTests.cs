@@ -59,6 +59,7 @@ namespace Test.Library
             juancho.RemoveHabilitacion("soa");
             Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
         }
+        
         /// <summary>
         /// Test que sirve para ver que sucede al intentar eliminar una habilitación que no existe.
         /// </summary>

@@ -12,9 +12,12 @@ namespace ClassLibrary
     /// </remarks>
     public class ContenedorPrincipal: IJsonConvertible
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
         [JsonConstructor]
         public ContenedorPrincipal()
         {
@@ -53,6 +56,9 @@ namespace ClassLibrary
         /// </summary>
         [JsonInclude]
         public Publicaciones Publicaciones {get; set;} = Singleton<Publicaciones>.Instancia;
+
+        [JsonInclude]
+        public ContenedorRubroHabilitaciones ContenedorRubrosHabs {get; set;} = Singleton<ContenedorRubroHabilitaciones>.Instancia;
 
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
@@ -93,7 +99,7 @@ namespace ClassLibrary
         public Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();
 
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerEmpresaHandler(BaseHandler next):base(next)
+        public VerEmpresaHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/verempresa"};
         }
@@ -32,9 +32,7 @@ namespace ClassLibrary
                 return false;
             }
             
-            
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verempresa");
-
             if (listaConParametros.Count == 0)
             {
                 respuesta = "Ingrese el nombre de la empresa que quiera ver";
@@ -42,18 +40,16 @@ namespace ClassLibrary
             }
 
             string nombreBuscado = listaConParametros[0];
-            
             foreach (KeyValuePair<string, Empresa> par in Singleton<ContenedorPrincipal>.Instancia.Empresas)
             {
                 if (par.Value.Nombre == nombreBuscado)
                 {
-                    string texto = LogicaEmpresa.VerEmpresa(par.Value) +OpcionesUso.AccionesEmpresas();
+                    string texto = LogicaEmpresa.VerEmpresa(par.Value);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = texto;
                     return true;
                 }
             }
-            
             
             respuesta = string.Empty;
             return false;

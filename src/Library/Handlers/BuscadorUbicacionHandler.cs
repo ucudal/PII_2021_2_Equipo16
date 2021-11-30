@@ -29,13 +29,11 @@ namespace ClassLibrary
             {
                 throw new ArgumentNullException("Mensaje no puede ser nulo.");
             }
-
-            if (!this.ChequearHandler(mensaje, "/buscarubicacion"))
+            else if (!this.ChequearHandler(mensaje, "/buscarubicacion"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-            
             
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarubicacion");
             if (listaConParametros.Count == 0)
@@ -43,17 +41,15 @@ namespace ClassLibrary
                 respuesta = "Ingrese la Ubicación por la que sea filtrar en su búsqueda.";
                 return true;
             }
-            if (listaConParametros.Count == 1)
+            else if (listaConParametros.Count == 1)
             {
                 string palabraClave = listaConParametros[0];
                 
                 LogicaBuscadores.BuscarPorUbicacion(palabraClave);
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
+                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} ";
                 return true;
             }          
-            
-
             respuesta = string.Empty;
             return false;
         }

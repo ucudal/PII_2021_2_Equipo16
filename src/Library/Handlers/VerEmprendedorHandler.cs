@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public VerEmprendedorHandler(BaseHandler next):base(next)
+        public VerEmprendedorHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/veremprendedor"};
         }
@@ -31,11 +31,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-
-            
             List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/veremprendedor");
-
             if (listaConParametros.Count == 0)
             {
                 respuesta = "Ingrese el nombre del emprenedor que quiera ver";
@@ -43,18 +39,16 @@ namespace ClassLibrary
             }
 
             string nombreBuscado = listaConParametros[0];
-            
             foreach (KeyValuePair<string, Emprendedor> par in Singleton<ContenedorPrincipal>.Instancia.Emprendedores)
             {
                 if (par.Value.Nombre == nombreBuscado)
                 {
-                    string texto = LogicaEmprendedor.VerEmprendedor(par.Value) +OpcionesUso.AccionesEmpresas();
+                    string texto = LogicaEmprendedor.VerEmprendedor(par.Value);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = texto;
                     return true;
                 }
             }
-            
             
             respuesta = string.Empty;
             return false;

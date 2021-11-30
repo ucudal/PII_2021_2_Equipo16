@@ -4,7 +4,6 @@ using System.Globalization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
@@ -36,24 +35,25 @@ namespace ClassLibrary
 
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+       /// <summary>
+       /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
+       
         [JsonConstructor]
+        
         public Emprendedor() : base()
         {
-
         }
         
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="ubicacion"></param>
-        /// <param name="rubro"></param>
-        /// <param name="especializaciones"></param>
-        /// <returns></returns>
+        /// <param name="nombre">Nombre del emprededor.</param>
+        /// <param name="ubicacion">Ubicación del emprendedor.</param>
+        /// <param name="rubro">Rubro del emprendedor.</param>
+        /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
@@ -114,14 +114,14 @@ namespace ClassLibrary
 
             if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
-                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
             
             DateTime fFinal;
 
             if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
-                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
             foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
@@ -148,18 +148,18 @@ namespace ClassLibrary
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
-            text.Append($"Requerimientos: \n");
-            text.Append($"******************************\n");
+            text.Append($"Habilitaciones: \n");
             foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
-
+            text.Append($"\n");
+            text.Append($"******************************\n");
             return text.ToString();
         }
-        
+       
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

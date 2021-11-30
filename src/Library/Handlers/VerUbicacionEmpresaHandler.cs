@@ -9,9 +9,9 @@ using Telegram.Bot.Types.InputFiles;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacion".
+    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/verubicacionempresa".
     /// </summary>
-    public class VerUbicacionEmprendedorHandler: BaseHandler
+    public class VerUbicacionEmpresaHandler: BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
@@ -20,9 +20,9 @@ namespace ClassLibrary
         /// <param name="client">Recibe por parametro el bot de origen.</param>
         /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         /// <returns></returns>
-        public VerUbicacionEmprendedorHandler(TelegramBotClient client, BaseHandler next) : base(next)
+        public VerUbicacionEmpresaHandler(TelegramBotClient client, BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] {"/verubicacion"};
+            this.Keywords = new string[] {"/verubicacionempresa"};
             this.bot = client;
         }
         private TelegramBotClient bot;
@@ -36,16 +36,17 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
          protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/verubicacion"))
+            if (!this.ChequearHandler(mensaje, "/verubicacionempresa"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verubicacion") == true)
+
+            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verubicacionempresa") == true)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacion");
-                if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
-                {         
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacionempresa");
+                if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+                {                       
                     Direccion(mensaje);
 
                     respuesta = "";
@@ -53,7 +54,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    respuesta = $"Usted no es una emprendedor, no puede usar este comando.";
+                    respuesta = $"Usted no es una empresa, no puede usar este comando.";
                     return true;
                 }
             }
@@ -70,26 +71,28 @@ namespace ClassLibrary
         /// <returns></returns>
         public async Task Direccion(IMensaje mensaje)
         {
-            Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+            Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
             string direccion = value.Ubicacion.NombreCalle;
             LocationApiClient client = new LocationApiClient();
 
+            // Utilizando el mensaje ingresado como parametro. 
             Location direccionActual = await client.GetLocationAsync(direccion);
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
 
-            // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.     
+            // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.
             SendProfileImage(mensaje);
         }
         private async Task SendProfileImage(IMensaje mensaje)
         {
-            // Can be null during testing.
-            Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+            // Can be null during testing
+            Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
             
             await bot.SendChatActionAsync(mensaje.Id, ChatAction.UploadPhoto);
             string filePath = @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png";
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa.\n {OpcionesUso.AccionesEmprendedor()}");
+            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Direccion de la Empresa. {OpcionesUso.AccionesEmpresas()}");
+        
         }
     }
 }

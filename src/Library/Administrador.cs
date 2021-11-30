@@ -18,6 +18,10 @@ namespace ClassLibrary
         /// <param name="clave">Recibe una clave de entrada.</param>
     
        [JsonConstructor]
+       public Administrador()
+       {
+
+       }
         public Administrador(string nombre, string clave)
         {
             if (string.IsNullOrEmpty(nombre))
@@ -67,6 +71,7 @@ namespace ClassLibrary
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
         /// </summary>
         /// <returns>Retorna la lista de Empresas que contiene.</returns>
+        [JsonInclude]
         public List<Empresa> Empresas = new List<Empresa>();
 
         /// <summary>
@@ -89,11 +94,20 @@ namespace ClassLibrary
             Empresa empresa = new Empresa(nombre, ubicacion, rubro);
             this.Empresas.Add(empresa);
             Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
+        }
 
+        public void AgregarRubro(string nombreRubro)
+        {
+            Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearRubro(nombreRubro);
+        }
+
+        public void AgregarHabilitacion(string nombreHab)
+        {
+            Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearHabilitacion(nombreHab);
         }
 
         /// <summary>
-        /// Convierte a formato .Json.
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns>Tipo string.</returns>
         public string ConvertirJson()

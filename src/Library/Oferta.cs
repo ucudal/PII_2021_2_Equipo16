@@ -11,11 +11,13 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
-    public class Oferta : IHabilitaciones, IJsonConvertible
+    public class Oferta : IHabilitaciones
     {
-        /// <summary>
-        /// 
-        /// </summary>
+       /// <summary>
+       /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonConstructor]
         public Oferta()
         {
@@ -75,11 +77,10 @@ namespace ClassLibrary
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
         public Ubicacion Ubicacion { get; set; }
-
+        
         /// <summary>
-        /// 
+        /// Obtiene o establece la empresa creadora de la oferta.
         /// </summary>
-        /// <value></value>
         public Empresa EmpresaCreadora {get; set;}
        
 
@@ -143,17 +144,19 @@ namespace ClassLibrary
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
             text.Append($"Material: {this.Material.Nombre} \n");
-            text.Append($"Precio: {this.Material.Precio} \n");
+            text.Append($"Precio: ${this.Material.Precio} \n");
             text.Append($"Unidad: {this.Material.Unidad} \n");
+            text.Append($"Cantidad: {this.Material.Cantidad} \n");
             text.Append($"Tag: {this.Tags} \n");
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
-            text.Append($"******************************\n");
+           
             foreach (Habilitaciones habilitaciones in HabilitacionesOferta)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
+             text.Append($"\n******************************");
 
             return text.ToString();
         }
@@ -173,9 +176,9 @@ namespace ClassLibrary
             }
             return texto.ToString();
         }
-
+        
         /// <summary>
-        /// 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

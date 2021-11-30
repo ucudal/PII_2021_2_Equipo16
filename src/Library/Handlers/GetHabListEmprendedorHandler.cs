@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using System;
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -28,17 +25,13 @@ namespace ClassLibrary
             if (!this.ChequearHandler(mensaje, "/listadehabilitaciones"))
             {
                 respuesta = string.Empty;
-                return false;
-                  
+                return false;    
             }
             
             Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
             Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-            respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
+            respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}";
             return true;
-            
-            
-            
         }
     }
 } 

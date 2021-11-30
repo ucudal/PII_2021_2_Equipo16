@@ -30,14 +30,12 @@ namespace ClassLibrary
             {
                 throw new ArgumentNullException("Mensaje no puede ser nulo.");
             }
-            
-            if (!this.ChequearHandler(mensaje, "/aceptaroferta"))
+            else if (!this.ChequearHandler(mensaje, "/aceptaroferta"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-            
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaComandos = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
                 if (listaComandos.Count == 0)
@@ -45,8 +43,7 @@ namespace ClassLibrary
                     respuesta = $"Ingrese el Nombre de la oferta que desee aceptar {listaComandos.Count}.";
                     return true;
                 }
-                
-                if (listaComandos.Count == 1)
+                else if (listaComandos.Count == 1)
                 {
                     string nombreOfertaParaAceptar = listaComandos[0];
 
@@ -57,7 +54,6 @@ namespace ClassLibrary
                     respuesta = $"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} ";
                     return true;
                 }
-                
                 else
                 {
                     respuesta = $"Algo fue mal.";

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -31,8 +30,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearempresa");
                 
@@ -41,33 +39,32 @@ namespace ClassLibrary
                     respuesta = "Ingrese nombre de la empresa";
                     return true;
                 }
-                if (listaConParametros.Count ==1)
+                else if (listaConParametros.Count ==1)
                 {
                     respuesta = "Ingrese la ubicacion de la empresa";
                     return true;
                 }
-                if (listaConParametros.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
                     respuesta = "Ingrese el rubro de la empresa";
                     return true;
                 }
-                if (listaConParametros.Count == 3)
+                else if (listaConParametros.Count == 3)
                 {
                     string empresaNombre = listaConParametros[2];
                     string empresaUbicacion = listaConParametros[1];
                     string empresaRubro = listaConParametros[0];
 
-                    
                     Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
                     LogicaAdministrador.CrearEmpresa(value, empresaNombre, empresaUbicacion, empresaRubro);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    respuesta = $"Se ha creado la empresa '{empresaNombre}' la cual esta ubicada en '{empresaUbicacion}' y su rubro es '{empresaRubro}'. {OpcionesUso.AccionesAdministradores()}";
+                    respuesta = $"Se ha creado la empresa '{empresaNombre}', ubicada en '{empresaUbicacion}' y su rubro es '{empresaRubro}'. {OpcionesUso.AccionesAdministradores()}";
                     return true;
                 }
             }
             else
             {
-                respuesta = $"Usted no es una empresa, no puede utilizar este comando.";
+                respuesta = $"Usted no es un administrador, no puede utilizar este comando.";
                 return true;
             }
             

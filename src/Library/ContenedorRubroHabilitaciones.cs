@@ -22,10 +22,11 @@ namespace ClassLibrary
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+       /// <summary>
+       /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+       /// <returns></returns>
         [JsonInclude]
         public List<Rubro> ListaRubros {get; set;} = new List<Rubro>()
         {
@@ -145,7 +146,27 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Crea un rubro y lo agrega a la lista de rubros.
+        /// </summary>
+        /// <param name="nombreRubro"></param>
+        public void CrearRubro(string nombreRubro)
+        {
+            Rubro rubro = new Rubro(nombreRubro);
+            this.ListaRubros.Add(rubro);
+        }
+        
+        /// <summary>
+        /// Crea una habilitacion y la agrega a la lista de habilitaciones.
+        /// </summary>
+        /// <param name="nombreHabilitacion"></param>
+        public void CrearHabilitacion(string nombreHabilitacion)
+        {
+            Habilitaciones hab = new Habilitaciones(nombreHabilitacion);
+            this.ListaHabilitaciones.Add(hab);
+        }
+        
+        /// <summary>
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
         /// <returns></returns>
         public string ConvertirJson()

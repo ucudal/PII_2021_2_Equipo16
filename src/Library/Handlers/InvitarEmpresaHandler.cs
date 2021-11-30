@@ -24,7 +24,7 @@ namespace ClassLibrary
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/invitarempresa"))
             {
@@ -32,7 +32,7 @@ namespace ClassLibrary
                 return false;
             }
             // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /cambiarClave, entra al if.
-            if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/invitarempresa") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/invitarempresa") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/invitarempresa");
                 if (listaConParametros.Count == 0)
@@ -40,7 +40,7 @@ namespace ClassLibrary
                     respuesta = "Ingrese el nombre de la empresa que desea invitar";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string empresaNombre = listaConParametros[0];
                     

@@ -23,12 +23,11 @@ namespace ClassLibrary
         /// <returns></returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-
             if (this.CanHandle(mensaje))
             {
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.Add(mensaje.Id, new HistorialChat());
 
-                respuesta = "Hola! por favor si le invitaron, escriba /aceptarinvitacion \nSi desea registrarse como emprendedor, escriba /registrarse \nCualquier duda use /comandos";
+                respuesta = "Hola! por favor si le invitaron, escriba /aceptarinvitacion \nSi desea registrarse como emprendedor, escriba /registrarme \nCualquier duda use /comandos";
                 return true;    
             }
 

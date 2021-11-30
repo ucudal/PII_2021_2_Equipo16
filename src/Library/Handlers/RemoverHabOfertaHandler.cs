@@ -24,14 +24,12 @@ namespace ClassLibrary
         /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            
             if (!this.ChequearHandler(mensaje, "/removerhaboferta"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/removerhaboferta");
 
@@ -40,12 +38,12 @@ namespace ClassLibrary
                     respuesta = "Ingrese el nombre de la oferta a la que desea eliminar una habilitacion";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     respuesta = "ingrese el nombre de la habilitacion que desea remover";
                     return true;
                 }
-                if (listaConParametros.Count == 2)
+                else if (listaConParametros.Count == 2)
                 {
                     string nombreOferta = listaConParametros[1];
                     string nombreHabParaEliminar = listaConParametros[0];
@@ -58,13 +56,11 @@ namespace ClassLibrary
                     return true;
                 }
             }
-
             else
             {
                 respuesta = $"Usted no es una empresa, no puede usar este comando.";
                 return true;
             }
-
             respuesta = string.Empty;
             return false;
         }

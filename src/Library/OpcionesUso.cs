@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Esta clase contiene los métodos para poder hacer más fácil la tarea de que el usuario ingrese un comando para poder operar en el bot.
-    /// Se utilizan métodos estaticos porque no se requiere una instanciación de la clase para utilizarlos.
+    /// Se utilizan métodos estaticos porque no se requiere instanciar la clase para utilizarlos.
     /// </summary>
     public class OpcionesUso
     {
@@ -12,7 +12,7 @@
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesEmprendedor()
         {
-            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertascompradas\n- /listadehabilitacionesemprendedor";
+            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertascompradas\n- /listadehabilitacionesemprendedor\n- /verubicacion\n- /ubicacionoferta";
             return acciones;
         }
         
@@ -22,7 +22,7 @@
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesEmpresas()
         {
-            string acciones = $" \nOpciones:\n- /aceptaroferta\n- /agregarhabilitacionempresa\n- /calcularofertasvendidas\n- /crearoferta\n- /crearhaboferta\n- /removerhaboferta\n- /eliminaroferta\n- /removerhabempresa\n- /verinteresados";
+            string acciones = $" \nOpciones:\n- /aceptaroferta\n- /agregarhabilitacionempresa\n- /calcularofertasvendidas\n- /crearoferta\n- /crearhaboferta\n- /removerhaboferta\n- /eliminaroferta\n- /removerhabempresa\n- /verinteresados\n- /verubicacionempresa";
             return acciones;
         }
 

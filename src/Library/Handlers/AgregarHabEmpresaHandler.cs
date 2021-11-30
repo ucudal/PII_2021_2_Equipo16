@@ -5,14 +5,14 @@ namespace ClassLibrary
     /// <summary>
     /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
     /// </summary>
-    public class AddHabEmpresaHandler : BaseHandler
+    public class AgregarHabEmpresaHandler : BaseHandler
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
-        public AddHabEmpresaHandler(BaseHandler next):base(next)
+        public AgregarHabEmpresaHandler(BaseHandler next):base(next)
         {
             this.Keywords = new string[] {"/agregarhabilitacionempresa"};
         }
@@ -31,18 +31,16 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhabilitacionempresa");
                 
                 if (listaConParametros.Count == 0)
                 {
-
-                    respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorRubroHabilitaciones>.Instancia.textoListaHabilitaciones()}";
+                    respuesta = $"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string nuevaHab = listaConParametros[0];
                     
@@ -62,7 +60,6 @@ namespace ClassLibrary
                     return true;   
                 }
             }
-
             else
             {
                 respuesta = $"Usted no es una empresa, no puede utilizar este comando.";

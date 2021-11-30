@@ -29,8 +29,7 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-
-            if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
                 if (listaConParametros.Count == 0)
@@ -40,7 +39,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el nombre del material";
+                    respuesta = "Ingrese el tipo del material:\n-Reciclado\n-Residuo";
                     return true;
                 }
                 else if (listaConParametros.Count == 2)
@@ -84,8 +83,6 @@ namespace ClassLibrary
                     string nombreMaterialOferta = listaConParametros[6];
                     string nombreOferta = listaConParametros[7];
                     
-
-                    
                     Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
 
                     try
@@ -93,16 +90,14 @@ namespace ClassLibrary
                         LogicaEmpresa.CrearOferta(value, nombreOferta, nombreMaterialOferta, cantidadMaterial, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
                     }
                     catch (System.ArgumentException e)
-                    {
-                        
+                    { 
                         respuesta = $"{e.Message}\nUse /crearoferta de nuevo.";
                         return true;
                     }
                     
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
                     respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {nombreMaterialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y el tag {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
-                    return true;
-                    
+                    return true; 
                 }
             }
             else
@@ -110,6 +105,7 @@ namespace ClassLibrary
                 respuesta = $"Usted no es una empresa, no puede usar este comando.";
                 return true;
             }
+            
             respuesta= string.Empty;
             return false;
         }

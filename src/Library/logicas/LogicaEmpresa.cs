@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace ClassLibrary
 {
@@ -167,6 +166,7 @@ namespace ClassLibrary
         {
             return empresa.VerInteresados();
         }
+        
         /// <summary>
         /// Método que devuelve todos los atributos de la empresa.
         /// </summary>
@@ -176,6 +176,7 @@ namespace ClassLibrary
         {
             return empresa.TextoEmpresa();
         }
+
         /// <summary>
         /// Método que devuelve las ofertas publicadas por la empresa.
         /// </summary>
