@@ -54,7 +54,7 @@ namespace ClassLibrary
                 }
                 else
                 {
-                    respuesta = $"Usted no es una emprendedor, no puede usar este comando.";
+                    respuesta = $"Usted no es una empresa, no puede usar este comando.";
                     return true;
                 }
             }

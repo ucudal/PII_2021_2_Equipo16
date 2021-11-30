@@ -1,0 +1,181 @@
+{
+  "$id": "1",
+  "HistorialDeChats": {
+    "$id": "2",
+    "1548068317": {
+      "$id": "3",
+      "MensajesDelUser": {
+        "$id": "4",
+        "$values": [
+          "/verubicacion"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "5",
+        "$values": [
+          "/verubicacion"
+        ]
+      }
+    },
+    "2100989690": {
+      "$id": "6",
+      "MensajesDelUser": {
+        "$id": "7",
+        "$values": [
+          "/verubicacion",
+          "/verubicacionempresa"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "8",
+        "$values": [
+          "/verubicacionempresa",
+          "/verubicacion"
+        ]
+      }
+    }
+  },
+  "EmpresasInvitadas": {
+    "$id": "9",
+    "$values": [
+      {
+        "$id": "10",
+        "FechaOfertasEntregadas": {
+          "$id": "11"
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "12",
+          "$values": []
+        },
+        "InteresadosEnOfertas": {
+          "$id": "13",
+          "$values": []
+        },
+        "OfertasAceptadas": {
+          "$id": "14",
+          "$values": []
+        },
+        "MisOfertas": {
+          "$id": "15",
+          "$values": []
+        },
+        "Nombre": "conaprole",
+        "Ubicacion": {
+          "$id": "16",
+          "NombreCalle": "pakistan"
+        },
+        "Rubro": {
+          "$id": "17",
+          "Nombre": "textil"
+        }
+      }
+    ]
+  },
+  "Emprendedores": {
+    "$id": "18",
+    "1548068317": {
+      "$id": "19",
+      "FechaDeOfertasCompradas": {
+        "$id": "20"
+      },
+      "OfertasInteresado": {
+        "$id": "21",
+        "$values": []
+      },
+      "HabilitacionesEmprendedor": {
+        "$id": "22",
+        "$values": []
+      },
+      "Especializaciones": "decorado",
+      "Nombre": "Agustin",
+      "Ubicacion": {
+        "$id": "23",
+        "NombreCalle": "Eduardo V\u00EDctor Haedo 2370"
+      },
+      "Rubro": {
+        "$id": "24",
+        "Nombre": "metalurgia"
+      }
+    }
+  },
+  "Empresas": {
+    "$id": "25"
+  },
+  "Publicaciones": {
+    "$id": "26",
+    "OfertasPublicados": {
+      "$id": "27",
+      "$values": []
+    }
+  },
+  "ContenedorRubrosHabs": {
+    "$id": "28",
+    "ListaRubros": {
+      "$id": "29",
+      "$values": [
+        {
+          "$ref": "17"
+        },
+        {
+          "$ref": "24"
+        },
+        {
+          "$id": "30",
+          "Nombre": "deportes"
+        },
+        {
+          "$id": "31",
+          "Nombre": "Policia"
+        }
+      ]
+    },
+    "ListaHabilitaciones": {
+      "$id": "32",
+      "$values": [
+        {
+          "$id": "33",
+          "Nombre": "apa"
+        },
+        {
+          "$id": "34",
+          "Nombre": "iso"
+        },
+        {
+          "$id": "35",
+          "Nombre": "soa"
+        },
+        {
+          "$id": "36",
+          "Nombre": "Habi124949"
+        }
+      ]
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "37"
+  },
+  "BuscadorTags": {
+    "$id": "38"
+  },
+  "BuscadorMaterial": {
+    "$id": "39"
+  },
+  "PrinterConsola": {
+    "$id": "40"
+  },
+  "ListaNombreOfertas": {
+    "$id": "41",
+    "$values": []
+  },
+  "Administradores": {
+    "$id": "42",
+    "2100989690": {
+      "$id": "43",
+      "Nombre": "Adminnn",
+      "Empresas": {
+        "$id": "44",
+        "$values": []
+      }
+    }
+  }
+}
