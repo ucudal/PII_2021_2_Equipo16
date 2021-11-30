@@ -182,7 +182,7 @@ namespace ClassLibrary
         /// <returns></returns>
         public static string VerMisOfertas(Empresa empresa)
         {
-            return TelegramPrinter.BusquedaPrinter(empresa.VerMisOfertas());
+            return PlataformaPrinter.BusquedaPrinter(empresa.VerMisOfertas());
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ClassLibrary
     /// <remarks>
     /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
     /// </remarks>
-    public class TelegramPrinter : IPrinter
+    public class PlataformaPrinter : IPrinter
     {
         /// <summary>
         /// Este método imprime por consola los atributos de oferta.
