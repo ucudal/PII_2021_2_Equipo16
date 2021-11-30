@@ -9,8 +9,8 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-    /// la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
-    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// la clase Rubro tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible su correcto funcionamiento.
     /// </remarks>
 
     public class Rubro

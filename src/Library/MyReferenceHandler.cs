@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Este handler sirve pare referenciar a los handlers.
+    /// Este handler sirve pare referenciar a los handlers, usa Singleton.
     /// </summary>
     public class MyReferenceHandler : ReferenceHandler
     {
