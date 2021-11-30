@@ -46,15 +46,11 @@ namespace ClassLibrary
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacionempresa");
                 if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                {   
-                    
+                {                       
                     Direccion(mensaje);
-
-                    SendProfileImage(mensaje);
 
                     respuesta = "";
                     return true;
-                    
                 }
                 else
                 {
@@ -79,8 +75,12 @@ namespace ClassLibrary
             string direccion = value.Ubicacion.NombreCalle;
             LocationApiClient client = new LocationApiClient();
 
+            // Utilizando el mensaje ingresado como parametro. 
             Location direccionActual = await client.GetLocationAsync(direccion);
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
+
+            // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.
+            SendProfileImage(mensaje);
         }
         private async Task SendProfileImage(IMensaje mensaje)
         {
