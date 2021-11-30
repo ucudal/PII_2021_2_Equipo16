@@ -162,6 +162,21 @@
             Ahora con este método se permite evaluar acciones o respuestas del usuario para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
             </summary>
         </member>
+        <member name="T:Test.Library.EmpresaHandlerTest">
+            <summary>
+            Esta clase permite probar todos los handlers destinados al emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.CrearOfertaHandlerTest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.Test">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
         <member name="T:Test.Library.OfertaTests">
             <summary>
             Esta clase permite realizar los tests de la clase Oferta.
@@ -218,16 +233,6 @@
         <member name="M:Test.Library.RubroTests.TestEliminarRubroQueNoExiste">
             <summary>
             Test para comprobar si se puede eliminar un rubro que no existe.
-            </summary>
-        </member>
-        <member name="T:Test.Library.TestHandlertest">
-            <summary>
-            Esta clase permite realizar los tests de la clase Oferta.
-            </summary>
-        </member>
-        <member name="M:Test.Library.TestHandlertest.Test">
-            <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
             </summary>
         </member>
         <member name="T:Test.Library.UsuarioTests">
