@@ -42,7 +42,6 @@ namespace ClassLibrary
                 getOfertasPublicados.Append($"- {oferta.Nombre}.");
             }
 
-            ConsolePrinter.DatoPrinter(getOfertasPublicados.ToString());
         }
 
         /// <summary>
