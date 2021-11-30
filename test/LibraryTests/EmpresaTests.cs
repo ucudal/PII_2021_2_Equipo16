@@ -24,8 +24,8 @@ namespace Test.Library
             
  
             Assert.AreEqual(expected, empresaTest.Nombre);
-            Assert.AreEqual(expected2, empresaTest.Ubicacion);
-            Assert.AreEqual(expected3, empresaTest.Rubro);
+            Assert.AreEqual(expected2, empresaTest.Ubicacion.NombreCalle);
+            Assert.AreEqual(expected3, empresaTest.Rubro.Nombre);
             
         }
 
@@ -70,10 +70,21 @@ namespace Test.Library
             Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
 
             int expected = 1;
+            string respuesta = "";
             
             empresaTest.AddHabilitacion("apa");
-            empresaTest.AddHabilitacion("ALOJA");
+            
+            try
+            {
+                empresaTest.AddHabilitacion("DEUNA");
+            }
+            catch (System.ArgumentException e)
+            {
+                respuesta = e.Message;
+            }
+            string expected2 = "DEUNA no se encuentra disponible, use nuevamente /agregarhabilitacionempresa";
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
+            Assert.AreEqual(expected2, respuesta);
         }
         /// <summary>
         /// Test que chequea que sucede si se intenta remover una habilitación que no está en la lista
@@ -87,9 +98,11 @@ namespace Test.Library
     
             int expected = 2;
             
-            empresaTest.AddHabilitacion("apa");
             empresaTest.AddHabilitacion("soa");
-            empresaTest.RemoveHabilitacion("DEUNA");
+            empresaTest.AddHabilitacion("soa");
+            
+            empresaTest.RemoveHabilitacion("apa");
+        
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
         }
     }

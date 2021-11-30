@@ -85,13 +85,10 @@ namespace ClassLibrary
         [JsonInclude]
         public List<string> ListaNombreOfertas {get; private set;} = new List<string>();
 
-<<<<<<< HEAD
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-=======
->>>>>>> deV2
         [JsonInclude]
         public Dictionary<string, Administrador> Administradores = new Dictionary<string, Administrador>();
 
