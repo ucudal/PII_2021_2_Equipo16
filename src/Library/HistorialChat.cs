@@ -5,7 +5,8 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase es la encargada de registrar los mensajes del Usuario.
+    /// Esta clase se formó usando Expert y SRP, surgió de la necesidad de que el usuario que se comunique con el bot,
+    /// y tenga un historial relacionado.
     /// </summary>
     public class HistorialChat : IJsonConvertible
     {

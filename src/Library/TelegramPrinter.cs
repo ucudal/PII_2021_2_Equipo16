@@ -7,7 +7,7 @@ namespace ClassLibrary
     /// Esta clase se encarga de imprimir por consola los atributos de oferta.
     /// </summary>
     /// <remarks>
-    /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.
+    /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
     /// </remarks>
     public class TelegramPrinter : IPrinter
     {

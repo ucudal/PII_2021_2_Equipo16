@@ -16,7 +16,7 @@ namespace ClassLibrary
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
     /// la clase Empresa tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
-    /// Además, utilizamos herencia para lograr una refactorización de código aceptable, ya que sería muy tedioso y
+    /// Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
     public class Empresa : Usuario, IHabilitaciones, IJsonConvertible

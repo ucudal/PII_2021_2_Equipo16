@@ -6,6 +6,9 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de contener la Ubicacion.
     /// </summary>
+    /// <remarks>
+    /// Para la cración de esta clase se aplicó el patrón Expert puesto que la ubicación es la que tiene que conocer a la calle y no otras clases directamente.
+    /// </remarks>
     public class Ubicacion
     {
         /// <summary>

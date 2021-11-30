@@ -11,6 +11,11 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
+    /// <remarks>
+    /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+    /// la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// </remarks>
     public class Oferta : IHabilitaciones
     {
        /// <summary>
