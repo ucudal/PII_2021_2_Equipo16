@@ -55,6 +55,9 @@ namespace ClassLibrary
         [JsonInclude]
         public Publicaciones Publicaciones {get; set;} = Singleton<Publicaciones>.Instancia;
 
+        [JsonInclude]
+        public ContenedorRubroHabilitaciones ContenedorRubrosHabs {get; set;} = Singleton<ContenedorRubroHabilitaciones>.Instancia;
+
         /// <summary>
         /// Guarda una instancia de BuscadorUbicacion.
         /// </summary>

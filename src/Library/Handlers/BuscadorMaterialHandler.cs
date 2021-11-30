@@ -40,7 +40,7 @@ namespace ClassLibrary
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/buscarmaterial");
                 if (listaConParametros.Count == 0)
                 {
-                    respuesta = "Ingrese el Material por el que desea filtrar en su búsqueda.";
+                    respuesta = "Ingrese el tipo del material por el que desea filtrar en su búsqueda.\n-Reciclado\n-Residuo";
                     return true;
                 }
                 else if (listaConParametros.Count == 1)
@@ -49,7 +49,7 @@ namespace ClassLibrary
                 
                     LogicaBuscadores.BuscarPorMaterial(palabraClave);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave))} {OpcionesUso.AccionesEmprendedor()}";
+                    respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorMaterial(palabraClave))}";
                     return true;
                 }          
 
