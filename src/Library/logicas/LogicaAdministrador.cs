@@ -3,7 +3,7 @@ using System;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase se encarga de la lógica relacionada con el Administrador.
+    /// Esta clase se encarga de contener la lógica relacionada con el Administrador.
     /// </summary>
     public static class LogicaAdministrador
     {
@@ -23,7 +23,7 @@ namespace ClassLibrary
             }
             else
             {
-                throw new ArgumentException ("No se ha podido acceder como administrador");
+                throw new ArgumentException("No se ha podido acceder como administrador");
             }
         }
 
@@ -36,7 +36,7 @@ namespace ClassLibrary
         {
             if (administrador == null)
             {
-                throw new ArgumentNullException ("El administrador no puede ser null.");
+                throw new ArgumentNullException("El administrador no puede ser null.");
             }
             else
             {
@@ -51,7 +51,6 @@ namespace ClassLibrary
                     {
                         ConsolePrinter.DatoPrinter($"La empresa {empresa.Nombre} no esta en los registros del bot.");
                     }
-
                 }
             }
         }
@@ -63,7 +62,7 @@ namespace ClassLibrary
         /// <param name="administrador">Recibe por parametro el Administrador de referencia.</param>
         /// <param name="clave">Recibe por parametro la pass antigua.</param>
         /// <param name="nuevaClave">Recibe por parametro la nueva pass.</param>
-        public static void CambioClave(Administrador administrador,string clave, string nuevaClave)
+        public static void CambioClave(Administrador administrador, string clave, string nuevaClave)
         {
             administrador.CambioClave(clave, nuevaClave);
         }

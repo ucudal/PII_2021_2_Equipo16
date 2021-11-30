@@ -17,7 +17,7 @@ namespace ClassLibrary
         /// Obtiene o establece un valor que indica si se encontraron o no las coordenas o las direcciones de origen y
         /// destino.
         /// </summary>
-        /// <value>true si se encontró la dirección; false en caso contrario.</value>
+        /// <value><c>True</c> si se encontró la dirección; <c>False</c> en caso contrario.</value>
         public bool Found { get; set; }
 
         /// <summary>

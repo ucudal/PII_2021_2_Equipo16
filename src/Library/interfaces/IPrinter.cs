@@ -13,6 +13,7 @@ namespace ClassLibrary
         /// Este método hace un print de la oferta.
         /// </summary>
         /// <param name="oferta">Oferta.</param>
-        string OfertaPrinter(Oferta oferta);        
+        /// <returns>Retorna una oferta para imprimir.</returns>
+        string OfertaPrinter(Oferta oferta);   
     }
 }

@@ -1,4 +1,3 @@
-
 namespace ClassLibrary
 {
     /// <summary>
@@ -15,7 +14,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <value></value>
         public static T Instancia
@@ -26,6 +25,7 @@ namespace ClassLibrary
                 {
                     instancia = new T();
                 }
+                
                 return instancia;
             }
             set

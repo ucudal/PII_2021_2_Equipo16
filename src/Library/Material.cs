@@ -39,7 +39,7 @@ namespace ClassLibrary
             }
             else
             {
-               this.Cantidad = cantidad; 
+               this.Cantidad = cantidad;
             }
 
             if (!Int32.TryParse(precio, out _))
@@ -55,34 +55,34 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece el nombre del material.
         /// </summary>
-        /// <value>string</value>
-        public string Nombre { get; set;}
-        
+        /// <value>String.</value>
+        public string Nombre { get; set; }
+
         /// <summary>
-        /// obtiene o establece la cantidad del material.
+        /// Obtiene o establece la cantidad del material.
         /// </summary>
-        /// <value>string</value>
-        public string Cantidad { get; set;}
-        
+        /// <value>String.</value>
+        public string Cantidad { get; set; }
+
         /// <summary>
-        /// obtiene o establece el precio del material.
+        /// Obtiene o establece el precio del material.
         /// </summary>
-        /// <value>string</value>
-        public string Precio { get; set;}
-        
+        /// <value>String.</value>
+        public string Precio { get; set; }
+
         /// <summary>
-        /// obtiene o establece la unidad del material.
+        /// Obtiene o establece la unidad del material.
         /// </summary>
-        /// <value>string</value>
-        public string Unidad { get; set;}
-        
+        /// <value>String.</value>
+        public string Unidad { get; set; }
+
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns>Retorna la Serializacion.</returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

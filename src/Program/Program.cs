@@ -65,7 +65,7 @@ namespace ConsoleApplication
                                             new BuscadorUbicacionHandler(
                                                 new CalcularOfertasCompradasHandler(
                                                     new CalcularOfertasVendidasHandler(
-                                                        new AddHabOfertaHandler(
+                                                        new AgregarHabOfertaHandler(
                                                             new CrearOfertaHandler(
                                                                 new RemoverOfertaHandler(
                                                                     new GetHabListHandler(
