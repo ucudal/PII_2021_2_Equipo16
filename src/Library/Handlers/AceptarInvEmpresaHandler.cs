@@ -3,14 +3,15 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/aceptarinvitacion".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/aceptarinvitacion" y se encarga 
+    /// de manejar el caso en que la Empresa acepta la invitación.
     /// </summary>
     public class AceptarInvEmpresaHandler : BaseHandler
     {
         /// <summary>
-        /// 
+        /// Inicializa una nueva instancia de
         /// </summary>
-        /// <param name="next"></param>
+        /// <param name="next">Handler siguiente.</param>
         /// <returns></returns>
         public AceptarInvEmpresaHandler (BaseHandler next) : base(next)
         {

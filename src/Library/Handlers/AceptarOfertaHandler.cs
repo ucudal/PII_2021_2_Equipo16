@@ -4,13 +4,13 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase contiene un método para aceptar una oferta.
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/aceptaroferta" y se encarga 
+    /// de manejar el caso en que la Empresa acepta una oferta.
     /// </summary>
     public class AceptarOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa el mensaje ingresado por el usuario.
+        /// Inicializa una nueva instancia de la clase. Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next"></param>
         public AceptarOfertaHandler (BaseHandler next) : base(next)
