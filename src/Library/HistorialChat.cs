@@ -5,16 +5,15 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Esta clase se formó usando Expert y SRP, surgió de la necesidad de que el usuario que se comunique con el bot,
+    /// y tenga un historial relacionado.
     /// </summary>
     public class HistorialChat : IJsonConvertible
     {
-       /// <summary>
-       /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
-       
+        /// <summary>
+        /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonConstructor]
         public HistorialChat()
         {
@@ -23,92 +22,91 @@ namespace ClassLibrary
         /// <summary>
         /// Contiene los mensajes enviados por el Usuario.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUser {get; set;} = new List<string>();
+        public List<string> MensajesDelUser { get; set; } = new List<string>();
 
         /// <summary>
-        /// 
+        /// Esta lista contiene los mensajes del usuarios listados en forma inversa.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
-        public List<string> MensajesDelUserReves {get; set; } = new List<string>();
+        public List<string> MensajesDelUserReves { get; set; } = new List<string>();
 
         /// <summary>
         /// Devueleve una lista que contiene los mensajes despues de el comando ingresado.
         /// </summary>
-        /// <param name="comando"></param>
+        /// <param name="comando">Recibe por parametro un string con el comando ingresado.</param>
         /// <returns></returns>
         public List<string> BuscarUltimoComando(string comando)
         {
-            List<string> ParametrosIngresadosDelComando = new List<string>();
-            foreach (string elemento in MensajesDelUser)
+            List<string> parametrosIngresadosDelComando = new List<string>();
+            foreach (string elemento in this.MensajesDelUser)
             {
-               MensajesDelUserReves.Add(elemento); 
+               this.MensajesDelUserReves.Add(elemento);
             }
 
-            MensajesDelUserReves.Reverse(); 
-            foreach (string mensajeParametro in MensajesDelUserReves)
+            this.MensajesDelUserReves.Reverse();
+            foreach (string mensajeParametro in this.MensajesDelUserReves)
             {
                 if (mensajeParametro == comando)
                 {
-                    return ParametrosIngresadosDelComando;
+                    return parametrosIngresadosDelComando;
                 }
-                
-                ParametrosIngresadosDelComando.Add(mensajeParametro);
+
+                parametrosIngresadosDelComando.Add(mensajeParametro);
             }
-            
-            MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
-            return ParametrosIngresadosDelComando;
+
+            this.MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
+            return parametrosIngresadosDelComando;
         }
 
         /// <summary>
         /// Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers.
         /// </summary>
-        /// <param name="comando"></param>
-        /// <returns></returns>
+        /// <param name="comando">Recibe por parametro un string con el comando ingresado.</param>
+        /// <returns>Retorna true si el comando ingresado esta correctamente, o false en caso contrio.</returns>
         public bool ComprobarUltimoComandoIngresado(string comando)
         {
-            foreach (string elemento in MensajesDelUser)
+            foreach (string elemento in this.MensajesDelUser)
             {
-               MensajesDelUserReves.Add(elemento); 
-               //ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
+               this.MensajesDelUserReves.Add(elemento);
+               // ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
-            
-            MensajesDelUserReves.Reverse();
 
-            foreach (string item in MensajesDelUserReves)
+            this.MensajesDelUserReves.Reverse();
+
+            foreach (string item in this.MensajesDelUserReves)
             {
                 if (item.StartsWith("/"))
                 {
                     if (item == comando)
                     {
-                        MensajesDelUserReves.Clear();
+                        this.MensajesDelUserReves.Clear();
                         return true;
-                    } 
-                    
-                    MensajesDelUserReves.Clear();
+                    }
+
+                    this.MensajesDelUserReves.Clear();
                     return false;
                 }
             }
-            
-            MensajesDelUserReves.Clear();
+
+            this.MensajesDelUserReves.Clear();
             return false;
         }
 
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
             };
             return JsonSerializer.Serialize(this, opciones);
         }
+
         /// <summary>
         /// Metodo con el fin de poder limpiar el historial del chat para no consumir tanta memoria.
         /// </summary>

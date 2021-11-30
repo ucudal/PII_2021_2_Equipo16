@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// <returns>Retorna la cadena una vez que se le aplicaron todos los limpiadores de cadena.</returns>
         public static string LimpiaCadena(string cadena)
         {
-            cadena = cadena.Replace(" ", "");
+            cadena = cadena.Replace(" ", string.Empty);
             cadena = cadena.ToLower();
             cadena = cadena.Replace("á", "a");
             cadena = cadena.Replace("é", "e");

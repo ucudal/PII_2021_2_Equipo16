@@ -1,7 +1,7 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -16,43 +16,37 @@ namespace ClassLibrary
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
     /// la clase Empresa tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
-    /// Además, utilizamos herencia para lograr una refactorización de código aceptable, ya que sería muy tedioso y
+    /// Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
-
     public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
-       /// <summary>
-       /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonConstructor]
-        public Empresa() : base()        
+        public Empresa()
+            : base()    
         {
-
         }
 
         /// <summary>
-        /// 
+        /// Inicializa una instancia de la clase Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        public Empresa(string nombre, string ubicacion, string rubro) : base(nombre, ubicacion, rubro)
+        public Empresa(string nombre, string ubicacion, string rubro)
+            : base(nombre, ubicacion, rubro)
         {
         }
 
         /// <summary>
-        /// 
+        /// Guarda el conjunto de fecha y oferta.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get; private set;} = new Dictionary<DateTime, Oferta>();
-        //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
-        //private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        //private List<Oferta> misOfertas = new List<Oferta>();
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas { get; private set; } = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
@@ -73,25 +67,25 @@ namespace ClassLibrary
         public List<Oferta> OfertasAceptadas { get; private set; } = new List<Oferta>();
 
         /// <summary>
-        /// 
+        /// Esta lista contiene las ofertas realizadas por la empresa.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> MisOfertas { get; private set;} = new List<Oferta>();
-        
+        public List<Oferta> MisOfertas { get; private set; } = new List<Oferta>();
+
         /// <summary>
-        /// 
+        /// Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
         /// </summary>
-        /// <param name="publicaciones"></param>
-        /// <param name="nombre"></param>
-        /// <param name="nombreMaterial"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="precio"></param>
-        /// <param name="unidad"></param>
-        /// <param name="tags"></param>
-        /// <param name="ubicacion"></param>
-        /// <param name="puntualesConstantes"></param>
+        /// <param name="publicaciones">Publicaciones.</param>
+        /// <param name="nombre">Nombre de la oferta.</param>
+        /// <param name="nombreMaterial">Nombre del material.</param>
+        /// <param name="cantidad">Cantidad.</param>
+        /// <param name="precio">Precio</param>
+        /// <param name="unidad">Unidad.</param>
+        /// <param name="tags">Tags.</param>
+        /// <param name="ubicacion">Ubicacion.</param>
+        /// <param name="puntualesConstantes">Oferta puntual o constante.</param>
         public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
-        {   
+        {
             Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
             this.MisOfertas.Add(productoCreado);
@@ -112,6 +106,7 @@ namespace ClassLibrary
                     ofertaParaEliminar = ofertaEnLista;   
                 }
             }
+
             publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
             this.MisOfertas.Remove(ofertaParaEliminar);
         }
@@ -147,14 +142,12 @@ namespace ClassLibrary
         {
             int cantidadVendida = 0;
             DateTime fInicio;
-
             if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
                 throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
-            
-            DateTime fFinal;
 
+            DateTime fFinal;
             if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
                 throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
@@ -205,6 +198,7 @@ namespace ClassLibrary
                     habEliminada = hab;
                 }
             }
+
             this.HabilitacionesEmpresa.Remove(habEliminada);
         }
 
@@ -212,7 +206,7 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
         /// Este metodo muestra los interesados en una oferta.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string listando los empresarios interesados en una oferta.</returns>
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");
@@ -220,7 +214,6 @@ namespace ClassLibrary
             {
                 foreach (Oferta oferta in this.InteresadosEnOfertas)
                 {
-
                     texto.Append(oferta.TextoInteresados());
                 }
             }
@@ -228,13 +221,15 @@ namespace ClassLibrary
             {
                 texto.Append("0 interesados");
             }
+
             return texto.ToString();
         }
+
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
         /// ya que conoce lo necesario.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string con los datos de la Empresa.</returns>
         public string TextoEmpresa()
         {
             StringBuilder text = new StringBuilder();
@@ -248,26 +243,28 @@ namespace ClassLibrary
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
+
             text.Append($"\n");
             text.Append($"******************************\n");
             return text.ToString();
         }
+
         /// <summary>
         /// Método que devuelve las ofertas publicadas por la empresa.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna una lista con la listas de ofertas realizadas por la empresa.</returns>
         public List<Oferta> VerMisOfertas()
         {
-            return MisOfertas;
+            return this.MisOfertas;
         }
 
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

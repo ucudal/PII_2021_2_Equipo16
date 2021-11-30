@@ -11,17 +11,20 @@ namespace ClassLibrary
     /// Esta clase que contiene habilitaciones requiere, que se implemente la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
+    /// <remarks>
+    /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
+    /// la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// </remarks>
     public class Oferta : IHabilitaciones
     {
        /// <summary>
        /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
         [JsonConstructor]
         public Oferta()
         {
-
         }
         /// <summary>
         /// Constructor para json.
@@ -30,17 +33,17 @@ namespace ClassLibrary
         public List<Habilitaciones> HabilitacionesOferta { get; set; } = new List<Habilitaciones>();
 
         /// <summary>
-        /// 
+        /// Inicializa una nueva instancia de la clase <see cref="Oferta"/>.
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="nombreMaterial"></param>
-        /// <param name="cantidad"></param>
-        /// <param name="precio"></param>
-        /// <param name="unidad"></param>
-        /// <param name="tags"></param>
-        /// <param name="ubicacion"></param>
-        /// <param name="constantesPuntuales"></param>
-        /// <param name="empresa"></param>
+        /// <param name="nombre">Recibe por parametro el nombre de la oferta.</param>
+        /// <param name="nombreMaterial">Recibe por parametro el nombre del material de la oferta.</param>
+        /// <param name="cantidad">Recibe por parametro la cantidad de la oferta.</param>
+        /// <param name="precio">Recibe por parametro el precio de la oferta.</param>
+        /// <param name="unidad">Recibe por parametro la unidad de la oferta.</param>
+        /// <param name="tags">Recibe por parametro el tags de la oferta.</param>
+        /// <param name="ubicacion">Recibe por parametro la ubicacion de la oferta.</param>
+        /// <param name="constantesPuntuales">Recibe por parametro que indica si es contante de la oferta.</param>
+        /// <param name="empresa">Recibe por parametro la empresa que creo la oferta.</param>
         public Oferta(string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales, Empresa empresa)
         {
             this.Nombre = nombre;
@@ -77,17 +80,16 @@ namespace ClassLibrary
         /// Obtiene o establece la Ubicación de la oferta.
         /// </summary>
         public Ubicacion Ubicacion { get; set; }
-        
+
         /// <summary>
         /// Obtiene o establece la empresa creadora de la oferta.
         /// </summary>
-        public Empresa EmpresaCreadora {get; set;}
-       
+        public Empresa EmpresaCreadora { get; set; }
 
         /// <summary>
         /// Obtiene o establece un valor que indica si la Oferta es constante o puntual.
         /// </summary>
-        public string ConstantesPuntuales { get; set;}
+        public string ConstantesPuntuales { get; set; }
 
         /// <summary>
         /// Añade una habilitación a la oferta.
@@ -137,7 +139,7 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string con la información de la Oferta.</returns>
         public string TextoOferta()
         {
             StringBuilder text = new StringBuilder();
@@ -151,13 +153,13 @@ namespace ClassLibrary
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Es una oferta {this.ConstantesPuntuales} \n");
             text.Append($"Requerimientos: \n");
-           
-            foreach (Habilitaciones habilitaciones in HabilitacionesOferta)
+
+            foreach (Habilitaciones habilitaciones in this.HabilitacionesOferta)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
-             text.Append($"\n******************************");
-
+            
+            text.Append($"\n******************************");
             return text.ToString();
         }
 
@@ -165,25 +167,25 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.
         /// </summary>
-        /// <returns></returns>
-
+        /// <returns>Retorna un string listando los interesados en la oferta.</returns>
         public string TextoInteresados()
         {
             StringBuilder texto = new StringBuilder($"\nLos interesados en {this.Nombre} son: ");
-            foreach (string interesado in Interesado)
+            foreach (string interesado in this.Interesado)
             {
                 texto.Append("\n" + interesado);
             }
+            
             return texto.ToString();
         }
-        
+
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

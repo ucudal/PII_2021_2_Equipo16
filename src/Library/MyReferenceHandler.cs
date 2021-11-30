@@ -7,16 +7,15 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Este handler sirve pare referenciar a los handlers, usa Singleton.
     /// </summary>
     public class MyReferenceHandler : ReferenceHandler
     {
         private static MyReferenceHandler instance;
         
         /// <summary>
-        /// 
+        /// Sirve para la instanciacion de handler de referencia.
         /// </summary>
-        /// <value></value>
         public static MyReferenceHandler Instance
         {
             get
@@ -30,33 +29,31 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Con esto se resetea el handler de referencia.
         /// </summary>
-        /// <returns></returns>
         public MyReferenceHandler() => Reset();
-        private ReferenceResolver _rootedResolver;
-        
+        private ReferenceResolver rootedResolver;
+
         /// <summary>
-        /// 
+        /// Con esto se resetea el handler de referencia.
         /// </summary>
-        /// <returns></returns>
-        public override ReferenceResolver CreateResolver() => _rootedResolver;
-        
+        public override ReferenceResolver CreateResolver() => this.rootedResolver;
+
         /// <summary>
-        /// 
+        /// Con esto se resetea el handler de referencia.
         /// </summary>
-        public void Reset() => _rootedResolver = new MyReferenceResolver();
+        public void Reset() => this.rootedResolver = new MyReferenceResolver();
     }
 
     class MyReferenceResolver : ReferenceResolver
     {
-        private uint _referenceCount;
-        private readonly Dictionary<string, object> _referenceIdToObjectMap = new();
-        private readonly Dictionary<object, string> _objectToReferenceIdMap = new(ReferenceEqualityComparer.Instance);
+        private uint referenceCount;
+        private readonly Dictionary<string, object> referenceIdToObjectMap = new ();
+        private readonly Dictionary<object, string> objectToReferenceIdMap = new (ReferenceEqualityComparer.Instance);
 
         public override void AddReference(string referenceId, object value)
         {
-            if (!_referenceIdToObjectMap.TryAdd(referenceId, value))
+            if (!this.referenceIdToObjectMap.TryAdd(referenceId, value))
             {
                 throw new JsonException();
             }
@@ -64,15 +61,15 @@ namespace ClassLibrary
 
         public override string GetReference(object value, out bool alreadyExists)
         {
-            if (_objectToReferenceIdMap.TryGetValue(value, out string referenceId))
+            if (this.objectToReferenceIdMap.TryGetValue(value, out string referenceId))
             {
                 alreadyExists = true;
             }
             else
             {
-                _referenceCount++;
-                referenceId = _referenceCount.ToString();
-                _objectToReferenceIdMap.Add(value, referenceId);
+                this.referenceCount++;
+                referenceId = this.referenceCount.ToString();
+                this.objectToReferenceIdMap.Add(value, referenceId);
                 alreadyExists = false;
             }
 
@@ -81,7 +78,7 @@ namespace ClassLibrary
 
         public override object ResolveReference(string referenceId)
         {
-            if (!_referenceIdToObjectMap.TryGetValue(referenceId, out object value))
+            if (!this.referenceIdToObjectMap.TryGetValue(referenceId, out object value))
             {
                 throw new JsonException();
             }
