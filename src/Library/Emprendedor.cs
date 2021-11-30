@@ -17,7 +17,6 @@ namespace ClassLibrary
         /// <summary>
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
         public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get; set;} = new Dictionary<DateTime, Oferta>();
 
@@ -39,16 +38,13 @@ namespace ClassLibrary
        /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
-       
         [JsonConstructor]
-        
         public Emprendedor() : base()
         {
         }
         
         /// <summary>
-        /// 
+        /// Inicializa una instancia de la clase Emprendedor.
         /// </summary>
         /// <param name="nombre">Nombre del emprededor.</param>
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
@@ -98,10 +94,6 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Muestra todas las habilitaciones posibles para agregar.
-        /// </summary>
-
-        /// <summary>
         /// Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
         /// </summary>
         /// <param name="fechaInicio">Fecha de inicio.</param>
@@ -139,7 +131,7 @@ namespace ClassLibrary
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase emprendedor.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string con los datos del Emprendedor.</returns>
         public string TextoEmprendedor()
         {
             StringBuilder text = new StringBuilder();
@@ -148,7 +140,7 @@ namespace ClassLibrary
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
-            text.Append($"Requerimientos: \n");
+            text.Append($"Habilitaciones: \n");
             foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {
                 text.Append($"{habilitaciones.Nombre}, ");
@@ -161,7 +153,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serialización.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

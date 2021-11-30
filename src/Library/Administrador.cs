@@ -13,15 +13,17 @@ namespace ClassLibrary
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
-        /// </summary>
+        /// </summary>    
+        [JsonConstructor]
+        public Administrador()
+        {
+
+        }
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
+        /// </summary>  
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         /// <param name="clave">Recibe una clave de entrada.</param>
-    
-       [JsonConstructor]
-       public Administrador()
-       {
-
-       }
         public Administrador(string nombre, string clave)
         {
             if (string.IsNullOrEmpty(nombre))
@@ -96,11 +98,17 @@ namespace ClassLibrary
             Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
         }
 
+        /// <summary>
+        /// Este método sive para agregar nuevos rubros.
+        /// </summary>
         public void AgregarRubro(string nombreRubro)
         {
             Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearRubro(nombreRubro);
         }
 
+        /// <summary>
+        /// Este método sirve para agregar habilitaciones.
+        /// </summary>
         public void AgregarHabilitacion(string nombreHab)
         {
             Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearHabilitacion(nombreHab);

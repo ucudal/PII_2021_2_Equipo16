@@ -4,12 +4,12 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/buscarubicacion".
     /// </summary>
     public class BuscadorUbicacionHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/buscarubicacion".
         /// </summary>
         /// <param name="next">El próximo "handler".</param>
         public BuscadorUbicacionHandler(BaseHandler next) : base(next)
@@ -18,7 +18,8 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Este método procesa el mensaje "Buscar por invitación" y retorna true.
+        /// En caso contrario retorna false.
         /// </summary>
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -47,7 +48,7 @@ namespace ClassLibrary
                 
                 LogicaBuscadores.BuscarPorUbicacion(palabraClave);
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))}";
+                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} ";
                 return true;
             }          
             respuesta = string.Empty;

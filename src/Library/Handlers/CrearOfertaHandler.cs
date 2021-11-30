@@ -17,7 +17,8 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Este método procesa el mensaje "Crear una oferta" y retorna true.
+        /// En caso contrario retorna false.
         /// </summary>
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -39,7 +40,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el nombre del material";
+                    respuesta = "Ingrese el tipo del material:\n-Reciclado\n-Residuo";
                     return true;
                 }
                 else if (listaConParametros.Count == 2)

@@ -2,217 +2,178 @@
   "$id": "1",
   "HistorialDeChats": {
     "$id": "2",
-    "867965110": {
+    "1548068317": {
       "$id": "3",
       "MensajesDelUser": {
         "$id": "4",
-        "$values": []
+        "$values": [
+          "/verubicacion"
+        ]
       },
       "MensajesDelUserReves": {
         "$id": "5",
-        "$values": []
+        "$values": [
+          "/verubicacion"
+        ]
       }
     },
     "2100989690": {
       "$id": "6",
       "MensajesDelUser": {
         "$id": "7",
-        "$values": []
-      },
-      "MensajesDelUserReves": {
-        "$id": "8",
-        "$values": []
-      }
-    },
-    "1548068317": {
-      "$id": "9",
-      "MensajesDelUser": {
-        "$id": "10",
         "$values": [
-          "/agregarhabilitacionemprendedor",
-          "Soa"
+          "/verubicacion",
+          "/verubicacionempresa"
         ]
       },
       "MensajesDelUserReves": {
-        "$id": "11",
+        "$id": "8",
         "$values": [
-          "Soa",
-          "/agregarhabilitacionemprendedor"
+          "/verubicacionempresa",
+          "/verubicacion"
         ]
       }
     }
   },
   "EmpresasInvitadas": {
-    "$id": "12",
+    "$id": "9",
     "$values": [
       {
-        "$id": "13",
+        "$id": "10",
         "FechaOfertasEntregadas": {
-          "$id": "14"
+          "$id": "11"
         },
         "HabilitacionesEmpresa": {
-          "$id": "15",
+          "$id": "12",
           "$values": []
         },
         "InteresadosEnOfertas": {
-          "$id": "16",
+          "$id": "13",
           "$values": []
         },
         "OfertasAceptadas": {
-          "$id": "17",
+          "$id": "14",
           "$values": []
         },
         "MisOfertas": {
-          "$id": "18",
+          "$id": "15",
           "$values": []
         },
         "Nombre": "conaprole",
         "Ubicacion": {
-          "$id": "19",
+          "$id": "16",
           "NombreCalle": "pakistan"
         },
         "Rubro": {
-          "$id": "20",
+          "$id": "17",
           "Nombre": "textil"
         }
       }
     ]
   },
   "Emprendedores": {
-    "$id": "21",
-    "867965110": {
-      "$id": "22",
-      "FechaDeOfertasCompradas": {
-        "$id": "23"
-      },
-      "OfertasInteresado": {
-        "$id": "24",
-        "$values": []
-      },
-      "HabilitacionesEmprendedor": {
-        "$id": "25",
-        "$values": [
-          {
-            "$id": "26",
-            "Nombre": "Habtesttttt"
-          }
-        ]
-      },
-      "Especializaciones": "a",
-      "Nombre": "queso",
-      "Ubicacion": {
-        "$id": "27",
-        "NombreCalle": "a"
-      },
-      "Rubro": {
-        "$ref": "20"
-      }
-    },
+    "$id": "18",
     "1548068317": {
-      "$id": "28",
+      "$id": "19",
       "FechaDeOfertasCompradas": {
-        "$id": "29"
+        "$id": "20"
       },
       "OfertasInteresado": {
-        "$id": "30",
+        "$id": "21",
         "$values": []
       },
       "HabilitacionesEmprendedor": {
-        "$id": "31",
+        "$id": "22",
         "$values": []
       },
-      "Especializaciones": "Decorado de interiores",
+      "Especializaciones": "decorado",
       "Nombre": "Agustin",
       "Ubicacion": {
-        "$id": "32",
-        "NombreCalle": "Tres Cruces"
+        "$id": "23",
+        "NombreCalle": "Eduardo V\u00EDctor Haedo 2370"
       },
       "Rubro": {
-        "$id": "33",
-        "Nombre": "deportes"
+        "$id": "24",
+        "Nombre": "metalurgia"
       }
     }
   },
   "Empresas": {
-    "$id": "34"
+    "$id": "25"
   },
   "Publicaciones": {
-    "$id": "35",
+    "$id": "26",
     "OfertasPublicados": {
-      "$id": "36",
+      "$id": "27",
       "$values": []
     }
   },
   "ContenedorRubrosHabs": {
-    "$id": "37",
+    "$id": "28",
     "ListaRubros": {
-      "$id": "38",
+      "$id": "29",
       "$values": [
         {
-          "$ref": "20"
+          "$ref": "17"
         },
         {
-          "$id": "39",
-          "Nombre": "metalurgia"
+          "$ref": "24"
         },
         {
-          "$id": "40",
+          "$id": "30",
           "Nombre": "deportes"
         },
         {
-          "$id": "41",
-          "Nombre": "Eubreismskdjdj"
-        },
-        {
-          "$id": "42",
-          "Nombre": "Kilakalaisndsk"
+          "$id": "31",
+          "Nombre": "Policia"
         }
       ]
     },
     "ListaHabilitaciones": {
-      "$id": "43",
+      "$id": "32",
       "$values": [
         {
-          "$id": "44",
+          "$id": "33",
           "Nombre": "apa"
         },
         {
-          "$id": "45",
+          "$id": "34",
           "Nombre": "iso"
         },
         {
-          "$id": "46",
+          "$id": "35",
           "Nombre": "soa"
         },
         {
-          "$ref": "26"
+          "$id": "36",
+          "Nombre": "Habi124949"
         }
       ]
     }
   },
   "BuscadorUbicacion": {
-    "$id": "47"
+    "$id": "37"
   },
   "BuscadorTags": {
-    "$id": "48"
+    "$id": "38"
   },
   "BuscadorMaterial": {
-    "$id": "49"
+    "$id": "39"
   },
   "PrinterConsola": {
-    "$id": "50"
+    "$id": "40"
   },
   "ListaNombreOfertas": {
-    "$id": "51",
+    "$id": "41",
     "$values": []
   },
   "Administradores": {
-    "$id": "52",
+    "$id": "42",
     "2100989690": {
-      "$id": "53",
-      "Nombre": "Ksks",
+      "$id": "43",
+      "Nombre": "Adminnn",
       "Empresas": {
-        "$id": "54",
+        "$id": "44",
         "$values": []
       }
     }

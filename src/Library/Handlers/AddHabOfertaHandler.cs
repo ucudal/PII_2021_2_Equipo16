@@ -10,7 +10,7 @@ namespace ClassLibrary
         /// <summary>
         /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
         /// </summary>
-        /// <param name="next">El próximo "handler".</param>
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public AddHabOfertaHandler (BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/addhaboferta"};

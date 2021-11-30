@@ -11,7 +11,7 @@ namespace Test.Library
     public class HabilitacionesTests
     {
         /// <summary>
-        /// Este método permite evaluar lo que sucede cuando se ingresa un nombre de habilitacion que esta en la lista de habilitaciones.
+        /// Este método permite evaluar lo que sucede cuando se crea una habilitación con nombre.
         /// </summary>
         [Test]
         public void TestHabilitacion()
@@ -23,7 +23,7 @@ namespace Test.Library
         }
 
         /// <summary>
-        /// Este metodo permite evaluar lo que sucede cuando el nombre de la habilitacion no esta en la lista de habilitaciones.
+        /// Este metodo permite evaluar lo que sucede cuando se crea una habilitación sin nombre.
         /// </summary>
         [Test]
         public void TestHabilitacion2()
