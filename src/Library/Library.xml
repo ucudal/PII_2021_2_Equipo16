@@ -36,7 +36,7 @@
             <param name="password">Recibe como parametro la contraseña que se le da por defecto al administrador.</param>
             <param name="nuevaPassword">Recibe como parametro la nueva contraseña que el administrador desea para su cuenta.</param>
         </member>
-        <member name="F:ClassLibrary.Administrador.Empresas">
+        <member name="P:ClassLibrary.Administrador.Empresas">
             <summary>
             Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
             </summary>
@@ -272,7 +272,7 @@
             para la serialización de datos en la clase.
             </summary>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Inicializa una instancia de la clase Emprendedor.
             </summary>
@@ -280,11 +280,18 @@
             <param name="ubicacion">Ubicación del emprendedor.</param>
             <param name="rubro">Rubro del emprendedor.</param>
             <param name="especializaciones">Especializaciones del emprendedor.</param>
+            <param name="email">Email del emprendedor, para contacatrlo.</param>
         </member>
         <member name="P:ClassLibrary.Emprendedor.Especializaciones">
             <summary>
             Obtiene o establece las Especializaciones del emprendedor.
             </summary>
+        </member>
+        <member name="P:ClassLibrary.Emprendedor.Email">
+            <summary>
+            Email del emprendedor.
+            </summary>
+            <value></value>
         </member>
         <member name="M:ClassLibrary.Emprendedor.AddHabilitacion(System.String)">
             <summary>
@@ -1809,7 +1816,7 @@
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,System.String,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.RegistroEmprendedor(System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Registro de usuario para ser emprendedor.
             </summary>
@@ -1817,6 +1824,7 @@
             <param name="ubicacion">Ubicacion del emprendedor.</param>
             <param name="rubro">Rubro del emprendedor.</param>
             <param name="especializaciones">Especializaciones del emprendedor.</param>
+            <param name="email">Email del emprendedor, para contacatrlo.</param>
             <param name="id">Id del chat.</param>
         </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.AddHabilitacion(ClassLibrary.Emprendedor,System.String)">
@@ -1976,11 +1984,11 @@
             <param name="precio">Recibe por parametro el precio del matrial.</param>
             <param name="unidad">Recibe por parametro la unidad del matrial.</param>
         </member>
-        <member name="P:ClassLibrary.Material.Nombre">
+        <member name="P:ClassLibrary.Material.Tipo">
             <summary>
             Obtiene o establece el nombre del material.
             </summary>
-            <value>String.</value>
+            <value>string</value>
         </member>
         <member name="P:ClassLibrary.Material.Cantidad">
             <summary>
@@ -2279,17 +2287,17 @@
             En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
-            <summary>
-            Este método imprime una string con información.
-            </summary>
-            <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
-        </member>
         <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
             <summary>
             Este método imprime por consola los atributos de oferta.
             </summary>
             <param name="oferta">Una oferta.</param>
+        </member>
+        <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
+            <summary>
+            Este método imprime una string con información.
+            </summary>
+            <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
         </member>
         <member name="T:ClassLibrary.Ubicacion">
             <summary>
