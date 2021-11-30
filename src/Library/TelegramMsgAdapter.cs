@@ -5,6 +5,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// La clase que encapsula el mensaje que recibe
+    /// En este caso se aplicó el patrón Adapter para poder adaptar el mensaje recibido por Telegram.
     /// </summary>
     public class TelegramMsgAdapter : IMensaje
     {

@@ -10,6 +10,9 @@ namespace ClassLibrary
     /// Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
+    /// <remarks>
+    /// Se utiliza el patrón Expert, ya que entendemos que esta clase es la encargada, de conocer lo que conoce para su correcto funcionamiento.  
+    /// </remarks>
     public class Habilitaciones
     {
         

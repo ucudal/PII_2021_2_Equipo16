@@ -7,9 +7,7 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Contenedor que tiene Lista de rubros y habilitaciones posibles para el cliente.
-    /// Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
-    /// con el fin de hacer más rígido el programa.
-    /// Por otra parte también se utiliza el patrón Expert.
+    /// Por otra parte se utiliza el patrón Expert, ya que tiene métodos exclusivos directamente relacioandos a lo que conoce.
     /// </summary>
     public class ContenedorRubroHabilitaciones: IJsonConvertible
     {

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Para la cración de esta clase se aplicó el patrón expert ya que la ubicación es la que tiene que conocer a la calle y no otras clases directamente.
     /// </summary>
     public class Ubicacion
     {
