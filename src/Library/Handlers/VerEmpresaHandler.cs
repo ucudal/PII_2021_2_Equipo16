@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/verempresa".
     /// </summary>
     public class VerEmpresaHandler : BaseHandler
     {
@@ -11,7 +11,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
-        /// <param name="next"></param>
+        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public VerEmpresaHandler(BaseHandler next) : base(next)
         {
             this.Keywords = new string[] {"/verempresa"};

@@ -2,9 +2,9 @@
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Esta clase utiliza el patron singleton.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Recibe por parametro una variable generica.</typeparam>
     public class Singleton<T> where T : class, new()
     {
         private static T instancia;

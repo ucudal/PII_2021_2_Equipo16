@@ -26,15 +26,13 @@ namespace ClassLibrary
        /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
         [JsonConstructor]
         public Empresa() : base()        
         {
-
         }
 
         /// <summary>
-        /// 
+        /// Inicializa una instancia de la clase Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
@@ -44,15 +42,10 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Guarda el conjunto de fecha y oferta.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
         public Dictionary<DateTime, Oferta> FechaOfertasEntregadas {get; private set;} = new Dictionary<DateTime, Oferta>();
-        //private List<Habilitaciones> habilitacionesEmpresa = new List<Habilitaciones>();
-        //private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        //private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        //private List<Oferta> misOfertas = new List<Oferta>();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
@@ -73,13 +66,13 @@ namespace ClassLibrary
         public List<Oferta> OfertasAceptadas { get; private set; } = new List<Oferta>();
 
         /// <summary>
-        /// 
+        /// Esta lista contiene las ofertas realizadas por la empresa.
         /// </summary>
         [JsonInclude]
         public List<Oferta> MisOfertas { get; private set;} = new List<Oferta>();
         
         /// <summary>
-        /// 
+        /// Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
         /// </summary>
         /// <param name="publicaciones"></param>
         /// <param name="nombre"></param>
@@ -212,7 +205,7 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
         /// Este metodo muestra los interesados en una oferta.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string listando los empresarios interesados en una oferta.</returns>
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");
@@ -234,7 +227,7 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
         /// ya que conoce lo necesario.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string con los datos de la Empresa.</returns>
         public string TextoEmpresa()
         {
             StringBuilder text = new StringBuilder();
@@ -255,7 +248,7 @@ namespace ClassLibrary
         /// <summary>
         /// Método que devuelve las ofertas publicadas por la empresa.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna una lista con la listas de ofertas realizadas por la empresa.</returns>
         public List<Oferta> VerMisOfertas()
         {
             return MisOfertas;
@@ -264,7 +257,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serialización.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

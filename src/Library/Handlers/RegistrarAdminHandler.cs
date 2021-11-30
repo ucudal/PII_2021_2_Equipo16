@@ -3,12 +3,13 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/interesarme".
     /// </summary>
     public class RegistrarAdminHandler : BaseHandler
     {
         /// <summary>
-        /// Un "handler" del patrón Chain of Responsability que implementa el comando "/registaradmin".
+        /// Inicializa una nueva instancia de la clase.
+        /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
         /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public RegistrarAdminHandler(BaseHandler next) : base(next)

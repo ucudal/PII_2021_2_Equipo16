@@ -30,8 +30,8 @@ namespace ClassLibrary
         /// <summary>
         /// Invita a la empresa a unirse al bot.
         /// </summary>
-        /// <param name="administrador"></param>
-        /// <param name="nombreEmpresa"></param>
+        /// <param name="administrador">Recibe por parametro un Administrador.</param>
+        /// <param name="nombreEmpresa">Recibe por parametro un string con nombre la empresa.</param>
         public static void InvitarEmpresa(Administrador administrador, string nombreEmpresa)
         {
             if (administrador == null)

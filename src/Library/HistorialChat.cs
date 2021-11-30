@@ -13,8 +13,6 @@ namespace ClassLibrary
        /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
-       
         [JsonConstructor]
         public HistorialChat()
         {
@@ -23,21 +21,19 @@ namespace ClassLibrary
         /// <summary>
         /// Contiene los mensajes enviados por el Usuario.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
         public List<string> MensajesDelUser {get; set;} = new List<string>();
 
         /// <summary>
-        /// 
+        /// Esta lista contiene los mensajes del usuarios listados en forma inversa.
         /// </summary>
-        /// <returns></returns>
         [JsonInclude]
         public List<string> MensajesDelUserReves {get; set; } = new List<string>();
 
         /// <summary>
         /// Devueleve una lista que contiene los mensajes despues de el comando ingresado.
         /// </summary>
-        /// <param name="comando"></param>
+        /// <param name="comando">Recibe por parametro un string con el comando ingresado.</param>
         /// <returns></returns>
         public List<string> BuscarUltimoComando(string comando)
         {
@@ -65,8 +61,8 @@ namespace ClassLibrary
         /// <summary>
         /// Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers.
         /// </summary>
-        /// <param name="comando"></param>
-        /// <returns></returns>
+        /// <param name="comando">Recibe por parametro un string con el comando ingresado.</param>
+        /// <returns>Retorna true si el comando ingresado esta correctamente, o false en caso contrio.</returns>
         public bool ComprobarUltimoComandoIngresado(string comando)
         {
             foreach (string elemento in MensajesDelUser)

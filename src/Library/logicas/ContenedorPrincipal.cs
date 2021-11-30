@@ -15,16 +15,14 @@ namespace ClassLibrary
        /// <summary>
        /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
-       
+       /// </summary>       
         [JsonConstructor]
         public ContenedorPrincipal()
         {
         }
 
         /// <summary>
-        /// 
+        /// Guarda un conjunto de Chats que ingresa el usuario.
         /// </summary>
         /// <returns></returns>
         [JsonInclude]
@@ -89,7 +87,7 @@ namespace ClassLibrary
         public List<string> ListaNombreOfertas {get; private set;} = new List<string>();
 
         /// <summary>
-        /// 
+        /// Guarda un conjunto de administradores.
         /// </summary>
         /// <returns></returns>
         [JsonInclude]

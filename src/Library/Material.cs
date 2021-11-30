@@ -18,19 +18,18 @@ namespace ClassLibrary
        /// Constructor sin parametros de la clase Material, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
         [JsonConstructor]
         public Material()
         {
         }
 
        /// <summary>
-       /// 
+       /// Inicializa una nueva instancia de la clase.
        /// </summary>
-       /// <param name="nombre"></param>
-       /// <param name="cantidad"></param>
-       /// <param name="precio"></param>
-       /// <param name="unidad"></param>
+       /// <param name="nombre">Recibe por parametro el nombre del matrial.</param>
+       /// <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
+       /// <param name="precio">Recibe por parametro el precio del matrial.</param>
+       /// <param name="unidad">Recibe por parametro la unidad del matrial.</param>
         public Material(string nombre, string cantidad, string precio, string unidad)
         {
             this.Nombre = nombre;
@@ -81,7 +80,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serializacion.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()
