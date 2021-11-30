@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using System.Collections.Generic;
 
@@ -8,7 +7,7 @@ namespace ClassLibrary
     /// Esta clase se encarga de imprimir por consola los atributos de oferta.
     /// </summary>
     /// <remarks>
-    /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas.
+    /// En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
     /// </remarks>
     public class TelegramPrinter : IPrinter
     {
@@ -25,15 +24,16 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime una string con información.
         /// </summary>
-        /// <param name="resultadoBusqueda"></param>
+        /// <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
         public static string BusquedaPrinter(List<Oferta> resultadoBusqueda)
         {
             StringBuilder textoBusqueda = new StringBuilder();
             foreach (Oferta oferta in resultadoBusqueda)
             {
-                textoBusqueda.Append(oferta.TextoOferta()); 
+                textoBusqueda.Append(oferta.TextoOferta());
                 textoBusqueda.Append("\n");
             }
+
             return textoBusqueda.ToString();
         }
     }

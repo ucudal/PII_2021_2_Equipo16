@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -10,6 +7,9 @@ namespace ClassLibrary
     /// Esta clase representa el global de las habilitaciones existentes, que implementa la interfaz IHabilitaciones.
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
+    /// <remarks>
+    /// Se utiliza el patrón Expert, ya que entendemos que esta clase es la encargada, de conocer lo que conoce para su correcto funcionamiento.  
+    /// </remarks>
     public class Habilitaciones
     {
         
@@ -20,7 +20,6 @@ namespace ClassLibrary
         [JsonConstructor]
         public Habilitaciones()
         {
-
         }
         
         /// <summary>
@@ -35,7 +34,7 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre de la habilitación.
         /// </summary>
         /// <value>Valor es un string del nombre.</value>
-        public string Nombre { get; set;}
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 

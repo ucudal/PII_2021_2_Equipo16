@@ -1,9 +1,7 @@
-
 namespace ClassLibrary
 {
     /// <summary>
-    /// Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato
-    /// Json.
+    /// Define el tipo que tienen los objetos que pueden ser serializados en y deserializados desde texto en formato Json.
     /// </summary>
     public interface IJsonConvertible
     {

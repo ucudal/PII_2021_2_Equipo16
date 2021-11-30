@@ -3,26 +3,27 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/interesarme".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/registaradmin" y se encarga
+    /// de manejar el caso en que se quiera registrar el Administrador.
     /// </summary>
     public class RegistrarAdminHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa el mensaje ingresado por el usuario.
+        /// Inicializa una nueva instancia de la clase <see cref="RegistrarAdminHandler"/>.
         /// </summary>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        public RegistrarAdminHandler(BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public RegistrarAdminHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/registaradmin"};
+            this.Keywords = new string[] { "/registaradmin" };
         }
 
         /// <summary>
-        /// Este metodo procesa el mensaje "Registrar Admin", para registrar un administrador.
+        /// Este metodo procesa el mensaje para registrar un administrador.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/registaradmin"))
@@ -48,7 +49,7 @@ namespace ClassLibrary
                 {
                     string nombreAdmin = listaConParametros[1];
                     string claveAdmin = listaConParametros[0];
-                    
+
                     try
                     {
                         LogicaAdministrador.RegistroAdministrador(nombreAdmin, claveAdmin, mensaje.Id);
@@ -56,7 +57,7 @@ namespace ClassLibrary
                     catch (System.ArgumentException e)
                     {
                         respuesta = e.Message;
-                        return true; 
+                        return true;
                     }
 
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
@@ -66,7 +67,7 @@ namespace ClassLibrary
             }
 
             respuesta = string.Empty;
-            return false;   
+            return false;
         }
     }
 }

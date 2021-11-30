@@ -1,4 +1,3 @@
-
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -9,8 +8,8 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-    /// la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
-    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// la clase Rubro tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible su correcto funcionamiento.
     /// </remarks>
 
     public class Rubro
@@ -36,16 +35,16 @@ namespace ClassLibrary
         /// <summary>
         /// Esta propiedad contiene el nombre del rubro.
         /// </summary>
-        /// <value>El nombre del Rubro</value>
-        public string Nombre { get; set;}
+        /// <value>El nombre del Rubro.</value>
+        public string Nombre { get; set; }
 
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns>Retorna la Serializacion.</returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
