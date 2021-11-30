@@ -18,10 +18,11 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicacion del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
+        /// <param name="email">Email del emprendedor, para contacatrlo.</param>
         /// <param name="id">Id del chat.</param>
-        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
+        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string email, string id)
         {
-            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones); 
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones, email); 
             Singleton<ContenedorPrincipal>.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
         }
 

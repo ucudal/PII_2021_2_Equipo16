@@ -57,15 +57,23 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicación del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
-        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones) : base(nombre, ubicacion, rubro)
+        /// <param name="email">Email del emprendedor, para contacatrlo.</param>
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string email) : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
+            this.Email = email;
         }
 
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
         public string Especializaciones { get; set;}
+
+        /// <summary>
+        /// Email del emprendedor.
+        /// </summary>
+        /// <value></value>
+        public string Email{get; set;}
 
         /// <summary>
         /// Agrega habilitaciones.

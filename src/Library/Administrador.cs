@@ -75,7 +75,7 @@ namespace ClassLibrary
         /// </summary>
         /// <returns>Retorna la lista de Empresas que contiene.</returns>
         [JsonInclude]
-        public List<Empresa> Empresas = new List<Empresa>();
+        public List<Empresa> Empresas { get; set; } = new List<Empresa>();
 
         /// <summary>
         /// Invita a la empresa a unirse en el bot.

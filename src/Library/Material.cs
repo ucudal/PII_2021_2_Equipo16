@@ -29,9 +29,9 @@ namespace ClassLibrary
        /// <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
        /// <param name="precio">Recibe por parametro el precio del matrial.</param>
        /// <param name="unidad">Recibe por parametro la unidad del matrial.</param>
-        public Material(string nombre, string cantidad, string precio, string unidad)
+        public Material(string tipo, string cantidad, string precio, string unidad)
         {
-            this.Nombre = nombre;
+            this.Tipo = tipo;
             this.Unidad = unidad;
             if (!Int32.TryParse(cantidad, out _))
             {
@@ -56,7 +56,7 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre del material.
         /// </summary>
         /// <value>string</value>
-        public string Nombre { get; set;}
+        public string Tipo { get; set;}
         
         /// <summary>
         /// obtiene o establece la cantidad del material.
