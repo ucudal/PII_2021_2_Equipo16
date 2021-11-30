@@ -50,7 +50,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serializacion.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

@@ -17,8 +17,6 @@ namespace ClassLibrary
        /// Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
-       /// <returns></returns>
-
         [JsonConstructor]
         public Habilitaciones()
         {
@@ -42,7 +40,7 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna la Serialización.</returns>
         public string ConvertirJson()
         {
             JsonSerializerOptions opciones = new()

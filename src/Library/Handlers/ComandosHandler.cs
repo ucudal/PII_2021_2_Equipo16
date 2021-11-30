@@ -19,7 +19,8 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// 
+        /// Este método procesa el mensaje "Comandos" y retorna true.
+        /// En caso contrario retorna false.
         /// </summary>
         /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>

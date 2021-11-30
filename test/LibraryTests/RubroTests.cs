@@ -17,8 +17,8 @@ namespace Test.Library
         [Test]
         public void TestAgregarRubro()
         {
-            Rubro rubro = new Rubro();
-            //int expected = 10; // ya que 9 es el largo de la actual y es un rubro nuevo.
+            Rubro rubro = new Rubro("metalurgia");
+            string expected = "metalurgia"; // Esta variable string sirve para evaluar el comportamiento.
             //rubro.AddRubro("Cocina");
             //Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
