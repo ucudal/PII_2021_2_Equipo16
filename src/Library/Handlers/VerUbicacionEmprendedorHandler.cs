@@ -66,7 +66,7 @@ namespace ClassLibrary
         /// Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
         /// Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
         /// </summary>
-        /// <param name="mensaje"></param>
+        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
         /// <returns></returns>
         public async Task Direccion(IMensaje mensaje)
         {

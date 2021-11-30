@@ -10,15 +10,17 @@ namespace Test.Library
     public class RubroTests
     {
         /// <summary>
-        /// En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
-        /// Para esto vamos a  crear un rubro nuevo  y verificar mediante el largo de la lista si se agrego correctamente.
-        /// Al ser nuevo se agregara a la lista , si ya está en la misma el mismo no se agregará.
+        /// En este test vamos a verificar la correcta creación de un Rubro con nombre
         /// </summary>
         [Test]
-        public void TestAgregarRubro()
+        public void TestCrearRubro()
         {
-            Rubro rubro = new Rubro();
-            //int expected = 10; // ya que 9 es el largo de la actual y es un rubro nuevo.
+
+            Rubro rubro = new Rubro("Efectivamente");
+            Assert.That(rubro.Nombre, Is.EqualTo("Efectivamente"));
+
+            Rubro rubro = new Rubro("metalurgia");
+            string expected = "metalurgia"; // Esta variable string sirve para evaluar el comportamiento.
             //rubro.AddRubro("Cocina");
             //Assert.AreEqual(expected, Rubro.RubrosList.Count);
         }
@@ -46,18 +48,16 @@ namespace Test.Library
             //int expected = 10; // ya que 11 es el largo de la actual y queremos eliminar un rubro.
             //rubro.RemoveRubro("Deportes");
             //Assert.AreEqual(expected, Rubro.RubrosList.Count);
+
         }
-        
         /// <summary>
-        /// Test para comprobar si se puede eliminar un rubro que no existe.
+        /// En este test vamos a verificar la correcta creación de un Rubro sin nombre
         /// </summary>
         [Test]
-        public void TestEliminarRubroQueNoExiste()
+        public void TestCrearRubro2()
         {
             Rubro rubro = new Rubro();
-            //int expected = 10;
-            //rubro.RemoveRubro("Vehículos"); // Como se intenta eliminar algo que no existe, la cantidad se mantiene igual.
-            //Assert.AreEqual(expected, Rubro.RubrosList.Count);
+            Assert.That(rubro.Nombre, Is.EqualTo(null));
         }
     }
 }
