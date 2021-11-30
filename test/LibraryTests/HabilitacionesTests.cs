@@ -21,17 +21,5 @@ namespace Test.Library
             string expected = "test";
             Assert.AreEqual(expected, habilitacion.Nombre);
         }
-
-        /// <summary>
-        /// Este metodo permite evaluar lo que sucede cuando se crea una habilitación sin nombre.
-        /// </summary>
-        [Test]
-        public void TestHabilitacion2()
-        {
-            Habilitaciones habilitacion = new Habilitaciones();
-            
-            string expected = null;
-            Assert.AreEqual(expected, habilitacion.Nombre);
-        }
     }
 }

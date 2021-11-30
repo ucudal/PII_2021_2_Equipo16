@@ -378,7 +378,7 @@ namespace Test.Library
             contiene.Empresas.Add("8439", empresaTest1);
             Oferta ofertaTest = new Oferta("oferta23", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1);
             contiene.Publicaciones.OfertasPublicados.Add(ofertaTest);
-            LogicaEmpresa.AddHabilitacionOferta(empresaTest1,"apa", "oferta23");
+            LogicaEmpresa.AgregarHabilitacionOferta(empresaTest1,"apa", "oferta23");
             
             Message message = new Message(); 
 
