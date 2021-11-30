@@ -7,7 +7,7 @@ namespace ClassLibrary
     /// La implementación de la interfaz es necesaria para unificar el nombre de su método con otras clases que tiene similares caracteristicas.
     /// </summary>
     /// <remarks>
-    /// En este caso se aplicó Polimorfismo ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
+    /// En este caso se aplicó Polimorfismo al implementar IBuscador ya que evitamos tener una clase que haga una busqueda y dependiendo lo que quieras buscar se comporte de diferente forma.
     /// Lo que se hizo es que haya una interfaz IBuscador que tenga el método Buscar y que las clases que implementen la interfaz, implemente ese método pero a nivel interno funcionando de forma diferente a las otras clases que lo implementan.
     /// Se retorna lo que especifica el método en la interfaz, pero dependiendo la clase retorna la oferta que contenga lo buscado.
     /// </remarks>
@@ -25,7 +25,7 @@ namespace ClassLibrary
             foreach (Oferta oferta in publicaciones.OfertasPublicados)
             {
                 ConsolePrinter.DatoPrinter(ofertasEncontradas.Count.ToString());
-                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Nombre))
+                if (LimpiadorCadenas.LimpiaCadenaRespuesta(busqueda) == LimpiadorCadenas.LimpiaCadenaRespuesta(oferta.Material.Tipo))
                 {
                     ofertasEncontradas.Add(oferta);
                     Singleton<ContenedorPrincipal>.Instancia.PrinterConsola.OfertaPrinter(oferta);

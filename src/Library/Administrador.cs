@@ -7,31 +7,35 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
-    /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente. 
+    /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente y la
+    /// responsable de llamar al método de agregar rubros y habilitaciones.
     /// </summary>
     public class Administrador : IJsonConvertible
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
         /// </summary>
+        [JsonConstructor]
+        public Administrador()
+        {
+        }
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
+        /// </summary>
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         /// <param name="clave">Recibe una clave de entrada.</param>
-    
-       [JsonConstructor]
-       public Administrador()
-       {
-
-       }
         public Administrador(string nombre, string clave)
         {
             if (string.IsNullOrEmpty(nombre))
             {
                 this.Nombre = "Jhon";
             }
-            else 
+            else
             {
                 this.Nombre = nombre;
             }
+
             this.clave = clave;
         }
 
@@ -59,20 +63,20 @@ namespace ClassLibrary
                 else
                 {
                     this.clave = nuevaPassword;
-                }   
+                }
             }
             else
             {
                 throw new ArgumentException("La clave ingresaste no es correcta.");
             }
         }
-        
+
         /// <summary>
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
         /// </summary>
         /// <returns>Retorna la lista de Empresas que contiene.</returns>
         [JsonInclude]
-        public List<Empresa> Empresas = new List<Empresa>();
+        public List<Empresa> Empresas { get; set; } = new List<Empresa>();
 
         /// <summary>
         /// Invita a la empresa a unirse en el bot.
@@ -96,23 +100,31 @@ namespace ClassLibrary
             Singleton<ContenedorPrincipal>.Instancia.EmpresasInvitadas.Add(empresa);
         }
 
+        /// <summary>
+        /// Este método sive para agregar nuevos rubros.
+        /// </summary>
+        /// <param name="nombreRubro">Nombre del Rubro.</param>
         public void AgregarRubro(string nombreRubro)
         {
             Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearRubro(nombreRubro);
         }
 
+        /// <summary>
+        /// Este método sirve para agregar habilitaciones.
+        /// </summary>
+        /// <param name="nombreHab">Nombre de la habilitación.</param>
         public void AgregarHabilitacion(string nombreHab)
         {
             Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearHabilitacion(nombreHab);
         }
 
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
         /// <returns>Tipo string.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

@@ -9,8 +9,7 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-    /// la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
-    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// la clase Material se encarga de conocer todo lo necesario para hacer posible su correcto funcionamiento.
     /// </remarks>
     public class Material
     {
@@ -30,9 +29,9 @@ namespace ClassLibrary
        /// <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
        /// <param name="precio">Recibe por parametro el precio del matrial.</param>
        /// <param name="unidad">Recibe por parametro la unidad del matrial.</param>
-        public Material(string nombre, string cantidad, string precio, string unidad)
+        public Material(string tipo, string cantidad, string precio, string unidad)
         {
-            this.Nombre = nombre;
+            this.Tipo = tipo;
             this.Unidad = unidad;
             if (!Int32.TryParse(cantidad, out _))
             {
@@ -40,7 +39,7 @@ namespace ClassLibrary
             }
             else
             {
-               this.Cantidad = cantidad; 
+               this.Cantidad = cantidad;
             }
 
             if (!Int32.TryParse(precio, out _))
@@ -57,33 +56,33 @@ namespace ClassLibrary
         /// Obtiene o establece el nombre del material.
         /// </summary>
         /// <value>string</value>
-        public string Nombre { get; set;}
+        public string Tipo { get; set;}
         
         /// <summary>
-        /// obtiene o establece la cantidad del material.
+        /// Obtiene o establece la cantidad del material.
         /// </summary>
-        /// <value>string</value>
-        public string Cantidad { get; set;}
-        
+        /// <value>String.</value>
+        public string Cantidad { get; set; }
+
         /// <summary>
-        /// obtiene o establece el precio del material.
+        /// Obtiene o establece el precio del material.
         /// </summary>
-        /// <value>string</value>
-        public string Precio { get; set;}
-        
+        /// <value>String.</value>
+        public string Precio { get; set; }
+
         /// <summary>
-        /// obtiene o establece la unidad del material.
+        /// Obtiene o establece la unidad del material.
         /// </summary>
-        /// <value>string</value>
-        public string Unidad { get; set;}
-        
+        /// <value>String.</value>
+        public string Unidad { get; set; }
+
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns>Retorna la Serializacion.</returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

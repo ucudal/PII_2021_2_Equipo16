@@ -7,11 +7,9 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Contenedor que tiene Lista de rubros y habilitaciones posibles para el cliente.
-    /// Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
-    /// con el fin de hacer más rígido el programa.
-    /// Por otra parte también se utiliza el patrón Expert.
+    /// Por otra parte se utiliza el patrón Expert, ya que tiene métodos exclusivos directamente relacioandos a lo que conoce.
     /// </summary>
-    public class ContenedorRubroHabilitaciones: IJsonConvertible
+    public class ContenedorRubroHabilitaciones : IJsonConvertible
     {
         /// <summary>
         /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
@@ -20,32 +18,30 @@ namespace ClassLibrary
         [JsonConstructor]
         public ContenedorRubroHabilitaciones()
         {
-
         }
 
-       /// <summary>
-       /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
+        /// <summary>
+        /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonInclude]
-        public List<Rubro> ListaRubros {get; set;} = new List<Rubro>()
+        public List<Rubro> ListaRubros { get; set; } = new List<Rubro>()
         {
-            new Rubro("textil"),
-            new Rubro("metalurgia"),
-            new Rubro("deportes"),
+            new Rubro("Textil"),
+            new Rubro("Metalurgia"),
+            new Rubro("Electrodomésticos"),
         };
 
         /// <summary>
         /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
-        /// para la serialización de datos en la clase. 
+        /// para la serialización de datos en la clase.
         /// </summary>
         [JsonInclude]
-
-        public List<Habilitaciones> ListaHabilitaciones {get; set;} = new List<Habilitaciones>()
+        public List<Habilitaciones> ListaHabilitaciones { get; set; } = new List<Habilitaciones>()
         {
-            new Habilitaciones("apa"),
-            new Habilitaciones("iso"),
-            new Habilitaciones("soa"),
+            new Habilitaciones("APA"),
+            new Habilitaciones("ISO"),
+            new Habilitaciones("SOA"),
         };
 
         /// <summary>
@@ -62,6 +58,7 @@ namespace ClassLibrary
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -79,9 +76,10 @@ namespace ClassLibrary
                     return rubro;
                 }
             }
+
             return null;
         }
-        
+
         /// <summary>
         /// Método agregado para poder chequear la habilitación que se ingresa, existe en la lista de las habilitaciones disponibles.
         /// </summary>
@@ -96,6 +94,7 @@ namespace ClassLibrary
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -113,6 +112,7 @@ namespace ClassLibrary
                     return hab;
                 }
             }
+
             return null;
         }
 
@@ -127,6 +127,7 @@ namespace ClassLibrary
             {
                 texto.Append($"-{item.Nombre}\n");
             }
+
             return texto.ToString();
         }
 
@@ -141,36 +142,37 @@ namespace ClassLibrary
             {
                 texto.Append($"-{item.Nombre}\n");
             }
+
             return texto.ToString();
         }
 
         /// <summary>
         /// Crea un rubro y lo agrega a la lista de rubros.
         /// </summary>
-        /// <param name="nombreRubro"></param>
+        /// <param name="nombreRubro">Nombre del rubro.</param>
         public void CrearRubro(string nombreRubro)
         {
             Rubro rubro = new Rubro(nombreRubro);
             this.ListaRubros.Add(rubro);
         }
-        
+
         /// <summary>
         /// Crea una habilitacion y la agrega a la lista de habilitaciones.
         /// </summary>
-        /// <param name="nombreHabilitacion"></param>
+        /// <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         public void CrearHabilitacion(string nombreHabilitacion)
         {
             Habilitaciones hab = new Habilitaciones(nombreHabilitacion);
             this.ListaHabilitaciones.Add(hab);
         }
-        
+
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
         /// <returns>Retorna la serialización.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

@@ -4,27 +4,27 @@ using System.Text;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase contiene un método para aceptar una oferta.
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/comandos" y se encarga
+    /// de manejar el caso en que se quieran ver los comandos que tiene el Bot.
     /// </summary>
     public class ComandosHandler : BaseHandler
     {
         /// <summary>
-        /// Este método se encarga de aceptar una oferta.
+        /// Inicializa una nueva instancia de la clase <see cref="ComandosHandler"/>.
         /// </summary>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        public ComandosHandler (BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public ComandosHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/comandos"};
+            this.Keywords = new string[] { "/comandos" };
         }
 
         /// <summary>
-        /// Este método procesa el mensaje "Comandos" y retorna true.
-        /// En caso contrario retorna false.
+        /// Este método procesa el mensaje para mostrar los comandos disponibles en el Bot.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             //Comandos Empresa

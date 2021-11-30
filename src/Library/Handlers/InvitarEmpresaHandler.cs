@@ -3,27 +3,27 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/invitarempresa".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/invitarempresa" y se encarga
+    /// de manejar el caso en que haya un interesado en una oferta.
     /// </summary>
     public class InvitarEmpresaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa los mensajes ingresador por el usuario, con el fin de invitar a una empresa a integrar el bot.
+        /// Inicializa una nueva instancia de la clase <see cref="InvitarEmpresaHandler"/>.
         /// </summary>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        public InvitarEmpresaHandler(BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public InvitarEmpresaHandler(BaseHandler next)
+            : base(next)
         {
-        this.Keywords = new string[] {"/invitarempresa"};
-        }  
+        this.Keywords = new string[] { "/invitarempresa" };
+        }
 
         /// <summary>
-        /// Este método procesa el mensaje "Invitar Empresa" y retorna true.
-        /// En caso contrario retorna false.
+        /// Este método procesa el mensaje con el fin de integrar a una nueva Empresa en el Bot.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/invitarempresa"))
@@ -31,7 +31,6 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-            // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /cambiarClave, entra al if.
             else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/invitarempresa") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/invitarempresa");
@@ -43,7 +42,7 @@ namespace ClassLibrary
                 else if (listaConParametros.Count == 1)
                 {
                     string empresaNombre = listaConParametros[0];
-                    
+
                     if (Singleton<ContenedorPrincipal>.Instancia.Administradores.ContainsKey(mensaje.Id))
                     {
                         Administrador value = Singleton<ContenedorPrincipal>.Instancia.Administradores[mensaje.Id];
@@ -54,18 +53,18 @@ namespace ClassLibrary
                     else
                     {
                         respuesta = "Usted no es un administrador, no tiene permiso para realizar dicha operación.";
-                        return true; 
+                        return true;
                     }
                 }
                 else
                 {
                     respuesta = $"No se ha podido, invitar a la empresa. \nIntente nuevamente /invitarempresa \n";
                     return true;
-                }              
+                }         
             }
 
             respuesta = string.Empty;
-            return false;   
+            return false;
         }
     }
 }

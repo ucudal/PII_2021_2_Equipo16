@@ -18,10 +18,11 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicacion del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
+        /// <param name="email">Email del emprendedor, para contacatrlo.</param>
         /// <param name="id">Id del chat.</param>
-        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
+        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string email, string id)
         {
-            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones); 
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones, email); 
             Singleton<ContenedorPrincipal>.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
         }
 
@@ -81,7 +82,7 @@ namespace ClassLibrary
                         item.Interesado.Add(emprendedor.Nombre);
                         if (!item.EmpresaCreadora.InteresadosEnOfertas.Contains(item))
                         {
-                            item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                            item.EmpresaCreadora.InteresadosEnOfertas.Add(item);
                         }
                         emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
                     }
@@ -111,8 +112,8 @@ namespace ClassLibrary
         /// <summary>
         /// Este método permite crear una ficha del emprendedor en texto, para poder obtener sus datos.
         /// </summary>
-        /// <param name="emprendedor">Recibe por parametro un objeto de tipo Emprendedor.</param>
-        /// <returns></returns>
+        /// <param name="emprendedor">Recibe por parámetro un objeto de tipo Emprendedor.</param>
+        /// <returns>Retorna la información de un Emprendedor.</returns>
         public static string VerEmprendedor(Emprendedor emprendedor)
         {
             return emprendedor.TextoEmprendedor();

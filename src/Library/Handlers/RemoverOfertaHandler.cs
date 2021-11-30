@@ -3,25 +3,27 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/eliminaroferta".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/eliminaroferta" y se encarga
+    /// de manejar el caso en que una Empresa quiera remover una oferta.
     /// </summary>
     public class RemoverOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/eliminaroferta".
+        /// Inicializa una nueva instancia de la clase <see cref="RemoverOfertaHandler"/>.
         /// </summary>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        public RemoverOfertaHandler (BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public RemoverOfertaHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/eliminaroferta"};
+            this.Keywords = new string[] { "/eliminaroferta" };
         }
 
         /// <summary>
-        /// Procesa el mensaje "!Eliminar oferta" y retorna true; retorna false en caso contrario.
+        /// Procesa el mensaje para que una Empresa pueda eliminar una oferta.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/eliminaroferta"))
@@ -53,7 +55,7 @@ namespace ClassLibrary
             }
             else
             {
-                respuesta = "Usted no está registrado como empresa"+OpcionesUso.AccionesEmpresas();
+                respuesta = "Usted no está registrado como empresa" + OpcionesUso.AccionesEmpresas();
                 return true;
             }
 
