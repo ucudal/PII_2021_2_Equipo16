@@ -25,28 +25,28 @@ namespace ClassLibrary
         /// Este diccionario contiene las ofertas compradas y la fecha correspondiente.
         /// </summary>
         [JsonInclude]
-        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas {get; set;} = new Dictionary<DateTime, Oferta>();
+        public Dictionary<DateTime, Oferta> FechaDeOfertasCompradas { get; set; } = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Ofertas en las que se interesa el emprendedor.
         /// </summary>
         [JsonInclude]
-        public List<Oferta> OfertasInteresado {get; set;} = new List<Oferta>();
+        public List<Oferta> OfertasInteresado { get; set; } = new List<Oferta>();
 
         /// <summary>
         /// Lista de habilitaciones del emprendedor.
         /// </summary>
         [JsonInclude]
-        public List<Habilitaciones> HabilitacionesEmprendedor {get; set;} = new List<Habilitaciones>();
-
+        public List<Habilitaciones> HabilitacionesEmprendedor { get; set; } = new List<Habilitaciones>();
         //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
-       /// <summary>
-       /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
+        /// <summary>
+        /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonConstructor]
-        public Emprendedor() : base()
+        public Emprendedor()
+            : base()
         {
         }
         
@@ -67,7 +67,7 @@ namespace ClassLibrary
         /// <summary>
         /// Obtiene o establece las Especializaciones del emprendedor.
         /// </summary>
-        public string Especializaciones { get; set;}
+        public string Especializaciones { get; set; }
 
         /// <summary>
         /// Email del emprendedor.
@@ -105,6 +105,7 @@ namespace ClassLibrary
                     habEliminada = hab;
                 }
             }
+
             this.HabilitacionesEmprendedor.Remove(habEliminada);
         }
 
@@ -119,30 +120,30 @@ namespace ClassLibrary
             int ofertasCompradas = 0;
             DateTime fInicio;
 
-            if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
+            if (!DateTime.TryParseExact(fechaInicio, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
                 throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
-            
-            DateTime fFinal;
 
-            if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
+            DateTime fFinal;
+            if (!DateTime.TryParseExact(fechaFinal, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
                 throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
+
             foreach (KeyValuePair<DateTime,Oferta> par in this.FechaDeOfertasCompradas)
             {
                 if (par.Key >= fInicio && par.Key <= fFinal)
                 {
-                ofertasCompradas++;
+                    ofertasCompradas++;
                 }
             }
-            
+
             string texto = $"Se han comprado {ofertasCompradas} ofertas en el tiempo indicado";
             ConsolePrinter.DatoPrinter(texto);
             return ofertasCompradas;
         }
-        
+
         /// <summary>
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase emprendedor.
         /// </summary>
@@ -160,18 +161,19 @@ namespace ClassLibrary
             {
                 text.Append($"{habilitaciones.Nombre}, ");
             }
+
             text.Append($"\n");
             text.Append($"******************************\n");
             return text.ToString();
         }
-       
+
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        /// <returns>Retorna la Serialización.</returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
@@ -179,6 +181,5 @@ namespace ClassLibrary
 
             return JsonSerializer.Serialize(this, opciones);
         }
-        
     }
 }

@@ -3,25 +3,27 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/registrarme".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/registrarme" y se encarga
+    /// de manejar el caso en que un nuevo Emprendedor se quiera registrar en el Bot.
     /// </summary>
     public class RegistroEmprendedorHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/registrarme".
+        /// Inicializa una nueva instancia de la clase <see cref="RegistroEmprendedorHandler"/>.
         /// </summary>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        public RegistroEmprendedorHandler(BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public RegistroEmprendedorHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/registrarme"};
+            this.Keywords = new string[] { "/registrarme" };
         }
 
         /// <summary>
-        /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+        /// Procesa el mensaje para que un Emprendedor se pueda registrar.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/registrarme"))
@@ -29,7 +31,6 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-            // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
             else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registrarme"))
             {
                 if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
@@ -49,7 +50,6 @@ namespace ClassLibrary
                     {
                         respuesta = "Ingrese el nombre";
                         return true;
-                        //Console.WriteLine("Entro aca");
                     }
                     else if (listaConParametros.Count == 1)
                     {
@@ -86,7 +86,7 @@ namespace ClassLibrary
                         catch (System.ArgumentException e)
                         {
                             respuesta = e.Message;
-                            return true; // Tengo entendido que esto podria ser false ya que en realidad falla. consultar con profe
+                            return true;
                         }
 
                         Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
@@ -94,7 +94,6 @@ namespace ClassLibrary
                         return true;
                     }
                 }
-                
             }
 
             respuesta = string.Empty;
