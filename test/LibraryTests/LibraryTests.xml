@@ -34,42 +34,64 @@
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorTagHandlerTest">
             <summary>
-            
+            En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por tag con el tag "tagtest".
+            Luego, una empresa creada anteriormente crea una oferta con ese mismo tag.
+            Al ejecutar la búsqueda, se puede comprobar el correcto funcionamiento del BuscadorTagHandler, por como efectivamente
+            aparece la oferta.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorMaterialHandlerTest">
             <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por material con el material "esteesunmaterial".
+            Luego, una empresa creada anteriormente crea una oferta con ese mismo material.
+            Al ejecutar la búsqueda, se puede comprobar el correcto funcionamiento del BuscadorMaterialHandler, por como efectivamente
+            aparece la oferta.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorUbicacionHandlerTest">
             <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por ubicación con la ubicación "test".
+            Luego, una empresa creada anteriormente crea una oferta con esa misma ubicación.
+            Al ejecutar la búsqueda, se puede comprobar el correcto funcionamiento del BuscadorUbicacionHandler, por como efectivamente
+            aparece la oferta.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.AgregarHabEmprendedorHandlerTestBien">
             <summary>
-            
+            En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere agregarse habilitaciones.
+            Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "SOA".
+            Con esto, se demuestra el correcto funcionamiento del AgregarHabEmprendedorHandler.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.RemoverHabEmprendedorHandlerTestBien">
             <summary>
-            
+            En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere removerse habilitaciones.
+            Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "SOA".
+            Con esto, se demuestra el correcto funcionamiento del RemoverHabEmprendedorHandler.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.InteresadoenOfertayCalcularOfertasCompradasHandlerTestBien">
             <summary>
-            
+            En este test, se demuestra el correcto funcionamiento de CalcularOfertasCompradasHandler y InteresadoEnOfertaHandler.
+            Para eso, se crean una empresa y un emprendedor
+            El primero, publica una oferta. El segundo, por su parte, busca interesarse en esa oferta con "/interesarme", 
+            para luego fijarse si realmente funcionó su manifestación de interés, con "/calcularofertascompradas".
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.ListadeHabilitacionesHandlerTestBien">
             <summary>
-            
+            En este test, se busca demostrar el correcto funcionamiento del GetHabListHandler.
+            Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "SOA", busca corroborar si efectivamente la tiene.
+            Para eso, utiliza "/listadehabilitaciones".
+            Al final, se puede observar, como el Handler funciona correctamente.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.RegistroEmprendedorHandlerTestBien">
             <summary>
-            
+            En este test, un usuario busca registrarse como emprendedor.
+            Con ese objetivo en mente, utiliza "registrarme" y va llenando los campos que corresponden a medida
+            que le vayan surgiendo.
+            Con esto, queda demostrado el correcto funcionamiento del RegistroEmprendedorHandler.
             </summary>
         </member>
         <member name="T:Test.Library.EmprendedorTests">
@@ -198,17 +220,6 @@
             Este método permite evaluar lo que sucede cuando se crea una habilitación con nombre.
             </summary>
         </member>
-        <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion2">
-            <summary>
-            Este metodo permite evaluar lo que sucede cuando se crea una habilitación sin nombre.
-            </summary>
-        </member>
-        <member name="T:Test.Library.HolaHandlerTests">
-            <summary>
-            Esta clase permite realizar los test de la clase Habilitaciones.
-            Los métodos de la clase Habilitaciones son testeados uno por uno.
-            </summary>
-        </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
             <summary>
             Esta clase permite testear todas los comportamientos que va a tener la clase LimpiadorCadenas.
@@ -232,21 +243,6 @@
             Este test permite validar el método LimpiaCadenaRespuesta de la clase LimpiadorCadenas.
             En los ejemplos anteriores teniamos pruebas para cuando se ingresaba solo una palabra como Nombre, rubro, etc.
             Ahora con este método se permite evaluar acciones o respuestas del usuario para este test utilizaremos la cadena "Hola, COMO estás?" que contiene todos los elementos para testear.
-            </summary>
-        </member>
-        <member name="T:Test.Library.EmpresaHandlerTest">
-            <summary>
-            Esta clase permite probar todos los handlers destinados al emprendedor.
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaHandlerTest.CrearOfertaHandlerTest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaHandlerTest.Test">
-            <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
             </summary>
         </member>
         <member name="T:Test.Library.OfertaTests">
@@ -290,14 +286,6 @@
             En este test vamos a verificar la correcta creación de un Rubro con nombre
             </summary>
         </member>
-<<<<<<< HEAD
-=======
-        <member name="M:Test.Library.RubroTests.TestCrearRubro2">
-            <summary>
-            En este test vamos a verificar la correcta creación de un Rubro sin nombre
-            </summary>
-        </member>
->>>>>>> deV2
         <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.

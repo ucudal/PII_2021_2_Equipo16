@@ -19,8 +19,8 @@ namespace Test.Library
         public void BuscadorTagHandlerTest()
         {
             ContenedorPrincipal contenedorPrincipal = Singleton<ContenedorPrincipal>.Instancia;
-            contenedorPrincipal.Emprendedores.Add("123", new Emprendedor("Emprendedor", "ubi", "textil", "espe"));
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            contenedorPrincipal.Emprendedores.Add("123", new Emprendedor("Emprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
 
             contenedorPrincipal.Publicaciones.OfertasPublicados.Add(new Oferta("Oferta1", "lol", "1000", "299", "kilo", "tagtest", "ubi", "constante", empresaTest1));
 
@@ -62,8 +62,8 @@ namespace Test.Library
         public void BuscadorMaterialHandlerTest()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe"));
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta2", "esteesunmaterial", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
@@ -109,9 +109,9 @@ namespace Test.Library
         public void BuscadorUbicacionHandlerTest()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("125", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe"));
-            Emprendedor emprendedorTest = new Emprendedor("test", "test", "textil", "test");
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            container.Emprendedores.Add("125", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            Emprendedor emprendedorTest = new Emprendedor("test", "test", "Textil", "test","email@prueba.com");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta5", "materialaleatorio", "1000", "299", "kilo", "tag1", "test", "constante", empresaTest1 ));
             Message message = new Message(); 
 
@@ -146,15 +146,15 @@ namespace Test.Library
         }
         /// <summary>
         /// En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere agregarse habilitaciones.
-        /// Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "soa".
+        /// Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "SOA".
         /// Con esto, se demuestra el correcto funcionamiento del AgregarHabEmprendedorHandler.
         /// </summary>
         [Test]
          public void AgregarHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe"));
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
@@ -179,9 +179,9 @@ namespace Test.Library
             IHandler agregarHabEmprendedorHandlerResult = new AgregarHabEmprendedorHandler(null);
             string response; 
             agregarHabEmprendedorHandlerResult.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}"));
+            Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
 
-            message.Text = "soa";
+            message.Text = "SOA";
             msg = teleadapter;
             string nuevaHab = message.Text;
             agregarHabEmprendedorHandlerResult.Handle(msg, out response);
@@ -189,16 +189,16 @@ namespace Test.Library
         }
         /// <summary>
         /// En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere removerse habilitaciones.
-        /// Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "soa".
+        /// Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "SOA".
         /// Con esto, se demuestra el correcto funcionamiento del RemoverHabEmprendedorHandler.
         /// </summary>
         [Test]
          public void RemoverHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com");
             container.Emprendedores.Add("127", emprendedorTest);
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
@@ -217,7 +217,7 @@ namespace Test.Library
             TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
 
             IMensaje msg = teleadapter; 
-            emprendedorTest.AddHabilitacion("soa");
+            emprendedorTest.AddHabilitacion("SOA");
             container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
 
             IHandler removerHabEmprendedorHandlerResult = new RemoverHabEmprendedor(null);
@@ -225,7 +225,7 @@ namespace Test.Library
             removerHabEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Ingrese el nombre de la habilitación que desea eliminar."));
 
-            message.Text = "soa";
+            message.Text = "SOA";
             msg = teleadapter;
             string habilitacion = message.Text;
             removerHabEmprendedorHandlerResult.Handle(msg, out response);
@@ -241,9 +241,9 @@ namespace Test.Library
         public void InteresadoenOfertayCalcularOfertasCompradasHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com");
             container.Emprendedores.Add("128", emprendedorTest);
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
@@ -299,7 +299,7 @@ namespace Test.Library
         }
         /// <summary>
         /// En este test, se busca demostrar el correcto funcionamiento del GetHabListHandler.
-        /// Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "soa", busca corroborar si efectivamente la tiene.
+        /// Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "SOA", busca corroborar si efectivamente la tiene.
         /// Para eso, utiliza "/listadehabilitaciones".
         /// Al final, se puede observar, como el Handler funciona correctamente.
         /// </summary>
@@ -307,9 +307,9 @@ namespace Test.Library
          public void ListadeHabilitacionesHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com");
             container.Emprendedores.Add("129", emprendedorTest);
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta9", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
             Message message = new Message(); 
@@ -327,13 +327,13 @@ namespace Test.Library
             TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
 
             IMensaje msg = teleadapter; 
-            emprendedorTest.AddHabilitacion("soa"); 
+            emprendedorTest.AddHabilitacion("SOA"); 
             container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
 
             IHandler getHabListHandlerResult = new GetHabListHandler(null);
             string response; 
             getHabListHandlerResult.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo($"La lista de habilitaciones es:\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}"));
+            Assert.That(response, Is.EqualTo($"La lista de habilitaciones es:\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
         }
         /// <summary>
         /// En este test, un usuario busca registrarse como emprendedor.
@@ -376,9 +376,9 @@ namespace Test.Library
             message.Text = "TestUbi";
             msg = teleadapter;
             registroEmprendedorHandlerResult.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo($"Ingrese rubro\n {Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaRubros()}"));
+            Assert.That(response, Is.EqualTo($"Ingrese rubro\n {Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaRubros()}"));
 
-            message.Text = "textil";
+            message.Text = "Textil";
             msg = teleadapter;
             registroEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese especializaciones"));
@@ -386,11 +386,16 @@ namespace Test.Library
             message.Text = "TestEspe";
             msg = teleadapter;
             registroEmprendedorHandlerResult.Handle(msg, out response);
+
+            message.Text = "TestEmail";
+            msg = teleadapter;
+            registroEmprendedorHandlerResult.Handle(msg, out response);
             string nombreEmprendedor = "TestName";
             string ubicacionEmprendedor = "TestUbi";
-            string rubroEmprendedor = "textil";
+            string rubroEmprendedor = "Textil";
             string especializacionesEmprendedor = "TestEspe";
-            Assert.That(response, Is.EqualTo($"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. {OpcionesUso.AccionesEmprendedor()}"));
+            string emailEmprendedor = "TestEmail";
+            Assert.That(response, Is.EqualTo($"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor} e Email{emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}"));
         }
     }
 }
