@@ -11,13 +11,8 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase.
         /// Esta clase procesa el mensaje ingresado por el usuario.
         /// </summary>
-<<<<<<< HEAD
-        /// <param name="next"></param>
-        public AgregarHabEmpresaHandler(BaseHandler next) : base(next)
-=======
         /// <param name="next">Recibe por parametro el siguiente Handler.</param>
         public AgregarHabEmpresaHandler(BaseHandler next):base(next)
->>>>>>> deV2
         {
             this.Keywords = new string[] {"/agregarhabilitacionempresa"};
         }

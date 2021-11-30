@@ -14,19 +14,10 @@ namespace ClassLibrary
 
     public class Rubro
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
-        /// para la serialización de datos en la clase.
-        /// </summary>
-        /// <returns></returns>
-
-=======
        /// <summary>
        /// Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
->>>>>>> deV2
         [JsonConstructor]
         public Rubro()
         {
@@ -42,17 +33,10 @@ namespace ClassLibrary
         }
 
         /// <summary>
-<<<<<<< HEAD
-        ///
-        /// </summary>
-        /// <value></value>
-        public string Nombre { get; set; }
-=======
         /// Esta propiedad contiene el nombre del rubro.
         /// </summary>
         /// <value>El nombre del Rubro</value>
         public string Nombre { get; set;}
->>>>>>> deV2
 
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 

@@ -13,27 +13,14 @@ namespace ClassLibrary
     /// </summary>
     public class Oferta : IHabilitaciones
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
-        /// para la serialización de datos en la clase.
-        /// </summary>
-        /// <returns></returns>
-=======
        /// <summary>
        /// Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
->>>>>>> deV2
         [JsonConstructor]
         public Oferta()
         {
         }
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> deV2
         /// <summary>
         /// Constructor para json.
         /// </summary>
@@ -175,11 +162,7 @@ namespace ClassLibrary
         /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
         /// ya que conoce lo necesario.
         /// </summary>
-<<<<<<< HEAD
-        /// <returns></returns>
-=======
         /// <returns>Retorna un string listando los interesados en la oferta.</returns>
->>>>>>> deV2
         public string TextoInteresados()
         {
             StringBuilder texto = new StringBuilder($"\nLos interesados en {this.Nombre} son: ");

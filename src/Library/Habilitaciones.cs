@@ -9,19 +9,11 @@ namespace ClassLibrary
     /// </summary>
     public class Habilitaciones
     {
-<<<<<<< HEAD
-        /// <summary>
-        /// Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
-        /// para la serialización de datos en la clase.
-        /// </summary>
-        /// <returns></returns>
-=======
         
        /// <summary>
        /// Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
->>>>>>> deV2
         [JsonConstructor]
         public Habilitaciones()
         {

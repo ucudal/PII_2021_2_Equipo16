@@ -45,11 +45,7 @@ namespace ClassLibrary
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacionempresa");
                 if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-<<<<<<< HEAD
-                {   
-=======
                 {                       
->>>>>>> deV2
                     Direccion(mensaje);
 
                     respuesta = "";

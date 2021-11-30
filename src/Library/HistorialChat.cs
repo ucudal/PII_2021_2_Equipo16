@@ -10,16 +10,9 @@ namespace ClassLibrary
     public class HistorialChat : IJsonConvertible
     {
        /// <summary>
-<<<<<<< HEAD
-        /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
-        /// para la serialización de datos en la clase.
-        /// </summary>
-        /// <returns></returns>
-=======
        /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
        /// para la serialización de datos en la clase.
        /// </summary>
->>>>>>> deV2
         [JsonConstructor]
         public HistorialChat()
         {

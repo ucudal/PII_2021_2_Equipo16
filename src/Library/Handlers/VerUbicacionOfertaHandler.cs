@@ -54,19 +54,11 @@ namespace ClassLibrary
                 else if (listaConParametros.Count == 1)
                 {
                     if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
-<<<<<<< HEAD
-                    {   
-=======
                     {                           
->>>>>>> deV2
                         Direccion(mensaje, listaConParametros[0]);
 
                         respuesta = "";
-<<<<<<< HEAD
-                        return true; 
-=======
                         return true;                        
->>>>>>> deV2
                     }
                     else
                     {
@@ -98,11 +90,6 @@ namespace ClassLibrary
             Location direccionActual = await client.GetLocationAsync(direccion);
             Location direccionOferta = await client.GetLocationAsync(nombreOferta);
             
-<<<<<<< HEAD
-            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
-            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
-            await client.DownloadRouteAsync(direccionActual.Latitude, direccionActual.Longitude, direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
-=======
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
             await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
             await client.DownloadRouteAsync(
@@ -114,7 +101,6 @@ namespace ClassLibrary
 
             // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.
             SendProfileImage(mensaje);            
->>>>>>> deV2
         }
         
         private async Task SendProfileImage(IMensaje mensaje)
@@ -126,11 +112,7 @@ namespace ClassLibrary
             string filePath = @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png";
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-<<<<<<< HEAD
-            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");
-=======
             await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");        
->>>>>>> deV2
         }
     }
 }

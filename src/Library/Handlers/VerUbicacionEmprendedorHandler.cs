@@ -48,13 +48,7 @@ namespace ClassLibrary
                 {         
                     this.Direccion(mensaje);
 
-<<<<<<< HEAD
-                    this.SendProfileImage(mensaje);
-
-                    respuesta = string.Empty;
-=======
                     respuesta = "";
->>>>>>> deV2
                     return true;
                 }
                 else
