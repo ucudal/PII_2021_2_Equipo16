@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">Handler siguiente.</param>
         public AgregarHabOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "/crearhaboferta" };
+            this.Keywords = new string[] { "/addhaboferta" };
         }
 
         /// <summary>
