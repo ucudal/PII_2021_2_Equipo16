@@ -59,14 +59,14 @@
         <member name="M:Test.Library.EmprendedorHandlerTest.AgregarHabEmprendedorHandlerTestBien">
             <summary>
             En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere agregarse habilitaciones.
-            Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "soa".
+            Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "SOA".
             Con esto, se demuestra el correcto funcionamiento del AgregarHabEmprendedorHandler.
             </summary>
         </member>
         <member name="M:Test.Library.EmprendedorHandlerTest.RemoverHabEmprendedorHandlerTestBien">
             <summary>
             En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere removerse habilitaciones.
-            Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "soa".
+            Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "SOA".
             Con esto, se demuestra el correcto funcionamiento del RemoverHabEmprendedorHandler.
             </summary>
         </member>
@@ -81,7 +81,7 @@
         <member name="M:Test.Library.EmprendedorHandlerTest.ListadeHabilitacionesHandlerTestBien">
             <summary>
             En este test, se busca demostrar el correcto funcionamiento del GetHabListHandler.
-            Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "soa", busca corroborar si efectivamente la tiene.
+            Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "SOA", busca corroborar si efectivamente la tiene.
             Para eso, utiliza "/listadehabilitaciones".
             Al final, se puede observar, como el Handler funciona correctamente.
             </summary>
@@ -218,12 +218,6 @@
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion">
             <summary>
             Este método permite evaluar lo que sucede cuando se crea una habilitación con nombre.
-            </summary>
-        </member>
-        <member name="T:Test.Library.HolaHandlerTests">
-            <summary>
-            Esta clase permite realizar los test de la clase Habilitaciones.
-            Los métodos de la clase Habilitaciones son testeados uno por uno.
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">

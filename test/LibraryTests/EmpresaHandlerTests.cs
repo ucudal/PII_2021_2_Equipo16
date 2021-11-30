@@ -20,16 +20,16 @@ namespace Test.Library
         public void  CrearOfertaHandlerTest()
         {
             ContenedorPrincipal contenedorPrincipal = Singleton<ContenedorPrincipal>.Instancia;
-            contenedorPrincipal.Empresas.Add("123", new Empresa("Empresa1", "ubi","textil"));
+            contenedorPrincipal.Empresas.Add("123234", new Empresa("Empresa1", "ubi","Textil"));
 
             Message mensaje = new Message();
             User usuario = new User();
-            usuario.Id = 1234;
+            usuario.Id = 123234;
             mensaje.From = usuario;
 
             Chat chat = new Chat();
             mensaje.Chat = chat;
-            mensaje.Chat.Id = 123;
+            mensaje.Chat.Id = 123234;
             mensaje.Text = "/crearoferta";
 
 
@@ -113,7 +113,7 @@ namespace Test.Library
         public void AddHabOfertaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("7864", empresaTest1);
             
             contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
@@ -128,7 +128,7 @@ namespace Test.Library
 
             message.Chat = chat1; 
             message.Chat.Id = 7864;
-            message.Text = "/addhaboferta";
+            message.Text = "/agregarhaboferta";
 
             TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
 
@@ -148,9 +148,9 @@ namespace Test.Library
             msg = teleadapter; 
 
             first.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo( $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}"));
+            Assert.That(response, Is.EqualTo( $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
 
-            string habilitacionTest = "apa";
+            string habilitacionTest = "APA";
             message.Text = habilitacionTest; 
             msg = teleadapter; 
             first.Handle(msg, out response);
@@ -160,9 +160,9 @@ namespace Test.Library
         public void RemoverHabEmpresaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("9345", empresaTest1);
-            empresaTest1.AddHabilitacion("apa");
+            empresaTest1.AddHabilitacion("APA");
             contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
             Message message = new Message(); 
@@ -190,7 +190,7 @@ namespace Test.Library
             
             Assert.That(response, Is.EqualTo("Ingrese el nombre de la habilitación a eliminar."));
 
-            string nombreHabTest = "apa";
+            string nombreHabTest = "APA";
             message.Text = nombreHabTest; 
             msg = teleadapter; 
 
@@ -204,7 +204,7 @@ namespace Test.Library
          public void AgregarHabEmpresaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("7432", empresaTest1);
             contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
             
@@ -231,9 +231,9 @@ namespace Test.Library
             IHandler first = new AgregarHabEmpresaHandler(null); 
             first.Handle(msg, out response); 
             
-            Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}"));
+            Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
 
-            string nombreHabTest2 = "apa";
+            string nombreHabTest2 = "APA";
             message.Text = nombreHabTest2; 
             msg = teleadapter; 
 
@@ -244,9 +244,9 @@ namespace Test.Library
         public void InteresadoenOfertaCalcularOfertasVendidasyAceptarOfertaHandlerTestBien()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe", "email@prueba.com");
-            contiene.Emprendedores.Add("128", emprendedorTest);
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com");
+            contiene.Emprendedores.Add("128234", emprendedorTest);
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("1278", empresaTest1);
             
             contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
@@ -254,13 +254,13 @@ namespace Test.Library
             Message message = new Message(); 
 
             User usuario = new User(); 
-            usuario.Id = 128;
+            usuario.Id = 128234;
             message.From = usuario;
             
             Chat chat1 = new Chat();  
 
             message.Chat = chat1; 
-            message.Chat.Id = 128;
+            message.Chat.Id = 128234;
 
             Message message2 = new Message(); 
 
@@ -307,7 +307,7 @@ namespace Test.Library
             msg2 = teleadapter2;
             string nombreOfertaParaAceptar = "oferta1";
 
-            HandlerResult3.Handle(msg, out response);
+            HandlerResult3.Handle(msg2, out response);
             Assert.That(response, Is.EqualTo($"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} "));
             
             message2.Text = "/calcularofertasvendidas"; 
@@ -333,7 +333,7 @@ namespace Test.Library
          public void AceptarInvEmpresaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.EmpresasInvitadas.Add(empresaTest1);
             
             Message message = new Message(); 
@@ -372,10 +372,10 @@ namespace Test.Library
         public void RemoverHabOfertaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("8439", empresaTest1);
             LogicaEmpresa.CrearOferta(empresaTest1,"oferta23", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante");
-            LogicaEmpresa.AgregarHabilitacionOferta(empresaTest1,"apa", "oferta23");
+            LogicaEmpresa.AgregarHabilitacionOferta(empresaTest1,"APA", "oferta23");
             
             Message message = new Message(); 
 
@@ -409,7 +409,7 @@ namespace Test.Library
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("ingrese el nombre de la habilitacion que desea remover"));
 
-            string habilitacionTest2 = "apa";
+            string habilitacionTest2 = "APA";
             message.Text = habilitacionTest2; 
             msg = teleadapter; 
             first.Handle(msg, out response);

@@ -16,17 +16,17 @@ namespace Test.Library
         [Test]
         public void TestGeneral1()
         {
-            Empresa empresaTest = new Empresa("Conaprole", "Pakistan", "textil");
-            Emprendedor emprendedorTest = new Emprendedor("Lebron James", "Korea del Norte", "textil", "Decorado de interiores", "email@prueba.com");
+            Empresa empresaTest = new Empresa("Conaprole", "Pakistan", "Textil");
+            Emprendedor emprendedorTest = new Emprendedor("Lebron James", "Korea del Norte", "Textil", "Decorado de interiores", "email@prueba.com");
 
             string expectedEmpresa = "Conaprole";
             string expectedEmprendedor = "Lebron James";
 
+            Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Clear();
             // Quiero como empresa publicar varias oferta.
             LogicaEmpresa.CrearOferta(empresaTest, "ArduinoUNO", "Baquelita", "1", "100", "Cantidad", "Electronicos", "UCU", "Constante");
             LogicaEmpresa.CrearOferta(empresaTest, "Coca-cola ZERO", "Nix", "5", "2000", "Litros", "Bebidas", "Guyana Francesa", "Constante");
             LogicaEmpresa.CrearOferta(empresaTest, "Fiat 1", "El mejor de todos", "10", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
-
             int expectedPublicaciones = 3; // Esperado numero de ofertas en lista.
             Assert.AreEqual(expectedPublicaciones, Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Count);
 
