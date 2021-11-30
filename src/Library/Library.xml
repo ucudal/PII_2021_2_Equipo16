@@ -13,7 +13,12 @@
         <member name="M:ClassLibrary.Administrador.#ctor">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Administrador"/>.
-            </summary>
+            </summary>    
+        </member>
+        <member name="M:ClassLibrary.Administrador.#ctor(System.String,System.String)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Administrador"/>.
+            </summary>  
             <param name="nombre">Recibe por parametro un string de nombre.</param>
             <param name="clave">Recibe una clave de entrada.</param>
         </member>
@@ -49,6 +54,16 @@
             <param name="nombre">Recibe el nombre de la empresa como string.</param>
             <param name="ubicacion">Recibe la ubicacion de la empresa como un string.</param>
             <param name="rubro">Recibe el rubro de la empresa como un string.</param>
+        </member>
+        <member name="M:ClassLibrary.Administrador.AgregarRubro(System.String)">
+            <summary>
+            Este método sive para agregar nuevos rubros.
+            </summary>
+        </member>
+        <member name="M:ClassLibrary.Administrador.AgregarHabilitacion(System.String)">
+            <summary>
+            Este método sirve para agregar habilitaciones.
+            </summary>
         </member>
         <member name="M:ClassLibrary.Administrador.ConvertirJson">
             <summary>
@@ -129,13 +144,13 @@
             <summary>
             Este método imprime por consola los atributos de oferta.
             </summary>
-            <param name="oferta">Una oferta.</param>
+            <param name="oferta">Recibe por parametro una oferta.</param>
         </member>
         <member name="M:ClassLibrary.ConsolePrinter.DatoPrinter(System.String)">
             <summary>
             Este método imprime una string con información.
             </summary>
-            <param name="dato"></param>
+            <param name="dato">Recibe por parametro un string.</param>
         </member>
         <member name="T:ClassLibrary.ContenedorRubroHabilitaciones">
             <summary>
@@ -143,11 +158,12 @@
             Se usa el patrón Singleton ya que así podemos tener una única instancia de esta clase y evitar tener métodos estáticos,
             con el fin de hacer más rígido el programa.
             Por otra parte también se utiliza el patrón Expert.
-            /// </summary>
+            </summary>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.#ctor">
             <summary>
-            
+            Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase.
             </summary>
         </member>
         <member name="P:ClassLibrary.ContenedorRubroHabilitaciones.ListaRubros">
@@ -155,53 +171,52 @@
             Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="P:ClassLibrary.ContenedorRubroHabilitaciones.ListaHabilitaciones">
             <summary>
-            
+            Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+            para la serialización de datos en la clase. 
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearRubro(System.String)">
             <summary>
             Método agregado para poder chequear si el rubro que se ingresa, existe en la lista de los rubros disponibles.
             </summary>
-            <param name="rubroString"></param>
-            <returns></returns>
+            <param name="rubroString">Recibe por parametro un string con el rubro.</param>
+            <returns>Retorna true si existe un rubro con ese nombre, en caso contrario retorna false.</returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.GetRubro(System.String)">
             <summary>
             Método que se encarga de retornar un rubro, si el Rubro.Nombre es igual al pasado por parametros.
             </summary>
-            <param name="rubroString"></param>
-            <returns></returns>
+            <param name="rubroString">Recibe por parametro un string de rubro.</param>
+            <returns>Retorna rubro si existe un rubro con ese nombre, en caso contrario retorna null.</returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ChequearHabilitacion(System.String)">
             <summary>
             Método agregado para poder chequear la habilitación que se ingresa, existe en la lista de las habilitaciones disponibles.
             </summary>
-            <param name="habilitacionString"></param>
-            <returns></returns>
+            <param name="habilitacionString">Recibe por parametro un string de habilitaciones.</param>
+            <returns>Retorna true si existe una habilitacion con ese nombre, en caso contrario retorna false.</returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.GetHabilitacion(System.String)">
             <summary>
             Método que se encarga de retornar una habilitación, si la Habilitacion.Nombre es igual al pasado por parametros.
             </summary>
-            <param name="habilitacionString"></param>
-            <returns></returns>
+            <param name="habilitacionString">Recibe por parametro un string de la Habilitacion.</param>
+            <returns>Retorna rubro si existe una habilitacion con ese nombre, en caso contrario retorna null.</returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaHabilitaciones">
             <summary>
             Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string listando las habilitaciones.</returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaRubros">
             <summary>
             Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string listando los rubros.</returns>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearRubro(System.String)">
             <summary>
@@ -219,7 +234,7 @@
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la serialización.</returns>
         </member>
         <member name="T:ClassLibrary.Emprendedor">
             <summary>
@@ -232,7 +247,6 @@
             <summary>
             Este diccionario contiene las ofertas compradas y la fecha correspondiente.
             </summary>
-            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Emprendedor.OfertasInteresado">
             <summary>
@@ -249,11 +263,10 @@
             Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Emprendedor.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
-            
+            Inicializa una instancia de la clase Emprendedor.
             </summary>
             <param name="nombre">Nombre del emprededor.</param>
             <param name="ubicacion">Ubicación del emprendedor.</param>
@@ -279,9 +292,6 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.CalcularOfertasCompradas(System.String,System.String)">
             <summary>
-            Muestra todas las habilitaciones posibles para agregar.
-            </summary>
-            <summary>
             Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
             </summary>
             <param name="fechaInicio">Fecha de inicio.</param>
@@ -292,13 +302,13 @@
             <summary>
             Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase emprendedor.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string con los datos del Emprendedor.</returns>
         </member>
         <member name="M:ClassLibrary.Emprendedor.ConvertirJson">
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serialización.</returns>
         </member>
         <member name="T:ClassLibrary.Empresa">
             <summary>
@@ -319,11 +329,10 @@
             Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Empresa.#ctor(System.String,System.String,System.String)">
             <summary>
-            
+            Inicializa una instancia de la clase Empresa.
             </summary>
             <param name="nombre">Nombre de la empresa.</param>
             <param name="ubicacion">Ubicación de la empresa.</param>
@@ -331,9 +340,8 @@
         </member>
         <member name="P:ClassLibrary.Empresa.FechaOfertasEntregadas">
             <summary>
-            
+            Guarda el conjunto de fecha y oferta.
             </summary>
-            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Empresa.HabilitacionesEmpresa">
             <summary>
@@ -352,12 +360,12 @@
         </member>
         <member name="P:ClassLibrary.Empresa.MisOfertas">
             <summary>
-            
+            Esta lista contiene las ofertas realizadas por la empresa.
             </summary>
         </member>
         <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            
+            Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
             </summary>
             <param name="publicaciones"></param>
             <param name="nombre"></param>
@@ -408,26 +416,26 @@
             Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
             Este metodo muestra los interesados en una oferta.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string listando los empresarios interesados en una oferta.</returns>
         </member>
         <member name="M:ClassLibrary.Empresa.TextoEmpresa">
             <summary>
             Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
             ya que conoce lo necesario.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string con los datos de la Empresa.</returns>
         </member>
         <member name="M:ClassLibrary.Empresa.VerMisOfertas">
             <summary>
             Método que devuelve las ofertas publicadas por la empresa.
             </summary>
-            <returns></returns>
+            <returns>Retorna una lista con la listas de ofertas realizadas por la empresa.</returns>
         </member>
         <member name="M:ClassLibrary.Empresa.ConvertirJson">
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serialización.</returns>
         </member>
         <member name="T:ClassLibrary.Habilitaciones">
             <summary>
@@ -440,7 +448,6 @@
             Constructor sin parametros de la clase Habilitaciones, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Habilitaciones.#ctor(System.String)">
             <summary>
@@ -457,7 +464,7 @@
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serialización.</returns>
         </member>
         <member name="T:ClassLibrary.AceptarInvEmpresaHandler">
             <summary>
@@ -508,7 +515,7 @@
             <summary>
             Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.AddHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -549,7 +556,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next"></param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.AgregarHabEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -689,18 +696,19 @@
         </member>
         <member name="T:ClassLibrary.BuscadorMaterialHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/buscarmaterial".
             </summary>
         </member>
         <member name="M:ClassLibrary.BuscadorMaterialHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/buscarmaterial".
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.BuscadorMaterialHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            
+            Este método procesa el mensaje "Buscar por material" y retorna true.
+            En caso contrario retorna false.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -708,18 +716,19 @@
         </member>
         <member name="T:ClassLibrary.BuscadorTagHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/buscartag".
             </summary>
         </member>
         <member name="M:ClassLibrary.BuscadorTagHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "buscartag".
             </summary>
             <param name="next">El próximo "handler".</param>
         </member>
         <member name="M:ClassLibrary.BuscadorTagHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            
+            Este método procesa el mensaje "Buscar por Tag" y retorna true.
+            En caso contrario retorna false.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -727,18 +736,19 @@
         </member>
         <member name="T:ClassLibrary.BuscadorUbicacionHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/buscarubicacion".
             </summary>
         </member>
         <member name="M:ClassLibrary.BuscadorUbicacionHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/buscarubicacion".
             </summary>
             <param name="next">El próximo "handler".</param>
         </member>
         <member name="M:ClassLibrary.BuscadorUbicacionHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            
+            Este método procesa el mensaje "Buscar por invitación" y retorna true.
+            En caso contrario retorna false.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -746,7 +756,7 @@
         </member>
         <member name="T:ClassLibrary.CalcularOfertasCompradasHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/Calcularofertascompradas".
             </summary>
         </member>
         <member name="M:ClassLibrary.CalcularOfertasCompradasHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -754,7 +764,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next">El próximo "handler."</param>
+            <param name="next">Recibe por parametro el siguiente Handler</param>
         </member>
         <member name="M:ClassLibrary.CalcularOfertasCompradasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -775,7 +785,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next">El próximo "handler"</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.CalcularOfertasVendidasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -820,7 +830,8 @@
         </member>
         <member name="M:ClassLibrary.ComandosHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            
+            Este método procesa el mensaje "Comandos" y retorna true.
+            En caso contrario retorna false.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -859,7 +870,8 @@
         </member>
         <member name="M:ClassLibrary.CrearOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            
+            Este método procesa el mensaje "Crear una oferta" y retorna true.
+            En caso contrario retorna false.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
@@ -867,46 +879,47 @@
         </member>
         <member name="T:ClassLibrary.GetHabListHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/listadehabilitaciones".
             </summary>
         </member>
         <member name="M:ClassLibrary.GetHabListHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase.
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.GetHabListHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Procesa el mensaje "Lista de habilitaciones" y retorna true; retorna false en caso contrario.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.HolaHandler">
             <summary>
-            Esta clase contiene un método para aceptar una oferta.
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
             </summary>
         </member>
         <member name="M:ClassLibrary.HolaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Este método se encarga de aceptar una oferta.
+            Inicializa una nueva instancia de la clase. 
+            Esta clase procesa el mensaje "hola".
             </summary>
-            <param name="next"></param>
-            <returns></returns>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.HolaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            
+            Este método procesa el mensaje "Hola" y retorna true.
+            En caso contrario retorna false.
             </summary>
-            <param name="mensaje"></param>
-            <param name="respuesta"></param>
-            <returns></returns>
+            <param name="mensaje">recibe por parametro el mensaje a procesar.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado. </param>
+            <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario</returns>
         </member>
         <member name="T:ClassLibrary.InteresadoEnOfertaHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/interesarme".
             </summary>
         </member>
         <member name="M:ClassLibrary.InteresadoEnOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -914,7 +927,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next">El próximo "handler"</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.InteresadoEnOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -948,12 +961,13 @@
         </member>
         <member name="T:ClassLibrary.RegistrarAdminHandler">
             <summary>
-            
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/interesarme".
             </summary>
         </member>
         <member name="M:ClassLibrary.RegistrarAdminHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "/registaradmin".
+            Inicializa una nueva instancia de la clase.
+            Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
             <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
@@ -967,52 +981,52 @@
         </member>
         <member name="T:ClassLibrary.RegistroEmprendedorHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/registrarme".
             </summary>
         </member>
         <member name="M:ClassLibrary.RegistroEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/registrarme".
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.RegistroEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.RemoverHabEmprendedor">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/removerhabemprendedor".
             </summary>
         </member>
         <member name="M:ClassLibrary.RemoverHabEmprendedor.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/removerhabemprendedor".
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.RemoverHabEmprendedor.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
             </summary>
             <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-            <param name="respuesta">Recibe por paramtro la respuesta al mensaje procesado.</param>
+            <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
             <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
         </member>
         <member name="T:ClassLibrary.RemoveHabEmpresaHandler">
             <summary>
-            Esta clase contiene un método para remover habilitaciones de empresas.
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/removerhabempresa".
             </summary>
         </member>
         <member name="M:ClassLibrary.RemoveHabEmpresaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
             Inicializa una nueva instancia de la clase.
             </summary>
-            <param name="next"></param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.RemoveHabEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
@@ -1025,14 +1039,14 @@
         </member>
         <member name="T:ClassLibrary.RemoverHabOfertaHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/removerhaboferta".
             </summary>
         </member>
         <member name="M:ClassLibrary.RemoverHabOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/removerhaboferta".
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.RemoverHabOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1044,14 +1058,14 @@
         </member>
         <member name="T:ClassLibrary.RemoverOfertaHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsibility que implementa el comando "/eliminaroferta".
             </summary>
         </member>
         <member name="M:ClassLibrary.RemoverOfertaHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+            Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/eliminaroferta".
             </summary>
-            <param name="next">El próximo "handler".</param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.RemoverOfertaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1063,7 +1077,7 @@
         </member>
         <member name="T:ClassLibrary.VerEmprendedorHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/veremprendedor".
             </summary>
         </member>
         <member name="M:ClassLibrary.VerEmprendedorHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -1071,7 +1085,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next"></param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.VerEmprendedorHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1084,7 +1098,7 @@
         </member>
         <member name="T:ClassLibrary.VerEmpresaHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verempresa".
             </summary>
         </member>
         <member name="M:ClassLibrary.VerEmpresaHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -1092,7 +1106,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next"></param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.VerEmpresaHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1105,7 +1119,7 @@
         </member>
         <member name="T:ClassLibrary.VerInteresados">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/verinteresados".
             </summary>
         </member>
         <member name="M:ClassLibrary.VerInteresados.#ctor(ClassLibrary.BaseHandler)">
@@ -1113,7 +1127,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next"></param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.VerInteresados.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1126,7 +1140,7 @@
         </member>
         <member name="T:ClassLibrary.VerMisOfertasHandler">
             <summary>
-            Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+            Un "handler" del patrón Chain of Responsability que implementa el comando "/vermisofertas".
             </summary>
         </member>
         <member name="M:ClassLibrary.VerMisOfertasHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -1134,7 +1148,7 @@
             Inicializa una nueva instancia de la clase.
             Esta clase procesa el mensaje ingresado por el usuario.
             </summary>
-            <param name="next"></param>
+            <param name="next">Recibe por parametro el siguiente Handler.</param>
         </member>
         <member name="M:ClassLibrary.VerMisOfertasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
@@ -1173,7 +1187,7 @@
             Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
             Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
             </summary>
-            <param name="mensaje"></param>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.VerUbicacionEmpresaHandler">
@@ -1204,7 +1218,7 @@
             Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
             Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
             </summary>
-            <param name="mensaje"></param>
+            <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
             <returns></returns>
         </member>
         <member name="T:ClassLibrary.VerUbicacionOfertaHandler">
@@ -1249,33 +1263,30 @@
             Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="P:ClassLibrary.HistorialChat.MensajesDelUser">
             <summary>
             Contiene los mensajes enviados por el Usuario.
             </summary>
-            <returns></returns>
         </member>
         <member name="P:ClassLibrary.HistorialChat.MensajesDelUserReves">
             <summary>
-            
+            Esta lista contiene los mensajes del usuarios listados en forma inversa.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.BuscarUltimoComando(System.String)">
             <summary>
             Devueleve una lista que contiene los mensajes despues de el comando ingresado.
             </summary>
-            <param name="comando"></param>
+            <param name="comando">Recibe por parametro un string con el comando ingresado.</param>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.ComprobarUltimoComandoIngresado(System.String)">
             <summary>
             Chequeo para ver si su ultimo comando ingresado es el buscado en los handlers.
             </summary>
-            <param name="comando"></param>
-            <returns></returns>
+            <param name="comando">Recibe por parametro un string con el comando ingresado.</param>
+            <returns>Retorna true si el comando ingresado esta correctamente, o false en caso contrio.</returns>
         </member>
         <member name="M:ClassLibrary.HistorialChat.ConvertirJson">
             <summary>
@@ -1630,12 +1641,11 @@
             <summary>
             Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
-            </summary>
-            <returns></returns>
+            </summary>       
         </member>
         <member name="P:ClassLibrary.ContenedorPrincipal.HistorialDeChats">
             <summary>
-            
+            Guarda un conjunto de Chats que ingresa el usuario.
             </summary>
             <returns></returns>
         </member>
@@ -1660,6 +1670,11 @@
         <member name="P:ClassLibrary.ContenedorPrincipal.Publicaciones">
             <summary>
             Guarda una instancia de Publicaciones.
+            </summary>
+        </member>
+        <member name="P:ClassLibrary.ContenedorPrincipal.ContenedorRubrosHabs">
+            <summary>
+            Contenedor de rubros y habilitaciones.
             </summary>
         </member>
         <member name="P:ClassLibrary.ContenedorPrincipal.BuscadorUbicacion">
@@ -1690,7 +1705,7 @@
         </member>
         <member name="F:ClassLibrary.ContenedorPrincipal.Administradores">
             <summary>
-            
+            Guarda un conjunto de administradores.
             </summary>
             <returns></returns>
         </member>
@@ -1718,8 +1733,8 @@
             <summary>
             Invita a la empresa a unirse al bot.
             </summary>
-            <param name="administrador"></param>
-            <param name="nombreEmpresa"></param>
+            <param name="administrador">Recibe por parametro un Administrador.</param>
+            <param name="nombreEmpresa">Recibe por parametro un string con nombre la empresa.</param>
         </member>
         <member name="M:ClassLibrary.LogicaAdministrador.CambioClave(ClassLibrary.Administrador,System.String,System.String)">
             <summary>
@@ -1739,11 +1754,25 @@
             <param name="ubicacionEmpresa">Recibe por paramtro la ubicacion de la empresa.</param>
             <param name="rubroEmpresa">Recibe por parametro el rubro al que pertenece la empresa.</param>
         </member>
+        <member name="M:ClassLibrary.LogicaAdministrador.AgregarRubro(ClassLibrary.Administrador,System.String)">
+            <summary>
+            Este método sive para agregar nuevos rubros.
+            </summary>
+            <param name="administrador">Recibe por parametro un administrador.</param>
+            <param name="nombrRubro">Recibe por paramtro el nombre del rubro.</param>
+        </member>
+        <member name="M:ClassLibrary.LogicaAdministrador.AgregarHabilitacion(ClassLibrary.Administrador,System.String)">
+            <summary>
+            Este método sirve para agregar habilitaciones.
+            </summary>
+            <param name="administrador">Recibe por parametro un administrador.</param>
+            <param name="nombrHabilitacion">Recibe por parametro el nombre de la habilitacion.</param>
+        </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>
             Esta clase contiene a los buscadores.
             </summary>
-            <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+            <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
@@ -1775,7 +1804,7 @@
             </summary>
             <remarks>
             Contiene un método para llamar a cada método de la clase Emprendedor.
-            La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+            La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
@@ -1830,7 +1859,7 @@
             <summary>
             Esta clase se encarga de la lógica relacionada a Empresa.
             </summary>
-            <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+            <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
             buscando mantener un equilibrio entre cohesión y acoplamiento.
             </remarks>
         </member>
@@ -1937,16 +1966,15 @@
             Constructor sin parametros de la clase Material, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Material.#ctor(System.String,System.String,System.String,System.String)">
             <summary>
-            
+            Inicializa una nueva instancia de la clase.
             </summary>
-            <param name="nombre"></param>
-            <param name="cantidad"></param>
-            <param name="precio"></param>
-            <param name="unidad"></param>
+            <param name="nombre">Recibe por parametro el nombre del matrial.</param>
+            <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
+            <param name="precio">Recibe por parametro el precio del matrial.</param>
+            <param name="unidad">Recibe por parametro la unidad del matrial.</param>
         </member>
         <member name="P:ClassLibrary.Material.Nombre">
             <summary>
@@ -1976,34 +2004,33 @@
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serializacion.</returns>
         </member>
         <member name="T:ClassLibrary.MyReferenceHandler">
             <summary>
-            
+            Este handler sirve pare referenciar a los handlers.
             </summary>
         </member>
         <member name="P:ClassLibrary.MyReferenceHandler.Instance">
             <summary>
-            
+            Sirve para la instanciacion de handler de referencia.
             </summary>
-            <value></value>
         </member>
         <member name="M:ClassLibrary.MyReferenceHandler.#ctor">
             <summary>
-            
+            Con esto se resetea el handler de referencia.
             </summary>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.MyReferenceHandler.CreateResolver">
             <summary>
-            
+            Con esto se resetea el handler de referencia.
             </summary>
             <returns></returns>
         </member>
         <member name="M:ClassLibrary.MyReferenceHandler.Reset">
             <summary>
-            
+            Con esto se resetea el handler de referencia.
             </summary>
         </member>
         <member name="T:ClassLibrary.Oferta">
@@ -2018,7 +2045,6 @@
             Constructor sin parametros de la clase Oferta, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="P:ClassLibrary.Oferta.HabilitacionesOferta">
             <summary>
@@ -2027,17 +2053,17 @@
         </member>
         <member name="M:ClassLibrary.Oferta.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ClassLibrary.Empresa)">
             <summary>
-            
+            Inicializa una nueva instancia de la clase.
             </summary>
-            <param name="nombre"></param>
-            <param name="nombreMaterial"></param>
-            <param name="cantidad"></param>
-            <param name="precio"></param>
-            <param name="unidad"></param>
-            <param name="tags"></param>
-            <param name="ubicacion"></param>
-            <param name="constantesPuntuales"></param>
-            <param name="empresa"></param>
+            <param name="nombre">Recibe por parametro el nombre de la oferta.</param>
+            <param name="nombreMaterial">Recibe por parametro el nombre del material de la oferta.</param>
+            <param name="cantidad">Recibe por parametro la cantidad de la oferta.</param>
+            <param name="precio">Recibe por parametro el precio de la oferta.</param>
+            <param name="unidad">Recibe por parametro la unidad de la oferta.</param>
+            <param name="tags">Recibe por parametro el tags de la oferta.</param>
+            <param name="ubicacion">Recibe por parametro la ubicacion de la oferta.</param>
+            <param name="constantesPuntuales">Recibe por parametro que indica si es contante de la oferta.</param>
+            <param name="empresa">Recibe por parametro la empresa que creo la oferta.</param>
         </member>
         <member name="P:ClassLibrary.Oferta.Interesado">
             <summary>
@@ -2096,20 +2122,20 @@
             Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
             ya que conoce lo necesario.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string con la información de la Oferta.</returns>
         </member>
         <member name="M:ClassLibrary.Oferta.TextoInteresados">
             <summary>
             Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase oferta.
             ya que conoce lo necesario.
             </summary>
-            <returns></returns>
+            <returns>Retorna un string listando los interesados en la oferta.</returns>
         </member>
         <member name="M:ClassLibrary.Oferta.ConvertirJson">
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serializacion.</returns>
         </member>
         <member name="T:ClassLibrary.OpcionesUso">
             <summary>
@@ -2166,7 +2192,7 @@
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serializacion.</returns>
         </member>
         <member name="T:ClassLibrary.Rubro">
             <summary>
@@ -2183,30 +2209,30 @@
             Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
         </member>
         <member name="M:ClassLibrary.Rubro.#ctor(System.String)">
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Rubro"/>.
             </summary>
+            <param name="nombre">Recibe por parametro el nombre del rubro.</param>
         </member>
         <member name="P:ClassLibrary.Rubro.Nombre">
             <summary>
-            
+            Esta propiedad contiene el nombre del rubro.
             </summary>
-            <value></value>
+            <value>El nombre del Rubro</value>
         </member>
         <member name="M:ClassLibrary.Rubro.ConvertirJson">
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serializacion.</returns>
         </member>
         <member name="T:ClassLibrary.Singleton`1">
             <summary>
-            
+            Esta clase utiliza el patron singleton.
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">Recibe por parametro una variable generica.</typeparam>
         </member>
         <member name="P:ClassLibrary.Singleton`1.Instancia">
             <summary>
@@ -2221,7 +2247,7 @@
         </member>
         <member name="F:ClassLibrary.TelegramMsgAdapter.mensaje">
             <summary>
-            
+            El mensaje recibido desde Telegram.
             </summary>
         </member>
         <member name="M:ClassLibrary.TelegramMsgAdapter.#ctor(Telegram.Bot.Types.Message)">
@@ -2272,8 +2298,6 @@
             Constructor sin parametros de la clase Ubicacion, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
-            <returns></returns>
-            
         </member>
         <member name="M:ClassLibrary.Ubicacion.#ctor(System.String)">
             <summary>
@@ -2282,7 +2306,7 @@
         </member>
         <member name="P:ClassLibrary.Ubicacion.NombreCalle">
             <summary>
-            .
+            Esta propiedad contiene el nombre de la calle.
             </summary>
             <value>Valor es un string del nombre.</value>
         </member>
@@ -2290,7 +2314,7 @@
             <summary>
             Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
             </summary>
-            <returns></returns>
+            <returns>Retorna la Serialización.</returns>
         </member>
         <member name="T:ClassLibrary.Usuario">
             <summary>
