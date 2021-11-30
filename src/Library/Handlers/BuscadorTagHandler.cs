@@ -49,7 +49,7 @@ namespace ClassLibrary
                 
                 LogicaBuscadores.BuscarPorTags(palabraClave);
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorTags(palabraClave))}";
+                respuesta = $"{PlataformaPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorTags(palabraClave))}";
                 return true;
             }          
 

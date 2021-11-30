@@ -47,7 +47,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 2)
                 {
-                    respuesta = "Ingrese el rubro de la empresa";
+                    respuesta = $"Ingrese el rubro de la empresa\n {Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaRubros()}";
                     return true;
                 }
                 else if (listaConParametros.Count == 3)

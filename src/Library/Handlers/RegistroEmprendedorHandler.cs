@@ -58,7 +58,7 @@ namespace ClassLibrary
                     }
                     else if (listaConParametros.Count == 2)
                     {
-                        respuesta = $"Ingrese rubro\n {Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaRubros()}";
+                        respuesta = $"Ingrese rubro\n {Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaRubros()}";
                         return true;
                     }
                     else if (listaConParametros.Count == 3)
@@ -77,11 +77,11 @@ namespace ClassLibrary
                         string ubicacionEmprendedor = listaConParametros[3];
                         string rubroEmprendedor = listaConParametros[2];
                         string especializacionesEmprendedor = listaConParametros[1];
-                        string emailEmorendedor = listaConParametros[0];
+                        string emailEmprendedor = listaConParametros[0];
 
                         try
                         {
-                            LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, emailEmorendedor,  mensaje.Id);
+                            LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, emailEmprendedor,  mensaje.Id);
                         }
                         catch (System.ArgumentException e)
                         {
@@ -90,7 +90,7 @@ namespace ClassLibrary
                         }
 
                         Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                        respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. {OpcionesUso.AccionesEmprendedor()}";
+                        respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor} e Email{emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }
                 }
