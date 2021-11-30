@@ -32,9 +32,14 @@
             Esta clase permite probar todos los handlers destinados al emprendedor.
             </summary>
         </member>
-        <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorTagHandlerTestBien">
+        <member name="M:Test.Library.EmprendedorHandlerTest.Setup">
             <summary>
             
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.Test">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
             </summary>
         </member>
         <member name="T:Test.Library.EmprendedorTests">
