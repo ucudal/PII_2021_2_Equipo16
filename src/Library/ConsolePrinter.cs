@@ -16,7 +16,7 @@ namespace ClassLibrary
         /// <param name="oferta">Recibe por parametro una oferta.</param>
         public string OfertaPrinter(Oferta oferta)
         {
-            string texto = $"Nombre: {oferta.Nombre}, Material: {oferta.Material.Nombre}, Precio {oferta.Material.Precio}, Unidad: {oferta.Material.Unidad}, Ubicación {oferta.Ubicacion.NombreCalle}, Fecha de Publicación {oferta.FechaDePublicacion}";
+            string texto = $"Nombre: {oferta.Nombre}, Material: {oferta.Material.Tipo}, Precio {oferta.Material.Precio}, Unidad: {oferta.Material.Unidad}, Ubicación {oferta.Ubicacion.NombreCalle}, Fecha de Publicación {oferta.FechaDePublicacion}";
             Console.WriteLine(texto);
             return texto;
         }

@@ -145,7 +145,7 @@ namespace ClassLibrary
             StringBuilder text = new StringBuilder();
             text.Append($"******************************\n");
             text.Append($"Nombre: {this.Nombre} \n");
-            text.Append($"Material: {this.Material.Nombre} \n");
+            text.Append($"Material: {this.Material.Tipo} \n");
             text.Append($"Precio: ${this.Material.Precio} \n");
             text.Append($"Unidad: {this.Material.Unidad} \n");
             text.Append($"Cantidad: {this.Material.Cantidad} \n");
