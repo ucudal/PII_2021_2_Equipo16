@@ -32,14 +32,44 @@
             Esta clase permite probar todos los handlers destinados al emprendedor.
             </summary>
         </member>
-        <member name="M:Test.Library.EmprendedorHandlerTest.Setup">
+        <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorTagHandlerTest">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Test.Library.EmprendedorHandlerTest.Test">
+        <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorMaterialHandlerTest">
             <summary>
             Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.BuscadorUbicacionHandlerTest">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.AgregarHabEmprendedorHandlerTestBien">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.RemoverHabEmprendedorHandlerTestBien">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.InteresadoenOfertayCalcularOfertasCompradasHandlerTestBien">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.ListadeHabilitacionesHandlerTestBien">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.RegistroEmprendedorHandlerTestBien">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:Test.Library.EmprendedorTests">
@@ -70,6 +100,27 @@
         <member name="M:Test.Library.EmprendedorTests.TestAddHabilitacionesMal">
             <summary>
             Test que sirve para ver el comportamiento del código al añadirle al emprendedor una habilitacion que no existe.
+            </summary>
+        </member>
+        <member name="T:Test.Library.EmpresaHandlerTest">
+            <summary>
+            Esta clase permite probar todos los handlers destinados al emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.CrearOfertaHandlerTest">
+            <summary>
+            Este test se encarga de Crear una oferta pasando por cada requerimiento
+            para ver si todo funciona correctamente.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.AddHabOfertaHandlerTest">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.AgregarHabEmpresaHandlerTest">
+            <summary>
+            Test que prueba el Handler para Agregar una habilitación a una empresa.
             </summary>
         </member>
         <member name="T:Test.Library.EmpresaTests">
@@ -150,6 +201,12 @@
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion2">
             <summary>
             Este metodo permite evaluar lo que sucede cuando se crea una habilitación sin nombre.
+            </summary>
+        </member>
+        <member name="T:Test.Library.HolaHandlerTests">
+            <summary>
+            Esta clase permite realizar los test de la clase Habilitaciones.
+            Los métodos de la clase Habilitaciones son testeados uno por uno.
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
@@ -233,11 +290,14 @@
             En este test vamos a verificar la correcta creación de un Rubro con nombre
             </summary>
         </member>
+<<<<<<< HEAD
+=======
         <member name="M:Test.Library.RubroTests.TestCrearRubro2">
             <summary>
             En este test vamos a verificar la correcta creación de un Rubro sin nombre
             </summary>
         </member>
+>>>>>>> deV2
         <member name="T:Test.Library.UsuarioTests">
             <summary>
             Creación de la clase UsuarioTest, esta misma clase nos permite probar los métodos de la clase Usuario para corroborar que todo funcione de forma esperada.

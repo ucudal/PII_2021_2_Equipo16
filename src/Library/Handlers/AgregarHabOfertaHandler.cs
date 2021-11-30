@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">Handler siguiente.</param>
         public AgregarHabOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "/crearhaboferta" };
+            this.Keywords = new string[] { "/addhaboferta" };
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace ClassLibrary
         /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/crearhaboferta"))
+            if (!this.ChequearHandler(mensaje, "/addhaboferta"))
             {
                 respuesta = string.Empty;
                 return false;
@@ -33,7 +33,7 @@ namespace ClassLibrary
             else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearhaboferta");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/addhaboferta");
 
                 if (listaConParametros.Count == 0)
                 {

@@ -68,13 +68,20 @@ namespace ClassLibrary
                     }
                     else if (listaConParametros.Count == 4)
                     {
-                        string nombreEmprendedor = listaConParametros[3];
-                        string ubicacionEmprendedor = listaConParametros[2];
-                        string rubroEmprendedor = listaConParametros[1];
-                        string especializacionesEmprendedor = listaConParametros[0];
+                        respuesta = "Ingrese su email de contacto";
+                        return true;
+                    }
+                    else if (listaConParametros.Count == 5)
+                    {
+                        string nombreEmprendedor = listaConParametros[4];
+                        string ubicacionEmprendedor = listaConParametros[3];
+                        string rubroEmprendedor = listaConParametros[2];
+                        string especializacionesEmprendedor = listaConParametros[1];
+                        string emailEmorendedor = listaConParametros[0];
+
                         try
                         {
-                            LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, mensaje.Id);
+                            LogicaEmprendedor.RegistroEmprendedor(nombreEmprendedor, ubicacionEmprendedor, rubroEmprendedor, especializacionesEmprendedor, emailEmorendedor,  mensaje.Id);
                         }
                         catch (System.ArgumentException e)
                         {
