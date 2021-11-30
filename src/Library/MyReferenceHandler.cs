@@ -31,7 +31,8 @@ namespace ClassLibrary
         /// <summary>
         /// Con esto se resetea el handler de referencia.
         /// </summary>
-        public MyReferenceHandler() => Reset();
+        public MyReferenceHandler() => this.Reset();
+
         private ReferenceResolver rootedResolver;
 
         /// <summary>

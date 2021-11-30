@@ -7,8 +7,8 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
-    /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente y la 
-    /// responsable de llamar al método de agregar rubros y habilitaciones. 
+    /// Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente y la
+    /// responsable de llamar al método de agregar rubros y habilitaciones.
     /// </summary>
     public class Administrador : IJsonConvertible
     {
@@ -103,6 +103,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este método sive para agregar nuevos rubros.
         /// </summary>
+        /// <param name="nombreRubro">Nombre del Rubro.</param>
         public void AgregarRubro(string nombreRubro)
         {
             Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearRubro(nombreRubro);
@@ -111,6 +112,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este método sirve para agregar habilitaciones.
         /// </summary>
+        /// <param name="nombreHab">Nombre de la habilitación.</param>
         public void AgregarHabilitacion(string nombreHab)
         {
             Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.CrearHabilitacion(nombreHab);

@@ -20,16 +20,16 @@ namespace ClassLibrary
         {
         }
 
-       /// <summary>
-       /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
+        /// <summary>
+        /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonInclude]
         public List<Rubro> ListaRubros { get; set; } = new List<Rubro>()
         {
-            new Rubro("textil"),
-            new Rubro("metalurgia"),
-            new Rubro("deportes"),
+            new Rubro("Textil"),
+            new Rubro("Metalurgia"),
+            new Rubro("Electrodomésticos"),
         };
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace ClassLibrary
         [JsonInclude]
         public List<Habilitaciones> ListaHabilitaciones { get; set; } = new List<Habilitaciones>()
         {
-            new Habilitaciones("apa"),
-            new Habilitaciones("iso"),
-            new Habilitaciones("soa"),
+            new Habilitaciones("APA"),
+            new Habilitaciones("ISO"),
+            new Habilitaciones("SOA"),
         };
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace ClassLibrary
         /// <summary>
         /// Crea un rubro y lo agrega a la lista de rubros.
         /// </summary>
-        /// <param name="nombreRubro"></param>
+        /// <param name="nombreRubro">Nombre del rubro.</param>
         public void CrearRubro(string nombreRubro)
         {
             Rubro rubro = new Rubro(nombreRubro);
@@ -159,7 +159,7 @@ namespace ClassLibrary
         /// <summary>
         /// Crea una habilitacion y la agrega a la lista de habilitaciones.
         /// </summary>
-        /// <param name="nombreHabilitacion"></param>
+        /// <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         public void CrearHabilitacion(string nombreHabilitacion)
         {
             Habilitaciones hab = new Habilitaciones(nombreHabilitacion);

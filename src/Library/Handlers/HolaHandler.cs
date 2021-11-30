@@ -9,7 +9,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase <see cref="HolaHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public HolaHandler (BaseHandler next)
+        public HolaHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "Hola", "hola" };

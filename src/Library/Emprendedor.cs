@@ -14,7 +14,7 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-    /// la clase Emprendedor tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
+    /// la clase Emprendedor tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
     /// Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
@@ -38,7 +38,6 @@ namespace ClassLibrary
         /// </summary>
         [JsonInclude]
         public List<Habilitaciones> HabilitacionesEmprendedor { get; set; } = new List<Habilitaciones>();
-        //private List<Oferta> ofertasCompradas = new List<Oferta>();
 
         /// <summary>
         /// Constructor sin parametros de la clase Emprendedor, ya que es esencial el atributo JsonConstructor
@@ -49,7 +48,7 @@ namespace ClassLibrary
             : base()
         {
         }
-        
+
         /// <summary>
         /// Inicializa una instancia de la clase Emprendedor.
         /// </summary>
@@ -58,7 +57,8 @@ namespace ClassLibrary
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
         /// <param name="email">Email del emprendedor, para contacatrlo.</param>
-        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string email) : base(nombre, ubicacion, rubro)
+        public Emprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string email)
+            : base(nombre, ubicacion, rubro)
         {
             this.Especializaciones = especializaciones;
             this.Email = email;
@@ -98,7 +98,7 @@ namespace ClassLibrary
         public void RemoveHabilitacion(string habilitacion)
         {
             Habilitaciones habEliminada = new Habilitaciones(null);
-            foreach (Habilitaciones hab in HabilitacionesEmprendedor)
+            foreach (Habilitaciones hab in this.HabilitacionesEmprendedor)
             {
                 if (habilitacion == hab.Nombre)
                 {
@@ -168,7 +168,7 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
         /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()

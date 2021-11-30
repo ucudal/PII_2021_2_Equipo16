@@ -28,6 +28,7 @@ namespace ClassLibrary
             this.Keywords = new string[] { "/ubicacionoferta" };
             this.bot = client;
         }
+
         private TelegramBotClient bot;
 
         /// <summary>
@@ -47,6 +48,7 @@ namespace ClassLibrary
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/ubicacionoferta") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/ubicacionoferta");
+                
                 // Se le pide al emprendedor que ingrese la ubicacion de la oferta que quiere consultar.
                 if (listaConParametros.Count == 0)
                 {
@@ -92,14 +94,9 @@ namespace ClassLibrary
             Location direccionActual = await client.GetLocationAsync(direccion);
             Location direccionOferta = await client.GetLocationAsync(nombreOferta);
 
-            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
-            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
-            await client.DownloadRouteAsync(
-                direccionActual.Latitude,
-                direccionActual.Longitude,
-                direccionOferta.Latitude,
-                direccionOferta.Longitude,
-                @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+            await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
+            await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
+            await client.DownloadRouteAsync(direccionActual.Latitude, direccionActual.Longitude, direccionOferta.Latitude, direccionOferta.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
 
             // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.
             this.SendProfileImage(mensaje);        

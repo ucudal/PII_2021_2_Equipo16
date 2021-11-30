@@ -7,8 +7,8 @@
         <member name="T:ClassLibrary.Administrador">
             <summary>
             Esta clase representa al Administrador, persona que invitara a las empresas a ingresar a la aplicación.
-            Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente y la 
-            responsable de llamar al método de agregar rubros y habilitaciones. 
+            Esta clase se creo por Expert, porque es la experta en hacer y conocer las Empresas inicialmente y la
+            responsable de llamar al método de agregar rubros y habilitaciones.
             </summary>
         </member>
         <member name="M:ClassLibrary.Administrador.#ctor">
@@ -60,11 +60,13 @@
             <summary>
             Este método sive para agregar nuevos rubros.
             </summary>
+            <param name="nombreRubro">Nombre del Rubro.</param>
         </member>
         <member name="M:ClassLibrary.Administrador.AgregarHabilitacion(System.String)">
             <summary>
             Este método sirve para agregar habilitaciones.
             </summary>
+            <param name="nombreHab">Nombre de la habilitación.</param>
         </member>
         <member name="M:ClassLibrary.Administrador.ConvertirJson">
             <summary>
@@ -221,13 +223,13 @@
             <summary>
             Crea un rubro y lo agrega a la lista de rubros.
             </summary>
-            <param name="nombreRubro"></param>
+            <param name="nombreRubro">Nombre del rubro.</param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearHabilitacion(System.String)">
             <summary>
             Crea una habilitacion y la agrega a la lista de habilitaciones.
             </summary>
-            <param name="nombreHabilitacion"></param>
+            <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.ConvertirJson">
             <summary>
@@ -243,7 +245,7 @@
             </summary>
             <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-            la clase Emprendedor tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
+            la clase Emprendedor tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
             mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
@@ -312,7 +314,7 @@
         </member>
         <member name="M:ClassLibrary.Emprendedor.ConvertirJson">
             <summary>
-            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+            Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
             </summary>
             <returns>Retorna el objeto serializado.</returns>
         </member>
@@ -462,6 +464,7 @@
             <summary>
             Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.Habilitaciones"/>.
             </summary>
+            <param name="nombre">Nombre.</param>
         </member>
         <member name="P:ClassLibrary.Habilitaciones.Nombre">
             <summary>
@@ -626,7 +629,7 @@
         </member>
         <member name="P:ClassLibrary.BaseHandler.Next">
             <summary>
-            Obtiene el próximo "handler".
+            Obtiene o establece el próximo "handler".
             </summary>
             <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
         </member>
@@ -2036,7 +2039,7 @@
             </summary>
             <remarks>
             Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-            la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+            la clase Ofertas tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer
             todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
             </remarks>
         </member>
@@ -2205,7 +2208,7 @@
         </member>
         <member name="M:ClassLibrary.Rubro.#ctor">
             <summary>
-            Constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
+            Inicializa un constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
             para la serialización de datos en la clase.
             </summary>
         </member>
@@ -2217,7 +2220,7 @@
         </member>
         <member name="P:ClassLibrary.Rubro.Nombre">
             <summary>
-            Esta propiedad contiene el nombre del rubro.
+            Obtiene o establece el nombre del rubro.
             </summary>
             <value>El nombre del Rubro.</value>
         </member>
@@ -2235,10 +2238,9 @@
             <typeparam name="T">Recibe por parametro una variable generica.</typeparam>
         </member>
         <member name="P:ClassLibrary.Singleton`1.Instancia">
-             <summary>
-            
-             </summary>
-             <value></value>
+            <summary>
+            Obtiene o establece la Instancia del Singleton.
+            </summary>
         </member>
         <member name="T:ClassLibrary.TelegramMsgAdapter">
             <summary>
@@ -2246,7 +2248,7 @@
             En este caso se aplicó el patrón Adapter para poder adaptar el mensaje recibido por Telegram.
             </summary>
         </member>
-        <member name="F:ClassLibrary.TelegramMsgAdapter.mensaje">
+        <member name="F:ClassLibrary.TelegramMsgAdapter.Mensaje">
             <summary>
             El mensaje recibido desde Telegram.
             </summary>
@@ -2258,16 +2260,16 @@
             <param name="msg">Recibe un tipo Message de Telegram.</param>
         </member>
         <member name="P:ClassLibrary.TelegramMsgAdapter.Id">
-             <summary>
-            
-             </summary>
-             <value></value>
+            <summary>
+            Obtiene el ID de los mensajes del chat.
+            </summary>
+            <value></value>
         </member>
         <member name="P:ClassLibrary.TelegramMsgAdapter.Text">
-             <summary>
-            
-             </summary>
-             <value></value>
+            <summary>
+            Obtiene el mensaje.
+            </summary>
+            <value></value>
         </member>
         <member name="T:ClassLibrary.TelegramPrinter">
             <summary>
@@ -2277,17 +2279,17 @@
             En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
             </remarks>
         </member>
-        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
-            <summary>
-            Este método imprime por consola los atributos de oferta.
-            </summary>
-            <param name="oferta">Una oferta.</param>
-        </member>
         <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
             <summary>
             Este método imprime una string con información.
             </summary>
             <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
+        </member>
+        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método imprime por consola los atributos de oferta.
+            </summary>
+            <param name="oferta">Una oferta.</param>
         </member>
         <member name="T:ClassLibrary.Ubicacion">
             <summary>

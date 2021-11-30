@@ -13,7 +13,7 @@ namespace ClassLibrary
     public abstract class BaseHandler : IHandler
     {
         /// <summary>
-        /// Obtiene el próximo "handler".
+        /// Obtiene o establece el próximo "handler".
         /// </summary>
         /// <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
         public IHandler Next { get; set; }
@@ -154,7 +154,7 @@ namespace ClassLibrary
                     }
                 }
             }
-            
+
             return true;
         }
     }

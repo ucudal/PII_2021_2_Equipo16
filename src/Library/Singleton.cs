@@ -14,9 +14,8 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        ///
+        /// Obtiene o establece la Instancia del Singleton.
         /// </summary>
-        /// <value></value>
         public static T Instancia
         {
             get
