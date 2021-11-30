@@ -15,19 +15,18 @@ namespace Test.Library
         [Test]
         public void TestRegistroEmprendedor()
         {
-            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "pakistan", "textil", "EspecializacionesTest");
+            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "pakistan", "textil", "EspecializacionesTest","email@prueba.com");
             string expected = "EmprendedorTest";
             string expected2 = "pakistan";
             string expected3 = "textil";
             string expected5 = "EspecializacionesTest";
 
-
             Assert.AreEqual(expected, emprendedorTest.Nombre);
             Assert.AreEqual(expected2, emprendedorTest.Ubicacion.NombreCalle);
             Assert.AreEqual(expected3, emprendedorTest.Rubro.Nombre);
             Assert.AreEqual(expected5, emprendedorTest.Especializaciones);
+            Assert.That("email@prueba.com", Is.EqualTo(emprendedorTest.Email));
         }
-
         /// <summary>
         /// Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
         /// </summary>
@@ -35,7 +34,7 @@ namespace Test.Library
         public void TestAddHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest");
+            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest","email@prueba.com");
 
             int expected = 1;
             
@@ -50,7 +49,7 @@ namespace Test.Library
         public void TestQuitarHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest","email@prueba.com");
 
             int expected = 1;
             
@@ -67,7 +66,7 @@ namespace Test.Library
         public void TestQuitarHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest","email@prueba.com");
 
             int expected = 2;
             
@@ -84,7 +83,7 @@ namespace Test.Library
         {
             string respuesta = "";
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "textil", "EspecializacionesTest","email@prueba.com");
 
             int expected = 2;
             

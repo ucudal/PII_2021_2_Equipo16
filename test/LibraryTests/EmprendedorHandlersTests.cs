@@ -19,7 +19,7 @@ namespace Test.Library
         public void BuscadorTagHandlerTest()
         {
             ContenedorPrincipal contenedorPrincipal = Singleton<ContenedorPrincipal>.Instancia;
-            contenedorPrincipal.Emprendedores.Add("123", new Emprendedor("Emprendedor", "ubi", "textil", "espe"));
+            contenedorPrincipal.Emprendedores.Add("123", new Emprendedor("Emprendedor", "ubi", "textil", "espe","email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
 
             contenedorPrincipal.Publicaciones.OfertasPublicados.Add(new Oferta("Oferta1", "lol", "1000", "299", "kilo", "tagtest", "ubi", "constante", empresaTest1));
@@ -62,7 +62,7 @@ namespace Test.Library
         public void BuscadorMaterialHandlerTest()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe"));
+            container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe","email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
             
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta2", "esteesunmaterial", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
@@ -109,8 +109,8 @@ namespace Test.Library
         public void BuscadorUbicacionHandlerTest()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("125", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe"));
-            Emprendedor emprendedorTest = new Emprendedor("test", "test", "textil", "test");
+            container.Emprendedores.Add("125", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe","email@prueba.com"));
+            Emprendedor emprendedorTest = new Emprendedor("test", "test", "textil", "test","email@prueba.com");
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta5", "materialaleatorio", "1000", "299", "kilo", "tag1", "test", "constante", empresaTest1 ));
             Message message = new Message(); 
@@ -153,7 +153,7 @@ namespace Test.Library
          public void AgregarHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe"));
+            container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe","email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
             
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
@@ -196,7 +196,7 @@ namespace Test.Library
          public void RemoverHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe","email@prueba.com");
             container.Emprendedores.Add("127", emprendedorTest);
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
             
@@ -241,7 +241,7 @@ namespace Test.Library
         public void InteresadoenOfertayCalcularOfertasCompradasHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe","email@prueba.com");
             container.Emprendedores.Add("128", emprendedorTest);
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
             
@@ -307,7 +307,7 @@ namespace Test.Library
          public void ListadeHabilitacionesHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe","email@prueba.com");
             container.Emprendedores.Add("129", emprendedorTest);
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta9", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
@@ -386,11 +386,16 @@ namespace Test.Library
             message.Text = "TestEspe";
             msg = teleadapter;
             registroEmprendedorHandlerResult.Handle(msg, out response);
+
+            message.Text = "TestEmail";
+            msg = teleadapter;
+            registroEmprendedorHandlerResult.Handle(msg, out response);
             string nombreEmprendedor = "TestName";
             string ubicacionEmprendedor = "TestUbi";
             string rubroEmprendedor = "textil";
             string especializacionesEmprendedor = "TestEspe";
-            Assert.That(response, Is.EqualTo($"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}. {OpcionesUso.AccionesEmprendedor()}"));
+            string emailEmprendedor = "TestEmail";
+            Assert.That(response, Is.EqualTo($"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor} e Email{emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}"));
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Test.Library
             string expected9 = "Madafakin Coke";
 
             Assert.AreEqual(expected, oferta.Nombre);
-            Assert.AreEqual(expected2, oferta.Material.Nombre);
+            Assert.AreEqual(expected2, oferta.Material.Tipo);
             Assert.AreEqual(expected3, oferta.Material.Cantidad);
             Assert.AreEqual(expected4, oferta.Material.Precio);
             Assert.AreEqual(expected5, oferta.Material.Unidad);

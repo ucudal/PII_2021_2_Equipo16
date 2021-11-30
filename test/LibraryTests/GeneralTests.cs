@@ -17,7 +17,7 @@ namespace Test.Library
         public void TestGeneral1()
         {
             Empresa empresaTest = new Empresa("Conaprole", "Pakistan", "textil");
-            Emprendedor emprendedorTest = new Emprendedor("Lebron James", "Korea del Norte", "textil", "Decorado de interiores");
+            Emprendedor emprendedorTest = new Emprendedor("Lebron James", "Korea del Norte", "textil", "Decorado de interiores", "email@prueba.com");
 
             string expectedEmpresa = "Conaprole";
             string expectedEmprendedor = "Lebron James";
