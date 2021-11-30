@@ -13,15 +13,15 @@ namespace ClassLibrary
     {
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
-        /// </summary>    
+        /// </summary>
         [JsonConstructor]
         public Administrador()
         {
-
         }
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Administrador"/>.
-        /// </summary>  
+        /// </summary>
         /// <param name="nombre">Recibe por parametro un string de nombre.</param>
         /// <param name="clave">Recibe una clave de entrada.</param>
         public Administrador(string nombre, string clave)
@@ -30,10 +30,11 @@ namespace ClassLibrary
             {
                 this.Nombre = "Jhon";
             }
-            else 
+            else
             {
                 this.Nombre = nombre;
             }
+
             this.clave = clave;
         }
 
@@ -61,14 +62,14 @@ namespace ClassLibrary
                 else
                 {
                     this.clave = nuevaPassword;
-                }   
+                }
             }
             else
             {
                 throw new ArgumentException("La clave ingresaste no es correcta.");
             }
         }
-        
+
         /// <summary>
         /// Esta lista contiene las empresas que el Administrador a invitado a unirse a la aplicación.
         /// </summary>
@@ -115,12 +116,12 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
         /// <returns>Tipo string.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

@@ -3,25 +3,27 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "/removerhabemprendedor".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/removerhabemprendedor" y se encarga
+    /// de manejar el caso en que un Emprendedor quiera remover una habilitación.
     /// </summary>
     public class RemoverHabEmprendedor : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "/removerhabemprendedor".
+        /// Inicializa una nueva instancia de la clase <see cref="RemoverHabEmprendedor"/>.
         /// </summary>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        public RemoverHabEmprendedor (BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public RemoverHabEmprendedor(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/removerhabemprendedor"};
+            this.Keywords = new string[] { "/removerhabemprendedor" };
         }
 
         /// <summary>
-        /// Procesa el mensaje "Registrarse" y retorna true; retorna false en caso contrario.
+        /// Procesa el mensaje para que un Emprendedor pueda remover una habilitación.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/removerhabemprendedor"))
@@ -40,11 +42,11 @@ namespace ClassLibrary
                 else if (listaConParametros.Count == 1)
                 {
                     string habilitacion = listaConParametros[0];
-                    
+
                     Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
                     LogicaEmprendedor.RemoveHabilitacion(value, habilitacion);
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    
+
                     respuesta = $"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmprendedor()} ";
                     return true; 
                 }

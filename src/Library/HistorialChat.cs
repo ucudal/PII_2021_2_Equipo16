@@ -5,14 +5,14 @@ using System.Text.Json.Serialization;
 namespace ClassLibrary
 {
     /// <summary>
-    /// 
+    /// Esta clase es la encargada de registrar los mensajes del Usuario.
     /// </summary>
     public class HistorialChat : IJsonConvertible
     {
-       /// <summary>
-       /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
+        /// <summary>
+        /// Constructor sin parametros de la clase HistorialChat, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonConstructor]
         public HistorialChat()
         {
@@ -37,25 +37,25 @@ namespace ClassLibrary
         /// <returns></returns>
         public List<string> BuscarUltimoComando(string comando)
         {
-            List<string> ParametrosIngresadosDelComando = new List<string>();
+            List<string> parametrosIngresadosDelComando = new List<string>();
             foreach (string elemento in this.MensajesDelUser)
             {
-               this.MensajesDelUserReves.Add(elemento); 
+               this.MensajesDelUserReves.Add(elemento);
             }
 
-            this.MensajesDelUserReves.Reverse(); 
+            this.MensajesDelUserReves.Reverse();
             foreach (string mensajeParametro in this.MensajesDelUserReves)
             {
                 if (mensajeParametro == comando)
                 {
-                    return ParametrosIngresadosDelComando;
+                    return parametrosIngresadosDelComando;
                 }
-                
-                ParametrosIngresadosDelComando.Add(mensajeParametro);
+
+                parametrosIngresadosDelComando.Add(mensajeParametro);
             }
-            
+
             this.MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
-            return ParametrosIngresadosDelComando;
+            return parametrosIngresadosDelComando;
         }
 
         /// <summary>
@@ -67,13 +67,13 @@ namespace ClassLibrary
         {
             foreach (string elemento in this.MensajesDelUser)
             {
-               this.MensajesDelUserReves.Add(elemento); 
-               //ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
+               this.MensajesDelUserReves.Add(elemento);
+               // ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
-            
+
             this.MensajesDelUserReves.Reverse();
 
-            foreach (string item in MensajesDelUserReves)
+            foreach (string item in this.MensajesDelUserReves)
             {
                 if (item.StartsWith("/"))
                 {
@@ -81,24 +81,24 @@ namespace ClassLibrary
                     {
                         this.MensajesDelUserReves.Clear();
                         return true;
-                    } 
+                    }
 
                     this.MensajesDelUserReves.Clear();
                     return false;
                 }
             }
-            
+
             this.MensajesDelUserReves.Clear();
             return false;
         }
 
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

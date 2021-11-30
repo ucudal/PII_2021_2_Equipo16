@@ -6,22 +6,21 @@ namespace ClassLibrary
     public class HolaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase. 
-        /// Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase <see cref="HolaHandler"/>.
         /// </summary>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        public HolaHandler (BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public HolaHandler (BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"Hola", "hola"};
+            this.Keywords = new string[] { "Hola", "hola" };
         }
 
         /// <summary>
-        /// Este método procesa el mensaje "Hola" y retorna true.
-        /// En caso contrario retorna false.
+        /// Este método procesa el mensaje "Hola".
         /// </summary>
-        /// <param name="mensaje">recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado. </param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario</returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (this.CanHandle(mensaje))

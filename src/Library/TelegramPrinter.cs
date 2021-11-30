@@ -24,16 +24,16 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime una string con información.
         /// </summary>
-        /// <param name="resultadoBusqueda"></param>
+        /// <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
         public static string BusquedaPrinter(List<Oferta> resultadoBusqueda)
         {
             StringBuilder textoBusqueda = new StringBuilder();
             foreach (Oferta oferta in resultadoBusqueda)
             {
-                textoBusqueda.Append(oferta.TextoOferta()); 
+                textoBusqueda.Append(oferta.TextoOferta());
                 textoBusqueda.Append("\n");
             }
-            
+
             return textoBusqueda.ToString();
         }
     }

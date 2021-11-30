@@ -9,39 +9,41 @@ using Telegram.Bot.Types.InputFiles;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "/ubicacionoferta".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/ubicacionoferta" y se encarga
+    /// de manejar el caso en que se quiera conocer la Ubicación de la Oferta.
     /// </summary>
-    public class VerUbicacionOfertaHandler: BaseHandler
+    /// <remarks>
+    /// Utiliza la API de Ubicación.
+    /// </remarks>
+    public class VerUbicacionOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa el mensaje ingresado por el usuario.
+        /// Inicializa una nueva instancia de la clase <see cref="VerUbicacionOfertaHandler"/>.
         /// </summary>
         /// <param name="client">Recibe por parametro el bot de origen.</param>
-        /// <param name="next">Recibe por parametro el siguiente Handler.</param>
-        /// <returns></returns>
-        public VerUbicacionOfertaHandler(TelegramBotClient client, BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public VerUbicacionOfertaHandler(TelegramBotClient client, BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/ubicacionoferta"};
+            this.Keywords = new string[] { "/ubicacionoferta" };
             this.bot = client;
         }
         private TelegramBotClient bot;
 
         /// <summary>
-        /// Este método procesa el mensaje "/verubicacion" y retorna true.
-        /// En caso contrario retorna false.
+        /// Procesa el mensaje para que se pueda conocer la Ubicación de la Oferta.
         /// </summary>
-        /// <param name="mensaje">Recibe por parametro el mensaje a procesar.</param>
-        /// <param name="respuesta">Recibe por parametro la respuesta al mensaje procesado.</param>
-        /// <returns>Retorna true si se ha podido realizar la operación, o false en caso contrario.</returns>
-         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             if (!this.ChequearHandler(mensaje, "/ubicacionoferta"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-            
+
             if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/ubicacionoferta") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/ubicacionoferta");
@@ -54,11 +56,11 @@ namespace ClassLibrary
                 else if (listaConParametros.Count == 1)
                 {
                     if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
-                    {                           
-                        Direccion(mensaje, listaConParametros[0]);
+                    {              
+                        this.Direccion(mensaje, listaConParametros[0]);
 
-                        respuesta = "";
-                        return true;                        
+                        respuesta = string.Empty;
+                        return true;                
                     }
                     else
                     {
@@ -70,15 +72,15 @@ namespace ClassLibrary
 
             respuesta = string.Empty;
             return false;
-        }       
+        }
 
         /// <summary>
         /// Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
         /// Las imagenes de ubicacion obtenidas las almacena en una carpeta por nombre del usuario.
         /// </summary>
-        /// <param name="mensaje"></param>
-        /// <param name="nombreOferta"></param>
-        /// <returns></returns>
+        /// <param name="mensaje">El mensaje.</param>
+        /// <param name="nombreOferta">El nombre de la oferta.</param>
+        /// <returns>Retorna una imagen con la dirección.</returns>
         public async Task Direccion(IMensaje mensaje, string nombreOferta)
         {
             Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
@@ -89,7 +91,7 @@ namespace ClassLibrary
             // Al emprendedor se le asigna una variable y a la ubicacion de la oferta otra variable del mismo tipo para poder generar la ruta de ubicacion en el mapa.
             Location direccionActual = await client.GetLocationAsync(direccion);
             Location direccionOferta = await client.GetLocationAsync(nombreOferta);
-            
+
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
             await client.DownloadMapAsync(direccionOferta.Latitude, direccionOferta.Longitude,@$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
             await client.DownloadRouteAsync(
@@ -100,19 +102,18 @@ namespace ClassLibrary
                 @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png");
 
             // Este método se utiliza para poder inviable el mensaje con el mapa al usuario.
-            SendProfileImage(mensaje);            
+            this.SendProfileImage(mensaje);        
         }
-        
+
         private async Task SendProfileImage(IMensaje mensaje)
         {
             // Can be null during testing
             Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
-            
-            await bot.SendChatActionAsync(mensaje.Id, ChatAction.UploadPhoto);
+            await this.bot.SendChatActionAsync(mensaje.Id, ChatAction.UploadPhoto);
             string filePath = @$"..\UbicacionesMaps\ubicacion{value.Nombre}Oferta.png";
             using var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
             var fileName = filePath.Split(Path.DirectorySeparatorChar).Last();
-            await bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");        
+            await this.bot.SendPhotoAsync(chatId: mensaje.Id, photo: new InputOnlineFile(fileStream, fileName),caption: $"Ruta al objetivo. {OpcionesUso.AccionesEmprendedor()}");
         }
     }
 }

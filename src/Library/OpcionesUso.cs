@@ -1,4 +1,4 @@
- namespace ClassLibrary
+namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase contiene los métodos para poder hacer más fácil la tarea de que el usuario ingrese un comando para poder operar en el bot.

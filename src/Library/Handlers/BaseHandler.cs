@@ -88,18 +88,18 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje o la pasa al siguiente "handler" si existe.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
-        public IHandler Handle(IMensaje message, out string response)
+        public IHandler Handle(IMensaje mensaje, out string respuesta)
         {
-            if (this.InternalHandle(message, out response))
+            if (this.InternalHandle(mensaje, out respuesta))
             {
                 return this;
             }
             else if (this.Next != null)
             {
-                return this.Next.Handle(message, out response);
+                return this.Next.Handle(mensaje, out respuesta);
             }
             else
             {
@@ -127,9 +127,9 @@ namespace ClassLibrary
         /// Si el HistorialDeChats, no contiene el mensaje.Id, retorna true de todas formas ya que en los handlers, siempre se trabaja con mensaje.Id,
         /// y si no existe, siempre el handler retornará false y un out string response string.Empty, ya que los handlers son los responsables de encargarse.
         /// </summary>
-        /// <param name="mensaje"></param>
-        /// <param name="comando"></param>
-        /// <returns></returns>
+        /// <param name="mensaje">Mensaje.</param>
+        /// <param name="comando">Comando.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         public virtual bool ChequearHandler(IMensaje mensaje, string comando)
         {
             if (mensaje == null)

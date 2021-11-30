@@ -7,17 +7,19 @@
     <Rule Id="SA1401" Action="None" />
     <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1606" Action="None" />
-
+    <Rule Id="SA1013" Action="None" />
+    <Rule Id="SA1001" Action="None" />
+    <Rule Id="SA1028" Action="None" />
   </Rules>
+  
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="CA1014" Action="None" />
     <Rule Id="CA1303" Action="None" />
     <Rule Id="CA1304" Action="None" />
     <Rule Id="CA1307" Action="None" />
-    <Rule Id="CA2211" Action="None" />
-    <Rule Id="CA1002" Action="None" />
+    <Rule Id="CA1062" Action="None" />
+    <Rule Id="CA2007" Action="None" />
     <Rule Id="CA2208" Action="None" />
-    CA2208
   </Rules>
 </RuleSet>
 

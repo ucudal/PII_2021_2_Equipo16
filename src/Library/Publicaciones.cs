@@ -16,11 +16,10 @@ namespace ClassLibrary
 
     public class Publicaciones : IJsonConvertible
     {
-       /// <summary>
-       /// Constructor sin parametros de la clase Publicaciones, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
-       /// <returns></returns>
+        /// <summary>
+        /// Constructor sin parametros de la clase Publicaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonConstructor]
         public Publicaciones()
         {
@@ -49,10 +48,10 @@ namespace ClassLibrary
         /// <summary>
         /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns>Retorna la Serializacion.</returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,

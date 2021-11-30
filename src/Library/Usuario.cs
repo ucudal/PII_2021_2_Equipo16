@@ -16,12 +16,11 @@ namespace ClassLibrary
         /// Constructor sin parametros de la clase Usuario, ya que es esencial el atributo JsonConstructor
         /// para la serialización de datos en la clase.
         /// </summary>
-        /// <returns></returns>
         [JsonConstructor]
         public Usuario()
         {
         }
-        
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Usuario"/>.
         /// </summary>
@@ -52,7 +51,7 @@ namespace ClassLibrary
         /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        
+
         public Ubicacion Ubicacion { get; set; }
 
         /// <summary>
@@ -60,20 +59,20 @@ namespace ClassLibrary
         /// </summary>
         /// <value>Tipo Rubro.</value>
         public Rubro Rubro { get; set; }
-        
+
         /// <summary>
-        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna el objeto serializado.</returns>
         public string ConvertirJson()
         {
-            JsonSerializerOptions opciones = new()
+            JsonSerializerOptions opciones = new ()
             {
                 WriteIndented = true,
                 ReferenceHandler = MyReferenceHandler.Instance,
             };
 
             return JsonSerializer.Serialize(this, opciones);
-        }  
+        }
     }
 }
