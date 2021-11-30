@@ -27,6 +27,21 @@
             Esto da por defecto el nombre Jhon.
             </summary>
         </member>
+        <member name="T:Test.Library.EmprendedorHandlerTest">
+            <summary>
+            Esta clase permite probar todos los handlers destinados al emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.Setup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlerTest.Test">
+            <summary>
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            </summary>
+        </member>
         <member name="T:Test.Library.EmprendedorTests">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -129,12 +144,12 @@
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion">
             <summary>
-            Este método permite evaluar lo que sucede cuando se ingresa un nombre de habilitacion que esta en la lista de habilitaciones.
+            Este método permite evaluar lo que sucede cuando se crea una habilitación con nombre.
             </summary>
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion2">
             <summary>
-            Este metodo permite evaluar lo que sucede cuando el nombre de la habilitacion no esta en la lista de habilitaciones.
+            Este metodo permite evaluar lo que sucede cuando se crea una habilitación sin nombre.
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
@@ -198,26 +213,24 @@
             Clase de pruebas de RubroTest.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTests.TestAgregarRubro">
+        <member name="M:Test.Library.RubroTests.TestCrearRubro">
             <summary>
-            En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
-            Para esto vamos a  crear un rubro nuevo  y verificar mediante el largo de la lista si se agrego correctamente.
-            Al ser nuevo se agregara a la lista , si ya está en la misma el mismo no se agregará.
+            En este test vamos a verificar la correcta creación de un Rubro con nombre
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTests.TestAgregarRubroRepetido">
+        <member name="M:Test.Library.RubroTests.TestCrearRubro2">
             <summary>
-            Test para comprobar que no se agregue a la lista un  rubro repetido.
+            En este test vamos a verificar la correcta creación de un Rubro sin nombre
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTests.TestEliminarRubro">
+        <member name="T:Test.Library.TestHandlertest">
             <summary>
-            Test para comprobar si efectivamente el metodo elimina un Rubro.
+            Esta clase permite realizar los tests de la clase Oferta.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTests.TestEliminarRubroQueNoExiste">
+        <member name="M:Test.Library.TestHandlertest.Test">
             <summary>
-            Test para comprobar si se puede eliminar un rubro que no existe.
+            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
             </summary>
         </member>
         <member name="T:Test.Library.UsuarioTests">

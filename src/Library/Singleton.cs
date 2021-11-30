@@ -29,7 +29,7 @@ namespace ClassLibrary
             }
             set
             {
-                instancia = value;
+                instancia = value; // Agregado para poder Deserializar.
             }
         }
     }
