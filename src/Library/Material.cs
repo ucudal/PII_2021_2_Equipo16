@@ -25,7 +25,7 @@ namespace ClassLibrary
        /// <summary>
        /// Inicializa una nueva instancia de la clase.
        /// </summary>
-       /// <param name="nombre">Recibe por parametro el nombre del matrial.</param>
+       /// <param name="tipo">Recibe por parametro el tipo del matrial.</param>
        /// <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
        /// <param name="precio">Recibe por parametro el precio del matrial.</param>
        /// <param name="unidad">Recibe por parametro la unidad del matrial.</param>

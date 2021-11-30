@@ -2,22 +2,24 @@
   "$id": "1",
   "HistorialDeChats": {
     "$id": "2",
-    "1548068317": {
+    "2100989690": {
       "$id": "3",
       "MensajesDelUser": {
         "$id": "4",
         "$values": [
-          "/verubicacion"
+          "/invitarempresa",
+          "Pelispedia"
         ]
       },
       "MensajesDelUserReves": {
         "$id": "5",
         "$values": [
-          "/verubicacion"
+          "Pelispedia",
+          "/invitarempresa"
         ]
       }
     },
-    "2100989690": {
+    "2124515755": {
       "$id": "6",
       "MensajesDelUser": {
         "$id": "7",
@@ -66,115 +68,165 @@
         },
         "Rubro": {
           "$id": "17",
-          "Nombre": "textil"
+          "Nombre": "Textil"
         }
+      },
+      {
+        "$id": "18",
+        "FechaOfertasEntregadas": {
+          "$id": "19"
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "20",
+          "$values": [
+            {
+              "$id": "21",
+              "Nombre": "APA"
+            }
+          ]
+        },
+        "InteresadosEnOfertas": {
+          "$id": "22",
+          "$values": []
+        },
+        "OfertasAceptadas": {
+          "$id": "23",
+          "$values": []
+        },
+        "MisOfertas": {
+          "$id": "24",
+          "$values": [
+            {
+              "$id": "25",
+              "HabilitacionesOferta": {
+                "$id": "26",
+                "$values": []
+              },
+              "Interesado": {
+                "$id": "27",
+                "$values": []
+              },
+              "Nombre": "LECHEDELABUENA",
+              "Material": {
+                "$id": "28",
+                "Tipo": "Reciclado",
+                "Cantidad": "20",
+                "Precio": "100",
+                "Unidad": "Litros"
+              },
+              "Tags": "LaMejor",
+              "Ubicacion": {
+                "$id": "29",
+                "NombreCalle": "Av. 8 de Octubre 1921"
+              },
+              "EmpresaCreadora": {
+                "$ref": "18"
+              },
+              "ConstantesPuntuales": "Constante",
+              "FechaDePublicacion": "2021-11-30T18:28:52.3613463-03:00"
+            }
+          ]
+        },
+        "Nombre": "Pelispedia",
+        "Ubicacion": {
+          "$id": "30",
+          "NombreCalle": "Comandante Braga"
+        },
+        "Rubro": {
+          "$ref": "17"
+        }
+      },
+      {
+        "$ref": "18"
       }
     ]
   },
   "Emprendedores": {
-    "$id": "18",
-    "1548068317": {
-      "$id": "19",
-      "FechaDeOfertasCompradas": {
-        "$id": "20"
-      },
-      "OfertasInteresado": {
-        "$id": "21",
-        "$values": []
-      },
-      "HabilitacionesEmprendedor": {
-        "$id": "22",
-        "$values": []
-      },
-      "Especializaciones": "decorado",
-      "Nombre": "Agustin",
-      "Ubicacion": {
-        "$id": "23",
-        "NombreCalle": "Eduardo V\u00EDctor Haedo 2370"
-      },
-      "Rubro": {
-        "$id": "24",
-        "Nombre": "metalurgia"
-      }
-    }
+    "$id": "31"
   },
   "Empresas": {
-    "$id": "25"
+    "$id": "32",
+    "2124515755": {
+      "$ref": "18"
+    }
   },
   "Publicaciones": {
-    "$id": "26",
+    "$id": "33",
     "OfertasPublicados": {
-      "$id": "27",
-      "$values": []
+      "$id": "34",
+      "$values": [
+        {
+          "$ref": "25"
+        }
+      ]
     }
   },
   "ContenedorRubrosHabs": {
-    "$id": "28",
+    "$id": "35",
     "ListaRubros": {
-      "$id": "29",
+      "$id": "36",
       "$values": [
         {
           "$ref": "17"
         },
         {
-          "$ref": "24"
+          "$id": "37",
+          "Nombre": "Metalurgia"
         },
         {
-          "$id": "30",
-          "Nombre": "deportes"
-        },
-        {
-          "$id": "31",
-          "Nombre": "Policia"
+          "$id": "38",
+          "Nombre": "Electrodom\u00E9sticos"
         }
       ]
     },
     "ListaHabilitaciones": {
-      "$id": "32",
+      "$id": "39",
       "$values": [
         {
-          "$id": "33",
-          "Nombre": "apa"
+          "$id": "40",
+          "Nombre": "APA"
         },
         {
-          "$id": "34",
-          "Nombre": "iso"
+          "$id": "41",
+          "Nombre": "ISO"
         },
         {
-          "$id": "35",
-          "Nombre": "soa"
-        },
-        {
-          "$id": "36",
-          "Nombre": "Habi124949"
+          "$id": "42",
+          "Nombre": "SOA"
         }
       ]
     }
   },
   "BuscadorUbicacion": {
-    "$id": "37"
+    "$id": "43"
   },
   "BuscadorTags": {
-    "$id": "38"
+    "$id": "44"
   },
   "BuscadorMaterial": {
-    "$id": "39"
+    "$id": "45"
   },
   "PrinterConsola": {
-    "$id": "40"
+    "$id": "46"
   },
   "ListaNombreOfertas": {
-    "$id": "41",
-    "$values": []
+    "$id": "47",
+    "$values": [
+      "LECHEDELABUENA"
+    ]
   },
   "Administradores": {
-    "$id": "42",
+    "$id": "48",
     "2100989690": {
-      "$id": "43",
-      "Nombre": "Adminnn",
+      "$id": "49",
+      "Nombre": "Adminxito",
       "Empresas": {
-        "$id": "44",
-        "$values": []
+        "$id": "50",
+        "$values": [
+          {
+            "$ref": "18"
+          }
+        ]
       }
     }
   }

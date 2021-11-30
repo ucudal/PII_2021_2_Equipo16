@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase <see cref="ComandosHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public ComandosHandler (BaseHandler next)
+        public ComandosHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "/comandos" };
@@ -34,7 +34,7 @@ namespace ClassLibrary
             comandosEmpresa.Append("\n/aceptarinvitacion - Use para aceptar una invitación siendo usted una empresa");
             comandosEmpresa.Append("\n/aceptaroferta - Use para aceptar una oferta siendo usted una empresa, luedo de concluir una negociación");
             comandosEmpresa.Append("\n/agregarhabilitacionempresa - Use para agregar una habilitación que posea siendo usted una empresa");
-            comandosEmpresa.Append("\n/crearhaboferta - Use si desea agregar una habilitación a su oferta");
+            comandosEmpresa.Append("\n/agregarhaboferta - Use si desea agregar una habilitación a su oferta");
             comandosEmpresa.Append("\n/removerhaboferta - Use para remover una habilitación de una oferta");
             comandosEmpresa.Append("\n/crearoferta - Use si desea crear una oferta y publicarla");
             comandosEmpresa.Append("\n/eliminaroferta - Use si desea eliminar una oferta publicada");
@@ -57,6 +57,7 @@ namespace ClassLibrary
             comandosEmprendedor.Append("\n/listadehabilitaciones - Para emprendedores que quieren ver la lista de habilitaciones que existen");
             comandosEmprendedor.Append("\n/interesarme - Use para interesarse en una oferta");
             comandosEmprendedor.Append("\n/verubicacion - Use para conocer la ubicacion de emprendedor");
+            comandosEmprendedor.Append("\n/ubicacionoferta - Use para conocer la ubicacion de emprendedor");
 
             if (mensaje == null)
             {

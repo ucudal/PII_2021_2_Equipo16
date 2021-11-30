@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase <see cref="AceptarInvEmpresaHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public AceptarInvEmpresaHandler (BaseHandler next)
+        public AceptarInvEmpresaHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "/aceptarinvitacion" };

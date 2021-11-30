@@ -14,7 +14,7 @@ namespace ClassLibrary
         /// <param name="next">Handler siguiente.</param>
         public AgregarHabOfertaHandler(BaseHandler next) : base(next)
         {
-            this.Keywords = new string[] { "/addhaboferta" };
+            this.Keywords = new string[] { "/agregarhaboferta" };
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace ClassLibrary
         /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/addhaboferta"))
+            if (!this.ChequearHandler(mensaje, "/agregarhaboferta"))
             {
                 respuesta = string.Empty;
                 return false;
@@ -33,7 +33,7 @@ namespace ClassLibrary
             else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
                 // El mensaje debe tener el formato "Remover habilitacion de oferta,nombre de la oferta,habilitacion"
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/addhaboferta");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/agregarhaboferta");
 
                 if (listaConParametros.Count == 0)
                 {
@@ -42,7 +42,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 1)
                 {
-                    respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}";
+                    respuesta = $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}";
                     return true;
                 }
                 else if (listaConParametros.Count == 2)
@@ -65,7 +65,7 @@ namespace ClassLibrary
                     respuesta = $"Se ha agregado la habilitacion {nombreHabParaAgregar} de la oferta {nombreOferta}. {OpcionesUso.AccionesEmpresas()}";
                     return true;
 
-                }       
+                }      
             }
             else
             {

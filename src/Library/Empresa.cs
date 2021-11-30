@@ -74,6 +74,7 @@ namespace ClassLibrary
 
         /// <summary>
         /// Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
+        /// Se aplica creator ya que agrega y guarda, instancias de la misma clase.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>

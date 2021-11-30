@@ -10,7 +10,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase <see cref="GetHabListHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public GetHabListHandler (BaseHandler next)
+        public GetHabListHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "/listadehabilitaciones" };
@@ -32,7 +32,7 @@ namespace ClassLibrary
             
             Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
             Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-            respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}";
+            respuesta = $"La lista de habilitaciones es:\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}";
             return true;
         }
     }

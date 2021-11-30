@@ -55,7 +55,7 @@ namespace ClassLibrary
                 parametrosIngresadosDelComando.Add(mensajeParametro);
             }
 
-            this.MensajesDelUserReves.Clear(); // Dejo en 0 esta lista para q no de errores cuando se inicialize el metodo mas de una vez.
+            this.MensajesDelUserReves.Clear();
             return parametrosIngresadosDelComando;
         }
 
@@ -69,7 +69,6 @@ namespace ClassLibrary
             foreach (string elemento in this.MensajesDelUser)
             {
                this.MensajesDelUserReves.Add(elemento);
-               // ConsolePrinter.DatoPrinter("Este elemento es " + elemento);
             }
 
             this.MensajesDelUserReves.Reverse();

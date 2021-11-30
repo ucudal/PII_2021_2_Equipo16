@@ -28,7 +28,7 @@ namespace ClassLibrary
             this.Keywords = new string[] { "/verubicacionempresa" };
             this.bot = client;
         }
-        
+
         private TelegramBotClient bot;
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace ClassLibrary
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verubicacionempresa");
                 if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
-                {                       
+                {
                     this.Direccion(mensaje);
 
                     respuesta = string.Empty;
@@ -63,7 +63,7 @@ namespace ClassLibrary
 
             respuesta = string.Empty;
             return false;
-        }       
+        }
 
         /// <summary>
         /// Este método utiliza la dirección del emprendedor para encontrar su ubicacion con la LocationApi.
@@ -77,7 +77,7 @@ namespace ClassLibrary
             string direccion = value.Ubicacion.NombreCalle;
             LocationApiClient client = new LocationApiClient();
 
-            // Utilizando el mensaje ingresado como parametro. 
+            // Utilizando el mensaje ingresado como parametro.
             Location direccionActual = await client.GetLocationAsync(direccion);
             await client.DownloadMapAsync(direccionActual.Latitude, direccionActual.Longitude, @$"..\UbicacionesMaps\ubicacion{value.Nombre}.png");
 

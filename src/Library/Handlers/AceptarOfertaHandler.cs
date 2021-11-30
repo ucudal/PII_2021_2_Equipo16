@@ -13,7 +13,7 @@ namespace ClassLibrary
         /// Inicializa una nueva instancia de la clase <see cref="AceptarOfertaHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public AceptarOfertaHandler (BaseHandler next)
+        public AceptarOfertaHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "/aceptaroferta" };
@@ -41,7 +41,7 @@ namespace ClassLibrary
                 List<string> listaComandos = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
                 if (listaComandos.Count == 0)
                 {
-                    respuesta = $"Ingrese el Nombre de la oferta que desee aceptar {listaComandos.Count}.";
+                    respuesta = $"Ingrese el Nombre de la oferta que desee aceptar.";
                     return true;
                 }
                 else if (listaComandos.Count == 1)

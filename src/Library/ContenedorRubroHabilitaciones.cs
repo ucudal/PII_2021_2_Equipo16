@@ -20,16 +20,16 @@ namespace ClassLibrary
         {
         }
 
-       /// <summary>
-       /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
-       /// para la serialización de datos en la clase.
-       /// </summary>
+        /// <summary>
+        /// Constructor sin parametros de la clase ContenedorRubroHabilitaciones, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
         [JsonInclude]
         public List<Rubro> ListaRubros { get; set; } = new List<Rubro>()
         {
-            new Rubro("textil"),
-            new Rubro("metalurgia"),
-            new Rubro("deportes"),
+            new Rubro("Textil"),
+            new Rubro("Metalurgia"),
+            new Rubro("Electrodomésticos"),
         };
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace ClassLibrary
         [JsonInclude]
         public List<Habilitaciones> ListaHabilitaciones { get; set; } = new List<Habilitaciones>()
         {
-            new Habilitaciones("apa"),
-            new Habilitaciones("iso"),
-            new Habilitaciones("soa"),
+            new Habilitaciones("APA"),
+            new Habilitaciones("ISO"),
+            new Habilitaciones("SOA"),
         };
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace ClassLibrary
         /// Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
         /// </summary>
         /// <returns>Retorna un string listando las habilitaciones.</returns>
-        public string textoListaHabilitaciones()
+        public string TextoListaHabilitaciones()
         {
             StringBuilder texto = new StringBuilder();
             foreach (Habilitaciones item in this.ListaHabilitaciones)
@@ -135,7 +135,7 @@ namespace ClassLibrary
         /// Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
         /// </summary>
         /// <returns>Retorna un string listando los rubros.</returns>
-        public string textoListaRubros()
+        public string TextoListaRubros()
         {
             StringBuilder texto = new StringBuilder();
             foreach (Rubro item in this.ListaRubros)
@@ -148,8 +148,9 @@ namespace ClassLibrary
 
         /// <summary>
         /// Crea un rubro y lo agrega a la lista de rubros.
+        /// Se usa Creator ya que agrega y guarda instancias de Rubro.
         /// </summary>
-        /// <param name="nombreRubro"></param>
+        /// <param name="nombreRubro">Nombre del rubro.</param>
         public void CrearRubro(string nombreRubro)
         {
             Rubro rubro = new Rubro(nombreRubro);
@@ -158,8 +159,9 @@ namespace ClassLibrary
 
         /// <summary>
         /// Crea una habilitacion y la agrega a la lista de habilitaciones.
+        /// Se usa Creator ya que agrega y guarda instancias de Habilitaciones.
         /// </summary>
-        /// <param name="nombreHabilitacion"></param>
+        /// <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         public void CrearHabilitacion(string nombreHabilitacion)
         {
             Habilitaciones hab = new Habilitaciones(nombreHabilitacion);
