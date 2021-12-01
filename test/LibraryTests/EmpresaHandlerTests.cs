@@ -1,4 +1,3 @@
-
 namespace Test.Library
 {
     using ClassLibrary;
@@ -6,7 +5,7 @@ namespace Test.Library
     using Telegram.Bot.Types;
 
     /// <summary>
-    /// Esta clase permite probar todos los handlers destinados al emprendedor.
+    /// Esta clase permite probar todos los handlers destinados a la empresa.
     /// </summary>
     [TestFixture]
     public class EmpresaHandlerTest
@@ -15,7 +14,6 @@ namespace Test.Library
         /// Este test se encarga de Crear una oferta pasando por cada requerimiento
         /// para ver si todo funciona correctamente.
         /// </summary>
-      
         [Test]
         public void  CrearOfertaHandlerTest()
         {
@@ -107,7 +105,9 @@ namespace Test.Library
         }
 
         /// <summary>
-        /// Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+        /// En este test, una empresa desea, a través de telegram, añadile una habilitación a una oferta.
+        ///Para eso, utiliza "agregarhaboferta".
+        /// Con esto, se verifica el correcto funcionamiento del AgregarHabOfertaHandler.
         /// </summary>
         [Test]
         public void AddHabOfertaHandlerTest()
@@ -156,6 +156,11 @@ namespace Test.Library
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Se ha agregado la habilitacion {habilitacionTest} de la oferta {nombreOfertaTest}. {OpcionesUso.AccionesEmpresas()}"));
         }
+
+        /// <summary>
+        /// En este test, se valúa el correcto funcionamiento del RemoverHabEmpresaHandler.
+        /// Para eso, una empresa utiliza el comando "/removerhabempresa" a través de telegram.
+        /// </summary>
         [Test]
         public void RemoverHabEmpresaHandlerTest()
         {
@@ -198,7 +203,8 @@ namespace Test.Library
             Assert.That(response, Is.EqualTo( $"Se ha removido la habilitación {nombreHabTest} con éxito. {OpcionesUso.AccionesEmpresas()}")); 
         }
         /// <summary>
-        /// Test que prueba el Handler para Agregar una habilitación a una empresa.
+        /// Test que prueba el AgregarHabEmpresaHandler.
+        /// Para eso, una empresa utiliza el comando "agregarhabilitacionempresa" a través de telegram.
         /// </summary>
         [Test]
          public void AgregarHabEmpresaHandlerTest()
@@ -240,6 +246,15 @@ namespace Test.Library
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Se ha agregado '{nombreHabTest2}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}")); 
         }
+
+        /// <summary>
+        /// En este test, se evalúan varios handlers en uno: InteresadoEnOfertaHandler, CalcularOfertasVendidasHandler y AceptarOfertaHandler.
+        /// Aquí interactúan dos usuarios, una empresa, que es la que crea la oferta y la publica, y un emprendedor, que manifiesta
+        /// su interés en ella.
+        /// Luego, la empresa acepta su interés, y, para estar seguro de que todo funciona bien, chequeó su venta con 
+        /// "/calcularofertasvendidas".
+        /// Esto corrobora el correcto funcionamiento de todos los handlers utilizados aquí.
+        /// </summary>
        [Test]
         public void InteresadoenOfertaCalcularOfertasVendidasyAceptarOfertaHandlerTestBien()
         {
@@ -329,6 +344,11 @@ namespace Test.Library
             string fechaFinal = "2024-11-21";
             Assert.That(response, Is.EqualTo($"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(empresaTest1, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmpresas()}"));
         }
+
+        /// <summary>
+        /// Evalúa lo sucedido al una empresa aceptar la invitación de un administrador.
+        /// Corrobora el funcionamiento de AceptarInvEmpresaHandler.
+        /// </summary>
         [Test]
          public void AceptarInvEmpresaHandlerTest()
         {
@@ -368,6 +388,12 @@ namespace Test.Library
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Gracias por unirte {claveEmpresaTest}. {OpcionesUso.AccionesEmpresas()}")); 
         }
+
+        /// <summary>
+        /// En este test, una empresa desea remover a través de telegram, una habilitación a su oferta.
+        /// Para esto, utiliza el comando "/removerhaboferta".
+        /// Este test corrobora el funcionamiento de RemoverHabOfertaHandler.
+        /// </summary>
         [Test]
         public void RemoverHabOfertaHandlerTest()
         {
