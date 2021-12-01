@@ -413,8 +413,8 @@
             <summary>
             Calcula cuantas ofertas se entregaron entre diferentes fechas.
             </summary>
-            <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
-            <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
+            <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato yyyy-MM-dd.</param>
+            <param name="fechaFinal">Fecha final, se debe pasar fecha con formato yyyy-MM-dd.</param>
             <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
         </member>
         <member name="M:ClassLibrary.Empresa.AddHabilitacion(System.String)">
@@ -1433,24 +1433,6 @@
             </summary>
             <param name="oferta">Oferta.</param>
             <returns>Retorna una oferta para imprimir.</returns>
-        </member>
-        <member name="T:ClassLibrary.ITelegram">
-            <summary>
-            Esta interface sirve para interactuar con la Aplicación de Telegram.
-            </summary>
-            /// <remarks>
-            Mediante el uso de esta interfaz, se puede incluir el comportamiento de varias fuentes en una clase.
-            </remarks>
-        </member>
-        <member name="M:ClassLibrary.ITelegram.EnviaMessage">
-            <summary>
-            Este método permite enviar mensajes.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.ITelegram.RecibeMessage">
-            <summary>
-            Este método permite recibir mensajes.
-            </summary>
         </member>
         <member name="T:ClassLibrary.LimpiadorCadenas">
             <summary>

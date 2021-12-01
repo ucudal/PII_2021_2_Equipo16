@@ -15,7 +15,7 @@ namespace ClassLibrary
         public RegistrarAdminHandler(BaseHandler next)
             : base(next)
         {
-            this.Keywords = new string[] { "/registaradmin" };
+            this.Keywords = new string[] { "/registraradmin" };
         }
 
         /// <summary>
@@ -31,7 +31,6 @@ namespace ClassLibrary
                 respuesta = string.Empty;
                 return false;
             }
-            // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
             else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registraradmin") == true)
             {
                 List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registraradmin");
