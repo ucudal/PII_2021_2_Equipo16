@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesEmprendedor()
         {
-            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertascompradas\n- /verubicacion\n- /ubicacionoferta\n- /verempresa\n- /veremprendedor";
+            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertasconsumidas\n- /verubicacion\n- /ubicacionoferta\n- /verempresa\n- /veremprendedor";
             return acciones;
         }
         
