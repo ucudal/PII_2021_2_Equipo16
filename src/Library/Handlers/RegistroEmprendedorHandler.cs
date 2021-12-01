@@ -90,7 +90,7 @@ namespace ClassLibrary
                         }
 
                         Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                        respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor} e Email{emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}";
+                        respuesta = $"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}, con Email {emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}";
                         return true;
                     }
                 }
