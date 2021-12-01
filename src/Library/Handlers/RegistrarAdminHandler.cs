@@ -15,7 +15,7 @@ namespace ClassLibrary
         public RegistrarAdminHandler(BaseHandler next)
             : base(next)
         {
-            this.Keywords = new string[] { "/registaradmin" };
+            this.Keywords = new string[] { "/registraradmin" };
         }
 
         /// <summary>

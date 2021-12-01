@@ -187,31 +187,6 @@
         </member>
         <member name="M:Test.Library.EmpresaHandlerTests.RemoverHabOfertaHandlerTest">
             <summary>
-<<<<<<< HEAD
-            Test que prueba el AgregarHabEmpresaHandler.
-            Para eso, una empresa utiliza el comando "agregarhabilitacionempresa" a través de telegram.
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaHandlerTest.InteresadoenOfertaCalcularOfertasVendidasyAceptarOfertaHandlerTestBien">
-            <summary>
-            En este test, se evalúan varios handlers en uno: InteresadoEnOfertaHandler, CalcularOfertasVendidasHandler y AceptarOfertaHandler.
-            Aquí interactúan dos usuarios, una empresa, que es la que crea la oferta y la publica, y un emprendedor, que manifiesta
-            su interés en ella.
-            Luego, la empresa acepta su interés, y, para estar seguro de que todo funciona bien, chequeó su venta con 
-            "/calcularofertasvendidas".
-            Esto corrobora el correcto funcionamiento de todos los handlers utilizados aquí.
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaHandlerTest.AceptarInvEmpresaHandlerTest">
-            <summary>
-            Evalúa lo sucedido al una empresa aceptar la invitación de un administrador.
-            Corrobora el funcionamiento de AceptarInvEmpresaHandler.
-            </summary>
-        </member>
-        <member name="M:Test.Library.EmpresaHandlerTest.RemoverHabOfertaHandlerTest">
-            <summary>
-=======
->>>>>>> deV2
             En este test, una empresa desea remover a través de telegram, una habilitación a su oferta.
             Para esto, utiliza el comando "/removerhaboferta".
             Este test corrobora el funcionamiento de RemoverHabOfertaHandler.

@@ -10,7 +10,7 @@ namespace Test.Library
     public class AdministradorHandlersTests
     {
         /// <summary>
-        /// 
+        /// Test que corrobora el correcto funcionamiento de los Handlers: InvitarEmpresa y CrearEmpresa.
         /// </summary>
         [Test]
         public void InvitarEmpresayCrearEmpresaHandlersTest()
@@ -69,7 +69,7 @@ namespace Test.Library
         }
         
         /// <summary>
-        /// 
+        /// Test que corrobora el correcto funcionamiento del RegistrarAdminHandler.
         /// </summary>
         [Test]
         public void RegistrarAdminHandlerTest()
