@@ -775,8 +775,8 @@
         </member>
         <member name="T:ClassLibrary.CalcularOfertasConsumidasHandler">
             <summary>
-            Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertascompradas" y se encarga
-            de manejar el caso en que se quieran calcular las ofertas cnsumidas en un determinado período de tiempo.
+            Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertasconsumidas" y se encarga
+            de manejar el caso en que se quieran calcular las ofertas consumidas en un determinado período de tiempo.
             </summary>
         </member>
         <member name="M:ClassLibrary.CalcularOfertasConsumidasHandler.#ctor(ClassLibrary.BaseHandler)">
@@ -787,7 +787,7 @@
         </member>
         <member name="M:ClassLibrary.CalcularOfertasConsumidasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            Procesa el mensaje que calcula las ofertas compradas en un determinado período de tiempo.
+            Procesa el mensaje que calcula las ofertas consumidas en un determinado período de tiempo.
             </summary>
             <param name="mensaje">Mensaje que debe procesar.</param>
             <param name="respuesta">Respuesta al mensaje procesado.</param>
