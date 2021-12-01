@@ -1,4 +1,5 @@
-# Nota Importante: Escriba "Hola" para inciar la conversación con el bot.
+# Nota Importante: 
+> Escriba "Hola" para inciar la conversación con el bot.
 
 # Notas del Proyecto: Equipo 16
 
