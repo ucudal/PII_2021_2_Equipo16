@@ -1747,20 +1747,6 @@
             <param name="ubicacionEmpresa">Recibe por paramtro la ubicacion de la empresa.</param>
             <param name="rubroEmpresa">Recibe por parametro el rubro al que pertenece la empresa.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaAdministrador.AgregarRubro(ClassLibrary.Administrador,System.String)">
-            <summary>
-            Este método sive para agregar nuevos rubros.
-            </summary>
-            <param name="administrador">Recibe por parametro un administrador.</param>
-            <param name="nombrRubro">Recibe por paramtro el nombre del rubro.</param>
-        </member>
-        <member name="M:ClassLibrary.LogicaAdministrador.AgregarHabilitacion(ClassLibrary.Administrador,System.String)">
-            <summary>
-            Este método sirve para agregar habilitaciones.
-            </summary>
-            <param name="administrador">Recibe por parametro un administrador.</param>
-            <param name="nombrHabilitacion">Recibe por parametro el nombre de la habilitacion.</param>
-        </member>
         <member name="T:ClassLibrary.LogicaBuscadores">
             <summary>
             Esta clase contiene a los buscadores.
