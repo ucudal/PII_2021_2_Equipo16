@@ -3,6 +3,7 @@ namespace Test.Library
     using ClassLibrary;
     using NUnit.Framework;
     using Telegram.Bot.Types;
+    
     /// <summary>
     /// Esta clase permite probar todos los handlers destinados al emprendedor.
     /// </summary>
@@ -34,8 +35,8 @@ namespace Test.Library
             mensaje.Chat.Id = 123;
             mensaje.Text = "/buscartag";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(mensaje); 
-            IMensaje msg = teleadapter; 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(mensaje);
+            IMensaje msg = teleadapter;
 
             contenedorPrincipal.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
@@ -52,6 +53,7 @@ namespace Test.Library
             
             Assert.That(response, Is.EqualTo("******************************\nNombre: Oferta1 \nMaterial: lol \nPrecio: $299 \nUnidad: kilo \nCantidad: 1000 \nTag: tagtest \nUbicación: ubi \nEs una oferta constante \nRequerimientos: \n\n******************************\n"));
         }
+        
         /// <summary>
         /// En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por material con el material "esteesunmaterial".
         /// Luego, una empresa creada anteriormente crea una oferta con ese mismo material.
@@ -64,41 +66,41 @@ namespace Test.Library
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
             container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
-            
-            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta2", "esteesunmaterial", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
 
-            User usuario = new User(); 
+            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta2", "esteesunmaterial", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 124;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 124;
-            message.Text = "/buscarmaterial"; 
+            message.Text = "/buscarmaterial";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
+            IMensaje msg = teleadapter;
 
-            IHandler first = new BuscadorMaterialHandler(null); 
-            first.Handle(msg, out response); 
-            
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
+
+            string response;
+
+            IHandler first = new BuscadorMaterialHandler(null);
+            first.Handle(msg, out response);
+
             Assert.That(response, Is.EqualTo("Ingrese el tipo del material por el que desea filtrar en su búsqueda.\n-Reciclado\n-Residuo"));
 
-            message.Text = "esteesunmaterial"; 
-            
-            msg = teleadapter; 
+            message.Text = "esteesunmaterial";
+
+            msg = teleadapter;
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("******************************\nNombre: oferta2 \nMaterial: esteesunmaterial \nPrecio: $299 \nUnidad: kilo \nCantidad: 1000 \nTag: tag1 \nUbicación: ubi1 \nEs una oferta constante \nRequerimientos: \n\n******************************\n"));
-            
         }
+        
         /// <summary>
         /// En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por ubicación con la ubicación "test".
         /// Luego, una empresa creada anteriormente crea una oferta con esa misma ubicación.
@@ -109,75 +111,75 @@ namespace Test.Library
         public void BuscadorUbicacionHandlerTest()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("125", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
-            Emprendedor emprendedorTest = new Emprendedor("test", "test", "Textil", "test","email@prueba.com");
+            container.Emprendedores.Add("125", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com"));
+            Emprendedor emprendedorTest = new Emprendedor("test", "test", "Textil", "test", "email@prueba.com");
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
-            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta5", "materialaleatorio", "1000", "299", "kilo", "tag1", "test", "constante", empresaTest1 ));
-            Message message = new Message(); 
+            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta5", "materialaleatorio", "1000", "299", "kilo", "tag1", "test", "constante", empresaTest1));
+            Message message = new Message();
 
-            User usuario = new User(); 
+            User usuario = new User();
             usuario.Id = 125;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 125;
-            message.Text = "/buscarubicacion"; 
+            message.Text = "/buscarubicacion";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
+            IMensaje msg = teleadapter;
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
-            IHandler first = new BuscadorUbicacionHandler(null); 
-            first.Handle(msg, out response); 
-            
+            string response;
+
+            IHandler first = new BuscadorUbicacionHandler(null);
+            first.Handle(msg, out response);
+
             Assert.That(response, Is.EqualTo("Ingrese la Ubicación por la que sea filtrar en su búsqueda."));
 
-            message.Text = "test"; 
+            message.Text = "test";
 
-            msg = teleadapter; 
+            msg = teleadapter;
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("******************************\nNombre: oferta5 \nMaterial: materialaleatorio \nPrecio: $299 \nUnidad: kilo \nCantidad: 1000 \nTag: tag1 \nUbicación: test \nEs una oferta constante \nRequerimientos: \n\n******************************\n "));
         }
+
         /// <summary>
         /// En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere agregarse habilitaciones.
         /// Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "SOA".
         /// Con esto, se demuestra el correcto funcionamiento del AgregarHabEmprendedorHandler.
         /// </summary>
         [Test]
-         public void AgregarHabEmprendedorHandlerTestBien()
+        public void AgregarHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
             container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
-            
-            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
 
-            User usuario = new User(); 
+            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 126;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 126;
-            message.Text = "/agregarhabilitacionemprendedor"; 
+            message.Text = "/agregarhabilitacionemprendedor";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
+            IMensaje msg = teleadapter;
+
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
             IHandler agregarHabEmprendedorHandlerResult = new AgregarHabEmprendedorHandler(null);
-            string response; 
+            string response;
             agregarHabEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
 
@@ -187,41 +189,42 @@ namespace Test.Library
             agregarHabEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}"));
         }
+        
         /// <summary>
         /// En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere removerse habilitaciones.
         /// Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "SOA".
         /// Con esto, se demuestra el correcto funcionamiento del RemoverHabEmprendedorHandler.
         /// </summary>
         [Test]
-         public void RemoverHabEmprendedorHandlerTestBien()
+        public void RemoverHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com");
             container.Emprendedores.Add("127", emprendedorTest);
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
-            
-            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
 
-            User usuario = new User(); 
+            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 127;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 127;
-            message.Text = "/removerhabemprendedor"; 
+            message.Text = "/removerhabemprendedor";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
+            IMensaje msg = teleadapter;
             emprendedorTest.AddHabilitacion("SOA");
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
             IHandler removerHabEmprendedorHandlerResult = new RemoverHabEmprendedor(null);
-            string response; 
+            string response;
             removerHabEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Ingrese el nombre de la habilitación que desea eliminar."));
 
@@ -231,6 +234,7 @@ namespace Test.Library
             removerHabEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Se ha removido la habilitación {habilitacion} con éxito. {OpcionesUso.AccionesEmprendedor()} "));
         }
+
         /// <summary>
         /// En este test, se demuestra el correcto funcionamiento de CalcularOfertasCompradasHandler y InteresadoEnOfertaHandler.
         /// Para eso, se crean una empresa y un emprendedor
@@ -241,30 +245,29 @@ namespace Test.Library
         public void InteresadoenOfertayCalcularOfertasCompradasHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com");
             container.Emprendedores.Add("128", emprendedorTest);
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
-            
-            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
 
-            User usuario = new User(); 
+            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+            User usuario = new User();
             usuario.Id = 128;
             message.From = usuario;
-            
+
             Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            message.Chat = chat1;
             message.Chat.Id = 128;
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
             IMensaje msg = teleadapter;
 
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
-            string response; 
+            string response;
             IHandler interesadoEnOferta = new InteresadoEnOfertaHandler(null);
             message.Text = "/interesarme";
             msg = teleadapter;
@@ -276,8 +279,8 @@ namespace Test.Library
             interesadoEnOferta.Handle(msg, out response);
             string nombreOferta = "oferta1";
             Assert.That(response, Is.EqualTo($"Se ha manifestado su interés en {nombreOferta} de manera exitosa."));
-            
-            message.Text = "/calcularofertascompradas"; 
+
+            message.Text = "/calcularofertascompradas";
             msg = teleadapter;
             IHandler calcularOfertasCompradasHandlerResult = new CalcularOfertasCompradasHandler(null);
             calcularOfertasCompradasHandlerResult.Handle(msg, out response);
@@ -297,6 +300,7 @@ namespace Test.Library
             string fechaFinal = "2024-11-21";
             Assert.That(response, Is.EqualTo($"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(emprendedorTest, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}"));
         }
+
         /// <summary>
         /// En este test, se busca demostrar el correcto funcionamiento del GetHabListHandler.
         /// Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "SOA", busca corroborar si efectivamente la tiene.
@@ -307,34 +311,35 @@ namespace Test.Library
          public void ListadeHabilitacionesHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com");
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com");
             container.Emprendedores.Add("129", emprendedorTest);
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
-            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta9", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
+            container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta9", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
 
-            User usuario = new User(); 
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 129;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 129;
-            message.Text = "/listadehabilitaciones"; 
+            message.Text = "/listadehabilitaciones";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            emprendedorTest.AddHabilitacion("SOA"); 
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
+            IMensaje msg = teleadapter;
+            emprendedorTest.AddHabilitacion("SOA");
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
             IHandler getHabListHandlerResult = new GetHabListHandler(null);
-            string response; 
+            string response;
             getHabListHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"La lista de habilitaciones es:\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
         }
+
         /// <summary>
         /// En este test, un usuario busca registrarse como emprendedor.
         /// Con ese objetivo en mente, utiliza "registrarme" y va llenando los campos que corresponden a medida
@@ -342,29 +347,29 @@ namespace Test.Library
         /// Con esto, queda demostrado el correcto funcionamiento del RegistroEmprendedorHandler.
         /// </summary>
         [Test]
-         public void RegistroEmprendedorHandlerTestBien()
+        public void RegistroEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
 
-            Message message = new Message(); 
+            Message message = new Message();
 
-            User usuario = new User(); 
+            User usuario = new User();
             usuario.Id = 130;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 130;
-            message.Text = "/registrarme"; 
+            message.Text = "/registrarme";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            container.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
+            IMensaje msg = teleadapter;
+            container.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
             IHandler registroEmprendedorHandlerResult = new RegistroEmprendedorHandler(null);
-            string response; 
+            string response;
             registroEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese el nombre"));
 
