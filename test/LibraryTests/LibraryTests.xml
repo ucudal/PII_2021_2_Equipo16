@@ -11,12 +11,12 @@
         </member>
         <member name="M:Test.Library.AdministradorHandlersTests.InvitarEmpresayCrearEmpresaHandlersTest">
             <summary>
-            
+            Test que corrobora el correcto funcionamiento de los Handlers: InvitarEmpresa y CrearEmpresa.
             </summary>
         </member>
         <member name="M:Test.Library.AdministradorHandlersTests.RegistrarAdminHandlerTest">
             <summary>
-            
+            Test que corrobora el correcto funcionamiento del RegistrarAdminHandler.
             </summary>
         </member>
         <member name="T:Test.Library.AdministradorTests">

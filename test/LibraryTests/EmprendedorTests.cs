@@ -100,7 +100,7 @@ namespace Test.Library
                 respuesta = e.Message;
             }
 
-            string expected2 = "Hola no se encuentra disponible, use nuevamente /agregarhabilitacionemprendedor";
+            string expected2 = "hola no se encuentra disponible, use nuevamente /agregarhabilitacionemprendedor";
             Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
             Assert.AreEqual(expected2, respuesta);
         }
