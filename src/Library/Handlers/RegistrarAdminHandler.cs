@@ -15,7 +15,7 @@ namespace ClassLibrary
         public RegistrarAdminHandler(BaseHandler next)
             : base(next)
         {
-            this.Keywords = new string[] { "/registaradmin" };
+            this.Keywords = new string[] { "/registraradmin" };
         }
 
         /// <summary>
@@ -26,15 +26,14 @@ namespace ClassLibrary
         /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/registaradmin"))
+            if (!this.ChequearHandler(mensaje, "/registraradmin"))
             {
                 respuesta = string.Empty;
                 return false;
             }
-            // cambiar este canhandle por algo tipo, si en el historial, el ultimo comando es /Registrarse, entra al if.
-            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registaradmin") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/registraradmin") == true)
             {
-                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registaradmin");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/registraradmin");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre";

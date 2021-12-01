@@ -74,6 +74,7 @@ namespace ClassLibrary
 
         /// <summary>
         /// Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
+        /// Se aplica creator ya que agrega y guarda, instancias de la misma clase.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
@@ -135,8 +136,8 @@ namespace ClassLibrary
         /// <summary>
         /// Calcula cuantas ofertas se entregaron entre diferentes fechas.
         /// </summary>
-        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
+        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato yyyy-MM-dd.</param>
+        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato yyyy-MM-dd.</param>
         /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
         public int CalcularOfertasVendidas(string fechaInicio, string fechaFinal)
         {

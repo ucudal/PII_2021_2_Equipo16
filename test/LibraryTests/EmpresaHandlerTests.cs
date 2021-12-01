@@ -1,4 +1,3 @@
-
 namespace Test.Library
 {
     using ClassLibrary;
@@ -6,45 +5,37 @@ namespace Test.Library
     using Telegram.Bot.Types;
 
     /// <summary>
-    /// Esta clase permite probar todos los handlers destinados al emprendedor.
+    /// Esta clase permite probar todos los handlers destinados a la empresa.
     /// </summary>
     [TestFixture]
-    public class EmpresaHandlerTest
+    public class EmpresaHandlerTests
     {
-        Message mensaje;
-        TelegramMsgAdapter test;
-        ContenedorPrincipal contenedorPrincipal;
-        CrearOfertaHandler crearOfertaHandlerResult;
-        HistorialChat testchat = new HistorialChat();
-       
         /// <summary>
         /// Este test se encarga de Crear una oferta pasando por cada requerimiento
         /// para ver si todo funciona correctamente.
         /// </summary>
-      
         [Test]
-        public void  CrearOfertaHandlerTest()
+        public void CrearOfertaHandlerTest()
         {
             ContenedorPrincipal contenedorPrincipal = Singleton<ContenedorPrincipal>.Instancia;
-            contenedorPrincipal.Empresas.Add("123", new Empresa("Empresa1", "ubi","textil"));
+            contenedorPrincipal.Empresas.Add("123234", new Empresa("Empresa1", "ubi", "Textil"));
 
-            mensaje = new Message();
+            Message mensaje = new Message();
             User usuario = new User();
-            usuario.Id = 1234;
+            usuario.Id = 123234;
             mensaje.From = usuario;
 
             Chat chat = new Chat();
             mensaje.Chat = chat;
-            mensaje.Chat.Id = 123;
+            mensaje.Chat.Id = 123234;
             mensaje.Text = "/crearoferta";
 
-
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(mensaje); 
-            IMensaje msg = teleadapter; 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(mensaje);
+            IMensaje msg = teleadapter;
 
             contenedorPrincipal.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
-            IHandler crearOfertaHandlerResult = new CrearOfertaHandler(null); 
+            IHandler crearOfertaHandlerResult = new CrearOfertaHandler(null);
 
             string response;
 
@@ -55,7 +46,7 @@ namespace Test.Library
             mensaje.Text = nombreOfertaTest;
             msg = teleadapter;
             crearOfertaHandlerResult.Handle(msg, out response);
-            
+
             Assert.That(response, Is.EqualTo("Ingrese el tipo del material:\n-Reciclado\n-Residuo"));
 
             string nombreMaterialTest = "Reciclado";
@@ -65,7 +56,6 @@ namespace Test.Library
             crearOfertaHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese el precio"));
 
-            
             string precioTest = "100";
             mensaje.Text = precioTest;
             msg = teleadapter;
@@ -73,7 +63,6 @@ namespace Test.Library
             crearOfertaHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese unidad"));
 
-            
             string unidadesTest = "unidades";
             mensaje.Text = unidadesTest;
             msg = teleadapter;
@@ -88,7 +77,6 @@ namespace Test.Library
             crearOfertaHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese una ubicación"));
 
-            
             string ubiTest = "Av 8 de Oct";
             mensaje.Text = ubiTest;
             msg = teleadapter;
@@ -100,7 +88,6 @@ namespace Test.Library
             mensaje.Text = tipoTest;
             msg = teleadapter;
 
-
             crearOfertaHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese la cantidad"));
 
@@ -109,316 +96,344 @@ namespace Test.Library
             msg = teleadapter;
 
             crearOfertaHandlerResult.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo($"Se ha registrado con nombre {nombreOfertaTest}, de material {nombreMaterialTest}, del tipo {tipoTest}, unidades: {unidadesTest}, al precio de: {precioTest}, con la ubicación en {ubiTest} y el tag {tagTest}. {OpcionesUso.AccionesEmpresas()}" ));
-
-
-
+            Assert.That(response, Is.EqualTo($"Se ha registrado con nombre {nombreOfertaTest}, de material {nombreMaterialTest}, del tipo {tipoTest}, unidades: {unidadesTest}, al precio de: {precioTest}, con la ubicación en {ubiTest} y el tag {tagTest}. {OpcionesUso.AccionesEmpresas()}"));
         }
 
         /// <summary>
-        /// Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+        /// En este test, una empresa desea, a través de telegram, añadile una habilitación a una oferta.
+        /// Para eso, utiliza "agregarhaboferta".
+        /// Con esto, se verifica el correcto funcionamiento del AgregarHabOfertaHandler.
         /// </summary>
         [Test]
         public void AddHabOfertaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("7864", empresaTest1);
-            
-            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
 
-            User usuario = new User(); 
+            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 7864;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 7864;
-            message.Text = "/addhaboferta";
+            message.Text = "/agregarhaboferta";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            
-            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
+            IMensaje msg = teleadapter;
 
-            IHandler first = new AddHabOfertaHandler(null); 
-            first.Handle(msg, out response); 
-            
+            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat());
+
+            string response;
+
+            IHandler first = new AgregarHabOfertaHandler(null);
+            first.Handle(msg, out response);
+
             Assert.That(response, Is.EqualTo("Ingrese el nombre de la oferta a la que desea agregar una habilitación."));
 
             string nombreOfertaTest = "Oferta1";
-            message.Text = nombreOfertaTest; 
-            msg = teleadapter; 
+            message.Text = nombreOfertaTest;
+            msg = teleadapter;
 
             first.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo( $"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}"));
+            Assert.That(response, Is.EqualTo($"Ingrese el nombre de la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
 
-            string habilitacionTest = "apa";
-            message.Text = habilitacionTest; 
-            msg = teleadapter; 
+            string habilitacionTest = "APA";
+            message.Text = habilitacionTest;
+            msg = teleadapter;
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Se ha agregado la habilitacion {habilitacionTest} de la oferta {nombreOfertaTest}. {OpcionesUso.AccionesEmpresas()}"));
-            
-            
         }
+
+        /// <summary>
+        /// En este test, se valúa el correcto funcionamiento del RemoverHabEmpresaHandler.
+        /// Para eso, una empresa utiliza el comando "/removerhabempresa" a través de telegram.
+        /// </summary>
         [Test]
         public void RemoverHabEmpresaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("9345", empresaTest1);
-            empresaTest1.AddHabilitacion("apa");
-            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
+            empresaTest1.AddHabilitacion("APA");
+            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
 
-            User usuario = new User(); 
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 9345;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 9345;
             message.Text = "/removerhabempresa";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
-
-            IMensaje msg = teleadapter; 
-            
-            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
-
-            IHandler first = new RemoveHabEmpresaHandler(null); 
-            first.Handle(msg, out response); 
-            
-            Assert.That(response, Is.EqualTo("Ingrese el nombre de la habilitación a eliminar."));
-
-            string nombreHabTest = "apa";
-            message.Text = nombreHabTest; 
-            msg = teleadapter; 
-
-            first.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo( $"Se ha removido la habilitación {nombreHabTest} con éxito. {OpcionesUso.AccionesEmpresas()}")); 
-            
-        }
-        /// <summary>
-        /// Test que prueba el Handler para Agregar una habilitación a una empresa.
-        /// </summary>
-        [Test]
-         public void AgregarHabEmpresaHandlerTest()
-        {
-            ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
-            contiene.Empresas.Add("7432", empresaTest1);
-            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
-
-            User usuario = new User(); 
-            usuario.Id = 7432;
-            message.From = usuario;
-            
-            Chat chat1 = new Chat();  
-
-            message.Chat = chat1; 
-            message.Chat.Id = 7432;
-            message.Text = "/agregarhabilitacionempresa";
-
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
-
-            IMensaje msg = teleadapter; 
-            
-            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
-
-            IHandler first = new AgregarHabEmpresaHandler(null); 
-            first.Handle(msg, out response); 
-            
-            Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.textoListaHabilitaciones()}"));
-
-            string nombreHabTest2 = "apa";
-            message.Text = nombreHabTest2; 
-            msg = teleadapter; 
-
-            first.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo($"Se ha agregado '{nombreHabTest2}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}")); 
-        }
-       [Test]
-        public void InteresadoenOfertayCalcularOfertasVendidasHandlerTestBien()
-        {
-            ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "textil", "espe");
-            contiene.Emprendedores.Add("128", emprendedorTest);
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
-            contiene.Empresas.Add("1278", empresaTest1);
-            
-           
-            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1 ));
-            
-            Message message = new Message(); 
-
-            User usuario = new User(); 
-            usuario.Id = 128;
-            message.From = usuario;
-            
-            Chat chat1 = new Chat();  
-
-            message.Chat = chat1; 
-            message.Chat.Id = 128;
-
-            Message message2 = new Message(); 
-
-            User usuario2 = new User(); 
-            usuario2.Id = 1278;
-            message2.From = usuario2;
-            
-            Chat chat2 = new Chat();  
-
-            message2.Chat = chat2; 
-            message2.Chat.Id = 1278;
-            
-
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
             IMensaje msg = teleadapter;
 
-            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
+            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
-            string response; 
-            IHandler HandlerResult = new InteresadoEnOfertaHandler(null);
+            string response;
+
+            IHandler first = new RemoveHabEmpresaHandler(null);
+            first.Handle(msg, out response);
+
+            Assert.That(response, Is.EqualTo("Ingrese el nombre de la habilitación a eliminar."));
+
+            string nombreHabTest = "APA";
+            message.Text = nombreHabTest;
+            msg = teleadapter;
+            first.Handle(msg, out response);
+            Assert.That(response, Is.EqualTo($"Se ha removido la habilitación {nombreHabTest} con éxito. {OpcionesUso.AccionesEmpresas()}"));
+        }
+
+        /// <summary>
+        /// Test que prueba el AgregarHabEmpresaHandler.
+        /// Para eso, una empresa utiliza el comando "agregarhabilitacionempresa" a través de telegram.
+        /// </summary>
+        [Test]
+        public void AgregarHabEmpresaHandlerTest()
+        {
+            ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
+            contiene.Empresas.Add("7432", empresaTest1);
+            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+
+            User usuario = new User();
+            usuario.Id = 7432;
+            message.From = usuario;
+
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
+            message.Chat.Id = 7432;
+            message.Text = "/agregarhabilitacionempresa";
+
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
+
+            IMensaje msg = teleadapter;
+
+            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat());
+
+            string response;
+
+            IHandler first = new AgregarHabEmpresaHandler(null);
+            first.Handle(msg, out response);
+
+            Assert.That(response, Is.EqualTo($"Ingrese la habilitación que desea agregar.\n{Singleton<ContenedorPrincipal>.Instancia.ContenedorRubrosHabs.TextoListaHabilitaciones()}"));
+
+            string nombreHabTest2 = "APA";
+            message.Text = nombreHabTest2;
+            msg = teleadapter;
+
+            first.Handle(msg, out response);
+            Assert.That(response, Is.EqualTo($"Se ha agregado '{nombreHabTest2}' a la lista de habilitaciones. {OpcionesUso.AccionesEmpresas()}"));
+        }
+
+        /// <summary>
+        /// En este test, se evalúan varios handlers en uno: InteresadoEnOfertaHandler, CalcularOfertasVendidasHandler y AceptarOfertaHandler.
+        /// Aquí interactúan dos usuarios, una empresa, que es la que crea la oferta y la publica, y un emprendedor, que manifiesta
+        /// su interés en ella.
+        /// Luego, la empresa acepta su interés, y, para estar seguro de que todo funciona bien, chequeó su venta con
+        /// "/calcularofertasvendidas".
+        /// Esto corrobora el correcto funcionamiento de todos los handlers utilizados aquí.
+        /// </summary>
+        [Test]
+        public void InteresadoenOfertaCalcularOfertasVendidasyAceptarOfertaHandlerTestBien()
+        {
+            ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
+            Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com");
+            contiene.Emprendedores.Add("128234", emprendedorTest);
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
+            contiene.Empresas.Add("1278", empresaTest1);
+
+            contiene.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
+
+            Message message = new Message();
+
+            User usuario = new User();
+            usuario.Id = 128234;
+            message.From = usuario;
+
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
+            message.Chat.Id = 128234;
+
+            Message message2 = new Message();
+
+            User usuario2 = new User();
+            usuario2.Id = 1278;
+            message2.From = usuario2;
+
+            Chat chat2 = new Chat();
+
+            message2.Chat = chat2;
+            message2.Chat.Id = 1278;
+
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
+
+            IMensaje msg = teleadapter;
+
+            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat());
+
+            string response;
+            IHandler handlerResult = new InteresadoEnOfertaHandler(null);
             message.Text = "/interesarme";
             msg = teleadapter;
-            HandlerResult.Handle(msg, out response);
+            handlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese el nombre de la oferta en la que quiera manifestar su interés"));
 
             message.Text = "oferta1";
             msg = teleadapter;
-            HandlerResult.Handle(msg, out response);
+            handlerResult.Handle(msg, out response);
             string nombreOferta = "oferta1";
             Assert.That(response, Is.EqualTo($"Se ha manifestado su interés en {nombreOferta} de manera exitosa."));
-            
-            TelegramMsgAdapter teleadapter2 = new TelegramMsgAdapter(message2); 
+
+            TelegramMsgAdapter teleadapter2 = new TelegramMsgAdapter(message2);
 
             IMensaje msg2 = teleadapter2;
             contiene.HistorialDeChats.Add(msg2.Id, new HistorialChat());
-            IHandler HandlerResult2 = new CalcularOfertasVendidasHandler(null);
-
-            message2.Text = "/calcularofertasvendidas"; 
+            IHandler handlerResult2 = new CalcularOfertasVendidasHandler(null);
+            IHandler handlerResult3 = new AceptarOfertaHandler(null);
+            message2.Text = "/aceptaroferta";
             msg2 = teleadapter2;
-            HandlerResult2.Handle(msg2, out response);
+            handlerResult3.Handle(msg2, out response);
+            Assert.That(response, Is.EqualTo($"Ingrese el Nombre de la oferta que desee aceptar."));
+
+            message2.Text = "oferta1";
+            msg2 = teleadapter2;
+            string nombreOfertaParaAceptar = "oferta1";
+
+            handlerResult3.Handle(msg2, out response);
+            Assert.That(response, Is.EqualTo($"Se ha aceptado la oferta {nombreOfertaParaAceptar} con éxito. {OpcionesUso.AccionesEmpresas()} "));
+
+            message2.Text = "/calcularofertasvendidas";
+            msg2 = teleadapter2;
+            handlerResult2.Handle(msg2, out response);
             Assert.That(response, Is.EqualTo("Ingrese la fecha de inicio(yyyy-MM-dd)"));
 
             message2.Text = "2020-05-01";
             msg2 = teleadapter2;
 
-            HandlerResult2.Handle(msg2, out response);
+            handlerResult2.Handle(msg2, out response);
             Assert.That(response, Is.EqualTo("Ingrese la fecha final(yyyy-MM-dd)"));
 
             message2.Text = "2024-11-21";
             msg2 = teleadapter2;
 
-            HandlerResult2.Handle(msg2, out response);
+            handlerResult2.Handle(msg2, out response);
             string fechaInicio = "2020-05-01";
             string fechaFinal = "2024-11-21";
             Assert.That(response, Is.EqualTo($"En este periodo se han adquirido {LogicaEmpresa.CalcularOfertasVendidas(empresaTest1, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmpresas()}"));
         }
+
+        /// <summary>
+        /// Evalúa lo sucedido al una empresa aceptar la invitación de un administrador.
+        /// Corrobora el funcionamiento de AceptarInvEmpresaHandler.
+        /// </summary>
         [Test]
-         public void AceptarInvEmpresaHandlerTest()
+        public void AceptarInvEmpresaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.EmpresasInvitadas.Add(empresaTest1);
-            
-            Message message = new Message(); 
 
-            User usuario = new User(); 
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 4321;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 4321;
             message.Text = "/aceptarinvitacion";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            
-            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
+            IMensaje msg = teleadapter;
 
-            IHandler first = new AceptarInvEmpresaHandler(null); 
-            first.Handle(msg, out response); 
-            
+            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat());
+            string response;
+
+            IHandler first = new AceptarInvEmpresaHandler(null);
+            first.Handle(msg, out response);
+
             Assert.That(response, Is.EqualTo("Ingrese la clave de su Empresa."));
 
             string claveEmpresaTest = "Empresa1";
-            message.Text = claveEmpresaTest; 
-            msg = teleadapter; 
+            message.Text = claveEmpresaTest;
+            msg = teleadapter;
 
             first.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo($"Gracias por unirte {claveEmpresaTest}. {OpcionesUso.AccionesEmpresas()}")); 
+            Assert.That(response, Is.EqualTo($"Gracias por unirte {claveEmpresaTest}. {OpcionesUso.AccionesEmpresas()}"));
         }
+
+        /// <summary>
+        /// En este test, una empresa desea remover a través de telegram, una habilitación a su oferta.
+        /// Para esto, utiliza el comando "/removerhaboferta".
+        /// Este test corrobora el funcionamiento de RemoverHabOfertaHandler.
+        /// </summary>
         [Test]
         public void RemoverHabOfertaHandlerTest()
         {
             ContenedorPrincipal contiene = Singleton<ContenedorPrincipal>.Instancia;
-            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "textil");
+            Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
             contiene.Empresas.Add("8439", empresaTest1);
-            Oferta ofertaTest = new Oferta("oferta23", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1);
-            contiene.Publicaciones.OfertasPublicados.Add(ofertaTest);
-            LogicaEmpresa.AgregarHabilitacionOferta(empresaTest1,"apa", "oferta23");
-            
-            Message message = new Message(); 
+            LogicaEmpresa.CrearOferta(empresaTest1, "oferta23", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante");
+            LogicaEmpresa.AgregarHabilitacionOferta(empresaTest1, "APA", "oferta23");
 
-            User usuario = new User(); 
+            Message message = new Message();
+
+            User usuario = new User();
             usuario.Id = 8439;
             message.From = usuario;
-            
-            Chat chat1 = new Chat();  
 
-            message.Chat = chat1; 
+            Chat chat1 = new Chat();
+
+            message.Chat = chat1;
             message.Chat.Id = 8439;
             message.Text = "/removerhaboferta";
 
-            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message); 
+            TelegramMsgAdapter teleadapter = new TelegramMsgAdapter(message);
 
-            IMensaje msg = teleadapter; 
-            
-            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat()); 
-            
-            string response; 
+            IMensaje msg = teleadapter;
 
-            IHandler first = new RemoverHabOfertaHandler(null); 
-            first.Handle(msg, out response); 
-            
+            contiene.HistorialDeChats.Add(msg.Id, new HistorialChat());
+
+            string response;
+
+            IHandler first = new RemoverHabOfertaHandler(null);
+            first.Handle(msg, out response);
+
             Assert.That(response, Is.EqualTo("Ingrese el nombre de la oferta a la que desea eliminar una habilitacion"));
 
-            string nombreOfertaTest2 = "oferta1";
-            message.Text = nombreOfertaTest2; 
-            msg = teleadapter; 
+            string nombreOfertaTest2 = "oferta23";
+            message.Text = nombreOfertaTest2;
+            msg = teleadapter;
 
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("ingrese el nombre de la habilitacion que desea remover"));
 
-            string habilitacionTest2 = "apa";
-            message.Text = habilitacionTest2; 
-            msg = teleadapter; 
+            string habilitacionTest2 = "APA";
+            message.Text = habilitacionTest2;
+            msg = teleadapter;
             first.Handle(msg, out response);
-            Assert.That(response, Is.EqualTo( $"Se ha removido la habilitacion {habilitacionTest2} de la oferta {nombreOfertaTest2}. {OpcionesUso.AccionesEmpresas()}"));
-            
-            
+            Assert.That(response, Is.EqualTo($"Se ha removido la habilitacion {habilitacionTest2} de la oferta {nombreOfertaTest2}. {OpcionesUso.AccionesEmpresas()}"));
         }
     }
 }

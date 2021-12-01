@@ -49,7 +49,7 @@ namespace ClassLibrary
                 
                 LogicaBuscadores.BuscarPorUbicacion(palabraClave);
                 Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                respuesta = $"{TelegramPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} ";
+                respuesta = $"{PlataformaPrinter.BusquedaPrinter(LogicaBuscadores.BuscarPorUbicacion(palabraClave))} ";
                 return true;
             }          
             respuesta = string.Empty;

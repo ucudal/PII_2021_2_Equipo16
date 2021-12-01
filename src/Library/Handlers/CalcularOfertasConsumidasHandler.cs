@@ -3,37 +3,37 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertascompradas" y se encarga
-    /// de manejar el caso en que se quieran calcular las ofertas compradas en un determinado período de tiempo.
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertasconsumidas" y se encarga
+    /// de manejar el caso en que se quieran calcular las ofertas consumidas en un determinado período de tiempo.
     /// </summary>
-    public class CalcularOfertasCompradasHandler : BaseHandler 
+    public class CalcularOfertasConsumidasHandler : BaseHandler 
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="CalcularOfertasCompradasHandler"/>.
+        /// Inicializa una nueva instancia de la clase <see cref="CalcularOfertasConsumidasHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public CalcularOfertasCompradasHandler(BaseHandler next)
+        public CalcularOfertasConsumidasHandler(BaseHandler next)
             : base(next)
         {
-            this.Keywords = new string[] { "/calcularofertascompradas" };
+            this.Keywords = new string[] { "/calcularofertasconsumidas" };
         }
         
         /// <summary>
-        /// Procesa el mensaje que calcula las ofertas compradas en un determinado período de tiempo.
+        /// Procesa el mensaje que calcula las ofertas consumidas en un determinado período de tiempo.
         /// </summary>
         /// <param name="mensaje">Mensaje que debe procesar.</param>
         /// <param name="respuesta">Respuesta al mensaje procesado.</param>
         /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (!this.ChequearHandler(mensaje, "/calcularofertascompradas"))
+            if (!this.ChequearHandler(mensaje, "/calcularofertasconsumidas"))
             {
                 respuesta = string.Empty;
                 return false;
             }
             else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
+                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertasconsumidas");
                 if (listaConParam.Count == 0)
                 {
                     respuesta = "Ingrese la fecha de inicio (YYYY-MM-DD).";
@@ -53,7 +53,7 @@ namespace ClassLibrary
 
                     try
                     {
-                        LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
+                        LogicaEmprendedor.CalcularOfertasConsumidas(value, fechaInicio, fechaFinal);
                     }
                     catch (System.ArgumentException e)
                     {
@@ -62,7 +62,7 @@ namespace ClassLibrary
                     }
 
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
+                    respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasConsumidas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
             }

@@ -115,18 +115,18 @@ namespace ClassLibrary
         /// <param name="fechaInicio">Fecha de inicio.</param>
         /// <param name="fechaFinal">Fecha de final.</param>
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
-        public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
+        public int CalcularOfertasConsumidas(string fechaInicio, string fechaFinal)
         {
             int ofertasCompradas = 0;
             DateTime fInicio;
 
-            if (!DateTime.TryParseExact(fechaInicio, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
+            if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
                 throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
 
             DateTime fFinal;
-            if (!DateTime.TryParseExact(fechaFinal, "YYYY-MM-DD", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
+            if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
                 throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
@@ -156,6 +156,7 @@ namespace ClassLibrary
             text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
             text.Append($"Rubro: {this.Rubro.Nombre} \n");
             text.Append($"Especializaciones: {this.Especializaciones} \n");
+            text.Append($"Email: {this.Email} \n");
             text.Append($"Habilitaciones: \n");
             foreach (Habilitaciones habilitaciones in HabilitacionesEmprendedor)
             {

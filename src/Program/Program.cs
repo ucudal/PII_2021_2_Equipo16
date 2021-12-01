@@ -37,7 +37,7 @@ namespace ConsoleApplication
         public static void Main()
         {
             Administrador admin = new Administrador("Admin", "Equipo16");
-            Empresa empresaTest = new Empresa("conaprole", "pakistan", "textil");
+            Empresa empresaTest = new Empresa("conaprole", "pakistan", "Textil");
             admin.InvitarEmpresa(empresaTest);
             
             bot = new TelegramBotClient(Token);
@@ -63,7 +63,7 @@ namespace ConsoleApplication
                                     new BuscadorMaterialHandler(
                                         new BuscadorTagHandler(
                                             new BuscadorUbicacionHandler(
-                                                new CalcularOfertasCompradasHandler(
+                                                new CalcularOfertasConsumidasHandler(
                                                     new CalcularOfertasVendidasHandler(
                                                         new AgregarHabOfertaHandler(
                                                             new CrearOfertaHandler(

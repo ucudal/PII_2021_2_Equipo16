@@ -207,13 +207,13 @@
             <param name="habilitacionString">Recibe por parametro un string de la Habilitacion.</param>
             <returns>Retorna rubro si existe una habilitacion con ese nombre, en caso contrario retorna null.</returns>
         </member>
-        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaHabilitaciones">
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.TextoListaHabilitaciones">
             <summary>
             Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
             </summary>
             <returns>Retorna un string listando las habilitaciones.</returns>
         </member>
-        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaRubros">
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.TextoListaRubros">
             <summary>
             Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
             </summary>
@@ -222,12 +222,14 @@
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearRubro(System.String)">
             <summary>
             Crea un rubro y lo agrega a la lista de rubros.
+            Se usa Creator ya que agrega y guarda instancias de Rubro.
             </summary>
             <param name="nombreRubro">Nombre del rubro.</param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearHabilitacion(System.String)">
             <summary>
             Crea una habilitacion y la agrega a la lista de habilitaciones.
+            Se usa Creator ya que agrega y guarda instancias de Habilitaciones.
             </summary>
             <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         </member>
@@ -305,7 +307,7 @@
             </summary>
             <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasCompradas(System.String,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasConsumidas(System.String,System.String)">
             <summary>
             Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
             </summary>
@@ -381,6 +383,7 @@
         <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
+            Se aplica creator ya que agrega y guarda, instancias de la misma clase.
             </summary>
             <param name="publicaciones">Publicaciones.</param>
             <param name="nombre">Nombre de la oferta.</param>
@@ -410,8 +413,8 @@
             <summary>
             Calcula cuantas ofertas se entregaron entre diferentes fechas.
             </summary>
-            <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
-            <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
+            <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato yyyy-MM-dd.</param>
+            <param name="fechaFinal">Fecha final, se debe pasar fecha con formato yyyy-MM-dd.</param>
             <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
         </member>
         <member name="M:ClassLibrary.Empresa.AddHabilitacion(System.String)">
@@ -770,21 +773,21 @@
             <param name="respuesta">Respuesta al mensaje procesado.</param>
             <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.CalcularOfertasCompradasHandler">
+        <member name="T:ClassLibrary.CalcularOfertasConsumidasHandler">
             <summary>
-            Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertascompradas" y se encarga
-            de manejar el caso en que se quieran calcular las ofertas compradas en un determinado período de tiempo.
+            Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertasconsumidas" y se encarga
+            de manejar el caso en que se quieran calcular las ofertas consumidas en un determinado período de tiempo.
             </summary>
         </member>
-        <member name="M:ClassLibrary.CalcularOfertasCompradasHandler.#ctor(ClassLibrary.BaseHandler)">
+        <member name="M:ClassLibrary.CalcularOfertasConsumidasHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.CalcularOfertasCompradasHandler"/>.
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.CalcularOfertasConsumidasHandler"/>.
             </summary>
             <param name="next">Handler siguiente.</param>
         </member>
-        <member name="M:ClassLibrary.CalcularOfertasCompradasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+        <member name="M:ClassLibrary.CalcularOfertasConsumidasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
-            Procesa el mensaje que calcula las ofertas compradas en un determinado período de tiempo.
+            Procesa el mensaje que calcula las ofertas consumidas en un determinado período de tiempo.
             </summary>
             <param name="mensaje">Mensaje que debe procesar.</param>
             <param name="respuesta">Respuesta al mensaje procesado.</param>
@@ -1431,24 +1434,6 @@
             <param name="oferta">Oferta.</param>
             <returns>Retorna una oferta para imprimir.</returns>
         </member>
-        <member name="T:ClassLibrary.ITelegram">
-            <summary>
-            Esta interface sirve para interactuar con la Aplicación de Telegram.
-            </summary>
-            /// <remarks>
-            Mediante el uso de esta interfaz, se puede incluir el comportamiento de varias fuentes en una clase.
-            </remarks>
-        </member>
-        <member name="M:ClassLibrary.ITelegram.EnviaMessage">
-            <summary>
-            Este método permite enviar mensajes.
-            </summary>
-        </member>
-        <member name="M:ClassLibrary.ITelegram.RecibeMessage">
-            <summary>
-            Este método permite recibir mensajes.
-            </summary>
-        </member>
         <member name="T:ClassLibrary.LimpiadorCadenas">
             <summary>
             Esta clase representa un limpiador de cadenas para permitir leer las cadenas correctamente.
@@ -1834,14 +1819,14 @@
             <param name="emprendedor">Un emprendedor.</param>
             <param name="nombreOferta">Una oferta.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.CalcularOfertasCompradas(ClassLibrary.Emprendedor,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.CalcularOfertasConsumidas(ClassLibrary.Emprendedor,System.String,System.String)">
             <summary>
             Este método llama a CalcularOfertasCompradas de Emprendedor.
             </summary>
             <param name="emprendedor">Un emprendedor.</param>
             <param name="fechaInicio">Fecha de inicio.</param>
             <param name="fechaFinal">Fecha de final.</param>
-            <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
+            <returns>Retorna las ofertas consumidas dentro del período de tiempo especificado.</returns>
         </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.VerEmprendedor(ClassLibrary.Emprendedor)">
             <summary>
@@ -1965,7 +1950,7 @@
             <summary>
             Inicializa una nueva instancia de la clase.
             </summary>
-            <param name="nombre">Recibe por parametro el nombre del matrial.</param>
+            <param name="tipo">Recibe por parametro el tipo del matrial.</param>
             <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
             <param name="precio">Recibe por parametro el precio del matrial.</param>
             <param name="unidad">Recibe por parametro la unidad del matrial.</param>
@@ -2158,6 +2143,26 @@
             </summary>
             <returns>Retorna un string con cada comando.</returns>
         </member>
+        <member name="T:ClassLibrary.PlataformaPrinter">
+            <summary>
+            Esta clase se encarga de imprimir por consola los atributos de oferta.
+            </summary>
+            <remarks>
+            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.PlataformaPrinter.OfertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método imprime por consola los atributos de oferta.
+            </summary>
+            <param name="oferta">Una oferta.</param>
+        </member>
+        <member name="M:ClassLibrary.PlataformaPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
+            <summary>
+            Este método imprime una string con información.
+            </summary>
+            <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
+        </member>
         <member name="T:ClassLibrary.Publicaciones">
             <summary>
             Esta clase se encarga de las Publicaciones.
@@ -2264,26 +2269,6 @@
             Obtiene el mensaje.
             </summary>
             <value></value>
-        </member>
-        <member name="T:ClassLibrary.TelegramPrinter">
-            <summary>
-            Esta clase se encarga de imprimir por consola los atributos de oferta.
-            </summary>
-            <remarks>
-            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
-            </remarks>
-        </member>
-        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
-            <summary>
-            Este método imprime por consola los atributos de oferta.
-            </summary>
-            <param name="oferta">Una oferta.</param>
-        </member>
-        <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
-            <summary>
-            Este método imprime una string con información.
-            </summary>
-            <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
         </member>
         <member name="T:ClassLibrary.Ubicacion">
             <summary>

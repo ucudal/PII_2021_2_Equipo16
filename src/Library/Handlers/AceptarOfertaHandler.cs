@@ -41,7 +41,7 @@ namespace ClassLibrary
                 List<string> listaComandos = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/aceptaroferta");
                 if (listaComandos.Count == 0)
                 {
-                    respuesta = $"Ingrese el Nombre de la oferta que desee aceptar {listaComandos.Count}.";
+                    respuesta = $"Ingrese el Nombre de la oferta que desee aceptar.";
                     return true;
                 }
                 else if (listaComandos.Count == 1)

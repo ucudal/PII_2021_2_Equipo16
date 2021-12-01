@@ -12,7 +12,7 @@ namespace ClassLibrary
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesEmprendedor()
         {
-            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertascompradas\n- /listadehabilitacionesemprendedor\n- /verubicacion\n- /ubicacionoferta";
+            string acciones = $" \nOpciones:\n- /agregarhabilitacionemprendedor \n- /buscarmaterial\n- /buscartag\n- /buscarubicacion\n- /calcularofertasconsumidas\n- /verubicacion\n- /ubicacionoferta\n- /verempresa\n- /veremprendedor";
             return acciones;
         }
         
@@ -22,7 +22,7 @@ namespace ClassLibrary
         /// <returns>Retorna un string con cada comando.</returns>
         public static string AccionesEmpresas()
         {
-            string acciones = $" \nOpciones:\n- /aceptaroferta\n- /agregarhabilitacionempresa\n- /calcularofertasvendidas\n- /crearoferta\n- /caddhaboferta\n- /removerhaboferta\n- /eliminaroferta\n- /removerhabempresa\n- /verinteresados";
+            string acciones = $" \nOpciones:\n- /aceptaroferta\n- /agregarhabilitacionempresa\n- /calcularofertasvendidas\n- /crearoferta\n- /agregarhaboferta\n- /removerhaboferta\n- /eliminaroferta\n- /removerhabempresa\n- /verinteresados\n- /verempresa\n- /veremprendedor";
             return acciones;
         }
 
