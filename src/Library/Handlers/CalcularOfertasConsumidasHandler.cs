@@ -4,15 +4,15 @@ namespace ClassLibrary
 {
     /// <summary>
     /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertascompradas" y se encarga
-    /// de manejar el caso en que se quieran calcular las ofertas compradas en un determinado período de tiempo.
+    /// de manejar el caso en que se quieran calcular las ofertas cnsumidas en un determinado período de tiempo.
     /// </summary>
-    public class CalcularOfertasCompradasHandler : BaseHandler 
+    public class CalcularOfertasConsumidasHandler : BaseHandler 
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="CalcularOfertasCompradasHandler"/>.
+        /// Inicializa una nueva instancia de la clase <see cref="CalcularOfertasConsumidasHandler"/>.
         /// </summary>
         /// <param name="next">Handler siguiente.</param>
-        public CalcularOfertasCompradasHandler(BaseHandler next)
+        public CalcularOfertasConsumidasHandler(BaseHandler next)
             : base(next)
         {
             this.Keywords = new string[] { "/calcularofertascompradas" };
@@ -53,7 +53,7 @@ namespace ClassLibrary
 
                     try
                     {
-                        LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
+                        LogicaEmprendedor.CalcularOfertasConsumidas(value, fechaInicio, fechaFinal);
                     }
                     catch (System.ArgumentException e)
                     {
@@ -62,7 +62,7 @@ namespace ClassLibrary
                     }
 
                     Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
-                    respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
+                    respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasConsumidas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
             }
