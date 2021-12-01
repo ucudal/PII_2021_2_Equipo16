@@ -13,10 +13,10 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime por consola los atributos de oferta.
         /// </summary>
-        /// <param name="oferta">Una oferta.</param>
+        /// <param name="oferta">Recibe por parametro una oferta.</param>
         public string OfertaPrinter(Oferta oferta)
         {
-            string texto = $"Nombre: {oferta.Nombre}, ID: {oferta.Id}, Material: {oferta.Material}, Precio {oferta.Precio}, Unidad: {oferta.Unidad}, Ubicación {oferta.Ubicacion}, Fecha de Publicación {Oferta.FechaDePublicacion}";
+            string texto = $"Nombre: {oferta.Nombre}, Material: {oferta.Material.Tipo}, Precio {oferta.Material.Precio}, Unidad: {oferta.Material.Unidad}, Ubicación {oferta.Ubicacion.NombreCalle}, Fecha de Publicación {oferta.FechaDePublicacion}";
             Console.WriteLine(texto);
             return texto;
         }
@@ -24,7 +24,7 @@ namespace ClassLibrary
         /// <summary>
         /// Este método imprime una string con información.
         /// </summary>
-        /// <param name="dato"></param>
+        /// <param name="dato">Recibe por parametro un string.</param>
         public static void DatoPrinter(String dato)
         {
             Console.WriteLine(dato);

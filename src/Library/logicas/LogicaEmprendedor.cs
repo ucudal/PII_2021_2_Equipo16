@@ -6,7 +6,7 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Contiene un método para llamar a cada método de la clase Emprendedor.
-    /// La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public static class LogicaEmprendedor
@@ -18,18 +18,12 @@ namespace ClassLibrary
         /// <param name="ubicacion">Ubicacion del emprendedor.</param>
         /// <param name="rubro">Rubro del emprendedor.</param>
         /// <param name="especializaciones">Especializaciones del emprendedor.</param>
+        /// <param name="email">Email del emprendedor, para contacatrlo.</param>
         /// <param name="id">Id del chat.</param>
-        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string id)
+        public static void RegistroEmprendedor(string nombre, string ubicacion, string rubro, string especializaciones, string email, string id)
         {
-            if (Rubro.CheckRubro(rubro))
-            { 
-                Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, new Habilitaciones(), especializaciones); 
-                Logica.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter("El rubro no existe.");
-            }      
+            Emprendedor nuevoEmprendedor = new Emprendedor(nombre, ubicacion, rubro, especializaciones, email); 
+            Singleton<ContenedorPrincipal>.Instancia.Emprendedores.Add(id, nuevoEmprendedor); // Agrego a la lista de emprendedores registrados.    
         }
 
         /// <summary>
@@ -67,22 +61,6 @@ namespace ClassLibrary
         }
 
         /// <summary>
-        /// Este método llama a GetHabilitacionList de Emprendedor.
-        /// </summary>
-        /// <param name="emprendedor">Un emprendedor.</param>
-        public static string GetHabilitacionList(Emprendedor emprendedor)
-        {
-            if (emprendedor == null)
-            {
-                throw new ArgumentNullException("El Emprendedor no puede ser nulo.");
-            }
-            else
-            {
-                return emprendedor.GetListaHabilitaciones();
-            }
-        }
-
-        /// <summary>
         /// Este método llama a InteresadoEnOferta de Emprendedor.
         /// </summary>
         /// <param name="emprendedor">Un emprendedor.</param>
@@ -96,7 +74,7 @@ namespace ClassLibrary
             }
             else
             {
-                foreach (Oferta item in Logica.Publicaciones.OfertasPublicados)
+                foreach (Oferta item in Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados)
                 {
                     if (item.Nombre == nombreOferta)
                     {
@@ -104,7 +82,7 @@ namespace ClassLibrary
                         item.Interesado.Add(emprendedor.Nombre);
                         if (!item.EmpresaCreadora.InteresadosEnOfertas.Contains(item))
                         {
-                            item.EmpresaCreadora.InteresadosEnOfertas.Add(item); // Agregado para solucionar test
+                            item.EmpresaCreadora.InteresadosEnOfertas.Add(item);
                         }
                         emprendedor.FechaDeOfertasCompradas.Add(DateTime.Now, item); // La fecha en la que se compró la oferta
                     }
@@ -129,6 +107,16 @@ namespace ClassLibrary
             {
                 return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
             }
+        }
+
+        /// <summary>
+        /// Este método permite crear una ficha del emprendedor en texto, para poder obtener sus datos.
+        /// </summary>
+        /// <param name="emprendedor">Recibe por parámetro un objeto de tipo Emprendedor.</param>
+        /// <returns>Retorna la información de un Emprendedor.</returns>
+        public static string VerEmprendedor(Emprendedor emprendedor)
+        {
+            return emprendedor.TextoEmprendedor();
         }
     }
 }

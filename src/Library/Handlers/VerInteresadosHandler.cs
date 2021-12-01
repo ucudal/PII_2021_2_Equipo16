@@ -3,63 +3,49 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/verinteresados" y se encarga
+    /// de manejar el caso en que se quieran ver los interesados en una Oferta específica.
     /// </summary>
     public class VerInteresados : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa el mensaje ingresado por el usuario.
+        /// Inicializa una nueva instancia de la clase <see cref="VerInteresados"/>.
         /// </summary>
-        /// <param name="next"></param>
-        public VerInteresados(BaseHandler next):base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public VerInteresados(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/verinteresados"};
+            this.Keywords = new string[] { "/verinteresados" };
         }
 
         /// <summary>
-        /// Este método procesa el mensaje "!VerInteresados" y retorna true.
-        /// En caso contrario retorna false.
+        /// Procesa el mensaje para que se puedan ver los interesados en una Oferta específica.
         /// </summary>
-        /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
-        /// <returns></returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/verinteresados"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
-
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/verinteresados") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verinteresados");
-                if (Logica.Empresas.ContainsKey(mensaje.Id))
-                {
-                    Empresa value = Logica.Empresas[mensaje.Id];
-                    string texto = LogicaEmpresa.VerInteresados(value);
-                    respuesta = texto;
-                    return true;
-                }
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/verinteresados");
+                    
+                Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+                string texto = LogicaEmpresa.VerInteresados(value) + OpcionesUso.AccionesEmpresas();
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                respuesta = texto;
+                return true;             
             }
-            
-            respuesta = string.Empty;
-            return false;
+            else
+            {
+                respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                return true;
+            }
         }
     }
 }

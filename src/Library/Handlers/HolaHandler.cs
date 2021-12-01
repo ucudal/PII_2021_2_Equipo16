@@ -1,34 +1,33 @@
 namespace ClassLibrary
 {
     /// <summary>
-    /// Esta clase contiene un método para aceptar una oferta.
+    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
     /// </summary>
     public class HolaHandler : BaseHandler
     {
         /// <summary>
-        /// Este método se encarga de aceptar una oferta.
+        /// Inicializa una nueva instancia de la clase <see cref="HolaHandler"/>.
         /// </summary>
-        /// <param name="next"></param>
-        /// <returns></returns>
-        public HolaHandler (BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public HolaHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"Hola", "hola"};
+            this.Keywords = new string[] { "Hola", "hola" };
         }
 
         /// <summary>
-        /// 
+        /// Este método procesa el mensaje "Hola".
         /// </summary>
-        /// <param name="mensaje"></param>
-        /// <param name="respuesta"></param>
-        /// <returns></returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-
             if (this.CanHandle(mensaje))
             {
-                Logica.HistorialDeChats.Add(mensaje.Id, new HistorialChat());
+                Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.Add(mensaje.Id, new HistorialChat());
 
-                respuesta = "Hola! por favor si le invitaron, escriba /aceptarinvitacion \nSi desea registrarse como emprendedor, escirba /registrarse \nCualquier duda use /comandos";
+                respuesta = "Hola! por favor si le invitaron, escriba /aceptarinvitacion \nSi desea registrarse como emprendedor, escriba /registrarme \nCualquier duda use /comandos";
                 return true;    
             }
 

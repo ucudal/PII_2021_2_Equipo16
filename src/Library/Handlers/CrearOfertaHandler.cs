@@ -3,50 +3,37 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/crearoferta" y se encarga
+    /// de manejar el caso en que una Empresa quiera crear una nueva oferta.
     /// </summary>
     public class CrearOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase Esta clase procesa el mensaje "hola".
+        /// Inicializa una nueva instancia de la clase <see cref="CrearOfertaHandler"/>.
         /// </summary>
-        /// <param name="next">El próximo "handler".</param>
-        public CrearOfertaHandler(BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public CrearOfertaHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/crearoferta"};
+            this.Keywords = new string[] { "/crearoferta" };
         }
 
         /// <summary>
-        /// 
+        /// Procesa el mensaje para que una Empresa pueda crear una nueva oferta.
         /// </summary>
-        /// <param name="mensaje"></param>
-        /// <param name="respuesta"></param>
-        /// <returns></returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/crearoferta"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
-
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/crearoferta") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.Empresas.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/crearoferta");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta";
@@ -54,7 +41,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 1)
                 {
-                    respuesta = "Ingrese el material";
+                    respuesta = "Ingrese el tipo del material:\n-Reciclado\n-Residuo";
                     return true;
                 }
                 else if (listaConParametros.Count == 2)
@@ -69,7 +56,7 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 4)
                 {
-                    respuesta = "Ingrese un tag";
+                    respuesta = "Ingrese un tag o palabra clave";
                     return true;
                 }
                 else if (listaConParametros.Count == 5)
@@ -84,28 +71,44 @@ namespace ClassLibrary
                 }
                 else if (listaConParametros.Count == 7)
                 {
-                    string puntualConstante = listaConParametros[0];
-                    string ubicacionOferta = listaConParametros[1];
-                    string tagOferta = listaConParametros[2];
-                    string unidadesOferta = listaConParametros[3];
-                    string precioOferta = listaConParametros[4];
-                    string materialOferta = listaConParametros[5];
-                    string nombreOferta = listaConParametros[6];
-                    if (Logica.Empresas.ContainsKey(mensaje.Id))
-                    {
-                        Empresa value = Logica.Empresas[mensaje.Id];
-                        LogicaEmpresa.CrearOferta(value, nombreOferta, materialOferta, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
-                        respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {materialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y los tags {tagOferta}.";
-                        return true;
-                    }
-                }
-                else
-                {
-                    respuesta = "No se ha podido registrar la oferta";
+                    respuesta = "Ingrese la cantidad";
                     return true;
                 }
+                else if (listaConParametros.Count == 8)
+                {
+                    string cantidadMaterial = listaConParametros[0];
+                    string puntualConstante = listaConParametros[1];
+                    string ubicacionOferta = listaConParametros[2];
+                    string tagOferta = listaConParametros[3];
+                    string unidadesOferta = listaConParametros[4];
+                    string precioOferta = listaConParametros[5];
+                    string nombreMaterialOferta = listaConParametros[6];
+                    string nombreOferta = listaConParametros[7];
+                    
+                    Empresa value = Singleton<ContenedorPrincipal>.Instancia.Empresas[mensaje.Id];
+
+                    try
+                    {
+                        LogicaEmpresa.CrearOferta(value, nombreOferta, nombreMaterialOferta, cantidadMaterial, precioOferta, unidadesOferta, tagOferta, ubicacionOferta, puntualConstante);
+                    }
+                    catch (System.ArgumentException e)
+                    { 
+                        respuesta = $"{e.Message}\nUse /crearoferta de nuevo.";
+                        return true;
+                    }
+                    
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"Se ha registrado con nombre {nombreOferta}, de material {nombreMaterialOferta}, del tipo {puntualConstante}, unidades: {unidadesOferta}, al precio de: {precioOferta}, con la ubicación en {ubicacionOferta} y el tag {tagOferta}. {OpcionesUso.AccionesEmpresas()}";
+                    return true; 
+                }
             }
-            respuesta= string.Empty;
+            else
+            {
+                respuesta = $"Usted no es una empresa, no puede usar este comando.";
+                return true;
+            }
+            
+            respuesta = string.Empty;
             return false;
         }
     }

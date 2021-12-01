@@ -3,88 +3,74 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsability que implementa el comando "hola".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertascompradas" y se encarga
+    /// de manejar el caso en que se quieran calcular las ofertas compradas en un determinado período de tiempo.
     /// </summary>
     public class CalcularOfertasCompradasHandler : BaseHandler 
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa el mensaje ingresado por el usuario.
+        /// Inicializa una nueva instancia de la clase <see cref="CalcularOfertasCompradasHandler"/>.
         /// </summary>
-        /// <param name="next">El próximo "handler."</param>
-        public CalcularOfertasCompradasHandler(BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public CalcularOfertasCompradasHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/calcularofertascompradas"};
+            this.Keywords = new string[] { "/calcularofertascompradas" };
         }
         
         /// <summary>
-        /// Este método procesa el mensaje "Calculas ofertas Vendidas" y retorna true.
-        /// En caso contrario retorna false.
+        /// Procesa el mensaje que calcula las ofertas compradas en un determinado período de tiempo.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
-        /// <returns></returns>
-        protected override bool InternalHandle(IMensaje message, out string respuesta)
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
+        protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-            if (Logica.HistorialDeChats.ContainsKey(message.Id))
+            if (!this.ChequearHandler(mensaje, "/calcularofertascompradas"))
             {
-                if (this.CanHandle(message))
-                {
-                    Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text); 
-                }
-            
-                else
-                {
-                    if ((message.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true))
-                    {
-                        Logica.HistorialDeChats[message.Id].MensajesDelUser.Add(message.Text);
-                    }
-                    else
-                    {
-                    respuesta = string.Empty;
-                    return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
-
-            if (Logica.HistorialDeChats[message.Id].ComprobarUltimoComandoIngresado("/calcularofertascompradas") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParam = Logica.HistorialDeChats[message.Id].BuscarUltimoComando("/calcularofertascompradas");
+                List<string> listaConParam = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/calcularofertascompradas");
                 if (listaConParam.Count == 0)
                 {
-                    respuesta = "Ingrese la fecha de inicio.";
+                    respuesta = "Ingrese la fecha de inicio (YYYY-MM-DD).";
                     return true;
                 }
-                if (listaConParam.Count == 1)
+                else if (listaConParam.Count == 1)
                 {
-                    respuesta = "Ingrese la fecha final.";
+                    respuesta = "Ingrese la fecha final (YYYY-MM-DD).";
                     return true;
                 }
-                if (listaConParam.Count == 2)
+                else if (listaConParam.Count == 2)
                 {
                     string fechaInicio = listaConParam[1];
                     string fechaFinal = listaConParam[0];
 
-                    if (Logica.Emprendedores.ContainsKey(message.Id))
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+
+                    try
                     {
-                        Emprendedor value = Logica.Emprendedores[message.Id];
-
-                        try
-                        {
-                            LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
-                        }
-                        catch (System.ArgumentException e)
-                        {
-                            respuesta = e.Message;
-                            return true;    
-                        }
-
-                        respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}.";
-                        return true;
+                        LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal);
                     }
+                    catch (System.ArgumentException e)
+                    {
+                        respuesta = e.Message;
+                        return true;    
+                    }
+
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    respuesta = $"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(value, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}";
+                    return true;
                 }
             }
-            
+            else
+            {
+                respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
+                return true;
+            }
             respuesta = string.Empty;
             return false;
         }

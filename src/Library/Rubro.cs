@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -9,61 +8,49 @@ namespace ClassLibrary
     /// </summary>
     /// <remarks>
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
-    /// la clase Rubro tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
-    /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
+    /// la clase Rubro tiene metodos que son exclusivos de su clase ya que es la que se encarga de conocer 
+    /// todo lo necesario para hacer posible su correcto funcionamiento.
     /// </remarks>
 
     public class Rubro
     {
-        /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
-        /// </summary>
+       /// <summary>
+       /// Inicializa un constructor sin parametros de la clase Rubro, ya que es esencial el atributo JsonConstructor
+       /// para la serialización de datos en la clase.
+       /// </summary>
+        [JsonConstructor]
         public Rubro()
         {
         }
 
-        public enum Rubros
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Rubro"/>.
+        /// </summary>
+        /// <param name="nombre">Recibe por parametro el nombre del rubro.</param>
+        public Rubro(string nombre)
         {
-            Textil,
-            Construccion,
-            Comercio,
-
-            Servicio,
-
-            Forestal,
-            Comunicaciones,
-            Entretenimiento,
-            Deportes,
-            Industria,
+            this.Nombre = nombre;
         }
 
+        /// <summary>
+        /// Obtiene o establece el nombre del rubro.
+        /// </summary>
+        /// <value>El nombre del Rubro.</value>
+        public string Nombre { get; set; }
 
         /// <summary>
-        /// Obtiene lista de rubros. Se usa SRP y Expert.
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia. 
         /// </summary>
-        public string GetRubros()
+        /// <returns>Retorna el objeto serializado.</returns>
+        public string ConvertirJson()
         {
-            StringBuilder getRubrosList = new StringBuilder("Habilitaciones: \n");
-            foreach (Rubros rubro in typeof(Rubros).GetEnumValues())
+            JsonSerializerOptions opciones = new ()
             {
-                getRubrosList.Append($"- {rubro.ToString()}.");
-            }
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
 
-            ConsolePrinter.DatoPrinter(getRubrosList.ToString());
-            return getRubrosList.ToString();
-        }
-
-        /// <summary>
-        /// Chequea si un rubro existe en la lista. Se usa SRP y Expert.
-        /// </summary>
-        /// <param name="rubro">Rubro.</param>
-        /// <returns><c>True</c> si existe el rubro en la lista, <c>False</c> si no existe.</returns>
-        
-
-        public static bool CheckRubro(string rubro)
-        {
-            Rubros rubroE;
-            return Enum.TryParse<Rubros>(rubro, true, out rubroE) ? true : throw new ArgumentException("Por favor ingrese un rubro que exista");
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }

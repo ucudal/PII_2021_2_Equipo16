@@ -27,6 +27,73 @@
             Esto da por defecto el nombre Jhon.
             </summary>
         </member>
+        <member name="T:Test.Library.EmprendedorHandlersTests">
+            <summary>
+            Esta clase permite probar todos los handlers destinados al emprendedor.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.BuscadorTagHandlerTest">
+            <summary>
+            En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por tag con el tag "tagtest".
+            Luego, una empresa creada anteriormente crea una oferta con ese mismo tag.
+            Al ejecutar la búsqueda, se puede comprobar el correcto funcionamiento del BuscadorTagHandler, por como efectivamente
+            aparece la oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.BuscadorMaterialHandlerTest">
+            <summary>
+            En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por material con el material "esteesunmaterial".
+            Luego, una empresa creada anteriormente crea una oferta con ese mismo material.
+            Al ejecutar la búsqueda, se puede comprobar el correcto funcionamiento del BuscadorMaterialHandler, por como efectivamente
+            aparece la oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.BuscadorUbicacionHandlerTest">
+            <summary>
+            En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por ubicación con la ubicación "test".
+            Luego, una empresa creada anteriormente crea una oferta con esa misma ubicación.
+            Al ejecutar la búsqueda, se puede comprobar el correcto funcionamiento del BuscadorUbicacionHandler, por como efectivamente
+            aparece la oferta.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.AgregarHabEmprendedorHandlerTestBien">
+            <summary>
+            En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere agregarse habilitaciones.
+            Para eso, ejecuta el comando "/agregarhabilitacionemprendedor", y luego se agrega la habilitación "SOA".
+            Con esto, se demuestra el correcto funcionamiento del AgregarHabEmprendedorHandler.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.RemoverHabEmprendedorHandlerTestBien">
+            <summary>
+            En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere removerse habilitaciones.
+            Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "SOA".
+            Con esto, se demuestra el correcto funcionamiento del RemoverHabEmprendedorHandler.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.InteresadoenOfertayCalcularOfertasCompradasHandlerTestBien">
+            <summary>
+            En este test, se demuestra el correcto funcionamiento de CalcularOfertasCompradasHandler y InteresadoEnOfertaHandler.
+            Para eso, se crean una empresa y un emprendedor
+            El primero, publica una oferta. El segundo, por su parte, busca interesarse en esa oferta con "/interesarme",
+            para luego fijarse si realmente funcionó su manifestación de interés, con "/calcularofertascompradas".
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.ListadeHabilitacionesHandlerTestBien">
+            <summary>
+            En este test, se busca demostrar el correcto funcionamiento del GetHabListHandler.
+            Con ese objetivo, un emprendedor, que ya cuenta con su habilitación "SOA", busca corroborar si efectivamente la tiene.
+            Para eso, utiliza "/listadehabilitaciones".
+            Al final, se puede observar, como el Handler funciona correctamente.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmprendedorHandlersTests.RegistroEmprendedorHandlerTestBien">
+            <summary>
+            En este test, un usuario busca registrarse como emprendedor.
+            Con ese objetivo en mente, utiliza "registrarme" y va llenando los campos que corresponden a medida
+            que le vayan surgiendo.
+            Con esto, queda demostrado el correcto funcionamiento del RegistroEmprendedorHandler.
+            </summary>
+        </member>
         <member name="T:Test.Library.EmprendedorTests">
             <summary>
             Esta clase permite realizar los tests de la clase Emprendedor.
@@ -55,6 +122,59 @@
         <member name="M:Test.Library.EmprendedorTests.TestAddHabilitacionesMal">
             <summary>
             Test que sirve para ver el comportamiento del código al añadirle al emprendedor una habilitacion que no existe.
+            </summary>
+        </member>
+        <member name="T:Test.Library.EmpresaHandlerTests">
+            <summary>
+            Esta clase permite probar todos los handlers destinados a la empresa.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.CrearOfertaHandlerTest">
+            <summary>
+            Este test se encarga de Crear una oferta pasando por cada requerimiento
+            para ver si todo funciona correctamente.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.AddHabOfertaHandlerTest">
+            <summary>
+            En este test, una empresa desea, a través de telegram, añadile una habilitación a una oferta.
+            Para eso, utiliza "agregarhaboferta".
+            Con esto, se verifica el correcto funcionamiento del AgregarHabOfertaHandler.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.RemoverHabEmpresaHandlerTest">
+            <summary>
+            En este test, se valúa el correcto funcionamiento del RemoverHabEmpresaHandler.
+            Para eso, una empresa utiliza el comando "/removerhabempresa" a través de telegram.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.AgregarHabEmpresaHandlerTest">
+            <summary>
+            Test que prueba el AgregarHabEmpresaHandler.
+            Para eso, una empresa utiliza el comando "agregarhabilitacionempresa" a través de telegram.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.InteresadoenOfertaCalcularOfertasVendidasyAceptarOfertaHandlerTestBien">
+            <summary>
+            En este test, se evalúan varios handlers en uno: InteresadoEnOfertaHandler, CalcularOfertasVendidasHandler y AceptarOfertaHandler.
+            Aquí interactúan dos usuarios, una empresa, que es la que crea la oferta y la publica, y un emprendedor, que manifiesta
+            su interés en ella.
+            Luego, la empresa acepta su interés, y, para estar seguro de que todo funciona bien, chequeó su venta con
+            "/calcularofertasvendidas".
+            Esto corrobora el correcto funcionamiento de todos los handlers utilizados aquí.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.AceptarInvEmpresaHandlerTest">
+            <summary>
+            Evalúa lo sucedido al una empresa aceptar la invitación de un administrador.
+            Corrobora el funcionamiento de AceptarInvEmpresaHandler.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTests.RemoverHabOfertaHandlerTest">
+            <summary>
+            En este test, una empresa desea remover a través de telegram, una habilitación a su oferta.
+            Para esto, utiliza el comando "/removerhaboferta".
+            Este test corrobora el funcionamiento de RemoverHabOfertaHandler.
             </summary>
         </member>
         <member name="T:Test.Library.EmpresaTests">
@@ -129,34 +249,7 @@
         </member>
         <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion">
             <summary>
-            Este método permite evaluar lo que sucede cuando se ingresa un nombre de habilitacion que esta en la lista de habilitaciones.
-            </summary>
-        </member>
-        <member name="M:Test.Library.HabilitacionesTests.TestHabilitacion2">
-            <summary>
-            Este metodo permite evaluar lo que sucede cuando el nombre de la habilitacion no esta en la lista de habilitaciones.
-            </summary>
-        </member>
-        <member name="M:Test.Library.HabilitacionesTests.TestHabilitacionDisponible">
-            <summary>
-            Este método de prueba nos permite ver la lista de habilitaciones que existen.
-            </summary>
-        </member>
-        <member name="M:Test.Library.HabilitacionesTests.TestAgregarHabilitaciones">
-            <summary>
-            Este test permite comprobar que se pueden agregar habilitaciones a la lista de habilitaciones.
-            Inicialmente la lista contiene 5 elementos y "brutal" que es la habilitacion que se quiere agregar no está dentro de la lista. Por lo cual al agregarla la lista pasara a contar con 6 elementos que es lo que se espera que devuelva la cuenta de ListaHabilitaciones.
-            </summary>
-        </member>
-        <member name="M:Test.Library.HabilitacionesTests.TestEliminarHabilitaciones">
-            <summary>
-            Este test permite comprobar si se pueden eliminar habilitaciones de la lista para eso se le pasa al metodo RemoveHabilitaciones un nombre que incluya la lista.
-            Y se espera que de como resultado 4 que ya que la lista inicialmente contenia 5 elementos.
-            </summary>
-        </member>
-        <member name="M:Test.Library.HabilitacionesTests.TestEliminarHabilitaciones1">
-            <summary>
-            Este test está diseñado para que de error, ya que rock no pertenece a la lista de habilitaciones. 
+            Este método permite evaluar lo que sucede cuando se crea una habilitación con nombre.
             </summary>
         </member>
         <member name="T:Test.Library.LimpiadorCadenasTests">
@@ -168,7 +261,7 @@
         </member>
         <member name="M:Test.Library.LimpiadorCadenasTests.TestLimpiaCadena">
             <summary>
-            Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc. 
+            Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc.
             Necesitamos alguna forma de poder trabajar con esa cadena, por lo cual utilizamos el método LimpiaCadena de la Clase LimpiadorCadenas.
             </summary>
         </member>
@@ -220,26 +313,9 @@
             Clase de pruebas de RubroTest.
             </summary>
         </member>
-        <member name="M:Test.Library.RubroTests.TestAgregarRubro">
+        <member name="M:Test.Library.RubroTests.TestCrearRubro">
             <summary>
-            En este test vamos a comprobar si se agrega correctamente un Rubro a la lista.
-            Para esto vamos a  crear un rubro nuevo  y verificar mediante el largo de la lista si se agrego correctamente.
-            Al ser nuevo se agregara a la lista , si ya está en la misma el mismo no se agregará.
-            </summary>
-        </member>
-        <member name="M:Test.Library.RubroTests.TestAgregarRubroRepetido">
-            <summary>
-            Test para comprobar que no se agregue a la lista un  rubro repetido.
-            </summary>
-        </member>
-        <member name="M:Test.Library.RubroTests.TestEliminarRubro">
-            <summary>
-            Test para comprobar si efectivamente el metodo elimina un Rubro.
-            </summary>
-        </member>
-        <member name="M:Test.Library.RubroTests.TestEliminarRubroQueNoExiste">
-            <summary>
-            Test para comprobar si se puede eliminar un rubro que no existe.
+            En este test vamos a verificar la correcta creación de un Rubro con nombre.
             </summary>
         </member>
         <member name="T:Test.Library.UsuarioTests">

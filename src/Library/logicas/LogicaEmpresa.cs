@@ -5,49 +5,34 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase se encarga de la lógica relacionada a Empresa.
     /// </summary>
-    /// <remarks>La creción de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
+    /// <remarks>La creación de clases y la asignación de responsabilidades se hizo en base en un patron GRASP: Low Coupling and High Cohesion,
     /// buscando mantener un equilibrio entre cohesión y acoplamiento.
     /// </remarks>
     public static class LogicaEmpresa
     {
         /// <summary>
-        /// Acepta la invitación del administrador.
+        /// Inicializa una nueva instancia de Oferta.
         /// </summary>
-        /// <param name="empresa">Empresa.</param>
-        /// <param name="nombreEmpresa">Nombre de la Empresa.</param>
-        public static void AceptarInvitacion(Empresa empresa, string nombreEmpresa)
+        /// <param name="empresa">Recibe por parametro la empresa que creo la oferta.</param>
+        /// <param name="nombre">Recibe por parametro el nombre de la oferta.</param>
+        /// <param name="nombreMaterial">Recibe por parametro el nombre del material de la oferta.</param>
+        /// <param name="cantidad">Recibe por parametro la cantidad de la oferta.</param>
+        /// <param name="precio">Recibe por parametro el precio de la oferta.</param>
+        /// <param name="unidad">Recibe por parametro la unidad de la oferta.</param>
+        /// <param name="tags">Recibe por parametro el tags de la oferta.</param>
+        /// <param name="ubicacion">Recibe por parametro la ubicacion de la oferta.</param>
+        /// <param name="constantesPuntuales">Recibe por parametro que indica si es contante de la oferta.</param>
+        public static void CrearOferta(Empresa empresa, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
         {
-            if (empresa == null)
-            {
-                throw new ArgumentNullException("La Empresa no puede ser null.");
-            }
-            else
-            {
-                empresa.AceptarInvitacion(nombreEmpresa);
-            }
-        }
-
-        /// <summary>
-        /// Llama al método CrearProducto en empresa con los parametros pasados.
-        /// </summary>
-        /// <param name="empresa">Empresa que creará la oferta.</param>
-        /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de lo que se ofrece.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad tipo (Kg, g, ml, o unidad normal).</param>
-        /// <param name="tags">Palabra clave.</param>
-        /// <param name="ubicacion">Ubicacion dónde se encuentra la oferta.</param>
-        /// <param name="constantesPuntuales">Si la oferta es constante o puntual.</param>
-        public static void CrearOferta(Empresa empresa, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string constantesPuntuales)
-        {
-            if (Logica.ListaNombreOfertas.Contains(nombre))
+            if (Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Contains(nombre))
             {
                 ConsolePrinter.DatoPrinter("El nombre ingresado ya existe, por favor intente de nuevo.");
+                throw new ArgumentException("El nombre ingresado ya existe, por favor intente uno nuevo.");
             }
             else
             {
-                empresa.CrearOferta(Logica.Publicaciones, nombre, material, precio, unidad, tags, ubicacion, constantesPuntuales);
-                Logica.ListaNombreOfertas.Add(nombre);
+                empresa.CrearOferta(Singleton<ContenedorPrincipal>.Instancia.Publicaciones, nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, constantesPuntuales);
+                Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Add(nombre);
                 ConsolePrinter.DatoPrinter("Oferta creada exitosamente.");
             }
         }
@@ -59,13 +44,13 @@ namespace ClassLibrary
         /// <param name="nombre">Nombre de la oferta que se desea eliminar.</param>
         public static void EliminarOferta(Empresa empresa, string nombre)
         {
-            if (!Logica.ListaNombreOfertas.Contains(nombre))
+            if (!Singleton<ContenedorPrincipal>.Instancia.ListaNombreOfertas.Contains(nombre))
             {
                 ConsolePrinter.DatoPrinter("No existe una oferta con ese nombre, por favor intente de nuevo.");
             }
             else
             {
-                empresa.EliminarOferta(nombre, Logica.Publicaciones); // Cambie empresa por Empresa porque declare como static al método EliminarProducto de Empresa.
+                empresa.EliminarOferta(nombre, Singleton<ContenedorPrincipal>.Instancia.Publicaciones);
                 ConsolePrinter.DatoPrinter("Oferta eliminada exitosamente");
             }
         }
@@ -77,15 +62,15 @@ namespace ClassLibrary
         /// <param name="ofertaQueSeAcepta">Nombre de oferta que se desea Aceptar.</param>
         public static void AceptarOferta(Empresa empresa, string ofertaQueSeAcepta)
         {
-            empresa.AceptarOferta(ofertaQueSeAcepta, Logica.Publicaciones);
+            empresa.AceptarOferta(ofertaQueSeAcepta, Singleton<ContenedorPrincipal>.Instancia.Publicaciones);
         }
 
         /// <summary>
         /// Llama al método CalcularOfertasVendidasSegunTiempo en empresa con los parametros pasados.
         /// </summary>
         /// <param name="empresa">Empresa que quiere calcular sus ofertas vendidas segun x tiempo.</param>
-        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato AAAA-MM-DD.</param>
-        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato AAAA-MM-DD.</param>
+        /// <param name="fechaInicio">Fecha inicio, se debe pasar fecha con formato YYYY-MM-DD.</param>
+        /// <param name="fechaFinal">Fecha final, se debe pasar fecha con formato YYYY-MM-DD.</param>
         /// <returns>Retorna las ofertas vendidas dentro del período de tiempo especificado.</returns>
         public static int CalcularOfertasVendidas(Empresa empresa, string fechaInicio, string fechaFinal)
         {
@@ -118,21 +103,21 @@ namespace ClassLibrary
                 empresa.RemoveHabilitacion(habilitacion);
             }
         }
-        
+
         /// <summary>
-        /// Metodo AddHabilitacionOferta de las ofertas de la empresa.
+        /// Este método se encarga de agregar habilitaciones para las ofertas.
         /// </summary>
-        /// <param name="empresa">empresa</param>
-        /// <param name="habilitacion">habilitacion a agregar</param>
-        /// <param name="nombreOferta">nombre de la oferta</param>
-        public static void AddHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
+        /// <param name="empresa">empresa.</param>
+        /// <param name="habilitacion">habilitacion a agregar.</param>
+        /// <param name="nombreOferta">nombre de la oferta.</param>
+        public static void AgregarHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
         {
             if (empresa == null)
             {
                 throw new ArgumentNullException("La Empresa no puede ser null.");
             }
             else
-            {    
+            {
                 foreach (Oferta oferta in empresa.MisOfertas)
                 {
                     if (oferta.Nombre == nombreOferta)
@@ -142,15 +127,15 @@ namespace ClassLibrary
                 }
             }
         }
-        
+
         /// <summary>
-        /// 
+        /// Este método se encarga de remover habilitaciones para las ofertas.
         /// </summary>
-        /// <param name="empresa"></param>
-        /// <param name="habilitacion"></param>
-        /// <param name="nombreOferta"></param>
+        /// <param name="empresa">Empresa.</param>
+        /// <param name="habilitacion">Nombre de la habilitacion.</param>
+        /// <param name="nombreOferta">Nombre de la oferta.</param>
         public static void RemoveHabilitacionOferta(Empresa empresa, string habilitacion, string nombreOferta)
-        {   
+        {
             if (empresa == null)
             {
                 throw new ArgumentNullException("La Empresa no puede ser null.");
@@ -165,28 +150,39 @@ namespace ClassLibrary
                         ofertaH = oferta;
                     }
                 }
-                
+
                 ofertaH.RemoveHabilitacion(habilitacion);
             }
         }
-        
-        /// <summary>
-        /// Llama al método GetHabilitacion en empresa con los parametros pasados.
-        /// </summary>
-        /// <param name="empresa">Empresa.</param>
-        public static string GetListaHabilitaciones(Empresa empresa)
-        {
-            return empresa.GetListaHabilitaciones();
-        }
 
         /// <summary>
-        /// 
+        /// Este método muestra los interesados en una oferta.
         /// </summary>
-        /// <param name="empresa"></param>
-        /// <returns></returns>
+        /// <param name="empresa">Empresa.</param>
+        /// <returns>Retorna los interesados en la oferta.</returns>
         public static string VerInteresados(Empresa empresa)
         {
             return empresa.VerInteresados();
+        }
+
+        /// <summary>
+        /// Método que devuelve todos los atributos de la empresa.
+        /// </summary>
+        /// <param name="empresa">Empresa.</param>
+        /// <returns>Retorna la información de la Empresa.</returns>
+        public static string VerEmpresa(Empresa empresa)
+        {
+            return empresa.TextoEmpresa();
+        }
+
+        /// <summary>
+        /// Método que devuelve las ofertas publicadas por la empresa.
+        /// </summary>
+        /// <param name="empresa">Empresa.</param>
+        /// <returns></returns>
+        public static string VerMisOfertas(Empresa empresa)
+        {
+            return PlataformaPrinter.BusquedaPrinter(empresa.VerMisOfertas());
         }
     }
 }

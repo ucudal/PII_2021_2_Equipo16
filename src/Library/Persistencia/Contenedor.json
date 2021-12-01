@@ -1,0 +1,252 @@
+{
+  "$id": "1",
+  "HistorialDeChats": {
+    "$id": "2",
+    "2100989690": {
+      "$id": "3",
+      "MensajesDelUser": {
+        "$id": "4",
+        "$values": [
+          "/invitarempresa",
+          "Pelispedia"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "5",
+        "$values": [
+          "Pelispedia",
+          "/invitarempresa"
+        ]
+      }
+    },
+    "2124515755": {
+      "$id": "6",
+      "MensajesDelUser": {
+        "$id": "7",
+        "$values": [
+          "/verubicacion",
+          "/verubicacionempresa"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "8",
+        "$values": [
+          "/verubicacionempresa",
+          "/verubicacion"
+        ]
+      }
+    },
+    "1548068317": {
+      "$id": "9",
+      "MensajesDelUser": {
+        "$id": "10",
+        "$values": [
+          "/registrarme",
+          "Agustin",
+          "Tres Cruces"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "11",
+        "$values": [
+          "Tres Cruces",
+          "Agustin",
+          "/registrarme"
+        ]
+      }
+    }
+  },
+  "EmpresasInvitadas": {
+    "$id": "12",
+    "$values": [
+      {
+        "$id": "13",
+        "FechaOfertasEntregadas": {
+          "$id": "14"
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "15",
+          "$values": []
+        },
+        "InteresadosEnOfertas": {
+          "$id": "16",
+          "$values": []
+        },
+        "OfertasAceptadas": {
+          "$id": "17",
+          "$values": []
+        },
+        "MisOfertas": {
+          "$id": "18",
+          "$values": []
+        },
+        "Nombre": "conaprole",
+        "Ubicacion": {
+          "$id": "19",
+          "NombreCalle": "pakistan"
+        },
+        "Rubro": {
+          "$id": "20",
+          "Nombre": "Textil"
+        }
+      },
+      {
+        "$id": "21",
+        "FechaOfertasEntregadas": {
+          "$id": "22"
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "23",
+          "$values": [
+            {
+              "$id": "24",
+              "Nombre": "APA"
+            }
+          ]
+        },
+        "InteresadosEnOfertas": {
+          "$id": "25",
+          "$values": []
+        },
+        "OfertasAceptadas": {
+          "$id": "26",
+          "$values": []
+        },
+        "MisOfertas": {
+          "$id": "27",
+          "$values": [
+            {
+              "$id": "28",
+              "HabilitacionesOferta": {
+                "$id": "29",
+                "$values": []
+              },
+              "Interesado": {
+                "$id": "30",
+                "$values": []
+              },
+              "Nombre": "LECHEDELABUENA",
+              "Material": {
+                "$id": "31",
+                "Tipo": "Reciclado",
+                "Cantidad": "20",
+                "Precio": "100",
+                "Unidad": "Litros"
+              },
+              "Tags": "LaMejor",
+              "Ubicacion": {
+                "$id": "32",
+                "NombreCalle": "Av. 8 de Octubre 1921"
+              },
+              "EmpresaCreadora": {
+                "$ref": "21"
+              },
+              "ConstantesPuntuales": "Constante",
+              "FechaDePublicacion": "2021-11-30T19:31:03.6417559-03:00"
+            }
+          ]
+        },
+        "Nombre": "Pelispedia",
+        "Ubicacion": {
+          "$id": "33",
+          "NombreCalle": "Comandante Braga"
+        },
+        "Rubro": {
+          "$ref": "20"
+        }
+      },
+      {
+        "$ref": "21"
+      }
+    ]
+  },
+  "Emprendedores": {
+    "$id": "34"
+  },
+  "Empresas": {
+    "$id": "35",
+    "2124515755": {
+      "$ref": "21"
+    }
+  },
+  "Publicaciones": {
+    "$id": "36",
+    "OfertasPublicados": {
+      "$id": "37",
+      "$values": [
+        {
+          "$ref": "28"
+        }
+      ]
+    }
+  },
+  "ContenedorRubrosHabs": {
+    "$id": "38",
+    "ListaRubros": {
+      "$id": "39",
+      "$values": [
+        {
+          "$ref": "20"
+        },
+        {
+          "$id": "40",
+          "Nombre": "Metalurgia"
+        },
+        {
+          "$id": "41",
+          "Nombre": "Electrodom\u00E9sticos"
+        }
+      ]
+    },
+    "ListaHabilitaciones": {
+      "$id": "42",
+      "$values": [
+        {
+          "$id": "43",
+          "Nombre": "APA"
+        },
+        {
+          "$id": "44",
+          "Nombre": "ISO"
+        },
+        {
+          "$id": "45",
+          "Nombre": "SOA"
+        }
+      ]
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "46"
+  },
+  "BuscadorTags": {
+    "$id": "47"
+  },
+  "BuscadorMaterial": {
+    "$id": "48"
+  },
+  "PrinterConsola": {
+    "$id": "49"
+  },
+  "ListaNombreOfertas": {
+    "$id": "50",
+    "$values": [
+      "LECHEDELABUENA"
+    ]
+  },
+  "Administradores": {
+    "$id": "51",
+    "2100989690": {
+      "$id": "52",
+      "Nombre": "Adminxito",
+      "Empresas": {
+        "$id": "53",
+        "$values": [
+          {
+            "$ref": "21"
+          }
+        ]
+      }
+    }
+  }
+}

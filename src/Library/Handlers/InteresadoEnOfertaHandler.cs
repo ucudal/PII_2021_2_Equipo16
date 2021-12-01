@@ -3,77 +3,63 @@ using System.Collections.Generic;
 namespace ClassLibrary
 {
     /// <summary>
-    /// Un "handler" del patrón Chain of Responsibility que implementa el comando "hola".
+    /// Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/interesarme" y se encarga
+    /// de manejar el caso en que haya un interesado en una oferta.
     /// </summary>
     public class InteresadoEnOfertaHandler : BaseHandler
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase.
-        /// Esta clase procesa el mensaje ingresado por el usuario.
+        /// Inicializa una nueva instancia de la clase <see cref="InteresadoEnOfertaHandler"/>.
         /// </summary>
-        /// <param name="next">El próximo "handler"</param>
-        public InteresadoEnOfertaHandler(BaseHandler next) : base(next)
+        /// <param name="next">Handler siguiente.</param>
+        public InteresadoEnOfertaHandler(BaseHandler next)
+            : base(next)
         {
-            this.Keywords = new string[] {"/interesado"};
+            this.Keywords = new string[] { "/interesarme" };
         }
+        
         /// <summary>
-        /// Este método procesa el mensaje "!InteresadoEnOferta" y retorna true.
-        /// En caso contrario retorna false.
+        /// Procesa el mensaje para que un emprendedor se pueda interesar en una oferta.
         /// </summary>
-        /// <param name="mensaje">El mensaje a procesar.</param>
-        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
-        /// <returns></returns>
+        /// <param name="mensaje">Mensaje que debe procesar.</param>
+        /// <param name="respuesta">Respuesta al mensaje procesado.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         protected override bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
-             if (Logica.HistorialDeChats.ContainsKey(mensaje.Id))
+            if (!this.ChequearHandler(mensaje, "/interesarme"))
             {
-                if (this.CanHandle(mensaje))
-                {
-                    Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                }
-                else
-                {
-                    if ((mensaje.Text.StartsWith("/") == false) && (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true))
-                    {
-                        Logica.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
-                    }
-                    else
-                    {
-                        respuesta = string.Empty;
-                        return false;
-                    }
-                }
+                respuesta = string.Empty;
+                return false;
             }
-
-            if (Logica.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado("/interesado") == true)
+            else if (Singleton<ContenedorPrincipal>.Instancia.Emprendedores.ContainsKey(mensaje.Id))
             {
-                List<string> listaConParametros = Logica.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesado");
+                List<string> listaConParametros = Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].BuscarUltimoComando("/interesarme");
                 if (listaConParametros.Count == 0)
                 {
                     respuesta = "Ingrese el nombre de la oferta en la que quiera manifestar su interés";
                     return true;
                 }
-                if (listaConParametros.Count == 1)
+                else if (listaConParametros.Count == 1)
                 {
                     string nombreOferta = listaConParametros[0];
 
-                    if (Logica.Emprendedores.ContainsKey(mensaje.Id))
-                    {
-                        Emprendedor value = Logica.Emprendedores[mensaje.Id];
-                        LogicaEmprendedor.InteresadoEnOferta(value, nombreOferta);
-                        respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa";
-                        return true;
-                    }
+                    Emprendedor value = Singleton<ContenedorPrincipal>.Instancia.Emprendedores[mensaje.Id];
+                    LogicaEmprendedor.InteresadoEnOferta(value, nombreOferta);
+                    respuesta = $"Se ha manifestado su interés en {nombreOferta} de manera exitosa.";
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].HistorialClear();
+                    return true;
                 }
                 else
                 {
-                    respuesta = "No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente";
+                    respuesta = $"No ha podido manifestar su interés de manera exitosa, por favor intente nuevamente. {OpcionesUso.AccionesEmprendedor()}";
                     return true;
                 }
             }
-            
-            respuesta = string.Empty;
-            return false;
+            else
+            {
+                respuesta = $"Usted no es un emprendedor, no puede usar este comando.";
+                return true;
+            }
         }
     }
 }

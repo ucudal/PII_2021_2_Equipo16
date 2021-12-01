@@ -1,8 +1,8 @@
 namespace Test.Library
-{ 
+{
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -16,19 +16,20 @@ namespace Test.Library
         [Test]
         public void TestGeneral1()
         {
-            Empresa empresaConaprole = new Empresa("Conaprole", "Pakistan", "textil");
-            Emprendedor emprendedor1 = new Emprendedor("Lebron James", "Korea del Norte", "textil", new Habilitaciones(), "Decorado de interiores");
+            Empresa empresaTest = new Empresa("Conaprole", "Pakistan", "Textil");
+            Emprendedor emprendedorTest = new Emprendedor("Lebron James", "Korea del Norte", "Textil", "Decorado de interiores", "email@prueba.com");
 
             string expectedEmpresa = "Conaprole";
             string expectedEmprendedor = "Lebron James";
 
-            // Quiero como empresa publicar varias oferta.
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Coca-cola ZERO", "Nix", "2000", "Litros", "bebidas", "Guyana Francesa", "Constante");
-            LogicaEmpresa.CrearOferta(empresaConaprole, "Fiat 1", "El mejor de todos", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
+            Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Clear();
 
+            // Quiero como empresa publicar varias oferta.
+            LogicaEmpresa.CrearOferta(empresaTest, "ArduinoUNO", "Baquelita", "1", "100", "Cantidad", "Electronicos", "UCU", "Constante");
+            LogicaEmpresa.CrearOferta(empresaTest, "Coca-cola ZERO", "Nix", "5", "2000", "Litros", "Bebidas", "Guyana Francesa", "Constante");
+            LogicaEmpresa.CrearOferta(empresaTest, "Fiat 1", "El mejor de todos", "10", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
             int expectedPublicaciones = 3; // Esperado numero de ofertas en lista.
-            Assert.AreEqual(expectedPublicaciones, Logica.Publicaciones.OfertasPublicados.Count);
+            Assert.AreEqual(expectedPublicaciones, Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Count);
 
             // Quiero como emprendedor buscar bebidas.
             // Al buscar por tags, deberian aparecer 2 opciones.
@@ -36,22 +37,22 @@ namespace Test.Library
 
             // Se espera que se impriman las 2 ofertas.
             // Quiero adquirir la oferta con nombre Coca-Cola ZERO.
-            LogicaEmprendedor.InteresadoEnOferta(emprendedor1, "Coca-cola ZERO");
+            LogicaEmprendedor.InteresadoEnOferta(emprendedorTest, "Coca-cola ZERO");
 
             // Quiero como empresa saber si se interesaron en alguna de mis ofertas.
             int expectedInteresados = 1;
 
             // Quiero como empresa aceptar una oferta(Lo que se hace cuando se llega a un acuerdo con algun comprador).
-            LogicaEmpresa.AceptarOferta(empresaConaprole, "Fiat 1");
+            LogicaEmpresa.AceptarOferta(empresaTest, "Fiat 1");
 
             int expectedPublicaciones1 = 2;
             int expectedAceptadas = 1;
-  
-            Assert.AreEqual(expectedEmpresa, empresaConaprole.Nombre);
-            Assert.AreEqual(expectedEmprendedor, emprendedor1.Nombre);
-            Assert.AreEqual(expectedInteresados, empresaConaprole.InteresadosEnOfertas.Count);
-            Assert.AreEqual(expectedPublicaciones1, Logica.Publicaciones.OfertasPublicados.Count);
-            Assert.AreEqual(expectedAceptadas, empresaConaprole.OfertasAceptadas.Count);
-        }    
+
+            Assert.AreEqual(expectedEmpresa, empresaTest.Nombre);
+            Assert.AreEqual(expectedEmprendedor, emprendedorTest.Nombre);
+            Assert.AreEqual(expectedInteresados, empresaTest.InteresadosEnOfertas.Count);
+            Assert.AreEqual(expectedPublicaciones1, Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Count);
+            Assert.AreEqual(expectedAceptadas, empresaTest.OfertasAceptadas.Count);
+        }
     }
 }

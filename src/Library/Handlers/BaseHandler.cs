@@ -13,7 +13,7 @@ namespace ClassLibrary
     public abstract class BaseHandler : IHandler
     {
         /// <summary>
-        /// Obtiene el próximo "handler".
+        /// Obtiene o establece el próximo "handler".
         /// </summary>
         /// <value>El "handler" que será invocado si este "handler" no procesa el mensaje.</value>
         public IHandler Next { get; set; }
@@ -48,10 +48,10 @@ namespace ClassLibrary
         /// Este método debe ser sobreescrito por las clases sucesores. La clase sucesora procesa el mensaje y retorna
         /// true o no lo procesa y retorna false.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="responder">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>true si el mensaje fue procesado; false en caso contrario</returns>
-        protected virtual bool InternalHandle(IMensaje message, out string responder)
+        protected virtual bool InternalHandle(IMensaje mensaje, out string respuesta)
         {
             throw new InvalidOperationException("Este método debe ser sobrescrito.");
         }
@@ -88,18 +88,18 @@ namespace ClassLibrary
         /// <summary>
         /// Procesa el mensaje o la pasa al siguiente "handler" si existe.
         /// </summary>
-        /// <param name="message">El mensaje a procesar.</param>
-        /// <param name="response">La respuesta al mensaje procesado.</param>
+        /// <param name="mensaje">El mensaje a procesar.</param>
+        /// <param name="respuesta">La respuesta al mensaje procesado.</param>
         /// <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
-        public IHandler Handle(IMensaje message, out string response)
+        public IHandler Handle(IMensaje mensaje, out string respuesta)
         {
-            if (this.InternalHandle(message, out response))
+            if (this.InternalHandle(mensaje, out respuesta))
             {
                 return this;
             }
             else if (this.Next != null)
             {
-                return this.Next.Handle(message, out response);
+                return this.Next.Handle(mensaje, out respuesta);
             }
             else
             {
@@ -119,6 +119,43 @@ namespace ClassLibrary
             {
                 this.Next.Cancel();
             }
+        }
+
+        /// <summary>
+        /// Se encarga de verificar si se ingresa un comando que corresponda al handler, o si ingresa un mensaje/parametro que corresponda al handler.
+        /// Al hacer este método, se puede reutilizar bastante código.
+        /// Si el HistorialDeChats, no contiene el mensaje.Id, retorna true de todas formas ya que en los handlers, siempre se trabaja con mensaje.Id,
+        /// y si no existe, siempre el handler retornará false y un out string response string.Empty, ya que los handlers son los responsables de encargarse.
+        /// </summary>
+        /// <param name="mensaje">Mensaje.</param>
+        /// <param name="comando">Comando.</param>
+        /// <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
+        public virtual bool ChequearHandler(IMensaje mensaje, string comando)
+        {
+            if (mensaje == null)
+            {
+                throw new ArgumentNullException("Message no puede ser nulo.");
+            }
+            else if (Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats.ContainsKey(mensaje.Id))
+            {
+                if (this.CanHandle(mensaje))
+                {
+                    Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                }
+                else
+                {
+                    if (!mensaje.Text.StartsWith("/") && Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].ComprobarUltimoComandoIngresado(comando))
+                    {
+                        Singleton<ContenedorPrincipal>.Instancia.HistorialDeChats[mensaje.Id].MensajesDelUser.Add(mensaje.Text); 
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }

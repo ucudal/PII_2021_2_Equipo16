@@ -1,17 +1,26 @@
+using System;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
 namespace ClassLibrary
 {
     /// <summary>
     /// Creada clase Usuario de forma publica para que se pueda acceder desde cualquier parte del programa.
     /// </summary>
     /// <remarks>
-    /// Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa.
-    /// 
+    /// Creamos la clase Usuario con el fin de que la misma pueda ser usada en la reutilización del código en el programa aplicando Herencia.
+    /// Por otra parte está clase se formó respetando el patrón Expert
     /// </remarks>
     public class Usuario
     {
-        private string nombre;
-        private string ubicacion;
-        private string rubro;
+        /// <summary>
+        /// Constructor sin parametros de la clase Usuario, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
+        [JsonConstructor]
+        public Usuario()
+        {
+        }
 
         /// <summary>
         /// Inicializa una nueva instancia de la clase <see cref="Usuario"/>.
@@ -22,8 +31,15 @@ namespace ClassLibrary
         public Usuario(string nombre, string ubicacion, string rubro)
         {
             this.Nombre = nombre;
-            this.Ubicacion = ubicacion;
-            this.Rubro = rubro;
+            this.Ubicacion = new Ubicacion(ubicacion);
+            if (!Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearRubro(rubro))
+            {
+                throw new ArgumentException($"{rubro} no se encuentra disponible");
+            }
+            else
+            {
+                this.Rubro = Singleton<ContenedorRubroHabilitaciones>.Instancia.GetRubro(rubro);
+            }
         }
 
         /// <summary>
@@ -36,12 +52,28 @@ namespace ClassLibrary
         /// Obtiene o establece el valor que indica la ubicación del usuario.
         /// </summary>
         /// <value>Tipo string.</value>
-        public string Ubicacion { get; set; }
+
+        public Ubicacion Ubicacion { get; set; }
 
         /// <summary>
         /// Obtiene o establece el valor con el rubro del usuario.
         /// </summary>
         /// <value>Tipo Rubro.</value>
-        public string Rubro { get; set; }
+        public Rubro Rubro { get; set; }
+
+        /// <summary>
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
+        /// </summary>
+        /// <returns>Retorna el objeto serializado.</returns>
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new ()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
+        }
     }
 }

@@ -2,7 +2,7 @@ namespace Test.Library
 {
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Esta clase permite testear todas los comportamientos que va a tener la clase LimpiadorCadenas.
     /// Dicha clase lo que hace es tomar las cadenas de caracteres que el usuario de la aplicacion ingreso y las pasa a un tipo de cadena, que son las que se espera recibir, en minusculas, sin tildes y sin espacios accidentales.
@@ -12,7 +12,7 @@ namespace Test.Library
     public class LimpiadorCadenasTests
     {
         /// <summary>
-        /// Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc. 
+        /// Este metodo permite testear la cadena "Ho lA" que fue ingresada por un Usuario como existen muchas formas de escribir la palabra "hola", tales como "Hola","HOLA","hola", etc.
         /// Necesitamos alguna forma de poder trabajar con esa cadena, por lo cual utilizamos el método LimpiaCadena de la Clase LimpiadorCadenas.
         /// </summary>
         [Test]

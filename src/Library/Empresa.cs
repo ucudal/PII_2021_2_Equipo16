@@ -1,7 +1,9 @@
 using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace ClassLibrary
 {
@@ -14,93 +16,78 @@ namespace ClassLibrary
     /// Para esta clase se utilizó el patron de diseño de Expert, ya que desde nuestro punto de vista,
     /// la clase Empresa tiene metodos que sean exclusivos de su clase ya que es la que se encarga de conocer 
     /// todo lo necesario para hacer posible la ejecución de sus métodos, y que no sean necesarios para el resto de clases.
-    /// Además, utilizamos herencia para lograr una refactorización de código aceptable, ya que sería muy tedioso y
+    /// Además, utilizamos herencia para lograr una reutilización de código aceptable, ya que sería muy tedioso y
     /// mala práctica reutilizar el código sin esta función que nos permite el lenguaje.
     /// </remarks>
-
-    public class Empresa : Usuario, IHabilitaciones
+    public class Empresa : Usuario, IHabilitaciones, IJsonConvertible
     {
         /// <summary>
-        /// Inicializa una nueva instancia de la clase <see cref="Empresa"/>.
-        /// Como la clase hereda de la clase Usuario, recibe por parametros los propios de Usuario y los particulares de Empresa.
+        /// Constructor sin parametros de la clase Empresa, ya que es esencial el atributo JsonConstructor
+        /// para la serialización de datos en la clase.
+        /// </summary>
+        [JsonConstructor]
+        public Empresa()
+            : base()    
+        {
+        }
+
+        /// <summary>
+        /// Inicializa una instancia de la clase Empresa.
         /// </summary>
         /// <param name="nombre">Nombre de la empresa.</param>
         /// <param name="ubicacion">Ubicación de la empresa.</param>
         /// <param name="rubro">Rubro de la empresa.</param>
-        public Empresa(String nombre, String ubicacion, string rubro) : base(nombre, ubicacion, rubro)
+        public Empresa(string nombre, string ubicacion, string rubro)
+            : base(nombre, ubicacion, rubro)
         {
-            this.Habilitacion = new Habilitaciones();
         }
 
         /// <summary>
-        /// Acepta una invitación.
+        /// Guarda el conjunto de fecha y oferta.
         /// </summary>
-        /// <param name="nombreEmpresa">Nombre de la empresa.</param>
-        public void AceptarInvitacion(string nombreEmpresa)
-        {
-            if (nombreEmpresa == this.Nombre)
-            {
-                ConsolePrinter.DatoPrinter("Invitación aceptada");
-                
-                // Cuando conozcamos mas sobre telegram, le agregamos el poder vincular el usuario que nos manda el mensaje con la empresa.
-            }
-            else
-            {
-                ConsolePrinter.DatoPrinter("Invitación inválida, intente otra vez");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas = new Dictionary<DateTime, Oferta>();
-        private List<string> habilitacionesEmpresa = new List<string>();
-        private List<Oferta> ofertasAceptadas = new List<Oferta>();
-        private List<Oferta> interesadosEnOfertas = new List<Oferta>();
-        private List<Oferta> misOfertas = new List<Oferta>();
-
-        /// <summary>
-        /// Habilitaciones de la empresa.
-        /// </summary>
-        public Habilitaciones Habilitacion = new Habilitaciones();
+        [JsonInclude]
+        public Dictionary<DateTime, Oferta> FechaOfertasEntregadas { get; private set; } = new Dictionary<DateTime, Oferta>();
 
         /// <summary>
         /// Obtiene las Habilitaciones que tiene la Empresa.
         /// </summary>
-        public List<string> HabilitacionesEmpresa { get => this.habilitacionesEmpresa; }
+        [JsonInclude]
+        public List<Habilitaciones> HabilitacionesEmpresa { get; private set; } = new List<Habilitaciones>();
 
         /// <summary>
         /// Obtiene o establece los interesados en Ofertas que tiene la Empresa.
         /// </summary>
-        public List<Oferta> InteresadosEnOfertas { get => this.interesadosEnOfertas; set => this.interesadosEnOfertas = value; }
+        [JsonInclude]
+        public List<Oferta> InteresadosEnOfertas { get; private set; } = new List<Oferta>();
 
         /// <summary>
         /// Obtiene o establece Ofertas de la lista de OfertasAceptadas.
         /// </summary>
-        public List<Oferta> OfertasAceptadas { get => this.ofertasAceptadas; set => this.ofertasAceptadas = value; }
+        [JsonInclude]
+        public List<Oferta> OfertasAceptadas { get; private set; } = new List<Oferta>();
 
         /// <summary>
-        /// 
+        /// Esta lista contiene las ofertas realizadas por la empresa.
         /// </summary>
-        public List<Oferta> MisOfertas { get => this.misOfertas; set => this.misOfertas = value; }
+        [JsonInclude]
+        public List<Oferta> MisOfertas { get; private set; } = new List<Oferta>();
+
         /// <summary>
-        /// Crea una Oferta, agrega objetos de Oferta, además de guardar instancias de Oferta en las listas ofertasAceptadas, interesadosEnOfertas.
+        /// Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
+        /// Se aplica creator ya que agrega y guarda, instancias de la misma clase.
         /// </summary>
         /// <param name="publicaciones">Publicaciones.</param>
         /// <param name="nombre">Nombre de la oferta.</param>
-        /// <param name="material">Material de la oferta.</param>
-        /// <param name="precio">Precio de la oferta.</param>
-        /// <param name="unidad">Unidad de la oferta.</param>
-        /// <param name="tags">Tags de la oferta (palabras claves).</param>
-        /// <param name="ubicacion">Ubicación donde se en cuentra el producto que se ofrece.</param>
-        /// <param name="puntualesConstantes">Si la oferta es constante o puntual.</param>
-        /// <remarks>
-        /// Se usa Creator.
-        /// </remarks>
-        public void CrearOferta(Publicaciones publicaciones, string nombre, string material, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
-        {   
-            Oferta productoCreado = new Oferta(nombre, material, precio, unidad, tags, ubicacion, puntualesConstantes, this);
+        /// <param name="nombreMaterial">Nombre del material.</param>
+        /// <param name="cantidad">Cantidad.</param>
+        /// <param name="precio">Precio</param>
+        /// <param name="unidad">Unidad.</param>
+        /// <param name="tags">Tags.</param>
+        /// <param name="ubicacion">Ubicacion.</param>
+        /// <param name="puntualesConstantes">Oferta puntual o constante.</param>
+        public void CrearOferta(Publicaciones publicaciones, string nombre, string nombreMaterial, string cantidad, string precio, string unidad, string tags, string ubicacion, string puntualesConstantes)
+        {
+            Oferta productoCreado = new Oferta(nombre, nombreMaterial, cantidad, precio, unidad, tags, ubicacion, puntualesConstantes, this);
             publicaciones.OfertasPublicados.Add(productoCreado);
             this.MisOfertas.Add(productoCreado);
         }
@@ -120,7 +107,9 @@ namespace ClassLibrary
                     ofertaParaEliminar = ofertaEnLista;   
                 }
             }
+
             publicaciones.OfertasPublicados.Remove(ofertaParaEliminar);
+            this.MisOfertas.Remove(ofertaParaEliminar);
         }
 
         /// <summary>
@@ -136,7 +125,7 @@ namespace ClassLibrary
                 if (ofertaEnLista.Nombre == nombreOfertaParaAceptar)
                 {
                     ofertaEncontrada = ofertaEnLista;
-                    this.ofertasAceptadas.Add(ofertaEnLista);
+                    this.OfertasAceptadas.Add(ofertaEnLista);
                     this.FechaOfertasEntregadas.Add(DateTime.Now, ofertaEnLista);
                 }
             }
@@ -154,17 +143,15 @@ namespace ClassLibrary
         {
             int cantidadVendida = 0;
             DateTime fInicio;
-
             if (!DateTime.TryParseExact(fechaInicio, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fInicio))
             {
-                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha de inicio, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
-            
-            DateTime fFinal;
 
+            DateTime fFinal;
             if (!DateTime.TryParseExact(fechaFinal, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal, out fFinal))
             {
-                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: yyyy-MM-dd");
+                throw new ArgumentException("Error al introducir la fecha final, por favor ingrese la fecha con este formato: YYYY-MM-DD");
             }
 
             foreach (KeyValuePair<DateTime, Oferta> par in this.FechaOfertasEntregadas)
@@ -188,9 +175,13 @@ namespace ClassLibrary
         /// <param name="habilitacionBuscada">Habilitación a buscar.</param>
         public void AddHabilitacion(string habilitacionBuscada)
         {
-            if (this.Habilitacion.ListaHabilitaciones.Contains(habilitacionBuscada))
+            if (Singleton<ContenedorRubroHabilitaciones>.Instancia.ChequearHabilitacion(habilitacionBuscada))
             {
-                this.habilitacionesEmpresa.Add(habilitacionBuscada);
+                this.HabilitacionesEmpresa.Add(Singleton<ContenedorRubroHabilitaciones>.Instancia.GetHabilitacion(habilitacionBuscada));
+            }
+            else
+            {
+                throw new ArgumentException($"{habilitacionBuscada} no se encuentra disponible, use nuevamente /agregarhabilitacionempresa");
             }
         }
 
@@ -200,29 +191,30 @@ namespace ClassLibrary
         /// <param name="habilitacion">Habilitacion a eliminar.</param>
         public void RemoveHabilitacion(string habilitacion)
         {
-            this.habilitacionesEmpresa.Remove(habilitacion);
+            Habilitaciones habEliminada = new Habilitaciones(null);
+            foreach (Habilitaciones hab in this.HabilitacionesEmpresa)
+            {
+                if (habilitacion == hab.Nombre)
+                {
+                    habEliminada = hab;
+                }
+            }
+
+            this.HabilitacionesEmpresa.Remove(habEliminada);
         }
 
         /// <summary>
-        /// Muestra todas las habilitaciones posibles para agregar.
+        /// Agregado por SRP y Expert, la responsabilidad de ver los interesados en una oferta le corresponde a la misma empresa.
+        /// Este metodo muestra los interesados en una oferta.
         /// </summary>
-        public string GetListaHabilitaciones()
-        {
-           return this.Habilitacion.HabilitacionesDisponibles();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
+        /// <returns>Retorna un string listando los empresarios interesados en una oferta.</returns>
         public string VerInteresados()
         {
             StringBuilder texto = new StringBuilder("Interesados: ");
-            if (InteresadosEnOfertas.Count > 0)
+            if (this.InteresadosEnOfertas.Count > 0)
             {
-                foreach (Oferta oferta in InteresadosEnOfertas)
+                foreach (Oferta oferta in this.InteresadosEnOfertas)
                 {
-
                     texto.Append(oferta.TextoInteresados());
                 }
             }
@@ -230,7 +222,56 @@ namespace ClassLibrary
             {
                 texto.Append("0 interesados");
             }
+
             return texto.ToString();
+        }
+
+        /// <summary>
+        /// Agregado por SRP y Expert, la responsabilidad de construir el texto, le corresponde a la clase empresa.
+        /// ya que conoce lo necesario.
+        /// </summary>
+        /// <returns>Retorna un string con los datos de la Empresa.</returns>
+        public string TextoEmpresa()
+        {
+            StringBuilder text = new StringBuilder();
+            text.Append($"******************************\n");
+            text.Append($"Nombre: {this.Nombre} \n");
+            text.Append($"Rubro: {this.Rubro.Nombre} \n");
+            text.Append($"Ubicación: {this.Ubicacion.NombreCalle} \n");
+            text.Append($"Habilitaciones: ");
+            text.Append($"\n");
+            foreach (Habilitaciones habilitaciones in this.HabilitacionesEmpresa)
+            {
+                text.Append($"{habilitaciones.Nombre}, ");
+            }
+
+            text.Append($"\n");
+            text.Append($"******************************\n");
+            return text.ToString();
+        }
+
+        /// <summary>
+        /// Método que devuelve las ofertas publicadas por la empresa.
+        /// </summary>
+        /// <returns>Retorna una lista con la listas de ofertas realizadas por la empresa.</returns>
+        public List<Oferta> VerMisOfertas()
+        {
+            return this.MisOfertas;
+        }
+
+        /// <summary>
+        /// Metodo que utiliza gracias a la interfaz IJsonConvertible para convertir a formato Json y aplicar en persistencia.
+        /// </summary>
+        /// <returns>Retorna el objeto serializado.</returns>
+        public string ConvertirJson()
+        {
+            JsonSerializerOptions opciones = new ()
+            {
+                WriteIndented = true,
+                ReferenceHandler = MyReferenceHandler.Instance,
+            };
+
+            return JsonSerializer.Serialize(this, opciones);
         }
     }
 }
