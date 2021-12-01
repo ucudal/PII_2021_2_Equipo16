@@ -207,13 +207,13 @@
             <param name="habilitacionString">Recibe por parametro un string de la Habilitacion.</param>
             <returns>Retorna rubro si existe una habilitacion con ese nombre, en caso contrario retorna null.</returns>
         </member>
-        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaHabilitaciones">
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.TextoListaHabilitaciones">
             <summary>
             Método que se encarga de retornar los nombres(string) de las habilitaciones que están la lista de habilitaciones.
             </summary>
             <returns>Retorna un string listando las habilitaciones.</returns>
         </member>
-        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.textoListaRubros">
+        <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.TextoListaRubros">
             <summary>
             Método que se encarga de retornar los nombres(string) de los rubros que están la lista de rubros.
             </summary>
@@ -222,12 +222,14 @@
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearRubro(System.String)">
             <summary>
             Crea un rubro y lo agrega a la lista de rubros.
+            Se usa Creator ya que agrega y guarda instancias de Rubro.
             </summary>
             <param name="nombreRubro">Nombre del rubro.</param>
         </member>
         <member name="M:ClassLibrary.ContenedorRubroHabilitaciones.CrearHabilitacion(System.String)">
             <summary>
             Crea una habilitacion y la agrega a la lista de habilitaciones.
+            Se usa Creator ya que agrega y guarda instancias de Habilitaciones.
             </summary>
             <param name="nombreHabilitacion">Nombre de la habilitación.</param>
         </member>
@@ -381,6 +383,7 @@
         <member name="M:ClassLibrary.Empresa.CrearOferta(ClassLibrary.Publicaciones,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Este método sirve para crear una oferta. Contiene todos los parametros que son requeridos para tales efectos.
+            Se aplica creator ya que agrega y guarda, instancias de la misma clase.
             </summary>
             <param name="publicaciones">Publicaciones.</param>
             <param name="nombre">Nombre de la oferta.</param>
@@ -1979,7 +1982,7 @@
             <summary>
             Inicializa una nueva instancia de la clase.
             </summary>
-            <param name="nombre">Recibe por parametro el nombre del matrial.</param>
+            <param name="tipo">Recibe por parametro el tipo del matrial.</param>
             <param name="cantidad">Recibe por parametro la cantidad del matrial.</param>
             <param name="precio">Recibe por parametro el precio del matrial.</param>
             <param name="unidad">Recibe por parametro la unidad del matrial.</param>
@@ -2172,6 +2175,26 @@
             </summary>
             <returns>Retorna un string con cada comando.</returns>
         </member>
+        <member name="T:ClassLibrary.PlataformaPrinter">
+            <summary>
+            Esta clase se encarga de imprimir por consola los atributos de oferta.
+            </summary>
+            <remarks>
+            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
+            </remarks>
+        </member>
+        <member name="M:ClassLibrary.PlataformaPrinter.OfertaPrinter(ClassLibrary.Oferta)">
+            <summary>
+            Este método imprime por consola los atributos de oferta.
+            </summary>
+            <param name="oferta">Una oferta.</param>
+        </member>
+        <member name="M:ClassLibrary.PlataformaPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
+            <summary>
+            Este método imprime una string con información.
+            </summary>
+            <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
+        </member>
         <member name="T:ClassLibrary.Publicaciones">
             <summary>
             Esta clase se encarga de las Publicaciones.
@@ -2278,26 +2301,6 @@
             Obtiene el mensaje.
             </summary>
             <value></value>
-        </member>
-        <member name="T:ClassLibrary.TelegramPrinter">
-            <summary>
-            Esta clase se encarga de imprimir por consola los atributos de oferta.
-            </summary>
-            <remarks>
-            En este caso se aplicó SRP para poder imprimir las ofertas sin tener que modificarlas a ellas y no hacerlo directamente en la clase Ofertas por ejemplo.
-            </remarks>
-        </member>
-        <member name="M:ClassLibrary.TelegramPrinter.OfertaPrinter(ClassLibrary.Oferta)">
-            <summary>
-            Este método imprime por consola los atributos de oferta.
-            </summary>
-            <param name="oferta">Una oferta.</param>
-        </member>
-        <member name="M:ClassLibrary.TelegramPrinter.BusquedaPrinter(System.Collections.Generic.List{ClassLibrary.Oferta})">
-            <summary>
-            Este método imprime una string con información.
-            </summary>
-            <param name="resultadoBusqueda">El resultado de la búsqueda.</param>
         </member>
         <member name="T:ClassLibrary.Ubicacion">
             <summary>

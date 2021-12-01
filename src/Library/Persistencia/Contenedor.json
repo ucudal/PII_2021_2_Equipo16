@@ -35,80 +35,99 @@
           "/verubicacion"
         ]
       }
+    },
+    "1548068317": {
+      "$id": "9",
+      "MensajesDelUser": {
+        "$id": "10",
+        "$values": [
+          "/registrarme",
+          "Agustin",
+          "Tres Cruces"
+        ]
+      },
+      "MensajesDelUserReves": {
+        "$id": "11",
+        "$values": [
+          "Tres Cruces",
+          "Agustin",
+          "/registrarme"
+        ]
+      }
     }
   },
   "EmpresasInvitadas": {
-    "$id": "9",
+    "$id": "12",
     "$values": [
       {
-        "$id": "10",
+        "$id": "13",
         "FechaOfertasEntregadas": {
-          "$id": "11"
+          "$id": "14"
         },
         "HabilitacionesEmpresa": {
-          "$id": "12",
+          "$id": "15",
           "$values": []
         },
         "InteresadosEnOfertas": {
-          "$id": "13",
+          "$id": "16",
           "$values": []
         },
         "OfertasAceptadas": {
-          "$id": "14",
+          "$id": "17",
           "$values": []
         },
         "MisOfertas": {
-          "$id": "15",
+          "$id": "18",
           "$values": []
         },
         "Nombre": "conaprole",
         "Ubicacion": {
-          "$id": "16",
+          "$id": "19",
           "NombreCalle": "pakistan"
         },
         "Rubro": {
-          "$id": "17",
+          "$id": "20",
           "Nombre": "Textil"
         }
       },
       {
-        "$id": "18",
+        "$id": "21",
         "FechaOfertasEntregadas": {
-          "$id": "19"
+          "$id": "22"
         },
         "HabilitacionesEmpresa": {
-          "$id": "20",
+          "$id": "23",
           "$values": [
             {
-              "$id": "21",
+              "$id": "24",
               "Nombre": "APA"
             }
           ]
         },
         "InteresadosEnOfertas": {
-          "$id": "22",
+          "$id": "25",
           "$values": []
         },
         "OfertasAceptadas": {
-          "$id": "23",
+          "$id": "26",
           "$values": []
         },
         "MisOfertas": {
-          "$id": "24",
+          "$id": "27",
           "$values": [
             {
-              "$id": "25",
+              "$id": "28",
               "HabilitacionesOferta": {
-                "$id": "26",
+                "$id": "29",
                 "$values": []
               },
               "Interesado": {
-                "$id": "27",
+                "$id": "30",
                 "$values": []
               },
               "Nombre": "LECHEDELABUENA",
               "Material": {
-                "$id": "28",
+                "$id": "31",
                 "Tipo": "Reciclado",
                 "Cantidad": "20",
                 "Precio": "100",
@@ -116,115 +135,115 @@
               },
               "Tags": "LaMejor",
               "Ubicacion": {
-                "$id": "29",
+                "$id": "32",
                 "NombreCalle": "Av. 8 de Octubre 1921"
               },
               "EmpresaCreadora": {
-                "$ref": "18"
+                "$ref": "21"
               },
               "ConstantesPuntuales": "Constante",
-              "FechaDePublicacion": "2021-11-30T18:28:52.3613463-03:00"
+              "FechaDePublicacion": "2021-11-30T19:31:03.6417559-03:00"
             }
           ]
         },
         "Nombre": "Pelispedia",
         "Ubicacion": {
-          "$id": "30",
+          "$id": "33",
           "NombreCalle": "Comandante Braga"
         },
         "Rubro": {
-          "$ref": "17"
+          "$ref": "20"
         }
       },
       {
-        "$ref": "18"
+        "$ref": "21"
       }
     ]
   },
   "Emprendedores": {
-    "$id": "31"
+    "$id": "34"
   },
   "Empresas": {
-    "$id": "32",
+    "$id": "35",
     "2124515755": {
-      "$ref": "18"
+      "$ref": "21"
     }
   },
   "Publicaciones": {
-    "$id": "33",
+    "$id": "36",
     "OfertasPublicados": {
-      "$id": "34",
+      "$id": "37",
       "$values": [
         {
-          "$ref": "25"
+          "$ref": "28"
         }
       ]
     }
   },
   "ContenedorRubrosHabs": {
-    "$id": "35",
+    "$id": "38",
     "ListaRubros": {
-      "$id": "36",
+      "$id": "39",
       "$values": [
         {
-          "$ref": "17"
+          "$ref": "20"
         },
         {
-          "$id": "37",
+          "$id": "40",
           "Nombre": "Metalurgia"
         },
         {
-          "$id": "38",
+          "$id": "41",
           "Nombre": "Electrodom\u00E9sticos"
         }
       ]
     },
     "ListaHabilitaciones": {
-      "$id": "39",
+      "$id": "42",
       "$values": [
         {
-          "$id": "40",
+          "$id": "43",
           "Nombre": "APA"
         },
         {
-          "$id": "41",
+          "$id": "44",
           "Nombre": "ISO"
         },
         {
-          "$id": "42",
+          "$id": "45",
           "Nombre": "SOA"
         }
       ]
     }
   },
   "BuscadorUbicacion": {
-    "$id": "43"
-  },
-  "BuscadorTags": {
-    "$id": "44"
-  },
-  "BuscadorMaterial": {
-    "$id": "45"
-  },
-  "PrinterConsola": {
     "$id": "46"
   },
+  "BuscadorTags": {
+    "$id": "47"
+  },
+  "BuscadorMaterial": {
+    "$id": "48"
+  },
+  "PrinterConsola": {
+    "$id": "49"
+  },
   "ListaNombreOfertas": {
-    "$id": "47",
+    "$id": "50",
     "$values": [
       "LECHEDELABUENA"
     ]
   },
   "Administradores": {
-    "$id": "48",
+    "$id": "51",
     "2100989690": {
-      "$id": "49",
+      "$id": "52",
       "Nombre": "Adminxito",
       "Empresas": {
-        "$id": "50",
+        "$id": "53",
         "$values": [
           {
-            "$ref": "18"
+            "$ref": "21"
           }
         ]
       }

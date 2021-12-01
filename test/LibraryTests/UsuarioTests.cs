@@ -15,7 +15,7 @@ namespace Test.Library
         [Test]
         public void TestearUsuarioNombre()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo","textil");
+            Usuario usuario = new Usuario("Joaquin", "Montevideo","Textil");
             Assert.AreEqual("Joaquin", usuario.Nombre);
         }
          
@@ -25,7 +25,7 @@ namespace Test.Library
         [Test]
         public void TestearUsuarioUbicacion()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo", "textil");
+            Usuario usuario = new Usuario("Joaquin", "Montevideo", "Textil");
             Assert.AreEqual("Montevideo", usuario.Ubicacion.NombreCalle);
         }
         
@@ -35,8 +35,8 @@ namespace Test.Library
         [Test]
         public void TestearUsuarioRubro()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo", "textil");
-            Assert.AreEqual("textil", usuario.Rubro.Nombre);
+            Usuario usuario = new Usuario("Joaquin", "Montevideo", "Textil");
+            Assert.AreEqual("Textil", usuario.Rubro.Nombre);
         }
     }       
 } 

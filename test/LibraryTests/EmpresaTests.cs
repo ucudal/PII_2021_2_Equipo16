@@ -16,11 +16,11 @@ namespace Test.Library
         public void EmpresaTest()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
 
             string expected = "empresaTest";
             string expected2 = "La Blanqueada";
-            string expected3 = "textil";
+            string expected3 = "Textil";
             
  
             Assert.AreEqual(expected, empresaTest.Nombre);
@@ -36,11 +36,11 @@ namespace Test.Library
         public void TestAddHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
 
             int expected = 1;
             
-            empresaTest.AddHabilitacion("apa");
+            empresaTest.AddHabilitacion("APA");
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
         }
         
@@ -51,13 +51,13 @@ namespace Test.Library
         public void TestQuitarHabilitaciones()
         {   
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
     
             int expected = 1;
             
-            empresaTest.AddHabilitacion("apa");
-            empresaTest.AddHabilitacion("soa");
-            empresaTest.RemoveHabilitacion("apa");
+            empresaTest.AddHabilitacion("APA");
+            empresaTest.AddHabilitacion("SOA");
+            empresaTest.RemoveHabilitacion("APA");
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
         }
         /// <summary>
@@ -67,12 +67,12 @@ namespace Test.Library
         public void TestAddHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
 
             int expected = 1;
             string respuesta = "";
             
-            empresaTest.AddHabilitacion("apa");
+            empresaTest.AddHabilitacion("APA");
             
             try
             {
@@ -94,14 +94,14 @@ namespace Test.Library
         public void TestQuitarHabilitacionesMal()
         {   
             Habilitaciones habilitacion = new Habilitaciones();
-            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "textil");
+            Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
     
             int expected = 2;
             
-            empresaTest.AddHabilitacion("soa");
-            empresaTest.AddHabilitacion("soa");
+            empresaTest.AddHabilitacion("SOA");
+            empresaTest.AddHabilitacion("SOA");
             
-            empresaTest.RemoveHabilitacion("apa");
+            empresaTest.RemoveHabilitacion("APA");
         
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
         }
