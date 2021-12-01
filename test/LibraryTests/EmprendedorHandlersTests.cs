@@ -282,7 +282,7 @@ namespace Test.Library
 
             message.Text = "/calcularofertascompradas";
             msg = teleadapter;
-            IHandler calcularOfertasCompradasHandlerResult = new CalcularOfertasCompradasHandler(null);
+            IHandler calcularOfertasCompradasHandlerResult = new CalcularOfertasConsumidasHandler(null);
             calcularOfertasCompradasHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("Ingrese la fecha de inicio (YYYY-MM-DD)."));
 
@@ -298,7 +298,7 @@ namespace Test.Library
             calcularOfertasCompradasHandlerResult.Handle(msg, out response);
             string fechaInicio = "2020-05-01";
             string fechaFinal = "2024-11-21";
-            Assert.That(response, Is.EqualTo($"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasCompradas(emprendedorTest, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}"));
+            Assert.That(response, Is.EqualTo($"En este periodo se han adquirido {LogicaEmprendedor.CalcularOfertasConsumidas(emprendedorTest, fechaInicio, fechaFinal)}. {OpcionesUso.AccionesEmprendedor()}"));
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace Test.Library
             string rubroEmprendedor = "Textil";
             string especializacionesEmprendedor = "TestEspe";
             string emailEmprendedor = "TestEmail";
-            Assert.That(response, Is.EqualTo($"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor} e Email{emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}"));
+            Assert.That(response, Is.EqualTo($"Usted se ha registrado como un Emprendedor con el nombre {nombreEmprendedor}, ubicado en {ubicacionEmprendedor}, con el rubro {rubroEmprendedor}, y la especializacion {especializacionesEmprendedor}, con Email {emailEmprendedor}. {OpcionesUso.AccionesEmprendedor()}"));
         }
     }
 }

@@ -96,8 +96,8 @@ namespace ClassLibrary
         /// <param name="emprendedor">Un emprendedor.</param>
         /// <param name="fechaInicio">Fecha de inicio.</param>
         /// <param name="fechaFinal">Fecha de final.</param>
-        /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
-        public static int CalcularOfertasCompradas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
+        /// <returns>Retorna las ofertas consumidas dentro del período de tiempo especificado.</returns>
+        public static int CalcularOfertasConsumidas(Emprendedor emprendedor, string fechaInicio, string fechaFinal)
         {
             if (emprendedor == null)
             {
@@ -105,7 +105,7 @@ namespace ClassLibrary
             }
             else
             {
-                return emprendedor.CalcularOfertasCompradas(fechaInicio, fechaFinal);
+                return emprendedor.CalcularOfertasConsumidas(fechaInicio, fechaFinal);
             }
         }
 

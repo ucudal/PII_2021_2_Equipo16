@@ -115,7 +115,7 @@ namespace ClassLibrary
         /// <param name="fechaInicio">Fecha de inicio.</param>
         /// <param name="fechaFinal">Fecha de final.</param>
         /// <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
-        public int CalcularOfertasCompradas(string fechaInicio, string fechaFinal)
+        public int CalcularOfertasConsumidas(string fechaInicio, string fechaFinal)
         {
             int ofertasCompradas = 0;
             DateTime fInicio;

@@ -63,7 +63,7 @@ namespace ConsoleApplication
                                     new BuscadorMaterialHandler(
                                         new BuscadorTagHandler(
                                             new BuscadorUbicacionHandler(
-                                                new CalcularOfertasCompradasHandler(
+                                                new CalcularOfertasConsumidasHandler(
                                                     new CalcularOfertasVendidasHandler(
                                                         new AgregarHabOfertaHandler(
                                                             new CrearOfertaHandler(

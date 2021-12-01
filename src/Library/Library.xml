@@ -307,7 +307,7 @@
             </summary>
             <param name="habilitacion">Nombre de la habilitaciones a remover.</param>
         </member>
-        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasCompradas(System.String,System.String)">
+        <member name="M:ClassLibrary.Emprendedor.CalcularOfertasConsumidas(System.String,System.String)">
             <summary>
             Calcula cuantas ofertas se han comprado desde diferentes fechas, y cuanto dinero se gastó en ellas.
             </summary>
@@ -773,19 +773,19 @@
             <param name="respuesta">Respuesta al mensaje procesado.</param>
             <returns>Retorna <c>True</c> si se ha podido realizar la operación, o <c>False</c> en caso contrario.</returns>
         </member>
-        <member name="T:ClassLibrary.CalcularOfertasCompradasHandler">
+        <member name="T:ClassLibrary.CalcularOfertasConsumidasHandler">
             <summary>
             Esta clase representa un "Handler" del patrón Chain of Responsibility que implementa el comando "/calcularofertascompradas" y se encarga
-            de manejar el caso en que se quieran calcular las ofertas compradas en un determinado período de tiempo.
+            de manejar el caso en que se quieran calcular las ofertas cnsumidas en un determinado período de tiempo.
             </summary>
         </member>
-        <member name="M:ClassLibrary.CalcularOfertasCompradasHandler.#ctor(ClassLibrary.BaseHandler)">
+        <member name="M:ClassLibrary.CalcularOfertasConsumidasHandler.#ctor(ClassLibrary.BaseHandler)">
             <summary>
-            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.CalcularOfertasCompradasHandler"/>.
+            Inicializa una nueva instancia de la clase <see cref="T:ClassLibrary.CalcularOfertasConsumidasHandler"/>.
             </summary>
             <param name="next">Handler siguiente.</param>
         </member>
-        <member name="M:ClassLibrary.CalcularOfertasCompradasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
+        <member name="M:ClassLibrary.CalcularOfertasConsumidasHandler.InternalHandle(ClassLibrary.IMensaje,System.String@)">
             <summary>
             Procesa el mensaje que calcula las ofertas compradas en un determinado período de tiempo.
             </summary>
@@ -1833,14 +1833,14 @@
             <param name="emprendedor">Un emprendedor.</param>
             <param name="nombreOferta">Una oferta.</param>
         </member>
-        <member name="M:ClassLibrary.LogicaEmprendedor.CalcularOfertasCompradas(ClassLibrary.Emprendedor,System.String,System.String)">
+        <member name="M:ClassLibrary.LogicaEmprendedor.CalcularOfertasConsumidas(ClassLibrary.Emprendedor,System.String,System.String)">
             <summary>
             Este método llama a CalcularOfertasCompradas de Emprendedor.
             </summary>
             <param name="emprendedor">Un emprendedor.</param>
             <param name="fechaInicio">Fecha de inicio.</param>
             <param name="fechaFinal">Fecha de final.</param>
-            <returns>Retorna las ofertas compradas dentro del período de tiempo especificado.</returns>
+            <returns>Retorna las ofertas consumidas dentro del período de tiempo especificado.</returns>
         </member>
         <member name="M:ClassLibrary.LogicaEmprendedor.VerEmprendedor(ClassLibrary.Emprendedor)">
             <summary>
