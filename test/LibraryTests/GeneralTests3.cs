@@ -1,8 +1,8 @@
 namespace Test.Library
-{ 
+{
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -22,12 +22,10 @@ namespace Test.Library
             LogicaEmpresa.CrearOferta(empresaTest3, "Fiat 12", "El mejor de todos", "10", "5500", "Cantidad", "moto", "Aguas verdes", "Constante");
             LogicaEmpresa.CrearOferta(empresaTest3, "Hondita502", "El mejor de todos", "10", "5500", "Cantidad", "auto", "Aguas verdes", "Constante");
 
-            // Quiero buscar por ubicacion, tag, material
-            
             int expectedUbi = 1;
-            
+
             int expectedTag = 1;
-            
+
             int expectedMat = 2;
 
             Assert.AreEqual(expectedUbi, LogicaBuscadores.BuscarPorUbicacion("Nigeria").Count);

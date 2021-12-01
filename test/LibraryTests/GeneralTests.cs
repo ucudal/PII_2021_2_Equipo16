@@ -1,8 +1,8 @@
 namespace Test.Library
-{ 
+{
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -23,6 +23,7 @@ namespace Test.Library
             string expectedEmprendedor = "Lebron James";
 
             Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Clear();
+
             // Quiero como empresa publicar varias oferta.
             LogicaEmpresa.CrearOferta(empresaTest, "ArduinoUNO", "Baquelita", "1", "100", "Cantidad", "Electronicos", "UCU", "Constante");
             LogicaEmpresa.CrearOferta(empresaTest, "Coca-cola ZERO", "Nix", "5", "2000", "Litros", "Bebidas", "Guyana Francesa", "Constante");
@@ -46,12 +47,12 @@ namespace Test.Library
 
             int expectedPublicaciones1 = 2;
             int expectedAceptadas = 1;
-  
+
             Assert.AreEqual(expectedEmpresa, empresaTest.Nombre);
             Assert.AreEqual(expectedEmprendedor, emprendedorTest.Nombre);
             Assert.AreEqual(expectedInteresados, empresaTest.InteresadosEnOfertas.Count);
             Assert.AreEqual(expectedPublicaciones1, Singleton<ContenedorPrincipal>.Instancia.Publicaciones.OfertasPublicados.Count);
             Assert.AreEqual(expectedAceptadas, empresaTest.OfertasAceptadas.Count);
-        }    
+        }
     }
 }
