@@ -280,7 +280,7 @@ namespace Test.Library
             string nombreOferta = "oferta1";
             Assert.That(response, Is.EqualTo($"Se ha manifestado su interés en {nombreOferta} de manera exitosa."));
 
-            message.Text = "/calcularofertascompradas";
+            message.Text = "/calcularofertasconsumidas";
             msg = teleadapter;
             IHandler calcularOfertasCompradasHandlerResult = new CalcularOfertasConsumidasHandler(null);
             calcularOfertasCompradasHandlerResult.Handle(msg, out response);
