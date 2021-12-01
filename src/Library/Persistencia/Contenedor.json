@@ -2,248 +2,316 @@
   "$id": "1",
   "HistorialDeChats": {
     "$id": "2",
-    "2100989690": {
+    "2124515755": {
       "$id": "3",
       "MensajesDelUser": {
         "$id": "4",
-        "$values": [
-          "/invitarempresa",
-          "Pelispedia"
-        ]
+        "$values": []
       },
       "MensajesDelUserReves": {
         "$id": "5",
-        "$values": [
-          "Pelispedia",
-          "/invitarempresa"
-        ]
+        "$values": []
       }
     },
-    "2124515755": {
+    "867965110": {
       "$id": "6",
       "MensajesDelUser": {
         "$id": "7",
-        "$values": [
-          "/verubicacion",
-          "/verubicacionempresa"
-        ]
+        "$values": []
       },
       "MensajesDelUserReves": {
         "$id": "8",
-        "$values": [
-          "/verubicacionempresa",
-          "/verubicacion"
-        ]
+        "$values": []
       }
     },
-    "1548068317": {
+    "2100989690": {
       "$id": "9",
       "MensajesDelUser": {
         "$id": "10",
-        "$values": [
-          "/registrarme",
-          "Agustin",
-          "Tres Cruces"
-        ]
+        "$values": []
       },
       "MensajesDelUserReves": {
         "$id": "11",
-        "$values": [
-          "Tres Cruces",
-          "Agustin",
-          "/registrarme"
-        ]
+        "$values": []
+      }
+    },
+    "1548068317": {
+      "$id": "12",
+      "MensajesDelUser": {
+        "$id": "13",
+        "$values": []
+      },
+      "MensajesDelUserReves": {
+        "$id": "14",
+        "$values": []
       }
     }
   },
   "EmpresasInvitadas": {
-    "$id": "12",
+    "$id": "15",
     "$values": [
       {
-        "$id": "13",
+        "$id": "16",
         "FechaOfertasEntregadas": {
-          "$id": "14"
+          "$id": "17",
+          "2021-11-30T22:51:03.9972289-03:00": {
+            "$id": "18",
+            "HabilitacionesOferta": {
+              "$id": "19",
+              "$values": []
+            },
+            "Interesado": {
+              "$id": "20",
+              "$values": [
+                "Ola"
+              ]
+            },
+            "Nombre": "alfajores",
+            "Material": {
+              "$id": "21",
+              "Tipo": "Reciclado",
+              "Cantidad": "10",
+              "Precio": "55",
+              "Unidad": "10"
+            },
+            "Tags": "QUERICOOOS",
+            "Ubicacion": {
+              "$id": "22",
+              "NombreCalle": "Blvr Espa\u00F1a 2368"
+            },
+            "EmpresaCreadora": {
+              "$ref": "16"
+            },
+            "ConstantesPuntuales": "Puntual",
+            "FechaDePublicacion": "2021-11-30T22:52:31.0769845-03:00"
+          }
         },
         "HabilitacionesEmpresa": {
-          "$id": "15",
+          "$id": "23",
           "$values": []
         },
         "InteresadosEnOfertas": {
-          "$id": "16",
-          "$values": []
+          "$id": "24",
+          "$values": [
+            {
+              "$ref": "18"
+            }
+          ]
         },
         "OfertasAceptadas": {
-          "$id": "17",
-          "$values": []
+          "$id": "25",
+          "$values": [
+            {
+              "$ref": "18"
+            }
+          ]
         },
         "MisOfertas": {
-          "$id": "18",
-          "$values": []
+          "$id": "26",
+          "$values": [
+            {
+              "$ref": "18"
+            }
+          ]
         },
         "Nombre": "conaprole",
         "Ubicacion": {
-          "$id": "19",
+          "$id": "27",
           "NombreCalle": "pakistan"
         },
         "Rubro": {
-          "$id": "20",
+          "$id": "28",
           "Nombre": "Textil"
         }
       },
       {
-        "$id": "21",
+        "$id": "29",
         "FechaOfertasEntregadas": {
-          "$id": "22"
+          "$id": "30"
         },
         "HabilitacionesEmpresa": {
-          "$id": "23",
-          "$values": [
-            {
-              "$id": "24",
-              "Nombre": "APA"
-            }
-          ]
+          "$id": "31",
+          "$values": []
         },
         "InteresadosEnOfertas": {
-          "$id": "25",
+          "$id": "32",
           "$values": []
         },
         "OfertasAceptadas": {
-          "$id": "26",
+          "$id": "33",
           "$values": []
         },
         "MisOfertas": {
-          "$id": "27",
+          "$id": "34",
           "$values": [
             {
-              "$id": "28",
+              "$id": "35",
               "HabilitacionesOferta": {
-                "$id": "29",
+                "$id": "36",
                 "$values": []
               },
               "Interesado": {
-                "$id": "30",
+                "$id": "37",
                 "$values": []
               },
-              "Nombre": "LECHEDELABUENA",
+              "Nombre": "ofertaPrueba",
               "Material": {
-                "$id": "31",
-                "Tipo": "Reciclado",
-                "Cantidad": "20",
-                "Precio": "100",
-                "Unidad": "Litros"
+                "$id": "38",
+                "Tipo": "reciclado",
+                "Cantidad": "10",
+                "Precio": "1200",
+                "Unidad": "kg"
               },
-              "Tags": "LaMejor",
+              "Tags": "prueba",
               "Ubicacion": {
-                "$id": "32",
-                "NombreCalle": "Av. 8 de Octubre 1921"
+                "$id": "39",
+                "NombreCalle": "Tres Cruces"
               },
               "EmpresaCreadora": {
-                "$ref": "21"
+                "$ref": "29"
               },
-              "ConstantesPuntuales": "Constante",
-              "FechaDePublicacion": "2021-11-30T19:31:03.6417559-03:00"
+              "ConstantesPuntuales": "constante",
+              "FechaDePublicacion": "2021-11-30T22:52:31.0786588-03:00"
             }
           ]
         },
-        "Nombre": "Pelispedia",
+        "Nombre": "AgustinEmpresa",
         "Ubicacion": {
-          "$id": "33",
-          "NombreCalle": "Comandante Braga"
+          "$id": "40",
+          "NombreCalle": "Ellauri"
         },
         "Rubro": {
-          "$ref": "20"
+          "$ref": "28"
         }
       },
       {
-        "$ref": "21"
+        "$ref": "29"
       }
     ]
   },
   "Emprendedores": {
-    "$id": "34"
+    "$id": "41",
+    "2124515755": {
+      "$id": "42",
+      "FechaDeOfertasCompradas": {
+        "$id": "43",
+        "2021-11-30T22:49:57.2176143-03:00": {
+          "$ref": "18"
+        }
+      },
+      "OfertasInteresado": {
+        "$id": "44",
+        "$values": [
+          {
+            "$ref": "18"
+          }
+        ]
+      },
+      "HabilitacionesEmprendedor": {
+        "$id": "45",
+        "$values": []
+      },
+      "Especializaciones": "Nada",
+      "Email": "nada@nada.com",
+      "Nombre": "Ola",
+      "Ubicacion": {
+        "$id": "46",
+        "NombreCalle": "Av. 8 de Octubre 1989"
+      },
+      "Rubro": {
+        "$ref": "28"
+      }
+    }
   },
   "Empresas": {
-    "$id": "35",
-    "2124515755": {
-      "$ref": "21"
+    "$id": "47",
+    "867965110": {
+      "$ref": "16"
+    },
+    "1548068317": {
+      "$ref": "29"
     }
   },
   "Publicaciones": {
-    "$id": "36",
+    "$id": "48",
     "OfertasPublicados": {
-      "$id": "37",
+      "$id": "49",
       "$values": [
         {
-          "$ref": "28"
+          "$ref": "35"
         }
       ]
     }
   },
   "ContenedorRubrosHabs": {
-    "$id": "38",
+    "$id": "50",
     "ListaRubros": {
-      "$id": "39",
+      "$id": "51",
       "$values": [
         {
-          "$ref": "20"
+          "$ref": "28"
         },
         {
-          "$id": "40",
+          "$id": "52",
           "Nombre": "Metalurgia"
         },
         {
-          "$id": "41",
+          "$id": "53",
           "Nombre": "Electrodom\u00E9sticos"
         }
       ]
     },
     "ListaHabilitaciones": {
-      "$id": "42",
+      "$id": "54",
       "$values": [
         {
-          "$id": "43",
+          "$id": "55",
           "Nombre": "APA"
         },
         {
-          "$id": "44",
+          "$id": "56",
           "Nombre": "ISO"
         },
         {
-          "$id": "45",
+          "$id": "57",
           "Nombre": "SOA"
+        },
+        {
+          "$id": "58",
+          "Nombre": "Habitest1111"
         }
       ]
     }
   },
   "BuscadorUbicacion": {
-    "$id": "46"
+    "$id": "59"
   },
   "BuscadorTags": {
-    "$id": "47"
+    "$id": "60"
   },
   "BuscadorMaterial": {
-    "$id": "48"
+    "$id": "61"
   },
   "PrinterConsola": {
-    "$id": "49"
+    "$id": "62"
   },
   "ListaNombreOfertas": {
-    "$id": "50",
+    "$id": "63",
     "$values": [
-      "LECHEDELABUENA"
+      "alfajores",
+      "ofertaPrueba"
     ]
   },
   "Administradores": {
-    "$id": "51",
+    "$id": "64",
     "2100989690": {
-      "$id": "52",
-      "Nombre": "Adminxito",
+      "$id": "65",
+      "Nombre": "Adminq",
       "Empresas": {
-        "$id": "53",
+        "$id": "66",
         "$values": [
           {
-            "$ref": "21"
+            "$ref": "29"
           }
         ]
       }
