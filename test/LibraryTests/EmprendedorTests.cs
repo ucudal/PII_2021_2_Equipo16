@@ -15,7 +15,7 @@ namespace Test.Library
         [Test]
         public void TestRegistroEmprendedor()
         {
-            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "pakistan", "Textil", "EspecializacionesTest","email@prueba.com");
+            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "pakistan", "Textil", "EspecializacionesTest", "email@prueba.com");
             string expected = "EmprendedorTest";
             string expected2 = "pakistan";
             string expected3 = "Textil";
@@ -27,7 +27,7 @@ namespace Test.Library
             Assert.AreEqual(expected5, emprendedorTest.Especializaciones);
             Assert.That("email@prueba.com", Is.EqualTo(emprendedorTest.Email));
         }
-        
+
         /// <summary>
         /// Test que sirve para chequear el correcto funcionamiento del método AddHabilitacion.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Test.Library
         public void TestAddHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest","email@prueba.com");
+            Emprendedor emprendedorTest = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest", "email@prueba.com");
 
             int expected = 1;
 
@@ -50,7 +50,7 @@ namespace Test.Library
         public void TestQuitarHabilitaciones()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest","email@prueba.com");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest", "email@prueba.com");
 
             int expected = 1;
 
@@ -67,7 +67,7 @@ namespace Test.Library
         public void TestQuitarHabilitacionesMal()
         {
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest","email@prueba.com");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest", "email@prueba.com");
 
             int expected = 2;
 
@@ -76,16 +76,16 @@ namespace Test.Library
             juancho.RemoveHabilitacion("APA");
             Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
         }
-        
+
         /// <summary>
         /// Test que sirve para ver el comportamiento del código al añadirle al emprendedor una habilitacion que no existe.
         /// </summary>
         [Test]
         public void TestAddHabilitacionesMal()
         {
-            string respuesta = "";
+            string respuesta = string.Empty;
             Habilitaciones habilitacion = new Habilitaciones();
-            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest","email@prueba.com");
+            Emprendedor juancho = new Emprendedor("EmprendedorTest", "UbicacionTest", "Textil", "EspecializacionesTest", "email@prueba.com");
 
             int expected = 2;
 
@@ -94,12 +94,13 @@ namespace Test.Library
             try
             {
                 juancho.AddHabilitacion("hola");
-            } 
+            }
             catch (System.ArgumentException e)
             {
                 respuesta = e.Message;
             }
-            string expected2 = "hola no se encuentra disponible, use nuevamente /agregarhabilitacionemprendedor";
+
+            string expected2 = "Hola no se encuentra disponible, use nuevamente /agregarhabilitacionemprendedor";
             Assert.AreEqual(expected, juancho.HabilitacionesEmprendedor.Count);
             Assert.AreEqual(expected2, respuesta);
         }

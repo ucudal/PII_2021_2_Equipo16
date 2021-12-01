@@ -15,7 +15,7 @@ namespace Test.Library
         [Test]
         public void TestearUsuarioNombre()
         {
-            Usuario usuario = new Usuario("Joaquin", "Montevideo","Textil");
+            Usuario usuario = new Usuario("Joaquin", "Montevideo", "Textil");
             Assert.AreEqual("Joaquin", usuario.Nombre);
         }
 
@@ -38,5 +38,5 @@ namespace Test.Library
             Usuario usuario = new Usuario("Joaquin", "Montevideo", "Textil");
             Assert.AreEqual("Textil", usuario.Rubro.Nombre);
         }
-    }       
-} 
+    }
+}

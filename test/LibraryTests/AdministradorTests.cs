@@ -2,7 +2,7 @@ namespace Test.Library
 {
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Esta clase permite generar los test necesarios para poder comprobar la que la clase Administrador funcione correctamente.
     /// </summary>
@@ -42,7 +42,7 @@ namespace Test.Library
         [Test]
         public void TestAdministradorFalso()
         {
-            Administrador admin = new Administrador("","equipo_16");
+            Administrador admin = new Administrador(string.Empty, "equipo_16");
             string expected = "Jhon";
             Assert.AreEqual(expected, admin.Nombre);
         }

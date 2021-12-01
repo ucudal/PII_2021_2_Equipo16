@@ -1,8 +1,8 @@
 namespace Test.Library
-{ 
+{
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Clase de pruebas de TestGeneral.
     /// </summary>
@@ -41,7 +41,7 @@ namespace Test.Library
 
             int expectedCantidadConsumidaSegunTiempo = 3;
 
-            Assert.AreEqual(expectedCantidadConsumidaSegunTiempo, LogicaEmprendedor.CalcularOfertasCompradas(emprendedorTest24, "2020-10-15", "2028-10-15"));            
+            Assert.AreEqual(expectedCantidadConsumidaSegunTiempo, LogicaEmprendedor.CalcularOfertasCompradas(emprendedorTest24, "2020-10-15", "2028-10-15"));
         }
     }
 }

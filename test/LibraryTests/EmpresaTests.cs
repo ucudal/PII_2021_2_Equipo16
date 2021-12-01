@@ -68,7 +68,7 @@ namespace Test.Library
             Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
 
             int expected = 1;
-            string respuesta = "";
+            string respuesta = string.Empty;
 
             empresaTest.AddHabilitacion("APA");
             try
@@ -84,14 +84,14 @@ namespace Test.Library
             Assert.AreEqual(expected, empresaTest.HabilitacionesEmpresa.Count);
             Assert.AreEqual(expected2, respuesta);
         }
-        
+
         /// <summary>
         /// Test que chequea que sucede si se intenta remover una habilitación que no está en la lista
         /// a una empresa.
         /// </summary>
         [Test]
         public void TestQuitarHabilitacionesMal()
-        {   
+        {
             Habilitaciones habilitacion = new Habilitaciones();
             Empresa empresaTest = new Empresa("empresaTest", "La Blanqueada", "Textil");
 

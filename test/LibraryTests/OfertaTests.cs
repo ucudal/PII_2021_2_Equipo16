@@ -67,14 +67,14 @@ namespace Test.Library
             oferta.AddHabilitacion("APA");
             oferta.RemoveHabilitacion("APA");
         }
-        
+
         /// <summary>
         /// Test que sirve para ver el comportamiento del código al añadirle a una oferta una habilitación que no existe.
         /// </summary>
         [Test]
         public void TestAgregarHabilitacionesMal()
         {
-            string respuesta = "";
+            string respuesta = string.Empty;
             Habilitaciones habilitacion = new Habilitaciones();
             Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "Textil");
             Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
@@ -86,7 +86,7 @@ namespace Test.Library
             {
                 oferta.AddHabilitacion("deuna");
             }
-            catch(System.ArgumentException e)
+            catch (System.ArgumentException e)
             {
                 respuesta = e.Message;
             }

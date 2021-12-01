@@ -3,12 +3,12 @@ namespace Test.Library
     using ClassLibrary;
     using NUnit.Framework;
     using Telegram.Bot.Types;
-    
+
     /// <summary>
     /// Esta clase permite probar todos los handlers destinados al emprendedor.
     /// </summary>
     [TestFixture]
-    public class EmprendedorHandlerTest
+    public class EmprendedorHandlersTests
     {
         /// <summary>
         /// En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por tag con el tag "tagtest".
@@ -20,7 +20,7 @@ namespace Test.Library
         public void BuscadorTagHandlerTest()
         {
             ContenedorPrincipal contenedorPrincipal = Singleton<ContenedorPrincipal>.Instancia;
-            contenedorPrincipal.Emprendedores.Add("123", new Emprendedor("Emprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            contenedorPrincipal.Emprendedores.Add("123", new Emprendedor("Emprendedor", "ubi", "Textil", "espe", "email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
 
             contenedorPrincipal.Publicaciones.OfertasPublicados.Add(new Oferta("Oferta1", "lol", "1000", "299", "kilo", "tagtest", "ubi", "constante", empresaTest1));
@@ -40,7 +40,7 @@ namespace Test.Library
 
             contenedorPrincipal.HistorialDeChats.Add(msg.Id, new HistorialChat());
 
-            IHandler buscadorTagHandlerResult = new BuscadorTagHandler(null); 
+            IHandler buscadorTagHandlerResult = new BuscadorTagHandler(null);
 
             string response;
             buscadorTagHandlerResult.Handle(msg, out response);
@@ -50,10 +50,10 @@ namespace Test.Library
             mensaje.Text = palabraClave;
 
             buscadorTagHandlerResult.Handle(msg, out response);
-            
+
             Assert.That(response, Is.EqualTo("******************************\nNombre: Oferta1 \nMaterial: lol \nPrecio: $299 \nUnidad: kilo \nCantidad: 1000 \nTag: tagtest \nUbicación: ubi \nEs una oferta constante \nRequerimientos: \n\n******************************\n"));
         }
-        
+
         /// <summary>
         /// En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por material con el material "esteesunmaterial".
         /// Luego, una empresa creada anteriormente crea una oferta con ese mismo material.
@@ -64,7 +64,7 @@ namespace Test.Library
         public void BuscadorMaterialHandlerTest()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            container.Emprendedores.Add("124", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
 
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta2", "esteesunmaterial", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
@@ -100,7 +100,7 @@ namespace Test.Library
             first.Handle(msg, out response);
             Assert.That(response, Is.EqualTo("******************************\nNombre: oferta2 \nMaterial: esteesunmaterial \nPrecio: $299 \nUnidad: kilo \nCantidad: 1000 \nTag: tag1 \nUbicación: ubi1 \nEs una oferta constante \nRequerimientos: \n\n******************************\n"));
         }
-        
+
         /// <summary>
         /// En este test, se crea una emprendedor, el cual ejecuta a través de telegram una búsqueda por ubicación con la ubicación "test".
         /// Luego, una empresa creada anteriormente crea una oferta con esa misma ubicación.
@@ -155,7 +155,7 @@ namespace Test.Library
         public void AgregarHabEmprendedorHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
-            container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe","email@prueba.com"));
+            container.Emprendedores.Add("126", new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com"));
             Empresa empresaTest1 = new Empresa("Empresa1", "ubi", "Textil");
 
             container.Publicaciones.OfertasPublicados.Add(new Oferta("oferta1", "mat", "1000", "299", "kilo", "tag1", "ubi1", "constante", empresaTest1));
@@ -189,7 +189,7 @@ namespace Test.Library
             agregarHabEmprendedorHandlerResult.Handle(msg, out response);
             Assert.That(response, Is.EqualTo($"Se ha agregado '{nuevaHab}' a la lista de habilitaciones. {OpcionesUso.AccionesEmprendedor()}"));
         }
-        
+
         /// <summary>
         /// En este test, se crea un emprendedor, el cual ejecuta a través de telegram quiere removerse habilitaciones.
         /// Para eso, ejecuta el comando "removerhabemprendedor", y luego se remueve la habilitación "SOA".
@@ -238,7 +238,7 @@ namespace Test.Library
         /// <summary>
         /// En este test, se demuestra el correcto funcionamiento de CalcularOfertasCompradasHandler y InteresadoEnOfertaHandler.
         /// Para eso, se crean una empresa y un emprendedor
-        /// El primero, publica una oferta. El segundo, por su parte, busca interesarse en esa oferta con "/interesarme", 
+        /// El primero, publica una oferta. El segundo, por su parte, busca interesarse en esa oferta con "/interesarme",
         /// para luego fijarse si realmente funcionó su manifestación de interés, con "/calcularofertascompradas".
         /// </summary>
         [Test]
@@ -256,7 +256,7 @@ namespace Test.Library
             usuario.Id = 128;
             message.From = usuario;
 
-            Chat chat1 = new Chat();  
+            Chat chat1 = new Chat();
 
             message.Chat = chat1;
             message.Chat.Id = 128;
@@ -308,7 +308,7 @@ namespace Test.Library
         /// Al final, se puede observar, como el Handler funciona correctamente.
         /// </summary>
         [Test]
-         public void ListadeHabilitacionesHandlerTestBien()
+        public void ListadeHabilitacionesHandlerTestBien()
         {
             ContenedorPrincipal container = Singleton<ContenedorPrincipal>.Instancia;
             Emprendedor emprendedorTest = new Emprendedor("nombreEmprendedor", "ubi", "Textil", "espe", "email@prueba.com");
