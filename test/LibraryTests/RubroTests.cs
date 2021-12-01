@@ -1,5 +1,5 @@
 namespace Test.Library
-{ 
+{
     using ClassLibrary;
     using NUnit.Framework;
 
@@ -10,7 +10,7 @@ namespace Test.Library
     public class RubroTests
     {
         /// <summary>
-        /// En este test vamos a verificar la correcta creación de un Rubro con nombre
+        /// En este test vamos a verificar la correcta creación de un Rubro con nombre.
         /// </summary>
         [Test]
         public void TestCrearRubro()

@@ -2,7 +2,7 @@ namespace Test.Library
 {
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Esta clase permite realizar los test de la clase Habilitaciones.
     /// Los métodos de la clase Habilitaciones son testeados uno por uno.
@@ -17,7 +17,7 @@ namespace Test.Library
         public void TestHabilitacion()
         {
             Habilitaciones habilitacion = new Habilitaciones("test");
-            
+
             string expected = "test";
             Assert.AreEqual(expected, habilitacion.Nombre);
         }

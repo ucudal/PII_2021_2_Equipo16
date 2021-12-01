@@ -2,7 +2,7 @@ namespace Test.Library
 {
     using ClassLibrary;
     using NUnit.Framework;
-    
+
     /// <summary>
     /// Esta clase permite realizar los tests de la clase Oferta.
     /// </summary>
@@ -50,9 +50,7 @@ namespace Test.Library
             Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "Textil");
             Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
 
-            //int expected = 1;
             oferta.AddHabilitacion("SOA");
-            //Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
         }
 
         /// <summary>
@@ -68,17 +66,15 @@ namespace Test.Library
             oferta.AddHabilitacion("SOA");
             oferta.AddHabilitacion("APA");
             oferta.RemoveHabilitacion("APA");
-            //int expected = 1;
-            
-            //Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
         }
+
         /// <summary>
         /// Test que sirve para ver el comportamiento del código al añadirle a una oferta una habilitación que no existe.
         /// </summary>
         [Test]
         public void TestAgregarHabilitacionesMal()
         {
-            string respuesta = "";
+            string respuesta = string.Empty;
             Habilitaciones habilitacion = new Habilitaciones();
             Empresa empresaTest = new Empresa("Madafreakin Pepsi", "Buceo", "Textil");
             Oferta oferta = new Oferta("ofertaTest", "elmejor", "1", "5000", "Cantidad", "test", "UCU", "Constante", empresaTest);
@@ -90,13 +86,15 @@ namespace Test.Library
             {
                 oferta.AddHabilitacion("deuna");
             }
-            catch(System.ArgumentException e)
+            catch (System.ArgumentException e)
             {
                 respuesta = e.Message;
             }
+
             Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
             Assert.AreEqual(expected2, respuesta);
         }
+
         /// <summary>
         /// Test que sirve para ver el comportamiento del código al intentar eliminar una habilitación
         /// que no existe a una oferta.
@@ -111,9 +109,6 @@ namespace Test.Library
             oferta.AddHabilitacion("SOA");
             oferta.AddHabilitacion("APA");
             oferta.RemoveHabilitacion("deuna");
-            //int expected = 2;
-            
-            //Assert.AreEqual(expected, oferta.HabilitacionesOferta.Count);
         }
     }
 }
