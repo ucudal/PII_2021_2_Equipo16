@@ -53,7 +53,7 @@ namespace ClassLibrary
             comandosEmprendedor.Append("\n/buscarmaterial - Use para buscar entre todas aquellas ofertas que tienen el material que usted especificó");
             comandosEmprendedor.Append("\n/buscartag - Use para buscar entre todas aquellas ofertas que tienen el tag que usted especificó");
             comandosEmprendedor.Append("\n/buscarubicacion - Use para buscar entre todas aquellas ofertas que tienen la ubicación que usted especificó");
-            comandosEmprendedor.Append("\n/calcularofertascompradas - Use para conocer en cuantas ofertas se interesaron en un determinado período de tiempo");
+            comandosEmprendedor.Append("\n/calcularofertasconsumidas - Use para conocer en cuantas ofertas se interesaron en un determinado período de tiempo");
             comandosEmprendedor.Append("\n/listadehabilitaciones - Para emprendedores que quieren ver la lista de habilitaciones que existen");
             comandosEmprendedor.Append("\n/interesarme - Use para interesarse en una oferta");
             comandosEmprendedor.Append("\n/verubicacion - Use para conocer la ubicacion de emprendedor");
