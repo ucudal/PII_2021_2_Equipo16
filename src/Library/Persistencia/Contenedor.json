@@ -1,0 +1,110 @@
+{
+  "$id": "1",
+  "HistorialDeChats": {
+    "$id": "2"
+  },
+  "EmpresasInvitadas": {
+    "$id": "3",
+    "$values": [
+      {
+        "$id": "4",
+        "FechaOfertasEntregadas": {
+          "$id": "5"
+        },
+        "HabilitacionesEmpresa": {
+          "$id": "6",
+          "$values": []
+        },
+        "InteresadosEnOfertas": {
+          "$id": "7",
+          "$values": []
+        },
+        "OfertasAceptadas": {
+          "$id": "8",
+          "$values": []
+        },
+        "MisOfertas": {
+          "$id": "9",
+          "$values": []
+        },
+        "Nombre": "conaprole",
+        "Ubicacion": {
+          "$id": "10",
+          "NombreCalle": "pakistan"
+        },
+        "Rubro": {
+          "$id": "11",
+          "Nombre": "Textil"
+        }
+      }
+    ]
+  },
+  "Emprendedores": {
+    "$id": "12"
+  },
+  "Empresas": {
+    "$id": "13"
+  },
+  "Publicaciones": {
+    "$id": "14",
+    "OfertasPublicados": {
+      "$id": "15",
+      "$values": []
+    }
+  },
+  "ContenedorRubrosHabs": {
+    "$id": "16",
+    "ListaRubros": {
+      "$id": "17",
+      "$values": [
+        {
+          "$ref": "11"
+        },
+        {
+          "$id": "18",
+          "Nombre": "Metalurgia"
+        },
+        {
+          "$id": "19",
+          "Nombre": "Electrodom\u00E9sticos"
+        }
+      ]
+    },
+    "ListaHabilitaciones": {
+      "$id": "20",
+      "$values": [
+        {
+          "$id": "21",
+          "Nombre": "APA"
+        },
+        {
+          "$id": "22",
+          "Nombre": "ISO"
+        },
+        {
+          "$id": "23",
+          "Nombre": "SOA"
+        }
+      ]
+    }
+  },
+  "BuscadorUbicacion": {
+    "$id": "24"
+  },
+  "BuscadorTags": {
+    "$id": "25"
+  },
+  "BuscadorMaterial": {
+    "$id": "26"
+  },
+  "PrinterConsola": {
+    "$id": "27"
+  },
+  "ListaNombreOfertas": {
+    "$id": "28",
+    "$values": []
+  },
+  "Administradores": {
+    "$id": "29"
+  }
+}
