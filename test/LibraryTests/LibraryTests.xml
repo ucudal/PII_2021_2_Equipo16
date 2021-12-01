@@ -4,6 +4,21 @@
         <name>LibraryTests</name>
     </assembly>
     <members>
+        <member name="T:Test.Library.AdministradorHandlersTests">
+            <summary>
+            Esta clase permite probar todos los handlers destinados al administrador.
+            </summary>
+        </member>
+        <member name="M:Test.Library.AdministradorHandlersTests.InvitarEmpresayCrearEmpresaHandlersTest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Test.Library.AdministradorHandlersTests.RegistrarAdminHandlerTest">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Test.Library.AdministradorTests">
             <summary>
             Esta clase permite generar los test necesarios para poder comprobar la que la clase Administrador funcione correctamente.
@@ -126,7 +141,7 @@
         </member>
         <member name="T:Test.Library.EmpresaHandlerTest">
             <summary>
-            Esta clase permite probar todos los handlers destinados al emprendedor.
+            Esta clase permite probar todos los handlers destinados a la empresa.
             </summary>
         </member>
         <member name="M:Test.Library.EmpresaHandlerTest.CrearOfertaHandlerTest">
@@ -136,13 +151,45 @@
             </summary>
         </member>
         <member name="M:Test.Library.EmpresaHandlerTest.AddHabOfertaHandlerTest">
+             <summary>
+             En este test, una empresa desea, a través de telegram, añadile una habilitación a una oferta.
+            Para eso, utiliza "agregarhaboferta".
+             Con esto, se verifica el correcto funcionamiento del AgregarHabOfertaHandler.
+             </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.RemoverHabEmpresaHandlerTest">
             <summary>
-            Test que evalúa lo sucedido al crear una instancia de tipo Oferta.
+            En este test, se valúa el correcto funcionamiento del RemoverHabEmpresaHandler.
+            Para eso, una empresa utiliza el comando "/removerhabempresa" a través de telegram.
             </summary>
         </member>
         <member name="M:Test.Library.EmpresaHandlerTest.AgregarHabEmpresaHandlerTest">
             <summary>
-            Test que prueba el Handler para Agregar una habilitación a una empresa.
+            Test que prueba el AgregarHabEmpresaHandler.
+            Para eso, una empresa utiliza el comando "agregarhabilitacionempresa" a través de telegram.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.InteresadoenOfertaCalcularOfertasVendidasyAceptarOfertaHandlerTestBien">
+            <summary>
+            En este test, se evalúan varios handlers en uno: InteresadoEnOfertaHandler, CalcularOfertasVendidasHandler y AceptarOfertaHandler.
+            Aquí interactúan dos usuarios, una empresa, que es la que crea la oferta y la publica, y un emprendedor, que manifiesta
+            su interés en ella.
+            Luego, la empresa acepta su interés, y, para estar seguro de que todo funciona bien, chequeó su venta con 
+            "/calcularofertasvendidas".
+            Esto corrobora el correcto funcionamiento de todos los handlers utilizados aquí.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.AceptarInvEmpresaHandlerTest">
+            <summary>
+            Evalúa lo sucedido al una empresa aceptar la invitación de un administrador.
+            Corrobora el funcionamiento de AceptarInvEmpresaHandler.
+            </summary>
+        </member>
+        <member name="M:Test.Library.EmpresaHandlerTest.RemoverHabOfertaHandlerTest">
+            <summary>
+            En este test, una empresa desea remover a través de telegram, una habilitación a su oferta.
+            Para esto, utiliza el comando "/removerhaboferta".
+            Este test corrobora el funcionamiento de RemoverHabOfertaHandler.
             </summary>
         </member>
         <member name="T:Test.Library.EmpresaTests">
